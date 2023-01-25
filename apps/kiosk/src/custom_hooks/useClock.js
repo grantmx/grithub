@@ -26,7 +26,7 @@ export function useClock(locale = "en-GB"){
     const clock = useMemo(() => {
         const nowIsh = new Date(now)
         const minutes = nowIsh.getMinutes();
-        const minutesFormatted = minutes > 10 ? minutes : `0${minutes}`
+        const minutesFormatted = minutes > 9 ? minutes : `0${minutes}`
         const hours = nowIsh.getHours();
 
         return{
