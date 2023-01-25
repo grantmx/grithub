@@ -4,8 +4,8 @@ export const open_weather_url = `https://api.openweathermap.org/data/2.5/onecall
 
 export const accuweather_api_key = "FQHuAaMa0bUxfSpqcakzRmwA5lMxINmc";
 export const accuweather_location_key = 301195;
-export const accuweather_daily_url = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/";
-export const accuweather_hourly_url = "http://dataservice.accuweather.com/forecasts/v1/hourly/1hour/"
+export const accuweather_daily_url = "https://dataservice.accuweather.com/forecasts/v1/daily/5day/";
+export const accuweather_hourly_url = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/"
 
 
 export const hubs = {
