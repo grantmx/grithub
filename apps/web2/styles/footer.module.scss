@@ -1,0 +1,22 @@
+
+.submitBtn{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 58px;
+    border: 0;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #ced4da;
+}
+
+.formFieldB{
+    position: absolute;
+    right: 99999px;
+}
+
+.formCntr{
+    height: 58px;
+}
