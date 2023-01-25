@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import FooterEmailForm from '../../components/FooterEmailForm';
+import FooterEmailForm from '../FooterEmailForm';
 
 
 function FooterNav(){
