@@ -16,13 +16,15 @@ function WeatherIcon({ description, className = "" }){
                 setIcon(weather_icons.hazy); 
                 break;
 
-            case "scattered clouds":
             case "Cloudy":
+            case "Mostly cloudy":
                 setIcon(weather_icons.cloudy); 
                 break;
 
             case "few clouds":
             case 'Partly sunny':
+            case "scattered clouds":
+            case "Intermittent clouds":
                 setIcon(weather_icons.partly_cloudy); 
                 break;
 
