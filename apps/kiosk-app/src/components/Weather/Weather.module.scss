@@ -1,0 +1,76 @@
+.block{
+    display: flex;
+    flex-direction: column;
+}
+
+.location{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    line-height: 1;
+    margin-bottom: -2rem;
+    font-size: 3rem;
+}
+
+.locationIcon{
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    margin-right: 1rem;
+}
+
+.forecast{
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.iconCntr{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-right: 3rem;
+
+    &:last-of-type{
+        margin: 0
+    }
+}
+
+.icon{
+    width: 60px;
+    height: 60px;
+    fill: #fff;
+    margin-right: 2rem;
+}
+
+
+.currentIcon{
+    width: 100px;
+    height: 100px;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.tempRange{
+    font-size: 2.1rem;
+}
+
+.day, .now{
+    font-size: 1.8rem;
+    opacity: 0.5;
+    line-height: 1;
+}
+
+.currentText{
+    font-size: 6rem;
+}
+
+.nowTemp{
+    line-height: 1;
+}
+

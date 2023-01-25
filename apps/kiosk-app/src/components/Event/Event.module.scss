@@ -1,0 +1,44 @@
+.block{
+    display: flex;
+    width: 50%;
+}
+
+.welcome{
+    opacity: 0.5;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    font-size: 4rem;
+}
+
+.group{
+    display: flex;
+    margin-bottom: .75rem;
+}
+
+.name{
+    font-size: 2.1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+    fill: #fff;
+    margin-right: .5rem;
+}
+
+.duration{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 2rem;
+}
+

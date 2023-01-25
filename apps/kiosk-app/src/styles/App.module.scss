@@ -1,0 +1,28 @@
+@use './_reboot.scss';
+
+.block{
+	display: flex;
+	background-color: #111;
+	width: 100vw;
+	height: 100vh;
+	padding: 2vw 4vw;
+	flex-direction: column;
+	justify-content: space-between;
+
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.header, .footer{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-content: flex-end;
+	align-items: flex-end;
+	flex-direction: row;
+}
+
+.header{
+	align-content: flex-start;
+	align-items: flex-start;
+}
