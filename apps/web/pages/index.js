@@ -132,7 +132,7 @@ export default function Home(){
 
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
-								<Image src="/assets/office-space-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
+								<Image src="/assets/office-space.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
 									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <a href="#coworking" className="text-decoration-underline" title="more about coworking">More &rsaquo;</a></p>
@@ -160,21 +160,7 @@ export default function Home(){
 					</p>
 
 					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-									<p className="d-grid">
-										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
-											Register Now &nbsp;&rsaquo;
-										</a>
-									</p>
-								</div>
-							</div>
-						</div>
+						
 
 						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
@@ -184,11 +170,11 @@ export default function Home(){
 									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
 									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
 									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens January 2032
+										Registration Opens February 2032
 									</div>
 									{/* <p>
 										<a href="" className="btn btn-primary btn-lg">
-											Register
+											Register Now
 										</a>
 									</p> */}
 								</div>
@@ -205,7 +191,7 @@ export default function Home(){
 									
 									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
 									<div className="alert alert-secondary text-center" role="alert">
-									Registration Opens February 2032
+										Registration Opens March 2032
 									</div>
 
 									{/* <p>
@@ -214,6 +200,26 @@ export default function Home(){
 										</a>
 										
 									</p> */}
+								</div>
+							</div>
+						</div>
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
+									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
+									{/* <p className="d-grid">
+										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
+											Register Now &nbsp;&rsaquo;
+										</a>
+									</p> */}
+									<div className="alert alert-secondary text-center" role="alert">
+										Registration Opens April 2032
+									</div>
 								</div>
 							</div>
 						</div>
@@ -298,11 +304,11 @@ export default function Home(){
 						<div className="col-12 d-flex flex-wrap">
 							<div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 								<Image src="/assets/wifi_tethering.svg" width={50} height={50} className={Style.whiteIcon} alt="wifi"/>
-								<p className="lead text-white pt-3 text-center">Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
+								<p className="lead text-white pt-3 text-center">200 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
 							</div>
 							<div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 								<Image src="/assets/presentation.svg" width={50} height={50} className={Style.whiteIcon} alt="conference rooms"/>
-								<p className="lead text-white pt-3 text-center">Modern Conference Room, Meeting &amp; Board Room and Focus Room.</p>
+								<p className="lead text-white pt-3 text-center">Modern Conference Room, Meeting &amp; Board Room and Focus Room. Private Office suites available</p>
 							</div>
 							{/* <div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column">
 								<Image src="/assets/build.svg" width={50} height={50} className={Style.whiteIcon} alt="fablabs"/>

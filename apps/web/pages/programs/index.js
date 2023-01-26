@@ -57,11 +57,15 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-                                <p className="d-grid">
+                                {/* <p className="d-grid">
                                     <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
                                         Register Now &nbsp;&rsaquo;
                                     </a>
-                                </p>
+                                </p> */}
+
+                                <div className="alert alert-secondary text-center" role="alert">
+                                    Registration Opens March 2032
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,7 +78,7 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens January 2032
+                                    Registration Opens February 2032
                                 </div>
                                 {/* <p>
                                     <a href="" className="btn btn-primary btn-lg">
@@ -95,7 +99,7 @@ export default function Programs(){
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                Registration Opens February 2032
+                                    Registration Opens April 2032
                                 </div>
 
                                 {/* <p>
