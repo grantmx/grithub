@@ -15,7 +15,11 @@ function Wifi(){
                 <span className={Style.ssid}>
                     {hubs.george.wifi}
                 </span>
+                <span className={Style.password}>
+                    <small>p:</small> {hubs.george.wifiPassword}
+                </span>
             </p>
+
         </section>
     )
 }
