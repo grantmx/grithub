@@ -80,8 +80,8 @@ export default function Programs(){
                                 {/* <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens February 2032
                                 </div> */}
-                                <p>
-                                <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
+                                <p className="d-grid">
+                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
                                         Register
                                     </a>
                                 </p>
@@ -102,7 +102,7 @@ export default function Programs(){
                                     Registration Opens April 2032
                                 </div>
 
-                                {/* <p>
+                                {/* <p className="d-grid">
                                     <a href="" className="btn btn-primary btn-lg disabled">
                                         Register
                                     </a>
@@ -124,7 +124,7 @@ export default function Programs(){
                                 <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
-                                {/* <p>
+                                {/* <p className="d-grid">
                                     <a href="" className="btn btn-primary btn-lg disabled">
                                         Register
                                     </a>
@@ -147,7 +147,7 @@ export default function Programs(){
                                     Registration Opens Soon
                                 </div>
                                
-                                {/* <p>
+                                {/* <p className="d-grid">
                                     <a href="" className="btn btn-primary btn-lg disabled">
                                         Register
                                     </a>
