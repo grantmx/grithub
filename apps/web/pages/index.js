@@ -173,7 +173,7 @@ export default function Home(){
 										Registration Opens February 2032
 									</div> */}
 									<p>
-										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-primary btn-lg">
+										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
 											Register Now
 										</a>
 									</p>
@@ -195,7 +195,7 @@ export default function Home(){
 									</div>
 
 									{/* <p>
-										<a href="" className="btn btn-primary btn-lg disabled">
+										<a href="" className="btn btn-success btn-lg">
 											Register
 										</a>
 										
