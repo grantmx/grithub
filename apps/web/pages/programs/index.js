@@ -77,14 +77,14 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                {/* <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens February 2032
-                                </div>
-                                {/* <p>
-                                    <a href="" className="btn btn-primary btn-lg">
+                                </div> */}
+                                <p>
+                                <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-primary btn-lg">
                                         Register
                                     </a>
-                                </p> */}
+                                </p>
                             </div>
                         </div>
                     </div>
