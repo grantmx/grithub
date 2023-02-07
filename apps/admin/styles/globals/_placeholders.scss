@@ -1,0 +1,373 @@
+@import 'styles/globals/variables';
+@import 'styles/globals/mixins/font';
+
+
+// Placeholder Selectors
+
+%standard-button{
+    border-width: 1px;
+    border-style: solid;
+    padding: 1.7rem calc(1vw + 17px);
+    text-transform: capitalize;    
+    border-radius: $button-border-radius;
+    text-decoration: none !important;
+    border-color: transparent;
+    background-color: $charcoal;
+    color: $white;
+    display: inline-flex;
+    font-weight: normal;
+    @include dynamic-font(16, 24);
+    font-size: 2.4rem;
+    line-height: 1;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    max-height: 60px;
+}
+
+%standard-control{
+    display: block;
+    flex: 1 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 1.375rem 2rem 1.375rem .5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: $charcoal;
+    -webkit-tap-highlight-color: transparent;
+    border-color: transparent;
+    border-bottom-color: $ocean;
+    background-color: #fff;
+    background-clip: padding-box;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    outline: none !important;
+
+    &:focus{
+        outline: none !important;
+    }
+}
+
+%standard-active-control{
+    & label{
+        top: -8px;
+        width: 100%;
+        font-size: 1.3rem;
+        color: $charcoal;
+    }
+}
+
+
+%standard-control-label{
+    height: auto;
+    position: absolute;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: left;
+    width: 70%;
+    line-height: 1.2;
+    background-color: #fff;
+    top: 20px;
+    left: 0;
+    padding: 0 0 0 .5rem;
+    z-index: 1;
+    color: $ocean;
+    transition: all 0.2s ease;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+%standard-control-help-text{
+    padding: 1rem 0 0 .5rem;
+    width: 100%;
+    line-height: 1.3;
+    font-size: 1.3rem;
+}
+
+
+%flex-full-width{
+    display: flex;
+    width: 100vw;
+}
+
+
+%optionsBlock{
+    padding: 1rem 2rem 0 2rem;
+    margin: 4rem 0 4rem 0;
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: $box-shadow-sm;
+}
+
+%truncate{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+%badge{
+    display: inline-block;
+    padding: .25rem .5rem;
+    font-size: .75em;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+%scrolling-inner{
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: $mist;
+    -webkit-overflow-scrolling: touch;
+
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        border-radius: $border-radius;
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-track{
+        background: $mist;
+    }
+
+    &::-webkit-scrollbar-thumb {
+         background-color: rgba($charcoal, .35);
+        border-radius: $border-radius;
+    }
+}
+
+%button-animate{
+    transition: all .1s cubic-bezier(.59,.28,.83,.67);
+
+    &:hover{
+        transform: translate(-1px, -2px);
+        box-shadow: $box-shadow;
+        filter: brightness(1.25);
+    }
+
+    &:active, &:focus{
+        // box-shadow: inset $box-shadow;
+        transform: translate(0px, 1px);
+    }
+}
+
+
+%search-cancel-button{
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        height: 25px;
+        width: 25px;
+        opacity: 1;
+        margin: 0;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23777' viewBox='0 0 24 24'%3E%3Cpath d='M13.4 12l5.3-5.3c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-5.3 5.3-5.3-5.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5.3 5.3-5.3 5.3c-0.4 0.4-0.4 1 0 1.4 0.2 0.2 0.4 0.3 0.7 0.3s0.5-0.1 0.7-0.3l5.3-5.3 5.3 5.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4l-5.3-5.3z'%3E%3C/path%3E%3C/svg%3E");
+    }
+}
+
+%freeze-body{
+    overflow: hidden;
+    position: relative;
+    max-height: 100vh;
+}
+
+%dark-arrow{
+    content: "";
+    width: 0px; 
+    height: 0px; 
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent; 
+    border-left: 8px solid $charcoal; 
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+// VDS Utils Typography 
+%h1{
+    font-family: $font-stack-serif !important;
+    font-kerning: none;
+    text-transform: uppercase;
+    font-weight: normal;
+    letter-spacing: 0.7rem;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    color: $indigo;
+}
+
+%h2{
+    font-family: $font-stack !important;
+    line-height: 1.2;
+    font-kerning: none;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 3rem;
+    color: $indigo;
+}
+
+%h3{
+    font-family: $font-stack !important;
+    line-height: 1.2;
+    margin-bottom: 3rem;
+    font-kerning: none;
+    letter-spacing: 0.5rem;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: $indigo;
+}
+
+%h4{
+    font-family: $font-stack !important;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    font-kerning: none;
+    letter-spacing: 0.35rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: $indigo;
+}
+
+%h5{
+    font-family: $font-stack !important;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    font-kerning: none;
+    letter-spacing: 0.35rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: $indigo;
+}
+
+%h6{
+    font-family: $font-stack !important;
+    font-kerning: none;
+    letter-spacing: normal;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    color: $indigo;
+}
+
+
+%ul{
+    position: relative;
+    margin: 0 0 0 4rem;
+
+    &::before{
+        content: "";
+        position: absolute;
+        height: 100%;
+        border-left: 5px solid $ice;
+        left: -4rem;
+    }
+}
+
+
+%unordered-list{
+    list-style: none;
+
+    & li{
+        margin-bottom: 2.1rem;
+    }
+
+    & > ul{
+        @extend %ul
+    }
+}
+
+
+
+
+%ordered-list{
+    list-style: none;
+    
+    & li{
+        margin-bottom: 2.1rem;
+    }
+
+    & > ol {
+        padding-left: 4rem;
+        margin: 0 0 0 6rem;
+        counter-reset: section;
+
+        & li{
+            position: relative;
+            counter-increment: step-counter;
+            padding: 3rem 0 3rem 1rem;
+            margin: 0;
+
+            &::before{
+                content: "";
+                background-color: $ocean;
+                width: 70px;
+                height: 70px;
+                border-radius: 9rem;
+                position: absolute;
+                top: 50%;
+                margin-top: calc(-70px/2);
+                left: -8rem;
+                z-index: 0;
+                content: counter(step-counter);
+                font-size: 6rem;
+                color: $white;
+                font-family: $font-stack-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 1;
+            }
+
+            &::marker{
+                content: "";
+            }
+            
+        }
+    }
+}
+
+
+
+// VDS UL and OL style
+%textBlock{
+    margin-bottom: 4rem;
+
+    @extend %unordered-list;
+    @extend %ordered-list;
+
+    & p{
+        &:last-of-type{
+            margin: 0
+        }
+    }
+}
+
+
+%modal-underlay{
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(102, 102, 102, 0.75);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+    animation-name: remodal-overlay-opening-keyframes;
+}
+
