@@ -269,8 +269,8 @@ export default function Home(){
 							<div className="card shadow h-100 align-items-center">
 								<Image src="/assets/3d-printer.svg" width={150} height={150} className={Style.cardTopOverflow} alt="FabLab Innovation"/>
 								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">FabLab Innovation Centre</h3>
-									<p className="card-text">Disruptive Technologies like "Additive Manufacturing" or 3D Printing, paired with the sharp removal of its price barrier, allows young entrepreneurs to enter previously closed markets. Our <a className="text-decoration-underline" href="https://fabfoundation.org/" target="_blank" rel="noreferrer">Digital Fabrication Lab (FabLab)</a> will assist in product development, rapid tooling and prototyping as well as learning new business models.</p>
+									<h3 className="card-title fs-4 fw-bold">Co-Creation Spaces</h3>
+									<p className="card-text">Disruptive Technologies like "Additive Manufacturing" or 3D Printing, paired with the sharp removal of its price barrier, allows young entrepreneurs to enter previously closed markets. Our <a className="text-decoration-underline" href="https://fabfoundation.org/" target="_blank" rel="noreferrer">Digital Fabrication Lab (FabLab)</a> and Co-Creation Spaces will assist in product development, rapid tooling and prototyping as well as learning new business models.</p>
 									<a className="text-decoration-underline" href="/whitepapers/1-s2.0-S0040162520313093-main.pdf" target="_blank" rel="noreferrer" title="whitepaper on 3d printing">White Paper: The Effect of 3D Printing Technologies on Entrepreneurship &rsaquo;</a>
 								</div>
 							</div>
