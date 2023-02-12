@@ -112,7 +112,7 @@ export default function Home(){
 					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
-								<Image src="/assets/workshop-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
+								<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Real Workforce Training</h3>
 									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <a href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</a></p>
