@@ -8,7 +8,7 @@ import { StructuredJSON } from '../components/StructuredJSON';
 import MainNav from '../components/navigation/MainNav';
 import FooterNav from '../components/navigation/FooterNav';
 
-import afriLabs from "public/assets/partners/cropped-AfriLabs-Logo_AfriLabs-Logo-Horizontal-1-1536x438.png" 
+import afriLabs from "public/assets/partners/afrilabs-member-logo-white.png" 
 import georgeBusiness from 'public//assets/partners/georgebusinesschamberlogo.png'
 import hero from "public/assets/hero.jpg" 
 import clsx from 'clsx';
@@ -47,7 +47,7 @@ export default function Home(){
 							</small>
 
 							<div className="col-12 d-flex justify-content-start align-items-center">
-								<div className="col-2 me-5">
+								<div className="col-3 me-5">
 									<a href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}

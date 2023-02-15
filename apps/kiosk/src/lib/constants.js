@@ -11,7 +11,7 @@ export const accuweather_hourly_url = "https://dataservice.accuweather.com/forec
 export const hubs = {
     george: {
         name: "George, ZA",
-        wifi: "grithub_community",
+        wifi: "GRITHub Community",
         wifiPassword: "NeverStopTrying",
         lat: -33.960400,
         lon: 22.456240

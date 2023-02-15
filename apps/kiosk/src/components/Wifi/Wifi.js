@@ -16,7 +16,7 @@ function Wifi(){
                     {hubs.george.wifi}
                 </span>
                 <span className={Style.password}>
-                    <small>p:</small> {hubs.george.wifiPassword}
+                    {hubs.george.wifiPassword}
                 </span>
             </p>
 
