@@ -1,0 +1,68 @@
+@import "styles/globals/variables";
+
+%caps{
+    content: "";
+    height: 12px;
+    width: 2px;
+    background-color: $charcoal;
+    display: block;
+    position: absolute;
+    top: -5px
+}
+
+.block{
+    box-sizing: content-box;
+	height: 1px;
+	border: none;
+    background-color: $container-border;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.spacer{
+    width: 100%;
+    display: flex;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.capped{
+    height: 2px;
+    background-color: $charcoal;
+    position: relative;
+
+    &::after{
+        @extend %caps;
+        right: 0;
+    }
+
+    &::before{
+        @extend %caps;
+        left: 0;
+    }
+}
+
+// color
+.color{
+    &__light{
+        background-color: $mist;
+    }
+
+    &__dark{
+        background-color: $charcoal;
+    }
+}
+
+
+// Orientation
+.vertical{
+    width: 1px;
+    height: 100%;
+}
+
+// 
+.flex{
+    height: auto;
+    width: 2px;
+    align-self: stretch;
+}

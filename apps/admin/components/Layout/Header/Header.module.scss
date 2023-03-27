@@ -1,0 +1,22 @@
+@import 'styles/globals/variables';
+
+
+.block{
+    display: flex;
+    width: 100%;
+    max-height: 90px;
+    padding: 1rem 4rem;
+    background-color: $container;
+    border-bottom: 1px solid $container-border;
+    align-items: center;
+    flex: 1 0 90px;
+}
+
+.heading{
+    line-height: 1;
+    color: $heading;
+    font-size: 3rem;
+    font-weight: 600;
+}
+
+

@@ -1,0 +1,29 @@
+@import 'styles/globals/variables';
+
+
+.block{
+    display: flex;
+    width: 100vw;
+}
+
+.outer{
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.wrapper{
+    display: flex;
+    padding: 2rem 3rem 2rem 2rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.inner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+

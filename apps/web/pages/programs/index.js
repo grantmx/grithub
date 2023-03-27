@@ -64,7 +64,7 @@ export default function Programs(){
                                 </p> */}
 
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens March 2032
+                                    Registration Opens April 2032
                                 </div>
                             </div>
                         </div>

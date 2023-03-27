@@ -1,5 +1,17 @@
-function HomePage() {
-    return <div>Welcome to Next.js!</div>
+import Card from "components/display/Card"
+
+function Dashboard() {
+	return(
+		<>
+			<Card>
+				Stuff
+			</Card>
+
+			<Card>
+				Stuff
+			</Card>
+		</>
+	)
 }
   
-  export default HomePage
+export default Dashboard

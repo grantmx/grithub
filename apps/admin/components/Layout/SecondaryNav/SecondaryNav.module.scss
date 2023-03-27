@@ -1,0 +1,27 @@
+@import 'styles/globals/variables';
+
+.block{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    margin-bottom: 1rem;
+}
+
+.link{
+    color: $primary-color;
+    margin-right: 2rem;
+    padding: 1rem 2rem;
+    font-size: 1.4rem;
+
+    &:hover{
+        text-decoration: none;
+        color: $white;
+    }
+}
+
+.active{
+    color: $white;
+    background-color: $container-border;
+    border-radius: 50rem;
+}
+

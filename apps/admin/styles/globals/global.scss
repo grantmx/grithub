@@ -8,6 +8,7 @@
 
 @import 'styles/globals/mixins/font';
 
+@import 'calendar';
 
 *, *:after, *:before {
 	margin: 0;
@@ -26,7 +27,7 @@ body{
 	font-size: $font-size-base;
 	color: $primary-color;
 	background-color: $background;
-	letter-spacing: 0.05rem;
+	// letter-spacing: 0.05rem;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-overflow-scrolling: touch;
 	-webkit-font-smoothing: antialiased;

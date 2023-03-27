@@ -1,0 +1,78 @@
+@import 'styles/globals/variables';
+
+.block{
+    display: flex;
+    width: 17%;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    background-color: $container;
+    border-right: 1px solid $container-border;
+}
+
+.logoLink{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 2px dotted $container-border;
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+}
+
+.logo{
+    width: auto;
+    height: 50px;
+    margin-bottom: 2rem;
+}
+
+
+
+.link{
+    width: 100%;
+    text-align: left;
+    color: $primary-color;
+    font-size: 1.4rem;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    line-height: 1;
+
+    &:hover{
+        color: $heading;
+        text-decoration: none;
+
+        & .icon{
+            fill: $heading;
+        }
+    }
+}
+
+.active{
+    color: $white;
+    background-color: $container-border;
+    border-radius: $border-radius;
+
+    & .icon{
+        fill: $white;
+    }
+}
+
+
+.icon{
+    width: 25px;
+    height: 25px;
+    margin: 0 .75rem 0 1rem;
+    fill: $primary-color;
+}
+
+.heading{
+    font-size: 1rem;
+    text-transform: uppercase;
+    width: 100%;
+    color: $heading;
+    padding-left: 1rem;
+    margin: 3rem 0 1rem 0;
+}
+
+.spacer{
+    margin: 3rem 0 0 0 !important;
+}
