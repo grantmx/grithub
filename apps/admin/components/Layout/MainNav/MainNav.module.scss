@@ -7,6 +7,11 @@
     padding: 2rem 1rem;
     background-color: $container;
     border-right: 1px solid $container-border;
+
+    @media screen and (max-width: $screen-lg){
+        width: 50px;
+        padding: 2rem .5rem
+    }
 }
 
 .logoLink{
@@ -15,13 +20,18 @@
     align-items: flex-start;
     border-bottom: 2px dotted $container-border;
     margin-bottom: 2rem;
-    padding-left: 1rem;
+    padding: 0 2rem 0 1rem;
+
+    @media screen and (max-width: $screen-lg){
+        padding: 0;
+    }
 }
 
 .logo{
-    width: auto;
-    height: 50px;
+    width: 100%;
+    height: auto;
     margin-bottom: 2rem;
+    flex: 1 0 auto;
 }
 
 
@@ -58,10 +68,15 @@
 
 
 .icon{
-    width: 25px;
+    width: auto;
     height: 25px;
     margin: 0 .75rem 0 1rem;
     fill: $primary-color;
+    flex: 1 0 auto;
+
+    @media screen and (max-width: $screen-lg){
+        margin: 0;
+    }
 }
 
 .heading{
@@ -71,8 +86,21 @@
     color: $heading;
     padding-left: 1rem;
     margin: 3rem 0 1rem 0;
+
+    @media screen and (max-width: $screen-lg){
+        display: none;
+    }
 }
 
 .spacer{
     margin: 3rem 0 0 0 !important;
 }
+
+.title{
+    width: 100%;
+
+    @media screen and (max-width: $screen-lg){
+        display: none;
+    }
+}
+

@@ -1,11 +1,14 @@
-import IconDashboard from "components/icons/IconDashboard"
-import IconWalkIn from "components/icons/IconWalkIn"
-import IconEventNote from "components/icons/IconEventNote"
-import IconEventSeat from "components/icons/IconEventSeat"
-import IconFace from "components/icons/IconFace"
-import IconGroup from "components/icons/IconGroup"
-import IconPersonAdd from "components/icons/IconPersonAdd"
-import IconTv from "components/icons/IconTv"
+import dynamic from "next/dynamic"
+
+const IconDashboard = dynamic(() => import("components/icons/IconDashboard"), { ssr: false })
+const IconWalkIn = dynamic(() => import("components/icons/IconWalkIn"), { ssr: false })
+const IconEventNote = dynamic(() => import("components/icons/IconEventNote"), { ssr: false })
+const IconEventSeat = dynamic(() => import("components/icons/IconEventSeat"), { ssr: false })
+const IconFace = dynamic(() => import("components/icons/IconFace"), { ssr: false })
+const IconGroup = dynamic(() => import("components/icons/IconGroup"), { ssr: false })
+const IconPersonAdd = dynamic(() => import("components/icons/IconPersonAdd"), { ssr: false })
+const IconTv = dynamic(() => import("components/icons/IconTv"), { ssr: false })
+
 
 export const nav = {
     overview: {

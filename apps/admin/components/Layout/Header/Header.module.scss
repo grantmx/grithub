@@ -4,19 +4,20 @@
 .block{
     display: flex;
     width: 100%;
-    max-height: 90px;
+    max-height: 100px;
     padding: 1rem 4rem;
     background-color: $container;
     border-bottom: 1px solid $container-border;
     align-items: center;
-    flex: 1 0 90px;
+    flex: 1 0 100px;
 }
 
-.heading{
+.title{
     line-height: 1;
     color: $heading;
-    font-size: 3rem;
+    font-size: 3.6rem;
     font-weight: 600;
+    margin: 0
 }
 
 

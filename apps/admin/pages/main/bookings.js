@@ -1,10 +1,15 @@
+import AddButton from "components/form/AddButton";
 
 
 function Bookings(){
     
 
     return(
-        <>Bookings</>
+        <>
+            Bookings
+
+            {/* <AddButton /> */}
+        </>
     )
 }
 

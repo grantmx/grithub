@@ -1,0 +1,26 @@
+@import "styles/globals/variables";
+
+
+.block{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    width: 75px;
+    height: 75px;
+    border-radius: 99rem;
+    background-color: $green;
+    box-shadow: $box-shadow-lg;
+    z-index: 9999;
+}
+
+.fixed{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.icon{
+    fill: $white;
+}
+

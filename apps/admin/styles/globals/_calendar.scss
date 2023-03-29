@@ -39,3 +39,22 @@ the :root statement itself is only included in the common stylesheet.
     --fc-now-indicator-color: red;
   }
 
+.fc-theme-standard td{
+  border-style: dotted !important;
+}
+
+.fc-toolbar-title, .fc-col-header-cell-cushion, .fc-timegrid-slot-label-cushion{
+  color: $heading;
+}
+
+.fc th{
+  font-weight: normal;
+}
+
+.fc-toolbar-title{
+  font-size: 3rem !important;
+  font-weight: normal;
+}
+
+
+

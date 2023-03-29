@@ -1,8 +1,8 @@
-import logo from 'public//assets/grithub-logo-horz-white-red.svg'
+import logo from 'public/assets/grithub-logo-horz-white-red.svg'
+import mobileLogo from 'public/assets/grithub-circle-logo.svg'
 import Style from './MainNav.module.scss'
 
 import Link from "next/link";
-import Image from 'next/image';
 import { nav } from "lib/navigation";
 import React, { useContext, useEffect } from "react";
 import { useRouter } from "next/router";
@@ -51,11 +51,10 @@ function MainNav(){
     return(
         <nav className={Style.block}>
             <Link href="/" className={Style.logoLink}>
-                <Image 
-                    src={logo} 
-                    alt="GRIT Hub" 
-                    className={Style.logo}
-                />
+                <picture className={Style.logo}>
+                    <source srcSet={mobileLogo.src} media="(max-width: 1080px)" />
+                    <img src={logo.src} alt="GRIT Hub" />
+                </picture>
             </Link>
 
 

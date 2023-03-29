@@ -1,0 +1,35 @@
+@import "styles/globals/variables";
+@import 'styles/globals/placeholders';
+
+.block{
+    margin: 0;
+}
+
+.error{
+    &__label{
+        color: $terracotta !important;
+    }
+
+    &__control{
+        border-color: $terracotta !important;
+    }
+
+    &__help{
+        color: $terracotta !important;
+    }
+}
+
+.label{
+    height: auto;
+    position: absolute;
+    margin: 0;
+    background-color: #fff;
+    top: -9px;
+    left: 10px;
+    padding: 0 10px;
+    z-index: 1;
+}
+
+.control{
+   margin: 0;
+}

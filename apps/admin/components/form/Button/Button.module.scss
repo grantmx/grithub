@@ -1,0 +1,316 @@
+@import 'styles/globals/variables';
+@import 'styles/globals/mixins/font';
+@import 'styles/globals/placeholders';
+
+
+
+.block {
+    @extend %standard-button;
+    @extend %button-animate;
+
+    &[download]{
+        text-decoration: none;
+    }
+
+    &:disabled{
+        opacity: 0.5;
+        cursor: not-allowed;
+
+        &:hover{
+            transform: none !important;
+            box-shadow: none !important;
+            transition: none !important;
+            filter: none !important;
+        }
+    }
+
+    & > svg{
+        height: 21px;
+        margin: 0 1rem 0 0;
+    }
+
+    @media screen and (max-width: $screen-md){
+        font-size: inherit;
+    }
+
+    &:hover{
+        color: $white;
+        text-decoration: none;
+        border-radius: $border-radius;
+
+        & [class*="Loader_checkmark"]::after{
+            border-color: $charcoal;
+        }
+
+        & > svg{
+            fill: #fff;
+        }
+    }
+
+    &:active, &:focus{
+        // box-shadow: inset $box-shadow;
+        transform: translate(0px, 1px);
+    }
+}
+
+.autoHeight{
+    height: auto !important;
+    max-height: none !important;
+}
+
+.noAnimate{
+    &:hover, &:active, &:focus{
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+
+.round{
+    border-radius: 50% !important;
+}
+
+
+.size{
+
+    // icon size button
+    &__icon{
+        padding: .5rem .5rem;
+        max-width: 35px;
+        max-height: 35px;
+
+        & > svg{
+            margin: 0;
+        }
+    }
+
+    // full width button
+    &__full{
+        align-self: stretch;
+        flex: 1 0 auto;
+        width: auto;
+    }
+
+
+    // Specific Sizes
+    &__xs{
+        padding: 1rem calc(1vw + .25rem);
+        @include dynamic-font(12, 13);
+    }
+
+
+    &__sm{
+        padding: 1.2rem calc(1vw + .5rem);
+        @include dynamic-font(18, 18);
+    }
+
+    &__md{
+        padding: 1.5rem 1.5rem;
+        @include dynamic-font(18, 21);
+    }
+
+    &__lg{
+        padding: 1.6em calc(1vw + 1.7rem);
+        @include dynamic-font(18, 26);
+    }
+
+
+    &__xl{
+        padding: 1.7rem calc(1vw + 3rem);
+        @include dynamic-font(21, 36);
+    }
+    
+
+    &__xxl{
+        padding: $standard-padding calc(1vw + 4rem);
+        font-weight: 800;
+        border-width: 2px;
+        @include dynamic-font(30, 40);
+    }
+}
+
+
+
+
+.color{
+
+    &__white{
+        color: inherit;
+        box-shadow: $box-shadow-sm;
+
+        &:hover{
+            & svg{
+                fill: $ocean;
+            }
+        }
+    }
+
+    // colors
+    &__transparent{
+        background-color: transparent;
+        color: $ocean;
+        padding: 1.7rem 0;
+        line-height: 1.4;
+
+        &:hover{
+            background-color: inherit;
+            border-color: transparent;
+            color: $ocean;
+
+            & [class*="Loader_checkmark"]::after{
+                border-color: $ocean;
+            }
+
+            & > svg{
+                fill: $ocean;
+            }
+        }
+    }
+
+
+    &__transparent-link{
+        padding: 0 !important;
+        font-size: inherit !important;
+        text-transform: inherit;
+        background-color: transparent;
+        line-height: 1;
+        border-bottom: 1px solid $ocean;
+
+        &:hover{
+            text-decoration: inherit;
+            color: $indigo;
+            background-color: transparent;
+        }
+    }
+
+
+    &__green-outline{
+        border-color: $green;
+
+        background-color: transparent;
+        color: $green;
+
+        & > svg{
+            fill: $green;
+        }
+
+        &:hover{
+            background-color: rgba($green, .075);
+            color: $green;
+
+            & > svg{
+                fill: $green;
+            }
+
+            & [class*="Loader_checkmark"]::after{
+                border-color: $green;
+            }
+        }
+    }
+
+
+    &__dark-outline{
+        border-color: $charcoal;
+        background-color: transparent;
+        color: $charcoal;
+
+        & > svg{
+            fill: $charcoal;
+        }
+
+        &:hover{
+            background-color: rgba($charcoal, .075);
+            color: $charcoal;
+        }
+    }
+
+
+    &__dove-outline{
+        border-color: $dove;
+        background-color: transparent;
+        color: $dove;
+
+        & > svg{
+            fill: $dove;
+        }
+
+        &:hover{
+            background-color: transparent;
+            color: $dove;
+        }
+    }
+
+
+
+    &__indigo-outline{
+        border-color: $indigo;
+        background-color: transparent;
+        color: $indigo;
+
+        & > svg{
+            fill: $indigo;
+        }
+
+        &:hover{
+            background-color: rgba($indigo, .075);
+            color: $indigo;
+
+            & [class*="Loader_checkmark"]::after{
+                border-color: $indigo;
+            }
+
+            & > svg{
+                fill: $indigo;
+            }
+        }
+    }
+
+    &__ocean-outline{
+        border-color: $ocean;
+        background-color: transparent;
+        color: $ocean;
+
+        & > svg{
+            fill: $ocean;
+        }
+
+        &:hover{
+            background-color: rgba($ocean, .075);
+            color: $ocean;
+
+            & [class*="Loader_checkmark"]::after{
+                border-color: $ocean;
+            }
+
+            & > svg{
+                fill: $ocean;
+            }
+        }
+    }
+
+
+
+    &__ice-outline{
+        border-color: $ice;
+        background-color: transparent;
+        color: $ice;
+
+        & > svg{
+            fill: $ice;
+        }
+
+        &:hover{
+            background-color: rgba($ice, .075);
+            color: $ice;
+
+            & [class*="Loader_checkmark"]::after{
+                border-color: $ice;
+            }
+
+            & > svg{
+                fill: $ice;
+            }
+        }
+    }
+}
+

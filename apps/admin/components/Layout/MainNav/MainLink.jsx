@@ -13,7 +13,10 @@ function MainLink({ href = "/", name, path, icon }){
             key={name}
         >
             {icon && <Icon className={Style.icon} />}
-            {name}
+            
+            <span className={Style.title}>
+                {name}
+            </span>
         </Link>
     )
 }

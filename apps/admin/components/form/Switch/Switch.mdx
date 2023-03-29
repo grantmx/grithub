@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import Switch from 'components/forms/Switch/Switch';
+
+<Meta title="Forms/Switch" component={Switch} />
+
+# Switch Control
+
+
+<br />
+
+### Import
+```javascript
+import Switch from 'components/forms/Switch/Switch';
+```
+
+<br />
+
+## Example
+
+
+export const Template = (args) => (
+    <Switch {...args}></Switch>
+);
+
+
+<Canvas withSource="open">
+	<Story
+		name="Switch"
+		args={{
+            //onChange: (e) => console.log(e),
+            name: "primary"
+        }}
+	>
+		{Template.bind({})}
+	</Story>    
+</Canvas>
+
+<br />
+
+## Props
+<ArgsTable story="Switch" />

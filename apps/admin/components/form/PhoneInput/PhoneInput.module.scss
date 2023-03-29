@@ -1,0 +1,72 @@
+@import 'styles/globals/variables';
+@import 'styles/globals/placeholders';
+
+.block{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+
+    &__select{
+        &::after{
+            @extend %dark-arrow;
+            transform: rotate(90deg);
+            right: 1.5rem;
+        }
+    }
+}
+
+.active{
+    @extend %standard-active-control;
+ }
+
+.error{
+    &__label{
+        color: $terracotta !important;
+    }
+
+    &__control{
+        border-color: $terracotta !important;
+    }
+
+    &__help{
+        color: $terracotta !important;
+    }
+}
+
+.label{
+    @extend %standard-control-label;
+}
+
+.controlGroup{
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.control{
+    @extend %standard-control;
+}
+
+.help{
+    @extend %standard-control-help-text;
+}
+
+.clearInput{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    max-height: 55px;
+    width: 50px;
+    padding: 1rem;
+    margin: 0 1rem;
+    background-color: transparent;
+
+    & svg{
+        fill: #aaa;
+    }
+}
