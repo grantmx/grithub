@@ -1,5 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 import Style from 'styles/home.module.scss';
+import ribbon from 'styles/ribbon.module.scss'
+import home from 'styles/home.module.scss';
+
 
 import Image from 'next/image';
 import { Helmet } from 'react-helmet';
@@ -7,13 +10,13 @@ import { NextSeo } from 'next-seo';
 import { StructuredJSON } from '../components/StructuredJSON';
 import MainNav from '../components/navigation/MainNav';
 import FooterNav from '../components/navigation/FooterNav';
+import clsx from 'clsx';
 
 import afriLabs from "public/assets/partners/afrilabs-member-logo-white.png" 
 import georgeBusiness from 'public//assets/partners/georgebusinesschamberlogo.png'
+import businessFinder from "public//assets/partners/Business-Finder-logo-02.png"
 import hero from "public/assets/hero.jpg" 
-import clsx from 'clsx';
-import ribbon from 'styles/ribbon.module.scss'
-import home from 'styles/home.module.scss';
+
 
 export default function Home(){
 	return(
@@ -38,10 +41,10 @@ export default function Home(){
 						<div className="col-9 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
 							<p className={Style.heroHashTag}>#GRITHub</p>
 							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship and the new workforce in the digital economy.</p>
-							<a href="#about" className={"btn-outline-dark btn btn-lg"} type="button" title="learn about the digital economy">Learn more</a>
 						</div>
 
-						<div className={Style.heroPartners}>
+
+						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3"])}>
 							<small className="text-white w-100 mb-0">
 								Our strategic partners and stakeholders
 							</small>
@@ -69,6 +72,7 @@ export default function Home(){
 										</svg>
 									</a>
 								</div>
+								
 								<div className="col-2 me-5">
 									<a href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
@@ -78,6 +82,18 @@ export default function Home(){
 										/>
 									</a>
 								</div>
+
+
+								<div className="col-2 me-5">
+									<a href="https://thebusinessfinder.co.za/" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={businessFinder}
+											alt="Business Finder" 
+											className={Style.partnerLogo}
+										/>
+									</a>
+								</div>
+
 								<div className="col-2">
 									<a href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
@@ -101,7 +117,7 @@ export default function Home(){
 					<h1 className="fw-bold display-4 mb-4 text-center">Garden Route Innovation &amp; Technology Hub</h1>
 					<div className="text-center col-xl-12 col-12">
 						<p className="fs-2">Identifying untapped potential and refocusing it using the power of digital technology. </p>
-						<p className='lead'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to youth, small businesses and stakeholders in the Garden Route area...and all it takes is GRIT and determination. </p>
+						<p className='lead'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route area...and all it takes is GRIT and determination. </p>
 						{/* <p>Our duty is to empower community members and small businesses to actively participate in the local supply chain through collaborations with academia, business and government partners using modern technology and innovation.</p> */}
 					</div>
 				</section>
@@ -156,31 +172,10 @@ export default function Home(){
 					</h2>
 
 					<p className="lead text-center mt-2">
-						<a href="/programs" target="_blank" rel="noreferrer" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
+						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
 					</p>
 
 					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
-						
-
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-									{/* <div className="alert alert-secondary text-center" role="alert">
-										Registration Opens February 2032
-									</div> */}
-									<p className="d-grid">
-										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
-											Register Now
-										</a>
-									</p>
-								</div>
-							</div>
-						</div>
-
 
 						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
@@ -191,7 +186,7 @@ export default function Home(){
 									
 									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
 									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens March 2032
+										Registration Opens May 2032
 									</div>
 
 									{/* <p className="d-grid">
@@ -218,11 +213,33 @@ export default function Home(){
 										</a>
 									</p> */}
 									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens April 2032
+										Registration Opens June 2032
 									</div>
 								</div>
 							</div>
 						</div>
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
+									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
+									<div className="alert alert-secondary text-center" role="alert">
+										Registration Opens July 2032
+									</div>
+									{/* <p className="d-grid">
+										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
+											Register Now
+										</a>
+									</p> */}
+								</div>
+							</div>
+						</div>
+
+
 					</div>
 				</section>
 

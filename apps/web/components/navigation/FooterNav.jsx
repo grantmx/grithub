@@ -8,7 +8,15 @@ function FooterNav(){
             
             <div className="col-md-4 col-12 d-flex p-4 flex-column">
                 <span><Image src="/assets/grithub-logo-horz-dark.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>
-                <small className="mt-2 text-muted">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a Non-Profit company catalyzing innovation and technology in the digital economy.</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy. CIPC: 2021/502703/08</small>
+                <address className="mt-3 pt-3 text-muted border-top lh-sm">
+                    <small>
+                        Office Suite #2, York Street Blvd. Shopping Center.<br/> George South, George 6529<br/>South Africa &nbsp;
+                        <a rel='noreferrer' target="_blank" href="https://www.google.com/maps/dir//garden+route+innovation+and+technology+hub/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x1dd61bad26029aad:0xe15b07dedb1520bf?sa=X&ved=2ahUKEwicrqbBw9b-AhWYi1wKHToBDNAQ9Rd6BAhMEAU">
+                            Get directions &rsaquo;
+                        </a>
+                    </small>
+                </address>
             </div>
 
             <div className="col-md-3 col-12 p-4 d-flex justify-content-top flex-column">
@@ -23,12 +31,16 @@ function FooterNav(){
                     <small className="ms-2">workforce@grithub.org.za</small>
                 </button>
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://www.facebook.com/grithub.za"; }}>
-                    <Image src="/assets/facebook-official.svg" width={25} height={25} alt="facebook"/>
+                    <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GritHub on facebook"/>
                     <small className="ms-2">Facebook</small>
                 </button>
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://twitter.com/grithub_za"; }}>
-                    <Image src="/assets/twitter.svg" width={25} height={25} alt="twitter"/>
+                    <Image src="/assets/twitter.svg" width={25} height={25} alt="GritHub on twitter"/>
                     <small className="ms-2">Twitter</small>
+                </button>
+                <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://www.instagram.com/grithub_za/"; }}>
+                    <Image src="/assets/instagram.svg" width={25} height={25} alt="GritHub on Instagram"/>
+                    <small className="ms-2">Instagram</small>
                 </button>
             </div>
             

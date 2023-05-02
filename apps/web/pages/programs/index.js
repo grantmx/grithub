@@ -28,7 +28,7 @@ export default function Programs(){
 
                 <div className="col-12 d-flex justify-content-between flex-wrap bg-info p-5">
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 8am to 12 pm for just R799 per course.</h3>
+                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 1pm for just R799 per course.</h3>
                         <p className="lead">
                             Our classes are priced so that anyone can attend and all can afford.
                         </p>
@@ -64,7 +64,7 @@ export default function Programs(){
                                 </p> */}
 
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens April 2032
+                                    Registration Opens June 2032
                                 </div>
                             </div>
                         </div>
@@ -77,14 +77,14 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-                                {/* <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens February 2032
-                                </div> */}
-                                <p className="d-grid">
+                                <div className="alert alert-secondary text-center" role="alert">
+                                    Registration Opens July 2032
+                                </div>
+                                {/* <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
                                         Register
                                     </a>
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ export default function Programs(){
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens April 2032
+                                    Registration Opens May 2032
                                 </div>
 
                                 {/* <p className="d-grid">

@@ -34,6 +34,11 @@ function MainNav({ page }){
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
                         CoWork
                     </a>
+
+                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/#contact">
+                        <Image src="/assets/mail_outline.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
+                        Contact
+                    </a>
                 </div>
             </div>
         </nav>

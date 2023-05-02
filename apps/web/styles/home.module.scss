@@ -37,18 +37,12 @@
 }
 
 .heroPartners{
-    position: absolute;
-    bottom: 20%;
-    left: 3em;
     width: 90vw;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    @media (max-width: 992px){
-        bottom: 5%
-    }
+    margin-top: 3rem;
 
     @media (max-width: 720px){
         display: none;
