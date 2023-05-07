@@ -11,13 +11,7 @@ function CoWork(){
 
             <section className="container-fluid d-flex justify-content-between align-items-center p-5 flex-colum" id="coworking">
 					<div className="col-12 d-flex align-items-center flex-column">
-						<div className="col-md-9 col-12 mb-5">
-							<p className="lead text-center">
-								<a className="border-bottom text-decoration-none" href="/whitepapers/Harnessing_the_Potential_of_Coworking.pdf" target="_blank" rel="noreferrer" title="white the power of coworking">White Paper: Harnessing the Power of Coworking &rsaquo;</a>
-								<br/> 
-								<a className="border-bottom text-decoration-none" href="/whitepapers/The-Future-of-Coworking-White-Paper-OpenWork-Agency-May-29-2020.pdf" target="_blank" rel="noreferrer" title="white paper on coworking future">White Paper: COVID-19 and The Future of Coworking &rsaquo;</a>
-							</p>
-						</div>
+						
 
 						<div className="col-12 d-flex flex-wrap">
 							<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
@@ -53,6 +47,17 @@ function CoWork(){
 								<p className="lead pt-3">Copying, printing and scanning facilities. Reception &amp; Mail Services.</p>
 							</div> */}
 						</div>
+
+
+                        <div className="col-md-9 col-12 mb-5">
+							<p className="lead text-center">
+								<a className="border-bottom text-decoration-none" href="/whitepapers/Harnessing_the_Potential_of_Coworking.pdf" target="_blank" rel="noreferrer" title="white the power of coworking">White Paper: Harnessing the Power of Coworking &rsaquo;</a>
+								<br/> 
+								<a className="border-bottom text-decoration-none" href="/whitepapers/The-Future-of-Coworking-White-Paper-OpenWork-Agency-May-29-2020.pdf" target="_blank" rel="noreferrer" title="white paper on coworking future">White Paper: COVID-19 and The Future of Coworking &rsaquo;</a>
+							</p>
+						</div>
+
+                        
 					</div>
 				</section>
 

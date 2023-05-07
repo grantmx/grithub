@@ -16,6 +16,7 @@ import afriLabs from "public/assets/partners/afrilabs-member-logo-white.png"
 import georgeBusiness from 'public//assets/partners/georgebusinesschamberlogo.png'
 import businessFinder from "public//assets/partners/Business-Finder-logo-02.png"
 import hero from "public/assets/hero.jpg" 
+import Link from 'next/link';
 
 
 export default function Home(){
@@ -131,7 +132,7 @@ export default function Home(){
 								<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Real Workforce Training</h3>
-									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <a href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</a></p>
+									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <Link href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</Link></p>
 								</div>
 							</div>
 						</div>
@@ -141,7 +142,7 @@ export default function Home(){
 								<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h3>
-									<p className="card-text">Tailored workshops, networking, online learning and hands-on mentorship for accelerating business growth. <a href="#incubator" className="text-decoration-underline" title="more about incubation">More &rsaquo;</a></p>
+									<p className="card-text">Tailored workshops, networking, online learning and hands-on mentorship for accelerating business growth. <Link href="/incubation" className="text-decoration-underline" title="more about incubation">More &rsaquo;</Link></p>
 								</div>
 							</div>
 						</div>
@@ -151,7 +152,7 @@ export default function Home(){
 								<Image src="/assets/office-space.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
-									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <a href="#coworking" className="text-decoration-underline" title="more about coworking">More &rsaquo;</a></p>
+									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
 								</div>
 							</div>
 						</div>

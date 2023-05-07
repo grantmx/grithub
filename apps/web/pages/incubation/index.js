@@ -63,14 +63,16 @@ function Incubation(){
                         Start Your Journey
                     </p>						
                     <p className='lead mb-5'>
-                        Take our Business Incubator <a href="https://forms.gle/BTxdAZp3Y2KUmqw5A"  rel='noreferrer' target="_blank">Pre-Assessment</a>
+                        Take our Business Incubator <a href="https://forms.gle/BTxdAZp3Y2KUmqw5A"  rel='noreferrer' target="_blank">Pre-Assessment Survey &rsaquo;</a>
                     </p>
 
 
                     <QRCode 
                         value="https://forms.gle/BTxdAZp3Y2KUmqw5A"
-                        size={256}
+                        size={400}
                     />
+
+                    <p className="my-2">Or scan on your phone</p>
                 </div>
             </section>
         </GeneralPage>
