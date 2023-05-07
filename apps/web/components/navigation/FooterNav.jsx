@@ -4,7 +4,7 @@ import FooterEmailForm from '../FooterEmailForm';
 
 function FooterNav(){
     return(
-        <footer className="col-12 d-flex flex-wrap justify-content-center flex-wrap p-4" id="contact">
+        <footer className="col-12 d-flex flex-wrap justify-content-center flex-wrap p-4 border-top" id="contact">
             
             <div className="col-md-4 col-12 d-flex p-4 flex-column">
                 <span><Image src="/assets/grithub-logo-horz-dark.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>

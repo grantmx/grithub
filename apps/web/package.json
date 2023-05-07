@@ -20,6 +20,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-qr-code": "^2.0.11",
     "sass": "^1.32.6",
     "ui": "*"
   },
