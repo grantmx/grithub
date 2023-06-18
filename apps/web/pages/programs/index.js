@@ -183,6 +183,23 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
+                            <Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={home.cardTopOverflow} alt="STEM"/>
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
+                                <p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
+                                <p className="d-grid">
+                                    <a href="/programs/dojo"className="btn btn-primary btn-lg">
+                                        Learn more
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
                             <Image src="/assets/atom.svg" width={150} height={150} className={home.cardTopOverflow} alt="STEM"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Science, Technology, Engineering and Mathematics (STEM)</h3>
@@ -190,7 +207,7 @@ export default function Programs(){
                                 <a className="text-decoration-underline" href="/whitepapers/1-s2.0-S2468227619307616-main.pdf" target="_blank" rel="noreferrer" title="whitepaper on stem in africa">White Paper: Engineering education, development and growth in Africa &rsaquo;</a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">

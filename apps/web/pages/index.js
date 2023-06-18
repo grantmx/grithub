@@ -41,7 +41,7 @@ export default function Home(){
 
 						<div className="col-9 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
 							<p className={Style.heroHashTag}>#GRITHub</p>
-							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship and the new workforce in the digital economy.</p>
+							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship and an inclusive workforce in the digital economy.</p>
 						</div>
 
 
