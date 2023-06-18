@@ -1,3 +1,5 @@
+"use client"
+
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -43,7 +45,6 @@ function Button({
     function LinkButton(){
         return (
             <Link 
-               
                 href={href ? href : "#" }
                 aria-label={name}
                 className={buttonStyle}

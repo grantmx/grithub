@@ -31,22 +31,26 @@
     flex: 1 0 auto;
     width: 100%;
     height: 100%;
-    padding: 1.375rem 2rem 1.375rem .5rem;
+    padding: 1.375rem 2rem 1.375rem 2rem;
     font-weight: 400;
     line-height: 1.5;
-    color: $charcoal;
+    color: $white;
+    font-size: 1.6rem;
     -webkit-tap-highlight-color: transparent;
     border-color: transparent;
-    border-bottom-color: $ocean;
-    background-color: #fff;
+    // border-bottom-color: $ocean;
+    background-color: #1b1b21;
     background-clip: padding-box;
     appearance: none;
+    height: 60px;
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     outline: none !important;
+    color-scheme: dark;
 
-    &:focus{
+    &:focus, &:-internal-autofill-selected {
         outline: none !important;
+        background-color: #24242d !important;
     }
 }
 
@@ -181,179 +185,6 @@
     max-height: 100vh;
 }
 
-%dark-arrow{
-    content: "";
-    width: 0px; 
-    height: 0px; 
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent; 
-    border-left: 8px solid $charcoal; 
-    position: absolute;
-    right: -15px;
-    top: 50%;
-    margin-top: -6px;
-}
-
-// VDS Utils Typography 
-%h1{
-    font-family: $font-stack-serif !important;
-    font-kerning: none;
-    text-transform: uppercase;
-    font-weight: normal;
-    letter-spacing: 0.7rem;
-    line-height: 1.2;
-    margin-bottom: 3rem;
-    color: $indigo;
-}
-
-%h2{
-    font-family: $font-stack !important;
-    line-height: 1.2;
-    font-kerning: none;
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    font-weight: 800;
-    margin-bottom: 3rem;
-    color: $indigo;
-}
-
-%h3{
-    font-family: $font-stack !important;
-    line-height: 1.2;
-    margin-bottom: 3rem;
-    font-kerning: none;
-    letter-spacing: 0.5rem;
-    text-transform: uppercase;
-    font-weight: 400;
-    color: $indigo;
-}
-
-%h4{
-    font-family: $font-stack !important;
-    line-height: 1.2;
-    margin-bottom: 1.5rem;
-    font-kerning: none;
-    letter-spacing: 0.35rem;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: $indigo;
-}
-
-%h5{
-    font-family: $font-stack !important;
-    line-height: 1.2;
-    margin-bottom: 1rem;
-    font-kerning: none;
-    letter-spacing: 0.35rem;
-    font-weight: 400;
-    text-transform: uppercase;
-    color: $indigo;
-}
-
-%h6{
-    font-family: $font-stack !important;
-    font-kerning: none;
-    letter-spacing: normal;
-    line-height: 1.4;
-    margin-bottom: 1rem;
-    font-weight: 600;
-    color: $indigo;
-}
-
-
-%ul{
-    position: relative;
-    margin: 0 0 0 4rem;
-
-    &::before{
-        content: "";
-        position: absolute;
-        height: 100%;
-        border-left: 5px solid $ice;
-        left: -4rem;
-    }
-}
-
-
-%unordered-list{
-    list-style: none;
-
-    & li{
-        margin-bottom: 2.1rem;
-    }
-
-    & > ul{
-        @extend %ul
-    }
-}
-
-
-
-
-%ordered-list{
-    list-style: none;
-    
-    & li{
-        margin-bottom: 2.1rem;
-    }
-
-    & > ol {
-        padding-left: 4rem;
-        margin: 0 0 0 6rem;
-        counter-reset: section;
-
-        & li{
-            position: relative;
-            counter-increment: step-counter;
-            padding: 3rem 0 3rem 1rem;
-            margin: 0;
-
-            &::before{
-                content: "";
-                background-color: $ocean;
-                width: 70px;
-                height: 70px;
-                border-radius: 9rem;
-                position: absolute;
-                top: 50%;
-                margin-top: calc(-70px/2);
-                left: -8rem;
-                z-index: 0;
-                content: counter(step-counter);
-                font-size: 6rem;
-                color: $white;
-                font-family: $font-stack-serif;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                line-height: 1;
-            }
-
-            &::marker{
-                content: "";
-            }
-            
-        }
-    }
-}
-
-
-
-// VDS UL and OL style
-%textBlock{
-    margin-bottom: 4rem;
-
-    @extend %unordered-list;
-    @extend %ordered-list;
-
-    & p{
-        &:last-of-type{
-            margin: 0
-        }
-    }
-}
-
-
 %modal-underlay{
     position: fixed;
     content: "";
@@ -369,5 +200,106 @@
     animation-duration: 300ms;
     animation-fill-mode: forwards;
     animation-name: remodal-overlay-opening-keyframes;
+}
+
+%dark-arrow{
+    content: "";
+    width: 0px; 
+    height: 0px; 
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent; 
+    border-left: 8px solid $charcoal; 
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    margin-top: -6px;
+}
+
+%menu{
+    display: none;
+    border-radius: 0.475rem;
+    box-shadow: $box-shadow;
+    z-index: 107;
+    opacity: 1 !important;
+}
+
+%menu-show{
+    display: flex;
+    will-change: transform;
+    animation: menu-sub-dropdown-animation-fade-in 0.3s ease 1, menu-sub-dropdown-animation-move-up 0.3s ease 1;
+}
+
+
+@keyframes menu-sub-dropdown-animation-fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes menu-sub-dropdown-animation-move-up {
+    from {
+        margin-top: 0.75rem;
+    }
+    to {
+        margin-top: 0;
+    }
+}
+
+@keyframes menu-sub-dropdown-animation-move-down {
+    from {
+        margin-bottom: 0.75rem;
+    }
+    to {
+        margin-bottom: 0;
+    }
+}
+
+
+
+
+%tableHeaderRow{
+    border-bottom: 1px solid $charcoal;
+}
+
+%tableRow{
+    border-bottom: 1px solid $charcoal;
+
+    &:last-of-type{
+        border: none;
+    }
+}
+
+%tableCell{
+    padding: 1rem;
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    color: $white;
+
+    &:first-of-type{
+        padding-left: 0;
+    }
+
+    &:last-of-type{
+        padding-right: 0;
+    }
+}
+
+%tableHeaderCell{
+    text-transform: uppercase;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: $table-heading;
+
+    &:first-of-type{
+        padding-left: 0;
+    }
+
+    &:last-of-type{
+        padding-right: 0;
+    }
 }
 

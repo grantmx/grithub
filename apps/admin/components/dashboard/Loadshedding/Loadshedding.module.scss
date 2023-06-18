@@ -1,0 +1,61 @@
+@import 'styles/globals/placeholders';
+
+
+.block{
+    display: flex;
+    flex-direction: column;
+    margin: 0 -2rem;
+    padding: 0;
+    list-style: none;
+    border-top: .5rem solid $background;
+}
+
+
+.loadshedding{
+    padding-bottom: 0 !important;
+}
+
+
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    line-height: 1;
+    padding: 2rem;
+    border-top: .5rem solid $background;
+    border-bottom: .5rem solid $background;
+
+    &:last-of-type{
+        margin: 0;
+        border-bottom: none;
+    }
+}
+
+.icon{
+    width: 25px;
+    fill: $terracotta;
+}
+
+.red{
+    fill: $red;
+}
+
+.time{
+    margin: 0 2rem;
+    color: $white;
+}
+
+.stage{
+    flex: 1 auto;
+}
+
+.badge{
+    align-self: flex-end;
+    text-transform: lowercase;
+    flex: 0 auto;
+
+    @media screen and (max-width: $screen-md){
+        display: none;
+    }
+
+}

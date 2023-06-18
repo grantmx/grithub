@@ -2,39 +2,16 @@
 
 .block{
     display: flex;
-    width: 17%;
+    width: 15vw;
     flex-direction: column;
     padding: 2rem 1rem;
     background-color: $container;
-    border-right: 1px solid $container-border;
 
     @media screen and (max-width: $screen-lg){
         width: 50px;
         padding: 2rem .5rem
     }
 }
-
-.logoLink{
-    width: 100%;
-    display: flex;
-    align-items: flex-start;
-    border-bottom: 2px dotted $container-border;
-    margin-bottom: 2rem;
-    padding: 0 2rem 0 1rem;
-
-    @media screen and (max-width: $screen-lg){
-        padding: 0;
-    }
-}
-
-.logo{
-    width: 100%;
-    height: auto;
-    margin-bottom: 2rem;
-    flex: 1 0 auto;
-}
-
-
 
 .link{
     width: 100%;
@@ -58,7 +35,6 @@
 
 .active{
     color: $white;
-    background-color: $container-border;
     border-radius: $border-radius;
 
     & .icon{
@@ -103,4 +79,10 @@
         display: none;
     }
 }
+
+.logoSpacer{
+    margin: 2rem 0 !important;
+    width: 100%;
+}
+
 

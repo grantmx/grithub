@@ -11,14 +11,20 @@
     flex-direction: column;
     flex: 1 0 auto;
     height: 100vh;
+    width: 83vw;
     overflow-y: auto;
+    padding-bottom: 10rem;
 }
 
 .wrapper{
     display: flex;
-    padding: 2rem 3rem 2rem 2rem;
+    padding: 1rem 3rem 2rem 2rem;
     flex-wrap: wrap;
     flex-direction: column;
+
+    @media screen and (max-width: $screen-md){
+        padding: 1rem 2rem;
+    }
 }
 
 .inner{

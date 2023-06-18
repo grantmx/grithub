@@ -12,8 +12,8 @@ the :root statement itself is only included in the common stylesheet.
     --fc-border-color: #323238 !important;
   
     --fc-button-text-color: #fff;
-    --fc-button-bg-color: #2C3E50;
-    --fc-button-border-color: #2C3E50;
+    --fc-button-bg-color: rgba(43, 42, 51) !important;
+    --fc-button-border-color: rgba(34, 33, 40) !important;
     --fc-button-hover-bg-color: #1e2b37;
     --fc-button-hover-border-color: #1a252f;
     --fc-button-active-bg-color: #1a252f;
@@ -33,9 +33,8 @@ the :root statement itself is only included in the common stylesheet.
   
     --fc-non-business-color: rgba(215, 215, 215, 0.3);
     --fc-bg-event-color: rgb(143, 223, 130);
-    --fc-bg-event-opacity: 0.3;
     --fc-highlight-color: rgba(188, 232, 241, 0.3);
-    --fc-today-bg-color: rgba(255, 220, 40, 0.15);
+    --fc-today-bg-color: rgba(244, 179, 185, 0.15);
     --fc-now-indicator-color: red;
   }
 

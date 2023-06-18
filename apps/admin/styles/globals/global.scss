@@ -127,6 +127,22 @@ label {
 	color: #ccc;
 }
 
+// hacky
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active 
+input:-moz-autofill,
+input:-moz-autofill:hover,
+input:-moz-autofill:focus,
+input:-moz-autofill:active,
+input:-moz-autofill-preview,
+input:autofill{
+	filter: none !important;
+	transition: background-color 9999s ease-in-out 0s !important;
+}
+
+
 .root {
 	display: flex;
 	width: 100%;
@@ -157,6 +173,7 @@ label {
     --fontWeights-bold: 700;
     --fonts-default: Roboto, sans-serif;
     --fonts-code: monospace;
+	--fc-today-bg-color: rgba(244, 179, 185, 0.05) !important;
 }
 
 

@@ -1,7 +1,10 @@
-import Header from "components/Layout/Header";
-import MainNav from "components/Layout/MainNav";
-import SecondaryNav from "components/Layout/SecondaryNav";
+"use client";
+
+import Header from "components/layout/Header";
+import MainNav from "components/layout/MainNav";
+import SecondaryNav from "components/layout/SecondaryNav";
 import { DefaultSeo } from "next-seo";
+import ToolBar from "./Toolbar";
 
 import Style from "./Layout.module.scss"
 
@@ -15,6 +18,8 @@ function Layout({ children }){
                 <MainNav />
                 
                 <div className={Style.outer}>
+                    <ToolBar />
+
                     <Header />
 
                     <section className={Style.wrapper}>
@@ -28,7 +33,6 @@ function Layout({ children }){
             </main>
 
         </>
-        
     );
 }
 

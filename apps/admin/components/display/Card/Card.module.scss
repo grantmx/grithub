@@ -7,8 +7,9 @@
     flex-wrap: wrap;
     flex-direction: column;
     background-color: $container;
-    border: 1px solid $container-border;
     border-radius: $border-radius;
     margin: 1rem 0 0 1rem;
+    box-shadow: $box-shadow-sm;
+    justify-content: space-between;
 }
 

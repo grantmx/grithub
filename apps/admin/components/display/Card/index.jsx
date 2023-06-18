@@ -1,9 +1,10 @@
+import clsx from 'clsx';
 import Style from './Card.module.scss'
 
 
-function Card({ children }){
+function Card({ children, className, marginBottom = null }){
     return(
-        <article className={Style.block}>
+        <article className={clsx(Style.block, className)} style={{ marginBottom: `${marginBottom}rem` }}>
             {children}
         </article>
     )

@@ -1,0 +1,31 @@
+@import 'styles/globals/variables';
+
+
+.block{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 0 4rem 0 2rem;
+    // border-bottom: 1px dotted #333;
+    // box-shadow: $box-shadow-lg;
+    // background: $container;
+
+    @media screen and (max-width: $screen-md){
+        padding: 0 1rem;
+    }
+}
+
+
+.logoBlock{
+    flex: 1 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 1.25rem 0;
+}
+
+

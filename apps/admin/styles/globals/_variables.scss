@@ -12,16 +12,19 @@ $header-padding: 4vw;
 $hr-border: #ccc;
 $standard-border: 1px solid transparent;
 
-$border-radius: 4px;
-$button-border-radius: 2px;
+$border-radius: 8px;
+$button-border-radius: 6px;
 
-$background: #121214;
-$heading: #e1e1e6;
-$container: #202024;
+$background: rgb(27, 26, 33);
+$cta: #32323891;
+$highlight: rgba(43, 42, 51, .5);
+$container: rgba(34, 33, 40, 1);
+$heading: #bdbac5;
 $container-border: #323238;
+$table-heading: rgb(78, 78, 92);
 
 // colors
-$primary-color: #a9a9b2;
+$primary-color: #949398;
 
 $charcoal: #2E303B;
 $dove: #F0F0F0;
@@ -34,12 +37,17 @@ $ice: #dfe9ef;
 $ice50: #f0f4f7;
 $ice25: #f8fafb;
 
-$green: #6fa33f;
+$info: #7239EA;
+$warning: #FFC700;
+$danger: #F1416C;
+
+$green: #238636;
 $sage: #b0d493;
 $pistachio: #e0eed5;
 $pistachio50: #eff6e9;
 $pistachio25: #f7fbf5;
 
+$red: #F1416C;
 $terracotta: #db613a;
 $sunset: #e5a778;
 $teak: #fbdfca;
@@ -60,15 +68,16 @@ $vds-colors: (
   "pistachio":  $pistachio,
   "terracotta": $terracotta,
   "sunset":     $sunset,
-  "teak":       $teak
+  "teak":       $teak,
+  "red":        $red
 ) !default;
 
 // Typography
 $font-stack: "Proxima Nova", Helvetica, Arial, sans-serif !default;
 $font-stack-serif: "DidotW01-DisplayRegular", Georgia, Times, serif !default;
 
-$font-size-base: 1.8rem;
-$font-size-mobile: $font-size-base - 0.4; // ~1.6rem
+$font-size-base: 1.4rem;
+$font-size-mobile: $font-size-base + 0.2; // ~1.6rem
 
 $font-size-h1: $font-size-base + 3; 
 $font-size-h2: $font-size-base + 2.2; 
@@ -89,7 +98,7 @@ $grid-columns: 11 !default;
 $screen-xs: 400px; // mobile landscape
 $screen-sm: 568px; // tablet portrait
 $screen-md: 850px; // tablet landscape
-$screen-lg: 1024px; // Desktop
+$screen-lg: 1090px; // Desktop
 $screen-xl: 1200px; // Large Desktop & HD TV
 $screen-xxl: 1500px; // HD TV
 

@@ -1,0 +1,21 @@
+@import 'styles/globals/variables';
+
+
+.logoLink{
+    display: flex;
+    align-items: flex-start;
+
+    @media screen and (max-width: $screen-lg){
+        padding: 0;
+    }
+}
+
+.logo{
+    height: 55px;
+    width: 200px;
+    object-fit: cover;
+
+    @media screen and (max-width: $screen-md){
+        width: 50px;
+    }   
+}

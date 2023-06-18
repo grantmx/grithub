@@ -12,8 +12,8 @@ const IconTv = dynamic(() => import("components/icons/IconTv"), { ssr: false })
 
 export const nav = {
     overview: {
-        name: "Overview",
-        href: "/",
+        name: "Dashboard",
+        href: "/dashboard",
         icon: IconDashboard
     },
     main: {
@@ -48,40 +48,66 @@ export const nav = {
                 href: "/main/bookings",
                 icon: IconEventSeat
             },
-            kiosks: {
-                heading: "Kiosk Status",
-                name: "Kiosks",
-                href: "/main/kiosks",
-                icon: IconTv
+            entrants: {
+                heading: "Facility Check-Ins & Walk-Ins",
+                name: "Entrants",
+                href: "/main/entrants",
+                icon: IconWalkIn
             },
         }
     },
     people: {
         heading: "People",
         children: {
-            entrants: {
-                heading: "Facility Entrants & Walk-Ins",
-                name: "Entrants",
-                href: "/people/entrants",
-                icon: IconWalkIn
+            cohorts: {
+                heading: "Cohort Directory",
+                name: "Cohorts",
+                href: "/people/cohorts",
+                icon: IconGroup,
+                secondary: {
+                    all: {
+                        heading: "All Active Cohort Participants",
+                        name: "All Participants",
+                        href: "/people/cohorts",
+                    },
+                    dojo: {
+                        heading: "Coder Dojo Ninjas",
+                        name: "Coder Dojo",
+                        href: "/people/cohorts/coder-dojo",
+                    },
+                    incubator: {
+                        heading: "Small Business Incubator",
+                        name: "Incubator",
+                        href: "/people/cohorts/incubator",
+                    },
+                    html: {
+                        heading: "HTML Class",
+                        name: "HTML",
+                        href: "/people/cohorts/html",
+                    },
+                    mobile: {
+                        heading: "Mobile Web Class",
+                        name: "Mobile",
+                        href: "/people/cohorts/mobile-web",
+                    },
+                    javascript: {
+                        heading: "Javascript Class",
+                        name: "Javascript",
+                        href: "/people/cohorts/javascript",
+                    }
+                }
             },
             registrations: {
                 heading: "Event Registrations",
-                name: "Registrations",
+                name: "Event Registrations",
                 href: "/people/registrations",
                 icon: IconPersonAdd
             },
             directory: {
                 heading: "Member Directory",
-                name: "Members",
+                name: "Active Members",
                 href: "/people/directory",
                 icon: IconFace
-            },
-            cohorts: {
-                heading: "Cohort Directory",
-                name: "Cohorts",
-                href: "/people/cohorts",
-                icon: IconGroup
             },
         }
     }

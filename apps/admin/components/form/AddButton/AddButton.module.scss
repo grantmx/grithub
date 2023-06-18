@@ -12,10 +12,14 @@
     background-color: $green;
     box-shadow: $box-shadow-lg;
     z-index: 9999;
+
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
 }
 
 .fixed{
-    position: fixed;
+    position: absolute;
     bottom: 2rem;
     right: 2rem;
 }

@@ -1,0 +1,24 @@
+@import 'styles/globals/variables';
+@import 'styles/globals/placeholders';
+
+.block{
+    width: 100%;
+}
+
+.headerRow{
+    @extend %tableHeaderRow;
+}
+
+.row{
+    @extend %tableRow;
+}
+
+.cell{
+    @extend %tableCell;
+}
+
+.headerCell{
+    @extend %tableHeaderCell;
+}
+
+

@@ -1,15 +1,15 @@
 import clsx from "clsx";
 import { GlobalContext } from "contexts/GlobalContext";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { useContext, useEffect } from "react";
+import { usePathname } from "next/navigation";
+import { useContext } from "react";
 import Style from './SecondaryNav.module.scss'
 
 
 
 function SecondaryNav(){
     const [ global, _ ] = useContext(GlobalContext)
-    const router = useRouter()
+    const pathname = usePathname()
 
     return(
         <>
@@ -20,9 +20,9 @@ function SecondaryNav(){
                             <Link 
                                 key={item.name}
                                 href={item.href} 
-                                className={clsx(Style.link, router.pathname === item.href && Style.active)}
+                                className={clsx(Style.link, pathname === item.href && Style.active)}
                             >
-                            {item.name}
+                                {item.name}
                             </Link>
                         )
                     })}

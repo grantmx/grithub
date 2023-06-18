@@ -17,6 +17,8 @@
     }
 }
 
+
+
 .errorIcon{
     position: absolute;
     width: 30px;
@@ -115,15 +117,14 @@
     margin: 0 1rem;
     background-color: transparent;
     color: $ocean;
+    display: block;
+    border: none;
+    text-decoration: none;
+}
 
-    &::after{
-        content: "";
-        width: 100%;
-        border-bottom: 1px solid $ocean;
-        position: absolute;
-        bottom: 30%;
-        left: 0;
-    }
+.showHideIcon{
+    width: 30px;
+    fill: $heading;
 }
 
 .clearInput{

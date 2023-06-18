@@ -1,23 +1,23 @@
-import logo from 'public/assets/grithub-logo-horz-white-red.svg'
-import mobileLogo from 'public/assets/grithub-circle-logo.svg'
+"use client";
+
 import Style from './MainNav.module.scss'
 
-import Link from "next/link";
 import { nav } from "lib/navigation";
 import React, { useContext, useEffect } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { GlobalContext } from "contexts/GlobalContext";
 import MainLink from './MainLink';
 import Divider from 'components/display/Divider';
+import Logo from '../Logo';
 
 
 function MainNav(){
     const [ global, dispatch ] = useContext(GlobalContext)
-    const router = useRouter()
+    const pathname = usePathname()
     
 
     useEffect(() => {
-        const path = router.asPath.split("/");
+        const path = pathname.split("/");
         const dataPath = nav?.[path[1]]?.children?.[path[2]]
        
         dispatch({
@@ -28,7 +28,7 @@ function MainNav(){
   
         if( dataPath && Object.hasOwn(dataPath, "secondary") ){
             (Object.values(dataPath.secondary)).forEach((item) => {
-                if( router.pathname === item.href ){
+                if( pathname === item.href ){
                     dispatch({
                         type: "updateGlobalHeading",
                         data: item.heading
@@ -41,22 +41,22 @@ function MainNav(){
                 type: "updateGlobalHeading",
                 data: dataPath.heading
             })
+
+        }else{
+            // when there is no heading
         }
         
 
-    }, [ router.asPath ])
+    }, [ pathname ])
 
 
 
     return(
         <nav className={Style.block}>
-            <Link href="/" className={Style.logoLink}>
-                <picture className={Style.logo}>
-                    <source srcSet={mobileLogo.src} media="(max-width: 1080px)" />
-                    <img src={logo.src} alt="GRIT Hub" />
-                </picture>
-            </Link>
+            <Logo />
 
+
+            <Divider className={Style.logoSpacer} />
 
             {/* 
                 TO DO 
@@ -67,11 +67,11 @@ function MainNav(){
 
 
             {Object.values(nav).map(item => {
-                if( item.name === "Overview" ){
+                if( item.name === "Dashboard" ){
                     return(
                         <MainLink 
                             key={item.name}
-                            {...{ ...nav.overview, path: router.asPath }} 
+                            {...{ ...nav.overview, path: pathname }} 
                         />
                     )
                 }
@@ -87,7 +87,7 @@ function MainNav(){
                             return(
                                 <MainLink 
                                     key={kid.name} 
-                                    {...{ ...kid, path: router.asPath }} 
+                                    {...{ ...kid, path: pathname }} 
                                 />
                             )
                         })}

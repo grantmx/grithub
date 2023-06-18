@@ -34,7 +34,6 @@
 .fs_1,
 .h1 {
     @extend .fs_1;
-    @extend %h1;
     @include dynamic-font(40, 54);
 
     @media print{
@@ -45,7 +44,6 @@
 .fs_2,
 .h2 {
     @extend .fs_2;
-    @extend %h2;
     @include dynamic-font(23, 33);
 
     @media print{
@@ -56,7 +54,6 @@
 .fs_3,
 .h3 {
     @extend .fs_3;
-    @extend %h3;
     @include dynamic-font(23, 33);
 
     @media print{
@@ -67,7 +64,6 @@
 .fs_4,
 .h4 {
     @extend .fs_4;
-    @extend %h4;
     @include dynamic-font(20, 24);
 
     @media print{
@@ -78,20 +74,17 @@
 .fs_5,
 .h5 {
     @extend .fs_5;
-    @extend %h5;
     @include dynamic-font(18, 22);
 }
 
 .fs_6,
 .h6 {
     @extend .fs_6;
-    @extend %h6;
     @include dynamic-font(14, 18);
 }
 
 
 .quote {
-    @extend %h1;
     @include dynamic-font(22, 40);
     letter-spacing: 0.4rem;
     text-transform: none;
@@ -162,10 +155,6 @@
 }
 
 
-
-.list_styled {
-    @extend %unordered-list;
-}
 
 .list_unstyled {
     list-style-type: none;

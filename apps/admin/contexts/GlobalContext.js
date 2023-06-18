@@ -1,3 +1,5 @@
+"use client"
+
 import { useReducer, createContext } from 'react';
 import { GlobalReducer, initialState } from './GlobalReducer';
 

@@ -1,10 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalDotEnv": [".env"],
   "pipeline": {
     "build": {
+      "dotEnv": [".env.production", ".env"],
       "dependsOn": [
         "^build",
-        "$NEXT_PUBLIC_GA_ID"
+        "$NEXT_PUBLIC_GA_ID",
+        "$EMAIL_SERVER",
+        "$EMAIL_FROM"
       ],
       "outputs": [
         "dist/**", 
@@ -16,7 +20,8 @@
       "outputs": []
     },
     "dev": {
-      "cache": false
+      "cache": false,
+      "dotEnv": [".env.local", ".env.development", ".env"]
     }
   }
 }

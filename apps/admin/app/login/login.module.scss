@@ -1,0 +1,42 @@
+
+.block{
+    position: fixed;
+    inset: 0;
+    display: flex;
+    width: 100dvw;
+    height: 100dvh;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    z-index: 9;
+}
+
+.background{
+    background-image: url("../public/assets/dashboard-background.png");
+    background-size: cover;
+    filter: blur(15px);
+    -webkit-filter: blur(15px);
+    position: fixed;
+    inset: -10px;
+    z-index: 1;
+}
+
+.container{
+    margin: 4rem 0 2rem 0;
+    width: 30dvw;
+    padding: 3rem;
+}
+
+.logo{
+    width: 30dvw;
+}
+
+.legal{
+    text-align: center;
+    line-height: 1.4;
+}
+
+.control{
+    margin-bottom: 2rem;
+}

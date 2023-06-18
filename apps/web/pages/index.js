@@ -46,12 +46,12 @@ export default function Home(){
 
 
 						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3"])}>
-							<small className="text-white w-100 mb-0">
+							<small className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
 							</small>
 
-							<div className="col-12 d-flex justify-content-start align-items-center">
-								<div className="col-3 me-5">
+							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
+								<div className="col-4 col-md-4 me-4 mb-3">
 									<a href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -60,7 +60,7 @@ export default function Home(){
 										/>
 									</a>
 								</div>
-								<div className="col-2 me-5">
+								<div className="col-4 col-md-3 me-5 mb-3">
 									<a href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -74,7 +74,7 @@ export default function Home(){
 									</a>
 								</div>
 								
-								<div className="col-2 me-5">
+								<div className="col-4 col-md-3 me-5 mb-3">
 									<a href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
@@ -85,7 +85,7 @@ export default function Home(){
 								</div>
 
 
-								<div className="col-2 me-5">
+								<div className="col-4 col-md-3 me-5">
 									<a href="https://thebusinessfinder.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={businessFinder}
@@ -95,7 +95,7 @@ export default function Home(){
 									</a>
 								</div>
 
-								<div className="col-2">
+								<div className="col-4 col-md-3 mb-3">
 									<a href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
