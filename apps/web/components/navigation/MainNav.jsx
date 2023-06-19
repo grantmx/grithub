@@ -6,11 +6,11 @@ import home from 'styles/home.module.scss';
 function MainNav({ page }){
     return (
         <nav className={clsx(page && `${home.navbar} shadow`, `navbar navbar-light w-100 container-fluid px-5`)}>
-            <div className="col-12 d-flex justify-content-between flex-nowrap">
+            <div className="col-12 d-flex justify-content-md-between justify-content-center flex-nowrap">
                 <a className="navbar-brand" href="/" title="home">
                     <Image 
                         className={home.logo}
-                        src="/assets/grithub-logo-horz-dark.svg" 
+                        src="/assets/grithub-logo-horz.svg" 
                         width={400} 
                         height={page ? 80 : 125} 
                         alt="GRITHub Logo" 
