@@ -1,9 +1,6 @@
 .hero{
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+    // position: absolute;
+    // inset: 0;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -27,13 +24,13 @@
     background-size: cover;
     background-position-y: -25px;
     // padding-top: 800px / 1200px * 100%;
-    padding-top: 34%;
+    // padding-top: 34%;
     width: 100%;
     height: 100%;
     min-height: auto;
 
     @media (max-width: 500px){
-        min-height: 740px;
+        // min-height: 475px;
         background-position: center;
     }
 }
@@ -47,7 +44,7 @@
     }
 
     @media (max-width: 500px){
-        margin-top: 3rem;
+        margin-top: 2rem;
     }
 }
 
@@ -56,13 +53,18 @@
     font-weight: 600;
 
     @media (max-width: 500px){
-        font-size: 3rem;
+        font-size: 2.4rem;
     }
 }
 
 .subHeading{
     font-size: 1.6rem;
     width: 60%;
+
+    @media (max-width: 500px){
+        width: 100%;
+        font-size: 1.3rem;
+    }
 }
 
 

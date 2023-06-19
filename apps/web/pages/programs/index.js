@@ -10,12 +10,12 @@ import image from 'public/assets/software-development-hero.jpg'
 export default function Programs(){
     return(
         <GeneralPage 
-            title="Workforce Training &amp; Programs"
+            title="Trainings, Programs &amp; Courses"
             subTitle="Our Workforce Training, Programs and Workshops are meant to get us ahead of the challenges and trends of an ever changing economic environment and into the innovator economy."
             image={image}
         >
 
-            <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column bg-light" id="programs-workshops">
+            <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <h2 className="fw-bold display-5 mt-5 mb-0 text-center">
                     Real Life Workforce Training.<br/>Start Your Journey Now!
                 </h2>

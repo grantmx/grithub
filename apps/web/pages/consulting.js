@@ -10,11 +10,11 @@ function Consulting(){
         title="Consulting &amp; Solutions"
         subTitle="We offer custom tailored technology consulting and development solutions to fit your organizations needs"
     >
-        <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column bg-light" id="programs-workshops">
+        <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
             <h2 className="fw-bold display-5 mt-5 mb-0 text-center">
                 Realize Your Digital Centric Transformation
             </h2>
-            <div className="text-center col-md-9 col-12 p-md-5 p-3">
+            <div className="text-center col-md-9 col-12">
                 <p className="fs-3">Our technologists have a long history of helping clients realize their digital centric transformations for both their company and customer.</p>
                 <a href="https://grithub-za-1.hubspotpagebuilder.com/contact-us" className="btn btn-primary btn-lg">
                     Get In Touch

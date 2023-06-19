@@ -14,14 +14,14 @@ function CoderDojo(){
         >
 
 
-            <section className="container-xxl col-12 d-flex p-0 mb-5 flex-column">
+            <section className="container-xxl col-12 d-flex p-md-0 p-3 mb-5 flex-column">
                
                 <h2 className="fw-bold display-5 my-5 text-center">
-                    Our sessions will be taking place every<br/>Tuesday, from 15:00–16:00.
+                    Our sessions take place every Tuesday, from 15:00–16:00.
                 </h2>
                 
-                <article className="col-12 d-flex flex-row">
-                    <div className="col-8 pe-5">
+                <article className="col-12 d-flex flex-md-row flex-column">
+                    <div className="col-md-8 col-12 pe-md-5">
                         <h3>What is a CoderDojo?</h3>
 
                         <p>
@@ -34,7 +34,7 @@ function CoderDojo(){
                             How to join
                         </h3>
                         
-                        <p>Attending is free of charge, however signing up is necessary in order to guarantee your child a place. Please send us a <a href="/#contact">WhatsApp message or give us a call</a> and let us know you are attending.</p>
+                        <p>Attending is free of charge, however signing up is necessary in order to guarantee your child a place. Please send us a <a href="#"  onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp message or give us a call</a> and let us know you are attending.</p>
                     
                         <ul>
                             <li className="mb-3"><strong>What should I bring to the event?</strong> All children should bring a laptop. In case you cannot provide one, we have a small number of loan laptops. Please add that your child requires one to the additional notes section when booking a ticket.</li>
@@ -43,8 +43,8 @@ function CoderDojo(){
                         </ul>
                     </div>
 
-                    <div className="col-4">
-                        <Image {...image2} />
+                    <div className="col-md-4 col-12">
+                        <Image {...image2} style={{width: "100%", height: "auto", objectFit: "contain"}} />
                 </div>
                 </article>
 

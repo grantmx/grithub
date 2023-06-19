@@ -3,6 +3,7 @@ import GeneralPage from "components/layout/GeneralPage";
 import Image from "next/image";
 import Style from 'styles/home.module.scss';
 import QRCode from "react-qr-code";
+import image2 from "public/assets/business-incubator.jpg"
 
 
 function Incubation(){
@@ -10,6 +11,7 @@ function Incubation(){
         <GeneralPage 
             title="Business Incubator"
             subTitle="Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct coaching."
+            image={image2}
         >
            
             <section className="container-fluid d-flex justify-content-center align-items-center pt-5 flex-column" id="incubator">
@@ -56,6 +58,7 @@ function Incubation(){
                 </div>
             </section>
 
+            <hr className="hr my-5" />
 
             <section className="container-xxl col-12 d-flex justify-content-center align-items-center py-5 flex-column" id="about">
                 <div className="text-center col-xl-12 col-12">

@@ -12,24 +12,25 @@ function CoWork(){
 			image={image2}
 		>
 
-            <section className="container-xxl d-flex p-5 flex-column mb-5" id="coworking">
-				
-				<div className="col-12 d-flex flex-row">
-					<div className="col-8 pe-5">
-						<h2>Our spaces provide a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
+            <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
+				<div className="col-12 d-flex flex-column flex-md-row">
+					<div className="col-12 col-md-8 pe-md-5">
+						<h2>Our Hot Desks and Dedicated Offices provide a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
 						<p className="mt-3">Based in the picturesque Garden Route, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students. </p>
 						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and private offices.</p>
 						<p>
-							<a href="/#contact">Contact us to book</a> your space today.
+							<a href="/#contact">Contact us to book</a> your space today!
 						</p>
 						
-						<p>Booking from the EU or UK? Book on our <a href="https://www.tallyworkspace.com/coworking-space/george/george-south/garden-route-innovation-technology-hub">Tally Workspace page</a></p>
+						<p>Booking from the EU or UK? Book on our <a target="_blank" href="https://www.tallyworkspace.com/coworking-space/george/george-south/garden-route-innovation-technology-hub" rel="noreferrer">Tally Workspace page &rsaquo;</a></p>
 					</div>
 
-					<div className="col-4">
+					<div className="col-12 col-md-4">
 						<Image {...image3} className={Style.image} />
 					</div>
 				</div>
+
+				<hr className="hr my-5"/>
 					
 				<div className="col-12 d-flex align-items-center flex-column mt-5">
 					<h2>Facility Highlights</h2>
@@ -63,10 +64,10 @@ function CoWork(){
 							<Image src="/assets/fingerprint.svg" width={50} height={50} alt="secure"/>
 							<p className="lead pt-3 text-center">Security and controlled access. Cleaning and maintenance services. Contingency for electricity failure.</p>
 						</div>
-						{/* <div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column">
-							<Image src="/assets/local_cafe.svg" width={50} height={50} alt="office facilities"/>
-							<p className="lead pt-3">Copying, printing and scanning facilities. Reception &amp; Mail Services.</p>
-						</div> */}
+						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
+							<Image src="/assets/print.svg" width={50} height={50} alt="office facilities"/>
+							<p className="lead pt-3 text-center">On Demand Copy, printing and scanning services.</p>
+						</div>
 					</div>
 				</div>
 			</section>

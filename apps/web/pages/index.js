@@ -41,7 +41,7 @@ export default function Home(){
 
 						<div className="col-9 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
 							<p className={Style.heroHashTag}>#GRITHub</p>
-							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship and an inclusive workforce in the digital economy.</p>
+							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship, and an inclusive workforce in the digital economy.</p>
 						</div>
 
 
@@ -129,7 +129,9 @@ export default function Home(){
 					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
-								<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
+								<Link href="/programs" title="programs">
+									<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
+								</Link>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Real Workforce Training</h3>
 									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <Link href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</Link></p>
@@ -139,7 +141,9 @@ export default function Home(){
 
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
-								<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
+								<Link href="/incubation" title="smme incubator">
+									<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
+								</Link>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h3>
 									<p className="card-text">Tailored workshops, networking, online learning and hands-on mentorship for accelerating business growth. <Link href="/incubation" className="text-decoration-underline" title="more about incubation">More &rsaquo;</Link></p>
@@ -149,7 +153,9 @@ export default function Home(){
 
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
-								<Image src="/assets/office-space.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
+								<Link href="/cowork" title='coworking spaces'>
+									<Image src="/assets/office-space.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
+								</Link>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
 									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
@@ -169,7 +175,7 @@ export default function Home(){
 
 				<section className='bg-light py-2'>
 					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
-						Up Coming Workforce Training Courses
+						Up Coming Trainings, Courses & Programs
 					</h2>
 
 					<p className="lead text-center mt-2">
