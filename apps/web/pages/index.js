@@ -192,16 +192,12 @@ export default function Home(){
 									<h3 className="card-title fs-4 fw-bold">JavaScript (Beginner)</h3>
 									
 									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens June 2023
-									</div>
 
-									{/* <p className="d-grid">
-										<a href="" className="btn btn-success btn-lg">
+									<p className="d-grid">
+										<a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
 											Register
 										</a>
-										
-									</p> */}
+									</p>
 								</div>
 							</div>
 						</div>
