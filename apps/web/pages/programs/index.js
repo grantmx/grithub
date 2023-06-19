@@ -64,7 +64,7 @@ export default function Programs(){
                                 </p> */}
 
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens June 2032
+                                    Registration Opens July 2032
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens July 2032
+                                    Registration Opens August 2032
                                 </div>
                                 {/* <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
@@ -95,19 +95,18 @@ export default function Programs(){
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
                             <Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript"  />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">JavaScript (Beginner)</h3>
+                                <h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                {/* <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens May 2032
-                                </div>
+                                </div> */}
 
-                                {/* <p className="d-grid">
-                                    <a href="" className="btn btn-primary btn-lg disabled">
+                                <p className="d-grid">
+                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
                                         Register
                                     </a>
-                                    
-                                </p> */}
+                                </p>
                             </div>
                         </div>
                     </div>
