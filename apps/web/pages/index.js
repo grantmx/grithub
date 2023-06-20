@@ -202,6 +202,22 @@ export default function Home(){
 							</div>
 						</div>
 
+						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
+								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={home.cardTopOverflow} alt="STEM"/>
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
+									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
+									<p className="d-grid">
+										<a href="/programs/dojo" className="btn btn-primary btn-lg">
+											Learn more
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
 
 						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
@@ -223,7 +239,7 @@ export default function Home(){
 						</div>
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						{/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
@@ -233,14 +249,14 @@ export default function Home(){
 									<div className="alert alert-secondary text-center" role="alert">
 										Registration Opens August 2032
 									</div>
-									{/* <p className="d-grid">
+									<p className="d-grid">
 										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
 											Register Now
 										</a>
-									</p> */}
+									</p>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
 
 					</div>
