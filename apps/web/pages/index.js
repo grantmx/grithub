@@ -17,6 +17,7 @@ import georgeBusiness from 'public//assets/partners/georgebusinesschamberlogo.pn
 import businessFinder from "public//assets/partners/Business-Finder-logo-02.png"
 import hero from "public/assets/hero.jpg" 
 import Link from 'next/link';
+import OrganizationSchema from '../components/schema/Organization';
 
 
 export default function Home(){
@@ -27,6 +28,9 @@ export default function Home(){
 				description="Your future starts here! Garden Route Innovation and Technology in the Western Cape Lab is here to incubate innovation and entrepreneurship in the digital economy"
 				canonical="https://grithub.org.za/"
 			/>
+
+			<OrganizationSchema />
+
 
 			<main className="container-fluid d-flex p-0 flex-column">
 				<section className={Style.heroWrapper}>

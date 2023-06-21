@@ -6,10 +6,10 @@ import image from 'public/assets/startup-hero.jpg'
 function Consulting(){
     return(
         <GeneralPage 
-        image={image}
-        title="Consulting &amp; Solutions"
-        subTitle="We offer custom tailored technology consulting and development solutions to fit your organizations needs"
-    >
+            image={image}
+            title="Consulting &amp; Solutions"
+            subTitle="We offer custom tailored technology consulting and development solutions to fit your organizations needs"
+        >
         <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
             <h2 className="fw-bold display-5 mt-5 mb-0 text-center">
                 Realize Your Digital Centric Transformation
