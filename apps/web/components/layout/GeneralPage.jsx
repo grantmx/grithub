@@ -3,12 +3,17 @@ import MainNav from "../navigation/MainNav";
 import { NextSeo } from 'next-seo';
 import FooterNav from '../navigation/FooterNav';
 import OrganizationSchema from '../schema/Organization';
-
+import { useRouter } from "next/router"
 
 function GeneralPage({ title, subTitle, children, image }){
+    const router = useRouter()
+
     return(
         <>
-            <NextSeo title={title} />
+            <NextSeo 
+                title={title}
+                canonical = {"https://grithub.org.za" + router.pathname}
+            />
 
             <OrganizationSchema />
 
