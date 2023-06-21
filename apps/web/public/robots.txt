@@ -1,0 +1,13 @@
+User-agent: AdsBot-Google
+Disallow: /admin/
+
+User-agent: *
+Disallow: /portal/
+Disallow: /admin/
+Disallow: /api/
+Disallow: /assets/
+Disallow: /thirdparty/
+
+
+
+Sitemap: https://grithub.org.za/sitemap.xml
