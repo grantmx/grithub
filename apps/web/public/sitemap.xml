@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-        <url>
-            <loc>https://grithub.org.za</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-        <url>
-            <loc>https://grithub.org.za/cowork</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-        <url>
-            <loc>https://grithub.org.za/incubation</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-        <url>
-            <loc>https://grithub.org.za/progams</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-        <url>
-            <loc>https://grithub.org.za/dojo</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-        <url>
-            <loc>https://grithub.org.za/consulting</loc>
-            <lastmod>2023-01-01</lastmod>
-        </url>
-    </urlset>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://grithub.org.za</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+<url>
+<loc>https://grithub.org.za/cowork</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+<url>
+<loc>https://grithub.org.za/incubation</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+<url>
+<loc>https://grithub.org.za/progams</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+<url>
+<loc>https://grithub.org.za/dojo</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+<url>
+<loc>https://grithub.org.za/consulting</loc>
+<lastmod>2023-01-01</lastmod>
+</url>
+</urlset>
 </xml>
