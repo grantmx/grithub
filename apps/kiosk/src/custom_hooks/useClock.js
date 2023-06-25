@@ -31,6 +31,10 @@ export function useClock(locale = "en-GB"){
 
         return{
             time: hours > 12 ? `${hours - 12}:${minutesFormatted} PM` : `${hours}:${minutesFormatted} AM`,
+            raw: { 
+                minutes, 
+                hours 
+            },
             date: `${new Intl.DateTimeFormat(locale, { weekday: "long" }).format(nowIsh)}, ${nowIsh.getDate()} ${new Intl.DateTimeFormat(locale, { month: "long" }).format(nowIsh)}`
         }
 

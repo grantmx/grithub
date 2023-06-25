@@ -5,6 +5,7 @@ import Event from "./components/Event/Event";
 import Weather from "./components/Weather/Weather";
 import Wifi from "./components/Wifi/Wifi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import VideoAd from "./components/VideoAd";
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
 					<Weather />
 				</footer>
 			</div>
+
+			<VideoAd />
 		</QueryClientProvider>
 	);
 }
