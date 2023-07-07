@@ -12,7 +12,7 @@ function VideoAd(){
 
     
     useMemo(() => {
-        if( clock.raw.minutes % 20 === 0 && videoRef?.current ){
+        if( clock.raw.minutes % 15 === 0 && videoRef?.current ){
             setShown(true)
             videoRef.current.play()
         }
