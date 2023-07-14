@@ -3,8 +3,8 @@ import Style from './Time.module.scss';
 
 
 function Time(){
-    const clock = useClock({ locale: "en-US", timeZone: "CAT" });
-    const estClock = useClock({ locale: "en-US", timeZone: "EST" });
+    const clock = useClock({ locale: "en-GB", timeZone: "CAT" });
+    const estClock = useClock({ locale: "en-GB", timeZone: "EST" });
 
     return(
         <div className={Style.block}>
