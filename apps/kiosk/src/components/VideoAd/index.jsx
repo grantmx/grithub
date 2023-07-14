@@ -8,7 +8,7 @@ import { useClock } from "../../custom_hooks/useClock";
 function VideoAd(){
     const [ show, setShown ] = useState(false)
     const videoRef = useRef()
-    const clock = useClock();
+    const clock = useClock({ locale: "en-GB", timeZone: "CAT" });
 
     
     useMemo(() => {
@@ -24,7 +24,7 @@ function VideoAd(){
             })
         }
 
-    }, [ clock.raw.minutes, videoRef?.current ])
+    }, [ clock.raw.minutes ])
 
 
     return(

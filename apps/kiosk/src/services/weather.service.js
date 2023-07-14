@@ -29,6 +29,7 @@ const accuweather = {
 
 export async function getCurrentForecast(){
     return await axios({
+        method: "GET",
         baseURL: accuweather_hourly_url + accuweather_location_key,
         params: accuweather
     })
@@ -41,6 +42,7 @@ export async function getCurrentForecast(){
 
 export async function getForecast(){
     return await axios({
+        method: "GET",
         baseURL: accuweather_daily_url +"/"+ accuweather_location_key,
         params: accuweather
     })

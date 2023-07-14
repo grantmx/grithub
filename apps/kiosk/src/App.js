@@ -1,9 +1,9 @@
 import logo from "./assets/desktop-logo.png"
 import Style from './styles/App.module.scss';
-import Time from "./components/Time/Time";
-import Event from "./components/Event/Event";
-import Weather from "./components/Weather/Weather";
-import Wifi from "./components/Wifi/Wifi";
+import Time from "./components/Time";
+import Event from "./components/Event";
+import Weather from "./components/Weather";
+import Wifi from "./components/Wifi";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import VideoAd from "./components/VideoAd";
 

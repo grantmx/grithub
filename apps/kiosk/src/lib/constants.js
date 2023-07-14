@@ -7,7 +7,7 @@ export const accuweather_location_key = 301195;
 export const accuweather_daily_url = "https://dataservice.accuweather.com/forecasts/v1/daily/5day/";
 export const accuweather_hourly_url = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/";
 
-export const eskomSePush_key = "2E9B5E74-D5FB46A4-9934B9D9-BDCC6835";
+export const eskomSePush_key = "B07AA97E-2701427B-8C3ECA31-28DF4A45";
 
 
 export const hubs = {
@@ -15,6 +15,7 @@ export const hubs = {
         name: "George, ZA",
         wifi: "GRITHub Community",
         wifiPassword: "NeverStopTrying",
+        eskomSePush_area_id: "westerncape-12-george",
         lat: -33.960400,
         lon: 22.456240
     }
@@ -23,6 +24,10 @@ export const hubs = {
 
 
 export const locale = [
+    {
+        date: "en-US",
+        weather: "en"
+    },
     {
         date: "en-GB",
         weather: "en"

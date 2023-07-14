@@ -21,8 +21,6 @@ function ThreeDayForecast(){
         return null
     }
 
-    console.log(weather.data)
-
 
     return(
         <>
