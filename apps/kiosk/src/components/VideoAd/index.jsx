@@ -1,9 +1,9 @@
 import Style from "./Video.module.scss"
-import Video from "../../assets/kisok-video-ad.mp4"
 import { useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useClock } from "../../custom_hooks/useClock";
 
+const video = "https://player.vimeo.com/progressive_redirect/playback/845283960/rendition/1080p/file.mp4?loc=external&log_user=0&signature=6af30e4335756e51a79f0d585cbb801ee0a8193a202498fe6e97b4025987cc33"
 
 function VideoAd(){
     const [ show, setShown ] = useState(false)
@@ -35,7 +35,7 @@ function VideoAd(){
             width="1024" 
             className={clsx(Style.block, show && Style.show)}
         >
-            <source src={Video} type="video/mp4" />
+            <source src={video} type="video/mp4" />
         </video>
     )
 }
