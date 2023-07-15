@@ -1,5 +1,6 @@
 import Image from "next/image";
 import GeneralPage from "../components/layout/GeneralPage";
+import Link from "next/link";
 
 
 function MediaKit(){
@@ -8,7 +9,7 @@ function MediaKit(){
             title="Media Kit"
         >
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
-                <div className="text-center col-md-9 col-12">
+                <div className="text-center col-md-9 col-12 justify-content-center d-flex align-items-center flex-column">
                     <p className="fs-3">
                         These resources exist to assist you in utilizing our brand and assets, including our logo, content, and trademarks, without the need to engage in legal agreements for each utilization.<br/>
                         <a href="/media-kit.zip" download={true} className="fs-5">Download Media Kit &rsaquo;</a>
@@ -16,7 +17,7 @@ function MediaKit(){
 
                     
                     <h2 className="mt-5 fs-1">Logo Guidelines</h2>
-                    <p>Our logo must never be used in a way that implies an endorsement or affiliation with GRIT Hub where such a relationship does not exist, such as being featured on the cover of a book or in a TV commercial.</p>
+                    <p className="col-8">Our logo must never be used in a way that implies an endorsement or affiliation with GRIT Hub where such a relationship does not exist, such as being featured on the cover of a book or in a TV commercial.</p>
 
                     <div className="my-5 pt-3 d-flex justify-content-evenly align-items-center">
                         <figure>
@@ -71,7 +72,7 @@ function MediaKit(){
                     </div>
 
                     <p>
-                        To make any use of our marks in a way not covered by these guidelines, please contact us at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> and include a visual mockup of intended use. For press inquiries, please reach out to <a href="mailto:pr@grithub.org.za">pr@grithub.org.za</a>.
+                        By using the GRIT Hub marks you agree to follow these guidelines as well as our <Link href="/terms">Terms of Service</Link> and all our rules and policies. GRIT Hub reserves the right to cancel, modify, or change the permission in these guidelines at any time at its sole discretion. To make any use of our marks in a way not covered by these guidelines, please contact us at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> and include a visual mockup of intended use. For press inquiries, please reach out to <a href="mailto:pr@grithub.org.za">pr@grithub.org.za</a>.
                     </p>
                 </div>
             </section>
