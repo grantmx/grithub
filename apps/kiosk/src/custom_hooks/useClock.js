@@ -46,7 +46,7 @@ export function useClock({
         const hours = time[0];
 
         return{
-            time: hours > 11 ? `${hours - 12}:${minutes} PM` : `${Math.round(hours)}:${minutes} AM`,
+            time: hours > 12 ? `${hours - 12}:${minutes} PM` : `${Math.round(hours)}:${minutes} AM`,
             raw: { 
                 minutes, 
                 hours 
