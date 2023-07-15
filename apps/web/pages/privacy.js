@@ -8,7 +8,7 @@ function PrivacyPolicy(){
         >
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">
-                    <h2>By visiting this site and/or purchasing products you agree to the terms of this agreement. </h2>
+                    <h2>By visiting this site you agree to the terms of this agreement. </h2>
                     <br/>
                     <h3>DATA CONTROLER</h3>
                     <p>For the purposes of the Data Protection Act 1998, Garden Route Innovation & Technology Hub, NPC is the Data Controller (as defined in that Act) and responsible for the operation of this website and for processing any personal data collected via this website. If you have any questions about this privacy policy please let us know.</p>
