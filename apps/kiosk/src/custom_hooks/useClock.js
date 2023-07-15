@@ -16,6 +16,7 @@ export function useClock({
                 setTimeZone("America/New_York")
                 break;
 
+            case "CAT":
             default: 
                 setTimeZone("Africa/Johannesburg")
         }
@@ -42,11 +43,11 @@ export function useClock({
 
         const tzTime = new Date(nowIsh).toLocaleString(locale, { timeZone: timeZoneLocale }).split(",")
         const time = tzTime[1].trim().split(":")
-        const minutes = time[1];
-        const hours = time[0];
+        const minutes = parseFloat(time[1]);
+        const hours = parseFloat(time[0]);
 
         return{
-            time: hours > 12 ? `${hours - 12}:${minutes} PM` : `${Math.round(hours)}:${minutes} AM`,
+            time: hours >= 12 ? `${hours === 12 ? 12 : hours - 12}:${minutes} PM` : `${hours === 0 ? 12 : Math.round(hours)}:${minutes} AM`,
             raw: { 
                 minutes, 
                 hours 

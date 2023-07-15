@@ -1,15 +1,16 @@
 import Image from 'next/image';
 import FooterEmailForm from '../FooterEmailForm';
+import Link from 'next/link';
 
 
 function FooterNav(){
     return(
-        <footer className="col-12 d-flex flex-wrap justify-content-center flex-wrap p-4 border-top" id="contact">
+        <footer className="col-12 d-flex flex-wrap justify-content-center flex-wrap p-4 pb-0 border-top" id="contact">
             
             <div className="col-md-4 col-12 d-flex p-4 flex-column">
-                <span><Image src="/assets/grithub-logo-horz-dark.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>
+                <span><Image src="/assets/grithub-logo-horz.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>
                 <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy. CIPC: 2021/502703/08</small>
-                <address className="mt-3 pt-3 text-muted border-top lh-sm">
+                <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
                         Office Suite #2, York Street Blvd. Shopping Center.<br/> George South, George 6529<br/>South Africa &nbsp;
                         <a rel='noreferrer' target="_blank" href="https://www.google.com/maps/dir//garden+route+innovation+and+technology+hub/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x1dd61bad26029aad:0xe15b07dedb1520bf?sa=X&ved=2ahUKEwicrqbBw9b-AhWYi1wKHToBDNAQ9Rd6BAhMEAU">
@@ -51,16 +52,9 @@ function FooterNav(){
                 <FooterEmailForm />
             </div>
             
-            {/* <div className="col-12 p-2 border-top mt-2 text-center">
-                <small className="text-muted" style={{fontSize: "11px"}}>
-                    Attributions: &nbsp;
-                    <a className="text-muted" target="_blank" href='https://www.freepik.com/photos/city' rel="noreferrer" title="freepak wayhomestudio">Way Home Studio</a>, &nbsp;
-                    <a className="text-muted" href='https://www.freepik.com/vectors/abstract' rel="noreferrer" title="freepak starline">Starline</a>, &nbsp;
-                    <a className="text-muted" href='https://www.freepik.com/vectors/office' rel="noreferrer" title="freepak piki">Piki Super Star</a>, &nbsp;
-                    <a className="text-muted" href="https://www.freepik.com/photos" title="Freepik" rel="noreferrer">Freepik Photos</a>, &nbsp;
-                    <a className="text-muted" href="https://www.flaticon.com/" title="Flaticon" rel="noreferrer">Freepik Icons</a>
-                </small>
-            </div> */}
+            <small className="col-12 px-0 py-5 py-md-4 mb-5 mb-md-0 border-top mt-2 text-center text-muted">
+                &copy; {new Date().getFullYear()} Garden Route Innovation & Technology Hub, NPC. All rights reserved.  &nbsp;&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
+            </small>
         </footer>
     )
 }

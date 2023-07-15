@@ -98,15 +98,15 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-                                {/* <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens May 2032
-                                </div> */}
+                                <div className="alert alert-secondary text-center" role="alert">
+                                    Registration is now closed
+                                </div>
 
-                                <p className="d-grid">
+                                {/* <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
                                         Register
                                     </a>
-                                </p>
+                                </p> */}
                             </div>
                         </div>
                     </div>
