@@ -13,7 +13,7 @@ export default function OrganizationSchema(){
                 streetAddress: 'York Street Blvd. Shopping Center',
                 streetAddress: 'Office Suite #2',
                 addressLocality: 'George',
-                addressRegion: 'WC',
+                addressRegion: 'Western Cape',
                 postalCode: '6529',
                 addressCountry: 'ZA',
             }}
@@ -23,7 +23,7 @@ export default function OrganizationSchema(){
                     contactType: 'customer service',
                     email: 'workforce@grithub.org.za',
                     areaServed: 'ZA',
-                    availableLanguage: ['English', 'Afrikaans'],
+                    availableLanguage: ['english', 'afrikaans', 'isiXhosa', 'isiZulu'],
                 }
             ]}
         />
