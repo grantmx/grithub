@@ -5,6 +5,7 @@ function PrivacyPolicy(){
     return(
         <GeneralPage 
             title="Privacy Policy"
+            centerTitle
         >
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">

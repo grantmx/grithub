@@ -158,7 +158,7 @@ export default function Home(){
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
 								<Link href="/cowork" title='coworking spaces'>
-									<Image src="/assets/office-space.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
+									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
 								</Link>
 								<div className="card-body d-flex flex-column">
 									<h3 className="card-title fs-4 fw-bold">Coworking</h3>

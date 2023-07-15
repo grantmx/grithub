@@ -1,7 +1,7 @@
 import GeneralPage from "components/layout/GeneralPage";
 import Image from "next/image";
 import image2 from 'public/assets/startup-hero.jpg'
-import image3 from 'public/assets/IMG_6447.jpg'
+import image3 from 'public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
 
 function CoWork(){
@@ -58,7 +58,7 @@ function CoWork(){
 						</div> */}
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/laptop_mac.svg" width={50} height={50} alt="mac repair"/>
-							<p className="lead pt-3">Load shedding contingency, wifi backup, backup-lighting </p>
+							<p className="lead pt-3">100% Uptime Load shedding contingency, wifi backup, backup-lighting</p>
 						</div>
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/fingerprint.svg" width={50} height={50} alt="secure"/>

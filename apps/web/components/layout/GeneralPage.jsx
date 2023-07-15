@@ -4,8 +4,10 @@ import { NextSeo } from 'next-seo';
 import FooterNav from '../navigation/FooterNav';
 import OrganizationSchema from '../schema/Organization';
 import { useRouter } from "next/router"
+import clsx from 'clsx';
 
-function GeneralPage({ title, subTitle, children, image }){
+
+function GeneralPage({ title, subTitle, children, image, centerTitle = false }){
     const router = useRouter()
 
     return(
@@ -22,7 +24,7 @@ function GeneralPage({ title, subTitle, children, image }){
                     <div className={Style.hero}>
                         <MainNav page />
 
-                        <div className={Style.headingWrapper}>
+                        <div className={clsx(Style.headingWrapper, centerTitle && Style.centerHeading)}>
                             <h1 className={Style.heading}>
                                 {title}
                             </h1>

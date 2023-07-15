@@ -7,6 +7,7 @@ function MediaKit(){
     return(
         <GeneralPage 
             title="Media Kit"
+            centerTitle
         >
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <div className="text-center col-md-9 col-12 justify-content-center d-flex align-items-center flex-column">
