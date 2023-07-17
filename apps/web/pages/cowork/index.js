@@ -3,6 +3,8 @@ import Image from "next/image";
 import image2 from 'public/assets/startup-hero.jpg'
 import image3 from 'public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
+import BookingWidget from "../../components/bookings/BookingWidget";
+import clsx from "clsx";
 
 function CoWork(){
     return(
@@ -18,20 +20,38 @@ function CoWork(){
 						<h2>Our Hot Desks and Dedicated Offices provide a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
 						<p className="mt-3">Based in the picturesque Garden Route, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students. </p>
 						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and private offices.</p>
-						<p>
-							<a href="/#contact">Contact us to book</a> your space today!
-						</p>
 						
-						<p>Booking from the EU or UK? Book on our <a target="_blank" href="https://www.tallyworkspace.com/coworking-space/george/george-south/garden-route-innovation-technology-hub" rel="noreferrer">Tally Workspace page &rsaquo;</a></p>
+						<hr className="my-5" />
+
+						<h4>Refund Policy</h4>
+						<p>In the unlikely event that we need to cancel your booking, we’ll refund you.</p>
+
+						<h4 className="mt-5">Free Cancelation</h4>
+						<ul className="d-flex m-0 p-0 justify-content-around list-unstyled">
+							<li>All - Within 2 hours of venue confirmation</li>
+							<li>Desks - 24 hours before arrival time.</li>
+							<li>Group Spaces - 24 hours before arrival time.</li>
+						</ul>
 					</div>
 
 					<div className="col-12 col-md-4">
-						<Image {...image3} className={Style.image} />
+						<Image 
+							width={300}
+							height={400}
+							src={image3.src} 
+							className={clsx(Style.image, "mb-4")} 
+							alt="hot desks" 
+						/>
+
+						{/* <BookingWidget /> */}
 					</div>
+
 				</div>
+
 
 				<hr className="hr my-5"/>
 					
+
 				<div className="col-12 d-flex align-items-center flex-column mt-5">
 					<h2>Facility Highlights</h2>
 

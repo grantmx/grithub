@@ -25,7 +25,7 @@ function MainNav(){
             data: (dataPath && Object.hasOwn(dataPath, "secondary")) ? { ...dataPath.secondary } : null
         })
 
-  
+
         if( dataPath && Object.hasOwn(dataPath, "secondary") ){
             (Object.values(dataPath.secondary)).forEach((item) => {
                 if( pathname === item.href ){
@@ -43,7 +43,11 @@ function MainNav(){
             })
 
         }else{
-            // when there is no heading
+            dispatch({
+                type: "updateGlobalHeading",
+                data: path[1]
+            })
+
         }
         
 

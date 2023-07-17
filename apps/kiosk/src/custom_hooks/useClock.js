@@ -43,13 +43,13 @@ export function useClock({
 
         const tzTime = new Date(nowIsh).toLocaleString(locale, { timeZone: timeZoneLocale }).split(",")
         const time = tzTime[1].trim().split(":")
-        const minutes = parseFloat(time[1]);
+        const minutes = time[1];
         const hours = parseFloat(time[0]);
 
         return{
             time: hours >= 12 ? `${hours === 12 ? 12 : hours - 12}:${minutes} PM` : `${hours === 0 ? 12 : Math.round(hours)}:${minutes} AM`,
             raw: { 
-                minutes, 
+                minutes: parseFloat(minutes), 
                 hours 
             },
             date: `${new Intl.DateTimeFormat(locale, { weekday: "long" }).format(nowIsh)}, ${nowIsh.getDate()} ${new Intl.DateTimeFormat(locale, { month: "long" }).format(nowIsh)}`

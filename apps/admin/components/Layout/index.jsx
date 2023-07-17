@@ -1,10 +1,10 @@
 "use client";
 
 import Header from "components/layout/Header";
-import MainNav from "components/layout/MainNav";
-import SecondaryNav from "components/layout/SecondaryNav";
+import MainNav from "components/navigation/MainNav";
+import SecondaryNav from "components/navigation/SecondaryNav";
 import { DefaultSeo } from "next-seo";
-import ToolBar from "./Toolbar";
+import ToolBar from "../navigation/Toolbar";
 
 import Style from "./Layout.module.scss"
 
