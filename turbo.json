@@ -1,6 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env"],
+  "globalDotEnv": [".env", ".env.local"],
   "pipeline": {
     "build": {
       "dotEnv": [".env.production", ".env"],
@@ -9,7 +9,11 @@
         "$NEXT_PUBLIC_GA_ID",
         "$EMAIL_SERVER",
         "$EMAIL_FROM",
-        "$NEXT_PUBLIC_url"
+        "$NEXT_PUBLIC_url",
+        "$merchant_id",
+        "$merchant_key",
+        "$passPhrase",
+        "$eskomSePush_key"
       ],
       "outputs": [
         "dist/**", 

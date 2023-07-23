@@ -54,8 +54,11 @@ function BookingWidget(){
             <Link
                 href={{
                     pathname: '/cowork/book',
-                    query: { ...rate },
-                  }}
+                    query: { 
+                        ...rate, 
+                        step: 1
+                    },
+                }}
                 className="btn btn-primary"
             >
                 Book Now

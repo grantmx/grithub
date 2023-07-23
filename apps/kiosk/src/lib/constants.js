@@ -7,8 +7,6 @@ export const accuweather_location_key = 301195;
 export const accuweather_daily_url = "https://dataservice.accuweather.com/forecasts/v1/daily/5day/";
 export const accuweather_hourly_url = "https://dataservice.accuweather.com/forecasts/v1/hourly/1hour/";
 
-export const eskomSePush_key = "B07AA97E-2701427B-8C3ECA31-28DF4A45";
-
 
 export const hubs = {
     george: {

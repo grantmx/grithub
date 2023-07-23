@@ -3,7 +3,7 @@
 */
 
 export const InitialState = {
-    current: null,
+    current: 1,
     name: "",
     data: {}
 }
@@ -15,6 +15,12 @@ export const InitialState = {
             return{
                 ...state,
                 name: action.data
+            }
+
+        case "nextStep":
+            return {
+                ...state,
+                current: action.data
             }
 
         case "setData": 
