@@ -4,16 +4,20 @@ import { generateSignature } from "../../lib/utils/generateSignature";
 export default class PayfastService{
     constructor(){
         this.data = {
-            "merchant_id": process.env.merchant_id,
-            "merchant_key": process.env.merchant_key,
-            "email_address": "grantmx@gmail.com",
-            "amount": "100",
-            "item_name": "booking"
+            "merchant_id": process.env.sandbox_merchant_id,
+            "merchant_key": process.env.sandbox_merchant_key
         };
 
         this.passPhrase = process.env.passPhrase;
 
-        this.data["signature"] = generateSignature(this.data, this.passPhrase);
+        this.data["signature"] = "49a84b05632146a410de6de41bd08ff5"
+
+        this.data = {
+            ...this.data,
+            "amount": "100",
+            "item_name": "booking"
+        }
+
         this.pfParamString = this.dataToString(this.data);
     }
 

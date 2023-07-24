@@ -4,23 +4,16 @@ import PayfastService from "../../../services/payfast/payfast.service";
 
 export default function handler(req, res) {
 	const payfastService = new PayfastService()
-// console.log(payfastService.data)
+console.log(payfastService.pfParamString)
 
 	if( req.method === "POST"){
-		return axios.post({
-				method: "POST",
-				url: `https://sandbox.payfast.co.za/onsite/process`,
-				data: payfastService.data
-			})
+		return axios.post(`https://sandbox.payfast.co.za/onsite/process`, payfastService.pfParamString
+			)
 			.then((res) => {
-				res.status(200).json(res.data.uuid)
-
-				// return res.data.uuid || null;
+				res.status(200).json(res.data)
 			})
 			.catch((error) => {
-				// console.error(error)
-
-				res.status(400).json(error.response)
+				res.status(400).json(error)
 			});
 	}
 }

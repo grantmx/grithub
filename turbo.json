@@ -12,6 +12,8 @@
         "$NEXT_PUBLIC_url",
         "$merchant_id",
         "$merchant_key",
+        "$sandbox_merchant_id",
+        "$sandbox_merchant_key",
         "$passPhrase",
         "$eskomSePush_key"
       ],

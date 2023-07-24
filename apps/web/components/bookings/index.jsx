@@ -19,8 +19,9 @@ function Bookings(){
     const [ globalBook, dispatch ] = useContext(StepperContext)
 
     useEffect(() => {
-        axios.post("/api/payfast/generatePayId").then(data => {
-            console.log(data)
+        axios.post("/api/payfast/generatePayId").then(response => {
+            console.log(response)
+
         }).catch(err => {
             console.log(err.response)
         })
