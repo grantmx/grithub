@@ -16,7 +16,7 @@ function Event(){
 
                     <span className={Style.name}>
                         <span className={Style.type}>
-                            Event: Class
+                            Event: Meeting
                         </span>
 
                         <time className={Style.duration}>
