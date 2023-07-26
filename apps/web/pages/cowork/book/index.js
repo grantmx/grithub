@@ -1,6 +1,6 @@
-import Bookings from "../../components/bookings";
-import GeneralPage from "../../components/layout/GeneralPage";
-import { StepperContextProvider } from "../../components/navigation/Stepper/context/StepperContext";
+import Bookings from "components/bookings";
+import GeneralPage from "components/layout/GeneralPage";
+import { StepperContextProvider } from "components/navigation/Stepper/context/StepperContext";
 
 
 function Book(){

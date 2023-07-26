@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import footer from '../styles/footer.module.scss'
+import footer from 'components/navigation/footer.module.scss'
 import Image from 'next/image';
 
 import serialize from 'form-serialize';

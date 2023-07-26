@@ -1,8 +1,8 @@
-import { generateSignature } from "../../lib/utils/generateSignature";
+import { generateSignature } from "lib/utils/generateSignature";
 
 
 export default class PayfastService{
-    constructor(){
+    constructor({ amount, item_name }){
         this.data = {
             "merchant_id": process.env.sandbox_merchant_id,
             "merchant_key": process.env.sandbox_merchant_key

@@ -43,7 +43,7 @@ function CoWork(){
 							alt="hot desks" 
 						/>
 
-						{/* <BookingWidget /> */}
+						<BookingWidget />
 					</div>
 
 				</div>

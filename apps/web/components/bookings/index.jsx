@@ -9,24 +9,14 @@ import axios from "axios";
 
 
 const steps = [
-    { name: "Booking Details", description: "Workspace requirements"},
+    { name: "Booking Details", description: "Your workspace requirements"},
     { name: "Your Details", description: "Tell us about you"},
-    { name: "Finish & Pay", description: "Confirm payment details"},
+    { name: "Confirm & Pay", description: "Review booking & settle"},
 ]
 
 function Bookings(){
     const router = useRouter()
     const [ globalBook, dispatch ] = useContext(StepperContext)
-
-    useEffect(() => {
-        axios.post("/api/payfast/generatePayId").then(response => {
-            console.log(response)
-
-        }).catch(err => {
-            console.log(err.response)
-        })
-
-    }, [])
 
     return(
         <div className={Style.block}>

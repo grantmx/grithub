@@ -12,7 +12,6 @@ export default function Portal(){
                 <Image 
                     className={Style.heroImg} 
                     src={hero}
-                    layout="fill" 
                     alt="See your future ahead of you" 
                 />
 
@@ -23,7 +22,6 @@ export default function Portal(){
                             width={400} 
                             height={120} 
                             alt="GRITHub Logo" 
-                            layout="responsive"
                             className={Style.logo}
                         />                  
 

@@ -56,12 +56,8 @@ function CustomerDetails(){
 
     return(
         <div className={clsx(Style.form, "col-8")}>
-            <form className="form-floating" onSubmit={submitForm}>
-                <h2>
-                    Hot Desk (Open Space) for 1 person on Fri 21 July 2023 (9:00) - Full Day 
-                </h2>
-                <p>We need your details for the booking confirmation and reminder. If arranging on behalf of somebody else please enter their details so they receive the relevant communications. </p>
-
+        <div className={"d-flex col-12 flex-row"}>
+            <form className="form-floating col-8" onSubmit={submitForm}>
                 <fieldset className="row g-4">
                     <div className="col-md-6">
                         <div className="form-floating">
@@ -138,38 +134,55 @@ function CustomerDetails(){
                         </div>
                     </div>
                 </fieldset>
-
-                <hr className="mt-5 mb-3" />
-
-
-                <fieldset className="row">
-                    <div className="col-md-2">
-                        <button type="button" className="btn btn-lg btn-outline-secondary" onClick={goBack}>
-                            Back
-                        </button>
-                    </div>
-
-                    <div className="col-md-10 d-flex justify-content-end align-items-center">
-                        <span className="fs-5 me-4">
-                            Booking total: {formatPrice(globalBook?.data?.cost)}
-                        </span>
-
-                        <button 
-                            disabled={
-                                !globalBook?.data?.first_name &&
-                                !globalBook?.data?.last_name &&
-                                !globalBook?.data?.email &&
-                                !globalBook?.data?.phone
-                            }
-                            type="submit" 
-                            className="btn btn-lg btn-primary"
-                        >
-                            Book & Confirm Payment Details
-                        </button>
-                    </div>
-                </fieldset>
             </form>
+
+            <div className="col-4 ps-4">
+                <h2 className="fs-4">
+                    Your Booking: {formatPrice(globalBook?.data?.cost)}
+                </h2>
+
+                <p>We need your details for the booking confirmation and reminder. If arranging on behalf of somebody else please enter their details so they receive the relevant communications. </p>
+
+
+                <ul className="list-unstyled">
+                    <li><strong>Workspace</strong>: {globalBook.data.workspace}</li>
+                    <li><strong>Guests</strong>: {globalBook.data.guests}</li>
+                    <li><strong>Arrival</strong>: {globalBook.data.date} @ {globalBook.data.arrival}</li>
+                    <li><strong>Booking duration</strong>: {globalBook.data.duration}</li>
+                </ul>
+            </div>
         </div>
+
+        <hr className="mt-5 mb-3" />
+
+
+        <div className="col-md-12 d-flex justify-content-between align-items-center">
+            <div className="col-md-2">
+                <button type="button" className="btn btn-lg btn-outline-secondary" onClick={goBack}>
+                    Back
+                </button>
+            </div>
+
+            <span className="fs-5 me-4">
+                Booking total: 
+            </span>
+
+            <button 
+                disabled={
+                    !globalBook?.data?.first_name &&
+                    !globalBook?.data?.last_name &&
+                    !globalBook?.data?.email &&
+                    !globalBook?.data?.phone
+                }
+                type="submit" 
+                className="btn btn-lg btn-primary"
+            >
+                Book & Confirm Payment Details
+            </button>
+        </div>
+
+
+    </div>
     )
 }
 

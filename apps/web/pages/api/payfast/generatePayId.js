@@ -1,5 +1,5 @@
 import axios from "axios";
-import PayfastService from "../../../services/payfast/payfast.service";
+import PayfastService from "services/payfast/payfast.service";
 
 
 export default function handler(req, res) {

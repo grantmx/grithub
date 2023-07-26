@@ -15,6 +15,17 @@ function PayDetails(){
 
 
 
+    // useEffect(() => {
+    //     axios.post("/api/payfast/generatePayId").then(response => {
+    //         console.log(response)
+
+    //     }).catch(err => {
+    //         console.log(err.response)
+    //     })
+
+    // }, [])
+
+
     return(
         <div className={clsx(Style.form, "col-8")}>
             <form className="form-floating" action="https://sandbox.payfast.co.za​/eng/process" method="post">
@@ -31,9 +42,25 @@ function PayDetails(){
                 <input type="hidden" name="email_confirmation" value="1" />
                 <input type="hidden" name="confirmation_address" value="john@doe.com" /> 
 
-                <input type="hidden" name="return_url" value="https://www.example.com/success" />
-                <input type="hidden" name="cancel_url" value="https://www.example.com/cancel" />
-                <input type="hidden" name="notify_url" value="https://www.example.com/notify" />
+                <input type="hidden" name="return_url" value="https://grithub.org.za/cowork/book/success" />
+                <input type="hidden" name="cancel_url" value="https://grithub.org.za/cowork/book/cancel" />
+
+                <h2>Review Booking</h2>
+
+                <fieldset className="d-flex flex-row">
+                    <ul className="list-unstyled">
+                        <li><strong>Name</strong>: {globalBook.data.workspace}</li>
+                        <li><strong>Email</strong>: {globalBook.data.guests}</li>
+                        <li><strong>Phone</strong>: {globalBook.data.date} @ {globalBook.data.arrival}</li>
+                    </ul>
+
+                    <ul className="list-unstyled">
+                        <li><strong>Workspace</strong>: {globalBook.data.workspace}</li>
+                        <li><strong>Guests</strong>: {globalBook.data.guests}</li>
+                        <li><strong>Arrival</strong>: {globalBook.data.date} @ {globalBook.data.arrival}</li>
+                        <li><strong>Booking duration</strong>: {globalBook.data.duration}</li>
+                    </ul>
+                </fieldset>
             </form>
         </div>
     )

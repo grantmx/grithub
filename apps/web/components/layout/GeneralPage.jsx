@@ -1,4 +1,4 @@
-import Style from '../../styles/page.module.scss'
+import Style from './page.module.scss'
 import MainNav from "../navigation/MainNav";
 import { NextSeo } from 'next-seo';
 import FooterNav from '../navigation/FooterNav';
