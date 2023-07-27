@@ -6,9 +6,14 @@ import { useEffect, useState } from "react";
 import { provence } from "lib/provence";
 import { countries } from "lib/countries";
 import { useForm } from "react-hook-form";
+import FirebaseService from "services/firebase/Firebase.service";
 
+
+const firebaseService = new FirebaseService()
 
 function InternshipApplication(){
+
+
     const [ hasAttendCollege, setCollege ] = useState(false)
     const [ isNotFirstJob, setFirstJob ] = useState(false)
     const [ hasSideHustle, setSideHustle ] = useState(false)
@@ -16,6 +21,15 @@ function InternshipApplication(){
     const [ isJobZA, setJobZA ] = useState(true)
 
     const { register, handleSubmit, watch, clearErrors, setError, formState: { errors } } = useForm();
+
+
+    function uploadFile(file){
+        firebaseService.uploadFiles("internship_applications", file).then(data => {
+            console.log(data)
+        })
+    }
+
+
 
 
     function checkFileType({ value, name }){
@@ -49,6 +63,8 @@ function InternshipApplication(){
 
         }else{
             clearErrors(name)
+
+            uploadFile(value)
         }
 
     }
@@ -57,7 +73,7 @@ function InternshipApplication(){
     useEffect(() => {
         const subscription = watch((value, { name, type }) => {
             switch(name){
-                case "country":
+                case "home_country":
                     setZA(value[name] === "South Africa");
                     break;
 
@@ -95,9 +111,19 @@ function InternshipApplication(){
 
 
     function onSubmit(data){
-        console.log(data)
+        firebaseService.setCollectionDocument({ 
+            rootCollection: "internships",
+            rootDocument: "applications",
+            collection: "2023",
+            key: `${data?.first_name} ${data?.last_name}`,
+            data
+        }).then(response => {
+            console.log(response)
+        })
+
     }
-    
+
+
 
 
     return(
@@ -243,13 +269,13 @@ function InternshipApplication(){
                                     <input 
                                         required 
                                         className="form-control" 
-                                        id="Address" 
+                                        id="home_address" 
                                         type="input"
-                                        name="address"
-                                        {...register("address")}
+                                        name="home_address"
+                                        {...register("home_address")}
                                     />
 
-                                    <label htmlFor="Address">
+                                    <label htmlFor="home_address">
                                         Mailing Address*
                                     </label>
                                 </div>
@@ -260,15 +286,15 @@ function InternshipApplication(){
                                     <select 
                                         required
                                         className="form-select" 
-                                        id="type" 
-                                        name="country"
-                                        {...register("country")}
+                                        id="home_country" 
+                                        name="home_country"
+                                        {...register("home_country")}
                                         defaultValue="South Africa"
                                     >
                                         {countries.map(locale => <option key={locale.code}>{locale.name}</option> )}
                                     </select>
 
-                                    <label htmlFor="country">
+                                    <label htmlFor="home_country">
                                         Country*
                                     </label>
                                 </div>
@@ -280,13 +306,13 @@ function InternshipApplication(){
                                     <input 
                                         required 
                                         className="form-control" 
-                                        id="city" 
+                                        id="home_city" 
                                         type="input"
-                                        name="city"
-                                        {...register("city")}
+                                        name="home_city"
+                                        {...register("home_city")}
                                     />
 
-                                    <label htmlFor="city">
+                                    <label htmlFor="home_city">
                                         City*
                                     </label>
                                 </div>
@@ -299,15 +325,15 @@ function InternshipApplication(){
                                         <select 
                                             required
                                             className="form-select" 
-                                            id="provence" 
-                                            name="provence"
-                                            {...register("provence")}
+                                            id="home_provence" 
+                                            name="home_provence"
+                                            {...register("home_provence")}
                                         >
                                             <option></option>
                                             {provence.map(locale => <option key={locale.code}>{locale.name}</option> )}
                                         </select>
                                         
-                                        <label htmlFor="provence">
+                                        <label htmlFor="home_provence">
                                             Province*
                                         </label>
                                     </div>
@@ -320,13 +346,13 @@ function InternshipApplication(){
                                         <input 
                                             required 
                                             className="form-control" 
-                                            id="provence" 
+                                            id="home_provence" 
                                             type="input"
-                                            name="provence"
-                                            {...register("provence")}
+                                            name="home_provence"
+                                            {...register("home_provence")}
                                         />
 
-                                        <label htmlFor="provence">
+                                        <label htmlFor="home_provence">
                                             State / Provence*
                                         </label>
                                     </div>
@@ -339,13 +365,13 @@ function InternshipApplication(){
                                 <div className="form-floating">
                                     <input 
                                         className="form-control" 
-                                        id="suburb" 
+                                        id="home_suburb" 
                                         type="input"
-                                        name="suburb"
-                                        {...register("suburb")}
+                                        name="home_suburb"
+                                        {...register("home_suburb")}
                                     />
 
-                                    <label htmlFor="suburb">
+                                    <label htmlFor="home_suburb">
                                         Suburb (Optional)
                                     </label>
                                 </div>
@@ -357,13 +383,13 @@ function InternshipApplication(){
                                     <input 
                                         required 
                                         className="form-control" 
-                                        id="postal" 
-                                        type="input"
-                                        name="postal"
-                                        {...register("postal")}
+                                        id="home_postal" 
+                                        type="tel"
+                                        name="home_postal"
+                                        {...register("home_postal")}
                                     />
 
-                                    <label htmlFor="postal">
+                                    <label htmlFor="home_postal">
                                         Postal Code*
                                     </label>
                                 </div>
@@ -474,13 +500,13 @@ function InternshipApplication(){
                                             <input 
                                                 required 
                                                 className="form-control" 
-                                                id="degree" 
+                                                id="school_degree" 
                                                 type="input"
-                                                name="degree"
-                                                {...register("degree")}
+                                                name="school_degree"
+                                                {...register("school_degree")}
                                             />
 
-                                            <label htmlFor="degree">
+                                            <label htmlFor="school_degree">
                                                 Degree*
                                             </label>
                                         </div>
@@ -491,9 +517,9 @@ function InternshipApplication(){
                                             <select 
                                                 required
                                                 className="form-select" 
-                                                id="degree_status" 
-                                                name="degree_status"
-                                                {...register("degree_status")}
+                                                id="school_degree_status" 
+                                                name="school_degree_status"
+                                                {...register("school_degree_status")}
                                             >
                                                 <option></option>
                                                 <option>Graduated</option>
@@ -501,7 +527,7 @@ function InternshipApplication(){
                                                 <option>Now Attending</option>
                                             </select>
 
-                                            <label htmlFor="degree_status">
+                                            <label htmlFor="school_degree_status">
                                                 Degree Status*
                                             </label>
                                         </div>
@@ -512,13 +538,13 @@ function InternshipApplication(){
                                             <input 
                                                 required 
                                                 className="form-control" 
-                                                id="major" 
+                                                id="school_major" 
                                                 type="input"
-                                                name="major"
-                                                {...register("major")}
+                                                name="school_major"
+                                                {...register("school_major")}
                                             />
 
-                                            <label htmlFor="major">
+                                            <label htmlFor="school_major">
                                                 Major / Area of Study*
                                             </label>
                                         </div>
@@ -771,7 +797,7 @@ function InternshipApplication(){
                                                 required 
                                                 className="form-control" 
                                                 id="job_postal" 
-                                                type="input"
+                                                type="tel"
                                                 name="job_postal"
                                                 {...register("job_postal")}
                                             />
@@ -956,6 +982,7 @@ function InternshipApplication(){
                         <small className="text-muted">* indicates required fields</small>
 
                         <hr />
+
 
                         <p>
                             <strong className="my-5">
