@@ -1,0 +1,58 @@
+@import "styles/globals/variables";
+@import "styles/globals/mixins/grid-child-columns";
+
+@mixin gridded($type: grid, $col: 2rem, $gap: $gap) {
+	@if ($type == "flex") {
+		display: flex;
+		flex-wrap: wrap;
+		margin-left: -#{$gap};
+		> * {
+			flex: 1 1 $col;
+			margin: 0 0 $gap $gap;
+		}
+	}
+	
+	@if ($type == "grid") {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax($col, 1fr));
+		grid-gap: $gap;
+	}
+
+	@if ($type == "multicol") {
+		column-gap: $gap;
+		column-width: $col;
+	}
+}
+
+// Mobile Landscape
+@media only screen and (min-width: $screen-xs) {
+	@include make-grid-items(xs);
+}
+
+// Tablet Portrait
+@media only screen and (min-width: $screen-sm) {
+	@include make-grid-items(sm);
+}
+
+// Tablet Landscape
+@media only screen and (min-width: $screen-md) {
+	@include make-grid-items(md);
+}
+
+// Desktop
+@media only screen and (min-width: $screen-lg) {
+	@include make-grid-items(lg);
+}
+
+// Desktop Wide & HD TV
+@media only screen and (min-width: $screen-xl) {
+	@include make-grid-items(xl);
+}
+
+.row{
+	flex-direction: row !important;
+}
+
+.wrap{
+	flex-wrap: wrap !important;
+}

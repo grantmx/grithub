@@ -1,0 +1,7 @@
+
+@mixin dynamic-font($minSize, $maxSize) {
+    // $mid: ($maxSize + $minSize)/2;
+
+    font-size: calc( #{$minSize}px + (#{$maxSize} - #{$minSize}) * (100vw - 400px) / (2000 - 400) ) !important;
+    // font-size: clamp(#{$minSize}px, #{$mid}px,  #{$maxSize}px) !important;
+}

@@ -1,0 +1,323 @@
+/*
+*	Global Styes
+*	- DO NOT TOUCH even...if you are asked to touch.
+*/
+
+@import 'variables';
+@import 'reboot';
+
+@import './type';
+@import './animations';
+@import './placeholders';
+@import 'styles/globals/mixins/font';
+
+
+*, *:after, *:before {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+}
+
+html{
+	font-size: 62.5%;
+	scroll-behavior: smooth;
+}
+
+body{
+	font-family: $font-stack !important;
+	font-size: $font-size-base;
+	color: $primary-color;
+	letter-spacing: $letter-spacing;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-overflow-scrolling: touch;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overflow-x: hidden;
+}
+
+
+input,
+textarea,
+select,
+textarea {
+	font: normal $font-size-base $font-stack;
+}
+
+input,
+textarea,
+select {
+	border: 1px solid #ccc;
+	border-radius: $border-radius;
+	color: $primary-color;
+	display: inline-block;
+	font-size: $font-size-base;
+	line-height: 1;
+	vertical-align: middle;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+	width: auto;
+	padding: 0;
+	margin: 0 10px 0 0;
+	border: 0;
+	box-shadow: none;
+}
+
+input[disabled],
+input[readonly] {
+	background-color: #f2f2f2;
+	cursor: not-allowed;
+	opacity: 0.3;
+}
+
+
+select {
+	background-color: #ffffff;
+	height: 58px;
+}
+
+input[type="file"] {
+	height: auto;
+	width: auto;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+}
+
+fieldset {
+	margin: 0;
+	padding: 0;
+	display: block;
+	border: none;
+}
+
+legend {
+	padding: 0;
+	display: block;
+	font-size: $font-size-base;
+	line-height: 1;
+	margin: 0;
+	color: $primary-color;
+	width: 100%;
+}
+
+label {
+	font-size: $font-size-base;
+	display: inline-block;
+	color: $primary-color;
+    line-height: 1;
+}
+
+
+::-webkit-input-placeholder {
+	color: #ccc;
+}
+::-moz-placeholder {
+	color: #ccc;
+}
+:-ms-input-placeholder {
+	color: #ccc;
+}
+:-moz-placeholder {
+	color: #ccc;
+}
+
+.root {
+	display: flex;
+	width: 100%;
+	height: 100%;
+	flex-direction: column;
+	align-items: center;
+	flex: 1 0 100%;
+}
+
+:root {
+    --star-size: 15px;
+    --star-color: #ddd;
+    --star-background: #fc0;
+	--star-orangebackground: #E5A778;
+	--star-bluebackground: #4c7b9a;
+	--toastify-toast-background: #222 !important;
+}
+
+
+// Safari 15+ displays a gray border while loading for next/image.
+@supports (font: -apple-system-body) and (-webkit-appearance: none) { 
+	img[loading="lazy"] { 
+		clip-path: inset(0.6px) 
+	} 
+}
+
+
+#email-placement img{
+	width: 100%;
+	object-fit: contain;
+	padding: 2rem;
+}
+
+.nosto_element, .lazyload-wrapper {
+	width: 100%;
+}
+
+
+@media only screen and (max-width: $screen-lg ) {
+     .bodyBlur{
+         overflow:hidden;
+     }
+}
+
+// Global Toasts: 
+// progress bar color
+.Toastify__progress-bar-theme--light {
+	background: $sage;
+}
+
+.Toastify__toast-container--bottom-left{
+	bottom: 4em;
+}
+
+.Toastify__toast-theme--light{
+    background-color: rgba(#2e303b, .95);
+    color: #fff;
+
+	& button{
+		color: #fff;
+		opacity: 1;
+	}
+}
+
+.Toastify__progress-bar--error{
+	background: $terracotta;
+}
+
+[aria-hidden="true"]{
+	& > a{
+		display: none;
+	}
+}
+
+
+// React Lazy
+.LazyLoad {
+	opacity: 0;
+	transition: all .500s cubic-bezier(.59,.28,.83,.67);
+	width: 100%;
+}
+
+.is-visible {
+	opacity: 1;
+}
+
+
+
+/* -------------------------------------------------------------
+	CMS VDS Styles 
+	- theses are to be kept at a BARE MINIMUM!!!
+	- only using because we cannot use dynamic component styles
+	- DO NOT ADD TO THIS WITHOUT ARCHITECTURAL APPROVAL!!
+---------------------------------------------------------------- */
+
+.fs_1, .fs_2, .fs_3, .fs_4, .fs_5, .fs_6{
+	display: flex
+}
+
+.fs_1{
+	@extend %h1;
+	@include dynamic-font(40, 54);
+}
+
+.fs_2{
+    @extend %h2;
+    @include dynamic-font(23, 33);
+}
+
+.fs_3{
+    @extend %h3;
+    @include dynamic-font(23, 33);
+}
+
+.fs_4{
+    @extend %h4;
+    @include dynamic-font(20, 24);
+}
+
+.fs_5{
+    @extend %h5;
+    @include dynamic-font(18, 22);
+}
+
+.fs_6{
+    @extend %h6;
+    @include dynamic-font(14, 18);
+}
+
+
+.quote {
+    @extend %h1;
+    @include dynamic-font(22, 40);
+    letter-spacing: 0.4rem;
+    text-transform: none;
+    font-weight: normal;
+
+    & > strong {
+        font-weight: normal;
+        color: $ocean;
+    }
+}
+
+ul.list_styled, ol.list_styled {
+	@extend %ul;	
+
+	& li{
+        margin-bottom: 2.1rem;
+    }
+}
+
+
+@each $vdsColor, $color in $vds-colors {
+	.text_#{$vdsColor} {
+		color: $color	
+	}
+
+	.bg_#{$vdsColor}{
+		background-color: $color
+	}
+}
+
+.button_block{
+	@extend %standard-button;
+	@extend %button-animate;
+	text-decoration: none !important;
+
+	strong, b{
+		font-weight: normal;
+	}
+
+	a{
+		color: inherit !important;
+		text-decoration: none !important;
+		border: none !important;
+
+		&:hover{
+			color: inherit !important;
+		}
+	}
+}
+
+.button_outline{
+	border-color: $charcoal !important;
+	background-color: transparent !important;
+	color: $charcoal !important;
+}
+
+.button_block.bg_dove{
+	color: $charcoal !important;
+}
+
+p a:has(span.button_block){
+	text-decoration: none !important;
+	border: none !important;
+}

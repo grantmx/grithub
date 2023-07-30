@@ -1,0 +1,39 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import AuthenteakIcons from 'components/icons/AuthenteakIcons'
+
+<Meta 
+	title="Icons/AuthenteakIcons" 
+    component={AuthenteakIcons}
+/>
+
+
+# Icons
+Our icons are SVG components with a React wrapper to make them highly customizable.
+
+export const Template = (args) => (
+    <AuthenteakIcons {...args} />
+);
+
+<Canvas>
+	<Story name="AuthenteakIcons" >
+		{Template.bind({})}
+	</Story>    
+</Canvas>
+
+<br />
+
+## Example
+Include the icon using the component name and add any properties or [common HTML attributes](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/svg) you would to any SVG Element.
+
+```javascript
+import { IconQuickShip } from 'components/icons';
+
+return(
+    <IconQuickShip 
+        width="50" 
+        height="50" 
+        className={Style.icon} 
+    />
+)
+
+```

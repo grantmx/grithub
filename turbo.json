@@ -15,7 +15,13 @@
         "$sandbox_merchant_id",
         "$sandbox_merchant_key",
         "$passPhrase",
-        "$eskomSePush_key"
+        "$eskomSePush_key",
+        "$server_email",
+        "$server_email_password",
+        "$twilio_sid",
+        "$twilio_token",
+        "$sendgrid_api_key_id",
+        "$sendgrid_api_key"
       ],
       "outputs": [
         "dist/**", 

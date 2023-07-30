@@ -24,7 +24,6 @@ export default function Home(){
 					<Image 
 						className={Style.heroImg} 
 						src={hero}
-						layout="fill" 
 						alt="See your future ahead of you" 
 					/>
 

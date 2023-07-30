@@ -1,0 +1,175 @@
+/*!
+ * Bootstrap Utilities v5.0.0-beta3 (https://getbootstrap.com/)
+ * Copyright 2011-2021 The Bootstrap Authors
+ * Copyright 2011-2021 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+ */
+
+// Configuration
+@import "./functions";
+@import './util-variables';
+@import './variables';
+@import "./mixins";
+@import "./utilities";
+@import 'styles/globals/mixins/font';
+
+// Helpers
+@import "./helpers";
+
+// Utilities
+@import "./utilities/api";
+@import './placeholders';
+
+
+.container {
+    max-width: $standard-width;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    padding: 0 2vw
+}
+
+// VDS Utils Typography 
+.fs_1,
+.h1 {
+    @extend .fs_1;
+    @extend %h1;
+    @include dynamic-font(40, 54);
+
+    @media print{
+        font-size: 2.1rem !important;
+    }
+}
+
+.fs_2,
+.h2 {
+    @extend .fs_2;
+    @extend %h2;
+    @include dynamic-font(23, 33);
+
+    @media print{
+        font-size: 1.8rem !important;
+    }
+}
+
+.fs_3,
+.h3 {
+    @extend .fs_3;
+    @extend %h3;
+    @include dynamic-font(23, 33);
+
+    @media print{
+        font-size: 1.6rem !important;
+    }
+}
+
+.fs_4,
+.h4 {
+    @extend .fs_4;
+    @extend %h4;
+    @include dynamic-font(20, 24);
+
+    @media print{
+        font-size: 1.2rem !important;
+    }
+}
+
+.fs_5,
+.h5 {
+    @extend .fs_5;
+    @extend %h5;
+    @include dynamic-font(18, 22);
+}
+
+.fs_6,
+.h6 {
+    @extend .fs_6;
+    @extend %h6;
+    @include dynamic-font(14, 18);
+}
+
+
+.quote {
+    @extend %h1;
+    @include dynamic-font(22, 40);
+    letter-spacing: 0.4rem;
+    text-transform: none;
+    font-weight: normal;
+
+    & > strong {
+        font-weight: normal;
+        color: $ocean;
+    }
+}
+
+
+.cta {
+    color: $ocean;
+    border-bottom: 1px solid $ocean;
+    position: relative;
+    font-size: 1.8rem !important;
+    letter-spacing: 0.05rem !important;
+
+    &::after {
+        @extend %dark-arrow;
+        border-left-color: $ocean;
+        transition: 200ms all ease;
+    }
+
+    &:hover {
+        text-decoration: none;
+        border-bottom: 1px solid $indigo;
+        color: $indigo;
+
+        &::after {
+            border-left-color: $indigo;
+            // right: -20px;
+            transform: translateX(5px);
+        }
+    }
+
+    @media only screen and (max-width: $screen-md) {
+        font-size: 2rem;
+    }
+}
+
+.cta_2 {
+    @extend .cta;
+    @extend .fs_5;
+
+    @media only screen and (max-width: $screen-md) {
+        font-size: 2rem;
+    }
+}
+
+.cta_3 {
+    @extend .fs_5;
+    border-bottom: 1px solid $link_color;
+    align-self: baseline;
+    color: $link_color;
+    font-weight: 600;
+
+    &:hover {
+        text-decoration: none;
+        border-bottom: 1px solid $link_color;
+        color: $link_color;
+    }
+
+    @media only screen and (max-width: $screen-md) {
+        font-size: 1.9rem;
+    }
+}
+
+.flex_wrap {
+    flex-wrap: wrap !important;
+}
+
+.list_styled {
+    @extend %unordered-list;
+}
+
+.list_unstyled {
+    list-style-type: none;
+}
+

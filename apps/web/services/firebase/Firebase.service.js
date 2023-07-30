@@ -1,9 +1,12 @@
-import { firebaseDB, firebaseStorage, firebaseStorageRef } from "services/firebase";
+import { firebaseDB, firebaseStorage } from "services/firebase";
 import { collection, addDoc, Timestamp, setDoc, doc } from 'firebase/firestore'
-import { uploadBytes } from "firebase/storage";
-
+import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 
 export default class FirebaseService{
+    constructor(){
+        this.storageRef = null
+    }
+
 
     async setCollectionDocument({ rootCollection, rootDocument, collection, key, data }){
         return await setDoc(doc(firebaseDB, rootCollection, rootDocument, collection, key), {
@@ -14,8 +17,10 @@ export default class FirebaseService{
 
 
     async uploadFiles(folder, fileObject){
-        const storageRef = firebaseStorageRef(firebaseStorage, `${folder}/${fileObject[0].name}`);
-
-        return await uploadBytes(storageRef, fileObject, { contentType: fileObject[0].type }).then(snapshot => snapshot)
+        this.storageRef = ref(firebaseStorage, `${folder}/${fileObject[0].name}`);
+        
+        return await uploadBytesResumable(this.storageRef, fileObject, { 
+                contentType: fileObject[0].type 
+            })
     }
 }

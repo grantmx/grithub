@@ -7,12 +7,19 @@ import { provence } from "lib/provence";
 import { countries } from "lib/countries";
 import { useForm } from "react-hook-form";
 import FirebaseService from "services/firebase/Firebase.service";
+import { getDownloadURL } from "firebase/storage";
+import Loader from "../../../components/feedback/Loader";
+import { useRouter } from "next/navigation";
 
 
 const firebaseService = new FirebaseService()
 
 function InternshipApplication(){
+    const router = useRouter()
 
+    const [ cvURL, setCV ] = useState("")
+    const [ idURL, setID ] = useState("")
+    const [ certURL, setCertificate ] = useState("")
 
     const [ hasAttendCollege, setCollege ] = useState(false)
     const [ isNotFirstJob, setFirstJob ] = useState(false)
@@ -20,16 +27,10 @@ function InternshipApplication(){
     const [ isZA, setZA ] = useState(true)
     const [ isJobZA, setJobZA ] = useState(true)
 
+    const [ isLoading, setIsLoading ] = useState(false)
+    const [ isSuccessful, setIsSuccessful ] = useState(false)
+
     const { register, handleSubmit, watch, clearErrors, setError, formState: { errors } } = useForm();
-
-
-    function uploadFile(file){
-        firebaseService.uploadFiles("internship_applications", file).then(data => {
-            console.log(data)
-        })
-    }
-
-
 
 
     function checkFileType({ value, name }){
@@ -64,7 +65,26 @@ function InternshipApplication(){
         }else{
             clearErrors(name)
 
-            uploadFile(value)
+            firebaseService.uploadFiles("internship_applications", value).then(response => {
+                if( response?.state === "success" ){
+                    getDownloadURL(firebaseService.storageRef).then(downloadURL => {
+
+                        switch(name){
+                            case "diploma":
+                                setCertificate(downloadURL)
+                                break;
+
+                            case "CV":
+                                setCV(downloadURL)
+                                break;
+
+                            case "ID":
+                                setID(downloadURL)
+                                break;
+                        }
+                    })
+                }
+            })
         }
 
     }
@@ -111,16 +131,36 @@ function InternshipApplication(){
 
 
     function onSubmit(data){
+        setIsLoading(true)
+
+        const formObject = { ...data }
+
+        // remove unsupported File fields for Firestore
+        delete formObject.CV;
+        delete formObject.ID;
+        delete formObject.diploma;
+
         firebaseService.setCollectionDocument({ 
             rootCollection: "internships",
             rootDocument: "applications",
             collection: "2023",
             key: `${data?.first_name} ${data?.last_name}`,
-            data
+            data: {
+                ...formObject,
+                cvURL,
+                idURL,
+                certURL
+            }
+
         }).then(response => {
             console.log(response)
-        })
+            setIsSuccessful(true)
 
+            setTimeout(() => {
+                router.push("/programs/internship/success")
+                setIsLoading(false)
+            }, 3000)
+        })
     }
 
 
@@ -134,6 +174,7 @@ function InternshipApplication(){
              <form className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="col-12 d-flex flex-column flex-md-row mt-3">
                     <div className="col-12 col-md-8 pe-md-5 mb-5">
+    
 
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded">
                             <legend className="mt-0">Personal Information</legend>
@@ -259,10 +300,48 @@ function InternshipApplication(){
                                     />
 
                                     <label htmlFor="phone">
-                                        Phone Number*
+                                        Phone / WhatsApp Number*
                                     </label>
                                 </div>
                             </div>
+
+
+                            <div className="col-md-12">
+                                <p>
+                                    How do you prefer for us to contact you?  Via...
+                                </p>
+
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        required 
+                                        className="form-check-input" 
+                                        id="contact_preference1" 
+                                        type="radio"
+                                        name="contact_preference"
+                                        value="whatsapp"
+                                        {...register("contact_preference")}
+                                    />
+                                    <label className="form-check-label" htmlFor="contact_preference1">
+                                        WhatsApp
+                                    </label>
+                                </div>
+
+                                <div className="form-check form-check-inline">
+                                    <input 
+                                        required 
+                                        className="form-check-input" 
+                                        id="contact_preference2" 
+                                        type="radio"
+                                        name="contact_preference"
+                                        value="email"
+                                        {...register("contact_preference")}
+                                    />
+                                    <label className="form-check-label" htmlFor="contact_preference2">
+                                        Email
+                                    </label>
+                                </div>
+                            </div>
+
 
                             <div className="col-md-12">
                                 <div className="form-floating">
@@ -685,6 +764,7 @@ function InternshipApplication(){
                                                 id="job_start_date" 
                                                 type="date"
                                                 name="job_start_date"
+                                                max={new Date().toISOString().split("T")[0]}
                                                 {...register("job_start_date")}
                                             />
 
@@ -702,6 +782,7 @@ function InternshipApplication(){
                                                 id="job_end_date" 
                                                 type="date"
                                                 name="job_end_date"
+                                                max={new Date().toISOString().split("T")[0]}
                                                 {...register("job_end_date")}
                                             />
 
@@ -1052,8 +1133,8 @@ function InternshipApplication(){
                         Cancel
                     </Link>
                     
-                    <button type="submit" className="btn btn-lg btn-primary">
-                        Submit Application
+                    <button type="submit" className={clsx(Style.submit, "btn btn-lg btn-primary")}>
+                        {isLoading ? <Loader {...{ isLoading, isSuccessful }} /> : "Submit Application" }
                     </button>
                 </div>
             </form>

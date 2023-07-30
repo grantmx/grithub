@@ -1,0 +1,87 @@
+@import "styles/globals/variables";
+
+.block{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    position: relative;
+    display: block;
+    background: #f6f7f8;
+}
+
+// Animations
+.noAnimation{
+    animation-name: none;
+}
+
+.wave{
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: wave;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 1000px 104px;
+
+    &.color{
+        &__dark{
+            background: linear-gradient(to right, #ddd 8%, #ccc 18%, #ddd 33%);
+        }
+    }
+}
+
+.pulse{
+    background: #eee;
+    animation: pulse 1.5s ease-in-out 0.5s infinite;
+}
+
+
+.color{
+    &__dark{
+        background-color: #ccc;
+    }
+}
+
+
+// Variants
+.text{
+    height: 16px;
+    border-radius: $border-radius;
+    transform: scale(1, 0.60);
+}
+
+.circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+.rect{
+    border-radius: $border-radius;
+    height: 20px;
+}
+
+
+
+
+
+@keyframes wave{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+@keyframes pulse {
+    0%{
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+    100% {
+        opacity: 1;
+    }
+}

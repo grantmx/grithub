@@ -1,0 +1,104 @@
+// stylelint-disable declaration-no-important
+
+// Flex variation
+//
+// Custom styles for additional flex alignment options.
+
+@each $breakpoint in map-keys($grid-breakpoints) {
+	@include media-breakpoint-up($breakpoint) {
+		$infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+		.flex#{$infix}_row {
+			flex-direction: row !important;
+		}
+		.flex#{$infix}_column {
+			flex-direction: column !important;
+		}
+		.flex#{$infix}_rowReverse {
+			flex-direction: row-reverse !important;
+		}
+		.flex#{$infix}_columnReverse {
+			flex-direction: column-reverse !important;
+		}
+
+		.flex#{$infix}_wrap {
+			flex-wrap: wrap !important;
+		}
+		.flex#{$infix}_nowrap {
+			flex-wrap: nowrap !important;
+		}
+		.flex#{$infix}_wrapReverse {
+			flex-wrap: wrap-reverse !important;
+		}
+
+		.justifyContent#{$infix}_start {
+			justify-content: flex-start !important;
+		}
+		.justifyContent#{$infix}_end {
+			justify-content: flex-end !important;
+		}
+		.justifyContent#{$infix}_center {
+			justify-content: center !important;
+		}
+		.justify_content#{$infix}_between {
+			justify-content: space-between !important;
+		}
+		.justifyContent#{$infix}_around {
+			justify-content: space-around !important;
+		}
+
+		.alignItems#{$infix}_start {
+			align-items: flex-start !important;
+		}
+		.alignItems#{$infix}_end {
+			align-items: flex-end !important;
+		}
+		.alignItems#{$infix}_center {
+			align-items: center !important;
+		}
+		.alignItems#{$infix}_baseline {
+			align-items: baseline !important;
+		}
+		.alignItems#{$infix}_stretch {
+			align-items: stretch !important;
+		}
+
+		.alignContent#{$infix}_start {
+			align-content: flex-start !important;
+		}
+		.alignContent#{$infix}_end {
+			align-content: flex-end !important;
+		}
+		.alignContent#{$infix}_center {
+			align-content: center !important;
+		}
+		.alignContent#{$infix}_between {
+			align-content: space-between !important;
+		}
+		.alignContent#{$infix}_around {
+			align-content: space-around !important;
+		}
+		.alignContent#{$infix}_stretch {
+			align-content: stretch !important;
+		}
+
+		.alignSelf#{$infix}_auto {
+			align-self: auto !important;
+		}
+		.alignSelf#{$infix}_start {
+			align-self: flex-start !important;
+		}
+		.alignSelf#{$infix}_end {
+			align-self: flex-end !important;
+		}
+		.alignSelf#{$infix}_center {
+			align-self: center !important;
+		}
+		.alignSelf#{$infix}_baseline {
+			align-self: baseline !important;
+		}
+		.alignSelf#{$infix}_stretch {
+			align-self: stretch !important;
+		}
+	}
+}

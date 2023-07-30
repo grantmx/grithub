@@ -1,0 +1,41 @@
+@import "styles/globals/variables";
+
+@font-face{
+    font-family: "DidotW01-DisplayRegular";
+    src: url("../fonts/1096686/094035d8-cea8-498e-a4b2-32babe21f8d3.woff2") format("woff2");
+    font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF;
+}
+
+@font-face{
+	font-family:"Proxima Nova";
+	src:url("../fonts/5596744/33ca2000-af7b-4444-97cd-6392ab2e24b2.woff2") format("woff2");
+	font-weight: 400;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF;
+}
+
+@font-face{
+	font-family:"Proxima Nova";
+	src:url("../fonts/5596929/3c35dc60-9fe3-480f-90ac-e453db0271e2.woff2") format("woff2");
+	font-weight: 800;
+	font-style: normal;
+	font-stretch: normal;
+	font-display: swap;
+	unicode-range: U+000-5FF;
+}
+
+p a {
+    text-decoration: inherit;
+    border-bottom: 1px solid $ocean;
+
+    &:hover{
+        text-decoration: inherit;
+        color: $indigo;
+    }
+}
