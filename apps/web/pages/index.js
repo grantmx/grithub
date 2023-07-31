@@ -211,7 +211,7 @@ export default function Home(){
 
 
 
-				<section className='py-2'>
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
 						Up Coming Trainings, Courses & Programs
 					</h2>
@@ -222,7 +222,7 @@ export default function Home(){
 
 					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
@@ -242,7 +242,7 @@ export default function Home(){
 						</div>
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
@@ -262,7 +262,7 @@ export default function Home(){
 						</div>
 
 
-						{/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript" />
@@ -285,7 +285,7 @@ export default function Home(){
 						</div> */}
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
 								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={home.cardTopOverflow} alt="STEM"/>
