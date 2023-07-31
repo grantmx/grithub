@@ -2,15 +2,23 @@ import axios from "axios"
 import GeneralPage from "components/layout/GeneralPage";
 import Link from "next/link";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 
 
 function InternshipSuccess(){
+    const router = useRouter()
 
     useEffect(() => {
         axios.post("/api/email/internship", {
-            subject: "test",
-            to: "grantmx@gmail.com",
-            html: "<h1>test</h1>"
+            subject: `${router?.query?.first_name}, thank you for your GRIT Internship Application!`,
+            to: router?.query?.email,
+            heading: `Hey, ${router?.query?.first_name}! 👋`,
+            message: `
+                <p>Thank you for your application submission to the GRIT Internship program.</p>
+                <p>If you are a finalist, our GRIT Hub staff will be in contact with you regarding followup and additional information.</p>
+                <p>All the best to you, and thank you again for your interest.</p>
+            `
         })
 
     }, [])

@@ -191,24 +191,65 @@ export default function Home(){
 						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
+									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
+									<p className="d-grid">
+										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
+											Register Now &nbsp;&rsaquo;
+										</a>
+									</p>
+									{/* <div className="alert alert-secondary text-center" role="alert">
+										Registration Opens July 2032
+									</div> */}
+								</div>
+							</div>
+						</div>
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
+									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
+									<div className="alert alert-secondary text-center" role="alert">
+										Registration Opens August 2032
+									</div>
+									{/* <p className="d-grid">
+										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
+											Register Now
+										</a>
+									</p> */}
+								</div>
+							</div>
+						</div>
+
+
+						{/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript" />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
 									
 									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
 
-									{/* <p className="d-grid">
+									<p className="d-grid">
 										<a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
 											Register
 										</a>
-									</p> */}
+									</p>
 
 									<div className="alert alert-secondary text-center" role="alert">
 										Registration is now closed
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
+
 
 						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
@@ -227,44 +268,7 @@ export default function Home(){
 						</div>
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-									{/* <p className="d-grid">
-										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
-											Register Now &nbsp;&rsaquo;
-										</a>
-									</p> */}
-									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens July 2032
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-						{/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens August 2032
-									</div>
-									<p className="d-grid">
-										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn btn-success btn-lg">
-											Register Now
-										</a>
-									</p>
-								</div>
-							</div>
-						</div> */}
+						
 
 
 					</div>

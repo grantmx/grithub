@@ -157,7 +157,14 @@ function InternshipApplication(){
             setIsSuccessful(true)
 
             setTimeout(() => {
-                router.push("/programs/internship/success")
+                router.push({
+                    pathname: "/programs/internship/success",
+                    query: {
+                        first_name: data.first_name,
+                        email: data.email
+                    }
+                })
+
                 setIsLoading(false)
             }, 3000)
         })
@@ -305,7 +312,7 @@ function InternshipApplication(){
                                 </div>
                             </div>
 
-
+                            {/*
                             <div className="col-md-12">
                                 <p>
                                     How do you prefer for us to contact you?  Via...
@@ -341,7 +348,7 @@ function InternshipApplication(){
                                     </label>
                                 </div>
                             </div>
-
+                            */}
 
                             <div className="col-md-12">
                                 <div className="form-floating">
