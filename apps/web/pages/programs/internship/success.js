@@ -16,8 +16,9 @@ function InternshipSuccess(){
             heading: `Hey, ${router?.query?.first_name}! 👋`,
             message: `
                 <p>Thank you for your application submission to the GRIT Internship program.</p>
-                <p>If you are a finalist, our GRIT Hub staff will be in contact with you regarding followup and additional information.</p>
+                <p>If you are a finalist, we will be in contact with you regarding follow-up and additional information.</p>
                 <p>All the best to you, and thank you again for your interest.</p>
+                <p>- Marshall</p>
             `
         })
 
