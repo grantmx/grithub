@@ -38,13 +38,15 @@ function InternshipSuccess(){
                     <span className="display-1 text-center">🥳</span>
 
                     <p className="display-6 text-center">
-                        You will receive a confirmation shortly.
+                        You will receive a confirmation email shortly.
                     </p>
                     <p className="fs-4 text-center">
                         If you have any questions regarding your application<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="#" onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp Us</a>
                     </p>
 
-                    <p className="fs-5 text-center">Continue reading about the <Link href="/programs/internship">GRIT Internship &rsaquo;</Link></p>
+                    <p className="fs-5 text-center">
+                        If you haven't received an email, be sure to double check your SPAM/JunK folder. Continue reading about the <Link href="/programs/internship">GRIT Internship &rsaquo;</Link>
+                    </p>
                 </div>
             </section>
         </GeneralPage>
