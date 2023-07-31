@@ -1,4 +1,4 @@
-import StandardEmail from "../../../components/emails/standardEmail"
+import StandardEmail from "../../../components/emails/StandardEmail"
 import SendgridService from "../../../services/sendgrid.service"
 import { render } from 'mjml-react';
 
