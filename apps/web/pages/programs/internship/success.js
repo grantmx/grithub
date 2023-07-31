@@ -2,27 +2,31 @@ import axios from "axios"
 import GeneralPage from "components/layout/GeneralPage";
 import Link from "next/link";
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 
 
 function InternshipSuccess(){
-    const router = useRouter()
+    const searchParams = useSearchParams()
+    const firstName = searchParams.get('first_name')
+    const email = searchParams.get('email')
 
     useEffect(() => {
-        axios.post("/api/email/internship", {
-            subject: `${router?.query?.first_name}, thank you for your GRIT Internship Application!`,
-            to: router?.query?.email,
-            heading: `Hey, ${router?.query?.first_name}! 👋`,
-            message: `
-                <p>Thank you for your application submission to the GRIT Internship program.</p>
-                <p>If you are a finalist, we will be in contact with you regarding follow-up and additional information.</p>
-                <p>All the best to you, and thank you again for your interest.</p>
-                <p>- Marshall</p>
-            `
-        })
+        if( email && firstName ){
+            axios.post("/api/email/internship", {
+                subject: `Thank you for your GRIT Internship Application, ${firstName}! 🎉`,
+                to: email,
+                heading: `Hey, ${firstName}! 👋`,
+                message: `
+                    <p>Your application submission to the GRIT Internship program was successful.  Thanks!</p>
+                    <p>If you are a finalist, we will be in contact with you regarding follow-up and additional information. All the best, and thank you again for your interest.</p>
+                    <p>- Marshall</p>
+                `
+            })    
+        }
 
-    }, [])
+       
+    }, [ email, firstName ])
 
 
     return(

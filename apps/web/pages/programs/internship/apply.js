@@ -26,6 +26,7 @@ function InternshipApplication(){
     const [ hasSideHustle, setSideHustle ] = useState(false)
     const [ isZA, setZA ] = useState(true)
     const [ isJobZA, setJobZA ] = useState(true)
+    const [ isCurrentJob, setIsCurrentJob ] = useState(false)
 
     const [ isLoading, setIsLoading ] = useState(false)
     const [ isSuccessful, setIsSuccessful ] = useState(false)
@@ -107,6 +108,11 @@ function InternshipApplication(){
 
                 case "first_job":
                     setFirstJob(value[name] === "false")
+                    break;
+
+                case "current_job":
+                    debugger
+                    setIsCurrentJob(value[name] === true)
                     break;
 
                 case "side_hustle":
@@ -791,6 +797,7 @@ function InternshipApplication(){
                                                 name="job_end_date"
                                                 max={new Date().toISOString().split("T")[0]}
                                                 {...register("job_end_date")}
+                                                disabled={isCurrentJob}
                                             />
 
                                             <label htmlFor="job_end_date">

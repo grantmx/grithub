@@ -45,7 +45,7 @@ function StandardEmail({ message, heading }){
                         </MjmlText>
                     
                         <MjmlText font-size="18px" paddingTop="0">
-                            {message}
+                            <div dangerouslySetInnerHTML={{ __html: message }} />
                         </MjmlText>
                     
                     </MjmlColumn>
