@@ -4,9 +4,7 @@ import { render } from 'mjml-react';
 
 export default async function handler(req, res) {
     const { heading, message, to, subject } = req.body;
-    
     const { html } = render(StandardEmail({ heading, message }), { validationLevel: 'soft' })
-
     const sendgrid = new SendgridService({ to, subject, html })
 
 
