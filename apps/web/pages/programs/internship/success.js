@@ -25,7 +25,6 @@ function InternshipSuccess(){
             })    
         }
 
-       
     }, [ email, firstName ])
 
 
