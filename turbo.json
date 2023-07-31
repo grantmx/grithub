@@ -14,7 +14,7 @@
         "$merchant_key",
         "$sandbox_merchant_id",
         "$sandbox_merchant_key",
-        "$passPhrase",
+        "$merchant_passphrase",
         "$eskomSePush_key",
         "$server_email",
         "$server_email_password",
