@@ -179,7 +179,7 @@ export default function Home(){
 
 				<section className='bg-light p-4 my-5'>
 					<div className="col-12 d-flex justify-content-center mb-5 flex-column flex-md-row">
-						<div className="col-md-6 col-12 py-md-5 py-3 d-flex justify-content-end flex-row pe-md-5">
+						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
 									src="/assets/winter-internship-blank.jpg" 
