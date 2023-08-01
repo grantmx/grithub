@@ -5,6 +5,7 @@ import ribbon from 'styles/ribbon.module.scss'
 import home from 'styles/home.module.scss';
 
 import image from 'public/assets/software-development-hero.jpg'
+import Link from "next/link";
 
 
 export default function Programs(){
@@ -14,6 +15,39 @@ export default function Programs(){
             subTitle="Our Workforce Training, Programs and Workshops are meant to get us ahead of the challenges and trends of an ever changing economic environment and into the innovator economy."
             image={image}
         >
+
+
+            <section className='bg-light py-5 mb-5'>
+                <div className="col-12 d-flex justify-content-center flex-column flex-md-row">
+                    <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
+                        <Link href="/programs/internship" title="apply today">
+                            <Image 
+                                src="/assets/winter-internship-blank.jpg" 
+                                width={711} 
+                                height={400}
+                                className={home.adImg}
+                                alt="grit internship"
+                            />
+                        </Link>
+                    </div>
+
+                    <div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
+                        <span className="lead text-muted">GRIT Hub Internship</span>
+                        <h2 className="fw-bold display-4 mb-3">
+                            Get hands on industry experience this winter.
+                        </h2>
+                        <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
+                        
+                        <p>
+                            <Link href="/programs/internship" className="btn btn-danger btn-lg px-4" title='apply today'>
+                                Learn more &nbsp;&rsaquo;
+                            </Link>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
 
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <h2 className="fw-bold display-5 mt-5 mb-0 text-center">

@@ -177,8 +177,8 @@ export default function Home(){
 
 
 
-				<section className='bg-light p-4 my-5'>
-					<div className="col-12 d-flex justify-content-center mb-5 flex-column flex-md-row">
+				<section className='bg-light py-5 mb-5'>
+					<div className="col-12 d-flex justify-content-center flex-column flex-md-row">
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
@@ -192,7 +192,8 @@ export default function Home(){
 						</div>
 
 						<div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
-							<h2 className="fw-bold display-4 mb-0">
+							<span className="lead text-muted">GRIT Hub Internship</span>
+							<h2 className="fw-bold display-4 mb-3">
 								Get hands on industry experience this winter.
 							</h2>
 							<p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
@@ -202,10 +203,10 @@ export default function Home(){
 									Learn more &nbsp;&rsaquo;
 								</Link>
 							</p>
-				
 						</div>
 					</div>
 				</section>
+
 
 
 
