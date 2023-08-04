@@ -14,7 +14,7 @@ function Internship(){
             subTitle="The GRIT Internship Program offers highly motivated individuals an opportunity to be exposed to meaningful enterprise level workplace experience"
 		>
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
-                <div className="col-12 d-flex flex-row mt-3">
+                <div className="col-12 d-flex flex-md-row flex-column mt-3">
                     <div className="col-12 col-md-8 pe-md-5">
                         <h2>About The Internship</h2>
                         <p>Gaining hands-on experience as a student enhances your education and gives you an edge in your career journey. The Garden Route Innovation & Technology Hub is an ideal place for you to push yourself and get involved in meaningful real life projects.</p>

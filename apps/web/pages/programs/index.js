@@ -17,8 +17,8 @@ export default function Programs(){
         >
 
 
-            <section className='bg-light py-5 mb-5'>
-                <div className="col-12 d-flex justify-content-center flex-column flex-md-row">
+            <section className='bg-light py-5 mb-md-5'>
+                <div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row">
                     <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
                         <Link href="/programs/internship" title="apply today">
                             <Image 

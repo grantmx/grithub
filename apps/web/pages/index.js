@@ -118,7 +118,7 @@ export default function Home(){
 
 
 
-				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-5 flex-column" id="about">
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column" id="about">
 					<h1 className="fw-bold display-4 mb-4 text-center">Garden Route Innovation &amp; Technology Hub</h1>
 					<div className="text-center col-xl-12 col-12">
 						<p className="fs-2">Identifying untapped potential and refocusing it using the power of digital technology. </p>
@@ -178,7 +178,7 @@ export default function Home(){
 
 
 				<section className='bg-light py-5 mb-5'>
-					<div className="col-12 d-flex justify-content-center flex-column flex-md-row">
+					<div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row">
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
