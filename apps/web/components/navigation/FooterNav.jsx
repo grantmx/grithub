@@ -32,17 +32,22 @@ function FooterNav(){
                     <small className="ms-2">workforce@grithub.org.za</small>
                 </button>
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://www.facebook.com/grithub.za"; }}>
-                    <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GritHub on facebook"/>
+                    <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GRIT Hub on facebook"/>
                     <small className="ms-2">Facebook</small>
                 </button>
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://twitter.com/grithub_za"; }}>
-                    <Image src="/assets/twitter.svg" width={25} height={25} alt="GritHub on twitter"/>
+                    <Image src="/assets/twitter.svg" width={25} height={25} alt="GRIT Hub on twitter"/>
                     <small className="ms-2">Twitter</small>
                 </button>
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://www.instagram.com/grithub_za/"; }}>
-                    <Image src="/assets/instagram.svg" width={25} height={25} alt="GritHub on Instagram"/>
+                    <Image src="/assets/instagram.svg" width={25} height={25} alt="GRIT Hub on Instagram"/>
                     <small className="ms-2">Instagram</small>
                 </button>
+                <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://patreon.com/grithub_za"; }}>
+                    <Image src="/assets/patreon.svg" width={25} height={25} alt="GRIT Hub on Patreon"/>
+                    <small className="ms-2">Patreon</small>
+                </button>
+                
             </div>
             
 
