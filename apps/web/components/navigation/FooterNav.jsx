@@ -9,7 +9,7 @@ function FooterNav(){
             
             <div className="col-md-4 col-12 d-flex p-4 flex-column">
                 <span><Image src="/assets/grithub-logo-horz.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>
-                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy. CIPC: 2021/502703/08</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy.</small>
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
                         Office Suite #2, York Street Blvd. Shopping Center.<br/> George South, George 6529<br/>South Africa &nbsp;

@@ -84,15 +84,14 @@ function Terms(){
 
                     <p>Please review our <Link href="/privacy">Privacy Policy</Link>, which also governs your use of our Service.&nbsp;Your use of the Service constitutes acceptance of the Privacy Policy and you further acknowledge and agree that the Company may in its sole discretion preserve or disclose your User Content as well as your personal information if required to do so by law or in the good faith belief that such action is reasonably necessary to: enforce the Terms, comply with the legal process, respond to claims, and/or protect the rights, property, or personal safety of the Company, its Users, or the general public.</p>
 
-                    <h3><strong>Notice of Claims of Copyright Infringement</strong></h3>
+                    <h3><strong>General Information</strong></h3>
 
-                    {/* <p>If you believe that your copyrighted work has been copied in a way that constitutes copyright infringement and is accessible via the Service, please notify the Company's copyright agent.&nbsp; As set forth in the Digital Millennium Copyright Act ("DMCA"), you must provide the following information in writing: (i) identification of the material that is claimed to be infringing and where it is located on the Service; (ii) identification of the copyrighted work that you claim has been infringed; (iii) a statement that you have a good faith belief that use of the material in the manner complained of is not authorized by the copyright owner, its agent, or law; (iv) a statement declaring under penalty of perjury that the above information in your notice is accurate and that you are the copyright owner or are authorized to act on behalf of the owner; (v) information reasonably sufficient to permit the Company to contact you, such as your address, telephone number, and, e-mail address; and (vi) your physical or electronic signature. &nbsp;The information must be submitted to the Company’s DMCA Agent:</p>
-
-                    <p>Attn:&nbsp; Copyright Agent<br />
-                    W.C. Bradley Co.<br />
-                    1017 Front Avenue<br />
-                    P.O. Box 140<br />
-                    Columbus, GA 31902</p> */}
+                    <ul>
+                        <li>Registration Number is: 2021/502703/08</li>
+                        <li>Registered Address is: Office Suite #2, York Street Boulevard Shopping Center, George 6529</li>
+                        <li>Website is: <a href="https://grithub.org.za">https://grithub.org.za</a></li>
+                        <li>Email is: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></li>
+                    </ul>
 
                     <h3><strong>Third-Party Websites and Services</strong></h3>
 
