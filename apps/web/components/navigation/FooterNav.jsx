@@ -7,8 +7,15 @@ function FooterNav(){
     return(
         <footer className="col-12 d-flex flex-wrap justify-content-center flex-wrap p-4 pb-0 border-top" id="contact">
             
-            <div className="col-md-4 col-12 d-flex p-4 flex-column">
-                <span><Image src="/assets/grithub-logo-horz.svg" width="300" height={75} alt="GRIT Hub Logo"/></span>
+            <div className="col-md-4 col-12 d-flex p-md-4 pb-4 flex-column">
+                <Image 
+                    src="/assets/grithub-logo-horz.svg" 
+                    width="270" 
+                    height={75} 
+                    alt="GRIT Hub Logo"
+                    className='w-md-100'
+                />
+                
                 <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy.</small>
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
@@ -20,7 +27,7 @@ function FooterNav(){
                 </address>
             </div>
 
-            <div className="col-md-3 col-12 p-4 d-flex justify-content-top flex-column">
+            <div className="col-md-3 col-12 p-md-4 pb-4 d-flex justify-content-top flex-column">
                 <h4 className="fw-bold">Find Us</h4>
                 
                 <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://wa.me/270630705752"; }}>
@@ -54,7 +61,7 @@ function FooterNav(){
             </div>
             
 
-            <div className="col-md-4 col-12 p-4 d-flex justify-content-top flex-column align-item-center">
+            <div className="col-md-4 col-12 p-md-4 d-flex justify-content-top flex-column align-item-center">
                 <h4 className="fw-bold">Join Us</h4>
                 <small className="mb-3 text-muted">Be the first to know when we launch and get specialized updates on programing.</small>
                 <FooterEmailForm />
