@@ -12,8 +12,17 @@ function MediaKit(){
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <div className="text-center col-md-9 col-12 justify-content-center d-flex align-items-center flex-column">
                     <p className="fs-3">
-                        These resources exist to assist you in utilizing our brand and assets, including our logo, content, and trademarks, without the need to engage in legal agreements for each utilization.<br/>
-                        <a href="/media-kit.zip" download={true} className="fs-5">Download Media Kit &rsaquo;</a>
+                        These resources exist to assist you in utilizing our brand and assets, including our logo, content, and trademarks, without the need to engage in legal agreements for each utilization.
+                    </p>
+                    <p>
+                        <a href="/media-kit.zip" download={true} className="btn btn-danger">
+                            Download Media Kit &nbsp;
+
+                            <svg id="icon-download" viewBox="0 0 24 24" fill="#ffffff" width="20" height="20">
+                                <path d="M21 14c-0.6 0-1 0.4-1 1v4c0 0.6-0.4 1-1 1h-14c-0.6 0-1-0.4-1-1v-4c0-0.6-0.4-1-1-1s-1 0.4-1 1v4c0 1.7 1.3 3 3 3h14c1.7 0 3-1.3 3-3v-4c0-0.6-0.4-1-1-1z"></path>
+                                <path d="M11.3 15.7c0.1 0.1 0.2 0.2 0.3 0.2 0.1 0.1 0.3 0.1 0.4 0.1s0.3 0 0.4-0.1c0.1-0.1 0.2-0.1 0.3-0.2l5-5c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-3.3 3.3v-9.6c0-0.6-0.4-1-1-1s-1 0.4-1 1v9.6l-3.3-3.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5 5z"></path>
+                            </svg>
+                        </a>
                     </p>
 
                     
