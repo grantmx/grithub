@@ -47,7 +47,6 @@ function Internship(){
                                 <li><b>Business Studies</b> 
                                     <ul>
                                         <li>Online Marketing, </li>
-                                        <li>Human Resources, </li>
                                         <li>Online Advertising, </li>
                                         <li>Social Media Marketing, </li>
                                     </ul>
@@ -55,10 +54,11 @@ function Internship(){
                                 
                                 <li>Content Creation, </li>
                                 <li>Event Planning, </li>
+                                <li>Human Resources, </li>
                                 <li>and Program Management</li>
                             </ul>
 
-                        <p>The GRIT Internship pays a monthly travel allowance up to R1,000/mo. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
+                        <p>The GRIT Internship pays a monthly travel allowance up to R 1,000/mo. with a weekly commitment of 2 to 5 days a week of in office work. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
 
                         <h4>The GRIT Internship is offered once a year:</h4>
                         <p>Winter Internship (July-December): The application period is July-August each year.</p>
