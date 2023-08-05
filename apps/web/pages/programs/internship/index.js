@@ -19,7 +19,7 @@ function Internship(){
                         <h2>About The Internship</h2>
                         <p>Gaining hands-on experience as a student enhances your education and gives you an edge in your career journey. The Garden Route Innovation & Technology Hub is an ideal place for you to push yourself and get involved in meaningful real life projects.</p>
                         <p>In addition, the Internship allows individuals to bring new perspectives, innovative ideas and research experience into GRIT Hub's work, while improving skills and enhancing your CV with practical work experience.</p> 
-                        <p>Internships are available in both Information Technology (All areas) and Business Studies (Marketing & Management) as well as, from time-to-time other business units (such as Human Resources, Communications, Accounting, etc.). However, please note availability during a given internship term is based on business need and your focus area may not be selected for this term.</p>
+                        <p>Internships are available in both Information Technology (All areas) and Business Studies (Marketing & Management) as well as, from time-to-time other business units (such as Human Resources, Communications, Accounting, etc.). <strong>However, please note availability during a given internship term is based on business need and your focus area may not be selected for this term.</strong></p>
 
                         <hr className="my-5"/>
 
@@ -58,7 +58,7 @@ function Internship(){
                                 <li>and Program Management</li>
                             </ul>
 
-                        <p>The GRIT Internship pays a monthly travel allowance up to R 1,000/mo. with a weekly commitment of 2 to 5 days a week of in office work. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
+                        <p>The GRIT Internship pays a monthly travel allowance up to R 1,000/mo. with a weekly commitment of 2 to 5 days a week of in office activities. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
 
                         <h4>The GRIT Internship is offered once a year:</h4>
                         <p>Winter Internship (July-December): The application period is July-August each year.</p>
