@@ -19,7 +19,7 @@ function Internship(){
                         <h2>About The Internship</h2>
                         <p>Gaining hands-on experience as a student enhances your education and gives you an edge in your career journey. The Garden Route Innovation & Technology Hub is an ideal place for you to push yourself and get involved in meaningful real life projects.</p>
                         <p>In addition, the Internship allows individuals to bring new perspectives, innovative ideas and research experience into GRIT Hub's work, while improving skills and enhancing your CV with practical work experience.</p> 
-                        <p>Internships are available in both Information Technology (All areas) and Business Studies (Marketing & Management) as well as other business units (such as Human Resources, Communications, Accounting, etc.) however, availability during a given internship term is based on business need.</p>
+                        <p>Internships are available in both Information Technology (All areas) and Business Studies (Marketing & Management) as well as, from time-to-time other business units (such as Human Resources, Communications, Accounting, etc.). However, please note availability during a given internship term is based on business need and your focus area may not be selected for this term.</p>
 
                         <hr className="my-5"/>
 
