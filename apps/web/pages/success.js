@@ -4,7 +4,7 @@ import GeneralPage from "components/layout/GeneralPage";
 function PurchaseSuccess(){
     return(
         <GeneralPage 
-            title="Booking Success!"
+            title="Payment Success!"
             centerTitle
 		>
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">

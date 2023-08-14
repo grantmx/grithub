@@ -4,7 +4,7 @@ import GeneralPage from "components/layout/GeneralPage";
 function PurchaseCancelation(){
     return(
         <GeneralPage 
-            title="Canceled"
+            title="Payment Canceled"
             centerTitle
 		>
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
