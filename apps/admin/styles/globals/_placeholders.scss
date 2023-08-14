@@ -277,14 +277,6 @@
     font-size: 1.6rem;
     text-transform: capitalize;
     color: $white;
-
-    &:first-of-type{
-        padding-left: 0;
-    }
-
-    &:last-of-type{
-        padding-right: 0;
-    }
 }
 
 %tableHeaderCell{
@@ -293,13 +285,5 @@
     font-size: 1.2rem;
     font-weight: 800;
     color: $table-heading;
-
-    &:first-of-type{
-        padding-left: 0;
-    }
-
-    &:last-of-type{
-        padding-right: 0;
-    }
 }
 

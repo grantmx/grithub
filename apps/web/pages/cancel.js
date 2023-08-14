@@ -1,7 +1,7 @@
 import GeneralPage from "components/layout/GeneralPage";
 
 
-function PurchaseCancelation(){
+function Book(){
     return(
         <GeneralPage 
             title="Canceled"
@@ -12,10 +12,10 @@ function PurchaseCancelation(){
                     <span className="display-1 text-center">🥺</span>
 
                    <p className="display-6 text-center">
-                        Sorry to see you go. Your purchase inquiry has been canceled.
+                        Sorry to see you go. Your booking inquiry has been canceled.
                    </p>
                    <p className="fs-4 text-center">
-                        If you have any questions regarding our purchase<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="#" onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp Us</a>
+                        If you have any questions regarding our bookings<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="#" onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp Us</a>
                    </p>
                 </div>
             </section>
@@ -24,4 +24,4 @@ function PurchaseCancelation(){
 }
 
 
-export default PurchaseCancelation;
+export default Book;

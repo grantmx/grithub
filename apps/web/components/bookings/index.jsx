@@ -1,11 +1,10 @@
 import Stepper from "../navigation/Stepper";
 import Style from "./Bookings.module.scss"
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { useRouter } from "next/router";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
 import BookingDetails from "./BookingDetails";
 import CustomerDetails from "./CustomerDetails";
-import axios from "axios";
 
 
 const steps = [

@@ -8,6 +8,7 @@ const IconFace = dynamic(() => import("components/icons/IconFace"), { ssr: false
 const IconGroup = dynamic(() => import("components/icons/IconGroup"), { ssr: false })
 const IconPersonAdd = dynamic(() => import("components/icons/IconPersonAdd"), { ssr: false })
 const IconTv = dynamic(() => import("components/icons/IconTv"), { ssr: false })
+const IconPeople = dynamic(() => import("components/icons/IconPeople"), { ssr: false })
 
 
 export const nav = {
@@ -108,6 +109,12 @@ export const nav = {
                 name: "Active Members",
                 href: "/people/directory",
                 icon: IconFace
+            },
+            interns: {
+                heading: "Internship",
+                name: "Interns",
+                href: "/people/interns",
+                icon: IconPeople
             },
         }
     }

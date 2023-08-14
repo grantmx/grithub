@@ -5,9 +5,9 @@
     width: 100%;
 }
 
-.headerRow{
-    @extend %tableHeaderRow;
-}
+// .headerRow{
+//     @extend %tableHeaderRow;
+// }
 
 .row{
     @extend %tableRow;
@@ -17,8 +17,33 @@
     @extend %tableCell;
 }
 
-.headerCell{
+.headerButton{
+    background-color: transparent;
     @extend %tableHeaderCell;
+    cursor: none;
+}
+
+
+.headerButtonSortable{
+    cursor: pointer;
+    
+    &:hover{
+        color: $link_color;
+    }
+}
+
+.pagination{
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin-top: 2rem;
+}
+
+.topPagination{
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
+    margin-bottom: 2rem;
 }
 
 
