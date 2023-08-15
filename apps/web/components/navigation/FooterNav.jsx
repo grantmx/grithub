@@ -68,7 +68,7 @@ function FooterNav(){
             </div>
             
             <small className="col-12 px-0 py-5 py-md-4 mb-5 mb-md-0 border-top mt-2 text-center text-muted">
-                &copy; {new Date().getFullYear()} Garden Route Innovation & Technology Hub, NPC. All rights reserved.  &nbsp;&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
+                &copy; {new Date().getFullYear()} Garden Route Innovation & Technology Hub, NPC. All rights reserved.  &nbsp;&nbsp; <Link href="/about" title="terms of use">About Us</Link> &nbsp;|&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
             </small>
         </footer>
     )
