@@ -1,7 +1,7 @@
 import Style from "./Loadshedding.module.scss";
 import { hubs } from '../../lib/constants';
-import { useEffect } from "react";
-import { getLoadSheddingEvents } from "../../services/loadshedding.service";
+// import { useEffect } from "react";
+// import { getLoadSheddingEvents } from "../../services/loadshedding.service";
 
 
 function LoadsheddingForecast(){
