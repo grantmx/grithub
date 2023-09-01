@@ -8,9 +8,18 @@ import MainNav from 'components/navigation/MainNav';
 import FooterNav from 'components/navigation/FooterNav';
 
 import hero from "public/assets/hero.jpg" 
+import { useEffect } from 'react';
+import { celebrationTime } from 'lib/utils/celebrationTime';
 
 
-export default function Home(){
+export default function Success(){
+
+	useEffect(() => {
+		celebrationTime()
+
+	}, [])
+
+
 	return(
 		<>
 			<NextSeo 

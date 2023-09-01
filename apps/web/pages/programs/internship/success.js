@@ -3,6 +3,7 @@ import GeneralPage from "components/layout/GeneralPage";
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { celebrationTime } from "lib/utils/celebrationTime";
 
 
 
@@ -10,6 +11,11 @@ function InternshipSuccess(){
     const searchParams = useSearchParams()
     const firstName = searchParams.get('first_name')
     const email = searchParams.get('email')
+
+    useEffect(() => {
+		celebrationTime()
+
+	}, [])
 
     useEffect(() => {
         if( email && firstName ){

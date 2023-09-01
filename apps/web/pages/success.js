@@ -1,7 +1,14 @@
 import GeneralPage from "components/layout/GeneralPage";
+import { useEffect } from "react";
+import { celebrationTime } from "../lib/utils/celebrationTime";
 
 
 function PurchaseSuccess(){
+    useEffect(() => {
+        celebrationTime()
+        
+    }, [])
+
     return(
         <GeneralPage 
             title="Payment Success!"
