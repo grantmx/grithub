@@ -58,7 +58,7 @@ function CoWork(){
 					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/wifi_tethering.svg" width={50} height={50} alt="wifi" />
-							<p className="lead pt-3 text-center">200 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
+							<p className="lead pt-3 text-center">+200 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
 						</div>
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/presentation.svg" width={50} height={50} alt="conference rooms"/>
@@ -78,11 +78,11 @@ function CoWork(){
 						</div> */}
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/laptop_mac.svg" width={50} height={50} alt="mac repair"/>
-							<p className="lead pt-3">100% Uptime Load shedding contingency, wifi backup, backup-lighting</p>
+							<p className="lead pt-3 text-center">100% Uptime Load Shedding contingency, wifi backup, backup-lighting</p>
 						</div>
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/fingerprint.svg" width={50} height={50} alt="secure"/>
-							<p className="lead pt-3 text-center">Security and controlled access. Cleaning and maintenance services. Contingency for electricity failure.</p>
+							<p className="lead pt-3 text-center">Security and Biometric controlled access. Cleaning and maintenance services. Contingency for electricity failure.</p>
 						</div>
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/print.svg" width={50} height={50} alt="office facilities"/>
