@@ -29,7 +29,7 @@ function CoWork(){
 						<h4 className="mt-5">Free Cancelation</h4>
 						<ul className="d-flex m-0 p-0 justify-content-around list-unstyled">
 							<li>All - Within 2 hours of venue confirmation</li>
-							<li>Desks - 24 hours before arrival time.</li>
+							<li className="px-4">Desks - 24 hours before arrival time.</li>
 							<li>Group Spaces - 24 hours before arrival time.</li>
 						</ul>
 					</div>
