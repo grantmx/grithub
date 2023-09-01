@@ -24,7 +24,7 @@ function Internship(){
                         <hr className="my-5"/>
 
                         <h3>Eligibility Criteria</h3>
-                        <p>To be eligible for an Internship, candidates must have <strong>earned a South African National Senior Certificate or the equivalent of High School Diploma</strong>.  Being enrolled for either an undergraduate degree or in a TVET College is highly desireable.  There is no age limit.</p>
+                        <p>To be eligible for an Internship, candidates must have <strong>earned a South African National Senior Certificate or the equivalent of High School Diploma</strong>.  Having earned or being currently enrolled for either an undergraduate degree or in a TVET College is highly desireable.  There is no age limit.</p>
                         <p>Fluency in English is required. Other skills such as computing skills are extremely advantageous.</p>
                         <p>With a core value of Digital Inclusion in the workplace, we value diversity and encourage all qualified individuals, particularly women, with diverse cultural and academic backgrounds to apply.</p>
                         <p>For all non South African applicants, you must have a valid Student or Work visa or have a Temporary or Permanent residency with the ability to work.</p>
