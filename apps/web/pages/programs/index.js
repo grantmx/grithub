@@ -32,9 +32,9 @@ export default function Programs(){
                     </div>
 
                     <div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
-                        <span className="lead text-muted">GRIT Hub Internship</span>
+                        <span className="lead text-muted">GRIT Hub Internships</span>
                         <h2 className="fw-bold display-4 mb-3">
-                            Get hands on industry experience this winter.
+                            Get hands on industry experience.
                         </h2>
                         <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
                         
@@ -71,15 +71,15 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-                                <p className="d-grid">
+                                {/* <p className="d-grid">
                                     <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
                                         Register Now &nbsp;&rsaquo;
                                     </a>
-                                </p>
+                                </p> */}
 
-                                {/* <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens July 2032
-                                </div> */}
+                                <div className="alert alert-secondary text-center" role="alert">
+                                    Registration Opens Soon
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration Opens August 2032
+                                    Registration Opens Soon
                                 </div>
                                 {/* <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
@@ -113,7 +113,7 @@ export default function Programs(){
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
                                 <div className="alert alert-secondary text-center" role="alert">
-                                    Registration is now closed
+                                    Registration Opens Soon
                                 </div>
 
                                 {/* <p className="d-grid">

@@ -236,7 +236,7 @@ export default function Home(){
 										</a>
 									</p> */}
 									<div className="alert alert-secondary text-center" role="alert">
-										Registration is closed
+										Registration Opens Soon
 									</div>
 								</div>
 							</div>
@@ -259,7 +259,7 @@ export default function Home(){
 									</p> */}
 
 									<div className="alert alert-secondary text-center" role="alert">
-										Registration is closed
+										Registration Opens Soon
 									</div>
 								</div>
 							</div>
