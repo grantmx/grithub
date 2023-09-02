@@ -9,7 +9,8 @@ module.exports = {
         domains: [
             "dummyimage.com",
             "img.youtube.com",
-            "maps.googleapis.com"
+            "maps.googleapis.com",
+			"preview.keenthemes.com"
         ]
     },
 	hubs: {

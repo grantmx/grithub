@@ -4,7 +4,7 @@ import Table from "components/display/Table"
 function Cohorts(){
     return(
         <Card>
-            <Table />
+            {/* <Table /> */}
         </Card> 
     )
 }

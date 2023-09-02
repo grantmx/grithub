@@ -1,0 +1,16 @@
+@import "styles/globals/placeholders";
+
+
+.block{
+    display: flex;
+    flex-direction: column
+}
+
+.submissionCntr{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: stepper;
+}

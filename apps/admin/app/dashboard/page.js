@@ -28,7 +28,7 @@ function Page() {
                     toolbar={<button>test</button>}
                 />
 
-                <Table />
+                {/* <Table /> */}
             </Card>
         </>
     )

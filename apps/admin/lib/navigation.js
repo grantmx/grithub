@@ -60,6 +60,12 @@ export const nav = {
     people: {
         heading: "People",
         children: {
+            interns: {
+                heading: "Internship",
+                name: "Interns",
+                href: "/people/interns",
+                icon: IconPeople
+            },
             cohorts: {
                 heading: "Cohort Directory",
                 name: "Cohorts",
@@ -110,12 +116,7 @@ export const nav = {
                 href: "/people/directory",
                 icon: IconFace
             },
-            interns: {
-                heading: "Internship",
-                name: "Interns",
-                href: "/people/interns",
-                icon: IconPeople
-            },
+            
         }
     }
 }

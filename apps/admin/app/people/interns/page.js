@@ -1,24 +1,24 @@
+"use client"
+
 import Card from "components/display/Card"
 import Table from "components/display/Table"
-import FirebaseService from "ui/services/firebase/Firebase.service"
 import { internsColumns } from "./intern.helpers"
+import { useContext } from "react"
+import { InternContext } from "./_context/InternContext"
 
-const firebaseService = new FirebaseService()
 
 
-async function Interns(){
-    const interns = await firebaseService.getCollection({
-        rootCollection: "internships",
-        rootDocument: "applications",
-        documentCollection: "2023"
-    })
+function Interns(){
+    const [ data, dispatch ] = useContext(InternContext);
 
     return(
         <Card>
-            <Table 
-                tableColumns={internsColumns} 
-                tableData={interns}
-            />
+            {data?.interns && (
+                <Table 
+                    tableColumns={internsColumns} 
+                    tableData={data.interns}
+                />
+            )}
         </Card> 
     )
 }

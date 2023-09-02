@@ -10,7 +10,13 @@ export const internsColumns = [
         header: "Full Name",
         cell: info => {
             return(
-                <Link href={`/people/interns/${info.getValue().split(" ").join("-").toLowerCase()}`}>
+                <Link href={{
+                    pathname: `/people/interns/profile`,
+                    query: { 
+                        firstName: info.row.original.first_name,
+                        lastName: info.row.original.last_name,
+                    }
+                }}>
                     {info.getValue()}
                 </Link>
             )
@@ -25,13 +31,21 @@ export const internsColumns = [
     columnHelper.accessor('email', {
         header: "Email Address",
         cell: info => {
-        return (
-            <a href={`mailto:${info.getValue()}`}>
-                {info.getValue()}
-            </a>
-        )},
+            return (
+                <a href={`mailto:${info.getValue()}`} title="send an email">
+                    {info.getValue()}
+                </a>
+            )
+        },
     }),
     columnHelper.accessor('phone', {
-        header: "Phone Number"
+        header: "Phone Number",
+        cell: info => {
+            return (
+                <a href={`tel:${info.getValue()}`} title="make a phone call">
+                    {info.getValue()}
+                </a>
+            )
+        },
     }),
 ]
