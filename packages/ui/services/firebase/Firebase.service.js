@@ -1,6 +1,6 @@
 import { firebaseDB, firebaseStorage } from "."
-import { collection, addDoc, Timestamp, setDoc, doc, getDocs, query } from 'firebase/firestore'
-import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
+import { collection, Timestamp, setDoc, doc, getDocs, query } from 'firebase/firestore'
+import { uploadBytesResumable, ref } from "firebase/storage";
 
 export default class FirebaseService{
     constructor(){

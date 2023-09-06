@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import Button from 'components/forms/Button/Button';
+
+<Meta title="Forms/Buttons" component={Button} />
+
+# Buttons
+
+The API documentation of the Button React component. Learn more about the props and customization. Buttons allow users to engage in a Call To Action (CTA) with a single tap or click.
+
+<br />
+
+### Import
+```javascript
+import Button from 'components/forms/Button/Button';
+```
+
+<br />
+
+## Example
+
+
+export const Template = (args) => (
+    <Button {...args}>
+        Submit
+    </Button>
+);
+
+<Canvas withSource="open">
+	<Story
+		name="Buttons"
+		args={{
+			title: "Submit Form",
+			color: "indigo",
+			size: "md",
+		}}
+	>
+		{Template.bind({})}
+	</Story>      
+</Canvas>
+
+<br />
+
+## Props
+<ArgsTable story="Buttons" />

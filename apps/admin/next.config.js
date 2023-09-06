@@ -10,7 +10,8 @@ module.exports = {
             "dummyimage.com",
             "img.youtube.com",
             "maps.googleapis.com",
-			"preview.keenthemes.com"
+			"preview.keenthemes.com",
+			"firebasestorage.googleapis.com"
         ]
     },
 	hubs: {

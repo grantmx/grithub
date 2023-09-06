@@ -3,16 +3,17 @@
 
 .block{
     display: flex;
+    flex-direction: column;
     width: 100%;
     max-height: 100px;
-    padding: 0 4rem;
+    padding: 2rem 4rem 0 5rem;
     margin-bottom: 2rem;
     // background-color: $container;
     // border-bottom: 1px solid $container-border;
     align-items: center;
     align-content: center;
     line-height: 1;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .title{
@@ -23,6 +24,7 @@
     font-weight: 300;
     margin: 0;
     text-transform: capitalize;
+    width: 100%;
 }
 
 

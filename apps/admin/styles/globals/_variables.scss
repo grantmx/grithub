@@ -93,7 +93,7 @@ $headings-color: inherit !default;
 
 
 // Grid
-$grid-columns: 11 !default;
+$grid-columns: 12 !default;
 
 $screen-xs: 400px; // mobile landscape
 $screen-sm: 568px; // tablet portrait
@@ -124,7 +124,7 @@ $grid-breakpoints: (
 //
 // Set the number of columns and specify the width of the gutters.
 
-$grid-gutter-width: 30px !default;
+$grid-gutter-width: 20px !default;
 
 
 // buttons

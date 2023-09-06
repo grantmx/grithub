@@ -1,48 +1,60 @@
-import clsx from "clsx";
+import utils from 'styles/globals/utils.module.scss';
 import Style from "./Profile.module.scss";
-import Link from "next/link";
+
+import clsx from "clsx";
 import Image from "next/image";
+import noImage from "public/assets/avatar.svg"
 
 
-
-function Personal(){
+function Personal({ 
+    first_name, 
+    last_name, 
+    email, 
+    phone, 
+    home_address, 
+    home_city, 
+    home_provence, 
+    home_country,
+    home_postal,
+    preferred_name 
+}){
     return(
-        <li className={Style.submission}>
-            <header className={Style.submissionHeading}>
-                <h2 className={Style.submissionTitle}>
-                    Personal Information
-                </h2>
-            </header>
-
+        <li className={clsx(Style.submission, Style.submissionNoMark)}>
             <div className={clsx(Style.body, Style.bodyRow)}>
                 <Image 
-                    src="https://preview.keenthemes.com/keen/demo1/assets/media//avatars/300-1.jpg"
-                    width={300}
-                    height={300}
+                    src={noImage}
+                    width={200}
+                    height={200}
                     alt="John M. Smith"
                     className={Style.image}
                 />
 
 
-                <dl className={clsx(Style.list, Style.listCol)}>
-                    <div className={Style.listGroup}>
-                        <dd>John M. Smith</dd>
-                        <dt>Full Name</dt>
+                <dl className={clsx(Style.list, Style.listRow)}>
+                    <div className={clsx(Style.listGroup, utils.pe_6)}>
+                        <dd className={clsx(utils.fs_1, Style.span)}>
+                            {first_name} {last_name}
+                        </dd>
+                        <dd>Preferred Name: {preferred_name}</dd>
                     </div>
 
                     <div className={Style.listGroup}>
-                        <dd>john.smith@example.com</dd>
-                        <dt>Email</dt>
-                    </div>
-
-                    <div className={Style.listGroup}>
-                        <dd>(123) 456-7890</dd>
-                        <dt>Phone</dt>
-                    </div>
-
-                    <div className={Style.listGroup}>
-                        <dd>123 Main Street<br/>Somewhere, GA 3000</dd>
+                        <dd>
+                            {home_address}<br/>
+                            {home_city}, {home_postal} {home_provence}<br/> 
+                            {home_country}
+                        </dd>
                         <dt>Address</dt>
+                    </div>
+
+                    <div className={Style.listGroup}>
+                        <dd>
+                            <a href={`mailto:${email}`}>{email}</a>
+                        </dd>
+                        <dt className={utils.mb_2}>Email</dt>
+
+                        <dd>{phone}</dd>
+                        <dt>Phone</dt>
                     </div>
                 </dl>
             </div>

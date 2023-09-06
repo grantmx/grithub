@@ -13,13 +13,13 @@ function Layout({ children }){
     return (
         <>
             <DefaultSeo titleTemplate = '%s | GRITHub Admin' />
+            
+            <ToolBar />
 
             <main className={Style.block}>
                 <MainNav />
                 
                 <div className={Style.outer}>
-                    <ToolBar />
-
                     <Header />
 
                     <section className={Style.wrapper}>

@@ -1,0 +1,23 @@
+@import "styles/globals/variables";
+@import "styles/globals/gridUtils.module.scss";
+
+.block{
+	display: flex;
+	flex-direction: column;
+
+	@media screen and (max-width: $screen-md){
+		flex-direction: column !important;
+		flex-wrap: wrap;
+	}
+
+	@media screen and (max-width: $screen-sm){
+		grid-area: none / 1 / none / 10 !important;
+		width: 100%;
+	}
+
+}
+
+.noWrap{
+	flex-wrap: nowrap !important;
+}
+

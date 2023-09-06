@@ -47,7 +47,6 @@ function MainNav(){
                 type: "updateGlobalHeading",
                 data: path[1]
             })
-
         }
         
 
@@ -57,10 +56,8 @@ function MainNav(){
 
     return(
         <nav className={Style.block}>
-            <Logo />
-
-
-            <Divider className={Style.logoSpacer} />
+            {/* <Logo /> */}
+            {/* <Divider className={Style.logoSpacer} /> */}
 
             {/* 
                 TO DO 

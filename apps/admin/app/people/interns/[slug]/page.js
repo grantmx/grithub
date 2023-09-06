@@ -5,6 +5,11 @@ import Style from "./Intern.module.scss"
 import { useContext, useEffect, useState } from "react";
 import { InternContext } from "../_context/InternContext";
 import { useSearchParams } from "next/navigation";
+import Education from "components/profile/Education";
+import Essay from "components/profile/Essay";
+import Upload from "components/profile/Upload";
+import Employment from "components/profile/Employment";
+import Card from "components/display/Card";
 
 
 function Intern(){
@@ -26,11 +31,15 @@ function Intern(){
 
 
     return(
-        <section className={Style.block}>
+        <Card>
             <ol className={Style.submissionCntr}>
-                <Personal />
+                <Personal {...internData} />
+                <Education {...internData} />
+                <Employment {...internData} />
+                <Essay {...internData} />
+                <Upload {...internData} />
             </ol>
-        </section>
+        </Card>
     )
 }
 

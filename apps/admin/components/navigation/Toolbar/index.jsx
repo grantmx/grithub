@@ -9,6 +9,9 @@ import Logo from "../Logo";
 function ToolBar(){
     return(
         <ul className={Style.block}>
+            <div className={Style.logoBlock}>
+                <Logo />
+            </div>
             <Search />
             <Notification />
             <User />

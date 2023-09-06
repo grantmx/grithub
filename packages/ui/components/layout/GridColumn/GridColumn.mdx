@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from "@storybook/addon-docs";
+import Grid from "../grid/GridColumn";
+
+<Meta title="Layout/GridColumn" component={GridColumn} />
+
+# Grid Column
+
+<br />
+
+### Import
+```javascript
+import GridColumn from "components/layout/GridColumn";
+```
+
+<br />
+
+## Example
+
+
+export const Template = (args) => (
+    <GridColumn></GridColumn>
+);
+
+<Canvas withSource="open">
+	<Story
+		name="Grid Column"
+		
+	>
+		{ args => (
+           <GridColumn></GridColumn>
+        )}
+	</Story>    
+</Canvas>
+
+
+<br />
+
+
+## Props
+
+| Name  | Type |  Default | Description |
+| ------------- | ------------- | ------------- | ------------- |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  | Content Cell  | Content Cell  |

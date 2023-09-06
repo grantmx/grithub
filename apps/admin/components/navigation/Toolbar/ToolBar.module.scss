@@ -11,9 +11,9 @@
     justify-content: flex-end;
     width: 100%;
     padding: 0 4rem 0 2rem;
-    // border-bottom: 1px dotted #333;
-    // box-shadow: $box-shadow-lg;
-    // background: $container;
+    border-bottom: 1px dotted #333;
+    box-shadow: $box-shadow-lg;
+    background: $container;
 
     @media screen and (max-width: $screen-md){
         padding: 0 1rem;

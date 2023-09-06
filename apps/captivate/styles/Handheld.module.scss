@@ -1,0 +1,131 @@
+@import "ui/styles/globals/variables";
+
+
+.block{
+    background: rgb(42,40,51);
+    background: radial-gradient(circle, rgba(42,40,51,1) 25%, rgba(27,26,33,1) 100%);
+    height: 100dvh;
+    position: relative;
+}
+
+.wrapper{
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+}
+
+.backgroundImage{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: .15;
+    z-index: 1;
+}
+
+.col{
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+}
+
+.homeLogo{
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+}
+
+.heading{
+    font-weight: 200;
+    font-size: 5rem;
+    color: $white;
+    margin-bottom: 6rem;
+    text-align: center;
+}
+
+.cardHeading{
+    font-weight: 200;
+    font-size: 3.6rem;
+    color: $white;
+    width: 50%;
+    line-height: 1.2;
+}
+
+.cardIcon{
+    height: 80%;
+    fill: $white;
+}
+
+.touchCard{
+    width: 100%;
+    height: 175px;
+    margin: 0 0 4rem 0 !important;
+
+    &:last-child{
+        margin-bottom: 0 !important;
+    }
+}
+
+.cardLink{
+    color: inherit;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+
+    &:hover{
+        text-decoration: none;
+    }
+}
+
+.control{
+    height: 75px !important;
+    max-height: unset;
+    font-size: 2.1rem;
+
+    & ~ label{
+        font-size: 1.8rem;
+    }
+}
+
+.buttonRow{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.transButton{
+    background-color: transparent;
+    color: $white;
+    font-size: 2.4rem;
+
+    &:hover{
+        text-decoration: none;
+        color: inherit;
+        
+        & svg{
+            opacity: .5;
+        };
+    }
+}
+
+.helpText{
+    text-align: center;
+}
+
+
+.signature{
+    background-color: $white;
+    margin: 0 0 4rem 0;
+    width: 100%;
+    height: 300px;
+}
+

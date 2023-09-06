@@ -1,0 +1,39 @@
+@use "sass:math";
+
+// calculates each grid column
+@mixin calc-grid-column($index, $class, $columns) {
+	.span_#{$class}_#{$index} {
+		grid-template-columns: repeat($index, minmax(math.div($standard-column-width, $index), 1fr)) !important;
+	}
+
+	.#{$class}_#{$index} {
+		width: math.div($standard-column-width, $columns - 1) * ($index) !important;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.gridStart_#{$class}_#{$index}{
+		grid-column-start: #{$index} !important;
+	}
+
+	.gridEnd_#{$class}_#{$index}{
+		grid-column-end: #{$index} !important;
+	}
+}
+
+// loops each column to serve calculating each grid column
+@mixin loop-grid-columns($columns, $class) {
+	@for $i from 1 through $columns {
+		@include calc-grid-column($i, $class, $columns);
+	}
+}
+
+// Create grid for specific class
+@mixin make-grid-items($class) {
+	@include loop-grid-columns($grid-columns, $class);
+}
+
+// makes the default grid type
+@mixin make-default-grid() {
+	@include loop-grid-columns($grid-columns, null);
+}

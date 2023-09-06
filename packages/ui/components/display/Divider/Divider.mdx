@@ -1,0 +1,41 @@
+import { Meta, Story, Canvas, ArgsTable } from "@storybook/addon-docs";
+import Divider from 'components/display/Divider/Divider';
+
+<Meta title="Display/Divider" component={Divider} />
+
+# Divider
+A Divider is a thin line used to separate content in lists and layouts.
+
+<br />
+
+### Import
+```javascript
+import {Divider} from "components/display";
+```
+
+<br />
+
+## Example
+
+
+export const Template = (args) => (
+    <Divider {...args}></Divider>
+);
+
+<Canvas withSource="open">
+	<Story
+		name="Divider"
+		   args={{ 
+				orientation: "horizontal",
+				color: "dark",
+				capped: true,
+           }}
+	>
+     {Template.bind({})}
+	</Story>    
+</Canvas>
+
+<br />
+
+## Props
+<ArgsTable story="Divider" />

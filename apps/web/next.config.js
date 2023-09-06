@@ -15,11 +15,11 @@ module.exports = {
     },
     async redirects() {
         return [
-            {
-                source: '/programs/internship/apply',
-                destination: '/programs/internship',
-                permanent: false,
-            },
+            // {
+            //     source: '/programs/internship/apply',
+            //     destination: '/programs/internship',
+            //     permanent: false,
+            // },
             {
                 source: '/dojo',
                 destination: '/programs/dojo',

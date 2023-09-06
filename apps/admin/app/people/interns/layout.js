@@ -10,9 +10,15 @@ async function InterLayout({ children }){
         documentCollection: "2023"
     })
 
+    const internData = interns.map(intern => {
+        return {
+            ...intern,
+            created: null
+        }
+    })
 
     return(
-        <InternContextProvider interns={interns}>
+        <InternContextProvider interns={internData}>
             {children}
         </InternContextProvider>
     )

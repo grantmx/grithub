@@ -2,6 +2,7 @@ import { GlobalContext } from 'contexts/GlobalContext';
 import { NextSeo } from 'next-seo';
 import { useContext } from 'react';
 import Style from './Header.module.scss'
+import Breadcrumbs from 'components/navigation/Breadcrumbs';
 
 
 function Header(){
@@ -15,7 +16,9 @@ function Header(){
                 <h1 className={Style.title}>
                     {global.heading}
                 </h1>
-            </header>
+
+                <Breadcrumbs />
+            </header> 
         </>
     )
 }

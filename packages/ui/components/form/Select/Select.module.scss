@@ -1,0 +1,150 @@
+@import "styles/globals/variables";
+@import 'styles/globals/placeholders';
+
+
+.block {
+    position: relative;
+    width: auto;
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    margin: 2rem 0 0 0;
+    transition: all 0.2s ease;
+
+
+    &::after {
+        @extend %dark-arrow;
+        transform: rotate(90deg);
+        right: 1.5rem;
+    }
+
+    &__ocean {
+        &::after {
+            border-left-color: $ocean;
+        }
+    }
+}
+
+.activeBlock{
+    &::after{
+        transform: rotate(-90deg);
+    }
+}
+
+
+.error {
+    &__label {
+        color: $terracotta !important;
+    }
+
+    &__control {
+        border-color: $terracotta !important;
+    }
+
+    &__help {
+        color: $terracotta !important;
+    }
+}
+
+.label {
+    @extend %standard-control-label;
+
+    &__ocean {
+        color: $ocean;
+    }
+}
+
+.control {
+    @extend %standard-control;
+
+    &__ocean {
+        color: $ocean;
+        border-color: $ocean;
+    }
+}
+
+.help{
+    @extend %standard-control-help-text;
+}
+
+.controlGroup{
+    position: relative;
+}
+
+.controlGroupActive{
+    overflow: visible;
+}
+
+.menu{
+    position: absolute;
+    list-style: none;
+    margin: 2px 0 0 0;
+    padding: 0;
+    outline: 0px;
+    opacity: 0;
+    background-color: rgb(18, 18, 18);
+    color: rgb(255, 255, 255);
+    transition: box-shadow 500ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    border-radius: 4px;
+    box-shadow: rgb(0 0 0 / 20%) 0px 5px 5px -3px, rgb(0 0 0 / 14%) 0px 8px 10px 1px, rgb(0 0 0 / 12%) 0px 3px 14px 2px;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.12));
+    overflow: hidden auto;
+    width: 100%;
+    outline: 0px;
+    z-index: 9;
+    left: 9999px;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @extend %scrolling-inner;
+
+    @media only screen and (max-width: $screen-md ) {
+        display: none;
+    }
+}
+
+.active{
+    opacity: 1;
+    transform: none;
+    transition: opacity 400ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, transform 178ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    transform-origin: 60px 0px;
+    left: 0;
+    display: block;
+}
+
+
+.menuItem{
+    -webkit-tap-highlight-color: transparent;
+    background-color: transparent;
+    outline: 0px;
+    border: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    cursor: pointer;
+    user-select: none;
+    vertical-align: middle;
+    appearance: none;
+    color: inherit;
+    line-height: 1.5;
+    display: flex;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    text-decoration: none;
+    min-height: 48px;
+    padding: .5rem 1.5rem;
+    box-sizing: border-box;
+    white-space: nowrap;
+
+    &:hover{
+        text-decoration: none;
+        background-color: rgba(255, 255, 255, 0.08);
+    }
+}
+
+.menuItemSelected{
+    background-color: rgba(144, 202, 249, 0.16);
+}
+

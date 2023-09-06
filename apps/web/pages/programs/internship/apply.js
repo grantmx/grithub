@@ -142,9 +142,9 @@ function InternshipApplication(){
         const formObject = { ...data }
 
         // remove unsupported File fields for Firestore
-        delete formObject.CV;
-        delete formObject.ID;
-        delete formObject.diploma;
+        // delete formObject.CV;
+        // delete formObject.ID;
+        // delete formObject.diploma;
 
         firebaseService.setCollectionDocument({ 
             rootCollection: "internships",
@@ -153,9 +153,9 @@ function InternshipApplication(){
             key: `${data?.first_name} ${data?.last_name}`,
             data: {
                 ...formObject,
-                cvURL,
-                idURL,
-                certURL
+                // cvURL,
+                // idURL,
+                // certURL
             }
 
         }).then(response => {
@@ -228,7 +228,7 @@ function InternshipApplication(){
                             </div>
 
 
-                            <div className="col-md-12">
+                            <div className="col-md-6">
                                 <div className="form-floating">
                                     <input 
                                         className="form-control" 
@@ -240,6 +240,45 @@ function InternshipApplication(){
 
                                     <label htmlFor="preferred_name">
                                         Preferred Name (Optional)
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="col-md-6">
+                                <div className="form-floating">
+                                    <select 
+                                        required
+                                        className="form-select" 
+                                        id="gender" 
+                                        name="gender"
+                                        {...register("gender")}
+                                    >
+                                        <option></option>
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                        <option>Rather not say</option>
+                                    </select>
+
+                                    <label htmlFor="gender">
+                                        Gender
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="col-md-6">
+                                <div className="form-floating">
+                                    <input 
+                                        required 
+                                        className="form-control" 
+                                        id="birthday" 
+                                        type="date"
+                                        name="birthday"
+                                        max={new Date().toISOString().split("T")[0]}
+                                        {...register("birthday")}
+                                    />
+
+                                    <label htmlFor="birthday">
+                                        Birthday
                                     </label>
                                 </div>
                             </div>
@@ -589,17 +628,24 @@ function InternshipApplication(){
 
                                     <div className="col-md-6">
                                         <div className="form-floating">
-                                            <input 
-                                                required 
-                                                className="form-control" 
-                                                id="school_degree" 
-                                                type="input"
-                                                name="school_degree"
-                                                {...register("school_degree")}
-                                            />
+                                            <select 
+                                                required
+                                                className="form-select" 
+                                                id="school_diploma_status" 
+                                                name="school_diploma_status"
+                                                {...register("school_diploma_status")}
+                                            >
+                                                <option></option>
+                                                <option>Higher Certificate</option>
+                                                <option>(National) Diploma</option>
+                                                <option>Bachelor's Degree</option>
+                                                <option>Bachelor Honours Degree</option>
+                                                <option>Master Degree</option>
+                                                <option>Doctoral Degree (PhD)</option>
+                                            </select>
 
-                                            <label htmlFor="school_degree">
-                                                Degree*
+                                            <label htmlFor="school_diploma">
+                                                Diploma/Degree*
                                             </label>
                                         </div>
                                     </div>
@@ -609,9 +655,9 @@ function InternshipApplication(){
                                             <select 
                                                 required
                                                 className="form-select" 
-                                                id="school_degree_status" 
-                                                name="school_degree_status"
-                                                {...register("school_degree_status")}
+                                                id="school_diploma_status" 
+                                                name="school_diploma_status"
+                                                {...register("school_diploma_status")}
                                             >
                                                 <option></option>
                                                 <option>Graduated</option>
@@ -619,8 +665,8 @@ function InternshipApplication(){
                                                 <option>Now Attending</option>
                                             </select>
 
-                                            <label htmlFor="school_degree_status">
-                                                Degree Status*
+                                            <label htmlFor="school_diploma_status">
+                                                Diploma/Degree Status*
                                             </label>
                                         </div>
                                     </div>
@@ -637,7 +683,7 @@ function InternshipApplication(){
                                             />
 
                                             <label htmlFor="school_major">
-                                                Major / Area of Study*
+                                                Diploma/Degree Area of Study*
                                             </label>
                                         </div>
                                     </div>
@@ -1085,7 +1131,7 @@ function InternshipApplication(){
                             </strong>
                         </p>
                         
-                        <p className="mb-5">
+                        {/* <p className="mb-5">
                             Your Curriculum Vitae (CV)* {errors.CV && <small className="text-danger">- {errors.CV.message}</small>}<br/>
                             <input 
                                 className={clsx("form-control", errors.CV && "is-invalid")}
@@ -1095,9 +1141,9 @@ function InternshipApplication(){
                             />
                             <small className="form-text">Accepted formats: doc, docx, pdf, jpg, png, gif</small>
                             
-                        </p>
+                        </p> */}
                         
-                        <p className="mb-5">
+                        {/* <p className="mb-5">
                             Your SA ID or Passport* {errors.ID && <small className="text-danger">- {errors.ID.message}</small>}<br/>
                             <input 
                                  className={clsx("form-control", errors.ID && "is-invalid")}
@@ -1106,10 +1152,10 @@ function InternshipApplication(){
                                 {...register("ID", { required: true })}
                             />
                             <small className="form-text">Accepted formats: doc, docx, pdf, jpg, png, gif</small>
-                        </p>
+                        </p> */}
 
 
-                        <p className="mb-5">
+                        {/* <p className="mb-5">
                             Your Senior Certificate or High School Diploma* {errors.diploma && <small className="text-danger">- {errors.diploma.message}</small>}<br/>
                             <input 
                                  className={clsx("form-control", errors.diploma && "is-invalid")}
@@ -1118,7 +1164,7 @@ function InternshipApplication(){
                                 {...register("diploma", { required: true })}
                             />
                             <small className="form-text">Accepted formats: doc, docx, pdf, jpg, png, gif</small>
-                        </p>
+                        </p> */}
                        
                     </div>
                 </div>
