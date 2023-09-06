@@ -13,6 +13,10 @@ import { useRef } from 'react';
 function Sign(){
     const signPad = useRef()
 
+    function clear(){
+        signPad.current.clear()
+    }
+
     return(
         <Grid>
             <GridColumn start={3} end={9} className={Style.col}>
