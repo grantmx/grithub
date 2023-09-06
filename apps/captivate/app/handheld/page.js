@@ -10,7 +10,7 @@ import PageTransition from "components/PageTransition";
 import Sign from "components/Handheld/Sign";
 
 
-function handheld(){
+function HandheldSignUp(){
     const searchParams = useSearchParams()
     const step = searchParams.get('step')
 
@@ -36,4 +36,4 @@ function handheld(){
 }
 
 
-export default handheld;
+export default HandheldSignUp;
