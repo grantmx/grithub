@@ -33,3 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 *.psd
+*.gz
+apps/captivate/.next/cache/webpack/client-development/0.pack.gz
+apps/captivate/.next/cache/webpack/client-development/0.pack.gz
+apps/captivate/.next/cache/webpack/client-development/0.pack.gz
+*.gz
+*.old

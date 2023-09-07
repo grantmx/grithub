@@ -12,9 +12,9 @@ import logo from "ui/assets/grithub-logo-vertical-all-white.svg"
 function Handheld(){
     return(
         <Grid>
-            <GridColumn start={2} end={5} className={Style.col}>
+            <GridColumn start={2} end={6} className={Style.col}>
                 <h1 className={Style.heading}>
-                    Registration Options
+                    Registration
                 </h1>
 
                 <Card theme="opaque" className={Style.touchCard}>
@@ -51,7 +51,7 @@ function Handheld(){
             </GridColumn>
 
             
-            <GridColumn start={5} end={7} className={Style.col}>
+            <GridColumn start={6} end={7} className={Style.col}>
                 <Divider orientation="vertical" width="1px" height="75%" color="light" />
             </GridColumn>
 
