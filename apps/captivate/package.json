@@ -17,10 +17,11 @@
     "react-scripts": "5.0.1",
     "react-signature-canvas": "^1.0.6",
     "twilio": "^4.11.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "ui": "*"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
