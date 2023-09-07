@@ -1801,6 +1801,11 @@
   position: absolute;
   z-index: 2;
   inset: 0;
+  width: 100dvw;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
 .Handheld_backgroundImage__vYkXA {
@@ -1830,28 +1835,28 @@
 
 .Handheld_heading__3_HHs {
   font-weight: 200;
-  font-size: 5rem;
+  font-size: 4rem;
   color: #fff;
-  margin-bottom: 6rem;
+  margin-bottom: 3rem;
   text-align: center;
 }
 
 .Handheld_cardHeading__rkxXe {
   font-weight: 200;
-  font-size: 3.6rem;
+  font-size: 3rem;
   color: #fff;
   width: 50%;
   line-height: 1.2;
 }
 
 .Handheld_cardIcon__ojU4Q {
-  height: 80%;
+  height: 75%;
   fill: #fff;
 }
 
 .Handheld_touchCard__dVMY9 {
   width: 100%;
-  height: 175px;
+  height: 150px;
   margin: 0 0 4rem 0 !important;
 }
 .Handheld_touchCard__dVMY9:last-child {
@@ -1907,9 +1912,9 @@
 
 .Handheld_signature__z6bnM {
   background-color: #fff;
-  margin: 0 0 4rem 0;
+  margin: 0 0 2rem 0;
   width: 100%;
-  height: 300px;
+  height: 200px;
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/Input/Input.module.scss ***!
