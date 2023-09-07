@@ -42,7 +42,7 @@ function Handheld(){
                 </Card>
 
                 <div className={Style.helpText}>
-                    <p>*GRIT Hub Members can speed up their sign-in by taping their member card or their mobile phone using our app installed on your phone.</p>
+                    <p>*GRIT Hub Members can speed up their sign-in by taping their member card or their mobile phone using our app.</p>
                 
                     <p>
                         <small>&copy;2023 Garden Route Innovation & Technology Hub, NPC.  All Rights Reserved.</small>
