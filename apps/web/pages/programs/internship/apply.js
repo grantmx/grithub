@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { provence } from "lib/provence";
 import { countries } from "lib/countries";
 import { useForm } from "react-hook-form";
-import FirebaseService from "services/firebase/Firebase.service";
+import FirebaseService from "ui/services/firebase/Firebase.service"
 import { getDownloadURL } from "firebase/storage";
 import Loader from "../../../components/feedback/Loader";
 import { useRouter } from "next/navigation";
