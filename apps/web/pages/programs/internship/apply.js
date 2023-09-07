@@ -1125,11 +1125,11 @@ function InternshipApplication(){
                         <hr />
 
 
-                        <p>
+                        {/* <p>
                             <strong className="my-5">
                                 Upload the following documents:
                             </strong>
-                        </p>
+                        </p> */}
                         
                         {/* <p className="mb-5">
                             Your Curriculum Vitae (CV)* {errors.CV && <small className="text-danger">- {errors.CV.message}</small>}<br/>
