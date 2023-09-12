@@ -29,6 +29,7 @@
         "react-dom": "^18.2.0",
         "react-firebase-hooks": "^5.1.1",
         "react-hook-form": "^7.43.9",
+        "react-modal": "^3.16.1",
         "react-popper": "^2.3.0",
         "sass": "^1.58.0",
         "twilio": "^4.11.1",

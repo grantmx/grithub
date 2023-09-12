@@ -72,7 +72,7 @@ h6 {
 p {
   margin-top: 0;
   line-height: 1.5;
-  margin-bottom: 3rem;
+  margin-bottom: 3.2rem;
 }
 
 abbr[title],
@@ -418,7 +418,7 @@ html {
 
 body {
   font-family: "Roboto" sans-serif;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #949398;
   background-color: rgb(27, 26, 33);
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -429,7 +429,7 @@ body {
 }
 @media only screen and (max-width: 850px) {
   body {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -437,7 +437,7 @@ input,
 textarea,
 select,
 textarea {
-  font: normal 1.4rem "Proxima Nova", Helvetica, Arial, sans-serif;
+  font: normal 1.6rem "Proxima Nova", Helvetica, Arial, sans-serif;
 }
 
 input,
@@ -447,7 +447,7 @@ select {
   border-radius: 8px;
   color: #949398;
   display: inline-block;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1;
   vertical-align: middle;
 }
@@ -491,7 +491,7 @@ fieldset {
 legend {
   padding: 0;
   display: block;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   line-height: 1;
   margin: 0;
   color: #949398;
@@ -499,7 +499,7 @@ legend {
 }
 
 label {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   display: inline-block;
   color: #949398;
   line-height: 1;
@@ -580,17 +580,17 @@ input:autofill {
     clip-path: inset(0.6px);
   }
 }
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./styles/Handheld.module.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.Handheld_block__Zqf0O {
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./components/Handheld/styles/Handheld.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Handheld_block__K5Mi4 {
   background: rgb(42, 40, 51);
   background: radial-gradient(circle, rgb(42, 40, 51) 25%, rgb(27, 26, 33) 100%);
   height: 100dvh;
   position: relative;
 }
 
-.Handheld_wrapper__hkTQt {
+.Handheld_wrapper__QIkFG {
   position: absolute;
   z-index: 2;
   inset: 0;
@@ -601,7 +601,7 @@ input:autofill {
   justify-content: center;
 }
 
-.Handheld_backgroundImage__vYkXA {
+.Handheld_backgroundImage__f5Cdt {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -612,7 +612,7 @@ input:autofill {
   z-index: 1;
 }
 
-.Handheld_col__LOPI0 {
+.Handheld_col___KmCZ {
   flex-direction: column;
   align-content: center;
   align-items: center;
@@ -620,21 +620,28 @@ input:autofill {
   height: 100dvh;
 }
 
-.Handheld_homeLogo__NDIQT {
+.Handheld_row__0rmEU {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Handheld_homeLogo__r9yxX {
   width: 90%;
   height: 90%;
   object-fit: contain;
 }
 
-.Handheld_heading__3_HHs {
+.Handheld_heading__7wK_Y {
   font-weight: 200;
   font-size: 4rem;
   color: #fff;
   margin-bottom: 3rem;
   text-align: center;
+  line-height: 1.2;
 }
 
-.Handheld_cardHeading__rkxXe {
+.Handheld_cardHeading__cbdJl {
   font-weight: 200;
   font-size: 3rem;
   color: #fff;
@@ -642,21 +649,22 @@ input:autofill {
   line-height: 1.2;
 }
 
-.Handheld_cardIcon__ojU4Q {
-  height: 75%;
+.Handheld_cardIcon__NwRSL {
+  height: 90%;
   fill: #fff;
 }
 
-.Handheld_touchCard__dVMY9 {
+.Handheld_touchCard__6AcYv {
   width: 100%;
   height: 150px;
   margin: 0 0 4rem 0 !important;
+  padding: 2rem 1rem;
 }
-.Handheld_touchCard__dVMY9:last-child {
+.Handheld_touchCard__6AcYv:last-child {
   margin-bottom: 0 !important;
 }
 
-.Handheld_cardLink___qCNV {
+.Handheld_cardLink__Xv3rL {
   color: inherit;
   display: flex;
   flex-direction: row;
@@ -665,20 +673,21 @@ input:autofill {
   width: 100%;
   height: 100%;
 }
-.Handheld_cardLink___qCNV:hover {
+.Handheld_cardLink__Xv3rL:hover {
   text-decoration: none;
 }
 
-.Handheld_control__INMxG {
+.Handheld_control__cp0ui {
   height: 75px !important;
   max-height: unset;
   font-size: 2.1rem;
 }
-.Handheld_control__INMxG ~ label {
+.Handheld_control__cp0ui ~ label {
   font-size: 1.8rem;
+  top: 25px;
 }
 
-.Handheld_buttonRow__dZqB7 {
+.Handheld_buttonRow__X_vhd {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -686,26 +695,130 @@ input:autofill {
   align-items: center;
 }
 
-.Handheld_transButton__C_IC7 {
+.Handheld_transButton__eQyla {
   background-color: transparent;
   color: #fff;
   font-size: 2.4rem;
 }
-.Handheld_transButton__C_IC7:hover {
+.Handheld_transButton__disabled__hYEsM {
+  cursor: not-allowed;
+  opacity: 0.25;
+}
+.Handheld_transButton__eQyla:hover {
   text-decoration: none;
   color: inherit;
 }
-.Handheld_transButton__C_IC7:hover svg {
+.Handheld_transButton__eQyla:hover__disabled svg {
+  opacity: inherit;
+}
+.Handheld_transButton__eQyla:hover svg {
   opacity: 0.5;
 }
 
-.Handheld_helpText__Rdz0N {
+.Handheld_helpText__3nhAz {
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.Handheld_signature__z6bnM {
+.Handheld_text__a_u84 {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.Handheld_text__a_u84 small {
+  width: 100%;
+}
+
+.Handheld_signature___scTS {
   background-color: #fff;
-  margin: 0 0 2rem 0;
   width: 100%;
   height: 200px;
+}
+
+.Handheld_canvasCntr__OmVQY {
+  margin: 0 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.Handheld_canvasControls___TBnJ {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Handheld_canvasButton__cWKHq {
+  padding: 1rem;
+  width: auto;
+  flex: 1 0 auto;
+  margin-top: 1px;
+  color: #353E5D;
+}
+.Handheld_canvasButton__cWKHq:first-child {
+  margin-right: 1px;
+}
+
+.Handheld_qrImage__c8ELL {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.Handheld_modalBlock__3_qKn {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.Handheld_modalTopIcon__qJ1XM {
+  padding: 12rem 2rem 0 2rem;
+}
+
+.Handheld_modalHeading__VBwXo {
+  font-size: 4rem;
+  color: #353E5D;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 200;
+}
+
+.Handheld_counterCntr__p4Fzt {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  margin-left: -90px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1rem;
+  font-size: 6rem;
+  line-height: 1;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.Handheld_successIcon__8N0Ro {
+  width: 180px;
+  fill: #238636;
+}
+
+.Handheld_errorIcon__cUuWF {
+  width: 180px;
+  fill: #F1416C;
+}
+
+.Handheld_tapArea__FZfWz {
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.Handheld_tapArea__FZfWz img {
+  height: 400px;
+  object-fit: contain;
+  width: auto;
 }

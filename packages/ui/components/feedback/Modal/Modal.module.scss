@@ -1,0 +1,138 @@
+@import 'ui/styles/globals/placeholders';
+@import 'ui/styles/globals/mixins/font';
+
+
+.body{
+    width: 50vw;
+    background-color: #fff;
+    border-radius: $border-radius;
+    position: relative;
+    padding: 0  4rem 4rem 4rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: $box-shadow-lg;
+    overflow: visible;
+    max-height: 90vh;
+    outline: none;
+
+    @media screen and (max-width: $screen-md){
+        padding: 0 20px 20px 20px;
+        height: 90vh;
+        overflow: auto;
+    }
+
+    &_sm{
+        width: 40vw;
+
+        @media screen and (max-width: $screen-md){
+            width: 95vw;
+        }
+    }
+
+    &_md{
+        width: 50vw;
+
+        @media screen and (max-width: $screen-md){
+            width: 95vw;
+        }
+    }
+
+    &_lg{
+        width: 90vw;
+
+        @media screen and (max-width: $screen-md){
+            width: 95vw;
+        }
+    }
+}
+
+.padTop{
+    padding-top: 4rem !important;
+}
+
+.underlay{
+    @extend %modal-underlay
+}
+
+.heading{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    border-bottom: 1px solid $dove;
+
+    @media screen and (max-width: $screen-md){
+        flex-direction: column;
+    }
+}
+
+.header{
+    margin: 0 !important;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-content: center;
+    align-items: center;
+
+    @media screen and (max-width: $screen-md){
+        padding: 0 0 1rem 0;
+        order: 2;
+        text-align: center;
+    }
+}
+
+.iconDone{
+    margin-right: 1rem;
+    fill: $green
+}
+
+.closeBtn{
+    padding: 2rem 0 2rem 2rem;
+    flex: 1 0 auto;
+    width: auto;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: flex-end;
+    background-color: transparent;
+    color: $ocean;
+    @include dynamic-font(18, 24);
+    line-height: 1;
+
+    & svg{
+        fill: $ocean;
+    }
+
+    @media screen and (max-width: $screen-md){
+        order: 0;
+        width: 100%;
+        padding: 1rem 0 1rem 1rem;
+    }
+}
+
+.customCloseIcon{
+    transform: rotate(180deg);
+    margin-left: .5rem;
+    margin-top: 4px;
+}
+
+
+
+@keyframes remodal-overlay-opening-keyframes {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes remodal-overlay-closing-keyframes {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}

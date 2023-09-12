@@ -1787,17 +1787,17 @@
   width: 2px;
   align-self: stretch;
 }
-/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./styles/Handheld.module.scss ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.Handheld_block__Zqf0O {
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./components/Handheld/styles/Handheld.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Handheld_block__K5Mi4 {
   background: rgb(42, 40, 51);
   background: radial-gradient(circle, rgb(42, 40, 51) 25%, rgb(27, 26, 33) 100%);
   height: 100dvh;
   position: relative;
 }
 
-.Handheld_wrapper__hkTQt {
+.Handheld_wrapper__QIkFG {
   position: absolute;
   z-index: 2;
   inset: 0;
@@ -1808,7 +1808,7 @@
   justify-content: center;
 }
 
-.Handheld_backgroundImage__vYkXA {
+.Handheld_backgroundImage__f5Cdt {
   object-fit: cover;
   width: 100%;
   height: 100%;
@@ -1819,7 +1819,7 @@
   z-index: 1;
 }
 
-.Handheld_col__LOPI0 {
+.Handheld_col___KmCZ {
   flex-direction: column;
   align-content: center;
   align-items: center;
@@ -1827,21 +1827,28 @@
   height: 100dvh;
 }
 
-.Handheld_homeLogo__NDIQT {
+.Handheld_row__0rmEU {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.Handheld_homeLogo__r9yxX {
   width: 90%;
   height: 90%;
   object-fit: contain;
 }
 
-.Handheld_heading__3_HHs {
+.Handheld_heading__7wK_Y {
   font-weight: 200;
   font-size: 4rem;
   color: #fff;
   margin-bottom: 3rem;
   text-align: center;
+  line-height: 1.2;
 }
 
-.Handheld_cardHeading__rkxXe {
+.Handheld_cardHeading__cbdJl {
   font-weight: 200;
   font-size: 3rem;
   color: #fff;
@@ -1849,21 +1856,22 @@
   line-height: 1.2;
 }
 
-.Handheld_cardIcon__ojU4Q {
-  height: 75%;
+.Handheld_cardIcon__NwRSL {
+  height: 90%;
   fill: #fff;
 }
 
-.Handheld_touchCard__dVMY9 {
+.Handheld_touchCard__6AcYv {
   width: 100%;
   height: 150px;
   margin: 0 0 4rem 0 !important;
+  padding: 2rem 1rem;
 }
-.Handheld_touchCard__dVMY9:last-child {
+.Handheld_touchCard__6AcYv:last-child {
   margin-bottom: 0 !important;
 }
 
-.Handheld_cardLink___qCNV {
+.Handheld_cardLink__Xv3rL {
   color: inherit;
   display: flex;
   flex-direction: row;
@@ -1872,20 +1880,21 @@
   width: 100%;
   height: 100%;
 }
-.Handheld_cardLink___qCNV:hover {
+.Handheld_cardLink__Xv3rL:hover {
   text-decoration: none;
 }
 
-.Handheld_control__INMxG {
+.Handheld_control__cp0ui {
   height: 75px !important;
   max-height: unset;
   font-size: 2.1rem;
 }
-.Handheld_control__INMxG ~ label {
+.Handheld_control__cp0ui ~ label {
   font-size: 1.8rem;
+  top: 25px;
 }
 
-.Handheld_buttonRow__dZqB7 {
+.Handheld_buttonRow__X_vhd {
   display: flex;
   width: 100%;
   flex-direction: row;
@@ -1893,28 +1902,132 @@
   align-items: center;
 }
 
-.Handheld_transButton__C_IC7 {
+.Handheld_transButton__eQyla {
   background-color: transparent;
   color: #fff;
   font-size: 2.4rem;
 }
-.Handheld_transButton__C_IC7:hover {
+.Handheld_transButton__disabled__hYEsM {
+  cursor: not-allowed;
+  opacity: 0.25;
+}
+.Handheld_transButton__eQyla:hover {
   text-decoration: none;
   color: inherit;
 }
-.Handheld_transButton__C_IC7:hover svg {
+.Handheld_transButton__eQyla:hover__disabled svg {
+  opacity: inherit;
+}
+.Handheld_transButton__eQyla:hover svg {
   opacity: 0.5;
 }
 
-.Handheld_helpText__Rdz0N {
+.Handheld_helpText__3nhAz {
   text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
-.Handheld_signature__z6bnM {
+.Handheld_text__a_u84 {
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+.Handheld_text__a_u84 small {
+  width: 100%;
+}
+
+.Handheld_signature___scTS {
   background-color: #fff;
-  margin: 0 0 2rem 0;
   width: 100%;
   height: 200px;
+}
+
+.Handheld_canvasCntr__OmVQY {
+  margin: 0 0 4rem 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+}
+
+.Handheld_canvasControls___TBnJ {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.Handheld_canvasButton__cWKHq {
+  padding: 1rem;
+  width: auto;
+  flex: 1 0 auto;
+  margin-top: 1px;
+  color: #353E5D;
+}
+.Handheld_canvasButton__cWKHq:first-child {
+  margin-right: 1px;
+}
+
+.Handheld_qrImage__c8ELL {
+  width: 60%;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.Handheld_modalBlock__3_qKn {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem 2rem 0 2rem;
+}
+
+.Handheld_modalTopIcon__qJ1XM {
+  padding: 12rem 2rem 0 2rem;
+}
+
+.Handheld_modalHeading__VBwXo {
+  font-size: 4rem;
+  color: #353E5D;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-weight: 200;
+}
+
+.Handheld_counterCntr__p4Fzt {
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  margin-left: -90px;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1rem;
+  font-size: 6rem;
+  line-height: 1;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.Handheld_successIcon__8N0Ro {
+  width: 180px;
+  fill: #238636;
+}
+
+.Handheld_errorIcon__cUuWF {
+  width: 180px;
+  fill: #F1416C;
+}
+
+.Handheld_tapArea__FZfWz {
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  padding: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.Handheld_tapArea__FZfWz img {
+  height: 400px;
+  object-fit: contain;
+  width: auto;
 }
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/Input/Input.module.scss ***!
@@ -8330,4 +8443,508 @@
 
 .utils_list_unstyled__ZHdFo {
   list-style-type: none;
+}
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/feedback/Modal/Modal.module.scss ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Modal_underlay__to08Q {
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(25, 25, 25, 0.85);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation-duration: 300ms;
+  animation-fill-mode: forwards;
+  animation-name: Modal_remodal-overlay-opening-keyframes__C7wxe;
+}
+
+@keyframes Modal_menu-sub-dropdown-animation-fade-in__w5E5t {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes Modal_menu-sub-dropdown-animation-move-up__8Ahkw {
+  from {
+    margin-top: 0.75rem;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes Modal_menu-sub-dropdown-animation-move-down__U2mmB {
+  from {
+    margin-bottom: 0.75rem;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+.Modal_body__LsWTc {
+  width: 50vw;
+  background-color: #fff;
+  border-radius: 8px;
+  position: relative;
+  padding: 0 4rem 4rem 4rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  overflow: visible;
+  max-height: 90vh;
+  outline: none;
+}
+@media screen and (max-width: 850px) {
+  .Modal_body__LsWTc {
+    padding: 0 20px 20px 20px;
+    height: 90vh;
+    overflow: auto;
+  }
+}
+.Modal_body_sm__BDsZN {
+  width: 40vw;
+}
+@media screen and (max-width: 850px) {
+  .Modal_body_sm__BDsZN {
+    width: 95vw;
+  }
+}
+.Modal_body_md__WS7Zk {
+  width: 50vw;
+}
+@media screen and (max-width: 850px) {
+  .Modal_body_md__WS7Zk {
+    width: 95vw;
+  }
+}
+.Modal_body_lg__2rw7b {
+  width: 90vw;
+}
+@media screen and (max-width: 850px) {
+  .Modal_body_lg__2rw7b {
+    width: 95vw;
+  }
+}
+
+.Modal_padTop__6nsY7 {
+  padding-top: 4rem !important;
+}
+
+.Modal_heading__R2SaL {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  border-bottom: 1px solid #F0F0F0;
+}
+@media screen and (max-width: 850px) {
+  .Modal_heading__R2SaL {
+    flex-direction: column;
+  }
+}
+
+.Modal_header__tw8b4 {
+  margin: 0 !important;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+@media screen and (max-width: 850px) {
+  .Modal_header__tw8b4 {
+    padding: 0 0 1rem 0;
+    order: 2;
+    text-align: center;
+  }
+}
+
+.Modal_iconDone__dEuXk {
+  margin-right: 1rem;
+  fill: #238636;
+}
+
+.Modal_closeBtn__3844o {
+  padding: 2rem 0 2rem 2rem;
+  flex: 1 0 auto;
+  width: auto;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-end;
+  background-color: transparent;
+  color: #4c7b9a;
+  font-size: calc( 18px + (24 - 18) * (100vw - 400px) / (2000 - 400) ) !important;
+  line-height: 1;
+}
+.Modal_closeBtn__3844o svg {
+  fill: #4c7b9a;
+}
+@media screen and (max-width: 850px) {
+  .Modal_closeBtn__3844o {
+    order: 0;
+    width: 100%;
+    padding: 1rem 0 1rem 1rem;
+  }
+}
+
+.Modal_customCloseIcon__wXGGL {
+  transform: rotate(180deg);
+  margin-left: 0.5rem;
+  margin-top: 4px;
+}
+
+@keyframes Modal_remodal-overlay-opening-keyframes__C7wxe {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes Modal_remodal-overlay-closing-keyframes__jRVCS {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/Button/Button.module.scss ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Button_block__K4NHk {
+  border-width: 1px;
+  border-style: solid;
+  padding: 1.7rem calc(1vw + 17px);
+  text-transform: capitalize;
+  border-radius: 6px;
+  text-decoration: none !important;
+  border-color: transparent;
+  background-color: #2E303B;
+  color: #fff;
+  display: inline-flex;
+  font-weight: normal;
+  font-size: calc( 16px + (24 - 16) * (100vw - 400px) / (2000 - 400) ) !important;
+  font-size: 2.4rem;
+  line-height: 1;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  max-height: 60px;
+}
+
+.Button_block__K4NHk {
+  transition: all 0.1s cubic-bezier(0.59, 0.28, 0.83, 0.67);
+}
+.Button_block__K4NHk:hover {
+  transform: translate(-1px, -2px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  filter: brightness(1.25);
+}
+.Button_block__K4NHk:active, .Button_block__K4NHk:focus {
+  transform: translate(0px, 1px);
+}
+
+@keyframes Button_menu-sub-dropdown-animation-fade-in__kzaGa {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes Button_menu-sub-dropdown-animation-move-up__4s0_F {
+  from {
+    margin-top: 0.75rem;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes Button_menu-sub-dropdown-animation-move-down__0Bul3 {
+  from {
+    margin-bottom: 0.75rem;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+.Button_block__K4NHk[download] {
+  text-decoration: none;
+}
+.Button_block__K4NHk:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.Button_block__K4NHk:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  transition: none !important;
+  filter: none !important;
+}
+.Button_block__K4NHk > svg {
+  height: 21px;
+  margin: 0 1rem 0 0;
+}
+@media screen and (max-width: 850px) {
+  .Button_block__K4NHk {
+    font-size: inherit;
+  }
+}
+.Button_block__K4NHk:hover {
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+}
+.Button_block__K4NHk:hover [class*=Loader_checkmark]::after {
+  border-color: #2E303B;
+}
+.Button_block__K4NHk:hover > svg {
+  fill: #fff;
+}
+.Button_block__K4NHk:active, .Button_block__K4NHk:focus {
+  transform: translate(0px, 1px);
+}
+
+.Button_autoHeight__03DEp {
+  height: auto !important;
+  max-height: none !important;
+}
+
+.Button_noAnimate__F0UXs:hover, .Button_noAnimate__F0UXs:active, .Button_noAnimate__F0UXs:focus {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.Button_round__R_dRN {
+  border-radius: 50% !important;
+}
+
+.Button_size__icon__cel6a {
+  padding: 0.5rem 0.5rem;
+  max-width: 35px;
+  max-height: 35px;
+}
+.Button_size__icon__cel6a > svg {
+  margin: 0;
+}
+.Button_size__full__xMl7H {
+  align-self: stretch;
+  flex: 1 0 auto;
+  width: auto;
+}
+.Button_size__xs__e5J9u {
+  padding: 1rem calc(1vw + 0.25rem);
+  font-size: calc( 12px + (13 - 12) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+.Button_size__sm__Mre21 {
+  padding: 1.2rem calc(1vw + 0.5rem);
+  font-size: calc( 18px + (18 - 18) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+.Button_size__md__o9Iel {
+  padding: 1.5rem 1.5rem;
+  font-size: calc( 18px + (21 - 18) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+.Button_size__lg__sb_uq {
+  padding: 1.6em calc(1vw + 1.7rem);
+  font-size: calc( 18px + (26 - 18) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+.Button_size__xl__bd3Y1 {
+  padding: 1.7rem calc(1vw + 3rem);
+  font-size: calc( 21px + (36 - 21) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+.Button_size__xxl__WvcUf {
+  padding: 2rem calc(1vw + 4rem);
+  font-weight: 800;
+  border-width: 2px;
+  font-size: calc( 30px + (40 - 30) * (100vw - 400px) / (2000 - 400) ) !important;
+}
+
+.Button_color__white__6aaBe {
+  color: inherit;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+}
+.Button_color__white__6aaBe:hover svg {
+  fill: #4c7b9a;
+}
+.Button_color__transparent__MQLSe {
+  background-color: transparent;
+  color: #4c7b9a;
+  padding: 1.7rem 0;
+  line-height: 1.4;
+}
+.Button_color__transparent__MQLSe:hover {
+  background-color: inherit;
+  border-color: transparent;
+  color: #4c7b9a;
+}
+.Button_color__transparent__MQLSe:hover [class*=Loader_checkmark]::after {
+  border-color: #4c7b9a;
+}
+.Button_color__transparent__MQLSe:hover > svg {
+  fill: #4c7b9a;
+}
+.Button_color__transparent-link__APunw {
+  padding: 0 !important;
+  font-size: inherit !important;
+  text-transform: inherit;
+  background-color: transparent;
+  line-height: 1;
+  border-bottom: 1px solid #4c7b9a;
+}
+.Button_color__transparent-link__APunw:hover {
+  text-decoration: inherit;
+  color: #353E5D;
+  background-color: transparent;
+}
+.Button_color__green-outline__OKIVb {
+  border-color: #238636;
+  background-color: transparent;
+  color: #238636;
+}
+.Button_color__green-outline__OKIVb > svg {
+  fill: #238636;
+}
+.Button_color__green-outline__OKIVb:hover {
+  background-color: rgba(35, 134, 54, 0.075);
+  color: #238636;
+}
+.Button_color__green-outline__OKIVb:hover > svg {
+  fill: #238636;
+}
+.Button_color__green-outline__OKIVb:hover [class*=Loader_checkmark]::after {
+  border-color: #238636;
+}
+.Button_color__dark-outline__epzF9 {
+  border-color: #2E303B;
+  background-color: transparent;
+  color: #2E303B;
+}
+.Button_color__dark-outline__epzF9 > svg {
+  fill: #2E303B;
+}
+.Button_color__dark-outline__epzF9:hover {
+  background-color: rgba(46, 48, 59, 0.075);
+  color: #2E303B;
+}
+.Button_color__dove-outline__JlbPr {
+  border-color: #F0F0F0;
+  background-color: transparent;
+  color: #F0F0F0;
+}
+.Button_color__dove-outline__JlbPr > svg {
+  fill: #F0F0F0;
+}
+.Button_color__dove-outline__JlbPr:hover {
+  background-color: transparent;
+  color: #F0F0F0;
+}
+.Button_color__indigo-outline__OJQ1u {
+  border-color: #353E5D;
+  background-color: transparent;
+  color: #353E5D;
+}
+.Button_color__indigo-outline__OJQ1u > svg {
+  fill: #353E5D;
+}
+.Button_color__indigo-outline__OJQ1u:hover {
+  background-color: rgba(53, 62, 93, 0.075);
+  color: #353E5D;
+}
+.Button_color__indigo-outline__OJQ1u:hover [class*=Loader_checkmark]::after {
+  border-color: #353E5D;
+}
+.Button_color__indigo-outline__OJQ1u:hover > svg {
+  fill: #353E5D;
+}
+.Button_color__ocean-outline__tQybk {
+  border-color: #4c7b9a;
+  background-color: transparent;
+  color: #4c7b9a;
+}
+.Button_color__ocean-outline__tQybk > svg {
+  fill: #4c7b9a;
+}
+.Button_color__ocean-outline__tQybk:hover {
+  background-color: rgba(76, 123, 154, 0.075);
+  color: #4c7b9a;
+}
+.Button_color__ocean-outline__tQybk:hover [class*=Loader_checkmark]::after {
+  border-color: #4c7b9a;
+}
+.Button_color__ocean-outline__tQybk:hover > svg {
+  fill: #4c7b9a;
+}
+.Button_color__ice-outline__y89sy {
+  border-color: #dfe9ef;
+  background-color: transparent;
+  color: #dfe9ef;
+}
+.Button_color__ice-outline__y89sy > svg {
+  fill: #dfe9ef;
+}
+.Button_color__ice-outline__y89sy:hover {
+  background-color: rgba(223, 233, 239, 0.075);
+  color: #dfe9ef;
+}
+.Button_color__ice-outline__y89sy:hover [class*=Loader_checkmark]::after {
+  border-color: #dfe9ef;
+}
+.Button_color__ice-outline__y89sy:hover > svg {
+  fill: #dfe9ef;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/media/QRScanner/QRScanner.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.QRScanner_block__lpuwa {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: none !important;
+  background-color: rgba(0, 0, 0, 0.25);
+  margin-bottom: 4rem;
+}
+.QRScanner_block__lpuwa img[alt="Info icon"], .QRScanner_block__lpuwa img[alt="Camera based scan"] {
+  display: none !important;
+}
+.QRScanner_block__lpuwa button.QRScanner_html5-qrcode-element__hkSAF {
+  padding: 2rem 4rem;
+}
+.QRScanner_block__lpuwa video {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 100%;
+}
+
+.QRScanner_scanner__ANJRz {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  object-fit: contain;
+}
+
+.QRScanner_buffer__p_YYt {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
 }

@@ -23,4 +23,17 @@ export const serviceAccount = {
     "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-pj4c2%40grithub-admin.iam.gserviceaccount.com",
     "universe_domain": "googleapis.com"
 }
+
+
+export const hubs = {
+    george: {
+        name: "George, ZA",
+        wifi: "GRITHub Community",
+        wifiPassword: "NeverStopTrying",
+        eskomSePush_area_id: "westerncape-12-george",
+        lat: -33.960400,
+        lon: 22.456240
+    }
+};
+
   

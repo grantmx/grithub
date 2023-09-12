@@ -5,7 +5,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 
 import Style from './Button.module.scss';
-import utils from 'styles/globals/utils.module.scss';
+import utils from 'ui/styles/globals/utils.module.scss';
 
 
 function Button({ 
