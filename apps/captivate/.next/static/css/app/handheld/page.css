@@ -1801,7 +1801,7 @@
   position: absolute;
   z-index: 2;
   inset: 0;
-  width: 100dvw;
+  width: 100%;
   display: flex;
   align-items: center;
   align-content: center;
@@ -1857,7 +1857,9 @@
 }
 
 .Handheld_cardIcon__NwRSL {
-  height: 90%;
+  height: 100px;
+  height: 100px;
+  object-fit: contain;
   fill: #fff;
 }
 
@@ -8902,49 +8904,4 @@
 }
 .Button_color__ice-outline__y89sy:hover > svg {
   fill: #dfe9ef;
-}
-/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/media/QRScanner/QRScanner.module.scss ***!
-  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.QRScanner_block__lpuwa {
-  width: 100%;
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border: none !important;
-  background-color: rgba(0, 0, 0, 0.25);
-  margin-bottom: 4rem;
-}
-.QRScanner_block__lpuwa img[alt="Info icon"], .QRScanner_block__lpuwa img[alt="Camera based scan"] {
-  display: none !important;
-}
-.QRScanner_block__lpuwa button.QRScanner_html5-qrcode-element__hkSAF {
-  padding: 2rem 4rem;
-}
-.QRScanner_block__lpuwa video {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-  height: 100%;
-}
-
-.QRScanner_scanner__ANJRz {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  height: auto;
-  object-fit: contain;
-}
-
-.QRScanner_buffer__p_YYt {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  right: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
 }

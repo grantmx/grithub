@@ -12,7 +12,7 @@
     position: absolute;
     z-index: 2;
     inset: 0;
-    width: 100dvw;
+    width: 100%;
     display: flex;
     align-items: center;
     align-content: center;
@@ -68,7 +68,9 @@
 }
 
 .cardIcon{
-    height: 90%;
+    height: 100px;
+    height: 100px;
+    object-fit: contain;
     fill: $white;
 }
 

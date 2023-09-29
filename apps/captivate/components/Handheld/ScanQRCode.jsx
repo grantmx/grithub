@@ -3,15 +3,13 @@ import Style from "./styles/Handheld.module.scss"
 import Grid from "ui/components/layout/Grid";
 import GridColumn from "ui/components/layout/GridColumn";
 import Header from "./Header";
-import { useState } from "react";
-import QRScanner from "ui/components/media/QRScanner";
+import { useRef, useState, useEffect, use } from "react";
 import ButtonRow from "./ButtonRow";
 import { useRouter } from 'next/navigation'
 import Modal from "ui/components/feedback/Modal";
 import clsx from "clsx";
 import sound from "public/assets/store-scanner-beep.mp3"
 import useSound from 'use-sound';
-import { useEffect } from "react";
 
 
 function ScanQRCode(){
@@ -19,12 +17,18 @@ function ScanQRCode(){
     const router = useRouter();
     const [ playBeep ] = useSound(sound.src);
     const [ openModal, setOpenModal ] = useState(true)
+    const qr = useRef();
 
 
     function success(data){
         setData(data);
-        playBeep()
     }
+
+
+    useEffect(() => {
+        qr.current.focus();
+
+    }, [ ])
 
 
     useEffect(() => {
@@ -52,9 +56,9 @@ function ScanQRCode(){
                         Scan Member QR Code
                     </Header>
 
-                    <div className={Style.row}>
-                        <QRScanner onSuccess={success} />
-                    </div>               
+                    <input type="text" name="qr" ref={qr} onChange={success} />
+
+                    <input type="text" value={data} />             
 
                     <ButtonRow back={1} next={7} current={6} /> 
                 </GridColumn>
