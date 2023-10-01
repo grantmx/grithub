@@ -28,7 +28,7 @@ function AutomationOptions({ step }){
     return(
         <Grid>
             <GridColumn start={2} end={10} className={Style.col}>
-                <Header>
+                <Header subText={<Text/>}>
                     Tap or Scan to Register
                 </Header>
 
@@ -69,6 +69,15 @@ function AutomationOptions({ step }){
 
             </GridColumn>
         </Grid>
+    )
+}
+
+
+function Text(){
+    return(
+        <p className={clsx(Style.text, utils.justify_content_center)}>
+           Use your phone or member card
+        </p>
     )
 }
 

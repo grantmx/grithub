@@ -1,21 +1,23 @@
-import Style from "./styles/Handheld.module.scss"
-import Image from "next/image";
-import logo from "ui/assets/GRITHUB-logo-white-cutout-solo.svg"
 import utils from "ui/styles/globals/utils.module.scss"
+import Style from "./styles/Handheld.module.scss"
 
 import SignatureCanvas from 'react-signature-canvas'
 import Grid from 'ui/components/layout/Grid';
 import GridColumn from 'ui/components/layout/GridColumn';
-import clsx from "clsx";
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import ButtonRow from './ButtonRow';
 import useCurrent from "./hooks/useCurrent";
 import Header from "./Header";
+import { useRouter } from 'next/navigation'
+import Modal from "ui/components/feedback/Modal";
+import clsx from "clsx";
 
 
 function Sign({ step }){
     useCurrent(step)
     const signPad = useRef()
+    const router = useRouter()
+    const [ open, setOpen ] = useState(false)
 
     function clear(){
         signPad.current.clear()
@@ -24,8 +26,15 @@ function Sign({ step }){
     function ok(){
         const dataURL = signPad.current.toDataURL()
         console.log(dataURL)
-    }
 
+        setOpen(true)
+
+        setTimeout(() => {
+            router.push("/handheld?goto=99")
+            setOpen(false)
+
+        }, 2000)
+    }
 
 
     return(
@@ -54,9 +63,23 @@ function Sign({ step }){
                         </figcaption>
                     </figure>
 
-                    <ButtonRow back={2} next={99} current={3} />
+                    <ButtonRow back={2} next={null} current={3} />
                 </form>
             </GridColumn>
+
+            <Modal size="sm" shouldOpen={open} useHeader={false} willClose={() => null}>
+                <div className={Style.counterCntr}>
+                    <svg id="icon-check" viewBox="0 0 24 24" className={Style.successIcon}>
+                        <path d="M9 16.172l10.594-10.594 1.406 1.406-12 12-5.578-5.578 1.406-1.406z"></path>
+                    </svg>
+                </div>
+
+                <article className={clsx(Style.modalBlock, Style.modalTopIcon)}>
+                    <h1 className={Style.modalHeading}>
+                        Sweet. Thanks!
+                    </h1>
+                </article>
+            </Modal>
         </Grid>
     )
 }

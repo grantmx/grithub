@@ -412,8 +412,10 @@ the :root statement itself is only included in the common stylesheet.
   box-sizing: border-box;
 }
 
-html {
+html, body {
   font-size: 62.5%;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -585,9 +587,15 @@ input:autofill {
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 .Handheld_footer__BNTKp {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   width: 100%;
   text-align: center;
+  z-index: 9;
+}
+
+.Handheld_main__Ux27J {
+  width: 100%;
+  position: relative;
 }
 
 .Handheld_block__K5Mi4 {
@@ -595,6 +603,7 @@ input:autofill {
   background: radial-gradient(circle, rgb(42, 40, 51) 25%, rgb(27, 26, 33) 100%);
   height: 100dvh;
   position: relative;
+  width: 100%;
 }
 
 .Handheld_wrapper__QIkFG {
@@ -607,7 +616,7 @@ input:autofill {
   align-items: center;
   align-content: center;
   justify-content: center;
-  background-image: url(/_next/static/media/hero-dark.b3e4052e.jpg);
+  background-image: url(/_next/static/media/hero-dark.5231071f.png);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
@@ -678,7 +687,6 @@ input:autofill {
 .Handheld_heading__7wK_Y {
   font-weight: 300;
   color: #fff;
-  margin-bottom: 3rem;
   text-align: center;
   line-height: 1.2;
   font-size: calc( 30px + (40 - 30) * (100vw - 400px) / (2000 - 400) ) !important;
@@ -766,6 +774,9 @@ input:autofill {
   color: #fff;
   display: flex;
   align-items: center;
+  width: 100%;
+  font-size: 1.8rem;
+  margin: 0;
 }
 .Handheld_text__a_u84 small {
   width: 100%;
@@ -785,8 +796,14 @@ input:autofill {
   width: 100%;
 }
 
+.Handheld_qrScanImg__Zss5X {
+  width: 70%;
+  height: auto;
+  object-fit: contain;
+}
+
 .Handheld_notSupported__zPoLy {
-  opacity: 0.5;
+  opacity: 0.25;
   cursor: not-allowed;
 }
 
@@ -809,7 +826,7 @@ input:autofill {
 }
 
 .Handheld_qrImage__c8ELL {
-  width: 60%;
+  width: 40%;
   height: auto;
   object-fit: contain;
   margin: 0 auto;

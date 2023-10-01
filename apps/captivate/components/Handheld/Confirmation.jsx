@@ -6,16 +6,24 @@ import GridColumn from "ui/components/layout/GridColumn";
 import clsx from "clsx";
 import Link from "next/link";
 import { useEffect } from "react";
-import { celebrationTime } from "ui/lib/celebrationTime";
 import Card from "ui/components/display/Card";
 import useCurrent from "./hooks/useCurrent";
 import Header from "./Header";
+import { celebrationTime } from "ui/lib/celebrationTime";
+import { useRouter } from "next/navigation";
+
+
 
 function Confirmation({ step }){
+    const router = useRouter()
     useCurrent(step)
 
     useEffect(() => {
         celebrationTime(3)
+
+        setTimeout(() => {
+            router.push("/handheld")
+        }, 60000)
 
     }, [])
 

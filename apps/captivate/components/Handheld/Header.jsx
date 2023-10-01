@@ -6,9 +6,9 @@ import Image from "next/image";
 import clsx from "clsx";
 
 
-function Header({ children }){
+function Header({ children, subText }){
     return(
-        <header className={clsx(utils.w_100, utils.mb_2)}>
+        <header className={clsx(utils.w_100, utils.mb_2, utils.text_center)}>
             {/* <div className={clsx(utils.w_100, utils.text_center, utils.mb_1)}>
                 <Image src={logo} width={100} height={100} alt="grit hub logo" />
             </div> */}
@@ -16,6 +16,11 @@ function Header({ children }){
             <h1 className={Style.heading}>
                 {children}
             </h1>
+
+            {subText && (
+                <>{subText}</>
+            )}
+
         </header>
     )
 }

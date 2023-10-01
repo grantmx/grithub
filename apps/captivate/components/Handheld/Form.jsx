@@ -36,7 +36,7 @@ function Form({ step }){
         <Grid>
             <GridColumn start={2} end={10} className={Style.col}>
                 <form className={utils.w_100}>
-                    <Header>
+                    <Header subText="*Required fields">
                         Tell us about yourself.
                     </Header>
 
@@ -75,23 +75,8 @@ function Form({ step }){
                             </div>
                         </div>
 
-                        <div className={clsx(utils.w_100, utils.d_flex, utils.mb_4)}>
-                            <Controller
-                                control={control}
-                                name="email"
-                                render={({ field }) => (
-                                    <Input 
-                                        label="Email Address*" 
-                                        onChange={field.onChange}
-                                        required
-                                        {...field}
-                                        controlClass={Style.control}
-                                    />
-                                )}
-                            />
-                        </div>
 
-                        <div className={clsx(utils.w_100, utils.d_flex, utils.mb_1)}>
+                        <div className={clsx(utils.w_100, utils.d_flex, utils.mb_4)}>
                             <div className={clsx(utils.w_50, utils.me_2)}>
                                 <Controller
                                     control={control}
@@ -125,13 +110,27 @@ function Form({ step }){
                             </div>
                         </div>
 
-                        <p className={clsx(Style.text, utils.text_center, utils.w_100)}> 
-                            *Required fields
-                        </p>
+
+                        <div className={clsx(utils.w_100, utils.d_flex, utils.mb_1)}>
+                            <Controller
+                                control={control}
+                                name="email"
+                                render={({ field }) => (
+                                    <Input 
+                                        label="Email Address*" 
+                                        onChange={field.onChange}
+                                        required
+                                        {...field}
+                                        controlClass={Style.control}
+                                    />
+                                )}
+                            />
+                        </div>
 
                         <ButtonRow 
                             back={1} 
-                            next={3} 
+                            // next={3} 
+                            next={null} 
                             current={2} 
                         />
                     </fieldset>

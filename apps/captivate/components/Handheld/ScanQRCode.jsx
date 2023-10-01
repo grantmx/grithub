@@ -1,4 +1,5 @@
 import Style from "./styles/Handheld.module.scss"
+import utils from "ui/styles/globals/utils.module.scss"
 
 import Grid from "ui/components/layout/Grid";
 import GridColumn from "ui/components/layout/GridColumn";
@@ -10,6 +11,9 @@ import Modal from "ui/components/feedback/Modal";
 import clsx from "clsx";
 import sound from "public/assets/store-scanner-beep.mp3"
 import useSound from 'use-sound';
+import Image from "next/image";
+import qrscanimage from "public/assets/scan-qr-card.png"
+
 
 
 function ScanQRCode(){
@@ -52,15 +56,15 @@ function ScanQRCode(){
         <>
             <Grid>
                 <GridColumn start={2} end={10} className={Style.col}>
-                    <Header>
+                    <Header subText={<Text />}>
                         Scan Member QR Code
                     </Header>
 
+                    <Image src={qrscanimage.src} width="256" height="137" className={Style.qrScanImg} />
+
                     <input type="text" name="qr" ref={qr} onChange={success} />
 
-                    <input type="text" value={data} />             
-
-                    <ButtonRow back={1} next={7} current={6} /> 
+                    <ButtonRow back={6} next={null} current={6} /> 
                 </GridColumn>
             </Grid>
 
@@ -85,5 +89,15 @@ function ScanQRCode(){
         </>
     )
 }
+
+
+function Text(){
+    return(
+        <p className={clsx(Style.text, utils.justify_content_center)}>
+           Use our app or member card QR code to sign in.
+        </p>
+    )
+}
+
 
 export default ScanQRCode;
