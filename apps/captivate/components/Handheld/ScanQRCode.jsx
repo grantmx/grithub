@@ -51,7 +51,7 @@ function ScanQRCode(){
     return(
         <>
             <Grid>
-                <GridColumn start={3} end={9} className={Style.col}>
+                <GridColumn start={2} end={10} className={Style.col}>
                     <Header>
                         Scan Member QR Code
                     </Header>

@@ -62,6 +62,7 @@ export default function useNFCReader(){
 
     return {
         results,
-        error
+        error,
+        supported: "NDEFReader" in window
     }
 }

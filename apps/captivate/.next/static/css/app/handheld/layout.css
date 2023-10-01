@@ -583,6 +583,13 @@ input:autofill {
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./components/Handheld/styles/Handheld.module.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Handheld_footer__BNTKp {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .Handheld_block__K5Mi4 {
   background: rgb(42, 40, 51);
   background: radial-gradient(circle, rgb(42, 40, 51) 25%, rgb(27, 26, 33) 100%);
@@ -595,10 +602,16 @@ input:autofill {
   z-index: 2;
   inset: 0;
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
+  background-image: url(/_next/static/media/hero-dark.b3e4052e.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
 }
 
 .Handheld_backgroundImage__f5Cdt {
@@ -617,53 +630,78 @@ input:autofill {
   align-content: center;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  height: 100%;
+}
+@media screen and (max-width: 850px) {
+  .Handheld_col___KmCZ {
+    width: 50%;
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .Handheld_col___KmCZ {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .Handheld_colDivider__SO22k {
+    width: auto;
+    padding: 1rem;
+  }
 }
 
 .Handheld_row__0rmEU {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 850px) {
+  .Handheld_home___blyX {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 568px) {
+  .Handheld_home___blyX {
+    flex-direction: column-reverse;
+  }
 }
 
 .Handheld_homeLogo__r9yxX {
   width: 90%;
-  height: 90%;
+  height: auto;
   object-fit: contain;
 }
 
 .Handheld_heading__7wK_Y {
-  font-weight: 200;
-  font-size: 4rem;
+  font-weight: 300;
   color: #fff;
   margin-bottom: 3rem;
   text-align: center;
   line-height: 1.2;
+  font-size: calc( 30px + (40 - 30) * (100vw - 400px) / (2000 - 400) ) !important;
 }
 
 .Handheld_cardHeading__cbdJl {
-  font-weight: 200;
-  font-size: 3rem;
+  font-weight: 300;
+  font-size: calc( 21px + (30 - 21) * (100vw - 400px) / (2000 - 400) ) !important;
   color: #fff;
-  width: 50%;
+  width: 60%;
   line-height: 1.2;
 }
 
 .Handheld_cardIcon__NwRSL {
   height: 100px;
-  height: 100px;
+  width: auto;
   object-fit: contain;
   fill: #fff;
 }
 
 .Handheld_touchCard__6AcYv {
   width: 100%;
-  height: 150px;
-  margin: 0 0 4rem 0 !important;
-  padding: 2rem 1rem;
-}
-.Handheld_touchCard__6AcYv:last-child {
-  margin-bottom: 0 !important;
+  padding: 1rem;
 }
 
 .Handheld_cardLink__Xv3rL {
@@ -695,6 +733,7 @@ input:autofill {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .Handheld_transButton__eQyla {
@@ -743,6 +782,12 @@ input:autofill {
   display: flex;
   flex-direction: column;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  width: 100%;
+}
+
+.Handheld_notSupported__zPoLy {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .Handheld_canvasControls___TBnJ {

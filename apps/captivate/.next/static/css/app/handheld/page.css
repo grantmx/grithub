@@ -1771,7 +1771,7 @@
 }
 
 .Divider_color__light__TA9tA {
-  background-color: rgb(78, 78, 92);
+  background-color: #fff;
 }
 .Divider_color__dark__3iC55 {
   background-color: #2E303B;
@@ -1790,6 +1790,13 @@
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!./components/Handheld/styles/Handheld.module.scss ***!
   \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Handheld_footer__BNTKp {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .Handheld_block__K5Mi4 {
   background: rgb(42, 40, 51);
   background: radial-gradient(circle, rgb(42, 40, 51) 25%, rgb(27, 26, 33) 100%);
@@ -1802,10 +1809,16 @@
   z-index: 2;
   inset: 0;
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   align-content: center;
   justify-content: center;
+  background-image: url(/_next/static/media/hero-dark.b3e4052e.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: multiply;
 }
 
 .Handheld_backgroundImage__f5Cdt {
@@ -1824,53 +1837,78 @@
   align-content: center;
   align-items: center;
   justify-content: center;
-  height: 100dvh;
+  height: 100%;
+}
+@media screen and (max-width: 850px) {
+  .Handheld_col___KmCZ {
+    width: 50%;
+    padding: 2rem;
+  }
+}
+@media screen and (max-width: 850px) {
+  .Handheld_col___KmCZ {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .Handheld_colDivider__SO22k {
+    width: auto;
+    padding: 1rem;
+  }
 }
 
 .Handheld_row__0rmEU {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media screen and (max-width: 850px) {
+  .Handheld_home___blyX {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 568px) {
+  .Handheld_home___blyX {
+    flex-direction: column-reverse;
+  }
 }
 
 .Handheld_homeLogo__r9yxX {
   width: 90%;
-  height: 90%;
+  height: auto;
   object-fit: contain;
 }
 
 .Handheld_heading__7wK_Y {
-  font-weight: 200;
-  font-size: 4rem;
+  font-weight: 300;
   color: #fff;
   margin-bottom: 3rem;
   text-align: center;
   line-height: 1.2;
+  font-size: calc( 30px + (40 - 30) * (100vw - 400px) / (2000 - 400) ) !important;
 }
 
 .Handheld_cardHeading__cbdJl {
-  font-weight: 200;
-  font-size: 3rem;
+  font-weight: 300;
+  font-size: calc( 21px + (30 - 21) * (100vw - 400px) / (2000 - 400) ) !important;
   color: #fff;
-  width: 50%;
+  width: 60%;
   line-height: 1.2;
 }
 
 .Handheld_cardIcon__NwRSL {
   height: 100px;
-  height: 100px;
+  width: auto;
   object-fit: contain;
   fill: #fff;
 }
 
 .Handheld_touchCard__6AcYv {
   width: 100%;
-  height: 150px;
-  margin: 0 0 4rem 0 !important;
-  padding: 2rem 1rem;
-}
-.Handheld_touchCard__6AcYv:last-child {
-  margin-bottom: 0 !important;
+  padding: 1rem;
 }
 
 .Handheld_cardLink__Xv3rL {
@@ -1902,6 +1940,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  margin-top: 2rem;
 }
 
 .Handheld_transButton__eQyla {
@@ -1950,6 +1989,12 @@
   display: flex;
   flex-direction: column;
   box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  width: 100%;
+}
+
+.Handheld_notSupported__zPoLy {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .Handheld_canvasControls___TBnJ {
@@ -2030,397 +2075,6 @@
   height: 400px;
   object-fit: contain;
   width: auto;
-}
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/Input/Input.module.scss ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.Input_control__wFKaD {
-  display: block;
-  flex: 1 0 auto;
-  width: 100%;
-  height: 100%;
-  padding: 1.375rem 2rem 1.375rem 2rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #353E5D;
-  font-size: 1.6rem;
-  -webkit-tap-highlight-color: transparent;
-  border-color: transparent;
-  background-color: #fff;
-  background-clip: padding-box;
-  appearance: none;
-  height: 60px;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  outline: none !important;
-  color-scheme: dark;
-}
-.Input_control__wFKaD:focus, .Input_control__wFKaD:-internal-autofill-selected {
-  outline: none !important;
-  background-color: #fff !important;
-}
-
-.Input_file__iydjF label, .Input_active__J2UKC label {
-  top: -8px;
-  left: 1px;
-  right: 1px;
-  width: unset;
-  font-size: 1.3rem;
-  padding-top: 0.5rem;
-  color: #2E303B;
-}
-
-.Input_label__em2N3 {
-  height: auto;
-  position: absolute;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  line-height: 1.2;
-  background-color: #fff;
-  top: 20px;
-  right: 1px;
-  left: 1px;
-  padding: 0 0 0 2rem;
-  z-index: 1;
-  color: #4c7b9a;
-  transition: top 0.3s ease;
-}
-.Input_label__em2N3:hover {
-  cursor: pointer;
-}
-
-.Input_help__69yNv {
-  padding: 1rem 0 0 0.5rem;
-  width: 100%;
-  line-height: 1.3;
-  font-size: 1.3rem;
-}
-
-.Input_control__wFKaD[type=search]::-webkit-search-cancel-button {
-  -webkit-appearance: none;
-  height: 25px;
-  width: 25px;
-  opacity: 1;
-  margin: 0;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23777' viewBox='0 0 24 24'%3E%3Cpath d='M13.4 12l5.3-5.3c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-5.3 5.3-5.3-5.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5.3 5.3-5.3 5.3c-0.4 0.4-0.4 1 0 1.4 0.2 0.2 0.4 0.3 0.7 0.3s0.5-0.1 0.7-0.3l5.3-5.3 5.3 5.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4l-5.3-5.3z'%3E%3C/path%3E%3C/svg%3E");
-}
-
-.Input_block__select__gUljV::after {
-  content: "";
-  width: 0px;
-  height: 0px;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid #2E303B;
-  position: absolute;
-  right: -15px;
-  top: 50%;
-  margin-top: -6px;
-}
-
-@keyframes Input_menu-sub-dropdown-animation-fade-in__nQCl1 {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes Input_menu-sub-dropdown-animation-move-up__gaH94 {
-  from {
-    margin-top: 0.75rem;
-  }
-  to {
-    margin-top: 0;
-  }
-}
-@keyframes Input_menu-sub-dropdown-animation-move-down__GfIjd {
-  from {
-    margin-bottom: 0.75rem;
-  }
-  to {
-    margin-bottom: 0;
-  }
-}
-.Input_block__OAGE3 {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-}
-.Input_block__select__gUljV::after {
-  transform: rotate(90deg);
-  right: 1.5rem;
-}
-
-.Input_errorIcon__UpJGc {
-  position: absolute;
-  width: 30px;
-  height: 100%;
-  right: 70px;
-  top: 0;
-  fill: #db613a;
-}
-
-.Input_flushRightIcon__Qzwix {
-  right: 20px;
-}
-
-.Input_error__label__abGBx {
-  color: #db613a !important;
-}
-.Input_error__control__XFaPV {
-  border-color: #db613a !important;
-}
-.Input_error__help__0lRzG {
-  color: #db613a !important;
-}
-
-.Input_hasUnit__xRDBO {
-  width: auto;
-}
-
-.Input_active__J2UKC [type=search] ~ label {
-  padding-left: 4rem;
-  top: -8px !important;
-  left: 0px !important;
-}
-
-.Input_controlGroup__ZqquD {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-.Input_file__iydjF {
-  margin-top: 20px;
-}
-.Input_file__iydjF .Input_label__em2N3 {
-  font-size: 17px !important;
-  color: #4c7b9a;
-}
-.Input_file__iydjF .Input_control__wFKaD {
-  margin-left: 10px;
-  margin-top: 20px;
-}
-
-.Input_control__wFKaD[type=search] {
-  padding-left: 4rem;
-  padding-right: 1rem;
-}
-.Input_control__wFKaD[type=search] ~ label {
-  top: 16px;
-  left: 4rem;
-}
-.Input_control__wFKaD::-webkit-inner-spin-button {
-  display: none;
-}
-
-.Input_togglePassword__YFImb {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  padding: 0;
-  margin: 0 1rem;
-  background-color: transparent;
-  color: #4c7b9a;
-  display: block;
-  border: none;
-  text-decoration: none;
-}
-
-.Input_showHideIcon__dAdum {
-  width: 30px;
-  fill: #bdbac5;
-}
-
-.Input_clearInput__aGJV7 {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  max-height: 55px;
-  width: 50px;
-  padding: 1rem;
-  margin: 0 1rem;
-  background-color: transparent;
-}
-.Input_clearInput__aGJV7 svg {
-  fill: #aaa;
-}
-
-.Input_searchIcon__4Be64 {
-  position: absolute;
-  left: 12px;
-  width: 25px;
-  top: 17px;
-  fill: #ddd;
-}
-
-.Input_postFix__2CB7l {
-  position: absolute;
-  width: auto;
-  line-height: 1;
-  right: 1rem;
-  top: 50%;
-  margin-top: -5px;
-  color: #4c7b9a;
-}
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/PhoneInput/PhoneInput.module.scss ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
-.PhoneInput_control__kiWze {
-  display: block;
-  flex: 1 0 auto;
-  width: 100%;
-  height: 100%;
-  padding: 1.375rem 2rem 1.375rem 2rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #353E5D;
-  font-size: 1.6rem;
-  -webkit-tap-highlight-color: transparent;
-  border-color: transparent;
-  background-color: #fff;
-  background-clip: padding-box;
-  appearance: none;
-  height: 60px;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  outline: none !important;
-  color-scheme: dark;
-}
-.PhoneInput_control__kiWze:focus, .PhoneInput_control__kiWze:-internal-autofill-selected {
-  outline: none !important;
-  background-color: #fff !important;
-}
-
-.PhoneInput_active__QS9Uj label {
-  top: -8px;
-  left: 1px;
-  right: 1px;
-  width: unset;
-  font-size: 1.3rem;
-  padding-top: 0.5rem;
-  color: #2E303B;
-}
-
-.PhoneInput_label__gPDJu {
-  height: auto;
-  position: absolute;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-align: left;
-  line-height: 1.2;
-  background-color: #fff;
-  top: 20px;
-  right: 1px;
-  left: 1px;
-  padding: 0 0 0 2rem;
-  z-index: 1;
-  color: #4c7b9a;
-  transition: top 0.3s ease;
-}
-.PhoneInput_label__gPDJu:hover {
-  cursor: pointer;
-}
-
-.PhoneInput_help__QSDYf {
-  padding: 1rem 0 0 0.5rem;
-  width: 100%;
-  line-height: 1.3;
-  font-size: 1.3rem;
-}
-
-.PhoneInput_block__select__4qKr9::after {
-  content: "";
-  width: 0px;
-  height: 0px;
-  border-top: 8px solid transparent;
-  border-bottom: 8px solid transparent;
-  border-left: 8px solid #2E303B;
-  position: absolute;
-  right: -15px;
-  top: 50%;
-  margin-top: -6px;
-}
-
-@keyframes PhoneInput_menu-sub-dropdown-animation-fade-in__tmYXA {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-@keyframes PhoneInput_menu-sub-dropdown-animation-move-up__bHsEJ {
-  from {
-    margin-top: 0.75rem;
-  }
-  to {
-    margin-top: 0;
-  }
-}
-@keyframes PhoneInput_menu-sub-dropdown-animation-move-down__YDhR7 {
-  from {
-    margin-bottom: 0.75rem;
-  }
-  to {
-    margin-bottom: 0;
-  }
-}
-.PhoneInput_block__Vx0Fh {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex: 1 0 auto;
-  flex-direction: column;
-}
-.PhoneInput_block__select__4qKr9::after {
-  transform: rotate(90deg);
-  right: 1.5rem;
-}
-
-.PhoneInput_error__label__SA5WF {
-  color: #db613a !important;
-}
-.PhoneInput_error__control__9Q4wS {
-  border-color: #db613a !important;
-}
-.PhoneInput_error__help__SoP0j {
-  color: #db613a !important;
-}
-
-.PhoneInput_controlGroup__af5ow {
-  width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.PhoneInput_clearInput__XTc_a {
-  position: absolute;
-  right: 0;
-  top: 0;
-  height: 100%;
-  max-height: 55px;
-  width: 50px;
-  padding: 1rem;
-  margin: 0 1rem;
-  background-color: transparent;
-}
-.PhoneInput_clearInput__XTc_a svg {
-  fill: #aaa;
 }
 /*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/styles/globals/utils.module.scss ***!
@@ -8445,6 +8099,397 @@
 
 .utils_list_unstyled__ZHdFo {
   list-style-type: none;
+}
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/Input/Input.module.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Input_control__wFKaD {
+  display: block;
+  flex: 1 0 auto;
+  width: 100%;
+  height: 100%;
+  padding: 1.375rem 2rem 1.375rem 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #353E5D;
+  font-size: 1.6rem;
+  -webkit-tap-highlight-color: transparent;
+  border-color: transparent;
+  background-color: #fff;
+  background-clip: padding-box;
+  appearance: none;
+  height: 60px;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none !important;
+  color-scheme: dark;
+}
+.Input_control__wFKaD:focus, .Input_control__wFKaD:-internal-autofill-selected {
+  outline: none !important;
+  background-color: #fff !important;
+}
+
+.Input_file__iydjF label, .Input_active__J2UKC label {
+  top: -8px;
+  left: 1px;
+  right: 1px;
+  width: unset;
+  font-size: 1.3rem;
+  padding-top: 0.5rem;
+  color: #2E303B;
+}
+
+.Input_label__em2N3 {
+  height: auto;
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  line-height: 1.2;
+  background-color: #fff;
+  top: 20px;
+  right: 1px;
+  left: 1px;
+  padding: 0 0 0 2rem;
+  z-index: 1;
+  color: #4c7b9a;
+  transition: top 0.3s ease;
+}
+.Input_label__em2N3:hover {
+  cursor: pointer;
+}
+
+.Input_help__69yNv {
+  padding: 1rem 0 0 0.5rem;
+  width: 100%;
+  line-height: 1.3;
+  font-size: 1.3rem;
+}
+
+.Input_control__wFKaD[type=search]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  height: 25px;
+  width: 25px;
+  opacity: 1;
+  margin: 0;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23777' viewBox='0 0 24 24'%3E%3Cpath d='M13.4 12l5.3-5.3c0.4-0.4 0.4-1 0-1.4s-1-0.4-1.4 0l-5.3 5.3-5.3-5.3c-0.4-0.4-1-0.4-1.4 0s-0.4 1 0 1.4l5.3 5.3-5.3 5.3c-0.4 0.4-0.4 1 0 1.4 0.2 0.2 0.4 0.3 0.7 0.3s0.5-0.1 0.7-0.3l5.3-5.3 5.3 5.3c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.4 0.4-1 0-1.4l-5.3-5.3z'%3E%3C/path%3E%3C/svg%3E");
+}
+
+.Input_block__select__gUljV::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #2E303B;
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+@keyframes Input_menu-sub-dropdown-animation-fade-in__nQCl1 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes Input_menu-sub-dropdown-animation-move-up__gaH94 {
+  from {
+    margin-top: 0.75rem;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes Input_menu-sub-dropdown-animation-move-down__GfIjd {
+  from {
+    margin-bottom: 0.75rem;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+.Input_block__OAGE3 {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+.Input_block__select__gUljV::after {
+  transform: rotate(90deg);
+  right: 1.5rem;
+}
+
+.Input_errorIcon__UpJGc {
+  position: absolute;
+  width: 30px;
+  height: 100%;
+  right: 70px;
+  top: 0;
+  fill: #db613a;
+}
+
+.Input_flushRightIcon__Qzwix {
+  right: 20px;
+}
+
+.Input_error__label__abGBx {
+  color: #db613a !important;
+}
+.Input_error__control__XFaPV {
+  border-color: #db613a !important;
+}
+.Input_error__help__0lRzG {
+  color: #db613a !important;
+}
+
+.Input_hasUnit__xRDBO {
+  width: auto;
+}
+
+.Input_active__J2UKC [type=search] ~ label {
+  padding-left: 4rem;
+  top: -8px !important;
+  left: 0px !important;
+}
+
+.Input_controlGroup__ZqquD {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.Input_file__iydjF {
+  margin-top: 20px;
+}
+.Input_file__iydjF .Input_label__em2N3 {
+  font-size: 17px !important;
+  color: #4c7b9a;
+}
+.Input_file__iydjF .Input_control__wFKaD {
+  margin-left: 10px;
+  margin-top: 20px;
+}
+
+.Input_control__wFKaD[type=search] {
+  padding-left: 4rem;
+  padding-right: 1rem;
+}
+.Input_control__wFKaD[type=search] ~ label {
+  top: 16px;
+  left: 4rem;
+}
+.Input_control__wFKaD::-webkit-inner-spin-button {
+  display: none;
+}
+
+.Input_togglePassword__YFImb {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0;
+  margin: 0 1rem;
+  background-color: transparent;
+  color: #4c7b9a;
+  display: block;
+  border: none;
+  text-decoration: none;
+}
+
+.Input_showHideIcon__dAdum {
+  width: 30px;
+  fill: #bdbac5;
+}
+
+.Input_clearInput__aGJV7 {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  max-height: 55px;
+  width: 50px;
+  padding: 1rem;
+  margin: 0 1rem;
+  background-color: transparent;
+}
+.Input_clearInput__aGJV7 svg {
+  fill: #aaa;
+}
+
+.Input_searchIcon__4Be64 {
+  position: absolute;
+  left: 12px;
+  width: 25px;
+  top: 17px;
+  fill: #ddd;
+}
+
+.Input_postFix__2CB7l {
+  position: absolute;
+  width: auto;
+  line-height: 1;
+  right: 1rem;
+  top: 50%;
+  margin-top: -5px;
+  color: #4c7b9a;
+}
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/form/PhoneInput/PhoneInput.module.scss ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.PhoneInput_control__kiWze {
+  display: block;
+  flex: 1 0 auto;
+  width: 100%;
+  height: 100%;
+  padding: 1.375rem 2rem 1.375rem 2rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #353E5D;
+  font-size: 1.6rem;
+  -webkit-tap-highlight-color: transparent;
+  border-color: transparent;
+  background-color: #fff;
+  background-clip: padding-box;
+  appearance: none;
+  height: 60px;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  outline: none !important;
+  color-scheme: dark;
+}
+.PhoneInput_control__kiWze:focus, .PhoneInput_control__kiWze:-internal-autofill-selected {
+  outline: none !important;
+  background-color: #fff !important;
+}
+
+.PhoneInput_active__QS9Uj label {
+  top: -8px;
+  left: 1px;
+  right: 1px;
+  width: unset;
+  font-size: 1.3rem;
+  padding-top: 0.5rem;
+  color: #2E303B;
+}
+
+.PhoneInput_label__gPDJu {
+  height: auto;
+  position: absolute;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+  line-height: 1.2;
+  background-color: #fff;
+  top: 20px;
+  right: 1px;
+  left: 1px;
+  padding: 0 0 0 2rem;
+  z-index: 1;
+  color: #4c7b9a;
+  transition: top 0.3s ease;
+}
+.PhoneInput_label__gPDJu:hover {
+  cursor: pointer;
+}
+
+.PhoneInput_help__QSDYf {
+  padding: 1rem 0 0 0.5rem;
+  width: 100%;
+  line-height: 1.3;
+  font-size: 1.3rem;
+}
+
+.PhoneInput_block__select__4qKr9::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid #2E303B;
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  margin-top: -6px;
+}
+
+@keyframes PhoneInput_menu-sub-dropdown-animation-fade-in__tmYXA {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes PhoneInput_menu-sub-dropdown-animation-move-up__bHsEJ {
+  from {
+    margin-top: 0.75rem;
+  }
+  to {
+    margin-top: 0;
+  }
+}
+@keyframes PhoneInput_menu-sub-dropdown-animation-move-down__YDhR7 {
+  from {
+    margin-bottom: 0.75rem;
+  }
+  to {
+    margin-bottom: 0;
+  }
+}
+.PhoneInput_block__Vx0Fh {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+}
+.PhoneInput_block__select__4qKr9::after {
+  transform: rotate(90deg);
+  right: 1.5rem;
+}
+
+.PhoneInput_error__label__SA5WF {
+  color: #db613a !important;
+}
+.PhoneInput_error__control__9Q4wS {
+  border-color: #db613a !important;
+}
+.PhoneInput_error__help__SoP0j {
+  color: #db613a !important;
+}
+
+.PhoneInput_controlGroup__af5ow {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.PhoneInput_clearInput__XTc_a {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  max-height: 55px;
+  width: 50px;
+  padding: 1rem;
+  margin: 0 1rem;
+  background-color: transparent;
+}
+.PhoneInput_clearInput__XTc_a svg {
+  fill: #aaa;
 }
 /*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ../../node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[2]!../../node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[5].oneOf[9].use[3]!../../node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[5].oneOf[9].use[4]!../../node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[5].oneOf[9].use[5]!../../packages/ui/components/feedback/Modal/Modal.module.scss ***!

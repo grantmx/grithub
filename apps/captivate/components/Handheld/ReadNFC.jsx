@@ -15,6 +15,7 @@ import Image from "next/image";
 function ReadNFC(){
     const router = useRouter();
     const nfc = useNFCReader()
+    
     const [ info, setInfo ] = useState({
         title: null,
         message: null,
@@ -53,7 +54,7 @@ function ReadNFC(){
     return(
         <>
             <Grid>
-                <GridColumn start={3} end={9} className={Style.col}>
+                <GridColumn start={2} end={20} className={Style.col}>
                     <Header>
                         Tap your member card
                     </Header>

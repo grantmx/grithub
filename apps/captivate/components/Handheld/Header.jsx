@@ -9,9 +9,9 @@ import clsx from "clsx";
 function Header({ children }){
     return(
         <header className={clsx(utils.w_100, utils.mb_2)}>
-            <div className={clsx(utils.w_100, utils.text_center, utils.mb_1)}>
+            {/* <div className={clsx(utils.w_100, utils.text_center, utils.mb_1)}>
                 <Image src={logo} width={100} height={100} alt="grit hub logo" />
-            </div>
+            </div> */}
 
             <h1 className={Style.heading}>
                 {children}

@@ -15,7 +15,7 @@ function MemberScan({ step }){
     
     return(
         <Grid>
-            <GridColumn start={3} end={9} className={Style.col}>
+            <GridColumn start={2} end={10} className={Style.col}>
                 <header className={clsx(utils.w_100, utils.mb_2)}>
                     <h1 className={Style.heading}>
                         To sign-up, please scan<br/>QR code with your phone.
