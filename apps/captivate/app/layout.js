@@ -4,6 +4,10 @@ import Style from "components/Handheld/styles/Handheld.module.scss"
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
+            <head>
+                <link rel="manifest" href="manifest.json" />
+            </head>
+
             <body>
                 <main className={Style.main}>
                     {children}

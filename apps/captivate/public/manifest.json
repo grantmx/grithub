@@ -19,9 +19,9 @@
         "type": "image/png"
       }
     ],
-    "theme_color": "#FFFFFF",
-    "background_color": "#FFFFFF",
-    "start_url": "/",
+    "theme_color": "#111111",
+    "background_color": "#111111",
+    "start_url": "/handheld",
     "display": "standalone",
-    "orientation": "portrait"
+    "orientation": "landscape"
   }
