@@ -29,7 +29,7 @@ function AutomationOptions({ step }){
         <Grid>
             <GridColumn start={2} end={10} className={Style.col}>
                 <Header subText={<Text/>}>
-                    Tap or Scan to Register
+                    Tap or Scan to Sign-in
                 </Header>
 
                 <aside className={Style.row}>

@@ -36,7 +36,9 @@ function ReadNFC(){
                 router.push("/handheld?goto=98")
             }, 2000)
 
-        }else if( nfc.error ){ 
+        }
+        
+        if( !!nfc.error ){ 
             setInfo({
                 title: "Hey, There...",
                 message: nfc.error,
@@ -48,6 +50,7 @@ function ReadNFC(){
             }, 4000)
         }
 
+        
     }, [ nfc.results, nfc.error ])
 
 
