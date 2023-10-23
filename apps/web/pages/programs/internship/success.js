@@ -19,6 +19,7 @@ function InternshipSuccess(){
 
     useEffect(() => {
         if( email && firstName ){
+            
             axios.post("/api/email/internship", {
                 subject: `Thank you for your GRIT Internship application, ${firstName}! 🎉`,
                 to: email,

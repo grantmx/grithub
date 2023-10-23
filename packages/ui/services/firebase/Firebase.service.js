@@ -28,10 +28,15 @@ export default class FirebaseService{
 
 
     async uploadFiles(folder, fileObject){
-        this.storageRef = ref(firebaseStorage, `${folder}/${fileObject[0].name}`);
+        const file = fileObject[0]
+
+        this.storageRef = ref(firebaseStorage, `${folder}/${file.name}`);
         
-        return await uploadBytesResumable(this.storageRef, fileObject, { 
-                contentType: fileObject[0].type 
+        const bytes = await fileObject.arrayBuffer()
+        const buffer = Buffer.from(bytes)
+
+        return await uploadBytesResumable(this.storageRef, buffer, { 
+                contentType: file.type 
             })
     }
 }
