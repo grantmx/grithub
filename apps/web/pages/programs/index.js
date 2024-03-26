@@ -49,6 +49,10 @@ export default function Programs(){
 
 
 
+
+
+
+
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <h2 className="fw-bold display-5 mt-5 mb-0 text-center">
                     Real Life Workforce Training.<br/>Start Your Journey Now!
@@ -61,6 +65,23 @@ export default function Programs(){
                 </div>
 
                
+                <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
+                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R2,499 per course.</h3>
+                        <p className="lead">
+                            Our classes are priced so that anyone can attend and all can afford.
+                        </p>
+                        <p className="lead">
+                            <strong>REQUIREMENTS:</strong> All students will need to bring their own laptop computer. Mac or PC with enough space to run and install software.  Don't have a computer? <a href="mailto:workforce@grithub.org.za">Email</a> us and we can help you with financing options.
+                        </p>
+                    </div>
+
+                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                        <h3 className="fs-2 fw-bold">Are You A Newbie To Coding?</h3>
+                        <p className="lead">We recommend taking the below courses in order. Each course is 6 weeks long and about 24 hours of instruction. Classes are available in-person George, Western Cape and online via Zoom</p> 
+                        <p className="lead">All sales are final. Refunds will only be given for life events and will be in the form of credit to use for a future class.</p>
+                    </div>
+                </div>
                
 
                 <div className="col-12 d-flex justify-content-between flex-wrap">
@@ -185,24 +206,6 @@ export default function Programs(){
 
 
 
-
-                <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
-                    <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R2,499 per course.</h3>
-                        <p className="lead">
-                            Our classes are priced so that anyone can attend and all can afford.
-                        </p>
-                        <p className="lead">
-                            <strong>REQUIREMENTS:</strong> All students will need to bring their own laptop computer. Mac or PC with enough space to run and install software.  Don't have a computer? <a href="mailto:workforce@grithub.org.za">Email</a> us and we can help you with financing options.
-                        </p>
-                    </div>
-
-                    <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Are You A Newbie To Coding?</h3>
-                        <p className="lead">We recommend taking the below courses in order. Each course is 6 weeks long and about 24 hours of instruction. Classes are available in-person George, Western Cape and online via Zoom</p> 
-                        <p className="lead">All sales are final. Refunds will only be given for life events and will be in the form of credit to use for a future class.</p>
-                    </div>
-                </div>
 
 
 
