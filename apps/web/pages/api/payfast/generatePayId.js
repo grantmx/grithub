@@ -7,7 +7,7 @@ export default function handler(req, res) {
 console.log(payfastService.pfParamString)
 
 	if( req.method === "POST"){
-		return axios.post(`https://sandbox.payfast.co.za/onsite/process`, payfastService.pfParamString
+		return axios.post(`https://www.payfast.co.za/onsite/process`, payfastService.pfParamString
 			)
 			.then((res) => {
 				res.status(200).json(res.data)

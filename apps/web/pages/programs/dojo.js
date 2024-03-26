@@ -8,7 +8,8 @@ import image2 from "public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jp
 function CoderDojo(){
     return(
         <GeneralPage
-            title="The CoderDojo"
+            metaTitle="Coder Dojo: George and Mossel Bay"
+            title="The Coder Dojo"
             subTitle="We believe that developing digital-savviness and tech confidence in our children will foster the next generation of digital innovators"
             image={image}
         >
@@ -45,8 +46,49 @@ function CoderDojo(){
 
                     <div className="col-md-4 col-12">
                         <Image {...image2} style={{width: "100%", height: "auto", objectFit: "contain"}} />
-                </div>
+                    </div>
                 </article>
+
+
+                <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
+                    Code Dojo Locations
+                </h2>
+
+                <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
+                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                        <h3 className="fs-2 fw-bold">
+                            George, Western Cape @ Garden Route Innovation and Technology Hub
+                        </h3>
+
+                        <address>
+                            Garden Route Innovation and Technology Hub<br/>
+                            York Street Blvd. Shopping Center Office #2 George South George 6529, George Municipality, South Africa
+                        </address>
+                        
+
+                        <p className="lead">
+                            <strong>REQUIREMENTS:</strong> Student Ninjas will need to bring their own laptop computer. Mac or PC with enough space to run and install software.<br/>
+                            <strong>A parent! (Very important). If you are 12 or under, your parent must stay with you during the session.</strong>
+                        </p>
+                    </div>
+
+                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                        <h3 className="fs-2 fw-bold">
+                            Mossel Bay,Western Cape @ Garden Route Innovation and Technology Hub
+                        </h3>
+
+                        <address>
+                            1 Beach E Blvd, Die Voor Bay, Mossel Bay, 6506
+                        </address>
+
+                        
+                        <p className="lead">
+                            <strong>REQUIREMENTS:</strong> Student Ninjas will need to bring their own laptop computer. Mac or PC with enough space to run and install software.<br/>
+                            <strong>A parent! (Very important). If you are 12 or under, your parent must stay with you during the session.</strong>
+                        </p>                    
+                    </div>
+                </div>
+
 
             </section>
 

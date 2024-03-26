@@ -7,13 +7,13 @@ import { useRouter } from "next/router"
 import clsx from 'clsx';
 
 
-function GeneralPage({ title, subTitle, children, image, centerTitle = false }){
+function GeneralPage({ metaTitle, title, subTitle, children, image, centerTitle = false }){
     const router = useRouter()
 
     return(
         <>
             <NextSeo 
-                title={title}
+                title={metaTitle ?? title}
                 canonical = {"https://grithub.org.za" + router.pathname}
             />
 

@@ -24,7 +24,28 @@ function VideoAd(){
             })
         }
 
-    }, [ clock.raw.minutes ])
+        // refresh the page once an hour
+        if( clock.raw.minutes === 0){
+            const date = new Date()
+
+            if( date.getMinutes() === 0 && date.getSeconds() === 0 ){
+                window.location.reload()
+            }
+        }
+        
+        
+
+
+        return () => {
+            if( videoRef?.current ){
+                videoRef.current.removeEventListener("ended", () => {
+                    videoRef.current.pause()
+                    setShown(false)
+                })
+            }
+        }
+
+    }, [ clock.raw.minutes, clock.raw.hours ])
 
 
     return(
