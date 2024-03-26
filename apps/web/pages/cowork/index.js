@@ -5,6 +5,7 @@ import image3 from 'public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
 import BookingWidget from "../../components/bookings/BookingWidget";
 import clsx from "clsx";
+import { IconWhatsapp } from "../../components/icons/IconWhatsapp";
 
 function CoWork(){
     return(
@@ -21,6 +22,13 @@ function CoWork(){
 						<p className="mt-3">Based in the picturesque Garden Route city of George in the Western Cape Provence of South Africa, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students. </p>
 						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and private offices.</p>
 						
+						{/* <p>
+							<button type="button" className="btn btn-success btn-lg d-flex align-items-center py-3 px-4" onClick={() =>{ window.location.href="https://wa.me/270630705752"; }}>
+								<IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
+								WhatsApp Now to Book
+							</button>
+						</p> */}
+
 						<hr className="my-5" />
 
 						<h4>Refund Policy</h4>
@@ -43,7 +51,7 @@ function CoWork(){
 							alt="hot desks" 
 						/>
 
-						{/* <BookingWidget /> */}
+						<BookingWidget />
 					</div>
 
 				</div>
@@ -58,7 +66,7 @@ function CoWork(){
 					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/wifi_tethering.svg" width={50} height={50} alt="wifi" />
-							<p className="lead pt-3 text-center">+200 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
+							<p className="lead pt-3 text-center">+300 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
 						</div>
 						<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 							<Image src="/assets/presentation.svg" width={50} height={50} alt="conference rooms"/>

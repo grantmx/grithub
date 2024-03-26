@@ -6,7 +6,7 @@ export const bookingSettings = {
         hot_desk: {
             label: "Hot Desk", 
             id: "hot_desk",
-            duration: [ "hourly", "daily" ] 
+            duration: [ "hourly", "daily", "monthly" ] 
         },
         dedicated_office: {
             label: "Dedicated Office",
@@ -32,6 +32,7 @@ export const bookingSettings = {
         ],
         monthly: [
             { id: "dedicated_office", value: 3500 },
+            { id: "hot_desk", value: 1800 },
         ]
     }
 }

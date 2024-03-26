@@ -1,8 +1,9 @@
 import clsx from "clsx";
 import Style from "./Bookings.module.scss"
 import { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import { bookingSettings } from "../../lib/constants";
+import { IconWhatsapp } from "../icons/IconWhatsapp";
 
 
 
@@ -51,7 +52,12 @@ function BookingWidget(){
                 </label>
             </div>
 
-            <Link
+            <button type="button" className="btn btn-success btn-lg d-flex align-items-center justify-content-center" onClick={() =>{ window.location.href=`https://wa.me/270630705752?text=${encodeURI(`Hi, I'm looking to book ${rate?.label ?? "Hot Desk"} for your ${rate.duration ?? "R50"} rate.`)}`; }}>
+                <IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
+                WhatsApp Now to Book
+            </button>
+
+            {/* <Link
                 href={{
                     pathname: '/cowork/book',
                     query: { 
@@ -62,7 +68,7 @@ function BookingWidget(){
                 className="btn btn-primary"
             >
                 Book Now
-            </Link>
+            </Link> */}
 
             <small className="mb-0 mt-2">Booking from the EU or UK? Book on our <a target="_blank" href="https://www.tallyworkspace.com/coworking-space/george/george-south/garden-route-innovation-technology-hub" rel="noreferrer">Tally Workspace page &rsaquo;</a></small>
         </form>
