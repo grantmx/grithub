@@ -133,6 +133,18 @@ export default function Home(){
 					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-4">
 							<div className="card shadow-sm h-100">
+								<Link href="/cowork" title='coworking spaces'>
+									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
+								</Link>
+								<div className="card-body d-flex flex-column">
+									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
+									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
+								</div>
+							</div>
+						</div>
+
+						<div className="col-xl-4 col-md-6 col-12 p-4">
+							<div className="card shadow-sm h-100">
 								<Link href="/programs" title="programs">
 									<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								</Link>
@@ -155,17 +167,7 @@ export default function Home(){
 							</div>
 						</div>
 
-						<div className="col-xl-4 col-md-6 col-12 p-4">
-							<div className="card shadow-sm h-100">
-								<Link href="/cowork" title='coworking spaces'>
-									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
-								</Link>
-								<div className="card-body d-flex flex-column">
-									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
-									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
-								</div>
-							</div>
-						</div>
+						
 
 						<div className="d-md-flex d-xs-none d-xl-none col-xl-4 col-md-6 col-12 p-md-5 p-4 justify-content-center flex-column align-item-center">
 							<h3 className="display-6 fw-bold">We strive for wholistic change at every level of the economy.</h3>

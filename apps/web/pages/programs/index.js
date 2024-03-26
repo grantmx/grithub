@@ -188,7 +188,7 @@ export default function Programs(){
 
                 <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R799 per course.</h3>
+                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R2,499 per course.</h3>
                         <p className="lead">
                             Our classes are priced so that anyone can attend and all can afford.
                         </p>
