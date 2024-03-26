@@ -31,6 +31,11 @@ function CoderDojo(){
 
                         <p>At a Dojo, young people learn to program and develop websites, apps, programs, and games, they build things with code and electronics, and much more. Members also meet like-minded people, show off what they’ve been working on, and they can take part in national and international events, such as our Coolest Projects showcase (coolestprojects.org). CoderDojo makes learning to code a fun, sociable, and creative experience. You can find out more at coderdojo.com.</p>
                     
+                        <p className="lead">
+                            <strong>REQUIREMENTS:</strong> Student Ninjas will need to bring their own laptop computer. Mac or PC with enough space to run and install software.<br/>
+                            <strong>A parent! (Very important). If you are 12 or under, your parent must stay with you during the session.</strong>
+                        </p>
+
                         <h3>
                             How to join
                         </h3>
@@ -50,26 +55,22 @@ function CoderDojo(){
                 </article>
 
 
-                <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
-                    Code Dojo Locations
-                </h2>
+               
 
                 <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
+                    <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
+                        Code Dojo Locations
+                    </h2>
+
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
                         <h3 className="fs-2 fw-bold">
                             George, Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
 
-                        <address>
+                        <address className="lead">
                             Garden Route Innovation and Technology Hub<br/>
                             York Street Blvd. Shopping Center Office #2 George South George 6529, George Municipality, South Africa
                         </address>
-                        
-
-                        <p className="lead">
-                            <strong>REQUIREMENTS:</strong> Student Ninjas will need to bring their own laptop computer. Mac or PC with enough space to run and install software.<br/>
-                            <strong>A parent! (Very important). If you are 12 or under, your parent must stay with you during the session.</strong>
-                        </p>
                     </div>
 
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
@@ -77,15 +78,10 @@ function CoderDojo(){
                             Mossel Bay,Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
 
-                        <address>
+                        <address className="lead">
+                            Diaz Hotel<br/>
                             1 Beach E Blvd, Die Voor Bay, Mossel Bay, 6506
-                        </address>
-
-                        
-                        <p className="lead">
-                            <strong>REQUIREMENTS:</strong> Student Ninjas will need to bring their own laptop computer. Mac or PC with enough space to run and install software.<br/>
-                            <strong>A parent! (Very important). If you are 12 or under, your parent must stay with you during the session.</strong>
-                        </p>                    
+                        </address>                   
                     </div>
                 </div>
 
