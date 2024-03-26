@@ -11,7 +11,7 @@ export const bookingSettings = {
         dedicated_office: {
             label: "Dedicated Office",
             id: "dedicated_office",
-            duration: [ "hourly", "daily", "monthly" ] 
+            duration: [ "daily", "monthly" ] 
         },
         event_conference_room: {
             label: "Event Conference Room",
@@ -22,7 +22,6 @@ export const bookingSettings = {
     rates: {
         hourly: [
             { id: "hot_desk", value: 50 },
-            { id: "dedicated_office", value: 100 },
             { id: "event_conference_room", value: 250 },
         ],
         daily: [
