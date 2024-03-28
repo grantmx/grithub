@@ -10,7 +10,7 @@ import clsx from "clsx";
 function CoWork(){
     return(
         <GeneralPage 
-            title="Coworking Spaces in George, South Africa"
+            title="Our Coworking Space in George"
             subTitle="Fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration in George, Western Cape, South Africa. "
 			image={image2}
 		>
@@ -22,6 +22,18 @@ function CoWork(){
 						<p className="mt-3">Based in the picturesque Garden Route city of George in the Western Cape Provence of South Africa, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students. </p>
 						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and private offices.</p>
 						
+						<p>Find us at:</p>
+						<address className="vcard">
+							<span className="fn"></span>
+							<span className="adr">
+								<span className="street-address">York St. Blvd. Shopping Center,<br />
+								Suite #2, 1st Floor,</span> <br />
+								<span className="locality">George, </span> 
+								<span className="region">Western Cape </span>
+								<span className="postal-code">6529</span><br />
+								<span className="country-name">South Africa</span>
+							</span>
+						</address>
 						{/* <p>
 							<button type="button" className="btn btn-success btn-lg d-flex align-items-center py-3 px-4" onClick={() =>{ window.location.href="https://wa.me/270630705752"; }}>
 								<IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
