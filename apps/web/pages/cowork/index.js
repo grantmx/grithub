@@ -5,13 +5,13 @@ import image3 from 'public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
 import BookingWidget from "../../components/bookings/BookingWidget";
 import clsx from "clsx";
-import { IconWhatsapp } from "../../components/icons/IconWhatsapp";
+// import { IconWhatsapp } from "../../components/icons/IconWhatsapp";
 
 function CoWork(){
     return(
         <GeneralPage 
-            title="George Coworking Spaces"
-            subTitle="Fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration. "
+            title="Coworking Spaces in George, South Africa"
+            subTitle="Fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration in George, Western Cape, South Africa. "
 			image={image2}
 		>
 

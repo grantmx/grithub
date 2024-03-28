@@ -19,7 +19,7 @@ function MainNav({ page }){
                 <div className={home.navbarNav}>
                     <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/cowork">
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
-                        CoWork
+                        CoWorking
                     </Link>
 
                     <Link href="/programs" className="nav-link fs-5 me-3 me-lg-5 text-dark">
