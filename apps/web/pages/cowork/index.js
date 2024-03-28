@@ -10,7 +10,7 @@ import clsx from "clsx";
 function CoWork(){
     return(
         <GeneralPage 
-            title="Our Coworking Space in George"
+            title="Coworking Space in George"
             subTitle="Fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration in George, Western Cape, South Africa. "
 			image={image2}
 		>
@@ -24,7 +24,7 @@ function CoWork(){
 						
 						<p>Find us at:</p>
 						<address className="vcard">
-							<span className="fn">GRIT Hub CoWorking George</span>
+							<span className="fn">GRIT Hub CoWorking George</span><br />
 							<span className="adr">
 								<span className="street-address">York St. Blvd. Shopping Center,<br />
 								Suite #2, 1st Floor,</span> <br />
