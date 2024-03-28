@@ -24,7 +24,7 @@ function CoWork(){
 						
 						<p>Find us at:</p>
 						<address className="vcard">
-							<span className="fn"></span>
+							<span className="fn">GRIT Hub CoWorking George</span>
 							<span className="adr">
 								<span className="street-address">York St. Blvd. Shopping Center,<br />
 								Suite #2, 1st Floor,</span> <br />
