@@ -1,5 +1,5 @@
 import Style from "./Video.module.scss"
-import { useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { useClock } from "../../custom_hooks/useClock";
 
@@ -11,7 +11,7 @@ function VideoAd(){
     const clock = useClock({ locale: "en-GB", timeZone: "CAT" });
 
     
-    useMemo(() => {
+    useEffect(() => {
         if( clock.raw.minutes % 15 === 0 && videoRef?.current ){
             setShown(true)
             videoRef.current.play()
@@ -32,9 +32,6 @@ function VideoAd(){
                 window.location.reload()
             }
         }
-        
-        
-
 
         return () => {
             if( videoRef?.current ){
