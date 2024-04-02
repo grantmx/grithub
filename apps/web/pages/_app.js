@@ -4,7 +4,8 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { useEffect } from 'react'
 import * as gtag from 'lib/gtag'
-
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/react"
 
 export default function App({ Component, pageProps }) {
 	const router = useRouter()
@@ -71,6 +72,9 @@ export default function App({ Component, pageProps }) {
 					`
 				}}
 			/>
+
+			<SpeedInsights/>
+			<Analytics />
 		</>
 	)		
 }
