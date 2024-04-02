@@ -306,12 +306,16 @@ export default function Home(){
 								</div>
 							</div>
 						</div>
-
-
-						
-
-
 					</div>
+				</section>
+
+
+
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
+					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
+						What is on our playlist this month.
+					</h2>
+					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/grithub-vol-1/pl.u-4JomXdBsaqmyXN"></iframe>
 				</section>
 
 			</main>
