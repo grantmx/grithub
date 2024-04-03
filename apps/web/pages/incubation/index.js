@@ -15,7 +15,7 @@ function Incubation(){
             image={image2}
         >
 
-            <section className='bg-light py-3 mb-5'>
+            <section className='bg-light py-5 mb-5'>
                 <div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
 
                     <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
@@ -51,7 +51,18 @@ function Incubation(){
            
            
             <section className="container-fluid d-flex justify-content-center align-items-center pt-5 flex-column" id="incubator">
-                <div className="col-12  d-flex justify-content-between flex-wrap">
+                <h2 className="fw-bold display-5 mt-5 mb-0 text-center">
+                    Workshops & programs to get your business off the ground
+                </h2>
+
+                <div className="text-center col-md-9 col-12 p-md-3 p-3">
+                    <p className="fs-3">
+                        Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills and create a viable business through masterclasses, workshops, events and direct coaching.
+                    </p>
+                </div>
+
+
+                <div className="col-12 d-flex justify-content-between flex-wrap">
                     <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow h-100 align-items-center">
                             <Image src="/assets/power.svg" width={150} height={150} className={Style.cardTopOverflow} alt="SME Coaching" />
