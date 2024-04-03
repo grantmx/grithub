@@ -42,6 +42,7 @@ function Competition(){
                     
                         <ul className="list-unstyled">
                             <li>- Fill out the online application</li>
+                            <li>- A short TikTok or Instagram reel of your idea (Elevator Pitch style)</li>
                             <li>- Be a current student (undergraduate or graduate-level) at NMU George Campus​</li>
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
@@ -65,7 +66,8 @@ function Competition(){
                         <ul>
                             <li><strong>May 1</strong> - Applications open</li>
                             <li><strong>June 1</strong> - Deadline for final applications.  Applications must be submitted by June 1 at 11:59 PM.</li>
-                            <li><strong>June 7</strong> - Finalists announced and contacted</li>
+                            <li><strong>June 22</strong> - Finalists announced and contacted</li>
+                            <li><strong>July 22</strong> - Program starts 2nd Semester</li>
                         </ul>
 
 
