@@ -120,7 +120,7 @@ export default function Home(){
 				<section className='bg-light py-3 mb-5'>
 					<div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
 
-						<div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column text-center">
+						<div className="col-md-5 col-12 py-md-3 py-3 pe-3 pe-md-3 d-flex justify-content-center flex-column text-center">
 							<span className="lead text-muted">GRIT Hub Innovative Ideas Competition</span>
 							<h2 className="fw-bold display-3 mb-3">
 								What is your BIG Innovative Idea?
