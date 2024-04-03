@@ -17,7 +17,7 @@ function Competition(){
                 <div className="col-12 d-flex flex-md-row flex-column mt-3">
                     <div className="col-12 col-md-8 pe-md-5">
                         <h2>About The Competition</h2>
-                        <p>GRIT Hub is thrilled to present the GRIT Hub Innovative Ideas Competition, exclusively for the talented students of Nelson Mandela University's George Campus (NMU George). This competition offers NMU George students a unique platform to showcase their innovative ideas and start their entrepreneurial journey.</p>
+                        <p>GRIT Hub is thrilled to present the GRIT Hub Innovative Ideas Competition, exclusively for the talented students of Nelson Mandela University's George Campus. This competition offers Nelson Mandela University George students a unique platform to showcase their innovative ideas and start their entrepreneurial journey.</p>
                         <p>By fostering a culture of innovation and entrepreneurship among students, the GRIT Hub Innovative Ideas Competition aims to contribute to the development of a robust ecosystem of student startups and innovators within your campus community. Through mentorship, networking opportunities, and access to resources, GRIT Hub is dedicated to helping student participants transform their ideas into tangible solutions that address real-world challenges and create positive impact.</p>
                         <p>More importantly, participating students will gain access to the GRIT Hub entrepreneurship program on their campus, to get the support on their entrepreneurship journey and skill-building. This signature program supports our goal in de-risking entrepreneurship, broadening accessibility, and diversifying engagement with a focus on recruiting underrepresented and under-resourced students to participate.</p>
                         
@@ -43,7 +43,7 @@ function Competition(){
                         <ul className="list-unstyled">
                             <li>- Fill out the online application</li>
                             <li>- A short TikTok or Instagram reel of your idea (Elevator Pitch style)</li>
-                            <li>- Be a current student (undergraduate or graduate-level) at NMU George Campus​</li>
+                            <li>- Be a current student (undergraduate or graduate-level) at Nelson Mandela University George Campus​</li>
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
                             <li>- Copy of your SA ID or Passport</li>
