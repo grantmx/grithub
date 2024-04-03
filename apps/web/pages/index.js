@@ -117,6 +117,44 @@ export default function Home(){
 
 
 
+				<section className='bg-light py-3 mb-5'>
+					<div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
+
+						<div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column text-center">
+							<span className="lead text-muted">GRIT Hub Innovative Ideas Competition</span>
+							<h2 className="fw-bold display-3 mb-3">
+								What is your BIG Innovative Idea?
+							</h2>
+							<p className='lead'>
+								Do you have a big idea that you believe can change the world? Enter the GRIT Hub Innovative Ideas Competition and stand a chance to win a cash prize of R10,000 and mentorship to bring your idea to life.
+							</p>
+							
+							<p>
+								<Link href="/incubation/competition" className="btn btn-danger btn-lg px-4" title='apply today'>
+									Learn more &nbsp;&rsaquo;
+								</Link>
+							</p>
+						</div>
+
+
+						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
+							<Link href="/incubation/competition" title="apply today">
+								<Image 
+									src="/assets/nmu-idea-compeition-web.jpg" 
+									width={711} 
+									height={400}
+									className={home.adImg}
+									alt="grit internship"
+								/>
+							</Link>
+						</div>
+
+
+					</div>
+				</section>
+
+
+
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column" id="about">
 					<h1 className="fw-bold display-4 mb-4 text-center">Garden Route Innovation &amp; Technology Hub</h1>
