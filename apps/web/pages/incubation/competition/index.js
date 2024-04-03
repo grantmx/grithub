@@ -49,16 +49,6 @@ function Competition(){
                             <li>- Copy of your SA ID or Passport</li>
                             <li>- Participate in our 12-week entrepreneurship training program</li>
                         </ul>
-
-                        <p>Applications must be completed by 11:59 PM CAT on the last day of the application period. Take time to prepare your application and enter your personal information accurately.</p>
-
-
-                        <strong>Please Note</strong>
-                        <ul>
-                            <li>Please make sure that the filenames of the documents that you are attaching do not contain any special characters, etc. PDF files are the best files to upload.</li>
-                            <li>Once you submit your application, you will not be able to make any further changes/updates.</li>
-                            <li>Upon submission of your application you will receive an email confirmation.</li>
-                        </ul>
                         
                         <hr className="my-5"/>
 
@@ -70,8 +60,20 @@ function Competition(){
                             <li><strong>July 22</strong> - Program starts 2nd Semester</li>
                         </ul>
 
+                        <hr className="my-5"/>
+
+
+                        <p>Applications must be completed by 11:59 PM CAT on the last day of the application period. Take time to prepare your application and enter your personal information accurately.</p>
+
+                        <strong>Please Note</strong>
+                        <ul>
+                            <li>Please make sure that the filenames of the documents that you are attaching do not contain any special characters, etc. PDF files are the best files to upload.</li>
+                            <li>Once you submit your application, you will not be able to make any further changes/updates.</li>
+                            <li>Upon submission of your application you will receive an email confirmation.</li>
+                        </ul>
 
                         <hr className="my-5"/>
+
 
                         <p className="alert alert-warning">
                             <strong><sup>*</sup>GOOD TO KNOW: An App is not a business.</strong>  While developing your innovative ideas, remember that creating an App alone does not constitute a viable business model; focus on building sustainable solutions with long-term value and impact.
