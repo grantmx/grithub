@@ -218,7 +218,7 @@ export default function Home(){
 
 
 				<section className='bg-light py-5 mb-5'>
-					<div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row">
+					<div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row text-center">
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
@@ -231,7 +231,7 @@ export default function Home(){
 							</Link>
 						</div>
 
-						<div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
+						<div className="col-md-5 col-12 py-md-5 py-3 d-flex justify-content-center flex-column">
 							<span className="lead text-muted">GRIT Hub Internships</span>
 							<h2 className="fw-bold display-3 mb-3">
 								Get hands on industry experience.
@@ -337,7 +337,7 @@ export default function Home(){
 									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
 									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
 									<p className="d-grid">
-										<a href="/programs/dojo" className="btn btn-primary btn-lg">
+										<a href="/programs/dojo" className="btn btn-danger btn-lg">
 											Learn more
 										</a>
 									</p>
