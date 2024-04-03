@@ -29,16 +29,12 @@ function Competition(){
                             <li>Social & Climate/Environmental Impact</li>
                             <li>Consumer Products & Services</li>
                         </ul>
-                        <p><strong>NOTE:</strong> Embracing technological advancements is key to driving innovation and creating meaningful change, and we're eager to witness the innovative ways in which students intertwine technology with their ideas.  We encourage participants to explore and integrate technological solutions into their businesses, showcasing how they'd leverage the power of technology to address real-world challenges.</p>
-                        
-                        <p className="alert alert-warning">
-                            <strong>Good To Know: An App is not a business.</strong>  While developing your innovative ideas, remember that creating an App alone does not constitute a viable business model; focus on building sustainable solutions with long-term value and impact.
-                        </p>
+                        <p><strong><sup>*</sup>NOTE:</strong> Embracing technological advancements is key to driving innovation and creating meaningful change, and we're eager to witness the innovative ways in which students intertwine technology with their ideas.  We encourage participants to explore and integrate technological solutions into their businesses, showcasing how they'd leverage the power of technology to address real-world challenges.</p>
 
                         <hr className="my-5"/>
 
                         <h3>Prizes</h3>
-                        <p>Finalists from the application process will be invited to participate in the 12-week entrepreneurship program and will patriciate in a final pitch day competition. <strong>*Winners from each track will receive R10,000.</strong></p>
+                        <p>Finalists from the application process will be invited to participate in the 12-week entrepreneurship program and will patriciate in a final pitch day competition. <strong><sup>**</sup>Winners from each track will receive R10,000.</strong></p>
 
                         <hr className="my-5"/>
 
@@ -77,9 +73,16 @@ function Competition(){
 
                         <hr className="my-5"/>
 
+                        <p className="alert alert-warning">
+                            <strong><sup>*</sup>GOOD TO KNOW: An App is not a business.</strong>  While developing your innovative ideas, remember that creating an App alone does not constitute a viable business model; focus on building sustainable solutions with long-term value and impact.
+                        </p>
 
-                        <p><strong>*PLEASE NOTE:</strong> In order to receive the R10,000 upon completion of the competition program, winners would have registered their business and have opened a business bank account.</p>
+                        <p className="alert alert-info">
+                            <strong><sup>**</sup>PLEASE NOTE:</strong> In order to receive the R10,000 upon completion of the competition program, winners would have registered their business and have opened a business bank account.
+                        </p>
 
+
+                       
                     </div>
 
                     <div className="col-12 col-md-4">
