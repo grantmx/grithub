@@ -57,30 +57,32 @@ function CoderDojo(){
 
                
 
-                <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
-                    <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
-                        Code Dojo Locations
+                <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-2 mt-5">
+                    <h2 className="fw-bold display-5 pt-5 mb-0 text-center col-12">
+                        Our Code Dojo Locations
                     </h2>
 
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">
+                        <h3 className="fs-3 fw-bold">
                             George, Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
 
                         <address className="lead">
                             Garden Route Innovation and Technology Hub<br/>
-                            York Street Blvd. Shopping Center Office #2 George South George 6529, George Municipality, South Africa
+                            Office #2, York Street Blvd. Shopping Center<br/>
+                            George, 6529
                         </address>
                     </div>
 
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">
+                        <h3 className="fs-3 fw-bold">
                             Mossel Bay,Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
 
                         <address className="lead">
                             Diaz Hotel<br/>
-                            1 Beach E Blvd, Die Voor Bay, Mossel Bay, 6506
+                            1 Beach E Blvd, Die Voor Bay,<br/> 
+                            Mossel Bay, 6506
                         </address>                   
                     </div>
                 </div>
