@@ -47,7 +47,7 @@ function Competition(){
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
                             <li>- Copy of your SA ID or Passport</li>
-                            <li>- Participate in our 12-week entrepreneurship program online or physically at GRIT Hub</li>
+                            <li>- Participate in our 12-week entrepreneurship training program</li>
                         </ul>
 
                         <p>Applications must be completed by 11:59 PM CAT on the last day of the application period. Take time to prepare your application and enter your personal information accurately.</p>
