@@ -626,7 +626,8 @@ function CompetitionApplication(){
 
 
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
-                            <legend className="mt-0">The Application Video</legend>
+                            <legend className="mt-0 mb-0">The Application Video</legend>
+                            <p>Please ensure that your video is clear, concise, and engaging. Be creative in your presentation and use visuals, graphics, or demonstrations to help illustrate your points. We look forward to seeing your innovative ideas come to life!</p>
 
 
                             <div className="col-12">
@@ -640,7 +641,7 @@ function CompetitionApplication(){
                                     />
 
                                     <label htmlFor="application_video">
-                                        URL to your 2-minute application video*
+                                        URL to your 90 minute application video*
                                     </label>
                                 </div>
                             </div>
@@ -649,15 +650,35 @@ function CompetitionApplication(){
                                 <h4 className="mb-4">Video Instructions</h4>
 
                                 <ul className="ps-3">
-                                    <li className="mb-4"><strong>Upload your video to YouTube, TikTok, or Instagram.</strong> Make sure you provide us the full URL to your video (including the https:// part)</li>
+                                    <li className="mb-4"><strong>Upload your video to YouTube.</strong> Make sure you provide us the full URL to your video (including the https://youtu.be part).  You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</li>
                                     <li className="mb-4"><strong>This is not the place to submit a demo or promotional video.</strong> For this video, we want to hear how the founders communicate.</li>
                                     <li className="mb-4"><strong>Your video should be a maximum of 90 seconds long and should contain nothing except the founders talking.</strong> Double check the audio levels so we can hear you properly. No music. No slides. No graphics.</li>
                                     <li><strong>If you have more than one founder, have all of your founders in the video.</strong> If you can't be in the same room at the same time, screen record a video call instead.</li>
                                 </ul>
                             </div>
 
-                            <h4>
-                                What to say in your video
+                            
+                        </fieldset>
+
+
+
+
+
+
+
+
+
+                    </div>
+
+                    <div className="col-12 col-md-4">
+                        <p>Applications must be completed by 11:59 PM CAT on the last day of the application period. Take time to prepare your application and enter your personal information accurately.</p> 
+                        <small className="text-muted">* indicates required fields</small>
+
+                        <hr className="my-5" />
+
+                        <div className="alert alert-secondary">
+                            <h4 className="mb-3">
+                                Tip: What to say in your application video
                             </h4>
 
                             <ol className="ps-4">
@@ -675,26 +696,7 @@ function CompetitionApplication(){
 
                                 <li><strong>Vision:</strong> Share your long-term vision for the idea and how you envision it making an impact. What are your goals for the future, and how do you plan to scale the idea?</li>
                             </ol>
-
-                            <p>Please ensure that your video is clear, concise, and engaging. Be creative in your presentation and use visuals, graphics, or demonstrations to help illustrate your points. We look forward to seeing your innovative ideas come to life!</p>
-                        </fieldset>
-
-
-
-
-
-
-
-
-
-                    </div>
-
-                    <div className="col-12 col-md-4">
-                        <p>Applications must be completed by 11:59 PM CAT on the last day of the application period. Take time to prepare your application and enter your personal information accurately.</p> 
-                        <small className="text-muted">* indicates required fields</small>
-
-                        <hr />
-
+                        </div>
 
                         {/* <p>
                             <strong className="my-5">

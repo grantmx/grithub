@@ -42,7 +42,7 @@ function Competition(){
                     
                         <ul className="list-unstyled">
                             <li>- Fill out the online application</li>
-                            <li>- A short Youtube, TikTok, or Instagram reel of your idea (Elevator Pitch style no more than 90 seconds)</li>
+                            <li>- A short YouTube video of your idea (Elevator Pitch style no more than 90 seconds)</li>
                             <li>- Be a current student (undergraduate or graduate-level) at Nelson Mandela University George Campus​</li>
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
