@@ -627,7 +627,7 @@ function CompetitionApplication(){
 
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
                             <legend className="mt-0 mb-0">The Application Video</legend>
-                            <p>Please ensure that your video is clear, concise, and engaging. Be creative in your presentation and use visuals, graphics, or demonstrations to help illustrate your points. We look forward to seeing your innovative ideas come to life!</p>
+                            <p>Please ensure that your video is clear, concise, and engaging. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link. We look forward to seeing your innovative ideas come to life!</p>
 
 
                             <div className="col-12">
