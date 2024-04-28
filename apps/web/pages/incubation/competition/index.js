@@ -42,7 +42,7 @@ function Competition(){
                     
                         <ul className="list-unstyled">
                             <li>- Fill out the online application</li>
-                            <li>- A short TikTok or Instagram reel of your idea (Elevator Pitch style)</li>
+                            <li>- A short Youtube, TikTok, or Instagram reel of your idea (Elevator Pitch style no more than 90 seconds)</li>
                             <li>- Be a current student (undergraduate or graduate-level) at Nelson Mandela University George Campus​</li>
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
@@ -67,7 +67,6 @@ function Competition(){
 
                         <strong>Please Note</strong>
                         <ul>
-                            <li>Please make sure that the filenames of the documents that you are attaching do not contain any special characters, etc. PDF files are the best files to upload.</li>
                             <li>Once you submit your application, you will not be able to make any further changes/updates.</li>
                             <li>Upon submission of your application you will receive an email confirmation.</li>
                         </ul>
