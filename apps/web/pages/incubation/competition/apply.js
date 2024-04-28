@@ -627,7 +627,7 @@ function CompetitionApplication(){
 
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
                             <legend className="mt-0 mb-0">The Application Video</legend>
-                            <p>Please ensure that your video is clear, concise, and engaging. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link. We look forward to seeing your innovative ideas come to life!</p>
+                            <p>Please ensure that your video is clear, concise, and engaging.  Read our <a href="#tips">application video tips</a>. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</p>
 
 
                             <div className="col-12">
@@ -676,7 +676,7 @@ function CompetitionApplication(){
 
                         <hr className="my-5" />
 
-                        <div className="alert alert-secondary">
+                        <div className="alert alert-secondary" id="tips">
                             <h4 className="mb-3">
                                 Tip: What to say in your application video
                             </h4>
