@@ -208,6 +208,7 @@ function CompetitionApplication(){
                                         id="id_number" 
                                         type="text"
                                         name="id_number"
+                                        required
                                         {...register("id_number")}
                                     />
 
@@ -443,6 +444,7 @@ function CompetitionApplication(){
                                                 className="form-control" 
                                                 id="nmu_student_id" 
                                                 type="text"
+                                                required
                                                 name="nmu_student_id"
                                                 {...register("nmu_student_id")}
                                                 pattern="s\d{9}"
@@ -459,6 +461,7 @@ function CompetitionApplication(){
                                         <div className="form-floating">
                                             <input 
                                                 className="form-control" 
+                                                required
                                                 id="major" 
                                                 type="text"
                                                 name="major"
@@ -499,6 +502,7 @@ function CompetitionApplication(){
                                         <div className="form-floating">
                                             <input 
                                                 className="form-control" 
+                                                required
                                                 id="founder" 
                                                 type="text"
                                                 name="founder"
@@ -507,6 +511,24 @@ function CompetitionApplication(){
 
                                             <label htmlFor="founder">
                                                 Founder Name*
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <div className="col-md-6">
+                                        <div className="form-floating">
+                                            <input 
+                                                required 
+                                                className="form-control" 
+                                                id="founder_email" 
+                                                type="input"
+                                                name="founder_email"
+                                                {...register("founder_email")}
+                                            />
+
+                                            <label htmlFor="founder_email">
+                                                Founder Email Address*
                                             </label>
                                         </div>
                                     </div>
@@ -532,6 +554,22 @@ function CompetitionApplication(){
                                         <div className="form-floating">
                                             <input 
                                                 className="form-control" 
+                                                id="co_founder_email" 
+                                                type="input"
+                                                name="co_founder_email"
+                                                {...register("co_founder_email")}
+                                            />
+
+                                            <label htmlFor="co_founder_email">
+                                                Co-Founder Email Address (if applicable)
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div className="col-md-6">
+                                        <div className="form-floating">
+                                            <input 
+                                                className="form-control" 
                                                 id="co_founder_2" 
                                                 type="text"
                                                 name="co_founder_2"
@@ -548,23 +586,24 @@ function CompetitionApplication(){
                                         <div className="form-floating">
                                             <input 
                                                 className="form-control" 
-                                                id="co_founder_3" 
-                                                type="text"
-                                                name="co_founder_3"
-                                                {...register("co_founder_3")}
+                                                id="co_founder_email_2" 
+                                                type="input"
+                                                name="co_founder_email_2"
+                                                {...register("co_founder_email_2")}
                                             />
 
-                                            <label htmlFor="co_founder_3">
-                                                Co-Founder Name #3 (if applicable)
+                                            <label htmlFor="co_founder_email_2">
+                                                Co-Founder #2 Email Address (if applicable)
                                             </label>
                                         </div>
                                     </div>
 
+                                  
 
 
                                     <div className="col-12">
                                         <p>
-                                            Have you come up with a name for your company? No sweat if you're not there yet.
+                                            Have you come up with a name for your idea? No sweat if you're not there yet.
                                         </p>
 
                                         <div className="form-check form-check-inline">
@@ -618,16 +657,13 @@ function CompetitionApplication(){
                                     
                                 </>
                             )}
-
-
-                           
                         </fieldset>
 
 
-
+                    {isNMUGeorge && (
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
                             <legend className="mt-0 mb-0">The Application Video</legend>
-                            <p>Please ensure that your video is clear, concise, and engaging.  Read our <a href="#tips">application video tips</a>. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</p>
+                            <p>Please ensure that your video is clear, concise, and engaging.  If you need direction, read our <a href="#tips">application video tips</a>. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</p>
 
 
                             <div className="col-12">
@@ -635,13 +671,14 @@ function CompetitionApplication(){
                                     <input 
                                         className="form-control" 
                                         id="application_video" 
+                                        required
                                         type="url"
                                         name="application_video"
                                         {...register("application_video")}
                                     />
 
                                     <label htmlFor="application_video">
-                                        URL to your 90 minute application video*
+                                        90 Second YouTube Video URL*
                                     </label>
                                 </div>
                             </div>
@@ -652,21 +689,34 @@ function CompetitionApplication(){
                                 <ul className="ps-3">
                                     <li className="mb-4"><strong>Upload your video to YouTube.</strong> Make sure you provide us the full URL to your video (including the https://youtu.be part).  You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</li>
                                     <li className="mb-4"><strong>This is not the place to submit a demo or promotional video.</strong> For this video, we want to hear how the founders communicate.</li>
-                                    <li className="mb-4"><strong>Your video should be a maximum of 90 seconds long and should contain nothing except the founders talking.</strong> Double check the audio levels so we can hear you properly. No music. No slides. No graphics.</li>
+                                    <li className="mb-4"><strong>Your video should be a maximum of 90 seconds long and should contain nothing except the founders talking.</strong> Double check the audio levels so we can hear you properly. No music. No slides. No graphics or special effects.</li>
                                     <li><strong>If you have more than one founder, have all of your founders in the video.</strong> If you can't be in the same room at the same time, screen record a video call instead.</li>
                                 </ul>
                             </div>
 
                             
                         </fieldset>
+                    )}
 
 
+                        <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
+                            <legend className="mt-0">Any additional information? (Optional)</legend>
 
-
-
-
-
-
+                            <div className="col-md-12">
+                                <div className="form-floating">
+                                    <textarea 
+                                        className={clsx(Style.textarea, "form-control")} 
+                                        id="statement" 
+                                        {...register("statement")}
+                                        style={{ minHeight: "200px"}} 
+                                    />
+                                    
+                                    <label htmlFor="statement">
+                                        Anything else you'd like to share with us?
+                                    </label>
+                                </div>
+                            </div>
+                        </fieldset>
 
                     </div>
 
@@ -678,21 +728,19 @@ function CompetitionApplication(){
 
                         <div className="alert alert-secondary" id="tips">
                             <h4 className="mb-3">
-                                Tip: What to say in your application video
+                                Tips: What to say in your video
                             </h4>
 
                             <ol className="ps-4">
                                 <li className="mb-4"><strong>Introduction:</strong> Start by introducing yourself and any team members participating in the competition. Provide a brief overview of your background and why you're passionate about entrepreneurship and innovation.</li>
+
+                                <li className="mb-4"><strong>Team:</strong> Introduce the Founder any any Co-Founders and highlight their relevant skills and experience. Explain why your team is well-equipped to execute the idea and bring it to market successfully.</li>
 
                                 <li className="mb-4"><strong>Problem Statement:</strong> Clearly articulate the problem or opportunity your idea addresses. Explain why this problem is significant and why it needs to be solved.</li>
 
                                 <li className="mb-4"><strong>Solution:</strong> Describe your proposed solution or idea in detail. Explain how it addresses the problem identified and why it is unique or innovative compared to existing solutions.</li>
 
                                 <li className="mb-4"><strong>Market Opportunity:</strong> Discuss the market opportunity for your idea. Who are your target customers? What is the size of the market, and how will your solution meet their needs?</li>
-
-                                <li className="mb-4"><strong>Team:</strong> Introduce the members of your team and highlight their relevant skills and experience. Explain why your team is well-equipped to execute the idea and bring it to market successfully.</li>
-
-                                <li className="mb-4"><strong>Traction or Progress:</strong> If applicable, share any traction or progress you've already achieved with your idea. This could include customer validation, prototypes developed, partnerships secured, or any other milestones reached.</li>
 
                                 <li><strong>Vision:</strong> Share your long-term vision for the idea and how you envision it making an impact. What are your goals for the future, and how do you plan to scale the idea?</li>
                             </ol>
