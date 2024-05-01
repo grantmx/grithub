@@ -21,11 +21,11 @@ function InternshipSuccess(){
         if( email && firstName ){
             
             axios.post("/api/email/internship", {
-                subject: `Thank you for your GRIT Internship application, ${firstName}! 🎉`,
+                subject: `Thank you for your Innovative Ideas Competition submission, ${firstName}! 🎉`,
                 to: email,
                 heading: `Hey, ${firstName}! 👋`,
                 message: `
-                    <p>Your application submission to the GRIT Internship program was successful.  Thanks!</p>
+                    <p>Your application submission to the Innovative Ideas Competition was successful.  Thanks!</p>
                     <p>If you are a finalist, we will be in contact with you regarding follow-up and additional information. All the best, and thank you again for your interest.</p>
                     <p>- Marshall</p>
                 `
@@ -52,7 +52,7 @@ function InternshipSuccess(){
                     </p>
 
                     <p className="fs-5 text-center">
-                        If you haven't received an email, be sure to double check your SPAM/JunK folder. Continue reading about the <Link href="/programs/internship">GRIT Internship &rsaquo;</Link>
+                        If you haven't received an email, be sure to double check your SPAM/JunK folder. Continue reading about the <Link href="/incubation/competition">Innovative Ideas Competition &rsaquo;</Link>
                     </p>
                 </div>
             </section>

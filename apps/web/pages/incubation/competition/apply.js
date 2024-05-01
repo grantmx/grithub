@@ -24,6 +24,10 @@ function CompetitionApplication(){
 
     const { register, handleSubmit, watch, clearErrors, setError, formState: { errors } } = useForm();
 
+    useEffect(() => {
+        console.log(errors)
+    }, [errors])
+
 
     useEffect(() => {
         const subscription = watch((value, { name, type }) => {
@@ -57,21 +61,13 @@ function CompetitionApplication(){
 
         const formObject = { ...data }
 
-        // remove unsupported File fields for Firestore
-        // delete formObject.CV;
-        // delete formObject.ID;
-        // delete formObject.diploma;
-
         firebaseService.setCollectionDocument({ 
             rootCollection: "competition",
             rootDocument: "i_have_an_idea",
-            collection: "2024",
+            documentCollection: "2024",
             key: `${data?.first_name} ${data?.last_name}`,
             data: {
                 ...formObject,
-                // cvURL,
-                // idURL,
-                // certURL
             }
 
         }).then(response => {
@@ -110,18 +106,18 @@ function CompetitionApplication(){
                             <div className="col-md-6">
                                 <div className="form-floating">
                                     <input 
-                                        required 
                                         className="form-control" 
                                         id="first_name" 
                                         type="input"
                                         name="first_name"
-                                        {...register("first_name")}
+                                        {...register("first_name", { required: true })}
                                     />
 
                                     <label htmlFor="first_name">
                                         First Name*
                                     </label>
                                 </div>
+                               
                             </div>
 
 
