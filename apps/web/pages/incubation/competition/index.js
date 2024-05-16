@@ -55,8 +55,8 @@ function Competition(){
                         <h3>Important Dates to Remember</h3>
                         <ul>
                             <li><strong>May 1</strong> - Applications open</li>
-                            <li><strong>June 1</strong> - Deadline for final applications.  Applications must be submitted by June 1 at 11:59 PM.</li>
-                            <li><strong>June 22</strong> - Finalists announced and contacted</li>
+                            <li><strong>July 1</strong> - Deadline for final applications.  Applications must be submitted by July 1 at 11:59 PM.</li>
+                            <li><strong>July 12</strong> - Finalists announced and contacted</li>
                             <li><strong>July 22</strong> - Program starts 2nd Semester</li>
                         </ul>
 
