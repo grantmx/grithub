@@ -42,7 +42,7 @@ function Competition(){
                     
                         <ul className="list-unstyled">
                             <li>- Fill out the online application</li>
-                            <li>- A short YouTube video of your idea (Elevator Pitch style no more than 90 seconds)</li>
+                            <li>- A short YouTube video of your idea (Elevator Pitch style no more than 90 seconds). YES! You can pitch in your mother-tongue.</li>
                             <li>- Be a current student (undergraduate or graduate-level) at Nelson Mandela University George Campus​</li>
                             <li>- Be a founder/co-founder (i.e., the person with the original idea)</li>
                             <li>- Be in the earliest stages - have an idea or have just started building on an idea</li>
@@ -73,6 +73,9 @@ function Competition(){
 
                         <hr className="my-5"/>
 
+                        <p className="alert alert-info">
+                            <strong><sup>**</sup>Pitch Notes:</strong> You are more than welcome to do your video pitch in your mother-tongue.  We encourage you to be creative and innovative in your pitch.  Remember, you have 90 seconds to pitch your idea.  Make it count!
+                        </p>
 
                         <p className="alert alert-warning">
                             <strong><sup>*</sup>GOOD TO KNOW: An App is not a business.</strong>  While developing your innovative ideas, remember that creating an App alone does not constitute a viable business model; focus on building sustainable solutions with long-term value and impact.

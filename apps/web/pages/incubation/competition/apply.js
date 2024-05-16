@@ -55,7 +55,6 @@ function CompetitionApplication(){
 
 
 
-
     function onSubmit(data){
         setIsLoading(true)
 
@@ -106,6 +105,7 @@ function CompetitionApplication(){
                             <div className="col-md-6">
                                 <div className="form-floating">
                                     <input 
+                                        required
                                         className="form-control" 
                                         id="first_name" 
                                         type="input"
@@ -659,7 +659,7 @@ function CompetitionApplication(){
                     {isNMUGeorge && (
                         <fieldset className="row g-4 shadow px-4 pt-4 pb-5 rounded mt-5">
                             <legend className="mt-0 mb-0">The Application Video</legend>
-                            <p>Please ensure that your video is clear, concise, and engaging.  If you need direction, read our <a href="#tips">application video tips</a>. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</p>
+                            <p>You may pitch in which ever language you feel most comfortable with, but please ensure that your video is clear, concise, and engaging.  If you need direction, read our <a href="#tips">application video tips</a>. You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</p>
 
 
                             <div className="col-12">
@@ -683,6 +683,7 @@ function CompetitionApplication(){
                                 <h4 className="mb-4">Video Instructions</h4>
 
                                 <ul className="ps-3">
+                                    <li className="mb-4">YES! You can say your pitch in your mother-tongue.</li>
                                     <li className="mb-4"><strong>Upload your video to YouTube.</strong> Make sure you provide us the full URL to your video (including the https://youtu.be part).  You can make this <a href="https://support.google.com/youtube/answer/157177?hl=en&co=GENIE.Platform%3DDesktop" target="_blank" rel="noreferrer">a private or unlisted YouTube video</a>, but give us a sharable working link.</li>
                                     <li className="mb-4"><strong>This is not the place to submit a demo or promotional video.</strong> For this video, we want to hear how the founders communicate.</li>
                                     <li className="mb-4"><strong>Your video should be a maximum of 90 seconds long and should contain nothing except the founders talking.</strong> Double check the audio levels so we can hear you properly. No music. No slides. No graphics or special effects.</li>
