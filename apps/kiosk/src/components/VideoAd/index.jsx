@@ -12,7 +12,7 @@ function VideoAd(){
 
     
     useEffect(() => {
-        if( clock.raw.minutes % 15 === 0 && videoRef?.current ){
+        if( clock.raw.minutes.toString() === "00" && videoRef?.current ){
             setShown(true)
             videoRef.current.play()
         }
@@ -25,7 +25,7 @@ function VideoAd(){
         }
 
         // refresh the page once an hour
-        if( clock.raw.minutes === 0){
+        if( clock.raw.minutes.toString() === "02" ){
             const date = new Date()
 
             if( date.getMinutes() === 0 && date.getSeconds() === 0 ){
