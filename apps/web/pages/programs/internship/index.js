@@ -3,7 +3,6 @@ import Image from "next/image";
 import intern from "public/assets/coworkers-working-office.jpg"
 import Style from "./internship.module.scss"
 import clsx from "clsx";
-import Link from "next/link"
 
 
 
