@@ -12,7 +12,7 @@ function VideoAd(){
 
     
     useEffect(() => {
-        if( clock.raw.minutes.toString() % "30" && videoRef?.current ){
+        if( clock.raw.minutes.toString() === "30" && videoRef?.current ){
             setShown(true)
             videoRef.current.play()
         }
