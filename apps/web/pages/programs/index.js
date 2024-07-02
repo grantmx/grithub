@@ -16,7 +16,6 @@ export default function Programs(){
             image={image}
         >
 
-
             <section className='bg-light py-5 mb-md-5'>
                 <div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row">
                     <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
@@ -67,9 +66,9 @@ export default function Programs(){
                
                 <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R2,499 per course.</h3>
+                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R3,499 per course.</h3>
                         <p className="lead">
-                            Our classes are priced so that anyone can attend and all can afford.
+                            Our Master Classes are priced so that anyone can attend and all can afford.
                         </p>
                         <p className="lead">
                             <strong>REQUIREMENTS:</strong> All students will need to bring their own laptop computer. Mac or PC with enough space to run and install software.  Don't have a computer? <a href="mailto:workforce@grithub.org.za">Email</a> us and we can help you with financing options.
@@ -78,7 +77,7 @@ export default function Programs(){
 
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
                         <h3 className="fs-2 fw-bold">Are You A Newbie To Coding?</h3>
-                        <p className="lead">We recommend taking the below courses in order. Each course is 6 weeks long and about 24 hours of instruction. Classes are available in-person George, Western Cape and online via Zoom</p> 
+                        <p className="lead">We recommend taking the below courses in order. Each course is 12 weeks long and about 48 hours of instruction. Classes are available in-person George, Western Cape and online via Zoom</p> 
                         <p className="lead">All sales are final. Refunds will only be given for life events and will be in the form of credit to use for a future class.</p>
                     </div>
                 </div>
@@ -88,24 +87,43 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+                            <Image src="/assets/html-js-css.png" width={400} height={200} className={home.cardTopOverflow} alt="html" />
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
+                                <p className="card-text">
+                                    This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
+                                </p>
+                                <p className="d-grid">
+                                    <a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn btn-danger btn-lg">
+                                        Register Now &nbsp;&rsaquo;
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
                             <Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-                                {/* <p className="d-grid">
+                                <p className="d-grid">
                                     <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
                                         Register Now &nbsp;&rsaquo;
                                     </a>
-                                </p> */}
+                                </p>
 
                                 <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
                             <Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"   />
@@ -115,17 +133,17 @@ export default function Programs(){
                                 <div className="alert alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
-                                {/* <p className="d-grid">
+                                <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
                                         Register
                                     </a>
-                                </p> */}
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
 
-                    <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
                             <Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript"  />
@@ -137,14 +155,15 @@ export default function Programs(){
                                     Registration Opens Soon
                                 </div>
 
-                                {/* <p className="d-grid">
+                                <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
                                         Register
                                     </a>
-                                </p> */}
+                                </p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
+
 
                     <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
@@ -191,7 +210,7 @@ export default function Programs(){
                     </div>
 
 
-                    <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                         <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
                         <Image src="/assets/programmer.svg" width={150} height={150} className={home.cardTopOverflow} alt="Hackathons"/>
@@ -200,7 +219,7 @@ export default function Programs(){
                                 <p className="card-text">Hackathons help break through the barriers of a stale "business as usual" culture into creative disruption and intense innovation. Our 1-3 day Hackathon events will not only solve technical problems, and deliver new innovative software and hardware, but will accelerate organizational digitization strategies and improve customer processes.</p>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
                 </div>
 

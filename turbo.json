@@ -21,7 +21,12 @@
         "$twilio_sid",
         "$twilio_token",
         "$sendgrid_api_key_id",
-        "$sendgrid_api_key"
+        "$sendgrid_api_key",
+        "$yoco_secret_key",
+        "$yoco_public_key",
+        "$google_service_client_email",
+        "$google_service_private_key",
+        "$google_sheet_id"
       ],
       "outputs": [
         "dist/**", 

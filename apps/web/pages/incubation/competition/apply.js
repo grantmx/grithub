@@ -92,7 +92,7 @@ function CompetitionApplication(){
     return(
         <GeneralPage 
             title="Competition Application"
-            subTitle="Deadline: 1 July 2024"
+            subTitle="Deadline: 31 August 2024"
 		>
              <form className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" onSubmit={handleSubmit(onSubmit)}>
                 <div className="col-12 d-flex flex-column flex-md-row mt-3">

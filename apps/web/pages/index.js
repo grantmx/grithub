@@ -263,27 +263,46 @@ export default function Home(){
 
 					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
+						<div className="col-xl-6 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+								<Image src="/assets/html-js-css.png" width={400} height={200} className={home.cardTopOverflow} alt="html" />
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
+
+									<p className="card-text">
+										This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
+									</p>
+									<p className="d-grid">
+										<a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn btn-danger btn-lg">
+											Register Now &nbsp;&rsaquo;
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">HTML/CSS for Beginners</h3>
 									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-									{/* <p className="d-grid">
+									<p className="d-grid">
 										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
 											Register Now &nbsp;&rsaquo;
 										</a>
-									</p> */}
+									</p>
 									<div className="alert alert-secondary text-center" role="alert">
 										Registration Opens Soon
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
+						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								<Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript" />
@@ -292,18 +311,18 @@ export default function Home(){
 									
 									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
 
-									{/* <p className="d-grid">
+									<p className="d-grid">
 										<a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
 											Register
 										</a>
-									</p> */}
+									</p>
 
 									<div className="alert alert-secondary text-center" role="alert">
 										Registration Opens Soon
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
 
 
@@ -329,12 +348,13 @@ export default function Home(){
 
 						
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
+						<div className="col-xl-6 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={home.cardTopOverflow} alt="STEM"/>
+								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={200} className={home.cardTopOverflow} alt="STEM"/>
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
+
 									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
 									<p className="d-grid">
 										<a href="/programs/dojo" className="btn btn-danger btn-lg">

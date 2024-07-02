@@ -7,14 +7,24 @@ import { useRouter } from "next/router"
 import clsx from 'clsx';
 
 
-function GeneralPage({ metaTitle, title, subTitle, children, image, centerTitle = false }){
+function GeneralPage({ 
+    metaTitle, 
+    title, 
+    subTitle, 
+    children, 
+    image, 
+    centerTitle = false, 
+    className,
+    openGraph = null,
+}){
     const router = useRouter()
 
     return(
         <>
             <NextSeo 
                 title={metaTitle ?? title}
-                canonical = {"https://grithub.org.za" + router.pathname}
+                canonical={"https://grithub.org.za" + router.pathname}
+                openGraph={openGraph}
             />
 
             <OrganizationSchema />
@@ -24,7 +34,7 @@ function GeneralPage({ metaTitle, title, subTitle, children, image, centerTitle 
                     <div className={Style.hero}>
                         <MainNav page />
 
-                        <div className={clsx(Style.headingWrapper, centerTitle && Style.centerHeading)}>
+                        <div className={clsx(Style.headingWrapper, centerTitle && Style.centerHeading, className)}>
                             <h1 className={Style.heading}>
                                 {title}
                             </h1>

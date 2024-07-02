@@ -8,41 +8,41 @@ const video = "https://player.vimeo.com/progressive_redirect/playback/845283960/
 function VideoAd(){
     const [ show, setShown ] = useState(false)
     const videoRef = useRef()
-    const clock = useClock({ locale: "en-GB", timeZone: "CAT" });
+    // const clock = useClock({ locale: "en-GB", timeZone: "CAT" });
 
     
-    useEffect(() => {
-        if( clock.raw.minutes.toString() === "30" && videoRef?.current ){
-            setShown(true)
-            videoRef.current.play()
-        }
+    // useEffect(() => {
+    //     if( clock.raw.minutes.toString() === "30" && videoRef?.current ){
+    //         setShown(true)
+    //         videoRef.current.play()
+    //     }
 
-        if( videoRef?.current ){
-            videoRef.current.addEventListener("ended", () => {
-                videoRef.current.pause()
-                setShown(false)
-            })
-        }
+    //     if( videoRef?.current ){
+    //         videoRef.current.addEventListener("ended", () => {
+    //             videoRef.current.pause()
+    //             setShown(false)
+    //         })
+    //     }
 
-        // refresh the page once an hour
-        if( clock.raw.minutes.toString() === "02" ){
-            const date = new Date()
+    //     // refresh the page once an hour
+    //     if( clock.raw.minutes.toString() === "02" ){
+    //         const date = new Date()
 
-            if( date.getMinutes() === 0 && date.getSeconds() === 0 ){
-                window.location.reload()
-            }
-        }
+    //         if( date.getMinutes() === 0 && date.getSeconds() === 0 ){
+    //             window.location.reload()
+    //         }
+    //     }
 
-        return () => {
-            if( videoRef?.current ){
-                videoRef.current.removeEventListener("ended", () => {
-                    videoRef.current.pause()
-                    setShown(false)
-                })
-            }
-        }
+    //     return () => {
+    //         if( videoRef?.current ){
+    //             videoRef.current.removeEventListener("ended", () => {
+    //                 videoRef.current.pause()
+    //                 setShown(false)
+    //             })
+    //         }
+    //     }
 
-    }, [ clock.raw.minutes, clock.raw.hours ])
+    // }, [ clock.raw.minutes, clock.raw.hours ])
 
 
     return(
