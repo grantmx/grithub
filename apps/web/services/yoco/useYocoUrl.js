@@ -14,7 +14,7 @@ export default function useYocoUrl(){
                 "Content-Type": "application/json",
             },
             data: {
-                amount: parseInt(3500)*100,
+                amount: parseInt(3499)*100,
                 currency: "ZAR",
                 processingMode: "test",
                 cancelUrl: `${callbackUrl}cancel`,
@@ -28,7 +28,7 @@ export default function useYocoUrl(){
                         displayName: "Code Masterclass",
                         quantity: 1,
                         pricingDetails: {
-                            price: parseInt(3500) * 100
+                            price: parseInt(3499) * 100
                         }
                     }
                 ]

@@ -204,7 +204,7 @@ function ProgramRegister() {
                         
 
                             <div className="col-12 d-flex justify-content-between">
-                                <button type="submit" className="btn btn-primary btn-lg px-5 d-flex align-items-center">
+                                <button style={{ width: "250px", height: "48px" }} type="submit" className="btn btn-primary btn-lg px-5 d-flex align-items-center">
                                     {isLoading ? <Loader {...{ isLoading, isSuccessful }} /> : (
                                         <>
                                             <IconLock fill="#fff" width="24" height="24" className="me-2" />
