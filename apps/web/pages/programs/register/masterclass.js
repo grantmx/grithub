@@ -208,7 +208,7 @@ function ProgramRegister() {
                                     {isLoading ? <Loader {...{ isLoading, isSuccessful }} /> : (
                                         <>
                                             <IconLock fill="#fff" width="24" height="24" className="me-2" />
-                                            Register & Pay
+                                            Register
                                         </>
                                     )}
                                 </button>
