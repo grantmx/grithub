@@ -227,7 +227,7 @@ function ProgramRegister() {
 
                         <p>
                             <strong>
-                            July 27th - October 12th<br />
+                            July 27th - October 26th<br />
                             Every Saturday: 11 AM to 3 PM<br />
                             Garden Route Innovation & Technology Hub, George<br />
                             <br />
