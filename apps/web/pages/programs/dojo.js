@@ -2,7 +2,7 @@ import GeneralPage from "components/layout/GeneralPage";
 import Image from "next/image";
 import image from "public/assets/coderdojo-hero.jpg"
 import image2 from "public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jpg"
-
+import ad from "public/assets/code-dojo.png"
 
 
 function CoderDojo(){
@@ -12,6 +12,18 @@ function CoderDojo(){
             title="The Coder Dojo"
             subTitle="We believe that developing digital-savviness and tech confidence in our children will foster the next generation of digital innovators"
             image={image}
+            openGraph={{
+                title: "The Coder Dojo",
+                description: "We believe that developing digital-savviness and tech confidence in our children will foster the next generation of digital innovators",
+                images: [
+                    {
+                        url: ad.src,
+                        width: 500,
+                        height: 500,
+                        alt: "Coder Dojos in George and Mossel Bay, South Africa"
+                    }
+                ]
+            }}
         >
 
 
