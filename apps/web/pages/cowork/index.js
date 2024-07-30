@@ -18,9 +18,9 @@ function CoWork(){
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
 				<div className="col-12 d-flex flex-column flex-md-row">
 					<div className="col-12 col-md-8 pe-md-5 mb-4">
-						<h2>Our Hot Desks and Dedicated Office space in George provide a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
+						<h2>Our office space in George provides a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
 						<p className="mt-3">Based in the picturesque Garden Route city of George in the Western Cape Provence of South Africa, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students. </p>
-						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and private offices.</p>
+						<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and Hot Desks.</p>
 						
 						<p>Find us at:</p>
 						<address className="vcard">
