@@ -117,7 +117,7 @@ export default function Home(){
 
 
 
-				<section className='bg-light py-5 mb-5'>
+				{/* <section className='bg-light py-5 mb-5'>
 					<div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
 
 						<div className="col-md-5 col-12 py-md-3 py-3 pe-3 pe-md-3 d-flex justify-content-center flex-column text-center">
@@ -151,7 +151,7 @@ export default function Home(){
 
 
 					</div>
-				</section>
+				</section> */}
 
 
 
@@ -273,11 +273,15 @@ export default function Home(){
 									<p className="card-text">
 										This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
 									</p>
-									<p className="d-grid">
+									{/* <p className="d-grid">
 										<a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn btn-danger btn-lg">
 											Register Now &nbsp;&rsaquo;
 										</a>
-									</p>
+									</p> */}
+
+									<div className="alert alert-secondary text-center" role="alert">
+										Registration Opens in January 2025
+									</div>
 								</div>
 							</div>
 						</div>

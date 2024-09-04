@@ -15,7 +15,7 @@ function Incubation(){
             image={image2}
         >
 
-            <section className='bg-light py-5 mb-5'>
+            {/* <section className='bg-light py-5 mb-5'>
                 <div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
                     <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
                         <Link href="/incubation/competition" title="apply today">
@@ -46,7 +46,7 @@ function Incubation(){
                         </p>
                     </div>
                 </div>
-            </section>
+            </section> */}
            
            
             <section className="container-fluid d-flex justify-content-center align-items-center pt-5 flex-column" id="incubator">
