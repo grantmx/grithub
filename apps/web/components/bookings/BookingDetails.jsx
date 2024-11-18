@@ -4,7 +4,7 @@ import formatPrice from "../../lib/utils/formatPrice";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { bookingSettings } from "../../lib/constants";
-import range from "../../lib/utils/range";
+// import range from "../../lib/utils/range";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
 
 
@@ -18,11 +18,11 @@ function BookingDetails(){
 
 
     useEffect(() => {
-        const maxPeople = range(1, bookingSettings.people)
-        setPeople(maxPeople)
+        // const maxPeople = range(1, bookingSettings.people)
+        // setPeople(maxPeople)
 
-        const maxHours = range(1, bookingSettings.hours)
-        setHours(maxHours)
+        // const maxHours = range(1, bookingSettings.hours)
+        // setHours(maxHours)
 
     }, [])
 

@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
-import removeSpaces from 'ui/lib/removeSpaces';
+// import removeSpaces from 'ui/lib/removeSpaces';
 import { IconClose, IconInputError, IconSearch } from 'ui/components/icons';
 
 import Style from './Input.module.scss';
@@ -123,7 +123,7 @@ const Input = React.forwardRef(({
                             ref.current = node;
                         }
                     }}
-                    id={removeSpaces(label)}
+                    id={label}
                     autoComplete={autocomplete}
                     type={inputType}
                     name={name}
@@ -187,7 +187,7 @@ const Input = React.forwardRef(({
                 <label
                     onClick={() => inputRef.current.focus()}
                     className={clsx(Style.label, error && Style.error__label, !!unitText && Style.hasUnit)} 
-                    htmlFor={removeSpaces(label)}
+                    htmlFor={label}
                 >
                     {label}
                 </label>
