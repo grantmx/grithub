@@ -1,37 +1,45 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [".env", ".env.local"],
+  "globalDotEnv": [
+    ".env",
+    ".env.local"
+  ],
   "pipeline": {
     "build": {
-      "dotEnv": [".env.production", ".env"],
+      "dotEnv": [
+        ".env.production",
+        ".env"
+      ],
       "dependsOn": [
-        "^build",
-        "$NEXT_PUBLIC_GA_ID",
-        "$EMAIL_SERVER",
-        "$EMAIL_FROM",
-        "$NEXT_PUBLIC_url",
-        "$merchant_id",
-        "$merchant_key",
-        "$sandbox_merchant_id",
-        "$sandbox_merchant_key",
-        "$merchant_passphrase",
-        "$eskomSePush_key",
-        "$server_email",
-        "$server_email_password",
-        "$twilio_sid",
-        "$twilio_token",
-        "$sendgrid_api_key_id",
-        "$sendgrid_api_key",
-        "$yoco_secret_key",
-        "$yoco_public_key",
-        "$google_service_client_email",
-        "$google_service_private_key",
-        "$google_sheet_id"
+        "^build"
       ],
       "outputs": [
-        "dist/**", 
-        "build/**", 
+        "dist/**",
+        "build/**",
         ".next/**"
+      ],
+      "env": [
+        "NEXT_PUBLIC_GA_ID",
+        "EMAIL_SERVER",
+        "EMAIL_FROM",
+        "NEXT_PUBLIC_url",
+        "merchant_id",
+        "merchant_key",
+        "sandbox_merchant_id",
+        "sandbox_merchant_key",
+        "merchant_passphrase",
+        "eskomSePush_key",
+        "server_email",
+        "server_email_password",
+        "twilio_sid",
+        "twilio_token",
+        "sendgrid_api_key_id",
+        "sendgrid_api_key",
+        "yoco_secret_key",
+        "yoco_public_key",
+        "google_service_client_email",
+        "google_service_private_key",
+        "google_sheet_id"
       ]
     },
     "lint": {
@@ -39,7 +47,11 @@
     },
     "dev": {
       "cache": false,
-      "dotEnv": [".env.local", ".env.development", ".env"]
+      "dotEnv": [
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     }
   }
 }
