@@ -1,4 +1,3 @@
-import GeneralPage from "components/layout/GeneralPage";
 import { useEffect } from "react";
 import { celebrationTime } from "../../../lib/utils/celebrationTime";
 
@@ -9,10 +8,7 @@ function Book(){
     }, [])
 
     return(
-        <GeneralPage 
-            title="Booking Success!"
-            centerTitle
-		>
+        
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
                 <div className="col-12 d-flex flex-column">
                     <span className="display-1 text-center">🥳</span>
@@ -43,7 +39,6 @@ function Book(){
                     </div>
                 </div>
             </section>
-        </GeneralPage>
     )
 }
 
