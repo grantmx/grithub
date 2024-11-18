@@ -1,3 +1,5 @@
+"use client"
+
 import clsx from "clsx";
 import Style from "./Bookings.module.scss"
 import { useState } from "react";

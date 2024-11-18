@@ -1,6 +1,9 @@
 module.exports = {
     reactStrictMode: true,
-    transpilePackages: ["ui"],
+    transpilePackages: [
+        "ui",
+        "next-mdx-remote"
+    ],
     webpack(config) {
         config.experiments = { 
             ...config.experiments, 
@@ -25,6 +28,11 @@ module.exports = {
                 destination: '/programs/dojo',
                 permanent: true,
             },
+            {
+                source: "/incubation",
+                destination: "/programs/incubation",
+                permanent: true
+            }
         ]
     },
     async headers() {

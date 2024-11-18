@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx'
-import home from 'styles/home.module.scss';
+import home from '/styles/home.module.scss';
 
 function MainNav({ page }){
     return (
@@ -24,7 +24,7 @@ function MainNav({ page }){
 
                     <Link href="/programs" className="nav-link fs-5 me-3 me-lg-5 text-dark">
                         <Image src="/assets/people.svg" width={20} height={20} className="d-lg-none" alt="Program Events at GRITHub" />
-                        Training
+                        Programs
                     </Link>
 
                     <Link href="/consulting" className="nav-link fs-5 me-3 me-lg-5 text-dark">
@@ -32,13 +32,13 @@ function MainNav({ page }){
                         Consulting
                     </Link>
 
-                    <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/incubation">
+                    <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/programs/incubation">
                         <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="Business Incubation" />
                         Incubation
                     </Link>
 
-                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/#contact">
-                        <Image src="/assets/mail_outline.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
+                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/contact">
+                        <Image src="/assets/mail_outline.svg" width={20} height={20} className="d-lg-none" alt="Contact Us" />
                         Contact
                     </a>
                 </div>

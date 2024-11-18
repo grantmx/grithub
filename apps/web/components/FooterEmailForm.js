@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import footer from 'components/navigation/footer.module.scss'
-import Image from 'next/image';
+"use client"
 
+import React, { useState } from 'react';
+import footer from '/components/navigation/footer.module.scss'
+import Image from 'next/image';
 import serialize from 'form-serialize';
 import jsonp from 'jsonp';
 

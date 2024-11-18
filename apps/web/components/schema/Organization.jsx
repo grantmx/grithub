@@ -1,31 +1,47 @@
+import Script from 'next/script';
 import React from 'react';
-import { OrganizationJsonLd } from 'next-seo';
 
 export default function OrganizationSchema(){
-    return(
-        <OrganizationJsonLd
-            type="Corporation"
-            id="https://grithub.org.za"
-            legalName="Garden Route Innovation and Technology Hub, NPC"
-            name="GRIT Hub"
-            url="https://grithub.org.za"
-            address={{
-                streetAddress: 'York Street Blvd. Shopping Center',
-                streetAddress: 'Office Suite #2',
-                addressLocality: 'George',
-                addressRegion: 'Western Cape',
-                postalCode: '6529',
-                addressCountry: 'ZA',
-            }}
-            contactPoint={[
-                {
-                    telephone: '+27-063-070-5752',
-                    contactType: 'customer service',
-                    email: 'workforce@grithub.org.za',
-                    areaServed: 'ZA',
-                    availableLanguage: ['english', 'afrikaans', 'isiXhosa', 'isiZulu'],
-                }
-            ]}
-        />
+    const OrgData = () => {
+        return `
+            {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                "url": "https://grithub.org.za",
+                "legalName": "Garden Route Innovation and Technology Hub, NPC",
+                "name": "GRIT Hub",
+                "openingHours": "Mo-Fr 08:00-17:00",
+                "description": "Your future starts here! Garden Route Innovation and Technology located in George, Western Cape Lab is here to incubate innovation and entrepreneurship in the digital economy",
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": "Office Suite #2, York Street Blvd. Shopping Center",
+                    "addressLocality": "George",
+                    "addressRegion": "Western Cape",
+                    "postalCode": "6529",
+                    "addressCountry": "ZA"
+                },
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+27-063-070-5752",
+                    "contactType": "customer service",
+                    "email": "info(at)grithub.org.za"
+                },
+                "sameAs": [
+                    "https://www.facebook.com/grithub",
+                    "https://twitter.com/grithub",
+                    "https://www.linkedin.com/company/grithub",
+                    "https://www.instagram
+                ]
+            }`
+    }
+
+
+    return (
+        <Script 
+            type="application/ld+json" 
+            id="organizationSchema"
+            dangerouslySetInnerHTML={OrgData()}
+            key="item-jsonld-org"
+        />        
     )
 }

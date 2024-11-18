@@ -1,9 +1,6 @@
 import Style from './page.module.scss'
 import MainNav from "../navigation/MainNav";
-import { NextSeo } from 'next-seo';
 import FooterNav from '../navigation/FooterNav';
-import OrganizationSchema from '../schema/Organization';
-import { useRouter } from "next/router"
 import clsx from 'clsx';
 
 
@@ -17,18 +14,9 @@ function GeneralPage({
     className,
     openGraph = null,
 }){
-    const router = useRouter()
 
     return(
         <>
-            <NextSeo 
-                title={metaTitle ?? title}
-                canonical={"https://grithub.org.za" + router.pathname}
-                openGraph={openGraph}
-            />
-
-            <OrganizationSchema />
-
             <main className="container-fluid d-flex p-0 flex-column">
                 <section className={Style.heroWrapper} style={{backgroundImage: `url( ${image?.src ?? "/assets/hero.jpg" })`}}>
                     <div className={Style.hero}>

@@ -30,32 +30,32 @@ function FooterNav(){
             <div className="col-md-3 col-12 p-md-4 pb-4 d-flex justify-content-top flex-column">
                 <h4 className="fw-bold">Find Us</h4>
                 
-                <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="https://wa.me/270630705752"; }}>
+                <a className="btn px-1 d-flex" href="https://wa.me/270630705752">
                     <Image src="/assets/whatsapp.svg" width={25} height={25} alt="whatsapp us"/>
                     <small className="ms-2">+27 (063) 070 5752</small>
-                </button>
-                <button type="button" className="btn px-1 d-flex" onClick={() =>{ window.location.href="mailto:workforce@grithub.org.za"; }}>
+                </a>
+                <a className="btn px-1 d-flex" href="mailto:workforce@grithub.org.za">
                     <Image src="/assets/mail_outline.svg" width={25} height={25} alt="email us"/>
                     <small className="ms-2">workforce@grithub.org.za</small>
-                </button>
+                </a>
 
                 <div className="d-flex flex-row flex-wrap mt-4">
-                    <button type="button" className="btn px-1 d-flex w-50" onClick={() =>{ window.location.href="https://www.facebook.com/grithub.za"; }}>
+                    <a className="btn px-1 d-flex w-50" href="https://www.facebook.com/grithub.za">
                         <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GRIT Hub on facebook"/>
                         <small className="ms-2">Facebook</small>
-                    </button>
-                    <button type="button" className="btn px-1 d-flex w-50" onClick={() =>{ window.location.href="https://twitter.com/grithub_za"; }}>
-                        <Image src="/assets/twitter.svg" width={25} height={25} alt="GRIT Hub on twitter"/>
-                        <small className="ms-2">Twitter</small>
-                    </button>
-                    <button type="button" className="btn px-1 d-flex w-50" onClick={() =>{ window.location.href="https://www.instagram.com/grithub_za/"; }}>
+                    </a>
+                    <a className="btn px-1 d-flex w-50" href="https://www.linkedin.com/company/grithub-za">
+                        <Image src="/assets/linkedin.svg" width={25} height={25} alt="GRIT Hub on linkedin"/>
+                        <small className="ms-2">Linkedin</small>
+                    </a>
+                    <a className="btn px-1 d-flex w-50" href="https://www.instagram.com/grithub_za/">
                         <Image src="/assets/instagram.svg" width={25} height={25} alt="GRIT Hub on Instagram"/>
                         <small className="ms-2">Instagram</small>
-                    </button>
-                    <button type="button" className="btn px-1 d-flex w-50" onClick={() =>{ window.location.href="https://patreon.com/grithub_za"; }}>
+                    </a>
+                    <a className="btn px-1 d-flex w-50" href="https://patreon.com/grithub_za">
                         <Image src="/assets/patreon.svg" width={25} height={25} alt="GRIT Hub on Patreon"/>
                         <small className="ms-2">Patreon</small>
-                    </button>
+                    </a>
                 </div>
                 
             </div>
