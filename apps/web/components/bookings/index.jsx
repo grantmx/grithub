@@ -1,7 +1,9 @@
+"use client"
+
 import Stepper from "../navigation/Stepper";
 import Style from "./Bookings.module.scss"
 import { useContext } from "react";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
 import BookingDetails from "./BookingDetails";
 import CustomerDetails from "./CustomerDetails";
@@ -14,19 +16,19 @@ const steps = [
 ]
 
 function Bookings(){
-    const router = useRouter()
+    const query = useSearchParams()
     const [ globalBook, dispatch ] = useContext(StepperContext)
 
     return(
         <div className={Style.block}>
             <Stepper {...{ steps, current: globalBook.current }} />
 
-            {router.query.step === "1" && (
+            {query.step === "1" && (
                 <BookingDetails />
             )}
 
 
-            {router.query.step === "2" && (
+            {query.step === "2" && (
                 <CustomerDetails />
             )}
         </div>

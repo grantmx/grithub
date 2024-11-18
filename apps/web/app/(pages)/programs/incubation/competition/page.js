@@ -1,6 +1,6 @@
 // import GeneralPage from "components/layout/GeneralPage";
 import Image from "next/image";
-import intern from "public/assets/nmu-idea-app-img.jpg"
+import intern from "/public/assets/nmu-idea-app-img.jpg"
 import Style from "./competition.module.scss"
 import clsx from "clsx";
 import Link from "next/link"
