@@ -1,4 +1,4 @@
-import { generateSignature } from "lib/utils/generateSignature";
+import { generateSignature } from "/lib/utils/generateSignature";
 
 
 export default class PayfastService{
