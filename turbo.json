@@ -1,13 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDotEnv": [
-    ".env.local"
-  ],
   "tasks": {
     "build": {
-      "dotEnv": [
-        ".env.local"
-      ],
       "dependsOn": [
         "^build"
       ],
@@ -38,6 +32,10 @@
         "google_service_client_email",
         "google_service_private_key",
         "google_sheet_id"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.local"
       ]
     },
     "lint": {
@@ -45,11 +43,15 @@
     },
     "dev": {
       "cache": false,
-      "dotEnv": [
+      "inputs": [
+        "$TURBO_DEFAULT$",
         ".env.local",
         ".env.development",
         ".env"
       ]
     }
-  }
+  },
+  "globalDependencies": [
+    ".env.local"
+  ]
 }
