@@ -1,14 +1,12 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDotEnv": [
-    ".env",
     ".env.local"
   ],
-  "pipeline": {
+  "tasks": {
     "build": {
       "dotEnv": [
-        ".env.production",
-        ".env"
+        ".env.local"
       ],
       "dependsOn": [
         "^build"
