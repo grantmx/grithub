@@ -6,7 +6,7 @@ function Terms(){
     
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">
-                    <h1 className="display-1">
+                    <h1 className="display-1 fw-bold">
                         Terms of Use
                     </h1>
 

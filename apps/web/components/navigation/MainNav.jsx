@@ -5,7 +5,7 @@ import home from '/styles/home.module.scss';
 
 function MainNav({ page, clear = false }) {
     return (
-        <nav className={clsx(page && `${home.navbar} shadow`, !clear && "bg-white",  `w-100 container-fluid px-5 py-2`)}>
+        <nav className={clsx(page && `${home.navbar} shadow-lg`, !clear && "bg-white",  `w-100 container-fluid px-5 py-4 mb-2`)}>
             <div className="col-12 d-flex justify-content-md-between justify-content-center flex-nowrap">
                 <a className="navbar-brand" href="/" title="home">
                     <Image 
@@ -16,7 +16,7 @@ function MainNav({ page, clear = false }) {
                         alt="GRITHub Logo" 
                     />
                 </a>
-                <div className={home.navbarNav}>
+                <menu className={home.navbarNav}>
                     <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/cowork">
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
                         CoWorking
@@ -32,16 +32,16 @@ function MainNav({ page, clear = false }) {
                         Consulting
                     </Link>
 
-                    <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/programs/incubation">
+                    <Link className="nav-link fs-5 me-3 me-lg-4 text-dark" href="/programs/incubation">
                         <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="Business Incubation" />
                         Incubation
                     </Link>
 
-                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/contact">
-                        <Image src="/assets/mail_outline.svg" width={20} height={20} className="d-lg-none" alt="Contact Us" />
+                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark rounded-pill text-bg-danger text-white px-5 py-2" href="/contact">
+                        <Image src="/assets/mail_outline.svg" style={{ fill: "#ffffff"}} width={20} height={20} className="d-lg-none" alt="Contact Us" />
                         Contact
                     </a>
-                </div>
+                </menu>
             </div>
         </nav>
     );

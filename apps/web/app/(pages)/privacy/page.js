@@ -5,7 +5,7 @@ function PrivacyPolicy(){
     return(
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">
-                    <h1 className="display-1">Privacy Policy</h1>
+                    <h1 className="display-1 fw-bold">Privacy Policy</h1>
                     <h2 className="lead">By visiting this site you agree to the terms of this agreement. </h2>
                     <br/>
                     <h3>DATA CONTROLLER</h3>

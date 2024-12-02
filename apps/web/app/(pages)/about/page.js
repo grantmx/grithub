@@ -8,7 +8,7 @@ function About(){
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
                 <div className="col-12 d-flex flex-md-row flex-column mt-3">
                     <div className="col-12 col-md-7 pe-md-5">
-                        <h1 className="display-2">
+                        <h1 className="display-2 fw-bold">
                             About Us
                         </h1>
                         <p className="lead text-muted fs-3">The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company with a simple mission: To identify untapped potential and refocus it using the power of digital technology.</p>
