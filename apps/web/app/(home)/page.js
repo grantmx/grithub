@@ -11,7 +11,7 @@ import Script from 'next/script'
 
 import afriLabs from "/public/assets/partners/afrilabs-member-logo-white.png" 
 import georgeBusiness from '/public//assets/partners/georgebusinesschamberlogo.png'
-import businessFinder from "/public//assets/partners/Business-Finder-logo-02.png"
+import mosselBay from "/public//assets/partners/mosselbay-chamber.png"
 import hero from "/public/assets/hero.jpg" 
 import Link from 'next/link';
 
@@ -49,7 +49,7 @@ export default function Home(){
 							</small>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
-								<div className="col-4 col-md-4 px-5">
+								<div className="col-4 col-md-4 pe-5">
 									<a href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -71,16 +71,6 @@ export default function Home(){
 										</svg>
 									</a>
 								</div>
-								
-								<div className="col-4 col-md-4 px-5">
-									<a href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
-											src={georgeBusiness}
-											alt="George Business Chamber." 
-											className={Style.partnerLogo}
-										/>
-									</a>
-								</div>
 
 								<div className="col-4 col-md-4 px-5">
 									<a href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
@@ -93,6 +83,28 @@ export default function Home(){
 										/>
 									</a>
 								</div>
+								
+								<div className="col-4 col-md-3 pe-5 pt-5">
+									<a href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={georgeBusiness}
+											alt="George Business Chamber." 
+											className={Style.partnerLogo}
+										/>
+									</a>
+								</div>
+
+								<div className="col-4 col-md-4 px-5 pt-5">
+									<a href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={mosselBay}
+											alt="Mossel Bay Business Chamber" 
+											className={Style.partnerLogo}
+										/>
+									</a>
+								</div>
+
+								
 							</div>
 						</div>
 					</div>
