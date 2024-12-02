@@ -54,7 +54,7 @@ function BookingWidget(){
                 </label>
             </div>
 
-            <button type="button" className="btn btn-success btn-lg d-flex align-items-center justify-content-center" onClick={() =>{ window.location.href=`https://wa.me/270630705752?text=${encodeURI(`Hi, I'm looking to book ${rate?.label ?? "Hot Desk"} for your ${rate.duration ?? "R50"} rate.`)}`; }}>
+            <button type="button" className="btn rounded-pill btn-success btn-lg py-3 px-4 d-flex align-items-center justify-content-center" onClick={() =>{ window.location.href=`https://wa.me/270630705752?text=${encodeURI(`Hi, I'm looking to book ${rate?.label ?? "Hot Desk"} for your ${rate.duration ?? "R50"} rate.`)}`; }}>
                 <IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
                 WhatsApp Now to Book
             </button>
@@ -67,7 +67,7 @@ function BookingWidget(){
                         step: 1
                     },
                 }}
-                className="btn btn-primary"
+                className="btn rounded-pill btn-primary"
             >
                 Book Now
             </Link> */}

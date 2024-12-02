@@ -102,7 +102,7 @@ function Competition(){
                             <h3>How to apply</h3>
                             <p>Submit your competition application online. {/* Application Deadline: <strong>31 August 2023</strong>*/}</p> 
 
-                            <Link href="/incubation/competition/apply" className="btn btn-danger">
+                            <Link href="/incubation/competition/apply" className="btn rounded-pill btn-danger">
                                 Apply Now
                             </Link>
 

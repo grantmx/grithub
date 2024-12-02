@@ -53,7 +53,7 @@ function Incubation(){
                         </p>
                         
                         <p>
-                            <Link href="/incubation/competition" className="btn btn-danger btn-lg px-4" title='apply today'>
+                            <Link href="/incubation/competition" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
                                 Learn more &nbsp;&rsaquo;
                             </Link>
                         </p>

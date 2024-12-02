@@ -120,7 +120,7 @@ async function CoWork(){
 			</p>
 
 			<p className="text-center">
-				<a className="btn btn-success btn-lg align-items-center py-3 px-4" href="https://wa.me/270630705752">
+				<a className="btn rounded-pill btn-success btn-lg align-items-center py-3 px-4" href="https://wa.me/270630705752">
 					<IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
 					WhatsApp us now to book
 				</a>

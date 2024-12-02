@@ -42,7 +42,7 @@ export default function Programs(){
                         <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
                         
                         <p>
-                            <Link href="/programs/internship" className="btn btn-danger btn-lg px-4" title='apply today'>
+                            <Link href="/programs/internship" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
                                 Learn more &nbsp;&rsaquo;
                             </Link>
                         </p>
@@ -98,12 +98,12 @@ export default function Programs(){
                                     This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
                                 </p>
                                 {/* <p className="d-grid">
-                                    <a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn btn-danger btn-lg">
+                                    <a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn rounded-pill btn-danger btn-lg">
                                         Register Now &nbsp;&rsaquo;
                                     </a>
                                 </p> */}
 
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                             </div>
@@ -119,12 +119,12 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
                                 {/* <p className="d-grid">
-                                    <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn btn-success btn-lg">
+                                    <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn rounded-pill btn-success btn-lg">
                                         Register Now &nbsp;&rsaquo;
                                     </a>
                                 </p> */}
 
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                             </div>
@@ -138,11 +138,11 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                                 {/* <p className="d-grid">
-                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn btn-success btn-lg">
+                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn rounded-pill btn-success btn-lg">
                                         Register
                                     </a>
                                 </p> */}
@@ -159,12 +159,12 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
                                 
                                 <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
 
                                 {/* <p className="d-grid">
-                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn btn-success btn-lg" rel="noreferrer">
+                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn rounded-pill btn-success btn-lg" rel="noreferrer">
                                         Register
                                     </a>
                                 </p> */}
@@ -182,11 +182,11 @@ export default function Programs(){
                                 <p className="card-text">
                                     Learn how to easily build stateful component based UIs and applications using the Javascript React.js library.  You will learn how to setup React, learn the fundaments such as components, props and state, techniques, pitfalls and strengths.
                                 </p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                                 {/* <p className="d-grid">
-                                    <a href="" className="btn btn-primary btn-lg disabled">
+                                    <a href="" className="btn rounded-pill btn-primary btn-lg disabled">
                                         Register
                                     </a>
                                 </p> */}
@@ -204,12 +204,12 @@ export default function Programs(){
                                 <p className="card-text">
                                     Next.js is a React framework used in tens of thousands of production-facing websites and web applications, including many of the world's largest brands. Learn about page based routing, SSR and ISR pre-rendering, code splitting, and API routes, 
                                 </p>
-                                <div className="alert alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
                                 </div>
                                
                                 {/* <p className="d-grid">
-                                    <a href="" className="btn btn-primary btn-lg disabled">
+                                    <a href="" className="btn rounded-pill btn-primary btn-lg disabled">
                                         Register
                                     </a>
                                 </p> */}
@@ -251,7 +251,7 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
                                 <p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
                                 <p className="d-grid">
-                                    <a href="/programs/dojo" className="btn btn-primary btn-lg">
+                                    <a href="/programs/dojo" className="btn rounded-pill btn-danger btn-lg">
                                         Learn more
                                     </a>
                                 </p>
@@ -268,7 +268,7 @@ export default function Programs(){
                                 <h3 className="card-title fs-4 fw-bold">Science, Technology, Engineering and Mathematics (STEM)</h3>
                                 <p className="card-text">We are a partner in science, technology and industrial learning to supplement the inadequate number of teachers skilled to educate in these areas.  We will promote STEM careers, and teach short courses as well as create fun STEM based science events.</p>
                                 <p className="d-grid">
-                                    <a href="/contact" className="btn btn-danger btn-lg">
+                                    <a href="/contact" className="btn rounded-pill btn-danger btn-lg">
                                         Partner with us  &nbsp;&rsaquo;
                                     </a>
                                 </p>

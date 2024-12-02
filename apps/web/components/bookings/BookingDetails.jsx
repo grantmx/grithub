@@ -388,7 +388,7 @@ function BookingDetails(){
                     </div>
 
                     <div className="col-md-6 d-flex justify-content-end">
-                        <button type="submit" className="btn btn-lg btn-primary" disabled={!total}>
+                        <button type="submit" className="btn rounded-pill btn-lg btn-primary" disabled={!total}>
                             Continue
                         </button>
                     </div>

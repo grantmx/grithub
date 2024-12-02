@@ -42,7 +42,7 @@ export default function Portal(){
                             </label>
                         </div>
                         
-                        <button className="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+                        <button className="w-100 btn rounded-pill btn-lg btn-primary" type="submit">Sign in</button>
                         
                         <p className="mt-3 mb-1 text-muted">© 2017–2022</p>
                     </form>

@@ -1,22 +1,22 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import clsx from 'clsx'
-import home from '/styles/home.module.scss';
+import Style from './MainNav.module.scss';
 
 function MainNav({ page, clear = false }) {
     return (
-        <nav className={clsx(page && `${home.navbar} shadow-lg`, !clear && "bg-white",  `w-100 container-fluid px-5 py-4 mb-2`)}>
+        <nav className={clsx(page && `${Style.navbar} shadow-sm`, !clear && "bg-white",  `w-100 container-fluid px-5 py-3 mb-2`)}>
             <div className="col-12 d-flex justify-content-md-between justify-content-center flex-nowrap">
                 <a className="navbar-brand" href="/" title="home">
                     <Image 
-                        className={home.logo}
+                        className={Style.logo}
                         src="/assets/grithub-logo-horz.svg" 
                         width={400} 
                         height={page ? 80 : 125} 
                         alt="GRITHub Logo" 
                     />
                 </a>
-                <menu className={home.navbarNav}>
+                <menu className={Style.navbarNav}>
                     <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/cowork">
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
                         CoWorking
@@ -37,8 +37,8 @@ function MainNav({ page, clear = false }) {
                         Incubation
                     </Link>
 
-                    <a className="nav-link fs-5 me-3 me-lg-5 text-dark rounded-pill text-bg-danger text-white px-5 py-2" href="/contact">
-                        <Image src="/assets/mail_outline.svg" style={{ fill: "#ffffff"}} width={20} height={20} className="d-lg-none" alt="Contact Us" />
+                    <a className="nav-link fs-5 text-dark rounded-pill text-bg-danger text-white px-5 py-2" href="/contact">
+                        <Image src="/assets/mail_outline.svg" width={20} height={20} className={clsx("d-lg-none", Style.whiteIcon)} alt="Contact Us" />
                         Contact
                     </a>
                 </menu>

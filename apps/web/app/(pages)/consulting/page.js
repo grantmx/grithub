@@ -17,7 +17,7 @@ function Consulting(){
             
             {/* <div className="text-center col-md-9 col-12">
                 <p className="fs-3">.</p>
-                <a href="https://grithub-za-1.hubspotpagebuilder.com/contact-us" className="btn btn-primary btn-lg">
+                <a href="https://grithub-za-1.hubspotpagebuilder.com/contact-us" className="btn rounded-pill btn-primary btn-lg">
                     Get In Touch
                 </a>
             </div> */}
@@ -189,7 +189,7 @@ function Consulting(){
 
             <div className="text-center col-md-9 col-12 p-md-5 p-3">
                 <p className="fs-4">We offer customized business solutions with long term strategic partnerships. Our bread and butter is that organization looking to expand it's online customer engagement, increase ROI on it's products and services through technology, multi-device web, and social media.</p>
-                <Link href="/contact" className="btn btn-primary btn-lg">
+                <Link href="/contact" className="btn rounded-pill btn-primary btn-lg">
                     Get In Touch
                 </Link>
             </div>

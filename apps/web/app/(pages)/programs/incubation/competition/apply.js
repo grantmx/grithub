@@ -807,11 +807,11 @@ function CompetitionApplication(){
                 <hr />
 
                 <div className="col-12 d-flex justify-content-between">
-                    <Link href="/programs/internship" className="btn btn-lg btn-outline-secondary">
+                    <Link href="/programs/internship" className="btn rounded-pill btn-lg btn-outline-secondary">
                         Cancel
                     </Link>
                     
-                    <button type="submit" className={clsx(Style.submit, "btn btn-lg btn-primary")}>
+                    <button type="submit" className={clsx(Style.submit, "btn rounded-pill btn-lg btn-primary")}>
                         {isLoading ? <Loader {...{ isLoading, isSuccessful }} /> : "Submit Application" }
                     </button>
                 </div>

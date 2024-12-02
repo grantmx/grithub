@@ -104,7 +104,7 @@ function Internship(){
                         <h3>How to apply</h3>
                         <p>Submit your internship application online. {/* Application Deadline: <strong>31 August 2023</strong>*/}</p> 
 
-                        {/* <Link href="/programs/internship/apply" className="btn btn-danger">
+                        {/* <Link href="/programs/internship/apply" className="btn rounded-pill btn-danger">
                             Apply Now
                         </Link> */}
 

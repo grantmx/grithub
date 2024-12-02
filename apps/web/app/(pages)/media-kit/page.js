@@ -11,7 +11,7 @@ async function MediaKit(){
                     These resources exist to assist you in utilizing our brand and assets, including our logo, content, and trademarks, without the need to engage in legal agreements for each utilization.
                 </p>
                 <p>
-                    <a href="/media-kit.zip" download={true} className="btn px-5 py-2 fs-5 btn-danger d-flex align-items-center">
+                    <a href="/media-kit.zip" download={true} className="btn rounded-pill px-5 py-2 fs-5 btn-danger d-flex align-items-center">
                         Download Media Kit &nbsp;
 
                         <svg id="icon-download" viewBox="0 0 24 24" fill="#ffffff" width="20" height="20">
