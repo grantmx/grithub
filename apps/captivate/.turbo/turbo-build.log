@@ -1,31 +1,15 @@
-$ react-scripts build
 
-Creating an optimized production build...
-Compiled with warnings.
-
-[eslint] 
-src/App.js
-  Line 8:9:  Do not use `<img>` element. Use `<Image />` from `next/image` instead. See: https://nextjs.org/docs/messages/no-img-element  @next/next/no-img-element
-
-Search for the keywords to learn more about each warning.
-To ignore, add // eslint-disable-next-line to the line before.
-
-File sizes after gzip:
-
-  46.59 kB  build/static/js/main.2ff3a9ad.js
-  1.78 kB   build/static/js/415.88607340.chunk.js
-  541 B     build/static/css/main.073c9b0a.css
-
-The project was built assuming it is hosted at /.
-You can control this with the homepage field in your package.json.
-
-The build folder is ready to be deployed.
-You may serve it with a static server:
-
-  npm install -g serve
-  serve -s build
-
-Find out more about deployment here:
-
-  https://cra.link/deployment
-
+[2K[1G[1myarn run v1.22.19[22m
+[2K[1G[2m$ next build[22m
+- [36minfo[39m Loaded env from /Users/grantmx/Desktop/git/grithub/apps/captivate/.env
+Browserslist: caniuse-lite is outdated. Please run:
+  npx browserslist@latest --update-db
+  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G[?25h> [PWA] Compile server
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Compile client (static)
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Auto register service worker with: /Users/grantmx/Desktop/git/grithub/node_modules/next-pwa/register.js
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Service worker: /Users/grantmx/Desktop/git/grithub/apps/captivate/public/sw.js
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA]   url: /sw.js
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA]   scope: /
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Compile server
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m

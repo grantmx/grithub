@@ -10,7 +10,7 @@ function PurchaseCancelation(){
                     Sorry to see you go. Your purchase inquiry has been canceled.
                 </p>
                 <p className="fs-4 text-center">
-                    If you have any questions regarding our purchase<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="#" onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp Us</a>
+                    If you have any questions regarding our purchase<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="https://wa.me/270630705752">WhatsApp Us</a>
                 </p>
             </div>
         </section>

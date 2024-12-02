@@ -16,6 +16,23 @@ module.exports = {
         NEXT_PUBLIC_url: "https://grithub.org.za",
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
     },
+    images: {
+        localPatterns: [
+            {
+                pathname: '/assets/**',
+                search: '',
+            },
+            {
+                pathname: '/thirdparty/**',
+                search: '',
+            },
+            {
+                pathname: '/whitepapers/**',
+                search: '',
+            },
+            
+        ],
+    },
     async redirects() {
         return [
             // {
@@ -45,7 +62,41 @@ module.exports = {
                     { key: "Access-Control-Allow-Methods", value: "GET,POST" },
                     { key: "Access-Control-Allow-Headers", value: "Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date" },
                 ]
-            }
+            },
+            {
+                source: '/(.*)',
+                headers: [
+                  {
+                    key: 'X-Content-Type-Options',
+                    value: 'nosniff',
+                  },
+                  {
+                    key: 'X-Frame-Options',
+                    value: 'SAMEORIGIN',
+                  },
+                  {
+                    key: 'Referrer-Policy',
+                    value: 'no-referrer-when-downgrade'
+                  },
+                ],
+            },
+            {
+                source: '/sw.js',
+                headers: [
+                    {
+                        key: 'Content-Type',
+                        value: 'application/javascript; charset=utf-8',
+                    },
+                    {
+                        key: 'Cache-Control',
+                        value: 'no-cache, no-store, must-revalidate',
+                    },
+                    {
+                        key: 'Content-Security-Policy',
+                        value: "default-src 'self'; script-src 'self'",
+                    },
+                ],
+            },
         ]
     }
 };

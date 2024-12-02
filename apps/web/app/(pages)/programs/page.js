@@ -12,7 +12,7 @@ export default function Programs(){
     return(
         <>
             <section className="container-xxl d-flex pt-5 flex-column mb-5" id="programs">
-                <h1 className="display-2">
+                <h1 className="display-2 fw-bold">
                     Trainings, Programs &amp; Courses
                 </h1>
                 <p className="lead text-muted fs-3">

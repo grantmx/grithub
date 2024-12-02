@@ -11,12 +11,12 @@ export const metadata = {
 }
 
 
-function CoWork(){
+async function CoWork(){
     return(
 		<section className="container-xxl d-flex pt-5 flex-column mb-5" id="coworking">
 			<div className="col-12 d-flex flex-column flex-md-row">
 				<div className="col-12 col-md-8 pe-md-5 mb-4">
-					<h1 className="display-2 bold">
+					<h1 className="display-2 fw-bold">
 						Coworking in George
 					</h1>
 
@@ -42,10 +42,12 @@ function CoWork(){
 
 					<hr className="my-5" />
 
-					<h4>Refund Policy</h4>
-					<p>In the unlikely event that we need to cancel your booking, we'll refund you.</p>
+					<h4 className="fw-bold display-6">Refund Policy</h4>
+					<p>In the unlikely event that <u>we</u> need to cancel your booking, we'll refund you.</p>
 
-					<h4 className="mt-5">Free Cancelation</h4>
+					<h4 className="mt-5 display-6 fw-bold">
+						Our Cancellation Policy
+					</h4>
 					<ul className="d-flex m-0 p-0 justify-content-around list-unstyled">
 						<li>All - Within 2 hours of venue confirmation</li>
 						<li className="px-4">Desks - 24 hours before arrival time.</li>
@@ -72,7 +74,7 @@ function CoWork(){
 				
 
 			<div className="col-12 d-flex align-items-center flex-column mt-5">
-				<h2>Facility Highlights</h2>
+				<h2 className="fw-bold display-4">Facility Highlights</h2>
 
 				<div className="col-12 d-flex flex-wrap">
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
@@ -112,7 +114,7 @@ function CoWork(){
 
 			<hr className="hr my-5"/>
 
-			<h3 className="display-3 text-center">Ready to join us?</h3>
+			<h3 className="display-3 text-center fw-bold">Ready to join us?</h3>
 			<p className="lead text-muted fs-3 text-center">
 				Join our fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration in George, Western Cape, South Africa.
 			</p>

@@ -3,9 +3,9 @@ import Link from 'next/link';
 import clsx from 'clsx'
 import home from '/styles/home.module.scss';
 
-function MainNav({ page }){
+function MainNav({ page, clear = false }) {
     return (
-        <nav className={clsx(page && `${home.navbar} shadow`, `navbar navbar-light w-100 container-fluid px-5`)}>
+        <nav className={clsx(page && `${home.navbar} shadow`, !clear && "bg-white",  `w-100 container-fluid px-5 py-2`)}>
             <div className="col-12 d-flex justify-content-md-between justify-content-center flex-nowrap">
                 <a className="navbar-brand" href="/" title="home">
                     <Image 

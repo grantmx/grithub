@@ -1,4 +1,4 @@
-import confetti from "canvas-confetti";
+import * as confetti from "canvas-confetti";
 
 
 export function celebrationTime(){

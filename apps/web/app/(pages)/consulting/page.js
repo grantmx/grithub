@@ -7,7 +7,7 @@ function Consulting(){
     return(
         <section className="container-fluid d-flex justify-content-center align-items-center flex-column" id="programs-workshops">
             <article className="container-xxl d-flex pt-5 flex-column" id="programs">
-                <h1 className="display-2">
+                <h1 className="display-2 fw-bold">
                     Consulting &amp; Solutions
                 </h1>
                 <p className="lead text-muted fs-3">

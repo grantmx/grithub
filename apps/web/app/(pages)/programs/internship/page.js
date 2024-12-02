@@ -9,7 +9,7 @@ function Internship(){
     return(
         <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="internship">
             <article className="container-xxl d-flex pt-5 px-0 flex-column" id="programs">
-                <h1 className="display-2">
+                <h1 className="display-2 fw-bold">
                     The GRIT Internship
                 </h1>
                 <p className="lead text-muted fs-3">

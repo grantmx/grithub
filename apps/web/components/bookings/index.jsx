@@ -2,7 +2,7 @@
 
 import Stepper from "../navigation/Stepper";
 import Style from "./Bookings.module.scss"
-import { useContext } from "react";
+import { Suspense, useContext } from "react";
 import { useSearchParams } from "next/navigation";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
 import BookingDetails from "./BookingDetails";
@@ -20,6 +20,7 @@ function Bookings(){
     const [ globalBook, dispatch ] = useContext(StepperContext)
 
     return(
+        <Suspense>
         <div className={Style.block}>
             <Stepper {...{ steps, current: globalBook.current }} />
 
@@ -32,6 +33,7 @@ function Bookings(){
                 <CustomerDetails />
             )}
         </div>
+        </Suspense>
     )
 }
 

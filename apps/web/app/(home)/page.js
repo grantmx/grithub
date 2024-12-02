@@ -35,7 +35,7 @@ export default function Home(){
 					/>
 
 					<div className={Style.hero}>
-						<MainNav />
+						<MainNav clear />
 
 						<div className="col-9 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
 							<p className={Style.heroHashTag}>#GRITHub</p>
@@ -49,7 +49,7 @@ export default function Home(){
 							</small>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
-								<div className="col-4 col-md-4 me-4 mb-3">
+								<div className="col-4 col-md-4 me-5 mb-3">
 									<a href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -77,17 +77,6 @@ export default function Home(){
 										<Image 
 											src={georgeBusiness}
 											alt="George Business Chamber." 
-											className={Style.partnerLogo}
-										/>
-									</a>
-								</div>
-
-
-								<div className="col-4 col-md-3 me-5">
-									<a href="https://thebusinessfinder.co.za/" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
-											src={businessFinder}
-											alt="Business Finder" 
 											className={Style.partnerLogo}
 										/>
 									</a>
@@ -151,10 +140,10 @@ export default function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column" id="about">
-					<h1 className="fw-bold display-4 mb-4 text-center">Garden Route Innovation &amp; Technology Hub</h1>
+					<h1 className="fw-bold display-4 mb-1 text-center">Garden Route Innovation &amp; Technology Hub</h1>
+
 					<div className="text-center col-xl-12 col-12">
-						<p className="fs-2">Identifying untapped potential and refocusing it using the power of digital technology. </p>
-						<p className='lead'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route area...and all it takes is GRIT and determination. </p>
+						<p className='lead text-muted fs-3'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route area...and all it takes is GRIT and determination. </p>
 						{/* <p>Our duty is to empower community members and small businesses to actively participate in the local supply chain through collaborations with academia, business and government partners using modern technology and innovation.</p> */}
 					</div>
 				</section>
@@ -211,6 +200,8 @@ export default function Home(){
 
 
 
+
+
 				<section className='bg-light py-5 mb-5'>
 					<div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row text-center">
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
@@ -250,6 +241,7 @@ export default function Home(){
 					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
 						Up Coming Trainings, Courses & Programs
 					</h2>
+					<p className="lead text-muted fs-3">Identifying untapped inclusive human potential and refocusing it using the power of digital technology. </p>
 
 					<p className="lead text-center mt-2">
 						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>

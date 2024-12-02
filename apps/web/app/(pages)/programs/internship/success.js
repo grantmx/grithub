@@ -1,3 +1,5 @@
+"use client"
+
 import axios from "axios"
 import GeneralPage from "components/layout/GeneralPage";
 import Link from "next/link";
@@ -48,7 +50,7 @@ function InternshipSuccess(){
                         You will receive a confirmation email shortly.
                     </p>
                     <p className="fs-4 text-center">
-                        If you have any questions regarding your application<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="#" onClick={(e) =>{ e.preventDefault(); window.location.href="https://wa.me/270630705752"; }}>WhatsApp Us</a>
+                        If you have any questions regarding your application<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="https://wa.me/270630705752">WhatsApp Us</a>
                     </p>
 
                     <p className="fs-5 text-center">

@@ -16,8 +16,8 @@ function Incubation(){
         // >
         <>
             <section className="container-xxl d-flex pt-4 flex-column mb-5" id="programs">
-                <h1 className="display-2">
-                    Business Incubator
+                <h1 className="display-2 fw-bold">
+                    Small Business Incubation
                 </h1>
                 <p className="lead text-muted fs-3">
                     Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct coaching.

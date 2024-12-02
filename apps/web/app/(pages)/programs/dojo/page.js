@@ -2,7 +2,7 @@ import Image from "next/image";
 import image2 from "/public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jpg"
 import ad from "/public/assets/code-dojo.png"
 
-export const metadata ={
+export const metadata = {
     openGraph:{
         title: "The Coder Dojo",
         description: "We believe that developing digital-savviness and tech confidence in our children will foster the next generation of digital innovators",
@@ -19,12 +19,12 @@ export const metadata ={
 
 
 
-function CoderDojo(){
+async function CoderDojo(){
     return(
         <>
         <section className="container-xxl col-12 d-flex p-md-0 p-3 mb-5 flex-column">
             <article className="container-xxl d-flex pt-5 px-0 flex-column" id="programs">
-                <h1 className="display-2">
+                <h1 className="display-3 fw-bold">
                     Coder Dojos in George &amp; Mossel Bay
                 </h1>
                 <p className="lead text-muted fs-3 w-75">
@@ -42,7 +42,7 @@ function CoderDojo(){
                         Our weekly sessions take place every Tuesday during the school year, from 15:00 - 16:00.
                     </h2>
 
-                    <h3 className="mb-4">So, what exactly is a CoderDojo?</h3>
+                    <h3 className="mb-4 fw-bold">So, what exactly is a CoderDojo?</h3>
 
                     <p>
                         CoderDojo is a global, open-source, volunteer-led movement of free, not-for-profit coding clubs for young people aged 7–17. 
@@ -77,7 +77,7 @@ function CoderDojo(){
             
 
             <section className="col-12  flex-wrap bg-light p-2 mt-5">
-                <h2 className="display-5 pt-5 mb-0 text-center col-12">
+                <h2 className="display-5 pt-5 mb-0 text-center col-12 fw-bold">
                     Our Coder Dojo Locations
                 </h2>
 
