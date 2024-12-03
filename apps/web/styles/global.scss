@@ -6,6 +6,10 @@
 @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+
+$theme-colors: map-remove($theme-colors, "orange", "yellow", "green", "teal", "cyan", "pink", "purple", "blue");
+
+
 @import "bootstrap/scss/utilities";
 
 // Layout & components
@@ -14,7 +18,11 @@
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
-@import "bootstrap/scss/forms";
+// @import "bootstrap/scss/forms";
+@import "bootstrap/scss/forms/form-control";
+@import "bootstrap/scss/forms/form-select";
+@import "bootstrap/scss/forms/floating-labels";
+
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar";
