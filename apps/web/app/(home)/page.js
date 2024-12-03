@@ -10,8 +10,9 @@ import clsx from 'clsx';
 import Script from 'next/script'
 
 import afriLabs from "/public/assets/partners/afrilabs-member-logo-white.png" 
-import georgeBusiness from '/public//assets/partners/georgebusinesschamberlogo.png'
-import mosselBay from "/public//assets/partners/mosselbay-chamber.png"
+import georgeBusiness from '/public/assets/partners/georgebusinesschamberlogo.png'
+import mosselBay from "/public/assets/partners/mosselbay-chamber.png"
+import internship from "/public/assets/winter-internship-blank.jpg" 
 import hero from "/public/assets/hero.jpg" 
 import Link from 'next/link';
 
@@ -223,11 +224,12 @@ export default async function Home(){
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
-									src="/assets/winter-internship-blank.jpg" 
+									{...internship}
 									width={711} 
 									height={400}
 									className={home.adImg}
 									alt="grit internship"
+									placeholder='blur'
 								/>
 							</Link>
 						</div>
