@@ -44,11 +44,6 @@ $indigo:  #353e5d !default;
 $purple:  #6f42c1 !default;
 $pink:    #fbdfca !default;
 $red:     #db613a !default;
-$orange:  #fd7e14 !default;
-$yellow:  #ffc107 !default;
-$green:   #6fa33f !default;
-$teal:    #dfe9ef !default;
-$cyan:    #dfe9ef !default;
 
 // VDS colors
 $primary:    #2E303B !default;
@@ -56,55 +51,16 @@ $charcoal:   #2E303B !default;
 $dove:       #F0F0F0 !default;
 $mist:       #f9f9f9 !default;
 $white:      #ffffff !default;
-$indigo:     #353E5D !default;
-$ocean:      #4c7b9a !default;
-$ice:        #dfe9ef !default;
-$ice50:      #f0f4f7 !default;
-$ice25:      #f8fafb !default;
-$green:      #6fa33f !default;
-$sage:       #b0d493 !default;
-$pistachio:  #e0eed5 !default;
-$pistachio50:#eff6e9 !default;
-$pistachio25:#f7fbf5 !default;
-$terracotta: #db613a !default;
-$sunset:     #e5a778 !default;
-$teak:       #fbdfca !default;
-$teak50:     #ffefe3 !default;
-$teak25:     #fff7f1 !default;
 $link:       #4c7b9a !default;
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
 $colors: (
   "blue":       $blue,
-  "purple":     $purple,
-  "pink":       $pink,
   "red":        $red,
-  "orange":     $orange,
-  "yellow":     $yellow,
-  "teal":       $teal,
-  "cyan":       $cyan,
   "white":      $white,
   "gray":       $gray-600,
   "gray-dark":  $gray-800,
-  "charcoal":   $charcoal,
-  "dove":       $dove,
-  "mist":       $mist,
-  "indigo":     $indigo,
-  "ocean":      $ocean,
-  "ice":        $ice,
-  "ice50":      $ice50,
-  "ice25":      $ice25,
-  "green":      $green,
-  "sage":       $sage,
-  "pistachio":  $pistachio,
-  "pistachio50":$pistachio50,
-  "pistachio25":$pistachio25,
-  "terracotta": $terracotta,
-  "sunset":     $sunset,
-  "teak":       $teak,
-  "teak50":     $teak50,
-  "teak25":     $teak25
 ) !default;
 // scss-docs-end colors-map
 
@@ -129,24 +85,6 @@ $theme-colors: (
   "danger":     $danger,
   "light":      $light,
   "dark":       $dark,
-  "charcoal":   $charcoal,
-  "dove":       $dove,
-  "mist":       $mist,
-  "indigo":     $indigo,
-  "ocean":      $ocean,
-  "ice":        $ice,
-  "ice50":      $ice50,
-  "ice25":      $ice25,
-  "green":      $green,
-  "sage":       $sage,
-  "pistachio":  $pistachio,
-  "pistachio50":$pistachio50,
-  "pistachio25":$pistachio25,
-  "terracotta": $terracotta,
-  "sunset":     $sunset,
-  "teak":       $teak,
-  "teak50":     $teak50,
-  "teak25":     $teak25
 ) !default;
 // scss-docs-end theme-colors-map
 

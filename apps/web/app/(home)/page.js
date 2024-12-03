@@ -23,15 +23,19 @@ export const metadata = {
 	}
 }
 
-export default function Home(){
+export default async function Home(){
+	const { src, blurDataURL, height, width  } = hero;
+
 	return(
 		<>
 			<main className="container-fluid d-flex p-0 flex-column">
 				<section className={Style.heroWrapper}>
 					<Image 
 						className={Style.heroImg} 
-						src={hero}
+						{...{ src, blurDataURL, height, width }}
 						alt="See your future ahead of you" 
+						priority={true}
+						placeholder='blur'
 					/>
 
 					<div className={Style.hero}>
@@ -50,7 +54,7 @@ export default function Home(){
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
 								<div className="col-4 col-md-4 pe-5">
-									<a href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
+									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
 											alt="AfriLabs" 
@@ -59,7 +63,7 @@ export default function Home(){
 									</a>
 								</div>
 								<div className="col-4 col-md-4 px-5">
-									<a href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
+									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
 												<path id="path10" d="M121521,53670.8l0,8150c-79.166,2420.83 -562.5,4600 -1454.17,6454.17c-725,1612.5 -1858.33,3150 -3470.83,4358.33c-1612.5,1287.5 -3791.67,2016.67 -6695.83,2016.67c-2908.33,0 -5166.67,-729.167 -6779.17,-2016.67c-1612.5,-1208.33 -2662.5,-2745.83 -3387.5,-4358.33c-887.5,-1854.17 -1370.83,-4033.33 -1454.17,-6454.17l0,-34945.8c83.333,-2341.67 562.5,-4520.83 1454.17,-6375c725,-1612.5 1775,-3229.17 3387.5,-4437.5c1612.5,-1208.33 3875,-2020.83 6779.17,-2020.83c2908.33,0 5083.33,812.5 6695.83,2020.83c1612.5,1212.5 2745.83,2825 3470.83,4437.5c887.5,1858.33 1375,4033.33 1454.17,6375l0,8150l-8150,0l0,-8150c0,-1612.5 -404.166,-2745.83 -1291.67,-3712.5c-404.167,-404.167 -1129.17,-645.833 -2016.67,-645.833c-1533.33,0 -2258.33,1129.17 -2662.5,2179.17c-237.5,645.834 -320.833,1375 -404.167,2183.33l0,34945.8c83.334,1691.67 566.667,2825 1375,3708.33c404.167,408.334 966.667,645.834 1691.67,645.834c1858.33,0 2583.33,-966.667 2987.5,-2179.17c237.5,-562.5 320.833,-1291.67 320.833,-2179.17l0,-8150l8150,0ZM146921,63275c-237.5,4279.17 -1529.17,7262.5 -4354.17,9604.17c-1454.17,1212.5 -3470.83,1775 -6133.33,1775c-5250,0 -7829.17,-2908.33 -9120.83,-5812.5c-725,-1691.67 -1208.33,-3629.17 -1287.5,-5808.33l0,-22195.8c241.667,-4279.17 1529.17,-7420.83 4354.17,-9841.67c1375,-1216.67 3391.67,-1779.17 6054.17,-1779.17c5245.83,0 7908.33,2908.33 9200,5729.17c725,1695.83 1208.33,3554.17 1287.5,5654.17l0,22679.2l0,-4.167ZM139254,40833.3c83.333,-1691.67 -241.667,-2904.17 -1050,-3875c-404.167,-404.166 -1050,-645.833 -1775,-645.833c-1537.5,0 -2183.33,1050 -2504.17,2258.33c-241.667,645.834 -320.833,1375 -241.667,2258.33l0,22195.8c-79.166,1691.67 325,2908.33 1050,3791.67c404.167,404.166 966.667,645.833 1695.83,645.833c1529.17,0 2258.33,-966.667 2579.17,-2179.17c241.667,-645.833 325,-1375 241.667,-2258.33l0,-22195.8l4.167,4.166ZM173175,74004.2l-8150,0l0,-2908.33c-1370.83,1291.67 -2579.17,2258.33 -4112.5,2987.5c-812.5,404.167 -1616.67,562.5 -2341.67,562.5c-2258.33,0 -3791.67,-1291.67 -4762.5,-2987.5c-1050,-1612.5 -1529.17,-3791.67 -1529.17,-5645.83l0,-28166.7c0,-1854.17 483.333,-4033.33 1529.17,-5729.17c970.834,-1612.5 2504.17,-2908.33 4762.5,-2908.33c1529.17,0 3150,887.5 4358.33,1779.17c725,562.5 1370.83,1129.17 2095.83,1775l0,-18079.2l8150,0l0,59320.8ZM165025,39541.7c0,-1291.67 -1212.5,-2662.5 -2420.83,-2662.5c-1212.5,0 -2179.17,1129.17 -2179.17,2662.5l0,24775c0,1537.5 966.667,2662.5 2179.17,2662.5c1208.33,0 2420.83,-1129.17 2420.83,-2662.5l0,-24775ZM200129,58183.3l0,5087.5c-241.667,4279.17 -1529.17,7262.5 -4437.5,9604.17c-1454.17,1212.5 -3470.83,1775 -6133.33,1775c-5245.83,0 -7908.33,-2908.33 -9200,-5812.5c-725,-1691.67 -1208.33,-3629.17 -1291.67,-5808.33l0,-22195.8c241.666,-4279.17 1612.5,-7420.83 4520.83,-9841.67c1375,-1216.67 3391.67,-1779.17 6054.17,-1779.17c5245.83,0 7908.33,2908.33 9200,5729.17c725,1695.83 1208.33,3554.17 1287.5,5654.17l0,12833.3l-13479.2,0l0,9604.17c83.333,1691.67 562.5,2908.33 1291.67,3791.67c404.166,404.167 966.666,645.833 1695.83,645.833c1533.33,0 2258.33,-966.666 2579.17,-2179.17c241.666,-645.834 320.833,-1375 320.833,-2258.33l0,-4845.83l7587.5,0l4.167,-4.167ZM186650,47045.8l5891.67,0l0,-6216.67c0,-1691.67 -320.834,-2904.17 -1129.17,-3875c-404.167,-404.167 -1050,-645.834 -1775,-645.834c-1537.5,0 -2183.33,1050 -2583.33,2258.33c-241.667,645.833 -320.834,1375 -404.167,2258.33l0,6220.83ZM221862,38250c-725,-241.667 -1529.17,-320.833 -2258.33,-320.833c-1287.5,0 -2825,162.5 -4112.5,1370.83c-1537.5,1291.67 -1779.17,2662.5 -1779.17,4033.33l0,30670.8l-8150,0l0,-44150l8150,0l0,4925c83.333,-562.5 645.833,-1937.5 1937.5,-3229.17c1291.67,-1212.5 3229.17,-2341.67 6212.5,-2341.67l0,9041.67ZM225421,74004.2l0,-59320.8l6862.5,0c8066.67,0 12429.2,1612.5 14766.7,6133.33c2258.33,4520.83 2583.33,11945.8 2583.33,23566.7c0,11620.8 -325,18966.7 -2583.33,23487.5c-2337.5,4520.83 -6700,6133.33 -14766.7,6133.33l-6862.5,0ZM234142,65287.5c2983.33,0 4679.17,-325 5566.67,-3233.33c404.167,-1370.83 729.167,-3470.83 808.334,-6295.83c83.333,-2825 83.333,-6616.67 83.333,-11462.5c0,-4841.67 0,-8633.33 -83.333,-11462.5c-79.167,-2741.67 -404.167,-4841.67 -808.334,-6295.83c-883.333,-2825 -2579.17,-3145.83 -5566.67,-3145.83l0,41895.8ZM275546,63270.8c-237.5,4279.17 -1529.17,7262.5 -4354.17,9604.17c-1454.17,1212.5 -3470.83,1775 -6133.33,1775c-5250,0 -7829.17,-2908.33 -9120.83,-5812.5c-725,-1691.67 -1212.5,-3629.17 -1287.5,-5808.33l0,-22195.8c241.667,-4279.17 1533.33,-7420.83 4354.17,-9841.67c1375,-1216.67 3391.67,-1779.17 6054.17,-1779.17c5245.83,0 7908.33,2908.33 9200,5729.17c725,1695.83 1208.33,3554.17 1287.5,5654.17l0,22679.2l0,-4.167ZM267879,40829.2c83.333,-1691.67 -241.667,-2904.17 -1050,-3875c-404.167,-404.167 -1050,-645.834 -1775,-645.834c-1537.5,0 -2183.33,1050 -2504.17,2258.33c-241.667,645.833 -320.833,1375 -241.667,2258.33l0,22195.8c-79.166,1691.67 325,2908.33 1050,3791.67c404.167,404.167 966.667,645.833 1695.83,645.833c1533.33,0 2258.33,-966.666 2579.17,-2179.17c241.667,-645.834 325,-1375 241.667,-2258.33l0,-22195.8l4.167,4.167ZM280975,14679.2l8150,0l0,8150l-8150,0l0,-8150ZM289125,29854.2l0,45275c0,2258.33 0,5812.5 -1129.17,8720.83c-1129.17,2983.33 -3629.17,5325 -8233.33,5325c-1287.5,0 -2179.17,-83.333 -2741.67,-241.667c-325,-83.333 -562.5,-162.5 -808.333,-241.666l0,-7504.17c241.667,79.167 483.333,79.167 725,158.333c562.5,83.334 1050,162.5 1537.5,162.5c1370.83,0 2016.67,-1129.17 2337.5,-2500c83.333,-645.833 162.5,-1375 162.5,-2100c0,-729.166 0,-1375 0,-1858.33l0,-45195.8l8150,0ZM315738,63270.8c-237.5,4279.17 -1533.33,7262.5 -4354.17,9604.17c-1454.17,1212.5 -3470.83,1775 -6133.33,1775c-5250,0 -7829.17,-2908.33 -9120.83,-5812.5c-725,-1691.67 -1208.33,-3629.17 -1287.5,-5808.33l0,-22195.8c241.666,-4279.17 1529.17,-7420.83 4354.17,-9841.67c1375,-1216.67 3391.67,-1779.17 6054.17,-1779.17c5245.83,0 7908.33,2908.33 9200,5729.17c725,1695.83 1208.33,3554.17 1287.5,5654.17l0,22679.2l0,-4.167ZM308071,40829.2c83.334,-1691.67 -241.666,-2904.17 -1050,-3875c-404.166,-404.167 -1050,-645.834 -1775,-645.834c-1533.33,0 -2183.33,1050 -2504.17,2258.33c-241.667,645.833 -320.834,1375 -241.667,2258.33l0,22195.8c-79.167,1691.67 325,2908.33 1050,3791.67c404.167,404.167 966.667,645.833 1695.83,645.833c1533.33,0 2258.33,-966.666 2583.33,-2179.17c241.666,-645.834 325,-1375 241.666,-2258.33l0,-22195.8l0,4.167Z" style={{fill:"#fff"}}/>
@@ -73,7 +77,7 @@ export default function Home(){
 								</div>
 
 								<div className="col-4 col-md-4 px-5">
-									<a href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
+									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
 											width={250} 
@@ -85,7 +89,7 @@ export default function Home(){
 								</div>
 								
 								<div className="col-4 col-md-3 pe-5 pt-5">
-									<a href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
+									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
 											alt="George Business Chamber." 
@@ -95,7 +99,7 @@ export default function Home(){
 								</div>
 
 								<div className="col-4 col-md-4 px-5 pt-5">
-									<a href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
+									<a title="mossel bay business chamber member" href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={mosselBay}
 											alt="Mossel Bay Business Chamber" 
@@ -170,7 +174,7 @@ export default function Home(){
 									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
+									<h2 className="card-title fs-4 fw-bold">Coworking</h2>
 									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -182,7 +186,7 @@ export default function Home(){
 									<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h3 className="card-title fs-4 fw-bold">Real Workforce Training</h3>
+									<h2 className="card-title fs-4 fw-bold">Real Workforce Training</h2>
 									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <Link href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -194,7 +198,7 @@ export default function Home(){
 									<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h3 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h3>
+									<h2 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h2>
 									<p className="card-text">Tailored workshops, networking, online learning and hands-on mentorship for accelerating business growth. <Link href="/incubation" className="text-decoration-underline" title="more about incubation">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -203,7 +207,7 @@ export default function Home(){
 						
 
 						<div className="d-md-flex d-xs-none d-xl-none col-xl-4 col-md-6 col-12 p-md-5 p-4 justify-content-center flex-column align-item-center">
-							<h3 className="display-6 fw-bold">We strive for wholistic change at every level of the economy.</h3>
+							<h2 className="display-6 fw-bold">We strive for wholistic change at every level of the economy.</h2>
 							<p className="lead">Our core values of: Collaboration, Equality, Responsibility, Entrepreneurial Ethic, Innovation and a Giving Spirit not only bind us, but guide us.</p>
 						</div>
 

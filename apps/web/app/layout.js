@@ -1,4 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.css'
+import "../styles/global.scss"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import GoogleEventTracker from '../thirdparty/google/GoogleEventTracker'

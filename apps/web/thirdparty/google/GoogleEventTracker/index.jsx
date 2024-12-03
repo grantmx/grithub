@@ -50,7 +50,7 @@ export default function GoogleEventTracker(){
                 }}
             />
 
-            <Script id="google_tag_manager" strategy='beforeInteractive'>
+            <Script id="google_tag_manager" strategy='afterInteractive'>
                 {`
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
