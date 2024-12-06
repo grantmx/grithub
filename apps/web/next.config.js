@@ -12,6 +12,13 @@ module.exports = withPayload({
             topLevelAwait: true 
         }
 
+        config.externals = [
+            ...config.externals,
+            {
+                sharp: 'commonjs sharp'
+            }
+        ]
+
         return config
     },
     env: {

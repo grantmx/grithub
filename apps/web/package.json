@@ -9,6 +9,9 @@
     "lint": "next lint",
     "babel-version": "babel --version"
   },
+  "overrides": {
+    "sharp": "0.30.4"
+  },
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
