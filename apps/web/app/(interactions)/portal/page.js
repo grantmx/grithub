@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import Image from 'next/image';
 import hero from "/public/assets/hero.jpg" 
-import Style from "/styles/portal.module.scss"
+import Style from "./portal.module.scss"
 
 
 export default function Portal(){
