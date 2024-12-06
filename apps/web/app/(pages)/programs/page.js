@@ -1,10 +1,6 @@
-/* eslint-disable react/no-unescaped-entities */
 import Image from "next/image";
-// import GeneralPage from "components/layout/GeneralPage";
 import ribbon from '/styles/ribbon.module.scss'
-import home from '/styles/home.module.scss';
-
-import image from '/public/assets/software-development-hero.jpg'
+import Style from "../../(pages)/page.module.scss";
 import Link from "next/link";
 
 
@@ -28,7 +24,7 @@ export default function Programs(){
                                 src="/assets/winter-internship-blank.jpg" 
                                 width={711} 
                                 height={400}
-                                className={home.adImg}
+                                className={Style.adImg}
                                 alt="grit internship"
                             />
                         </Link>
@@ -91,7 +87,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/html-js-css.png" width={400} height={200} className={home.cardTopOverflow} alt="html" />
+                            <Image src="/assets/html-js-css.png" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
                                 <p className="card-text">
@@ -114,7 +110,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
+                            <Image src="/assets/html.png" width={150} height={150} className={Style.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
@@ -134,7 +130,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"   />
+                            <Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={Style.cardTopOverflow} alt="mobile"   />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
                                 <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
@@ -154,7 +150,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript"  />
+                            <Image src="/assets/js.png" width={150} height={150} className={Style.cardTopOverflow} alt="javascript"  />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
                                 
@@ -176,7 +172,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/react.png" width={150} height={150} className={home.cardTopOverflow} alt="react"  />
+                            <Image src="/assets/react.png" width={150} height={150} className={Style.cardTopOverflow} alt="react"  />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">React (Advanced)</h3>
                                 <p className="card-text">
@@ -198,7 +194,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/nextjs.png" width={150} height={150} className={home.cardTopOverflow} alt="nextjs"  />
+                            <Image src="/assets/nextjs.png" width={150} height={150} className={Style.cardTopOverflow} alt="nextjs"  />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Next.js (Advanced)</h3>
                                 <p className="card-text">
@@ -221,7 +217,7 @@ export default function Programs(){
                     {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                         <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
-                        <Image src="/assets/programmer.svg" width={150} height={150} className={home.cardTopOverflow} alt="Hackathons"/>
+                        <Image src="/assets/programmer.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Code &amp; Enterprise Hackathons</h3>
                                 <p className="card-text">Hackathons help break through the barriers of a stale "business as usual" culture into creative disruption and intense innovation. Our 1-3 day Hackathon events will not only solve technical problems, and deliver new innovative software and hardware, but will accelerate organizational digitization strategies and improve customer processes.</p>
@@ -246,7 +242,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-                            <Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={home.cardTopOverflow} alt="STEM"/>
+                            <Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={Style.cardTopOverflow} alt="STEM"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
                                 <p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
@@ -263,7 +259,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-                            <Image src="/assets/atom.svg" width={150} height={150} className={home.cardTopOverflow} alt="STEM"/>
+                            <Image src="/assets/atom.svg" width={150} height={150} className={Style.cardTopOverflow} alt="STEM"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Science, Technology, Engineering and Mathematics (STEM)</h3>
                                 <p className="card-text">We are a partner in science, technology and industrial learning to supplement the inadequate number of teachers skilled to educate in these areas.  We will promote STEM careers, and teach short courses as well as create fun STEM based science events.</p>
@@ -279,7 +275,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-                            <Image src="/assets/game-pad.svg" width={150} height={150} className={home.cardTopOverflow} alt="Roblox Proggrams"/>
+                            <Image src="/assets/game-pad.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Roblox Proggrams"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Roblox&reg; Game Engineering</h3>
                                 <p className="card-text">Gamification is a powerful vehicle for learning. Our goal is to have introductory workshops on development and design using the popular <a className="text-decoration-underline" href="https://education.roblox.com/en-us/" target="_blank" rel="noreferrer" title="Roblox education">Roblox&reg;</a> education platform amongst others. We will use our Gaming Center to teach students of all ages computer science, digital citizenship, entrepreneurship, competition and fair play.</p>
@@ -291,7 +287,7 @@ export default function Programs(){
                     {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-                            <Image src="/assets/lego.svg" width={150} height={150} className={home.cardTopOverflow} alt="LEGO STEM"/>
+                            <Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">LEGO&reg; STEM Learning</h3>
                                 <p className="card-text">The LEGO&reg; Foundation released a report stating that STEM learning through play holistically enhances a learner's social, emotional, physical and creative skills. Through <a className="text-decoration-underline" href="https://education.lego.com/en-us/customer-stories" target="_blank" rel="noreferrer" title="more about LEGO stem">LEGO&reg; STEM</a> our goal is to eliminate the idea of "Hard" math and science through fun and curious play using LEGO&reg; STEM Toys in Grade R-12 schools.</p>
@@ -311,7 +307,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
-                            <Image src="/assets/tractor.svg" width={150} height={150} className={home.cardTopOverflow} alt="Agricultural Technology"/>
+                            <Image src="/assets/tractor.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Agricultural Technology"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Agricultural Technology</h3>
                                 <p className="card-text">Agriculture 4.0 uses operational technology such as robots, Internet of Things (IoT) and GPS. This technology allows farms to be more profitable, efficient, safer, and more environmentally friendly. Through AgriTech we aim to innovate and assist in modernizing the Garden Route's farms, thereby broadening their supply chain and viability.</p>
@@ -324,7 +320,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
-                            <Image src="/assets/smart-house.svg" width={150} height={150} className={home.cardTopOverflow} alt="Agricultural Technology"/>
+                            <Image src="/assets/smart-house.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Agricultural Technology"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Short-Term Rental &amp; Tourism Technology</h3>
                                 <p className="card-text">Disruptive Technologies such as Short Term Rentals and IoT has made touchless rentals and tourism more and more popular. Our Tourism Technology program aims to bring technological know how, techniques and ways to lessen the overhead burden to the small tourism business that make up one of the largest sectors in the Garden Route.</p>
@@ -337,7 +333,7 @@ export default function Programs(){
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
-                            <Image src="/assets/healthcare.svg" width={150} height={150} className={home.cardTopOverflow} alt="Public Health"/>
+                            <Image src="/assets/healthcare.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Public Health"/>
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Public Health Technology</h3>
                                 <p className="card-text">Our aim is to significantly incorporate modern technology into South Africa's health sector. We will produce tools, software and data analytics to improve and enhance awareness of access to public healthcare which will ultimately improve the health outcomes in the Garden Route community.</p>

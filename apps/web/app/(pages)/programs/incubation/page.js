@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 // import GeneralPage from "components/layout/GeneralPage";
 import Image from "next/image";
-import Style from '/styles/home.module.scss';
+import Style from "../../page.module.scss"
 // import QRCode from "react-qr-code";
 // import image2 from "/public/assets/business-incubator.jpg"
 // import Link from "next/link";
@@ -36,7 +36,7 @@ function Incubation(){
                                 src="/assets/nmu-idea-compeition-web.jpg" 
                                 width={711} 
                                 height={400}
-                                // className={home.adImg}
+                                // className={Style.adImg}
                                 alt="grit internship"
                             />
                         </Link>

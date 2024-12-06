@@ -1,7 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import Style from '/styles/home.module.scss';
+import Style from './home.module.scss';
 import ribbon from '/styles/ribbon.module.scss'
-import home from '/styles/home.module.scss';
 import Image from 'next/image';
 import { StructuredJSON } from '../../components/StructuredJSON';
 import MainNav from '../../components/navigation/MainNav';
@@ -14,6 +13,7 @@ import georgeBusiness from '/public/assets/partners/georgebusinesschamberlogo.pn
 import mosselBay from "/public/assets/partners/mosselbay-chamber.png"
 import internship from "/public/assets/winter-internship-blank.jpg" 
 import hero from "/public/assets/hero.jpg" 
+import heroMobile from "/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
 
 
@@ -31,30 +31,37 @@ export default async function Home(){
 		<>
 			<main className="container-fluid d-flex p-0 flex-column">
 				<section className={Style.heroWrapper}>
-					<Image 
-						className={Style.heroImg} 
-						{...{ src, blurDataURL, height, width }}
-						alt="See your future ahead of you" 
-						priority={true}
-						placeholder='blur'
-					/>
+					<picture>
+						<source srcSet={src ?? blurDataURL} media="(min-width: 600px)" />
+						<source srcSet={heroMobile.src ?? heroMobile.blurDataURL} media="(max-width: 600px)" />
+
+						<Image 
+							srcSet={`${heroMobile.src ?? heroMobile.blurDataURL} ${heroMobile.width}w, ${src ?? blurDataURL} ${width}w`}
+							className={Style.heroImg} 
+							sizes={`(max-width: 600px) ${heroMobile.width}px, ${width}px`}
+							{...{ src, blurDataURL, height, width }}
+							alt="See your future ahead of you" 
+							priority={true}
+							placeholder='blur'
+						/>
+					</picture>
 
 					<div className={Style.hero}>
 						<MainNav clear />
 
-						<div className="col-9 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
+						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
 							<p className={Style.heroHashTag}>#GRITHub</p>
 							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship, and an inclusive workforce in the digital economy.</p>
 						</div>
 
 
-						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3"])}>
+						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])}>
 							<small className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
 							</small>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
-								<div className="col-4 col-md-4 pe-5">
+								<div className="col-4 col-md-4 pe-5 d-none d-md-block">
 									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -63,7 +70,7 @@ export default async function Home(){
 										/>
 									</a>
 								</div>
-								<div className="col-4 col-md-4 px-5">
+								<div className="col-4 col-md-4 px-5 d-none d-md-block">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -77,7 +84,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-4 col-md-4 px-5">
+								<div className="col-4 col-md-4 px-5 d-none d-md-block">
 									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
@@ -89,7 +96,7 @@ export default async function Home(){
 									</a>
 								</div>
 								
-								<div className="col-4 col-md-3 pe-5 pt-5">
+								<div className="col-4 col-md-3 pe-5 pt-5 d-none d-md-block">
 									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
@@ -99,7 +106,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-4 col-md-4 px-5 pt-5">
+								<div className="col-4 col-md-4 px-5 pt-5 d-none d-md-block">
 									<a title="mossel bay business chamber member" href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={mosselBay}
@@ -143,7 +150,7 @@ export default async function Home(){
 									src="/assets/nmu-idea-compeition-web.jpg" 
 									width={711} 
 									height={400}
-									className={home.adImg}
+									className={Style.adImg}
 									alt="grit internship"
 								/>
 							</Link>
@@ -227,7 +234,7 @@ export default async function Home(){
 									{...internship}
 									width={711} 
 									height={400}
-									className={home.adImg}
+									className={Style.adImg}
 									alt="grit internship"
 									placeholder='blur'
 								/>
@@ -271,7 +278,7 @@ export default async function Home(){
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
 								
-								<Image src="/assets/html-js-css.png" width={400} height={200} className={home.cardTopOverflow} alt="html" />
+								<Image src="/assets/html-js-css.png" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
 
@@ -294,7 +301,7 @@ export default async function Home(){
 						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/html.png" width={150} height={150} className={home.cardTopOverflow} alt="html" />
+								<Image src="/assets/html.png" width={150} height={150} className={Style.cardTopOverflow} alt="html" />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">HTML/CSS for Beginners</h3>
 									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
@@ -314,7 +321,7 @@ export default async function Home(){
 						<div className="col-xl-4 col-md-6 col-12 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/js.png" width={150} height={150} className={home.cardTopOverflow} alt="javascript" />
+								<Image src="/assets/js.png" width={150} height={150} className={Style.cardTopOverflow} alt="javascript" />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">Intro into JavaScript 101</h3>
 									
@@ -338,7 +345,7 @@ export default async function Home(){
 						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={home.cardTopOverflow} alt="mobile"  />
+								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={Style.cardTopOverflow} alt="mobile"  />
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
 									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
@@ -360,7 +367,7 @@ export default async function Home(){
 						<div className="col-xl-4 col-md-6 col-12 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={200} className={home.cardTopOverflow} alt="STEM"/>
+								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={200} className={Style.cardTopOverflow} alt="STEM"/>
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
 
