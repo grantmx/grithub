@@ -373,7 +373,7 @@ export default async function Home(){
 
 									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
 									<p className="d-grid">
-										<a href="/programs/dojo" className="btn rounded-pill btn-danger btn-lg">
+										<a href="/programs/dojo" className="btn rounded-pill btn-danger btn-lg" title="more about our coder dojo">
 											Learn more
 										</a>
 									</p>
@@ -390,7 +390,7 @@ export default async function Home(){
 					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/grithub-vol-1/pl.u-4JomXdBsaqmyXN"></iframe>
 				</section> */}
 			</main>
-			
+
 
 			<FooterNav />
 
