@@ -14,8 +14,10 @@
     "@babel/preset-react": "^7.25.9",
     "@hookform/error-message": "^2.0.1",
     "@payloadcms/db-postgres": "^3.2.2",
-    "@payloadcms/next": "^3.2.2",
-    "@payloadcms/richtext-lexical": "^3.2.2",
+    "@payloadcms/email-nodemailer": "^3.3.0",
+    "@payloadcms/next": "^3.3.0",
+    "@payloadcms/richtext-lexical": "^3.3.0",
+    "@payloadcms/storage-vercel-blob": "^3.3.0",
     "@sendgrid/mail": "^7.7.0",
     "@vercel/analytics": "^1.2.2",
     "@vercel/speed-insights": "^1.0.10",
@@ -47,7 +49,8 @@
     "sass": "^1.32.6",
     "sharp": "^0.33.5",
     "twilio": "^4.14.1",
-    "ui": "*"
+    "ui": "*",
+    "vercel": "^39.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
