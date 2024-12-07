@@ -3,9 +3,9 @@ import Style from '/styles/home.module.scss';
 import ribbon from '/styles/ribbon.module.scss'
 import home from '/styles/home.module.scss';
 import Image from 'next/image';
-import { StructuredJSON } from '../../components/StructuredJSON';
-import MainNav from '../../components/navigation/MainNav';
-import FooterNav from '../../components/navigation/FooterNav';
+import { StructuredJSON } from '../../../components/StructuredJSON';
+import MainNav from '../../../components/navigation/MainNav';
+import FooterNav from '../../../components/navigation/FooterNav';
 import clsx from 'clsx';
 import Script from 'next/script'
 

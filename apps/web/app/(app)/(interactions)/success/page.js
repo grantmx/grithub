@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect } from "react";
-import { celebrationTime } from "../../../lib/utils/celebrationTime";
+import { celebrationTime } from "../../../../lib/utils/celebrationTime";
 
 
 function PurchaseSuccess(){

@@ -1,18 +1,17 @@
-import FooterNav from '../../components/navigation/FooterNav';
-import MainNav from '../../components/navigation/MainNav';
+import FooterNav from '../../../components/navigation/FooterNav';
+import MainNav from '../../../components/navigation/MainNav';
 import Style from './page.module.scss'
-import clsx from 'clsx';
 
 
 function GeneralPageLayout({ children }){
     return(
         <>
             <main className="container-fluid d-flex p-0 flex-column">
-                <section className={Style.heroWrapper} style={{backgroundImage: `url("/assets/hero.jpg")`}}>
+                <section className={Style.heroWrapper}>
                     <div className={Style.hero}>
                         <MainNav page />
 
-                        {/* <div className={clsx(Style.headingWrapper, centerTitle && Style.centerHeading, className)}>
+                        {/* <div className={clsx(Style.headingWrapper)}>
                             <h1 className={Style.heading}>
                                 {title}
                             </h1>

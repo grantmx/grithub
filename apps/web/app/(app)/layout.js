@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
-import GoogleEventTracker from '../thirdparty/google/GoogleEventTracker'
+import GoogleEventTracker from '../../thirdparty/google/GoogleEventTracker'
 import OrganizationSchema from '/components/schema/Organization';
 import { Suspense } from 'react';
 
@@ -19,7 +19,7 @@ export const metadata = {
 }
 
 
-function RootLayout({ children }){
+function Layout({ children }){
     return(
         <html lang="en">     
             <head>
@@ -44,4 +44,4 @@ function RootLayout({ children }){
     )
 }
 
-export default RootLayout;
+export default Layout;
