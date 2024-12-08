@@ -7,6 +7,7 @@
     ".next/types/**/*.ts"
   ],
   "compilerOptions": {
+    "moduleResolution": "bundler",
     "module": "esnext",
     "plugins": [
       {
