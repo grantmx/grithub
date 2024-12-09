@@ -7,7 +7,6 @@
     ".next/types/**/*.ts"
   ],
   "compilerOptions": {
-    "moduleResolution": "bundler",
     "module": "esnext",
     "plugins": [
       {
@@ -16,11 +15,8 @@
     ],
     "paths": {
       "@/*": [
-        "./src/*"
+        "./*"
       ],
-      "@payload-config": [
-        "./payload.config.ts"
-      ]
     },
   },
   "exclude": [
