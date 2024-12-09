@@ -1,7 +1,7 @@
 {
-  "name": "backend",
+  "name": "cms",
   "version": "1.0.0",
-  "description": "Website template for Payload",
+  "description": "cms for grithub",
   "license": "MIT",
   "type": "module",
   "scripts": {
