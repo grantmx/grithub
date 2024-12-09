@@ -19,7 +19,7 @@ export const metadata = {
 }
 
 
-function Layout({ children }){
+function RootLayout({ children }){
     return(
         <html lang="en">     
             <head>
@@ -44,4 +44,4 @@ function Layout({ children }){
     )
 }
 
-export default Layout;
+export default RootLayout;
