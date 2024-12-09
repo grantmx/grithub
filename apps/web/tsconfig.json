@@ -7,12 +7,17 @@
     ".next/types/**/*.ts"
   ],
   "compilerOptions": {
-    "moduleResolution": "node",
+    "module": "esnext",
     "plugins": [
       {
         "name": "next"
       }
     ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+    },
   },
   "exclude": [
     "node_modules"

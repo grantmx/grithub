@@ -1,4 +1,6 @@
-module.exports = {
+const { withPayload } = require("@payloadcms/next/withPayload");
+
+module.exports = withPayload({
     reactStrictMode: true,
     transpilePackages: [
         "ui",
@@ -9,6 +11,13 @@ module.exports = {
             ...config.experiments, 
             topLevelAwait: true 
         }
+
+        config.externals = [
+            ...config.externals,
+            {
+                sharp: 'commonjs sharp'
+            }
+        ]
 
         return config
     },
@@ -99,4 +108,4 @@ module.exports = {
             },
         ]
     }
-};
+});

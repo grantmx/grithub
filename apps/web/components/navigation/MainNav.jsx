@@ -38,7 +38,7 @@ function MainNav({ page, clear = false }) {
                     </Link>
 
                     <a className="nav-link fs-5 text-dark rounded-pill text-bg-danger text-white px-5 py-2" href="/contact">
-                        <Image src="/assets/mail_outline.svg" width={20} height={20} className={clsx("d-lg-none", Style.whiteIcon)} alt="Contact Us" />
+                        <Image src="/assets/mail_outline.svg" width={20} height={20} className={clsx("d-lg-none")} alt="Contact Us" />
                         Contact
                     </a>
                 </menu>

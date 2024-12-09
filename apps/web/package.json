@@ -1,10 +1,12 @@
 {
   "name": "web",
-  "version": "0.0.0",
+  "version": "1.5.0",
   "private": true,
+  "license": "SEE LICENSE IN LICENSE.txt",
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
+    "svgr": "svgr -d svg/",
     "start": "next start",
     "lint": "next lint",
     "babel-version": "babel --version"
@@ -27,21 +29,24 @@
     "fs": "^0.0.1-security",
     "google-auth-library": "^9.11.0",
     "google-spreadsheet": "^4.1.2",
+    "graphql": "^16.9.0",
     "jsonp": "^0.2.1",
     "mjml": "^4.14.1",
     "mjml-react": "^2.0.8",
-    "next": "^15.0.3",
+    "next": "^15.0.4",
     "next-seo": "^6.6.0",
     "nodemailer": "^6.9.4",
     "query-string": "^6.14.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-firebase-hooks": "^5.1.1",
     "react-hook-form": "^7.43.9",
     "react-qr-code": "^2.0.11",
     "sass": "^1.32.6",
+    "sharp": "0.32.6",
     "twilio": "^4.14.1",
-    "ui": "*"
+    "ui": "*",
+    "vercel": "^39.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
