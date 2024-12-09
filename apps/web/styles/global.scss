@@ -3,16 +3,19 @@
 // Configuration
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
+@import "./globals//variables";
 @import "bootstrap/scss/variables-dark";
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
+
+
 
 $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pink", "blue");
 
 @import "bootstrap/scss/utilities";
 
 // Layout & components
-@import "bootstrap/scss/root";
+@import "./globals/root.scss";
 @import "bootstrap/scss/reboot";
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/containers";

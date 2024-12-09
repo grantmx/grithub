@@ -4,6 +4,13 @@ import { Analytics } from "@vercel/analytics/react"
 import GoogleEventTracker from '../thirdparty/google/GoogleEventTracker'
 import OrganizationSchema from '/components/schema/Organization';
 import { Suspense } from 'react';
+import { Inter } from "next/font/google"
+
+const rubik = Inter({
+    subsets: ['latin'],
+    display: 'swap',
+})
+
 
 
 export const metadata = {
@@ -21,7 +28,7 @@ export const metadata = {
 
 function RootLayout({ children }){
     return(
-        <html lang="en">     
+        <html lang="en" className={rubik.className}>     
             <head>
 				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content="#f2f2f2" />
