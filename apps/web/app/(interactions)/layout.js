@@ -1,6 +1,6 @@
 import FooterNav from '../../components/navigation/FooterNav';
 import MainNav from '../../components/navigation/MainNav';
-import Style from '../(pages)/page.module.css';
+import Style from '../(pages)/page.module.scss';
 
 function GeneralPageLayout({ children }){
     return(
