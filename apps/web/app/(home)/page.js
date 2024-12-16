@@ -2,7 +2,7 @@
 import Style from './home.module.scss';
 import ribbon from '/styles/ribbon.module.scss'
 import Image from 'next/image';
-import { StructuredJSON } from '../../components/StructuredJSON';
+import { StructuredJSON } from '../../components/schema/StructuredJSON';
 import MainNav from '../../components/navigation/MainNav';
 import FooterNav from '../../components/navigation/FooterNav';
 import clsx from 'clsx';
@@ -15,7 +15,10 @@ import internship from "/public/assets/winter-internship-blank.jpg"
 import hero from "/public/assets/hero.jpg" 
 import heroMobile from "/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
-
+import { getLatestPosts } from "services/sanity/sanity.service";
+import masterclassImg from "/public/ads/q1-2025-masterclass.png"
+import aipromptImg from "/public/ads/ai-engineering-basic-course-ad.png"
+import ecommImg from "/public/ads/learning-ecommerce-seminar.png"
 
 
 export const metadata = {
@@ -25,7 +28,9 @@ export const metadata = {
 }
 
 export default async function Home(){
-	const { src, blurDataURL, height, width  } = hero;
+	const { src, blurDataURL, height, width  } = hero;	
+    const latest = await getLatestPosts({ number: 3 })
+
 
 	return(
 		<>
@@ -176,7 +181,8 @@ export default async function Home(){
 				
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<div className="col-12 d-flex flex-wrap">
-						<div className="col-xl-4 col-md-6 col-12 p-4">
+
+						<div className="col-xl-4 col-md-6 col-12 p-2">
 							<div className="card shadow-sm h-100">
 								<Link href="/cowork" title='coworking spaces'>
 									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
@@ -188,7 +194,7 @@ export default async function Home(){
 							</div>
 						</div>
 
-						<div className="col-xl-4 col-md-6 col-12 p-4">
+						<div className="col-xl-4 col-md-6 col-12 p-2">
 							<div className="card shadow-sm h-100">
 								<Link href="/programs" title="programs">
 									<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
@@ -200,7 +206,7 @@ export default async function Home(){
 							</div>
 						</div>
 
-						<div className="col-xl-4 col-md-6 col-12 p-4">
+						<div className="col-xl-4 col-md-6 col-12 p-2">
 							<div className="card shadow-sm h-100">
 								<Link href="/incubation" title="smme incubator">
 									<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
@@ -221,6 +227,88 @@ export default async function Home(){
 
 					</div>
 				</section>
+
+
+
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
+					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
+						Up Coming Trainings, Courses & Programs
+					</h2>
+
+					<p className="lead text-muted fs-3 text-center mb-5">
+						Identifying untapped inclusive human potential and refocusing it using the power of digital technology. &nbsp; 
+						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
+					</p>
+
+
+					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
+						<div className="col-xl-4 col-md-6 col-12 p-3">
+							<div className="shadow-lg position-relative align-items-center">
+								<Link href="/programs/register/masterclass" title="register for masterclass">
+									<Image 
+										src={masterclassImg.src} 
+										width={400} 
+										height={400} 
+										alt="masterclass" 
+										className={Style.adImg}
+										placeholder='blur'
+										blurDataURL={masterclassImg.blurDataURL}
+									/>
+								</Link>
+							</div>
+						</div>
+
+
+						
+
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-3">
+							<div className="shadow-lg position-relative align-items-center">
+								<a href={`https://wa.me/270448743349?text=${encodeURI(`Hi, I'm looking to book for the AI Prompt Engineering Class at GRIT Hub`)}`} title="register for ai prompt class">
+									<Image 
+										src={aipromptImg.src} 
+										width={400} 
+										height={400} 
+										alt="ai prompt" 
+										className={Style.adImg}
+										placeholder='blur'
+										blurDataURL={aipromptImg.blurDataURL}
+									/>
+								</a>
+							</div>
+						</div>
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-3">
+							<div className="shadow-lg position-relative align-items-center">
+								<a href={`https://wa.me/270448743349?text=${encodeURI(`Hi, I'm looking to book for the eCommerce Class at GRIT Hub`)}`} title="register for ecommm class">
+									<Image 
+										src={ecommImg.src} 
+										width={400} 
+										height={400} 
+										alt="ecommerce class" 
+										className={Style.adImg}
+										placeholder='blur'
+										blurDataURL={ecommImg.blurDataURL}
+									/>
+								</a>
+							</div>
+						</div>
+
+						
+
+
+
+
+
+						
+
+						
+					</div>
+				</section>
+
+
 
 
 
@@ -264,131 +352,55 @@ export default async function Home(){
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
-						Up Coming Trainings, Courses & Programs
+						Our Newsroom
 					</h2>
-					<p className="lead text-muted fs-3">Identifying untapped inclusive human potential and refocusing it using the power of digital technology. </p>
 
-					<p className="lead text-center mt-2">
-						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
+					<p className="lead text-muted fs-3 text-center mb-5">
+						Innovating the Future: Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
+					
 
-					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
-
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								
-								<Image src="/assets/html-js-css.png" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
-
-									<p className="card-text">
-										This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
-									</p>
-									{/* <p className="d-grid">
-										<a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn rounded-pill btn-danger btn-lg">
-											Register Now &nbsp;&rsaquo;
-										</a>
-									</p> */}
-
-									<div className="alert rounded-pill alert-secondary text-center" role="alert">
-										Registration Opens in January 2025
-									</div>
-								</div>
-							</div>
-						</div>
-
-						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/html.png" width={150} height={150} className={Style.cardTopOverflow} alt="html" />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">HTML/CSS for Beginners</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-									<p className="d-grid">
-										<a rel='noreferrer' href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn rounded-pill btn-success btn-lg">
-											Register Now &nbsp;&rsaquo;
-										</a>
-									</p>
-									<div className="alert alert-secondary text-center" role="alert">
-										Registration Opens Soon
-									</div>
-								</div>
-							</div>
-						</div> */}
-
-
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/js.png" width={150} height={150} className={Style.cardTopOverflow} alt="javascript" />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Intro into JavaScript 101</h3>
-									
-									<p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-
-									{/* <p className="d-grid">
-										<a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn rounded-pill btn-success btn-lg" rel="noreferrer">
-											Register
-										</a>
-									</p> */}
-
-									<div className="alert alert-secondary rounded-pill text-center" role="alert">
-										Registration Opens Soon
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-
-						{/* <div className="col-xl-4 col-md-6 col-12 p-md-4 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-								<Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={Style.cardTopOverflow} alt="mobile"  />
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
-									<p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-									<div className="alert alert-secondary text-center" role="alert">
-										Registration is closed
-									</div>
-									<p className="d-grid">
-										<a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners" className="btn rounded-pill btn-success btn-lg">
-											Register Now
-										</a>
-									</p>
-								</div>
-							</div>
-						</div> */}
-
-
+					<div className="col-12 d-flex flex-wrap">
 						
+						{latest.map((post) => {
+							return(
+								<div className="col-xl-4 col-md-6 col-12 p-2" key={post?.slug?.current}>
+									<Link className="card shadow-sm h-100 text-decoration-none card-link" href={`/newsroom/${post.slug.current}`} title='Read More'>
+										<Image 
+											src={post?.mainImage} 
+											width={500} 
+											height={333} 
+											placeholder="blur"
+											blurDataURL={post?.mainImage + `?h=1&w1`}
+											className={Style.cardTopImg} 
+											alt={post.title + " post image"} 
+										/>
+										
+										<div className="card-body d-flex flex-column justify-content-between">
+											<h2 className="card-title fs-5">
+												{post.title}
+											</h2>
+											<small className="text-muted fs-7 mb-3">
+												{new Date(post?.publishedAt).toLocaleDateString('en-GB', {
+													year: 'numeric',
+													month: 'long',
+													day: 'numeric'
+												})}
+											</small>
 
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="card shadow-sm position-relative h-100 align-items-center">
-								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
-								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={200} className={Style.cardTopOverflow} alt="STEM"/>
-								<div className="card-body d-flex flex-column justify-content-between">
-									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
-
-									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
-									<p className="d-grid">
-										<a href="/programs/dojo" className="btn rounded-pill btn-danger btn-lg" title="more about our coder dojo">
-											Learn more
-										</a>
-									</p>
+											<p className="mb-0">
+												<strong className="rounded-pill btn-danger px-4 btn btn-sm fw-bold" >
+													Read more &nbsp;&rsaquo;
+												</strong>
+											</p>
+										</div>
+									</Link>
 								</div>
-							</div>
-						</div>
+							)
+						})}
+						
 					</div>
 				</section>
-
-				{/* <section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
-					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
-						What is on our playlist this month.
-					</h2>
-					<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="450" style="width:100%;max-width:660px;overflow:hidden;border-radius:10px;" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/playlist/grithub-vol-1/pl.u-4JomXdBsaqmyXN"></iframe>
-				</section> */}
 			</main>
 
 

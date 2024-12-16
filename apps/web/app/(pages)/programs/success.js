@@ -1,6 +1,6 @@
 import Style from 'styles/home.module.scss';
 import Image from 'next/image';
-import { StructuredJSON } from 'components/StructuredJSON';
+import { StructuredJSON } from 'components/schema/StructuredJSON';
 import MainNav from 'components/navigation/MainNav';
 import FooterNav from 'components/navigation/FooterNav';
 import hero from "public/assets/hero.jpg" 

@@ -27,16 +27,16 @@ export async function getPosts() {
  * @returns latest 3 posts
  */
 
-export async function getLatestPosts() {
+export async function getLatestPosts({ number = 3 }) {
     const posts = await sanityClient.fetch(`
         *[_type == "post"] | order(publishedAt desc){ 
             title,
             slug,
             publishedAt,
-            mainImage,
+            "mainImage": mainImage.asset->url,
             "author": author->name
 
-        }[0...3]
+        }[0...${number}]
     `)
     return posts
 }
@@ -51,7 +51,15 @@ export async function getLatestPosts() {
 
 export async function getPostBySlug(slug) {
     const post = await sanityClient.fetch(`
-        *[_type == "post" && slug.current == $slug][0]
+        *[_type == "post" && slug.current == $slug][0]{
+            title,
+            categories,
+            _updatedAt,
+            publishedAt,
+            "mainImage": mainImage.asset->url,
+            "author": author->name,
+            body,
+        }
     `, { slug })
 
     return post

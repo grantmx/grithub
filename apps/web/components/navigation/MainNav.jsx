@@ -32,15 +32,15 @@ function MainNav({ page, clear = false }) {
                         Consulting
                     </Link>
 
-                    <Link className="nav-link fs-5 me-3 me-lg-4 text-dark" href="/programs/incubation">
+                    <Link className="nav-link fs-5 me-3 me-lg-5 text-dark" href="/programs/incubation">
                         <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="Business Incubation" />
                         Incubation
                     </Link>
 
-                    {/* <Link className="nav-link fs-5 me-3 me-lg-4 text-dark" href="/newsroom">
-                        <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="News" />
+                    <Link className="nav-link fs-5 me-3 me-lg-4 text-dark" href="/newsroom">
+                        <Image src="/assets/newspaper.svg" width={20} height={20} className="d-lg-none" alt="News" />
                         Newsroom
-                    </Link> */}
+                    </Link>
 
                     <a className="nav-link fs-5 text-dark rounded-pill text-bg-danger text-white px-5 py-2" href="/contact">
                         <Image src="/assets/mail_outline.svg" width={20} height={20} className={clsx("d-lg-none")} alt="Contact Us" />

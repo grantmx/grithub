@@ -13,7 +13,7 @@ function MasterClassForm(){
     const [ isLoading, setIsLoading ] = useState(false)
     const [ isSuccessful, setIsSuccessful ] = useState(false)
 
-    const yocoUrl = useYocoUrl()
+    const yocoUrl = useYocoUrl({ amount: 3499 })
 
 
     function sendEmail({ email, first_name }){

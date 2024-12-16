@@ -6,7 +6,6 @@ Disallow: /portal/
 Disallow: /admin/
 Disallow: /api/
 Disallow: /assets/
-Disallow: /thirdparty/
 
 
 

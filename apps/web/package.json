@@ -15,6 +15,7 @@
     "@babel/core": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
     "@hookform/error-message": "^2.0.1",
+    "@portabletext/to-html": "^2.0.13",
     "@sanity/client": "^6.24.1",
     "@sanity/image-url": "^1.1.0",
     "@sendgrid/mail": "^7.7.0",

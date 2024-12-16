@@ -39,7 +39,7 @@ export default function Programs(){
                         
                         <p>
                             <Link href="/programs/internship" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
-                                Learn more &nbsp;&rsaquo;
+                                <strong>Learn more &nbsp;&rsaquo;</strong>
                             </Link>
                         </p>
                     </div>

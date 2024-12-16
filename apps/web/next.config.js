@@ -1,6 +1,5 @@
-const { withPayload } = require("@payloadcms/next/withPayload");
 
-module.exports = withPayload({
+module.exports = {
     reactStrictMode: true,
     transpilePackages: [
         "ui",
@@ -26,7 +25,12 @@ module.exports = withPayload({
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
     },
     images: {
+        domains: ['cdn.sanity.io'],
         localPatterns: [
+            {
+                pathname: '/ads/**',
+                search: '',
+            },
             {
                 pathname: '/assets/**',
                 search: '',
@@ -44,11 +48,6 @@ module.exports = withPayload({
     },
     async redirects() {
         return [
-            // {
-            //     source: '/programs/internship/apply',
-            //     destination: '/programs/internship',
-            //     permanent: false,
-            // },
             {
                 source: '/dojo',
                 destination: '/programs/dojo',
@@ -108,4 +107,4 @@ module.exports = withPayload({
             },
         ]
     }
-});
+};

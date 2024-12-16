@@ -1,8 +1,8 @@
 import Image from "next/image";
-import image from "public/assets/coding-master-class-banner.jpg"
 import openGraphImg from "public/assets/coding-master-class-card.jpg"
 import MasterClassForm from "components/programs/MasterClassForm";
-import PageHeader from "../../../../../components/layout/PageHeader";
+import PageHeader from "components/layout/PageHeader";
+import classImg from "public/ads/q1-2025-masterclass-thumb.jpg";
 
 export const metadata = {
     title: "Coding Masterclass",
@@ -40,9 +40,17 @@ async function MasterClassRegister() {
                     <MasterClassForm />
 
                     <div className="col-12 col-md-4">
-                        <Image src="/assets/html-js-css.png" width={400} height={200} alt="html" style={{ objectFit: "contain" }} />
+                        <Image 
+                            src={classImg.src} 
+                            placeholder="blur"
+                            blurDataURL={classImg.blurDataURL}
+                            width={400} 
+                            height={400} 
+                            alt="html" 
+                            style={{ objectFit: "contain" }} 
+                        />
 
-                        <p>
+                        <p className="mt-3">
                             This is a 6-week Master Class that will take you from a beginner to a professional web developer.  You will learn enterprise level HTML, CSS, and JavaScript used in web app development, web software platforms and eCommerce.  This class is for those who want to learn to code and build websites and web applications professionally.
                         </p>
 
