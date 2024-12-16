@@ -1,5 +1,9 @@
 {
     "cSpell.words": [
         "afri"
+    ],
+    "eslint.workingDirectories": [
+        { "pattern": "apps/*/" },
+        { "pattern": "packages/*/" }
     ]
 }
