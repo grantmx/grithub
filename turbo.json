@@ -31,7 +31,10 @@
         "yoco_public_key",
         "google_service_client_email",
         "google_service_private_key",
-        "google_sheet_id"
+        "google_sheet_id",
+        "NEXT_PUBLIC_SANITY_PROJECT_ID",
+        "NEXT_PUBLIC_SANITY_DATASET",
+        "NEXT_PUBLIC_SANITY_API_VERSION"
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
