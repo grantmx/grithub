@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const callbackUrl = "https://grithub.org.za/"
 
-export default function useYocoUrl(){
+export default function useYocoUrl({ amount = 3499 }){
     const [ url, setUrl ] = useState("")
 
     useEffect(() => {
@@ -14,7 +14,7 @@ export default function useYocoUrl(){
                 "Content-Type": "application/json",
             },
             data: {
-                amount: parseInt(3499)*100,
+                amount: parseInt(amount)*100,
                 currency: "ZAR",
                 processingMode: "test",
                 cancelUrl: `${callbackUrl}cancel`,
@@ -28,7 +28,7 @@ export default function useYocoUrl(){
                         displayName: "Code Masterclass",
                         quantity: 1,
                         pricingDetails: {
-                            price: parseInt(3499) * 100
+                            price: parseInt(amount) * 100
                         }
                     }
                 ]

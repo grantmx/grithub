@@ -5,7 +5,7 @@ import aboutImg from "/public/assets/about.jpg"
 function About(){
     return(
         <>
-            <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
+            <section className="container-xxl d-flex py-md-5 p-4 flex-column mb-5">
                 <div className="col-12 d-flex flex-md-row flex-column mt-3">
                     <div className="col-12 col-md-7 pe-md-5">
                         <h1 className="display-2 fw-bold">

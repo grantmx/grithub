@@ -10,7 +10,8 @@ node_modules
 
 # next.js
 /.next/*
-apps/captivate/.next/*
+apps/docs/.next
+apps/captivate/.next
 /out/
 
 # production
@@ -36,3 +37,4 @@ yarn-error.log*
 *.psd
 *.gz
 *.old
+/.turbo

@@ -1,32 +1,22 @@
 import Style from 'styles/home.module.scss';
-
 import Image from 'next/image';
-import { NextSeo } from 'next-seo';
 import { StructuredJSON } from 'components/StructuredJSON';
 import MainNav from 'components/navigation/MainNav';
 import FooterNav from 'components/navigation/FooterNav';
-
 import hero from "public/assets/hero.jpg" 
-import { useEffect } from 'react';
-import { celebrationTime } from 'lib/utils/celebrationTime';
 import { Script } from 'next/script';
+import CelebrationSuccess from 'components/feedback/CelebrationSuccess';
+
+
+export const metadata = {
+	title: "Success",
+}
 
 
 export default function Success(){
-
-	useEffect(() => {
-		celebrationTime()
-
-	}, [])
-
-
 	return(
 		<>
-			<NextSeo 
-				title="Garden Route Innovation and Technology Hub"
-				description="Your future starts here! Garden Route Innovation and Technology in the Western Cape Lab is here to incubate innovation and entrepreneurship in the digital economy"
-				canonical="https://grithub.org.za/"
-			/>
+			<CelebrationSuccess />
 
 			<main className="container-fluid d-flex p-0 flex-column">
 				<section className={Style.heroWrapper}>
