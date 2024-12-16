@@ -1,17 +1,10 @@
-"use client"
-
-import { useEffect } from "react";
-import { celebrationTime } from "../../../lib/utils/celebrationTime";
-
+import CelebrationSuccess from "@/components/feedback/CelebrationSuccess";
 
 function Book(){
-    useEffect(() => {
-        celebrationTime()
-    }, [])
-
     return(
-        
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
+                <CelebrationSuccess />
+
                 <div className="col-12 d-flex flex-column">
                     <span className="display-1 text-center">🥳</span>
 

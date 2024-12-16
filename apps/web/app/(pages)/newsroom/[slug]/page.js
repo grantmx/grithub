@@ -105,6 +105,7 @@ export async function generateMetadata(props, parent) {
     const post = await getPostBySlug(slug)
 
     const htmlBody = toHTML(post?.body)
+    const newMetaDescription = htmlBody.slice(0, 160).replace(/(<([^>]+)>)/gi, "")
 
 
     return {
@@ -116,7 +117,7 @@ export async function generateMetadata(props, parent) {
         openGraph: {
             url: `https://grithub.org.za/newsroom/${slug}`,
             title: post?.title,
-            description: htmlBody.slice(0, 160),
+            description: newMetaDescription,
             type: "website",
             images:[{
                 url: post?.mainImage,
