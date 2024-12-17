@@ -1,8 +1,7 @@
 import PageHeader from "components/layout/PageHeader";
-import Image from "next/image";
-import Link from "next/link";
 import { getLatestPosts } from "services/sanity/sanity.service";
-import Style from "app/(pages)/page.module.scss";
+import NewsroomPod from "components/NewsroomPod";
+
 
 export const metadata = {
     title: "Newsroom",
@@ -22,38 +21,7 @@ async function NewsHomePage(){
             <div className="col-12 d-flex flex-wrap">
                 {latest.map((post) => {
                     return(
-                        <div className="col-xl-4 col-md-6 col-12 p-2 mb-4" key={post?.slug?.current}>
-                            <Link className="card shadow-sm h-100 text-decoration-none card-link" href={`/newsroom/${post.slug.current}`} title='Read More'>
-                                <Image 
-                                    src={post?.mainImage} 
-                                    width={500} 
-                                    height={333} 
-                                    placeholder="blur"
-                                    blurDataURL={post?.mainImage + `?h=1&w1`}
-                                    className={Style.cardTopImg} 
-                                    alt={post.title + " post image"} 
-                                />
-                                
-                                <div className="card-body d-flex flex-column justify-content-between">
-                                    <h2 className="card-title fs-5 fw-bold">
-                                        {post.title}
-                                    </h2>
-                                    <small className="text-muted fs-7 mb-3">
-                                        {new Date(post?.publishedAt).toLocaleDateString('en-GB', {
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric'
-                                        })}
-                                    </small>
-
-                                    <p className="mb-0">
-                                        <strong className="rounded-pill btn-danger px-4 btn btn-sm fw-bold" >
-                                            Read more &nbsp;&rsaquo;
-                                        </strong>
-                                    </p>
-                                </div>
-                            </Link>
-                        </div>
+                        <NewsroomPod key={post.slug?.current} {...post} />
                     )
                 })}
                 
