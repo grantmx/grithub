@@ -8,7 +8,8 @@
       "outputs": [
         "dist/**",
         "build/**",
-        ".next/**"
+        ".next/**",
+        "!.next/cache/**"
       ],
       "env": [
         "NEXT_PUBLIC_GA_ID",

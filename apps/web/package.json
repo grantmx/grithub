@@ -3,6 +3,7 @@
   "version": "1.5.0",
   "private": true,
   "license": "SEE LICENSE IN LICENSE.txt",
+  "packageManager": "yarn@1.22.19",
   "scripts": {
     "dev": "next dev --port 3000",
     "build": "next build",
