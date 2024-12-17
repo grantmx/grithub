@@ -19,7 +19,7 @@ import { getLatestPosts } from "services/sanity/sanity.service";
 import masterclassImg from "/public/ads/q1-2025-masterclass.png"
 import aipromptImg from "/public/ads/ai-engineering-basic-course-ad.png"
 import ecommImg from "/public/ads/learning-ecommerce-seminar.png"
-import NewsroomPod from '@/components/NewsroomPod';
+import NewsroomPod from '@/components/newsroom/NewsroomPod';
 
 
 export const metadata = {

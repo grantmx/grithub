@@ -1,5 +1,5 @@
 
-module.exports = {
+const NextConfig = {
     reactStrictMode: true,
     transpilePackages: [
         "ui",
@@ -20,6 +20,7 @@ module.exports = {
 
         return config
     },
+    pageExtensions: ['mdx', 'jsx', 'js'],
     env: {
         NEXT_PUBLIC_url: "https://grithub.org.za",
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
@@ -107,4 +108,6 @@ module.exports = {
             },
         ]
     }
-};
+}
+
+module.exports = NextConfig;

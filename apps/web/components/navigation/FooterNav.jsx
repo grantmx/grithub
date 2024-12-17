@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import FooterEmailForm from "../FooterEmailForm";
+import FooterEmailForm from "../emails/FooterEmailForm";
 
 
 function FooterNav(){

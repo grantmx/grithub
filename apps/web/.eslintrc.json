@@ -1,7 +1,7 @@
-module.exports = {
-	root: true,
-	extends: ["next/babel", "next/core-web-vitals"],
-	rules: {
+{
+	"root": true,
+	"extends": ["next/babel", "next/core-web-vitals"],
+	"rules": {
 		"react/no-unescaped-entities": ["error", { "forbid": [">", "}"] }],
 		"no-undef": "error",
 		"no-unused-vars": "warn",
@@ -10,8 +10,7 @@ module.exports = {
 	},
 	"overrides": [
 		{
-			"files": ["*.js", "*.mjs"],
-			// This is the default parser of ESLint
+			"files": ["*.js", "*.mjs", "*.jsx", "*.ts", "*.tsx"],
 			"parser": "espree",
 			"parserOptions": {
 				"ecmaVersion": "latest"
@@ -22,4 +21,4 @@ module.exports = {
 		"browser": true,
 		"es6": true
 	}
-};
+}

@@ -38,4 +38,3 @@ yarn-error.log*
 *.gz
 *.old
 /.turbo
-/apps

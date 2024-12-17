@@ -1,6 +1,6 @@
 import PageHeader from "components/layout/PageHeader";
 import { getLatestPosts } from "services/sanity/sanity.service";
-import NewsroomPod from "components/NewsroomPod";
+import NewsroomPod from "components/newsroom/NewsroomPod";
 
 
 export const metadata = {
