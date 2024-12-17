@@ -25,6 +25,7 @@
     "@vercel/speed-insights": "^1.0.10",
     "axios": "^1.4.0",
     "bootstrap": "^5.0.0-beta1",
+    "caniuse-lite": "^1.0.30001689",
     "canvas-confetti": "^1.6.0",
     "clsx": "^1.1.1",
     "crypto": "^1.0.1",
@@ -50,9 +51,9 @@
     "sass": "^1.32.6",
     "sharp": "0.32.6",
     "twilio": "^4.14.1",
+    "typescript": "^5.7.2",
     "ui": "*",
-    "vercel": "^39.1.2",
-    "typescript": "^5.7.2"
+    "vercel": "^39.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0",
