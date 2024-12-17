@@ -356,7 +356,7 @@ export default async function Home(){
 					</h2>
 
 					<p className="lead text-muted fs-3 text-center mb-5">
-						Innovating the Future: Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
+						Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
 					
 
@@ -377,7 +377,7 @@ export default async function Home(){
 										/>
 										
 										<div className="card-body d-flex flex-column justify-content-between">
-											<h2 className="card-title fs-5">
+											<h2 className="card-title fs-5 fw-bold">
 												{post.title}
 											</h2>
 											<small className="text-muted fs-7 mb-3">

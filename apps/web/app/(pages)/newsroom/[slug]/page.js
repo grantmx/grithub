@@ -8,7 +8,7 @@ import NewsRoomSchema from "components/schema/NewsRoomSchema";
 
 
 async function NewsArticle({ params }){
-     const latest = await getLatestPosts({ number: 5 })
+     const latest = await getLatestPosts({ number: 9 })
 
     const { slug } = await params;
     const post = await getPostBySlug(slug)

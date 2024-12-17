@@ -13,7 +13,7 @@ export const metadata = {
 
 
 async function NewsHomePage(){
-    const latest = await getLatestPosts({ number: 3 })
+    const latest = await getLatestPosts({ number: 9 })
 
     return(
         <section className="container-xxl d-flex py-md-5 p-4 flex-column mb-5">
@@ -22,7 +22,7 @@ async function NewsHomePage(){
             <div className="col-12 d-flex flex-wrap">
                 {latest.map((post) => {
                     return(
-                        <div className="col-xl-4 col-md-6 col-12 p-2" key={post?.slug?.current}>
+                        <div className="col-xl-4 col-md-6 col-12 p-2 mb-4" key={post?.slug?.current}>
                             <Link className="card shadow-sm h-100 text-decoration-none card-link" href={`/newsroom/${post.slug.current}`} title='Read More'>
                                 <Image 
                                     src={post?.mainImage} 
@@ -35,7 +35,7 @@ async function NewsHomePage(){
                                 />
                                 
                                 <div className="card-body d-flex flex-column justify-content-between">
-                                    <h2 className="card-title fs-5">
+                                    <h2 className="card-title fs-5 fw-bold">
                                         {post.title}
                                     </h2>
                                     <small className="text-muted fs-7 mb-3">

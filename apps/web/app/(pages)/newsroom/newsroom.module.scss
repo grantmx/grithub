@@ -7,10 +7,14 @@
 }
 
 .body{
-    & p{
+    & p, li{
         margin-bottom: 1.7rem;
         font-size: 1.12rem;
         line-height: 1.6;
+    }
+
+    & li{
+        margin-bottom: 1rem;
     }
 
     & h2{
