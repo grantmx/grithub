@@ -99,7 +99,6 @@ async function NewsArticle({ params }){
 
 
 
-
 export async function generateMetadata(props, parent) {
     const { slug } = await props.params;
     const post = await getPostBySlug(slug)
