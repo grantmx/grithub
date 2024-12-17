@@ -1,8 +1,8 @@
 import Image from "next/image";
-import openGraphImg from "public/assets/coding-master-class-card.jpg"
 import MasterClassForm from "components/programs/MasterClassForm";
 import PageHeader from "components/layout/PageHeader";
 import classImg from "public/ads/q1-2025-masterclass-thumb.jpg";
+import masterclassImg from "/public/ads/q1-2025-masterclass.png"
 
 export const metadata = {
     title: "Coding Masterclass",
@@ -13,7 +13,7 @@ export const metadata = {
         description: "From beginner to a professional web developer. Learn from the experts.",
         images: [
             {
-                url: "https://grithub.org.za" + openGraphImg.src,
+                url: "https://grithub.org.za" + masterclassImg.src,
                 width: 800,
                 height: 800,
                 alt: "Coding Masterclass",

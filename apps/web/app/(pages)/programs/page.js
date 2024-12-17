@@ -91,17 +91,17 @@ export default function Programs(){
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
                                 <p className="card-text">
-                                    This is a 12 week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to JavaScript frameworks.  This class is for those who want to learn to code and build websites and web applications.
+                                    This is a 6-week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to using AI to help you code.  This class is for those who want to learn to code and build websites and web applications.
                                 </p>
-                                {/* <p className="d-grid">
-                                    <a rel="noreferrer" href="/programs/register/masterclass" target="_blank" className="btn rounded-pill btn-danger btn-lg">
+                                <p className="d-grid">
+                                    <Link href="/programs/register/masterclass" className="btn rounded-pill btn-danger btn-lg">
                                         Register Now &nbsp;&rsaquo;
-                                    </a>
-                                </p> */}
+                                    </Link>
+                                </p>
 
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
+                                {/* <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
