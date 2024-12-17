@@ -39,11 +39,11 @@ export default function FooterEmailForm(){
                                 <span className="text-danger">{status.msg}. Please try again.</span>
                             </div>,
 
-                "init":     <form onSubmit={(e) => { e.preventDefault(); submitForm(e) }} className="form-floating w-100 position-relative">
+                "init":     <form onSubmit={(e) => submitForm(e)} className="form-floating w-100 position-relative">
                                 <label htmlFor="fieldDB" className={footer.formFieldB}>Field</label>
                                 <input type="text" id="fieldDB" name="b_26e45841b4abf188b36813479_e04129a9c8" tabIndex="-1" defaultValue="" className={footer.formFieldB} />
 
-                                <div className="form-floating">
+                                <div className="form-floating">                                    
                                     <input type="email" name="EMAIL" id="mce-EMAIL" required className="form-control" placeholder="name@example.com" />
                                     <label htmlFor="mce-EMAIL">Your Email</label>
                                 </div>

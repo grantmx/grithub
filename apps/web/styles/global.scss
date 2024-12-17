@@ -8,8 +8,6 @@
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 
-
-
 $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pink", "blue");
 
 @import "bootstrap/scss/utilities";
@@ -38,3 +36,7 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 // Utilities
 @import "bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
+
+.btn{
+    font-weight: unset !important;
+}
