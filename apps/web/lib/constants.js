@@ -1,4 +1,14 @@
 
+export const voidPortableText = { 
+    components: { 
+        types: { 
+            image: null 
+        },
+        marks: {
+            hr: null
+        }
+    }
+}
 
 export const bookingSettings = {
     hours: 8,

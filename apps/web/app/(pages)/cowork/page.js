@@ -79,11 +79,11 @@ async function CoWork(){
 				<div className="col-12 d-flex flex-wrap">
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/wifi_tethering.svg" width={50} height={50} alt="wifi" />
-						<p className="lead pt-3 text-center">+300 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations.</p>
+						<p className="lead pt-3 text-center">+500 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations. Mac Friendly Ecosystem</p>
 					</div>
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/presentation.svg" width={50} height={50} alt="conference rooms"/>
-						<p className="lead pt-3 text-center">Modern Conference Room, Meeting &amp; Board Room and Focus Room. Private Office suites available</p>
+						<p className="lead pt-3 text-center">Modern Conference Room, Meeting &amp; Board Room. Event catering options available.</p>
 					</div>
 					{/* <div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column">
 						<Image src="/assets/build.svg" width={50} height={50} alt="fablabs"/>
@@ -107,7 +107,7 @@ async function CoWork(){
 					</div>
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/print.svg" width={50} height={50} alt="office facilities"/>
-						<p className="lead pt-3 text-center">On Demand Copy, printing and scanning services.</p>
+						<p className="lead pt-3 text-center">On Demand Copy, printing and scanning services. 3D Printer for prototyping</p>
 					</div>
 				</div>
 			</div>

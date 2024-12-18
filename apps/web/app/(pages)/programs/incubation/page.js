@@ -17,10 +17,10 @@ function Incubation(){
         <>
             <section className="container-xxl d-flex pt-4 flex-column mb-5" id="programs">
                 <h1 className="display-2 fw-bold">
-                    Small Business Incubation
+                    SMME Incubation & Mentorship
                 </h1>
                 <p className="lead text-muted fs-3">
-                    Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct coaching.
+                    Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct mentorship.
                 </p>
 
                 <p className="fs-3 m-0">
@@ -62,7 +62,24 @@ function Incubation(){
             </section> */}
            
            
-            <section className="container-xxl p-0 d-flex justify-content-center align-items-center flex-column" id="incubator">
+           <section className="container-xxl text-center col-12">
+                <hr className="hr my-5" />
+
+                <h2 className="display-6 mt-5 mb-0">
+                    SMME Workshops & programs to get your business off the ground
+                </h2>
+
+                <div className="text-center p-md-3 p-3">
+                    <p className="lead">
+                        Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills and create a viable business through masterclasses, workshops, events and direct coaching.
+                    </p>
+                </div>
+
+            </section>
+
+
+
+            <section className="container-xxl p-0 d-flex justify-content-center align-items-center flex-column mb-5" id="incubator">
                 <div className="col-12 d-flex justify-content-between flex-wrap">
 
                     <div className="col-xl-4 col-md-6 col-12 p-3">
@@ -107,34 +124,23 @@ function Incubation(){
                 </div>
             </section>
 
-            <section className="container-xxl text-center col-12">
-                <h2 className="display-6 mt-5 mb-0">
-                    SMME Workshops & programs to get your business off the ground
-                </h2>
+           
 
-                <div className="text-center p-md-3 p-3">
-                    <p className="lead">
-                        Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills and create a viable business through masterclasses, workshops, events and direct coaching.
-                    </p>
-                </div>
-
-            </section>
-
-            <hr className="hr my-5" />
+            {/* <hr className="hr my-5" />
 
             <section className="container-xxl col-12 d-flex justify-content-center align-items-center py-5 flex-column" id="about">
                 <div className="text-center col-xl-12 col-12">
                     
 
 
-                    {/* <QRCode 
+                    <QRCode 
                         value="https://forms.gle/BTxdAZp3Y2KUmqw5A"
                         size={400}
-                    /> */}
+                    />
 
-                    {/* <p className="my-2">Or scan on your phone</p> */}
+                    <p className="my-2">Or scan on your phone</p>
                 </div>
-            </section>
+            </section> */}
         </>
     )
 }

@@ -69,7 +69,7 @@ function ContactUs(){
 				Want to partner with us?
 			</h3>
 			<p className="lead text-muted fs-3 text-center">
-				We partner with institutions, organizations, and individuals who share our vision of a tech-savvy and innovative Garden Route. <a href="mailto:workforce@grithub.org.za">Send us a message</a> to discuss how we can work together.
+				We partner with institutions, organizations, and individuals who share our vision of a tech-savvy and innovative Africa. <a href="mailto:workforce@grithub.org.za">Send us a message</a> to discuss how we can work together.
 			</p>
 
 			

@@ -1,14 +1,14 @@
 import Image from "next/image";
-import { getLatestPosts, getPostBySlug, sanityClient } from "services/sanity/sanity.service";
+import { getLatestPosts, getPostBySlug } from "services/sanity/sanity.service";
 import Style from "../newsroom.module.scss";
 import Link from "next/link";
 import { toHTML } from '@portabletext/to-html'
 import clsx from "clsx"
 import NewsRoomSchema from "components/schema/NewsRoomSchema";
-import imageUrlBuilder from "@sanity/image-url";
 import { PortableText } from '@portabletext/react'
 import ShareButtons from "components/newsroom/ShareButtons";
-
+import { voidPortableText } from "lib/constants";
+import BodyImage from "components/newsroom/BodyImage";
 
 export const revalidate = 3600
 
@@ -28,17 +28,18 @@ async function NewsArticle({ params }){
 
     const customComponents = {
         types: {
-            image: BodyImage
+            image: ({ value }) => <BodyImage {...{ value, Style }} />
         },
+        marks: {
+            hr: () =>  <hr className="my-4"/>
+        }
     }
-
-
     
    
     return(
         <>
             <section className="container-xxl d-flex py-md-5 p-4 flex-column flex-md-row mb-5">
-                <div className="col-12 col-md-8 pe-md-5 mb-4">
+                <article className="col-12 col-md-8 pe-md-5 mb-4">
                     <header className="mb-4">
                         <h1 className="display-6 fw-bold mb-3">
                             {post?.title}
@@ -67,27 +68,36 @@ async function NewsArticle({ params }){
                         </ul>
                     </header>
 
-                    <Image 
-                        className={clsx(Style.image, "mb-4")} 
-                        placeholder="blur"
-                        blurDataURL={post?.mainImage + `?h=1&w3`}
-                        src={post?.mainImage} 
-                        alt={post?.title} 
-                        width={900} 
-                        height={450} 
-                    />
+                    <figure className={Style.figure}>
+                        <Image 
+                            className={Style.image} 
+                            placeholder="blur"
+                            blurDataURL={post?.mainImage + `?h=1&w3`}
+                            src={post?.mainImage} 
+                            alt={post?.mainImageAlt ?? post?.title} 
+                            width={900} 
+                            height={450} 
+                        />
+                        {post?.mainImageCaption && (
+                            <figcaption className={Style.caption}>
+                                {post?.mainImageCaption}
+                            </figcaption>
+                        )}
+                    </figure>
 
 
-                    <PortableText 
-                        value={post?.body} 
-                        components={customComponents}
-                    />
-                </div>
+                    <div className={Style.body}>
+                        <PortableText 
+                            value={post?.body} 
+                            components={customComponents}
+                        />
+                    </div>
+                </article>
 
 
 
 
-                <div className="col-12 col-md-4">
+                <aside className="col-12 col-md-4">
                     <h3>Latest</h3>
 
                     <hr className="my-3"/>
@@ -112,7 +122,7 @@ async function NewsArticle({ params }){
                             )
                         })}
                     </ul>
-                </div>
+                </aside>
             </section>
         
             <NewsRoomSchema
@@ -130,21 +140,6 @@ async function NewsArticle({ params }){
 
 
 
-function BodyImage({ value }){
-    const imageUrl = imageUrlBuilder(sanityClient).image(value).width(800).fit('max').auto('format').url()
-    
-    return (
-        <figure className={Style.figure}>
-            <Image 
-                className={Style.image}
-                src={imageUrl}
-                width={800}
-                height={547}
-                alt="image"
-            />
-        </figure>
-    )
-}
 
 
 
@@ -153,7 +148,7 @@ export async function generateMetadata(props, parent) {
     const { slug } = await props.params;
     const post = await getPostBySlug(slug)
 
-    const htmlBody = toHTML(post?.body, { components: { types: { image: null } }})
+    const htmlBody = toHTML(post?.body, voidPortableText)
     const newMetaDescription = htmlBody.slice(0, 160).replace(/(<([^>]+)>)/gi, "")
 
 

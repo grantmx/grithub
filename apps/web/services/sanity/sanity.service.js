@@ -59,6 +59,8 @@ export async function getPostBySlug(slug) {
             _updatedAt,
             publishedAt,
             "mainImage": mainImage.asset->url,
+            "mainImageCaption": mainImage.caption,
+            "mainImageAlt": mainImage.alt,
             "author": author->name,
             body,
         }

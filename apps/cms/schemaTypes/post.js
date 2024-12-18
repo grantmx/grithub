@@ -32,6 +32,18 @@ export default defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative Text',
+        },
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Image Caption',
+        }
+      ],
     }),
     defineField({
       name: 'categories',

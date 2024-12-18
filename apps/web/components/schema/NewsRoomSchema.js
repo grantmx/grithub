@@ -2,10 +2,11 @@
 
 import Script from "next/script"
 import { toHTML } from '@portabletext/to-html'
+import { voidPortableText } from "lib/constants"
 
 
 export default function NewsRoomSchema({ path, title = "", description = "", image, author="", postDate="", dateUpdated="" }){
-    const htmlBody = toHTML(description, { components: { types: { image: null } }})
+    const htmlBody = toHTML(description, voidPortableText)
     const metaDescription = htmlBody.slice(0, 160)
 
     // write regex to remove html tags from metaDescription
