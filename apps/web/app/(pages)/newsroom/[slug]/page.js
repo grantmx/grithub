@@ -31,9 +31,20 @@ async function NewsArticle({ params }){
             image: ({ value }) => <BodyImage {...{ value, Style }} />
         },
         marks: {
-            hr: () =>  <hr className="my-4"/>
+            hr: () =>  <hr className="my-4"/>,
+            link: ({children, value}) => {
+                const rel = !value.href.startsWith('/') ? 'noreferrer noopener' : undefined
+
+                return (
+                  <a href={value.href} rel={rel} target={rel ? "_blank" : undefined}>
+                    {children}
+                  </a>
+                )
+            },
         }
     }
+
+    console.log(post.body[5].children[1])
     
    
     return(
