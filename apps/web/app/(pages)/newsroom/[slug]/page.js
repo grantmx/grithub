@@ -1,10 +1,16 @@
 import Image from "next/image";
-import { getLatestPosts, getPostBySlug } from "services/sanity/sanity.service";
+import { getLatestPosts, getPostBySlug, sanityClient } from "services/sanity/sanity.service";
 import Style from "../newsroom.module.scss";
 import Link from "next/link";
 import { toHTML } from '@portabletext/to-html'
 import clsx from "clsx"
 import NewsRoomSchema from "components/schema/NewsRoomSchema";
+import imageUrlBuilder from "@sanity/image-url";
+import { PortableText } from '@portabletext/react'
+import ShareButtons from "components/newsroom/ShareButtons";
+
+
+export const revalidate = 3600
 
 
 async function NewsArticle({ params }){
@@ -14,45 +20,70 @@ async function NewsArticle({ params }){
     const post = await getPostBySlug(slug)
 
     // make this date human readable by day, full month, year: '2024-12-15T20:15:00.000Z'
-    const date = new Date(post.publishedAt).toLocaleDateString('en-GB', {
+    const date = new Date(post?.publishedAt).toLocaleDateString('en-GB', {
         year: 'numeric',
         month: 'long',
         day: 'numeric'
     })
 
-    const htmlBody = toHTML(post?.body)
+    const customComponents = {
+        types: {
+            image: BodyImage
+        },
+    }
+
+
     
    
     return(
         <>
             <section className="container-xxl d-flex py-md-5 p-4 flex-column flex-md-row mb-5">
                 <div className="col-12 col-md-8 pe-md-5 mb-4">
-                    <h1 className="display-6 fw-bold mb-3">
-                        {post?.title}
-                    </h1>
+                    <header className="mb-4">
+                        <h1 className="display-6 fw-bold mb-3">
+                            {post?.title}
+                        </h1>
 
-                    <ul className="list-unstyled text-muted fs-6">
-                        <li>Published on: <strong>{date}</strong></li>
-                        <li>By: <strong>{post?.author ?? "Garden Route Innovation & Technology Hub"}</strong></li>
-                    </ul>
+                        <ul className={clsx(Style.headerList, "text-muted fs-6")}>
+                            <li className={Style.headerListItem}>
+                                <ul className={Style.metaList}>
+                                    <li className={Style.metaListItem}>
+                                        Published on: {date}
+                                    </li>
+                                    <li className={Style.metaListItem}>
+                                        By: {post?.author ?? "Garden Route Innovation & Technology Hub"}
+                                    </li>
+                                </ul>
+                            </li>
+                           
 
-                    <hr className="my-4 my-md-5"/>
+                            <li className={Style.headerListItem}>
+                                <ShareButtons  
+                                    body={post?.body}
+                                    title={post?.title}
+                                    url={`https://grithub.org.za/newsroom/${slug}`}
+                                />
+                            </li>
+                        </ul>
+                    </header>
 
                     <Image 
                         className={clsx(Style.image, "mb-4")} 
                         placeholder="blur"
                         blurDataURL={post?.mainImage + `?h=1&w3`}
                         src={post?.mainImage} 
-                        alt={post.title} 
+                        alt={post?.title} 
                         width={900} 
                         height={450} 
                     />
 
-                    <div 
-                        className={Style.body} 
-                        dangerouslySetInnerHTML={{ __html: htmlBody }} 
+
+                    <PortableText 
+                        value={post?.body} 
+                        components={customComponents}
                     />
                 </div>
+
 
 
 
@@ -87,10 +118,10 @@ async function NewsArticle({ params }){
             <NewsRoomSchema
                 path={`https://grithub.org.za/newsroom/${slug}`}
                 title={post?.title}
-                metaDescription={htmlBody.slice(0, 160)}
+                description={post?.body}
                 image={post?.mainImage}
                 author={post?.author ?? "GRIT Hub Staff Writer"}
-                postDate={post.publishedAt}
+                postDate={post?.publishedAt}
                 dateUpdated={post?._updatedAt}
             />
         </>
@@ -99,16 +130,35 @@ async function NewsArticle({ params }){
 
 
 
+function BodyImage({ value }){
+    const imageUrl = imageUrlBuilder(sanityClient).image(value).width(800).fit('max').auto('format').url()
+    
+    return (
+        <figure className={Style.figure}>
+            <Image 
+                className={Style.image}
+                src={imageUrl}
+                width={800}
+                height={547}
+                alt="image"
+            />
+        </figure>
+    )
+}
+
+
+
+
 export async function generateMetadata(props, parent) {
     const { slug } = await props.params;
     const post = await getPostBySlug(slug)
 
-    const htmlBody = toHTML(post?.body)
+    const htmlBody = toHTML(post?.body, { components: { types: { image: null } }})
     const newMetaDescription = htmlBody.slice(0, 160).replace(/(<([^>]+)>)/gi, "")
 
 
     return {
-        title: post.title,
+        title: post?.title,
         description: htmlBody.slice(0, 160),
         alternates: {
             canonical: `https://grithub.org.za/newsroom/${slug}`
@@ -120,7 +170,7 @@ export async function generateMetadata(props, parent) {
             type: "website",
             images:[{
                 url: post?.mainImage,
-                alt: post.title,
+                alt: post?.title,
                 width: 800,
                 height: 800,
             }]

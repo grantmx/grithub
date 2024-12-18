@@ -3549,7 +3549,7 @@
     "@sanity/diff-match-patch" "^3.1.1"
     lodash "^4.17.21"
 
-"@portabletext/react@^3.0.0":
+"@portabletext/react@^3.0.0", "@portabletext/react@^3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-3.2.0.tgz#676ce1c7fc89ad574f6c1827eb02ec953ec5d630"
   integrity sha512-BA216Z8yhb/eP24bfb09uiT0SVnQHTVZMPXf4MRBEZ+G8cMzZM/ab3tcp8owyp91+3kTKR0qSIpzYSKdm1Pakw==
@@ -6946,7 +6946,7 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.4.1.tgz#707413784dbb3a72aa11c2f2b042a0bef4004170"
   integrity sha512-cuSVIHi9/9E/+821Qjdvngor+xpnlwnuwIyZOaLmHBVdXL+gP+I6QQB9VkO7RI77YIcTV+S1W9AreJ5eN63JBA==
 
-classnames@^2.2.5:
+classnames@^2.2.5, classnames@^2.3.2:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.5.1.tgz#ba774c614be0f016da105c858e7159eae8e7687b"
   integrity sha512-saHYOzhIQs6wy2sVxTM6bUDsQO4F50V9RQ22qBpEdCW+I+/Wmke2HOl6lS6dTpdxVhb88/I6+Hs+438c3lfUow==
@@ -13832,6 +13832,13 @@ next-pwa@^5.6.0:
     workbox-webpack-plugin "^6.5.4"
     workbox-window "^6.5.4"
 
+next-sanity-image@^6.1.1:
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/next-sanity-image/-/next-sanity-image-6.1.1.tgz#d4b7dedae4f89df88bf4012cd15113e78dfc2576"
+  integrity sha512-mLRiatJW3TZoD3VlUCci4lOxW9lKOl0bxDsYtk/JRqKZo25QJqPXNV7aoD+lmjEFf6RO2eW7uJ57QeI20mPhOA==
+  dependencies:
+    "@sanity/image-url" "^1.0.2"
+
 next-seo@^6.6.0:
   version "6.6.0"
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-6.6.0.tgz#10c6278cc3be51f9db1ede6780812e5664742974"
@@ -15990,6 +15997,14 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-share@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/react-share/-/react-share-5.1.1.tgz#7b29920795e72d6c4f2e4268b2fb6806343cb7e1"
+  integrity sha512-9rX6X4FiLwKi/eygTx6TWEKv0EuL15AdP6vnFMw5sA4UwTja0mgV4N3gAbkE9+5n3ry7BsBBeOnhaXbJ+jn9kQ==
+  dependencies:
+    classnames "^2.3.2"
+    jsonp "^0.2.1"
 
 react-side-effect@^2.1.0:
   version "2.1.2"

@@ -9,7 +9,7 @@ export const metadata = {
     keywords: "news, garden route, technology, innovation, ecosystem, insights, stories"
 }
 
-
+export const revalidate = 3600
 
 async function NewsHomePage(){
     const latest = await getLatestPosts({ number: 9 })

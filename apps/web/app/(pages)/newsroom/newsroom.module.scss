@@ -6,6 +6,36 @@
     object-fit: contain;
 }
 
+.metaList, .headerList, .shareList{
+    margin: 0 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.headerList{
+    display: flex;
+    justify-content: space-between;
+}
+
+.metaListItem{
+    font-size: .9rem;
+}
+
+.shareListItem{
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+.headerListItem{
+    list-style: none;
+}
+
+.figure{
+    margin: 3rem 0;
+    text-align: center;
+    width: 100%;
+}
+
 .body{
     & p, li{
         margin-bottom: 1.7rem;

@@ -1,4 +1,5 @@
 
+
 export const bookingSettings = {
     hours: 8,
     people: 24,

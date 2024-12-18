@@ -1,7 +1,13 @@
 "use client"
-import Script from "next/script"
 
-export default function NewsRoomSchema({ path, title = "", metaDescription = "", image, author="", postDate="", dateUpdated="" }){
+import Script from "next/script"
+import { toHTML } from '@portabletext/to-html'
+
+
+export default function NewsRoomSchema({ path, title = "", description = "", image, author="", postDate="", dateUpdated="" }){
+    const htmlBody = toHTML(description, { components: { types: { image: null } }})
+    const metaDescription = htmlBody.slice(0, 160)
+
     // write regex to remove html tags from metaDescription
     const newMetaDescription = metaDescription.replace(/(<([^>]+)>)/gi, "")
     

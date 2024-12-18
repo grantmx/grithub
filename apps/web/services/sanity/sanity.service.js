@@ -16,8 +16,11 @@ export const sanityClient = createClient({
  */
 
 export async function getPosts() {
-    const posts = await sanityClient.fetch('*[_type == "post"]')
-    return posts
+    return await sanityClient.fetch(`*[_type == "post"]{
+        title,
+        slug,
+        _updatedAt
+    }`)
 }
 
 
@@ -28,7 +31,7 @@ export async function getPosts() {
  */
 
 export async function getLatestPosts({ number = 3 }) {
-    const posts = await sanityClient.fetch(`
+    return await sanityClient.fetch(`
         *[_type == "post"] | order(publishedAt desc){ 
             title,
             slug,
@@ -38,7 +41,6 @@ export async function getLatestPosts({ number = 3 }) {
 
         }[0...${number}]
     `)
-    return posts
 }
 
 
@@ -50,7 +52,7 @@ export async function getLatestPosts({ number = 3 }) {
  */
 
 export async function getPostBySlug(slug) {
-    const post = await sanityClient.fetch(`
+    return await sanityClient.fetch(`
         *[_type == "post" && slug.current == $slug][0]{
             title,
             categories,
@@ -61,6 +63,4 @@ export async function getPostBySlug(slug) {
             body,
         }
     `, { slug })
-
-    return post
 }

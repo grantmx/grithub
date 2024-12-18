@@ -360,15 +360,12 @@ export default async function Home(){
 						Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
 					
-
 					<div className="col-12 d-flex flex-wrap">
-						
 						{latest.map((post) => {
 							return(
 								<NewsroomPod key={post.slug?.current} {...post} />
 							)
 						})}
-						
 					</div>
 				</section>
 			</main>
