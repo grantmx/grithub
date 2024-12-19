@@ -296,16 +296,6 @@ export default async function Home(){
 								</a>
 							</div>
 						</div>
-
-						
-
-
-
-
-
-						
-
-						
 					</div>
 				</section>
 

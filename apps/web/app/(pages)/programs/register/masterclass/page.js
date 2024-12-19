@@ -51,39 +51,19 @@ async function MasterClassRegister() {
                             style={{ objectFit: "contain" }} 
                         />
 
-                        <p className="mt-3">
-                            This is a 6-week Master Class that will take you from a beginner to a professional web developer.  You will learn enterprise level HTML, CSS, and JavaScript used in web app development, web software platforms and eCommerce.  This class is for those who want to learn to code and build websites and web applications professionally.
-                        </p>
 
-                        <p>
-                            
-                            When: <strong>13 January to 19 February; 
+                        <p className="mt-3">
+                            When: <strong>13 January to 19 February;<br/>
                             Every Monday & Wednesday from 9 AM to 12 PM</strong>
                             <br />
                             <br />
-                            Where: <strong>Garden Route Innovation & Technology Hub, George</strong><br />
+                            Where: <strong>Garden Route Innovation & Technology Hub, George Campus</strong><br />
                             <br />
                             How Much: <strong>Cost: R3,499</strong>
                             <br />
                         </p>
 
                         <hr/>
-
-                        <h4>What will you learn?</h4>
-
-                        <ul className="mb-4">
-                            <li>Enterprise Level Software for Web Development</li>
-                            <li>HTML5, CSS3, SASS, Web Accessibility, and Design</li>
-                            <li>Responsive Web Development & Design</li>
-                            <li>History of JavaScript, ECMAScript, Object Oriented Scripting</li>
-                            <li>The bad parts of JavaScript</li>
-                            <li>Values, Types, and Operators</li>
-                            <li>Programming Structure, Expressions, loops, syntax</li>
-                            <li>Data Structures, Arrays, Objects, JSON</li>
-                            <li>Getting and Sending data to the Server</li>
-                            <li>Build a full functioning Website on a web-hosted setup using industry tools.</li>
-                            <li>Obtain a GRIT Hub certification upon successful completion of this course.</li>
-                        </ul>
 
                         <p>
                             <strong>CLASS REQUIREMENTS:</strong> Students will need a laptop computer (not a Chromebook). Don't have a computer? Don't let that stop you from joining us! Email workforce@grithub.org.za to inquire about options.

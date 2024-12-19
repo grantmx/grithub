@@ -39,7 +39,7 @@ export default function Programs(){
                         
                         <p>
                             <Link href="/programs/internship" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
-                                <strong>Learn more &nbsp;&rsaquo;</strong>
+                                Learn more &nbsp;&rsaquo;
                             </Link>
                         </p>
                     </div>
@@ -89,13 +89,13 @@ export default function Programs(){
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
                             <Image src="/assets/html-js-css.png" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Coding MasterClass</h3>
+                                <h3 className="card-title fs-4 fw-bold">Frontend Coding MasterClass</h3>
                                 <p className="card-text">
                                     This is a 6-week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to using AI to help you code.  This class is for those who want to learn to code and build websites and web applications.
                                 </p>
                                 <p className="d-grid">
-                                    <Link href="/programs/register/masterclass" className="btn rounded-pill btn-danger btn-lg">
-                                        Register Now &nbsp;&rsaquo;
+                                    <Link href="/programs/masterclass/frontend-coding-masterclass" className="btn rounded-pill btn-danger btn-lg">
+                                        Learn More &nbsp;&rsaquo;
                                     </Link>
                                 </p>
 

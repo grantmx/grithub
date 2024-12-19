@@ -15,6 +15,12 @@ export default async function sitemap() {
     
     return[
         {
+            url: `${process.env.NEXT_PUBLIC_url}/programs/masterclass/frontend-coding-masterclass`,
+            lastModified: new Date(),
+            changeFrequency: 'yearly',
+            priority: 0.7,
+        },
+        {
             url: process.env.NEXT_PUBLIC_url,
             lastModified: new Date(),
             changeFrequency: 'yearly',

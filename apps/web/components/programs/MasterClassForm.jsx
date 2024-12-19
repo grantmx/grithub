@@ -183,10 +183,10 @@ function MasterClassForm(){
                 <div className="col-12 d-flex justify-content-between">
                     <button style={{ width: "250px", height: "48px" }} type="submit" className="btn rounded-pill btn-primary btn-lg px-3 d-flex align-items-center justify-content-center">
                         {isLoading ? <Loader {...{ isLoading, isSuccessful }} /> : (
-                            <strong>
+                            <>
                                 <IconLock fill="#fff" width="20" height="20" className="me-2" />
                                 Register Now
-                            </strong>
+                            </>
                         )}
                     </button>
                 </div>
