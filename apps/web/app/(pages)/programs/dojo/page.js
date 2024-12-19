@@ -1,6 +1,7 @@
 import Image from "next/image";
 import image2 from "/public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jpg"
 import ad from "/public/assets/code-dojo.png"
+import { IconWhatsapp } from "components/icons/IconWhatsapp";
 
 export const metadata = {
     openGraph:{
@@ -61,7 +62,7 @@ async function CoderDojo(){
                     
                     <p>Attending is free of charge, however signing up is necessary in order to guarantee your child a place. Please send us a <a href="https://wa.me/270630705752">WhatsApp message or give us a call</a> and let us know you are attending.</p>
                 
-                    <ul>
+                    <ul className="mb-5">
                         <li className="mb-3"><strong>What should I bring to the event?</strong> All children should bring a laptop. In case you cannot provide one, we have a small number of loan laptops. Please add that your child requires one to the additional notes section when booking a ticket.</li>
                         <li className="mb-3"><strong>Am I required to attend?</strong> Yes, children must be accompanied by a parent/guardian, who is required to remain on the premises for the duration of the session. You will be asked to help your child(ren) get set up and ready, though after this, our volunteer mentors will assist your children in their learning.</li>
                         <li className="mb-3"><strong>Should my child or I have prior coding knowledge?</strong> No, the Dojo is open to complete beginners as well as to young people who have coded before: we have skilled mentors who will help with technical questions.</li>
