@@ -18,10 +18,10 @@ export const metadata = {
 	title: {
 		template: '%s : Garden Route Innovation and Technology Hub - GRIT Hub',
 		default: 'Garden Route Innovation and Technology Hub - GRIT Hub',
-        verification: {
-            google: "LNiA23tiS3vejUsuJnv3kS4i-T-w6kJyni9MleyXccQ",
-        }
 	},
+    verification: {
+        google: "LNiA23tiS3vejUsuJnv3kS4i-T-w6kJyni9MleyXccQ",
+    },
     description: "Your future starts here! The Garden Route Innovation and Technology (GRIT Hub) located in George, Western Cape Lab is here to incubate innovation and entrepreneurship in the digital economy",	
 }
 
