@@ -1,11 +1,6 @@
 {
   "extends": "tsconfig/nextjs.json",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
   "compilerOptions": {
     "baseUrl": ".",
     "module": "esnext",
@@ -15,12 +10,8 @@
       }
     ],
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-    },
+      "@/*": ["./*"]
+    }
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

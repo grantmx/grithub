@@ -32,6 +32,7 @@ function RootLayout({ children }){
             <head>
 				<link rel="manifest" href="/manifest.json" />
 				<meta name="theme-color" content="#f2f2f2" />
+                <meta name="google-site-verification" content="LNiA23tiS3vejUsuJnv3kS4i-T-w6kJyni9MleyXccQ" />
 			</head>
 
             <body>

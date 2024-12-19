@@ -4,6 +4,7 @@ import PageHeader from "components/layout/PageHeader";
 import classImg from "public/ads/q1-2025-masterclass-thumb.jpg";
 import masterclassImg from "/public/ads/q1-2025-masterclass.png"
 
+
 export const metadata = {
     title: "Coding Masterclass",
     description: "From beginner to a professional web developer. Learn from the experts.",

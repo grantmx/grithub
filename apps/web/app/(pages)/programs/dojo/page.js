@@ -66,6 +66,11 @@ async function CoderDojo(){
                         <li className="mb-3"><strong>Am I required to attend?</strong> Yes, children must be accompanied by a parent/guardian, who is required to remain on the premises for the duration of the session. You will be asked to help your child(ren) get set up and ready, though after this, our volunteer mentors will assist your children in their learning.</li>
                         <li className="mb-3"><strong>Should my child or I have prior coding knowledge?</strong> No, the Dojo is open to complete beginners as well as to young people who have coded before: we have skilled mentors who will help with technical questions.</li>
                     </ul>
+
+                    <a className="btn rounded-pill btn-success btn-lg align-items-center py-3 px-4" href="https://chat.whatsapp.com/KXf4JzJEwSUBUcsG42yloT">
+                        <IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
+                        Join Dojo Parent's Whatsapp Group 
+                    </a>
                 </div>
 
                 <div className="col-md-4 col-12">
