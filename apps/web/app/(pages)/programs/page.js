@@ -53,7 +53,7 @@ export default function Programs(){
 
 
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
-                <h2 className="fw-bold display-3 mt-5 mb-0 text-center">
+                <h2 className="fw-bold display-4 mt-5 mb-0 text-center">
                     Real Life Workforce Training.<br/>Start Your Journey Now!
                 </h2>
 
