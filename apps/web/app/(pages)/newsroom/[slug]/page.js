@@ -14,7 +14,7 @@ export const revalidate = 3600
 
 
 async function NewsArticle({ params }){
-     const latest = await getLatestPosts({ number: 9 })
+    const latest = await getLatestPosts({ end: 9 })
 
     const { slug } = await params;
     const post = await getPostBySlug(slug)
@@ -44,7 +44,6 @@ async function NewsArticle({ params }){
         }
     }
 
-    console.log(post.body[5].children[1])
     
    
     return(

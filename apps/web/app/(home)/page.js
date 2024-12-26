@@ -30,7 +30,7 @@ export const metadata = {
 
 export default async function Home(){
 	const { src, blurDataURL, height, width  } = hero;	
-    const latest = await getLatestPosts({ number: 3 })
+    const latest = await getLatestPosts({ end: 3 })
 
 
 	return(

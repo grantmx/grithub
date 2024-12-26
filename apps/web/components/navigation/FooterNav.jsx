@@ -59,7 +59,6 @@ function FooterNav(){
                 
             </div>
             
-
             <div className="col-md-4 col-12 p-md-4 d-flex justify-content-top flex-column align-item-center">
                 <p className="fw-bold fs-4">
                     Join Us

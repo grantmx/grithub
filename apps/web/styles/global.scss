@@ -37,6 +37,11 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 @import "bootstrap/scss/utilities/api";
 // scss-docs-end import-stack
 
+html{
+	scroll-behavior: smooth !important;
+}
+
 .btn{
     font-weight: unset !important;
 }
+

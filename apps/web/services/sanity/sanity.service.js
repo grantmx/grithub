@@ -30,7 +30,7 @@ export async function getPosts() {
  * @returns latest 3 posts
  */
 
-export async function getLatestPosts({ number = 3 }) {
+export async function getLatestPosts({ start = 0, end = 3 }) {
     return await sanityClient.fetch(`
         *[_type == "post"] | order(publishedAt desc){ 
             title,
@@ -39,7 +39,7 @@ export async function getLatestPosts({ number = 3 }) {
             "mainImage": mainImage.asset->url,
             "author": author->name
 
-        }[0...${number}]
+        }[${start}...${end}]
     `)
 }
 

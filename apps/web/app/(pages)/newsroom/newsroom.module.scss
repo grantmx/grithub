@@ -1,3 +1,4 @@
+@import 'styles/globals/variables';
 
 
 .image{
@@ -72,3 +73,48 @@
         font-weight: 600;
     }
 }
+
+.paginateBlock{
+    display: flex;
+    margin: 2rem 0;
+    padding: 0;
+    width: 100%;
+    list-style: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: .25;
+}
+
+.pageItem{
+   display: inline-block;
+   margin: 0 .5rem;
+}
+
+.pageItemLink{
+    display: inline-block;
+    padding: .5rem;
+    line-height: 1;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+}
+
+.activePage{
+    border-bottom: 1px solid $link_color;
+}
+
+.pageBtn{
+    width: 30px;
+    height: 30px;
+    fill: $link_color;
+}
+
+.pageBtnItem{
+    border: 1px solid $link_color;
+    border-radius: 99rem;
+    margin: 0 .5rem;
+}
+
