@@ -91,7 +91,7 @@ async function CoWork(){
 					</div> */}
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/airport_shuttle.svg" width={50} height={50} alt="safe"/>
-						<p className="lead pt-3 text-center">Accessible to public transport. Safe metro area where all patrons will feel comfortable and inspire creativity.</p>
+						<p className="lead pt-3 text-center">Free public parking. Accessible to public transport. Safe metro area where all patrons will feel comfortable and inspire creativity.</p>
 					</div>
 					{/* <div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column">
 						<Image src="/assets/child_friendly.svg" width={50} height={50} alt="daycare"/>
