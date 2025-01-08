@@ -21,7 +21,7 @@ function About(){
 
                         <h2>Our Vision & Mission</h2>
 
-                        <p>To be the premier regional technology hub catalyzing small businesses, entrepreneurs, and startups in the innovation economy by connecting citizens in the inner-city, urban, small town and rural communities of the Garden Route/Klien Karoo Region to new economic opportunities through technological entrepreneurial tools and techniques focusing on inclusive competitive empowerment.</p>
+                        <p>To be the premier Garden Route region technology hub and ICT incubator catalyzing small businesses, entrepreneurs, and startups in the innovation economy by connecting citizens in the inner-city, urban, small town and rural communities of our region to new economic opportunities through technological entrepreneurial tools and techniques focusing on inclusive competitive empowerment.</p>
 
                         <h2>Our Core Values</h2>
 
