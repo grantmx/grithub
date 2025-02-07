@@ -20,7 +20,7 @@ import aipromptImg from "/public/ads/ai-engineering-basic-course-ad.png"
 import ecommImg from "/public/ads/learning-ecommerce-seminar.png"
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
 
-export const revalidate = 12 * 60 * 60 * 1000
+export const revalidate = 43200000
 
 export const metadata = {
 	alternates: {
