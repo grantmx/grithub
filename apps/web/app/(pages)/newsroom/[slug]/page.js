@@ -10,8 +10,7 @@ import ShareButtons from "components/newsroom/ShareButtons";
 import { voidPortableText } from "lib/constants";
 import BodyImage from "components/newsroom/BodyImage";
 
-export const revalidate = 3600
-
+export const revalidate = 12 * 60 * 60 * 1000
 
 async function NewsArticle({ params }){
     const latest = await getLatestPosts({ end: 9 })

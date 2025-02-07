@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import Style from './home.module.scss';
-import ribbon from '/styles/ribbon.module.scss'
 import Image from 'next/image';
 import { StructuredJSON } from '../../components/schema/StructuredJSON';
 import MainNav from '../../components/navigation/MainNav';
@@ -21,6 +20,7 @@ import aipromptImg from "/public/ads/ai-engineering-basic-course-ad.png"
 import ecommImg from "/public/ads/learning-ecommerce-seminar.png"
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
 
+export const revalidate = 12 * 60 * 60 * 1000
 
 export const metadata = {
 	alternates: {
