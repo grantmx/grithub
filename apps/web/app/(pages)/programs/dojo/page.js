@@ -106,9 +106,9 @@ async function CoderDojo(){
                         </h3>
 
                         <address className="lead">
-                            Diaz Hotel<br/>
-                            1 Beach E Blvd, Die Voor Bay,<br/> 
-                            Mossel Bay, 6506
+                            Object Cafe<br/>
+                            48 Marsh St,<br/> 
+                            Mossel Bay, 6500
                         </address>                   
                     </div>
                 </article>
