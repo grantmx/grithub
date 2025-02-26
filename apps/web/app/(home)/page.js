@@ -241,7 +241,7 @@ export default async function Home(){
 					</p>
 
 
-					<div className="col-12 d-flex justify-content-between flex-wrap mb-5">
+					{/* <div className="col-12 d-flex justify-content-between flex-wrap mb-5">
 						<div className="col-xl-4 col-md-6 col-12 p-3">
 							<div className="shadow-lg position-relative align-items-center">
 								<Link href="/programs/register/masterclass" title="register for masterclass">
@@ -295,7 +295,7 @@ export default async function Home(){
 								</a>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</section>
 
 
