@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import Script from 'next/script'
 
 import afriLabs from "/public/assets/partners/afrilabs-member-logo-white.png" 
+import silicon from "/public/assets/silicon-cape-white.svg" 
 import georgeBusiness from '/public/assets/partners/georgebusinesschamberlogo.png'
 import mosselBay from "/public/assets/partners/mosselbay-chamber.png"
 import internship from "/public/assets/winter-internship-blank.jpg" 
@@ -15,9 +16,6 @@ import hero from "/public/assets/hero.jpg"
 import heroMobile from "/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
 import { getLatestPosts } from "services/sanity/sanity.service";
-import masterclassImg from "/public/ads/q1-2025-masterclass.png"
-import aipromptImg from "/public/ads/ai-engineering-basic-course-ad.png"
-import ecommImg from "/public/ads/learning-ecommerce-seminar.png"
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
 
 export const revalidate = 3600
@@ -75,6 +73,16 @@ export default async function Home(){
 										/>
 									</a>
 								</div>
+
+								<div className="col-4 col-md-4 pe-5 d-none d-md-block">
+									<Image 
+										src={silicon}
+										alt="Silicon cape" 
+										className={clsx(Style.partnerLogo, Style.whiteLogo)}
+									/>
+								</div>
+
+
 								<div className="col-4 col-md-4 px-5 d-none d-md-block">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
