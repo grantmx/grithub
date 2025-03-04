@@ -1,0 +1,30 @@
+
+
+.cntr{
+    max-width: 800px;
+
+    & [class^="react-pdf__Page"]{
+        max-width: 800px;
+    }
+}
+
+.nav{
+    margin: 2rem 0 6rem 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 800px;
+}
+
+.pageOf{
+    padding: 0 1rem;
+    font-size: 1.4rem;
+    width: 155px;
+    text-align: center;
+    margin: 0;
+}
+
+.icon{
+    fill: #fff;
+}

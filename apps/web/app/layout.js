@@ -6,6 +6,7 @@ import OrganizationSchema from '/components/schema/Organization';
 import { Suspense } from 'react';
 import { Inter } from "next/font/google"
 
+
 const rubik = Inter({
     subsets: ['latin'],
     display: 'swap',

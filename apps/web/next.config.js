@@ -6,6 +6,8 @@ const NextConfig = {
         "next-mdx-remote"
     ],
     webpack(config) {
+        config.resolve.alias.canvas = false;
+        
         config.experiments = { 
             ...config.experiments, 
             topLevelAwait: true 
