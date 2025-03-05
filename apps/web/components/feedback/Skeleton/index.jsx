@@ -1,7 +1,5 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
-
-
 import Style from "./Skeleton.module.scss";
 import utils from 'styles/globals/utils.module.scss';
 

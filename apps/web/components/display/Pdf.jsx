@@ -8,6 +8,8 @@ import 'react-pdf/dist/esm/Page/TextLayer.css';
 import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import clsx from "clsx";
+// import Skeleton from "components/feedback/Skeleton"
+
 
 try{
 	pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/legacy/build/pdf.worker.min.mjs', import.meta.url).toString()
@@ -93,36 +95,40 @@ function Pdf({ filePath }){
 					onLoadSuccess={onDocumentLoadSuccess}  
 					options={options}
 					className="keen-slider"
+					// loading={<Skeleton width="400px" height="200px" />}
 				>
 					{slides}
 				</Document>
 			</article>
 
-			<nav className={Style.nav}>
-				<button 
-					type="button"
-					className="btn btn-danger"
-					onClick={(e) => e.stopPropagation() || instanceRef?.current?.prev()}
-				>
-					<svg className={Style.icon} id="icon-keyboard_arrow_left" viewBox="0 0 24 24" width={24} height={24}>
-						<path d="M15.422 16.594l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z"></path>
-					</svg>
-				</button>
+			{numPages && (
+				<nav className={Style.nav}>
+					<button 
+						type="button"
+						className="btn btn-danger"
+						onClick={(e) => e.stopPropagation() || instanceRef?.current?.prev()}
+					>
+						<svg className={Style.icon} id="icon-keyboard_arrow_left" viewBox="0 0 24 24" width={24} height={24}>
+							<path d="M15.422 16.594l-1.406 1.406-6-6 6-6 1.406 1.406-4.594 4.594z"></path>
+						</svg>
+					</button>
 
-				<p className={Style.pageOf}>
-					{pageNumber +" of "+ numPages}
-				</p>
+					<p className={Style.pageOf}>
+						{pageNumber +" of "+ numPages}
+					</p>
 
-				<button 
-					type="button"
-					className="btn btn-danger"
-					onClick={(e) => e.stopPropagation() || instanceRef?.current?.next()}
-				>
-					<svg className={Style.icon} id="icon-keyboard_arrow_right" viewBox="0 0 24 24" width={24} height={24}>
-						<path d="M8.578 16.594l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
-					</svg>
-				</button>
-			</nav>
+					<button 
+						type="button"
+						className="btn btn-danger"
+						onClick={(e) => e.stopPropagation() || instanceRef?.current?.next()}
+					>
+						<svg className={Style.icon} id="icon-keyboard_arrow_right" viewBox="0 0 24 24" width={24} height={24}>
+							<path d="M8.578 16.594l4.594-4.594-4.594-4.594 1.406-1.406 6 6-6 6z"></path>
+						</svg>
+					</button>
+				</nav>
+			)}
+			
 		</>
 	)
 }
