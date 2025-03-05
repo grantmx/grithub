@@ -13,7 +13,6 @@ export default function GoogleEventTracker(){
 
 	useEffect(() => {
             const url = `${pathname}?${searchParams}`
-            console.log(url)
 			gtag.pageview(url)
 
 	}, [

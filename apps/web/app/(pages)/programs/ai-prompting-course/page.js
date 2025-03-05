@@ -1,10 +1,14 @@
-import Pdf from "components/display/Pdf";
+"use client"
+import dynamic from "next/dynamic";
 
-export const metadata = {
-    title: "AI Prompting Course",
-    description: "AI Prompting Course",
-    keywords: "AI Prompting Course",
-}
+const Pdf = dynamic(() => import("components/display/Pdf"), { ssr: false, });
+
+
+// export const metadata = {
+//     title: "AI Prompting Course",
+//     description: "AI Prompting Course",
+//     keywords: "AI Prompting Course",
+// }
 
 function AIPromptingCourse(){
     return(

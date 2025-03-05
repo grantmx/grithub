@@ -9,10 +9,12 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import clsx from "clsx";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url,
-).toString();
+try{
+	pdfjs.GlobalWorkerOptions.workerSrc = new URL('pdfjs-dist/legacy/build/pdf.worker.min.mjs', import.meta.url).toString()
+
+}catch(e){
+	  console.log(e);
+}
 
 const maxWidth = 800;
 
@@ -21,7 +23,6 @@ function Pdf({ filePath }){
     const [ numPages, setNumPages ] = useState();
   	const [ pageNumber, setPageNumber ] = useState(1);
 
-	
 
 	  const [ sliderRef, instanceRef ] = useKeenSlider(
         {
@@ -109,7 +110,7 @@ function Pdf({ filePath }){
 				</button>
 
 				<p className={Style.pageOf}>
-					{(pageNumber + 1) +" of "+ numPages}
+					{pageNumber +" of "+ numPages}
 				</p>
 
 				<button 
