@@ -64,7 +64,7 @@ function FooterNav(){
                     Join Us
                 </p>
 
-                <small className="mb-3 text-muted">Be the first to know when we launch and get specialized updates on programming.</small>
+                <small className="mb-3 text-muted">Be the first to know when we publish new articles and specialized updates on programming.</small>
                 <FooterEmailForm />
             </div>
             

@@ -4,24 +4,29 @@ import React, { useState } from 'react';
 import footer from '/components/navigation/footer.module.scss'
 import Image from 'next/image';
 import serialize from 'form-serialize';
-import jsonp from 'jsonp';
+import submitEmailAction from "./submitEmailAction";
+import Loader from "components/feedback/Loader";
 
 
 export default function FooterEmailForm(){
     const [ status, setStatus ] = useState({result: "init"});
+    const [ isLoading, setIsLoading ] = useState(false);
 
-    const submitForm = (e) => {
+
+    const submitForm = async (e) => {
+        setIsLoading(true);
+        e.preventDefault()
+
         let formData = serialize(e.target);
-        let url = `https://grithub.us1.list-manage.com/subscribe/post-json?u=26e45841b4abf188b36813479&id=e04129a9c8&${formData}`;
-        
-        jsonp(url, { param: 'c' }, (err, data) => { 
-            setStatus(data);
 
-            // reshow the form so the user can try again
-            if( data.result === "error" ){
-                setTimeout(() => { setStatus({result: "init"}) }, 5000);
-            }
+        // turn formdata into an object
+        formData = Object.fromEntries(new FormData(e.target));
+
+        await submitEmailAction(formData).then((res) => {
+            setStatus({result: res.result === "success" ? "success" : "error", msg: res.msg});    
+            setIsLoading(false);
         });
+
     };
 
 
@@ -41,15 +46,19 @@ export default function FooterEmailForm(){
 
                 "init":     <form onSubmit={(e) => submitForm(e)} className="form-floating w-100 position-relative">
                                 <label htmlFor="fieldDB" className={footer.formFieldB}>Field</label>
-                                <input type="text" id="fieldDB" name="b_26e45841b4abf188b36813479_e04129a9c8" tabIndex="-1" defaultValue="" className={footer.formFieldB} />
+                                <input type="text" id="fieldDB" name="b_26e45841b4abf188b36813479_e04129a9c8" tabIndex="-1" className={footer.formFieldB} />
 
                                 <div className="form-floating">                                    
-                                    <input type="email" name="EMAIL" id="mce-EMAIL" required className="form-control" placeholder="name@example.com" />
-                                    <label htmlFor="mce-EMAIL">Your Email</label>
+                                    <input type="email" name="fldZtEVbPJXw0mTX4" id="fldZtEVbPJXw0mTX4" className="form-control" placeholder="name@example.com" />
+                                    <label htmlFor="fldZtEVbPJXw0mTX4">Your Email</label>
                                 </div>
 
                                 <button type="submit" className={footer.submitBtn}>
-                                    <Image src="/assets/chevron-right2.svg" width={20} height={60} alt="Submit"/>
+                                    {isLoading ? (
+                                        <Loader {...{ isLoading }} isDark />
+                                    ):(
+                                        <Image src="/assets/chevron-right2.svg" width={20} height={60} alt="Submit"/>
+                                    )}
                                 </button>
                             </form>
 
