@@ -5,7 +5,6 @@ import BookingWidget from "/components/bookings/BookingWidget";
 import clsx from "clsx";
 import { IconWhatsapp } from "/components/icons/IconWhatsapp";
 
-
 export const metadata = {
 	title: "Coworking Space in George"
 }
@@ -20,13 +19,12 @@ async function CoWork(){
 						Coworking in George
 					</h1>
 
-					<h2 className="text-muted fw-light mb-5">Our office space in George provides a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
+					<h2 className="text-muted fw-light mb-4">Our office space in George provides a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
 					
-					<hr className="my-5"/>
-
 					<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and Hot Desks.</p>
 					
-					<p>Find us at:</p>
+					<h3 className="mb-2 mt-5">Find us at:</h3>
+
 					<address className="vcard">
 						<span className="fn">GRIT Hub CoWorking George</span><br />
 						<span className="adr">
@@ -38,14 +36,13 @@ async function CoWork(){
 							<span className="country-name">South Africa</span>
 						</span>
 					</address>
-					
 
 					<hr className="my-5" />
 
-					<h4 className="fw-bold display-6">Refund Policy</h4>
+					<h4 className="fw-bold">Booking Guarantee</h4>
 					<p>In the unlikely event that <u>we</u> need to cancel your booking, we'll refund you.</p>
 
-					<h4 className="mt-5 display-6 fw-bold">
+					<h4 className="mt-5 fw-bold">
 						Our Cancellation Policy
 					</h4>
 					<ul className="d-flex m-0 p-0 justify-content-around list-unstyled">
@@ -69,8 +66,17 @@ async function CoWork(){
 
 			</div>
 
-
 			<hr className="hr my-5"/>
+
+
+			<div className={clsx(Style.gallery, "col-12")}>
+				<Image src="/assets/IMG_7441.jpg" className={Style.img} width={400} height={300} alt="coworking space img 1" />
+				<Image src="/assets/IMG_7435.webp" className={clsx(Style.img)} width={400} height={300} alt="coworking space img 2" />
+				<Image src="/assets/IMG_7442.jpg" className={clsx(Style.img)} width={400} height={300} alt="coworking space img 3" />
+				<Image src="/assets/IMG_6614.jpg" className={Style.img} width={225} height={300} alt="coworking space img 3" />
+			</div>
+
+
 				
 
 			<div className="col-12 d-flex align-items-center flex-column mt-5">

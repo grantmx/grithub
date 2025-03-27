@@ -36,9 +36,9 @@ function Pdf({ filePath }){
     )
 
 	useEffect(() => {
-		if(instanceRef.current && typeof instanceRef?.current?.update === "function" ){
-			setTimeout(() => {
-				instanceRef.current.update({
+		setTimeout((instanceRef) => {
+			if(instanceRef.current && typeof instanceRef?.current?.update === "function" ){
+				instanceRef?.current.update({
 					initial: 0,
 					slides: {
 						perView: 1,
@@ -47,22 +47,11 @@ function Pdf({ filePath }){
 						setPageNumber(slider.track.details.rel);
 					}
 				})
-
-			}, 100);
-		}
-
+			}
+		}, 100, instanceRef);		
 		
-	}, [
-		instanceRef?.current,
-	])
+	}, [ instanceRef?.current])
 
-	const options = useMemo(() => {
-		return {
-			cMapUrl: '/cmaps/',
-			standardFontDataUrl: '/standard_fonts/',
-		}
-
-	}, []);
 
 
 	const slides = useMemo(() => {
@@ -93,7 +82,10 @@ function Pdf({ filePath }){
 				<Document 
 					file={filePath} 
 					onLoadSuccess={onDocumentLoadSuccess}  
-					options={options}
+					options={{
+						cMapUrl: '/cmaps/',
+						standardFontDataUrl: '/standard_fonts/',
+					}}
 					className="keen-slider"
 					// loading={<Skeleton width="400px" height="200px" />}
 				>
