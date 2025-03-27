@@ -5,12 +5,7 @@
       "dependsOn": [
         "^build"
       ],
-      "outputs": [
-        "dist/**",
-        "build/**",
-        ".next/**",
-        "!.next/cache/**"
-      ],
+      "outputs": [],
       "env": [
         "NEXT_PUBLIC_GA_ID",
         "EMAIL_SERVER",
