@@ -30,7 +30,12 @@
         "google_sheet_id",
         "NEXT_PUBLIC_SANITY_PROJECT_ID",
         "NEXT_PUBLIC_SANITY_DATASET",
-        "NEXT_PUBLIC_SANITY_API_VERSION"
+        "NEXT_PUBLIC_SANITY_API_VERSION",
+        "BLOB_READ_WRITE_TOKEN",
+        "airTable_token_id",
+        "airTable_access_token",
+        "airTable_base_id",
+        "airTable_table_id" 
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
