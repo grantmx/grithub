@@ -160,7 +160,7 @@ export default async function Home(){
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/incubation/competition" title="apply today">
 								<Image 
-									src="/assets/nmu-idea-compeition-web.jpg" 
+									src="/assets/nmu-idea-compeition-web-2025.jpg" 
 									width={711} 
 									height={400}
 									className={Style.adImg}
