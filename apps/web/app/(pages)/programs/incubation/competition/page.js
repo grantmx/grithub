@@ -54,7 +54,7 @@ function Competition(){
                     <h3>Competition Tracks</h3>
                     <p>Participants will need to select 1 of the following 4 tracks for their tech-enabled business idea</p>
                     <ul>
-                        <li>Social & Climate/Environmental Impact</li>
+                        <li>Social, Agriculture, Forestry & Climate/Environmental Impact</li>
                         <li>Consumer Products & Services</li>
                         <li>Artificial Intelligence</li>
                         <li>Blockchain & Crypto Currency</li>
