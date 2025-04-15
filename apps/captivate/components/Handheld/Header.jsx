@@ -1,14 +1,11 @@
 import Style from "./styles/Handheld.module.scss"
-import utils from "ui/styles/globals/utils.module.scss"
-import logo from "ui/assets/GRITHUB-logo-white-cutout-solo.svg"
-
-import Image from "next/image";
-import clsx from "clsx";
+// import logo from "ui/assets/GRITHUB-logo-white-cutout-solo.svg"
+// import Image from "next/image";
 
 
 function Header({ children, subText }){
     return(
-        <header className={clsx(utils.w_100, utils.mb_2, utils.text_center)}>
+        <header className={Style.headerBlock}>
             {/* <div className={clsx(utils.w_100, utils.text_center, utils.mb_1)}>
                 <Image src={logo} width={100} height={100} alt="grit hub logo" />
             </div> */}

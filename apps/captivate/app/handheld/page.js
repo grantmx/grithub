@@ -8,8 +8,8 @@ import Form from "components/Handheld/Form";
 import PageTransition from "components/PageTransition";
 import Sign from "components/Handheld/Sign";
 import Confirmation from "components/Handheld/Confirmation";
-import MemberScan from "components/Handheld/MemberScan";
 import TimeoutModal from "components/Handheld/TimeoutModal";
+import EntranceOptions from "components/Handheld/EntranceOptions";
 import AutomationOptions from "components/Handheld/AutomationOptions";
 import MemberConfirmation from "components/Handheld/MemberConfirmation";
 import ScanQRCode from "components/Handheld/ScanQRCode";
@@ -70,8 +70,8 @@ function HandheldSignUp(){
                         <Sign step={3} />
                     )}
 
-                    {goto === "5" && (
-                        <MemberScan step={5} />
+                    {goto === "entrance-options" && (
+                        <EntranceOptions step={5} />
                     )}
 
                     {goto === "6" && (

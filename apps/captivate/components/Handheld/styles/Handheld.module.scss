@@ -100,35 +100,44 @@
     object-fit: contain;
 }
 
+.headerBlock{
+    width: 100%;
+    margin-bottom: 4rem;
+    text-align: center;
+}
+
 .heading{
     font-weight: 300;
     color: $white;
     text-align: center;
-    line-height: 1.2;
-    @include dynamic-font(30, 40)
+    line-height: 1;
+    @include dynamic-font(40, 60)
 }
 
 .cardHeading{
-    font-weight: 300;
-    @include dynamic-font(21, 30);
+    font-weight: 700;
+    @include dynamic-font(34, 40);
     color: $white;
-    width: 60%;
     line-height: 1.2;
 }
 
 .cardIcon{
     height: 100px;
-    width: auto;
     object-fit: contain;
     fill: $white;
 }
 
 .touchCard{
     width: 100%;
-    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
 }
 
 .cardLink{
+    padding: 2rem;
     color: inherit;
     display: flex;
     flex-direction: row;
@@ -189,9 +198,9 @@
 }
 
 .helpText{
-    text-align: center;
     justify-content: center;
     align-items: center;
+    width: 75%;
 }
 
 .text{
@@ -199,7 +208,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    font-size: 1.8rem;
+    font-size: 1.4rem;
     margin: 0;
 
     & small{
@@ -312,5 +321,12 @@
         object-fit: contain;
         width: auto;
     }
+}
+
+.checkbox{
+    width: 20px !important;
+    height: 20px !important;
+    margin: 1.5rem 2rem 0 0 !important;
+    flex: 0 0 auto !important;
 }
 

@@ -8,19 +8,23 @@ function Card({
     marginBottom = null,
     theme,
     noMargin = false, 
+    element = null,
 }){
+
+    const Element = element === null ? "article" : element;
+
     return(
-        <article 
+        <Element 
             className={clsx(
                 Style.block, 
                 className, 
                 theme && Style[theme],
                 noMargin && Style.noMargin
             )} 
-            style={{ marginBottom: `${marginBottom}rem` }}
+            style={{ marginBottom: `${marginBottom ?? 0}rem` }}
         >
             {children}
-        </article>
+        </Element>
     )
 }
 

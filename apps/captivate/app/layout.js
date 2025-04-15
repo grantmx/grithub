@@ -15,7 +15,7 @@ export default function RootLayout({ children }) {
 
                 <footer className={Style.footer}>
                     <p className={Style.text}>
-                        <small>&copy;2023 Garden Route Innovation & Technology Hub, NPC.  All Rights Reserved.</small>
+                        <small>&copy;{new Date().getFullYear()} Garden Route Innovation & Technology Hub, NPC.  All Rights Reserved.</small>
                     </p>
                 </footer>
             </body>

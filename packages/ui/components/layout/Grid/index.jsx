@@ -11,6 +11,7 @@ const Grid = React.forwardRef(({
     gap = 0, 
     alignLeft,
     id,
+    element = null,
     ...other 
 }, ref ) => {
 
@@ -22,11 +23,14 @@ const Grid = React.forwardRef(({
             grid_gap = gap === void 0 ? false : {gridGap: gap};
 
     const GridStyle = {
-        columnGap: gap,
+        gap,
     }
 
+    const Element = element === null ? "div" : element;
+
+
     return(
-        <div 
+        <Element 
             {...{ id, ...other }}
             ref={ref}
             id={id}
@@ -40,7 +44,7 @@ const Grid = React.forwardRef(({
             role="grid"
         >
             {children}
-        </div>
+        </Element>
     )
 })
 
