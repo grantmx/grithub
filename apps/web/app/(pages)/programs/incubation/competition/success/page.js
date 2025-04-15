@@ -4,7 +4,7 @@ import axios from "axios"
 import Link from "next/link";
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { celebrationTime } from "lib/utils/celebrationTime";
+// import { celebrationTime } from "lib/utils/celebrationTime";
 
 
 
@@ -13,10 +13,10 @@ function InternshipSuccess(){
     const firstName = searchParams.get('first_name')
     const email = searchParams.get('email')
 
-    useEffect(() => {
-		celebrationTime()
+    // useEffect(() => {
+	// 	celebrationTime()
 
-	}, [])
+	// }, [])
 
     useEffect(() => {
         if( email && firstName ){
@@ -50,7 +50,7 @@ function InternshipSuccess(){
                     </p>
 
                     <p className="fs-5 text-center">
-                        If you haven't received an email, be sure to double check your SPAM/JunK folder. Continue reading about the <Link href="/incubation/competition">Innovative Ideas Competition &rsaquo;</Link>
+                        If you haven't received an email, be sure to double check your SPAM or JUNK folder. <br/>Continue reading about the <Link href="/incubation/competition">Innovative Ideas Competition &rsaquo;</Link>
                     </p>
                 </div>
             </section>

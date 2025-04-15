@@ -5,6 +5,7 @@ import Style from "./competition.module.scss"
 import clsx from "clsx";
 import Link from "next/link"
 
+
 export const metadata = {
     title: "Innovative Ideas Competition",
     description: "The GRIT Hub Innovative Ideas Competition is designed to provide students with early-stage ideas to compete for cash prizes of R10,000!",
@@ -13,6 +14,15 @@ export const metadata = {
         description: "The GRIT Hub Innovative Ideas Competition is designed to provide students with early-stage ideas to compete for cash prizes of R10,000!",
         url: "https://grithub.co.za/programs/incubation/competition",
         siteName: "GRIT Hub",
+        images: [
+            {
+                url: "https://grithub.co.za/assets/nmu-idea-compeition-web.jpg",
+                width: 711,
+                height: 400,
+                alt: "Innovative Ideas Competition",
+                type: "image/jpeg",
+            }
+        ]
     }
 }        
 
