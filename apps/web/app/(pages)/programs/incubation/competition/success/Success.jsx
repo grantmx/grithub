@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { celebrationTime } from "lib/utils/celebrationTime";
+// import { celebrationTime } from "lib/utils/celebrationTime";
 import axios from "axios"
 
 
@@ -11,10 +11,10 @@ function Success(){
     const firstName = searchParams.get('first_name')
     const email = searchParams.get('email')
 
-    useEffect(() => {
-		celebrationTime()
+    // useEffect(() => {
+	// 	celebrationTime()
 
-	}, [])
+	// }, [])
 
     useEffect(() => {
         if( email && firstName ){
