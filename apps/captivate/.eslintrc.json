@@ -1,7 +1,6 @@
 {
 	"root": true,
 	"extends": ["next/core-web-vitals"],
-	"plugins": ["testing-library", "jest-dom"],
 	"rules": { 
 		"react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}]
 	},

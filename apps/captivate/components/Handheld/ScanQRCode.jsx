@@ -9,10 +9,10 @@ import ButtonRow from "./ButtonRow";
 import { useRouter } from 'next/navigation'
 import Modal from "ui/components/feedback/Modal";
 import clsx from "clsx";
-import sound from "public/assets/store-scanner-beep.mp3"
+import sound from "@/public/assets/store-scanner-beep.mp3"
 import useSound from 'use-sound';
 import Image from "next/image";
-import qrscanimage from "public/assets/scan-qr-card.png"
+import qrscanimage from "@/public/assets/scan-qr-card.png"
 
 
 

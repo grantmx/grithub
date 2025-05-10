@@ -1,3 +1,5 @@
+"use client"
+
 import Style from "./styles/Handheld.module.scss"
 import utils from "ui/styles/globals/utils.module.scss"
 
@@ -9,7 +11,7 @@ import Link from "next/link";
 import useCurrent from "./hooks/useCurrent";
 import clsx from "clsx";
 import ButtonRow from "./ButtonRow";
-import useNFCReader from "ui/components/media/NFCReader/useNFCReader";
+// import useNFCReader from "ui/components/media/NFCReader/useNFCReader";
 import { useEffect, useState } from "react";
 
 
@@ -17,12 +19,12 @@ function AutomationOptions({ step }){
     useCurrent(step)
     const [ nfcSupport, setNfcSupport ] = useState(false)
 
-    const nfc = useNFCReader()
+    // const nfc = useNFCReader()
 
-    useEffect(() => {
-        setNfcSupport(nfc?.supported)
+    // useEffect(() => {
+    //     setNfcSupport(nfc?.supported)
 
-    }, [ nfc ])
+    // }, [ nfc ])
 
 
     return(

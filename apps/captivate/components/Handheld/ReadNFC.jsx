@@ -8,7 +8,7 @@ import Modal from "ui/components/feedback/Modal";
 import clsx from "clsx";
 import useNFCReader from "ui/components/media/NFCReader/useNFCReader";
 import { useEffect, useState } from "react";
-import cardPayment from "public/assets/card-payment.png"
+import cardPayment from "@/public/assets/card-payment.png"
 import Image from "next/image";
 
 

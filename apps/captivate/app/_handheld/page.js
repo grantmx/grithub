@@ -1,35 +1,34 @@
 "use client"
 
-import React from "react";
+import { useRef, useEffect, useState } from "react";
 import { AnimatePresence } from 'framer-motion'
-import Handheld from "components/Handheld";
+import Handheld from "@/components/Handheld";
 import { useSearchParams } from 'next/navigation'
-import Form from "components/Handheld/Form";
-import PageTransition from "components/PageTransition";
-import Sign from "components/Handheld/Sign";
-import Confirmation from "components/Handheld/Confirmation";
-import TimeoutModal from "components/Handheld/TimeoutModal";
-import EntranceOptions from "components/Handheld/EntranceOptions";
-import AutomationOptions from "components/Handheld/AutomationOptions";
-import MemberConfirmation from "components/Handheld/MemberConfirmation";
-import ScanQRCode from "components/Handheld/ScanQRCode";
-import ReadNFC from "components/Handheld/ReadNFC";
-import { useEffect, useState } from "react";
+import Form from "@/components/Handheld/Form";
+import PageTransition from "@/components/PageTransition";
+import Sign from "@/components/Handheld/Sign";
+import Confirmation from "@/components/Handheld/Confirmation";
+import TimeoutModal from "@/components/Handheld/TimeoutModal";
+import EntranceOptions from "@/components/Handheld/EntranceOptions";
+import AutomationOptions from "@/components/Handheld/AutomationOptions";
+import MemberConfirmation from "@/components/Handheld/MemberConfirmation";
+// import ScanQRCode from "@/components/Handheld/ScanQRCode";
+// import ReadNFC from "@/components/Handheld/ReadNFC";
 
 
 function HandheldSignUp(){
     const searchParams = useSearchParams()
     const goto = searchParams.get('goto')
     const current = searchParams.get('current')
+
     const [ openModal, setOpenModal ] = useState(false)
     const [ direction, setDirection ] = useState(1)
-
-    let timer = null;
+    let timer = useRef(null);
 
     function restartTimer(){
-        clearInterval(timer)
+        clearInterval(timer.current)
 
-        timer = setInterval(() => {
+        timer.current = setInterval(() => {
             setOpenModal(true)
         }, 180000)
     }
@@ -78,13 +77,13 @@ function HandheldSignUp(){
                         <AutomationOptions step={6} />
                     )}
 
-                    {goto === "7" && (
+                    {/* {goto === "7" && (
                         <ScanQRCode step={7} />
-                    )}
+                    )} */}
 
-                    {goto === "8" && (
+                    {/* {goto === "8" && (
                         <ReadNFC step={8} />
-                    )}
+                    )} */}
 
 
 
