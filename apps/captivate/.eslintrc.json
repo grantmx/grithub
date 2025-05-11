@@ -1,17 +1,24 @@
 {
 	"root": true,
-	"extends": ["next/core-web-vitals"],
+	"extends": ["next/babel", "next/core-web-vitals"],
 	"rules": { 
-		"react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}]
+		"react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}],
+		"no-undef": "error",
+		"no-unused-vars": "warn",
+		"no-unused-expressions": "warn",
+		"no-extra-semi": "warn"
 	},
 	"overrides": [
-		// Only uses Testing Library lint rules in test files
 		{
-			"files": [
-				"**/__tests__/**/*.[jt]s?(x)",
-				"**/?(*.)+(spec|test).[jt]s?(x)"
-			],
-			"extends": ["plugin:testing-library/react"]
+			"files": ["*.js", "*.mjs", "*.jsx", "*.ts", "*.tsx"],
+			"parser": "espree",
+			"parserOptions": {
+				"ecmaVersion": "latest"
+			}
 		}
-	]
+	],
+	"env": {
+		"browser": true,
+		"es6": true
+	}
 }

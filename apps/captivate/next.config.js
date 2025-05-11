@@ -8,21 +8,6 @@ const withPWA = require('next-pwa')({
 const NextConfig = {
     reactStrictMode: true,
     transpilePackages: ["ui"],
-    webpack(config) {
-        config.experiments = { 
-            ...config.experiments, 
-            topLevelAwait: true 
-        }
-
-        config.module.rules.push({
-            test: /\.mp3$/,
-            use: {
-                loader: 'file-loader',
-            },
-        });
-
-        return config
-    },
     env: {
         NEXT_PUBLIC_url: "https://grithub.org.za",
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
