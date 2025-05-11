@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@babel/core": "^7.27.1",
-    "@babel/preset-react": "^7.25.9",
     "@ericblade/quagga2": "^1.8.2",
-    "@ericblade/quagga2-reader-qr": "git+https://github.com/ericblade/quagga2-reader-qr.git",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -30,7 +27,6 @@
     "react-use": "^17.4.0",
     "twilio": "^4.11.1",
     "ui": "*",
-    "use-sound": "^4.0.1",
     "web-vitals": "^2.1.4",
     "webrtc-adapter": "^8.2.3"
   },
