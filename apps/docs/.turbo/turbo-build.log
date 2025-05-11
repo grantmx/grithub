@@ -1,15 +1,4 @@
 
-[2K[1G[1myarn run v1.22.19[22m
+[2K[1G[1myarn run v1.22.22[22m
 [2K[1G[2m$ next build[22m
-[?25l- [36minfo[39m Linting and checking validity of types [36m.[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m..[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m...[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m.[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m..[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m...[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m.[39m[2K[1G- [36minfo[39m Linting and checking validity of types [36m..[39m[31mFailed to compile.[39m
-[31m[39m
-[36m./pages/index.tsx[39m:[33m1[39m:[33m10[39m
-[31m[1mType error[22m[39m: Module '"ui"' has no exported member 'Button'.
-
-[0m[31m[1m>[22m[39m[90m 1 | [39m[36mimport[39m { [33mButton[39m } [36mfrom[39m [32m"ui"[39m[33m;[39m[0m
-[0m [90m   | [39m         [31m[1m^[22m[39m[0m
-[0m [90m 2 | [39m[0m
-[0m [90m 3 | [39m[36mexport[39m [36mdefault[39m [36mfunction[39m [33mDocs[39m() {[0m
-[0m [90m 4 | [39m  [36mreturn[39m ([0m
-[2K[1G- [36minfo[39m Linting and checking validity of types [36m...[39m[?25h[2K[1G[31merror[39m Command failed with exit code 1.
-[2K[1G[34minfo[39m Visit [1mhttps://yarnpkg.com/en/docs/cli/run[22m for documentation about this command.
+[?25l [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m...[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m.[39m[2K[1G [37m[1m [22m[39m Linting and checking validity of types  [36m..[39m[?25h

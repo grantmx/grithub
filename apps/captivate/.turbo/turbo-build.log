@@ -1,15 +1,5 @@
 
-[2K[1G[1myarn run v1.22.19[22m
+[2K[1G[1myarn run v1.22.22[22m
 [2K[1G[2m$ next build[22m
-- [36minfo[39m Loaded env from /Users/grantmx/Desktop/git/grithub/apps/captivate/.env
-Browserslist: caniuse-lite is outdated. Please run:
-  npx browserslist@latest --update-db
-  Why you should do it regularly: https://github.com/browserslist/browserslist#browsers-data-updating
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G[?25h> [PWA] Compile server
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Compile client (static)
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Auto register service worker with: /Users/grantmx/Desktop/git/grithub/node_modules/next-pwa/register.js
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Service worker: /Users/grantmx/Desktop/git/grithub/apps/captivate/public/sw.js
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA]   url: /sw.js
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA]   scope: /
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h> [PWA] Compile server
-[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m
+   [1m[38;2;173;127;168m▲ Next.js 15.3.2[39m[22m
+
