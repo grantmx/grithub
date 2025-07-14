@@ -42,11 +42,6 @@ $vds-colors: (
   "ocean":      $ocean,
   "ice":        $ice,
   "green":      $green,
-  "sage":       $sage,
-  "pistachio":  $pistachio,
-  "terracotta": $terracotta,
-  "sunset":     $sunset,
-  "teak":       $teak
 ) !default;
 
 $blue:    #0d6efd !default;
@@ -76,7 +71,6 @@ $primary:       $blue !default;
 $secondary:     $gray-600 !default;
 $success:       $green !default;
 $info:          $sage !default;
-$warning:       $pistachio !default;
 $danger:        $red !default;
 $light:         $gray-100 !default;
 $dark:          $gray-900 !default;

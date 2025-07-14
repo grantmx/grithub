@@ -316,7 +316,8 @@ export default async function Home(){
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
 								<Image 
-									{...internship}
+									src={internship.src}
+									blurDataURL={internship.blurDataURL}
 									width={711} 
 									height={400}
 									className={Style.adImg}
