@@ -1,8 +1,0 @@
-//
-// Visually hidden
-//
-
-.visually_hidden,
-.visually_hidden_focusable:not(:focus):not(:focus-within) {
-  @include visually-hidden();
-}

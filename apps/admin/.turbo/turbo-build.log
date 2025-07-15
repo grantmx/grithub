@@ -1,7 +1,0 @@
-
-[2K[1G[1myarn run v1.22.22[22m
-[2K[1G[2m$ next build[22m
- [33m[1m⚠[22m[39m Invalid next.config.js options detected: 
- [33m[1m⚠[22m[39m     Unrecognized key(s) in object: 'hubs'
- [33m[1m⚠[22m[39m See more info here: https://nextjs.org/docs/messages/invalid-next-config
-[?25l [37m[1m [22m[39m Creating an optimized production build  [36m.[39m
