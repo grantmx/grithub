@@ -1,6 +1,7 @@
 import imageUrlBuilder from "@sanity/image-url";
 import { sanityClient } from "services/sanity/sanity.service";
 import Image from "next/image";
+import { blurImage } from "@/lib/constants";
 
 
 function BodyImage({ value, Style }){
@@ -14,6 +15,8 @@ function BodyImage({ value, Style }){
                 width={800}
                 height={547}
                 alt={value?.alt ?? "image"}
+                placeholder="blur"
+                blurDataURL={blurImage}
             />
 
             <figcaption className={Style.caption}>

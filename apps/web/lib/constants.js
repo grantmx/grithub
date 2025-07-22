@@ -1,4 +1,8 @@
 
+
+export const blurImage = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAIAAAACUFjqAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAFUlEQVQYlWN89+4dA27AhEduBEsDAGiHAt4fSRHvAAAAAElFTkSuQmCC";
+
+
 export const voidPortableText = { 
     components: { 
         types: { 

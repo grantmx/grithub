@@ -1,3 +1,4 @@
+import { blurImage } from "@/lib/constants";
 import Style from "app/(pages)/page.module.scss";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,7 +14,7 @@ function NewsroomPod({ slug, mainImage, title, publishedAt }){
                     width={500} 
                     height={333} 
                     placeholder="blur"
-                    blurDataURL={mainImage + `?h=1&w1`}
+                    blurDataURL={blurImage}
                     className={Style.cardTopImg} 
                     alt={title + " image"} 
                 />
