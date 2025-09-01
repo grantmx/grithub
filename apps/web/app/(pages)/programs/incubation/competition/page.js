@@ -87,9 +87,9 @@ function Competition(){
                     <h3>Important Dates to Remember</h3>
                     <ul>
                         <li><strong>April 15</strong> - Applications open</li>
-                        <li><strong>August 31</strong> - Deadline for final applications. Applications must be submitted by 11:59 PM.</li>
-                        <li><strong>September 12</strong> - Finalists announced and contacted</li>
-                        <li><strong>September 22</strong> - Program starts 2nd Semester</li>
+                        <li><strong>September 31</strong> - Deadline for final applications. Applications must be submitted by 11:59 PM.</li>
+                        <li><strong>October 22</strong> - Finalists announced and contacted</li>
+                        {/* <li><strong>September 22</strong> - Program starts 2nd Semester</li> */}
                     </ul>
 
                     <hr className="my-5"/>
@@ -132,7 +132,7 @@ function Competition(){
 
                     <div className={clsx(Style.apply, "shadow-lg")}>
                         <h3>How to apply</h3>
-                        <p>Application Deadline: <strong>31 August 2025</strong></p> 
+                        <p>Application Deadline: <strong>31 September 2025</strong></p> 
 
                         <Link href="/programs/incubation/competition/apply" className="btn rounded-pill btn-danger">
                             Apply Now
