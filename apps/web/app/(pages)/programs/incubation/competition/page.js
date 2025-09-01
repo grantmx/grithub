@@ -134,13 +134,13 @@ function Competition(){
                         <h3>How to apply</h3>
                         <p>Application Deadline: <strong>31 August 2025</strong></p> 
 
-                        <Link href="/programs/incubation/competition/apply" className="btn rounded-pill btn-danger">
+                        {/* <Link href="/programs/incubation/competition/apply" className="btn rounded-pill btn-danger">
                             Apply Now
-                        </Link>
+                        </Link> */}
 
-                        {/* <div className="alert alert-secondary text-center" role="alert">
-                            Applications opening May 1
-                        </div> */}
+                        <div className="alert alert-secondary text-center" role="alert">
+                            Applications are closed
+                        </div>
                     </div>
                 </div>
             </div>
