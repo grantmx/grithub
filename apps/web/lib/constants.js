@@ -35,7 +35,7 @@ export const bookingSettings = {
             { id: "event_conference_room", value: 499 },
         ],
         daily: [
-            { id: "hot_desk", value: 100 },
+            { id: "hot_desk", value: 200 },
             { id: "event_conference_room", value: 1499 },
         ],
         monthly: [
