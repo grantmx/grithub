@@ -137,7 +137,7 @@ export default async function Home(){
 
 
 
-				<section className='bg-light py-5 mb-5'>
+				{/* <section className='bg-light py-5 mb-5'>
 					<div className="col-12 px-4 d-flex justify-content-center flex-column flex-md-row">
 
 						<div className="col-md-5 col-12 py-md-3 py-3 pe-3 pe-md-3 d-flex justify-content-center flex-column text-center">
@@ -170,7 +170,7 @@ export default async function Home(){
 						</div>
 
 					</div>
-				</section>
+				</section> */}
 
 
 
