@@ -238,12 +238,12 @@ export default async function Home(){
 
 
 
-				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column">
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
 						STEM Education Programs
 					</h2>
 
-					<div className="col-12 d-flex justify-content-between flex-wrap container-xxl">
+					<div className="col-12 d-flex flex-wrap">
 						<div className="col-xl-4 col-md-6 col-12 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
@@ -277,7 +277,7 @@ export default async function Home(){
 							</div>
 						</div>
 
-						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+						<div className="col-xl-4 col-md-6 col-12 p-3">
 							<div className="card shadow-sm position-relative h-100 align-items-center">
 								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
 								<Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
