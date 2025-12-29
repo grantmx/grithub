@@ -283,7 +283,7 @@ export default async function Home(){
 								<Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
 								<div className="card-body d-flex flex-column justify-content-between">
 									<h3 className="card-title fs-4 fw-bold">FIRST® LEGO® League</h3>
-									<p className="card-text">Designed for young innovators aged 4 to 16, FIRST LEGO League offers a progressive pathway that grows with each learner, from playful exploration to real-world problem-solving through coding, engineering, and research. Learners worldwide tackle themed challenges and connect through dynamic local and global events that celebrate creativity, collaboration, and innovation—values closely aligned with GRIT Hub's mission.</p>
+									<p className="card-text">Designed for young innovators aged 4 to 16, FIRST LEGO League offers a progressive pathway that grows with each learner, from playful exploration to real-world problem-solving through coding, engineering, and research. Learners worldwide tackle themed challenges and connect through dynamic local and global events that celebrate creativity, collaboration, and innovation.</p>
 									<a className="btn rounded-pill btn-danger btn-lg" href="/newsroom/unearthing-curiosity-grit-hub-at-the-first-lego-league-challenge" target="_blank" rel="noreferrer" title="learn more about first lego league">
 										Learn more
 									</a>
