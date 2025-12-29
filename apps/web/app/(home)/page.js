@@ -6,6 +6,7 @@ import MainNav from '../../components/navigation/MainNav';
 import FooterNav from '../../components/navigation/FooterNav';
 import clsx from 'clsx';
 import Script from 'next/script'
+import ribbon from '/styles/ribbon.module.scss'
 
 import afriLabs from "/public/assets/partners/afrilabs-member-logo-white.png" 
 import silicon from "/public/assets/silicon-cape-white.svg" 
@@ -204,7 +205,7 @@ export default async function Home(){
 						<div className="col-xl-4 col-md-6 col-12 p-2">
 							<div className="card shadow-sm h-100">
 								<Link href="/programs" title="programs">
-									<Image src="/assets/workshop-thumb-2.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
+									<Image src="/assets/ai-grithub-course-2025.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								</Link>
 								<div className="card-body d-flex flex-column">
 									<h2 className="card-title fs-4 fw-bold">Real Workforce Training</h2>

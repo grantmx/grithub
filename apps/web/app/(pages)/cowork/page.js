@@ -6,7 +6,17 @@ import clsx from "clsx";
 import { IconWhatsapp } from "/components/icons/IconWhatsapp";
 
 export const metadata = {
-	title: "Coworking Space in George"
+	title: "Coworking Space in George",
+	description: "Join our modern coworking and meeting spaces in George, Western Cape, South Africa to inspire creativity and promote cluster collaboration.",
+	openGraph:{
+		title: "Coworking Space in George",
+		description: "Join our modern coworking and meeting spaces in George, Western Cape, South Africa to inspire creativity and promote cluster collaboration.",
+		url: "https://grithub.co.za/cowork",
+		siteName: "GRIT Hub",
+	},
+	alternates: {
+		canonical: "https://grithub.co.za/cowork"
+	}
 }
 
 

@@ -1,7 +1,21 @@
 import Link from "next/link";
 
+export const metadata = {
+    title: "Privacy Policy",
+    description: "Read GRIT Hub's Privacy Policy to understand how we collect, use, and protect your personal information when you visit our website and engage with our services.",
+    openGraph:{
+        title: "Privacy Policy",
+        description: "Read GRIT Hub's Privacy Policy to understand how we collect, use, and protect your personal information when you visit our website and engage with our services.",
+        url: "https://grithub.co.za/privacy",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/privacy"
+    }
+}
 
-function PrivacyPolicy(){
+
+async function PrivacyPolicy(){
     return(
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">

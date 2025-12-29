@@ -7,6 +7,20 @@ import Style from "./newsroom.module.scss";
 
 export const revalidate = 43200000
 
+export const metadata = {
+    title: "Newsroom",
+    description: "Innovating the Future: Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem",
+    openGraph:{
+        title: "Newsroom",
+        description: "Innovating the Future: Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem",
+        url: "https://grithub.co.za/newsroom",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/newsroom"
+    }   
+}
+
 
 async function NewsHomePage({ searchParams}){
     const pageRange = 9;

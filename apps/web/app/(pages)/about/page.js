@@ -1,8 +1,22 @@
 import Image from "next/image";
 import aboutImg from "/public/assets/about.jpg"
 
+export const metadata = {
+    title: "About Us",
+    description: "The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company with a simple mission: To identify untapped potential and refocus it using the power of digital technology.",
+    openGraph:{
+        title: "About Us",
+        description: "The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company with a simple mission: To identify untapped potential and refocus it using the power of digital technology.",
+        url: "https://grithub.co.za/about",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/about"
+    }
+}
 
-function About(){
+
+async function About(){
     return(
         <>
             <section className="container-xxl d-flex py-md-5 p-4 flex-column mb-5">

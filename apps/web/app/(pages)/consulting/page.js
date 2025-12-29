@@ -1,9 +1,20 @@
-/* eslint-disable react/no-unescaped-entities */
-
 import Link from "next/link";
 
+export const metadata = {
+    title: "Consulting & Solutions",
+    description: "We offer custom tailored technology consulting and development solutions to fit your organizations online and digital needs.",    
+    openGraph:{
+        title: "Consulting & Solutions",
+        description: "We offer custom tailored technology consulting and development solutions to fit your organizations online and digital needs.",
+        url: "https://grithub.co.za/consulting",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/consulting"
+    }
+}
 
-function Consulting(){
+async function Consulting(){
     return(
         <section className="container-fluid d-flex justify-content-center align-items-center flex-column" id="programs-workshops">
             <article className="container-xxl d-flex pt-5 flex-column" id="programs">

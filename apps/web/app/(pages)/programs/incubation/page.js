@@ -6,8 +6,22 @@ import Style from "../../page.module.scss"
 // import image2 from "/public/assets/business-incubator.jpg"
 // import Link from "next/link";
 
+export const metadata = {
+    title: "Business Incubator",
+    description: "Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct mentorship.",
+    openGraph:{
+        title: "Business Incubator",
+        description: "Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct mentorship.",
+        url: "https://grithub.co.za/programs/incubation",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/programs/incubation"
+    }
+}
 
-function Incubation(){
+
+async function Incubation(){
     return(
         // <GeneralPage 
         //     title="Business Incubator"

@@ -4,11 +4,11 @@ import dynamic from "next/dynamic";
 const Pdf = dynamic(() => import("components/display/Pdf"), { ssr: false, });
 
 
-// export const metadata = {
-//     title: "AI Prompting Course",
-//     description: "AI Prompting Course",
-//     keywords: "AI Prompting Course",
-// }
+export const metadata = {
+    title: "AI Prompting Course",
+    description: "AI Prompting Course",
+    keywords: "AI Prompting Course",
+}
 
 function AIPromptingCourse(){
     return(

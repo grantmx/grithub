@@ -15,6 +15,11 @@ export const metadata = {
                 alt: "Coder Dojos in George and Mossel Bay, South Africa"
             }
         ]
+    },
+    title: "The Coder Dojo",
+    description: "We believe that developing digital-savviness and tech confidence in our children will foster the next generation of digital innovators",
+    alternates: {
+        canonical: "https://grithub.co.za/programs/dojo"
     }
 }
 

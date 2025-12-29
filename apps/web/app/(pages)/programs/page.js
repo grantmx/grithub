@@ -4,6 +4,22 @@ import Style from "../../(pages)/page.module.scss";
 import Link from "next/link";
 
 
+export const metadata = {
+    title: "Programs",
+    description: "Our Workforce Training, Programs and Workshops are meant to get us ahead of the challenges and trends of an ever changing economic environment and into the innovator economy.",
+    openGraph: {
+        title: "Programs",
+        description: "Our Workforce Training, Programs and Workshops are meant to get us ahead of the challenges and trends of an ever changing economic environment and into the innovator economy.",
+        url: "https://grithub.org.za/programs",
+        siteName: "GRIT Hub",
+    },
+	alternates: {
+		canonical: 'https://grithub.org.za/programs',
+	}
+}
+
+
+
 export default function Programs(){
     return(
         <>

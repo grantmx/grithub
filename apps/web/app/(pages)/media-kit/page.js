@@ -1,6 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
 
+export const metadata = {
+    title: "Media Kit",
+    description: "Download GRIT Hub's Media Kit, including logos, brand assets, and usage guidelines to ensure consistent and proper representation of our brand.",
+    openGraph:{
+        title: "Media Kit",
+        description: "Download GRIT Hub's Media Kit, including logos, brand assets, and usage guidelines to ensure consistent and proper representation of our brand.",
+        url: "https://grithub.co.za/media-kit",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/media-kit"
+    }
+}
+
 
 async function MediaKit(){
     return(

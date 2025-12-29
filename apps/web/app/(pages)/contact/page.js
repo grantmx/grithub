@@ -4,8 +4,22 @@ import image3 from '/public/assets/IMG_7442.jpg'
 import clsx from "clsx";
 
 
+export const metadata = {
+	title: "Contact Us",
+	description: "Based in the picturesque Garden Route city of George in the Western Cape Provence of South Africa, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students.",
+	openGraph:{
+		title: "Contact Us",
+		description: "Based in the picturesque Garden Route city of George in the Western Cape Provence of South Africa, we are a vibrant and interactive center of innovation and technology that brings together entrepreneurs, developers, creators, professionals, and students.",
+		url: "https://grithub.co.za/contact",
+		siteName: "GRIT Hub",
+	},
+	alternates: {
+		canonical: "https://grithub.co.za/contact"
+	}
+}
 
-function ContactUs(){
+
+async function ContactUs(){
     return(
         <>
             <section className="container-xxl d-flex pt-5 flex-column mb-5" id="coworking">

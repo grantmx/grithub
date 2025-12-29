@@ -4,8 +4,22 @@ import Style from "./internship.module.scss"
 import clsx from "clsx";
 
 
+export const metadata = {
+    title: "The GRIT Internship",
+    description: "The GRIT Internship Program offers highly motivated individuals an opportunity to be exposed to meaningful enterprise level workplace experience",
+    openGraph:{
+        title: "The GRIT Internship",
+        description: "The GRIT Internship Program offers highly motivated individuals an opportunity to be exposed to meaningful enterprise level workplace experience",
+        url: "https://grithub.co.za/programs/internship",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/programs/internship"
+    }
+}
 
-function Internship(){
+
+async function Internship(){
     return(
         <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="internship">
             <article className="container-xxl d-flex pt-5 px-0 flex-column" id="programs">
