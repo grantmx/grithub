@@ -93,15 +93,15 @@ export default function Programs(){
                                 <p className="card-text">
                                     This is a 6-week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to using AI to help you code.  This class is for those who want to learn to code and build websites and web applications.
                                 </p>
-                                <p className="d-grid">
+                                {/* <p className="d-grid">
                                     <Link href="/programs/masterclass/frontend-coding-masterclass" className="btn rounded-pill btn-danger btn-lg">
                                         Learn More &nbsp;&rsaquo;
                                     </Link>
-                                </p>
+                                </p> */}
 
-                                {/* <div className="alert rounded-pill alert-secondary text-center" role="alert">
+                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
                                     Registration Opens Soon
-                                </div> */}
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -272,7 +272,7 @@ export default function Programs(){
                         </div>
                     </div>
 
-                    <div className="col-xl-4 col-md-6 col-12 p-3">
+                    {/* <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
                             <Image src="/assets/game-pad.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Roblox Proggrams"/>
@@ -282,19 +282,19 @@ export default function Programs(){
                                 <a className="text-decoration-underline" href="/whitepapers/1-s2.0-S1071581920300987-main.pdf" target="_blank" title="whitepaper on gamification" rel="noreferrer">White Paper: The Effect of Challenge-Based Gamification on Learning &rsaquo;</a>
                             </div>
                         </div>
-                    </div>
+                    </div> */}
 
-                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                    <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
                             <Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">LEGO&reg; STEM Learning</h3>
-                                <p className="card-text">The LEGO&reg; Foundation released a report stating that STEM learning through play holistically enhances a learner's social, emotional, physical and creative skills. Through <a className="text-decoration-underline" href="https://education.lego.com/en-us/customer-stories" target="_blank" rel="noreferrer" title="more about LEGO stem">LEGO&reg; STEM</a> our goal is to eliminate the idea of "Hard" math and science through fun and curious play using LEGO&reg; STEM Toys in Grade R-12 schools.</p>
+                                <h3 className="card-title fs-4 fw-bold">FIRST® LEGO® League</h3>
+                                <p className="card-text">Designed for young innovators aged 4 to 16, FIRST LEGO League offers a progressive pathway that grows with each learner, from playful exploration to real-world problem-solving through coding, engineering, and research. Learners worldwide tackle themed challenges and connect through dynamic local and global events that celebrate creativity, collaboration, and innovation—values closely aligned with GRIT Hub's mission.</p>
                                 <a className="text-decoration-underline" href="/whitepapers/le_learning_through_play_whitepaper_digital_pdf.pdf" target="_blank" rel="noreferrer" title="whitepaper on lego education">White Paper: LEGO&reg; Education - The unrealized potential of learning through play at school &rsaquo;</a>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
                 </div>
 
 

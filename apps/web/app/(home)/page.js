@@ -237,6 +237,63 @@ export default async function Home(){
 
 
 
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column">
+					<h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
+						STEM Education Programs
+					</h2>
+
+					<div className="col-12 d-flex justify-content-between flex-wrap container-xxl">
+						<div className="col-xl-4 col-md-6 col-12 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
+								<Image src="/assets/CoderDojo-Logo.svg" width={250} height={150} className={Style.cardTopOverflow} alt="STEM"/>
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">The CoderDojo</h3>
+									<p className="card-text">A Dojo is a free, volunteer-led, community-based computer club for young people. Anyone aged 7 to 17 can visit a Dojo and learn to code, build a website, or create an app or game. Dojos are a space for kids and teens to explore technology in an informal, creative, safe and social environment.</p>
+									<p className="d-grid">
+										<a href="/programs/dojo" className="btn rounded-pill btn-danger btn-lg" title="more about our coder dojos">
+											Learn more
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+
+						<div className="col-xl-4 col-md-6 col-12 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
+								<Image src="/assets/atom.svg" width={150} height={150} className={Style.cardTopOverflow} alt="STEM"/>
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">Science, Technology, Engineering and Mathematics (STEM)</h3>
+									<p className="card-text">We are a partner in science, technology and industrial learning to supplement the inadequate number of teachers skilled to educate in these areas.  We will promote STEM careers, and teach short courses as well as create fun STEM based science events.</p>
+									<p className="d-grid">
+										<a href="/contact" className="btn rounded-pill btn-danger btn-lg">
+											Partner with us  &nbsp;&rsaquo;
+										</a>
+									</p>
+								</div>
+							</div>
+						</div>
+
+						<div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+							<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
+								<Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
+								<div className="card-body d-flex flex-column justify-content-between">
+									<h3 className="card-title fs-4 fw-bold">FIRST® LEGO® League</h3>
+									<p className="card-text">Designed for young innovators aged 4 to 16, FIRST LEGO League offers a progressive pathway that grows with each learner, from playful exploration to real-world problem-solving through coding, engineering, and research. Learners worldwide tackle themed challenges and connect through dynamic local and global events that celebrate creativity, collaboration, and innovation—values closely aligned with GRIT Hub's mission.</p>
+									<a className="btn rounded-pill btn-danger btn-lg" href="/newsroom/unearthing-curiosity-grit-hub-at-the-first-lego-league-challenge" target="_blank" rel="noreferrer" title="learn more about first lego league">
+										Learn more
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+
+
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
 						Up Coming Trainings, Courses & Programs
