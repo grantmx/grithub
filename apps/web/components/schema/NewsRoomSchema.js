@@ -11,7 +11,7 @@ export default function NewsRoomSchema({ path, title = "", description = "", ima
 
     // write regex to remove html tags from metaDescription
     const newMetaDescription = metaDescription.replace(/(<([^>]+)>)/gi, "")
-    
+
     
     const data = () => { 
         return{
@@ -23,7 +23,7 @@ export default function NewsRoomSchema({ path, title = "", description = "", ima
                     "@id": "${path}"
                 },
                 "headline": "${title}",
-                "description": "${newMetaDescription}",
+                "description": '${newMetaDescription}',
                 "image": {
                     "@type": "ImageObject",
                     "url": "${image}"
