@@ -81,8 +81,9 @@ async function Internship(){
 
                     <p>The GRIT Internship has a weekly commitment of 2 to 5 days a week of in office activities. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
 
-                    <h4>The GRIT Internship is offered once a year:</h4>
+                    <h4>The GRIT Internship is offered twice a year:</h4>
                     <p>Winter Internship (July-December): The application period is July-August each year.</p>
+                    <p>Summer Internship (January-June): The application period is January-February each year.</p>
                     <p>All applications must be submitted online and during the respective application period. (We do not accept applications by email.)</p>
 
                     <h4>Application Process</h4>
