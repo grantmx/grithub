@@ -78,7 +78,7 @@ async function Internship(){
                             <li>and Program Management</li>
                         </ul>
 
-                    <p>The GRIT Internship pays a monthly travel allowance up to R 1,000/mo. with a weekly commitment of 2 to 5 days a week of in office activities. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
+                    <p>The GRIT Internship has a weekly commitment of 2 to 5 days a week of in office activities. Interns are responsible for their own accommodations. Driven by business needs, most Intern positions are based in George, South Africa.</p>
 
                     <h4>The GRIT Internship is offered once a year:</h4>
                     <p>Winter Internship (July-December): The application period is July-August each year.</p>
@@ -118,13 +118,13 @@ async function Internship(){
                         <h3>How to apply</h3>
                         <p>Submit your internship application online. {/* Application Deadline: <strong>31 August 2023</strong>*/}</p> 
 
-                        {/* <Link href="/programs/internship/apply" className="btn rounded-pill btn-danger">
+                        <Link href="https://airtable.com/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" className="btn rounded-pill btn-danger">
                             Apply Now
-                        </Link> */}
+                        </Link>
 
-                        <div className="alert alert-secondary text-center" role="alert">
+                        {/* <div className="alert alert-secondary text-center" role="alert">
                             Applications are closed
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
