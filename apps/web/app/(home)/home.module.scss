@@ -44,7 +44,7 @@
 }
 
 .heroPartners{
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,6 +139,7 @@
 
 .partnerLogo{
     width: 100%;
+    max-width: 200px;
     height: 100%;
     object-fit: contain;
 }

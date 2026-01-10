@@ -33,34 +33,34 @@ export default function Programs(){
             </section>
 
 
-                {/* <div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row bg-light">                    
-                    <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
-                        <Link href="/programs/internship" title="apply today">
-                            <Image 
-                                src="/assets/winter-internship-blank.jpg" 
-                                width={711} 
-                                height={400}
-                                className={Style.adImg}
-                                alt="grit internship"
-                            />
-                        </Link>
-                    </div>
-
-                    <div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
-                        <span className="lead text-muted">GRIT Hub Internships</span>
-                        <h2 className="fw-bold display-4 mb-3">
-                            Get hands on industry experience.
-                        </h2>
-                        <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
-                        
-                        <p>
-                            <Link href="/programs/internship" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
-                                Learn more &nbsp;&rsaquo;
-                            </Link>
-                        </p>
-                    </div>
+            <div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row bg-light">                    
+                <div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
+                    <Link href="/programs/internship" title="apply today">
+                        <Image 
+                            src="/assets/winter-internship-blank.jpg" 
+                            width={711} 
+                            height={400}
+                            className={Style.adImg}
+                            alt="grit internship"
+                        />
+                    </Link>
                 </div>
-             */}
+
+                <div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
+                    <span className="lead text-muted">GRIT Hub Internships</span>
+                    <h2 className="fw-bold display-4 mb-3">
+                        Get hands on industry experience.
+                    </h2>
+                    <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
+                    
+                    <p>
+                        <Link href="/programs/internship" className="btn rounded-pill btn-danger btn-lg px-4" title='apply today'>
+                            Learn more &nbsp;&rsaquo;
+                        </Link>
+                    </p>
+                </div>
+            </div>
+            
 
 
 

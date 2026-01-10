@@ -59,13 +59,13 @@ export default async function Home(){
 						</div>
 
 
-						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])}>
+						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])} style={{ flex: ".50 0 auto;"}}>
 							<small className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
 							</small>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
-								<div className="col-4 col-md-4 pe-5 d-none d-md-block">
+								<div className="col-2 pe-5 d-none d-md-block">
 									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -75,7 +75,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-4 col-md-4 pe-5 d-none d-md-block">
+								<div className="col-2 pe-5 d-none d-md-block">
 									<Image 
 										src={silicon}
 										alt="Silicon cape" 
@@ -84,7 +84,7 @@ export default async function Home(){
 								</div>
 
 
-								<div className="col-4 col-md-4 px-5 d-none d-md-block">
+								<div className="col-2 pe-5 d-none d-md-block">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -98,7 +98,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-4 col-md-4 px-5 d-none d-md-block">
+								<div className="col-2 pe-5 d-none d-md-block">
 									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
@@ -110,7 +110,7 @@ export default async function Home(){
 									</a>
 								</div>
 								
-								<div className="col-4 col-md-3 pe-5 pt-5 d-none d-md-block">
+								<div className="col-2 pe-5 d-none d-md-block">
 									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
@@ -120,7 +120,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-4 col-md-4 px-5 pt-5 d-none d-md-block">
+								<div className="col-2 d-none d-md-block">
 									<a title="mossel bay business chamber member" href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={mosselBay}
@@ -160,7 +160,7 @@ export default async function Home(){
 								Get hands on industry experience.
 							</h2>
 							<p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
-							<p><strong>Summer Internship applications are now open.</strong></p>
+							<p className='text-danger lead'><strong>Summer Internship applications are now open.</strong></p>
 							
 							<p>
 								<Link href="/programs/internship" className="btn rounded-pill rounded-pill btn-danger btn-lg px-4" title='apply today'>
