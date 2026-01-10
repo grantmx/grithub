@@ -53,13 +53,13 @@ export default async function Home(){
 					<div className={Style.hero}>
 						<MainNav clear />
 
-						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5">
+						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
 							<p className={Style.heroHashTag}>#GRITHub</p>
 							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship, and an inclusive workforce in the digital economy.</p>
 						</div>
 
 
-						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])} style={{ flex: ".50 0 auto;"}}>
+						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])}>
 							<small className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
 							</small>
