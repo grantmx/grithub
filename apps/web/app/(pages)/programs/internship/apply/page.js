@@ -1,11 +1,21 @@
-import GeneralPage from "components/layout/GeneralPage";
+export const metadata = {
+    title: "The GRIT Internship Application",
+    description: "Apply for The GRIT Internship program.",
+}
 
 
 function InternshipApplication(){
 
     return(
         <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="internship">
-            <iframe class="airtable-embed" src="https://airtable.com/embed/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" frameborder="0" onmousewheel="" width="100%" height="533" style="background: transparent; border: 1px solid #ccc;"></iframe>
+            <iframe 
+                className="airtable-embed" 
+                src="https://airtable.com/embed/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" 
+                onMouseWheel="" 
+                width="100%" 
+                height="533" 
+                style={{ background: "transparent", border: "1px solid #ccc" }}
+            />
         </section>
     )
 }
