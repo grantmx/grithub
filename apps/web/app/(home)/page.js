@@ -160,10 +160,11 @@ export default async function Home(){
 								Get hands on industry experience.
 							</h2>
 							<p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
+							<p><strong>Summer Internship applications are now open.</strong></p>
 							
 							<p>
 								<Link href="/programs/internship" className="btn rounded-pill rounded-pill btn-danger btn-lg px-4" title='apply today'>
-									Learn more &nbsp;&rsaquo;
+									Learn more & apply &nbsp;&rsaquo;
 								</Link>
 							</p>
 						</div>

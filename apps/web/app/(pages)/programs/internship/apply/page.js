@@ -13,8 +13,8 @@ function InternshipApplication(){
                 src="https://airtable.com/embed/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" 
                 onMouseWheel="" 
                 width="100%" 
-                height="533" 
-                style={{ background: "transparent", border: "1px solid #ccc" }}
+                height="1000" 
+                style={{ background: "transparent", border: "none" }}
             />
         </section>
     )
