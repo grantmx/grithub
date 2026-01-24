@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Style from "../../page.module.scss"
 // import QRCode from "react-qr-code";
-// import image2 from "/public/assets/business-incubator.jpg"
+// import image2 from "@/public/assets/business-incubator.jpg"
 // import Link from "next/link";
 
 export const metadata = {

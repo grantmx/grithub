@@ -1,6 +1,6 @@
 import { Suspense } from "react";
-import Bookings from "/components/bookings";
-import { StepperContextProvider } from "/components/navigation/Stepper/context/StepperContext";
+import Bookings from "@/components/bookings";
+import { StepperContextProvider } from "@/components/navigation/Stepper/context/StepperContext";
 
 
 async function Book(){

@@ -2,7 +2,7 @@ import Image from "next/image";
 import MasterClassForm from "components/programs/MasterClassForm";
 import PageHeader from "components/layout/PageHeader";
 import classImg from "public/ads/q1-2025-masterclass-thumb.jpg";
-import masterclassImg from "/public/ads/q1-2025-masterclass.png"
+import masterclassImg from "@/public/ads/q1-2025-masterclass.png"
 
 
 export const metadata = {

@@ -1,9 +1,9 @@
 import Image from "next/image";
-import image3 from '/public/assets/IMG_7442.jpg'
+import image3 from '@/public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
-import BookingWidget from "/components/bookings/BookingWidget";
+import BookingWidget from "@/components/bookings/BookingWidget";
 import clsx from "clsx";
-import { IconWhatsapp } from "/components/icons/IconWhatsapp";
+import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
 
 export const metadata = {
 	title: "Coworking Space in George",

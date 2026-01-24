@@ -1,6 +1,6 @@
-import { IconWhatsapp } from "/components/icons/IconWhatsapp";
+import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
 import Image from "next/image";
-import image3 from '/public/assets/IMG_7442.jpg'
+import image3 from '@/public/assets/IMG_7442.jpg'
 import clsx from "clsx";
 
 

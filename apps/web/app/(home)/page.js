@@ -1,25 +1,24 @@
 /* eslint-disable react/no-unescaped-entities */
 import Style from './home.module.scss';
 import Image from 'next/image';
-import { StructuredJSON } from '../../components/schema/StructuredJSON';
+import { StructuredJSON } from '@/components/schema/StructuredJSON';
 import MainNav from '../../components/navigation/MainNav';
 import FooterNav from '../../components/navigation/FooterNav';
 import clsx from 'clsx';
 import Script from 'next/script'
-import ribbon from '/styles/ribbon.module.scss'
+import ribbon from '@/styles/ribbon.module.scss'
 
-import afriLabs from "/public/assets/partners/afrilabs-member-logo-white.png" 
-import silicon from "/public/assets/silicon-cape-white.svg" 
-import georgeBusiness from '/public/assets/partners/georgebusinesschamberlogo.png'
-import mosselBay from "/public/assets/partners/mosselbay-chamber.png"
-import internship from "/public/assets/winter-internship-blank.jpg" 
-import hero from "/public/assets/hero.jpg" 
-import heroMobile from "/public/assets/hero-mobile.jpg"
+import afriLabs from "@/public/assets/partners/afrilabs-member-logo-white.png" 
+import silicon from "@/public/assets/silicon-cape-white.svg" 
+import georgeBusiness from '@/public/assets/partners/georgebusinesschamberlogo.png'
+import mosselBay from "@/public/assets/partners/mosselbay-chamber.png"
+import internship from "@/public/assets/winter-internship-blank.jpg" 
+import hero from "@/public/assets/hero.jpg" 
+import heroMobile from "@/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
-import { getLatestPosts } from "services/sanity/sanity.service";
+import { getLatestPosts } from "@/services/sanity/sanity.service";
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
 
-export const revalidate = 3600
 
 export const metadata = {
 	alternates: {

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ribbon from '/styles/ribbon.module.scss'
+import ribbon from '@/styles/ribbon.module.scss'
 import Style from "../../(pages)/page.module.scss";
 import Link from "next/link";
 

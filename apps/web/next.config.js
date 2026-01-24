@@ -1,34 +1,30 @@
 
 const NextConfig = {
     reactStrictMode: true,
+    reactCompiler: true,
+    cacheComponents: true,
     transpilePackages: [
         "ui",
         "next-mdx-remote"
     ],
-    webpack(config) {
-        config.resolve.alias.canvas = false;
-        
-        config.experiments = { 
-            ...config.experiments, 
-            topLevelAwait: true 
-        }
-
-        config.externals = [
-            ...config.externals,
-            {
-                sharp: 'commonjs sharp'
-            }
-        ]
-
-        return config
+    turbopack: {
+        resolveAlias: {
+            canvas: { browser: './empty-module.js' }, 
+        },
     },
+    serverExternalPackages: ['sharp'],
     pageExtensions: ['mdx', 'jsx', 'js'],
     env: {
         NEXT_PUBLIC_url: "https://grithub.org.za",
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
     },
     images: {
-        domains: ['cdn.sanity.io'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'cdn.sanity.io',
+            },
+        ],
         localPatterns: [
             {
                 pathname: '/ads/**',

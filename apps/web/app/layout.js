@@ -2,7 +2,7 @@ import "../styles/global.scss"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/react"
 import GoogleEventTracker from '../thirdparty/google/GoogleEventTracker'
-import OrganizationSchema from '/components/schema/Organization';
+import OrganizationSchema from '@/components/schema/Organization';
 import { Suspense } from 'react';
 import { Inter } from "next/font/google"
 

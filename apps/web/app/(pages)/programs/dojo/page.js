@@ -1,6 +1,6 @@
 import Image from "next/image";
-import image2 from "/public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jpg"
-import ad from "/public/assets/code-dojo.png"
+import image2 from "@/public/assets/CoderDojo_One_Rule_Backgrounds_1920x1080_V1.jpg"
+import ad from "@/public/assets/code-dojo.png"
 import { IconWhatsapp } from "components/icons/IconWhatsapp";
 
 export const metadata = {
@@ -80,7 +80,13 @@ async function CoderDojo(){
                 </div>
 
                 <div className="col-md-4 col-12">
-                    <Image {...image2} style={{width: "100%", height: "auto", objectFit: "contain"}} />
+                    <Image 
+                        alt="CoderDojo event" 
+                        src={image2.src} 
+                        style={{width: "100%", height: "auto", objectFit: "contain"}} 
+                        width={400} 
+                        height={300}
+                    />
                 </div>
             </article>
 
@@ -93,7 +99,7 @@ async function CoderDojo(){
                 </h2>
 
                 <article className="container-xxl d-flex justify-content-between">
-                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                    <div className="col-12 p-md-5 p-md-5 text-center">
                         <h3 className="fs-3 fw-bold">
                             George, Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
@@ -105,7 +111,7 @@ async function CoderDojo(){
                         </address>
                     </div>
 
-                    <div className="col-md-6 col-12 p-md-5 p-md-5">
+                    {/* <div className="col-md-6 col-12 p-md-5 p-md-5">
                         <h3 className="fs-3 fw-bold">
                             Mossel Bay,Western Cape @ Garden Route Innovation and Technology Hub
                         </h3>
@@ -115,7 +121,7 @@ async function CoderDojo(){
                             48 Marsh St,<br/> 
                             Mossel Bay, 6500
                         </address>                   
-                    </div>
+                    </div> */}
                 </article>
             </section>
 

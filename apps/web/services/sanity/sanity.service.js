@@ -1,5 +1,7 @@
 // ./src/sanity/lib/client.ts
 import { createClient } from '@sanity/client'
+import { cacheTag, cacheLife } from 'next/cache'
+
 
 export const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
@@ -16,6 +18,11 @@ export const sanityClient = createClient({
  */
 
 export async function getPosts() {
+    "use cache"
+
+    cacheTag(`get-posts`)
+    cacheLife('hours')
+
     return await sanityClient.fetch(`*[_type == "post"]{
         title,
         slug,
@@ -31,6 +38,11 @@ export async function getPosts() {
  */
 
 export async function getLatestPosts({ start = 0, end = 3 }) {
+    "use cache"
+
+    cacheTag(`latest-posts`)
+    cacheLife('hours')
+
     return await sanityClient.fetch(`
         *[_type == "post"] | order(publishedAt desc){ 
             title,
@@ -52,6 +64,11 @@ export async function getLatestPosts({ start = 0, end = 3 }) {
  */
 
 export async function getPostBySlug(slug) {
+    "use cache"
+
+    cacheTag(`post-${slug}`)
+    cacheLife('hours')
+
     return await sanityClient.fetch(`
         *[_type == "post" && slug.current == $slug][0]{
             title,

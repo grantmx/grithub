@@ -5,8 +5,6 @@ import Paginate from "components/navigation/Paginate";
 import Style from "./newsroom.module.scss";
 
 
-export const revalidate = 43200000
-
 async function NewsHomePage({ searchParams}){
     const pageRange = 9;
 

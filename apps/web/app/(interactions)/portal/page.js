@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import Image from 'next/image';
-import hero from "/public/assets/hero.jpg" 
+import hero from "@/public/assets/hero.jpg" 
 import Style from "./portal.module.scss"
 
 

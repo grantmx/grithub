@@ -1,7 +1,7 @@
 import PageHeader from "components/layout/PageHeader";
 import Image from "next/image";
 import Link from "next/link";
-import masterclassImg from "/public/ads/q1-2025-masterclass.png"
+import masterclassImg from "@/public/ads/q1-2025-masterclass.png"
 import Style from "../masterclass.module.scss";
 
 export const metadata = {

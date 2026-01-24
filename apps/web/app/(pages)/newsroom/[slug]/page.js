@@ -7,14 +7,13 @@ import clsx from "clsx"
 import NewsRoomSchema from "components/schema/NewsRoomSchema";
 import { PortableText } from '@portabletext/react'
 import ShareButtons from "components/newsroom/ShareButtons";
-import { voidPortableText } from "lib/constants";
+import { blurImage, voidPortableText } from "lib/constants";
 import BodyImage from "components/newsroom/BodyImage";
+import { cacheTag, cacheLife } from 'next/cache'
 
-export const revalidate = 43200000
 
 async function NewsArticle({ params }){
     const latest = await getLatestPosts({ end: 9 })
-
     const { slug } = await params;
     const post = await getPostBySlug(slug)
 
@@ -81,7 +80,7 @@ async function NewsArticle({ params }){
                         <Image 
                             className={Style.image} 
                             placeholder="blur"
-                            blurDataURL={post?.mainImage + `?h=1&w3`}
+                            blurDataURL={post?.mainImage + `?h=1&w3` ?? blurImage}
                             src={post?.mainImage} 
                             alt={post?.mainImageAlt ?? post?.title} 
                             width={900} 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import intern from "/public/assets/coworkers-working-office.jpg"
+import intern from "@/public/assets/coworkers-working-office.jpg"
 import Style from "../internship.module.scss"
 import Link from "next/link";
 
@@ -19,7 +19,6 @@ function InternshipApplication(){
                     <iframe 
                         className="airtable-embed" 
                         src="https://airtable.com/embed/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" 
-                        onMouseWheel="" 
                         width="100%" 
                         height="1000" 
                         style={{ background: "transparent", border: "none" }}
