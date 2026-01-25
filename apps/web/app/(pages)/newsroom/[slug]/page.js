@@ -9,7 +9,6 @@ import { PortableText } from '@portabletext/react'
 import ShareButtons from "components/newsroom/ShareButtons";
 import { blurImage, voidPortableText } from "lib/constants";
 import BodyImage from "components/newsroom/BodyImage";
-import { cacheTag, cacheLife } from 'next/cache'
 
 
 async function NewsArticle({ params }){

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Success from "./Success";
 import { Suspense } from "react";
 
-export const dynamic = 'force-dynamic';
 
 async function InternshipSuccess(){
     return(
