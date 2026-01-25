@@ -2,6 +2,8 @@ import clsx from 'clsx';
 import Image from 'next/image';
 import hero from "@/public/assets/hero.jpg" 
 import Style from "./portal.module.scss"
+import CopyrightDate from 'components/navigation/CopyrightDate';
+import { Suspense } from 'react';
 
 
 export default function Portal(){
@@ -44,7 +46,11 @@ export default function Portal(){
                         
                         <button className="w-100 btn rounded-pill btn-lg btn-primary" type="submit">Sign in</button>
                         
-                        <p className="mt-3 mb-1 text-muted">© 2017–{new Date().getFullYear()}</p>
+                        <p className="mt-3 mb-1 text-muted">
+                            <Suspense>
+                                <CopyrightDate />
+                            </Suspense>
+                        </p>
                     </form>
                 </div>
                 

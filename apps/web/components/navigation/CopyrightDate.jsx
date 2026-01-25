@@ -4,7 +4,7 @@
 function CopyrightDate() {
     return(
         <>
-            &copy; {new Date().getFullYear()}
+            &copy; 2017-{new Date().getFullYear()}
         </>
     )
 }
