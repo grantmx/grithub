@@ -8,15 +8,15 @@ async function NewsHomeLoader(){
             
             
             <div className="col-12 d-flex mt-4 gap-3">
-                <Skeleton height={300} width="33%" />
-                <Skeleton height={300} width="33%" />
-                <Skeleton height={300} width="33%"/>   
+                <Skeleton height={400} width="33%" />
+                <Skeleton height={400} width="33%" />
+                <Skeleton height={400} width="33%"/>   
             </div>
 
             <div className="col-12 d-flex mt-4 gap-3">
-                <Skeleton height={300} width="33%" />
-                <Skeleton height={300} width="33%" />
-                <Skeleton height={300} width="33%"/>     
+                <Skeleton height={400} width="33%" />
+                <Skeleton height={400} width="33%" />
+                <Skeleton height={400} width="33%"/>     
             </div>
         </section>
     )

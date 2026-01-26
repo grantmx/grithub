@@ -27,7 +27,7 @@ async function NewsArticleLoader(){
                         <Skeleton height={20} width="100%" className="mb-2" />
                         <Skeleton height={20} width="100%" className="mb-2" />
                         <Skeleton height={20} width="50%" />
-                    </div>``
+                    </div>
                 </article>
 
 
