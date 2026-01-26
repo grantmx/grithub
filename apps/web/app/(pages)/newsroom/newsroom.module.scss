@@ -125,17 +125,17 @@
 }
 
 .activePage{
-    border-bottom: 1px solid $link_color;
+    border-bottom: 1px solid var(--link_color);
 }
 
 .pageBtn{
     width: 30px;
     height: 30px;
-    fill: $link_color;
+    fill: var(--link_color);
 }
 
 .pageBtnItem{
-    border: 1px solid $link_color;
+    border: 1px solid var(--link_color);
     border-radius: 99rem;
     margin: 0 .5rem;
 }

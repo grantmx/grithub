@@ -1,5 +1,5 @@
-@import 'styles/globals/variables';
-@import 'styles/globals/mixins/font';
+@import './variables';
+@import './mixins/font';
 
 
 // Placeholder Selectors
@@ -12,7 +12,7 @@
     border-radius: $button-border-radius;
     text-decoration: none !important;
     border-color: transparent;
-    background-color: $charcoal;
+    background-color: var(--charcoal);
     color: $white;
     display: inline-flex;
     font-weight: normal;
@@ -34,7 +34,7 @@
     padding: 1.375rem 2rem 1.375rem .5rem;
     font-weight: 400;
     line-height: 1.5;
-    color: $charcoal;
+    color: var(--charcoal);
     -webkit-tap-highlight-color: transparent;
     border-color: transparent;
     border-bottom-color: $ocean;
@@ -55,7 +55,7 @@
         top: -8px;
         width: 100%;
         font-size: 1.3rem;
-        color: $charcoal;
+        color: var(--charcoal);
     }
 }
 
@@ -101,7 +101,7 @@
     padding: 1rem 2rem 0 2rem;
     margin: 4rem 0 4rem 0;
     background-color: $white;
-    border-radius: $border-radius;
+    border-radius: var(--border-radius);
     box-shadow: $box-shadow-sm;
 }
 
@@ -133,7 +133,7 @@
 
     &::-webkit-scrollbar {
         width: 8px;
-        border-radius: $border-radius;
+        border-radius: var(--border-radius);
         cursor: pointer;
     }
 
@@ -142,8 +142,8 @@
     }
 
     &::-webkit-scrollbar-thumb {
-         background-color: rgba($charcoal, .35);
-        border-radius: $border-radius;
+         background-color: rgba(var(--charcoal), .35);
+        border-radius: var(--border-radius);
     }
 }
 
@@ -187,7 +187,7 @@
     height: 0px; 
     border-top: 8px solid transparent;
     border-bottom: 8px solid transparent; 
-    border-left: 8px solid $charcoal; 
+    border-left: 8px solid var(--charcoal); 
     position: absolute;
     right: -15px;
     top: 50%;
@@ -196,7 +196,7 @@
 
 // VDS Utils Typography 
 %h1{
-    font-family: $font-stack-serif !important;
+    font-family: var(--font-stack) !important;
     font-kerning: none;
     text-transform: uppercase;
     font-weight: normal;
@@ -207,7 +207,7 @@
 }
 
 %h2{
-    font-family: $font-stack !important;
+    font-family: var(--font-stack) !important;
     line-height: 1.2;
     font-kerning: none;
     letter-spacing: 0.5rem;
@@ -218,7 +218,7 @@
 }
 
 %h3{
-    font-family: $font-stack !important;
+    font-family: var(--font-stack) !important;
     line-height: 1.2;
     margin-bottom: 3rem;
     font-kerning: none;
@@ -229,7 +229,7 @@
 }
 
 %h4{
-    font-family: $font-stack !important;
+    font-family: var(--font-stack) !important;
     line-height: 1.2;
     margin-bottom: 1.5rem;
     font-kerning: none;
@@ -240,7 +240,7 @@
 }
 
 %h5{
-    font-family: $font-stack !important;
+    font-family: var(--font-stack) !important;
     line-height: 1.2;
     margin-bottom: 1rem;
     font-kerning: none;
@@ -251,7 +251,7 @@
 }
 
 %h6{
-    font-family: $font-stack !important;
+    font-family: var(--font-stack) !important;
     font-kerning: none;
     letter-spacing: normal;
     line-height: 1.4;
@@ -322,7 +322,7 @@
                 content: counter(step-counter);
                 font-size: 6rem;
                 color: $white;
-                font-family: $font-stack-serif;
+                font-family: var(--font-stack)-serif;
                 display: flex;
                 justify-content: center;
                 align-items: center;

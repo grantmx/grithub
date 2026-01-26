@@ -3,7 +3,116 @@
 *	- DO NOT TOUCH even...if you are asked to touch.
 */
 
-@import 'variables';
+:root {
+	--default-cursor: pointer;
+	--border-off: none;
+
+	--standard-width: 2000px;
+	--standard-padding: 2rem;
+	--standard-column-width: 100%;
+	--header-padding: 4vw;
+
+	--hr-border: #ccc;
+	--standard-border: 1px solid transparent;
+
+	--border-radius: 4px;
+	--button-border-radius: 2px;
+
+	// colors
+	--primary-color: #2E303B;
+
+	--charcoal: #2E303B;
+	--dove: #F0F0F0;
+	--mist: #f9f9f9;
+	--white: #fff;
+
+	--indigo: #353E5D;
+	--ocean: #4c7b9a;
+	--ice: #dfe9ef;
+	--ice50: #f0f4f7;
+	--ice25: #f8fafb;
+
+	--green: #6fa33f;
+	--sage: #b0d493;
+	--link_color: #4c7b9a;
+
+	--grit-red: rgb(233 41 56);
+
+	--blue:    #0d6efd;
+	--indigo:  #6610f2;
+	--purple:  #6f42c1;
+	--pink:    #d63384;
+	--red:     #dc3545;
+	--orange:  #fd7e14;
+	--yellow:  #ffc107;
+	--green:   #198754;
+	--teal:    #20c997;
+	--cyan:    #0dcaf0;
+
+	--white:    #fff;
+	--gray-100: #f8f9fa;
+	--gray-200: #e9ecef;
+	--gray-300: #dee2e6;
+	--gray-400: #ced4da;
+	--gray-500: #adb5bd;
+	--gray-600: #6c757d;
+	--gray-700: #495057;
+	--gray-800: #343a40;
+	--gray-900: #212529;
+	--black:    #000;
+
+	// Typography
+	--font-stack: "Inter", Helvetica, Arial, sans-serif;
+	--font-family-sans-serif: --font-stack;
+
+	--letter-spacing: 0.05rem;
+	--font-size-base: 1.6rem;
+	--font-size-mobile: --font-size-base - 0.4; // ~1.6rem
+
+	--font-size-h1: --font-size-base + 3; 
+	--font-size-h2: --font-size-base + 2.2; 
+	--font-size-h3: --font-size-base + 1; 
+	--font-size-h4: --font-size-base + 0.7; 
+	--font-size-h5: --font-size-base;
+	--font-size-h6: --font-size-base - 0.2; 
+
+	--headings-font-family: inherit;
+	--headings-font-weight: bold;
+	--headings-line-height: 1;
+	--headings-color: inherit;
+
+	// Grid
+	--grid-columns: 11;
+
+	--screen-xs: 400px; // mobile landscape
+	--screen-sm: 568px; // tablet portrait
+	--screen-md: 850px; // tablet landscape
+	--screen-lg: 1024px; // Desktop
+	--screen-xl: 1200px; // Large Desktop & HD TV
+	--screen-xxl: 1500px; // HD TV
+
+	--grid-gutter-width: 30px;
+
+
+	// buttons
+	--btn-font-weight: lighter;
+
+
+	--box-shadow: 0 .5rem 1rem rgba(#000, .15);
+	--box-shadow-sm: 0 .125rem .25rem rgba(0,0,0,.075) !important;
+	--box-shadow-lg: 0 1rem 3rem rgba(0,0,0,.175) !important;
+
+	// animations
+	--easeInOutBack: all 0.6s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+    --star-size: 15px;
+    --star-color: #ddd;
+    --star-background: #fc0;
+	--star-orangebackground: #E5A778;
+	--star-bluebackground: #4c7b9a;
+	--toastify-toast-background: #222 !important;
+}
+
 @import 'reboot';
 
 @import './type';
@@ -26,11 +135,10 @@ html{
 }
 
 body{
-	font-family: $font-stack !important;
-	font-size: $font-size-base;
+	font-family: var(--font-stack) !important;
+	font-size:var(--font-size-base);
 	font-weight: normal;
-	color: $primary-color;
-	letter-spacing: $letter-spacing;
+	color:var(--primary-color);
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	-webkit-overflow-scrolling: touch;
 	-webkit-font-smoothing: antialiased;
@@ -43,17 +151,17 @@ input,
 textarea,
 select,
 textarea {
-	font: normal $font-size-base $font-stack;
+	font: normalvar(--font-size-base) var(--font-stack);
 }
 
 input,
 textarea,
 select {
 	border: 1px solid #ccc;
-	border-radius: $border-radius;
-	color: $primary-color;
+	border-radius: var(--border-radius);
+	color:var(--primary-color);
 	display: inline-block;
-	font-size: $font-size-base;
+	font-size:var(--font-size-base);
 	line-height: 1;
 	vertical-align: middle;
 }
@@ -98,17 +206,17 @@ fieldset {
 legend {
 	padding: 0;
 	display: block;
-	font-size: $font-size-base;
+	font-size:var(--font-size-base);
 	line-height: 1;
 	margin: 0;
-	color: $primary-color;
+	color:var(--primary-color);
 	width: 100%;
 }
 
 label {
-	font-size: $font-size-base;
+	font-size:var(--font-size-base);
 	display: inline-block;
-	color: $primary-color;
+	color:var(--primary-color);
     line-height: 1;
 }
 
@@ -135,14 +243,7 @@ label {
 	flex: 1 0 100%;
 }
 
-:root {
-    --star-size: 15px;
-    --star-color: #ddd;
-    --star-background: #fc0;
-	--star-orangebackground: #E5A778;
-	--star-bluebackground: #4c7b9a;
-	--toastify-toast-background: #222 !important;
-}
+
 
 
 // Safari 15+ displays a gray border while loading for next/image.
@@ -164,35 +265,12 @@ label {
 }
 
 
-@media only screen and (max-width: $screen-lg ) {
+@media only screen and (max-width: var(--screen-lg) ) {
      .bodyBlur{
          overflow:hidden;
      }
 }
 
-// Global Toasts: 
-// progress bar color
-.Toastify__progress-bar-theme--light {
-	background: $sage;
-}
-
-.Toastify__toast-container--bottom-left{
-	bottom: 4em;
-}
-
-.Toastify__toast-theme--light{
-    background-color: rgba(#2e303b, .95);
-    color: #fff;
-
-	& button{
-		color: #fff;
-		opacity: 1;
-	}
-}
-
-.Toastify__progress-bar--error{
-	background: $terracotta;
-}
 
 [aria-hidden="true"]{
 	& > a{
@@ -262,11 +340,6 @@ label {
     letter-spacing: 0.4rem;
     text-transform: none;
     font-weight: normal;
-
-    & > strong {
-        font-weight: normal;
-        color: $ocean;
-    }
 }
 
 ul.list_styled, ol.list_styled {
@@ -277,16 +350,6 @@ ul.list_styled, ol.list_styled {
     }
 }
 
-
-@each $vdsColor, $color in $vds-colors {
-	.text_#{$vdsColor} {
-		color: $color	
-	}
-
-	.bg_#{$vdsColor}{
-		background-color: $color
-	}
-}
 
 .button_block{
 	@extend %standard-button;
@@ -309,13 +372,13 @@ ul.list_styled, ol.list_styled {
 }
 
 .button_outline{
-	border-color: $charcoal !important;
+	border-color: var(--charcoal) !important;
 	background-color: transparent !important;
-	color: $charcoal !important;
+	color: var(--charcoal) !important;
 }
 
 .button_block.bg_dove{
-	color: $charcoal !important;
+	color: var(--charcoal) !important;
 }
 
 p a:has(span.button_block){

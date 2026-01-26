@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import Style from "./Skeleton.module.scss";
-import utils from 'styles/globals/utils.module.scss';
 
 
 function Skeleton({ 
@@ -23,7 +22,6 @@ function Skeleton({
                 variant && Style[variant],
                 className,
                 animation === false ? Style.noAnimation : Style[animation === undefined ? "pulse" : animation],
-                utils[`bg_${color?.class ?? color}`]            
             )} 
             style={{width: width, height: height}}
         />
