@@ -192,7 +192,7 @@ function CompetitionApplication(){
                                     id="birthday" 
                                     type="date"
                                     name="birthday"
-                                    max={new Date().toISOString().split("T")[0]}
+                                    // max={new Date().toISOString().split("T")[0]}
                                     {...register("birthday")}
                                 />
 

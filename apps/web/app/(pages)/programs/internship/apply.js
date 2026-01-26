@@ -274,7 +274,7 @@ function InternshipApplication(){
                                         id="birthday" 
                                         type="date"
                                         name="birthday"
-                                        max={new Date().toISOString().split("T")[0]}
+                                        // max={new Date().toISOString().split("T")[0]}
                                         {...register("birthday")}
                                     />
 
@@ -824,7 +824,7 @@ function InternshipApplication(){
                                                 id="job_start_date" 
                                                 type="date"
                                                 name="job_start_date"
-                                                max={new Date().toISOString().split("T")[0]}
+                                                // max={new Date().toISOString().split("T")[0]}
                                                 {...register("job_start_date")}
                                             />
 
@@ -842,7 +842,7 @@ function InternshipApplication(){
                                                 id="job_end_date" 
                                                 type="date"
                                                 name="job_end_date"
-                                                max={new Date().toISOString().split("T")[0]}
+                                                // max={new Date().toISOString().split("T")[0]}
                                                 {...register("job_end_date")}
                                                 disabled={isCurrentJob}
                                             />

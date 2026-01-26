@@ -259,7 +259,7 @@ function BookingDetails(){
                                 name="date"
                                 onChange={handelControl}
                                 value={globalBook?.data?.date}
-                                min={new Date().toISOString().split("T")[0]}
+                                // min={new Date().toISOString().split("T")[0]}
                             />
 
                             <label htmlFor="time">
