@@ -53,8 +53,13 @@ export default async function Home(){
 						<MainNav clear />
 
 						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
-							<p className={Style.heroHashTag}>#GRITHub</p>
-							<p className={Style.heroText}>Catalyzing innovation, entrepreneurship, and an inclusive workforce in the digital economy.</p>
+							<p className={Style.heroText}>Learn. Grow. Go.</p>
+							<p className={Style.heroSubText}>We drive innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
+							<p>
+								<Link href="/about" className="btn rounded-pill rounded-pill btn-danger btn-lg px-4" title='learn more about grit hub'>
+									Learn more
+								</Link>
+							</p>
 						</div>
 
 
