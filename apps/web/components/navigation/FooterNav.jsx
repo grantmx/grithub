@@ -17,14 +17,16 @@ function FooterNav(){
                     className='w-md-100'
                 />
                 
-                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company catalyzing innovation and technology in the digital economy.</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (2021 / 502703 / 08) catalyzing innovation and technology in the digital economy.</small>
+                
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
-                        Office Suite #2, York Street Blvd. Shopping Center.<br/> George South, George 6529<br/>South Africa &nbsp;
-                        <a rel='noreferrer' target="_blank" href="https://www.google.com/maps/dir//garden+route+innovation+and+technology+hub/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x1dd61bad26029aad:0xe15b07dedb1520bf?sa=X&ved=2ahUKEwicrqbBw9b-AhWYi1wKHToBDNAQ9Rd6BAhMEAU">
-                            Get directions &rsaquo;
-                        </a>
+                        Office Suite #2<br/> York Street Blvd. Shopping Center.<br/> George South, George 6529<br/>South Africa<br/>   
                     </small>
+
+                     <a rel='noreferrer' target="_blank" href="https://www.google.com/maps/dir//garden+route+innovation+and+technology+hub/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x1dd61bad26029aad:0xe15b07dedb1520bf?sa=X&ved=2ahUKEwicrqbBw9b-AhWYi1wKHToBDNAQ9Rd6BAhMEAU">
+                        <small>Get directions &rsaquo;</small>
+                    </a>
                 </address>
             </div>
 
