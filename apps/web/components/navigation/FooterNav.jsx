@@ -17,7 +17,7 @@ function FooterNav(){
                     className='w-md-100'
                 />
                 
-                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (2021 / 502703 / 08) catalyzing innovation and technology in the digital economy.</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (CIPC: 2021/502703/08) catalyzing innovation and technology in the digital economy.</small>
                 
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
@@ -33,29 +33,33 @@ function FooterNav(){
             <div className="col-md-3 col-12 p-md-4 pb-4 d-flex justify-content-top flex-column">
                 <p className="fw-bold fs-4">Find Us.</p>
                 
-                <a className="px-1 d-flex" href="https://wa.me/270630705752">
+                <a className="px-1 d-flex py-1 align-items-center" href="https://wa.me/270630705752">
                     <Image src="/assets/whatsapp.svg" width={25} height={25} alt="whatsapp us"/>
                     <small className="ms-2">+27 (063) 070 5752</small>
                 </a>
-                <a className="px-1 d-flex" href="mailto:workforce@grithub.org.za">
+
+                <a className="px-1 d-flex py-1 align-items-center" href="mailto:workforce@grithub.org.za">
                     <Image src="/assets/mail_outline.svg" width={25} height={25} alt="email us"/>
                     <small className="ms-2">workforce@grithub.org.za</small>
                 </a>
 
                 <div className="d-flex flex-row flex-wrap mt-4">
-                    <a className="px-1 d-flex w-50" href="https://www.facebook.com/grithub.za">
+                    <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://www.facebook.com/grithub.za">
                         <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GRIT Hub on facebook"/>
                         <small className="ms-2">Facebook</small>
                     </a>
-                    <a className="px-1 d-flex w-50" href="https://www.linkedin.com/company/grithub-za">
+
+                    <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://www.linkedin.com/company/grithub-za">
                         <Image src="/assets/linkedin.svg" width={25} height={25} alt="GRIT Hub on linkedin"/>
                         <small className="ms-2">Linkedin</small>
                     </a>
-                    <a className="px-1 d-flex w-50" href="https://www.instagram.com/grithub_za/">
+
+                    <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://www.instagram.com/grithub_za/">
                         <Image src="/assets/instagram.svg" width={25} height={25} alt="GRIT Hub on Instagram"/>
                         <small className="ms-2">Instagram</small>
                     </a>
-                    <a className="px-1 d-flex w-50" href="https://patreon.com/grithub_za">
+
+                    <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://patreon.com/grithub_za">
                         <Image src="/assets/patreon.svg" width={25} height={25} alt="GRIT Hub on Patreon"/>
                         <small className="ms-2">Patreon</small>
                     </a>
