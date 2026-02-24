@@ -14,13 +14,20 @@ export default function FooterEmailForm(){
 
 
     const submitForm = async (e) => {
-        setIsLoading(true);
         e.preventDefault()
+
+        if( !e.target ){
+            alert("We need your email to subscribe you to our newsletter. Please try again.");
+            return;
+        }
+
+        setIsLoading(true);
+        
 
         let formData = serialize(e.target);
 
         // turn formdata into an object
-        formData = Object.fromEntries(new FormData(e.target));
+        formData = Object.fromEntries(new FormData(formData));
 
         await submitEmailAction(formData).then((res) => {
             setStatus({result: res.result === "success" ? "success" : "error", msg: res.msg});    
