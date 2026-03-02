@@ -142,7 +142,7 @@ export default async function Home(){
 
 
 
-				<section className='bg-light py-5 mb-5'>
+				{/* <section className='bg-light py-5 mb-5'>
 					<div className="col-12 p-4 d-flex justify-content-center flex-column flex-md-row text-center">
 						<div className="col-md-6 col-12 p-md-5 py-3 d-flex justify-content-end flex-row">
 							<Link href="/programs/internship" title="apply today">
@@ -173,7 +173,7 @@ export default async function Home(){
 							</p>
 						</div>
 					</div>
-				</section>
+				</section> */}
 
 
 

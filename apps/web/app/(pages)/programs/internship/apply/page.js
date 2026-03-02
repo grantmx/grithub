@@ -16,13 +16,15 @@ function InternshipApplication(){
         <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="internship">
             <div className="col-12 d-flex flex-column flex-md-row mt-3">
                 <div className="col-12 col-md-8 pe-md-5 mb-5">
-                    <iframe 
+                    {/* <iframe 
                         className="airtable-embed" 
                         src="https://airtable.com/embed/appJBk9nhVZawihCj/paguZESANMJPRLmKj/form" 
                         width="100%" 
                         height="1000" 
                         style={{ background: "transparent", border: "none" }}
-                    />
+                    /> */}
+
+                    <h1>Applications are now closed</h1>
                 </div>
 
                 <div className="col-4">
