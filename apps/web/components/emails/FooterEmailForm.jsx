@@ -22,7 +22,6 @@ export default function FooterEmailForm(){
         }
 
         setIsLoading(true);
-        
 
         let formData = serialize(e.target);
 

@@ -9,10 +9,11 @@ import Script from 'next/script'
 import ribbon from '@/styles/ribbon.module.scss'
 
 import afriLabs from "@/public/assets/partners/afrilabs-member-logo-white.png" 
-import silicon from "@/public/assets/silicon-cape-white.svg" 
+import mictseta from "@/public/assets/MICTSETA-LOGO.png"
+import qcto from "@/public/assets/qcto_logo.png"
 import georgeBusiness from '@/public/assets/partners/georgebusinesschamberlogo.png'
 import mosselBay from "@/public/assets/partners/mosselbay-chamber.png"
-import internship from "@/public/assets/winter-internship-blank.jpg" 
+// import internship from "@/public/assets/winter-internship-blank.jpg" 
 import hero from "@/public/assets/hero.jpg" 
 import heroMobile from "@/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
@@ -68,8 +69,8 @@ export default async function Home(){
 								Our strategic partners and stakeholders
 							</small>
 
-							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap">
-								<div className="col-2 pe-5 d-none d-md-block">
+							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap" style={{ gap: "1rem" }}>
+								<div className="col-2 d-none d-md-block">
 									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
@@ -79,16 +80,28 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 pe-5 d-none d-md-block">
-									<Image 
-										src={silicon}
-										alt="Silicon cape" 
-										className={clsx(Style.partnerLogo, Style.whiteLogo)}
-									/>
+								<div className="col-2 d-none d-md-block">
+									<a title="QCTO" href="https://www.qcto.org.za" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={qcto}
+											alt="QCTO" 
+											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+										/>
+									</a>
+								</div>
+
+								<div className="col-2 d-none d-md-block">
+									<a title="MICT SETA" href="https://www.mict.org.za" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={mictseta}
+											alt="MICT SETA" 
+											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+										/>
+									</a>
 								</div>
 
 
-								<div className="col-2 pe-5 d-none d-md-block">
+								<div className="col-2 d-none d-md-block">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -102,7 +115,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 pe-5 d-none d-md-block">
+								<div className="col-2 d-none d-md-block">
 									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
@@ -114,7 +127,7 @@ export default async function Home(){
 									</a>
 								</div>
 								
-								<div className="col-2 pe-5 d-none d-md-block">
+								<div className="col-2 d-none d-md-block">
 									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}

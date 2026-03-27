@@ -20,8 +20,7 @@ export default async function submitEmailAction(data){
         }
     })
     .then(data => {
-        
-
+    
         return { result: "success", msg: "Thank you for subscribing" }
     })
     .catch(err => {
