@@ -1,6 +1,6 @@
 export default function ReactAdvanced() {
   return (
-    <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5">
+    <section className="container-xxl d-flex flex-column mb-5">
       <article className="container-xxl d-flex pt-5 px-0 flex-column">
         <h1 className="display-2 fw-bold">
           React (Advanced)

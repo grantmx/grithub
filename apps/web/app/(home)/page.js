@@ -19,6 +19,7 @@ import heroMobile from "@/public/assets/hero-mobile.jpg"
 import Link from 'next/link';
 import { getLatestPosts } from "@/services/sanity/sanity.service";
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
+import rasberypifoundation from "@/public/assets/partners/rpf-logo-white.svg"
 
 
 export const metadata = {
@@ -53,7 +54,7 @@ export default async function Home(){
 					<div className={Style.hero}>
 						<MainNav clear />
 
-						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
+						<div className="col-11 col-md-8 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
 							<p className={Style.heroText}>Learn. Grow. Go.</p>
 							<p className={Style.heroSubText}>We drive innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
 							<p>
@@ -64,7 +65,7 @@ export default async function Home(){
 						</div>
 
 
-						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-md-block"])}>
+						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-lg-block"])}>
 							<small className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
 							</small>
@@ -112,6 +113,16 @@ export default async function Home(){
 												</g>
 											</g>
 										</svg>
+									</a>
+								</div>
+
+								<div className="col-2 d-none d-md-block">
+									<a title="rasberry pi foundation proud supporter" href="https://www.raspberrypi.org/" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={rasberypifoundation}
+											alt="Raspberry Pi Foundation" 
+											className={clsx(Style.partnerLogo)}
+										/>
 									</a>
 								</div>
 

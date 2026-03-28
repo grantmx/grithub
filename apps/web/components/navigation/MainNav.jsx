@@ -17,32 +17,32 @@ function MainNav({ page, clear = false }) {
                     />
                 </a>
                 <menu className={Style.navbarNav}>
-                    <Link className={clsx(Style.link, "nav-link me-3 me-lg-5")} href="/cowork" title='CoWorking'>
+                    <Link className={clsx(Style.link, "nav-link")} href="/cowork" title='CoWorking'>
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
                         CoWorking
                     </Link>
 
-                    <Link href="/programs" className={clsx(Style.link, "nav-link me-3 me-lg-5")} title='Programs'>
+                    <Link href="/programs" className={clsx(Style.link, "nav-link")} title='Programs'>
                         <Image src="/assets/people.svg" width={20} height={20} className="d-lg-none" alt="Program Events at GRITHub" />
                         Programs
                     </Link>
 
-                    <Link href="/consulting" className={clsx(Style.link, "nav-link me-3 me-lg-5")} title='Consulting'>
+                    <Link href="/consulting" className={clsx(Style.link, "nav-link")} title='Consulting'>
                         <Image src="/assets/event_seat.svg" width={20} height={20} className="d-lg-none" alt="Program Events at GRITHub" />
                         Consulting
                     </Link>
 
-                    <Link className={clsx(Style.link, "nav-link me-3 me-lg-5")} href="/programs/incubation" title="Incubation">
+                    <Link className={clsx(Style.link, "nav-link")} href="/programs/incubation" title="Incubation">
                         <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="Business Incubation" />
                         Incubation
                     </Link>
 
-                    <Link className={clsx(Style.link, "nav-link me-3 me-lg-4")} href="/newsroom" title="Newsroom">
+                    <Link className={clsx(Style.link, "nav-link")} href="/newsroom" title="Newsroom">
                         <Image src="/assets/newspaper.svg" width={20} height={20} className="d-lg-none" alt="News" />
                         Newsroom
                     </Link>
 
-                    <Link className={clsx(Style.link, "rounded-pill text-bg-danger text-white px-5 py-2")} href="/contact" title='Contact Us'>
+                    <Link className={clsx(Style.link, "rounded-pill d-md-block d-none text-bg-danger text-white px-5 py-2")} href="/contact" title='Contact Us'>
                         <Image src="/assets/mail_outline.svg" width={20} height={20} className={clsx("d-lg-none")} alt="Contact Us" />
                         Contact
                     </Link>

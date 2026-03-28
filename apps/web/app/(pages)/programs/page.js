@@ -2,6 +2,7 @@ import Image from "next/image";
 import ribbon from '@/styles/ribbon.module.scss'
 import Style from "../../(pages)/page.module.scss";
 import Link from "next/link";
+import clsx from "clsx";
 
 
 export const metadata = {
@@ -75,17 +76,15 @@ export default function Programs(){
 
                 <div className="text-center col-md-9 col-12 p-md-5 p-3">
                     <p className="fs-2 lead">
-                        Our up-to-date curriculum comes from proven web and software industry professionals unlike anything you will find from a textbook.  In just 6 weeks you will learn a new skill or programming language.
+                        Our up-to-date curriculum comes from proven web and software industry professionals unlike anything you will find from a textbook.
                     </p>
                 </div>
 
                
                 <div className="col-12 d-flex justify-content-between flex-wrap bg-light p-5">
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
-                        <h3 className="fs-2 fw-bold">Each class lesson is on Saturday mornings from 9am to 12 Noon for just R3,499 per course.</h3>
-                        <p className="lead">
-                            Our Master Classes are priced so that anyone can attend and all can afford.
-                        </p>
+                        <h3 className="fs-2 fw-bold">Each class is taught by QCTO Certified industry professionals starting from R 999</h3>
+                       
                         <p className="lead">
                             <strong>REQUIREMENTS:</strong> All students will need to bring their own laptop computer. Mac or PC with enough space to run and install software.  Don't have a computer? <a href="mailto:workforce@grithub.org.za">Email</a> us and we can help you with financing options.
                         </p>
@@ -93,7 +92,7 @@ export default function Programs(){
 
                     <div className="col-md-6 col-12 p-md-5 p-md-5">
                         <h3 className="fs-2 fw-bold">Are You A Newbie To Coding?</h3>
-                        <p className="lead">We recommend taking the below courses in order. Each course is 12 weeks long and about 48 hours of instruction. Classes are available in-person George, Western Cape and online via Zoom</p> 
+                        <p className="lead">We recommend taking the below courses in order. Classes are available in-person George, Western Cape.</p> 
                         <p className="lead">All sales are final. Refunds will only be given for life events and will be in the form of credit to use for a future class.</p>
                     </div>
                 </div>
@@ -102,24 +101,23 @@ export default function Programs(){
                 <div className="container-xxl col-12 d-flex justify-content-between flex-wrap">
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/html-js-css.png" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
+                            <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+                            <Image src="/assets/web-design.svg" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Frontend Coding MasterClass</h3>
+                                <h3 className="card-title fs-4 fw-bold">Web Designer</h3>
                                 <p className="card-text">
-                                    This is a 6-week Master Class that will take you from a beginner to a professional developer.  You will learn HTML, CSS, JavaScript, and in intro to using AI to help you code.  This class is for those who want to learn to code and build websites and web applications.
+                                    <strong>QCTO Accredited Course:</strong> By the end of this course, you will be able to design and build a multi-page website using HTML, CSS and JavaScript. You will have a basic understanding of how the internet works, how to select a hosting service, and publish your hand-made website for the world to see.
                                 </p>
-                                {/* <p className="d-grid">
-                                    <Link href="/programs/masterclass/frontend-coding-masterclass" className="btn rounded-pill btn-danger btn-lg">
-                                        Learn More &nbsp;&rsaquo;
+                                
+                                <p className="d-grid">
+                                    <Link 
+                                        href="/programs/web-designer" 
+                                        title="learn more about Web Designer"
+                                        className="btn rounded-pill btn-danger btn-lg"
+                                    >
+                                        Read more &nbsp;&rsaquo;
                                     </Link>
-                                </p> */}
-
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/frontend-coding-masterclass" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -127,61 +125,48 @@ export default function Programs(){
 
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+                            <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
                             <Image src="/assets/html.png" width={150} height={150} className={Style.cardTopOverflow} alt="html" />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Websites for Beginners</h3>
-                                <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
-                                {/* <p className="d-grid">
-                                    <a rel="noreferrer" href="http://grithub-za-1.hubspotpagebuilder.com/websites-for-beginners" target="_blank" className="btn rounded-pill btn-success btn-lg">
-                                        Register Now &nbsp;&rsaquo;
-                                    </a>
-                                </p> */}
+                                <h3 className="card-title fs-4 fw-bold">Website (HTML) Programmer</h3>
+                                <p className="card-text"><strong>QCTO Accredited Course:</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
+                                
+                                <p className="d-grid">
+                                    <Link 
+                                        href="/programs/websites-for-beginners" 
+                                        title="learn more about websites for beginners"
+                                        className="btn rounded-pill btn-danger btn-lg"
+                                    >
+                                        Read more &nbsp;&rsaquo;
+                                    </Link>
+                                </p>
 
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/websites-for-beginners" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="col-xl-4 col-md-6 col-12 p-3">
-                        <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/278-2783353_mobile-mobile-phone-icon-red-png.png" width={150} height={150} className={Style.cardTopOverflow} alt="mobile"   />
-                            <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Mobile Web (Beginner)</h3>
-                                <p className="card-text"><strong>NO CODING EXPERIENCE REQUIRED.</strong> Apply the concept of mobile friendliness to a website; learn ways to modify an existing website in to a mobile optimized one. You will also learn responsive design and designing for a mobile user.</p>
-                                 <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/mobile-web-beginner" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div>
-                                {/* <p className="d-grid">
-                                    <a href="https://grithub-za-1.hubspotpagebuilder.com/mobile-for-beginners"  className="btn rounded-pill btn-success btn-lg">
-                                        Register
-                                    </a>
-                                </p> */}
-                            </div>
-                        </div>
-                    </div>
+                    
 
 
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+                            <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
                             <Image src="/assets/js.png" width={150} height={150} className={Style.cardTopOverflow} alt="javascript"  />
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Intro into JavaScript</h3>
+                                <h3 className="card-title fs-4 fw-bold">JavaScript Programmer</h3>
                                 
-                                <p className="card-text">Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/intro-into-javascript" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div> 
+                                <p className="card-text"><strong>QCTO Accredited Course:</strong> Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
+                                
+
+                                <p className="d-grid">
+                                    <Link 
+                                        href="/programs/intro-into-javascript" 
+                                        title="learn more about Intro into JavaScript"
+                                        className="btn rounded-pill btn-danger btn-lg"
+                                    >
+                                        Read more &nbsp;&rsaquo;
+                                    </Link>
+                                </p>
 
                                 {/* <p className="d-grid">
                                     <a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn rounded-pill btn-success btn-lg" rel="noreferrer">
@@ -195,23 +180,14 @@ export default function Programs(){
 
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
-                            <Image src="/assets/react.png" width={150} height={150} className={Style.cardTopOverflow} alt="react"  />
+                        <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+                            <Image src="/assets/programmer.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
                             <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">React (Advanced)</h3>
+                                <h3 className="card-title fs-4 fw-bold">Technopreneur</h3>
+
                                 <p className="card-text">
-                                    Learn how to easily build stateful component based UIs and applications using the Javascript React.js library.  You will learn how to setup React, learn the fundaments such as components, props and state, techniques, pitfalls and strengths.
+                                    <strong>QCTO Accredited Course:</strong> This is a class that will take you from a beginner to a professional technopreneur.  You will learn how to ideate, validate, build and launch a technology startup.  This class is for those who want to learn to build and launch a technology startup.
                                 </p>
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/react-advanced" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div>
-                                {/* <p className="d-grid">
-                                    <a href="" className="btn rounded-pill btn-primary btn-lg disabled">
-                                        Register
-                                    </a>
-                                </p> */}
                             </div>
                         </div>
                     </div>
@@ -219,40 +195,100 @@ export default function Programs(){
 
                     <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
-                            <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__purple}`}><span>Workforce</span></div>
+                        <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+                            <Image src="/assets/cyber-security.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">CyberSecurity Defender</h3>
+
+                                <p className="card-text">
+                                    <strong>QCTO Accredited Course:</strong> This is a class that will take you from a beginner to a professional in cyber security.  You will learn how to protect systems, networks, and data from cyber threats.  This class is for those who want to learn to secure and defend technology infrastructures.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="col-xl-4 col-md-6 col-12 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                        <div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+                            <Image src="/assets/gaming.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">End User Computing (Basic, Intermediate, Advanced)</h3>
+
+                                <p className="card-text">
+                                    <strong>QCTO Accredited Course:</strong> This is a class that will take you from a beginner to a professional in end user computing.  You will learn how to effectively use and manage computer systems, software, and applications.  This class is for those who want to enhance their productivity and technical skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="col-xl-4 col-md-6 col-12 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                            <div className={clsx(ribbon.ribbon_top_right, ribbon.ribbon__purple)}><span>Workforce</span></div>
+                            <Image src="/assets/chip.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">Artificial Intelligence</h3>
+
+                                <p className="card-text">
+                                    This is a class that will take you from a beginner to a competent user in artificial intelligence applications.  You will learn how to build and deploy AI models and applications.  This class is for those who want to learn to create intelligent systems and solutions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="col-xl-4 col-md-6 col-12 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                            <div className={clsx(ribbon.ribbon_top_right, ribbon.ribbon__purple)}><span>Workforce</span></div>
+                            <Image src="/assets/react.png" width={150} height={150} className={Style.cardTopOverflow} alt="react"  />
+                            <div className="card-body d-flex flex-column justify-content-between">
+                                <h3 className="card-title fs-4 fw-bold">React (Advanced)</h3>
+                                <p className="card-text">
+                                    Learn how to easily build stateful component based UIs and applications using the Javascript React.js library.  You will learn how to setup React, learn the fundaments such as components, props and state, techniques, pitfalls and strengths.
+                                </p>
+                                
+
+                                <p className="d-grid">
+                                    <Link 
+                                        href="/programs/react-advanced" 
+                                        title="learn more about React (Advanced)"
+                                        className="btn rounded-pill btn-danger btn-lg"
+                                    >
+                                        Read more &nbsp;&rsaquo;
+                                    </Link>
+                                </p>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div className="col-xl-4 col-md-6 col-12 p-3">
+                        <div className="card shadow-sm position-relative h-100 align-items-center">
+                            <div className={clsx(ribbon.ribbon_top_right, ribbon.ribbon__purple)}><span>Workforce</span></div>
                             <Image src="/assets/nextjs.png" width={150} height={150} className={Style.cardTopOverflow} alt="nextjs"  />
                             <div className="card-body d-flex flex-column justify-content-between">
                                 <h3 className="card-title fs-4 fw-bold">Next.js (Advanced)</h3>
                                 <p className="card-text">
                                     Next.js is a React framework used in tens of thousands of production-facing websites and web applications, including many of the world's largest brands. Learn about page based routing, SSR and ISR pre-rendering, code splitting, and API routes, 
                                 </p>
-                                <div className="alert rounded-pill alert-secondary text-center" role="alert">
-                                    <a href="/programs/next.js-advanced" title="learn more about Frontend coding masterclass">
-                                    Read more
-                                    </a>
-                                </div>
-                               
-                                {/* <p className="d-grid">
-                                    <a href="" className="btn rounded-pill btn-primary btn-lg disabled">
-                                        Register
-                                    </a>
-                                </p> */}
+                                
+
+                                <p className="d-grid">
+                                    <Link 
+                                        href="/programs/nextjs-advanced" 
+                                        title="learn more about Next.js (Advanced)"
+                                        className="btn rounded-pill btn-danger btn-lg"
+                                    >
+                                        Read more &nbsp;&rsaquo;
+                                    </Link>
+                                </p>
+                        
                             </div>
                         </div>
                     </div>
-
-
-                    {/* <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
-                        <div className="card shadow-sm position-relative h-100 align-items-center">
-                        <div className={`${ribbon.ribbon_top_right}`}><span>Program</span></div>
-                        <Image src="/assets/programmer.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
-                            <div className="card-body d-flex flex-column justify-content-between">
-                                <h3 className="card-title fs-4 fw-bold">Code &amp; Enterprise Hackathons</h3>
-                                <p className="card-text">Hackathons help break through the barriers of a stale "business as usual" culture into creative disruption and intense innovation. Our 1-3 day Hackathon events will not only solve technical problems, and deliver new innovative software and hardware, but will accelerate organizational digitization strategies and improve customer processes.</p>
-                            </div>
-                        </div>
-                    </div> */}
-
                 </div>
 
 
@@ -312,7 +348,7 @@ export default function Programs(){
                         </div>
                     </div> */}
 
-                    <div className="col-xl-4 col-md-6 col-12 p-md-5 p-3">
+                    <div className="col-xl-4 col-md-6 col-12 p-3">
                         <div className="card shadow-sm position-relative h-100 align-items-center">
                             <div className={`${ribbon.ribbon_top_right} ${ribbon.ribbon__green}`}><span>STEM</span></div>
                             <Image src="/assets/lego.svg" width={150} height={150} className={Style.cardTopOverflow} alt="LEGO STEM"/>
@@ -326,7 +362,7 @@ export default function Programs(){
                 </div>
 
 
-
+{/* 
                 <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
                     Community Workshops &amp; Seminars
                 </h2>
@@ -370,7 +406,7 @@ export default function Programs(){
                         </div>
                     </div>
 
-                </div>
+                </div> */}
             </section>
 
         </>

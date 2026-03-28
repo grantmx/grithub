@@ -1,13 +1,13 @@
 export default function FrontendCodingMasterclass() {
   return (
   
-    <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5">
+    <section className="container-xxl d-flex flex-column mb-5">
       <article className="container-xxl d-flex pt-5 px-0 flex-column">
         <h1 className="display-2 fw-bold">
-          Frontend Coding MasterClass
+          Web Designer 
         </h1>
         <p className="lead text-muted fs-3">
-          This is a 6-week Master Class that will take you from a beginner to a professional developer.
+          This class that will take you from a beginner to a professional web designer.
         </p>
       </article>
 
@@ -25,7 +25,7 @@ export default function FrontendCodingMasterclass() {
           <ul>
             <li><strong>Duration:</strong> 6 weeks (12 sessions)</li>
             <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li>
-            <li><strong>Price:</strong> R3,499 per course</li>
+            <li><strong>Price:</strong> R 11,549 per course</li>
             <li><strong>Format:</strong> In-person (George) or online via Zoom</li>
             <li><strong>Includes:</strong> Certificate of completion, course materials, and lifetime access to resources</li>
           </ul>
@@ -199,7 +199,7 @@ export default function FrontendCodingMasterclass() {
           <div className="card shadow-sm p-4">
             <h3>Enroll Now</h3>
             <p className="text-muted">Limited seats available</p>
-            <p className="display-6 fw-bold text-danger">R3,499</p>
+            <p className="display-6 fw-bold text-danger">R11,549</p>
             <p className="small">Includes all course materials and certificate</p>
             <a href="/contact" className="btn rounded-pill btn-danger btn-lg w-100">
               Register Now →

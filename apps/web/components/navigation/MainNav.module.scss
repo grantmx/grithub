@@ -13,6 +13,7 @@
     justify-content: flex-end;
     align-items: center;
     align-content: center;
+    gap: 2rem;
 
     @media (max-width: 1140px){
         a{
@@ -26,14 +27,16 @@
     }
    
     @media (max-width: 992px){
+        gap: 1rem;
         position: fixed;
         z-index: 999;
-        bottom: 0;
+        bottom: -16px;
         left: 0;
         width: 100%;
         background-color: #fff;
         justify-content: space-between;
-        padding: 5px 20px;
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding: .5rem;
         box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
 
         a{
@@ -42,7 +45,6 @@
             text-align: center;
             justify-content: center;
             align-items: center;
-            padding: .5rem;
             display: flex;
             flex-direction: column;
         }

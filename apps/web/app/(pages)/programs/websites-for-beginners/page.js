@@ -1,9 +1,9 @@
 export default function WebsitesForBeginners() {
   return (
-    <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5">
+    <section className="container-xxl d-flex flex-column mb-5">
       <article className="container-xxl d-flex pt-5 px-0 flex-column">
         <h1 className="display-2 fw-bold">
-          Websites for Beginners
+          Website (HTML) Programmer
         </h1>
         <p className="lead text-muted fs-3">
           NO CODING EXPERIENCE REQUIRED. By the end of this course, you will have designed and built your own multi-page website.
@@ -23,7 +23,7 @@ export default function WebsitesForBeginners() {
           <ul>
             <li><strong>Duration:</strong> 4 weeks (8 sessions)</li>
             <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li>
-            <li><strong>Price:</strong> R2,999 per course</li>
+            <li><strong>Price:</strong> R 11,549 per course</li>
             <li><strong>Format:</strong> In-person (George) or online via Zoom</li>
             <li><strong>Includes:</strong> Certificate of completion, website hosting for 1 year, course materials</li>
           </ul>
@@ -140,7 +140,7 @@ export default function WebsitesForBeginners() {
           <div className="card shadow-sm p-4">
             <h3>Enroll Now</h3>
             <p className="text-muted">No experience needed!</p>
-            <p className="display-6 fw-bold text-danger">R2,999</p>
+            <p className="display-6 fw-bold text-danger"> R 11,549</p>
             <p className="small">Includes 1 year of free hosting</p>
             <a href="/contact" className="btn rounded-pill btn-danger btn-lg w-100">
               Register Now →
