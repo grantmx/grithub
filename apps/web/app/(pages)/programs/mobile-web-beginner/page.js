@@ -115,11 +115,11 @@ export default function MobileWebBeginner() {
 
           <h3 className="mt-5">What You'll Achieve</h3>
           <ul>
-            <li>✅ Understand mobile-first design principles</li>
-            <li>✅ Make any website responsive for all devices</li>
-            <li>✅ Optimize websites for mobile user experience</li>
-            <li>✅ Test websites across multiple devices</li>
-            <li>✅ Improve mobile website performance</li>
+            <li>Understand mobile-first design principles</li>
+            <li>Make any website responsive for all devices</li>
+            <li>Optimize websites for mobile user experience</li>
+            <li>Test websites across multiple devices</li>
+            <li>Improve mobile website performance</li>
           </ul>
         </div>
 

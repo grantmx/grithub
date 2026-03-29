@@ -1,3 +1,15 @@
+export const metadata = {
+    openGraph:{
+        title: "React (Advanced)",
+        description: "This class that will take you from a beginner to a professional React developer.",
+    },
+    title: "React (Advanced)",
+    description: "This class that will take you from a beginner to a professional React developer.",
+    alternates: {
+        canonical: "https://grithub.co.za/programs/react-advanced"
+    }
+}
+
 export default function ReactAdvanced() {
   return (
     <section className="container-xxl d-flex flex-column mb-5">
@@ -116,11 +128,11 @@ export default function ReactAdvanced() {
 
           <h3 className="mt-5">What You'll Achieve</h3>
           <ul>
-            <li>✅ Build production-ready React applications</li>
-            <li>✅ Master React hooks and patterns</li>
-            <li>✅ Manage complex application state</li>
-            <li>✅ Fetch and display data from APIs</li>
-            <li>✅ Deploy React apps to production</li>
+            <li>Build production-ready React applications</li>
+            <li>Master React hooks and patterns</li>
+            <li>Manage complex application state</li>
+            <li>Fetch and display data from APIs</li>
+            <li>Deploy React apps to production</li>
           </ul>
         </div>
 

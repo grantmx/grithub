@@ -54,7 +54,7 @@ export default async function Home(){
 					<div className={Style.hero}>
 						<MainNav clear />
 
-						<div className="col-11 col-md-8 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
+						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
 							<p className={Style.heroText}>Learn. Grow. Go.</p>
 							<p className={Style.heroSubText}>We drive innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
 							<p>
@@ -66,22 +66,24 @@ export default async function Home(){
 
 
 						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-lg-block"])}>
-							<small className="text-white w-100 mb-2">
+							<p className="text-white w-100 mb-2">
 								Our strategic partners and stakeholders
-							</small>
+							</p>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap" style={{ gap: "1rem" }}>
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
 											alt="AfriLabs" 
-											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											width={250}
+											className={clsx(Style.whiteLogo)}
+											style={{ width: "100%", height: "auto" }}
 										/>
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="QCTO" href="https://www.qcto.org.za" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={qcto}
@@ -91,7 +93,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="MICT SETA" href="https://www.mict.org.za" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={mictseta}
@@ -102,7 +104,7 @@ export default async function Home(){
 								</div>
 
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -116,7 +118,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="rasberry pi foundation proud supporter" href="https://www.raspberrypi.org/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={rasberypifoundation}
@@ -126,7 +128,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src="/assets/partners/sevengage-logo.svg" 
@@ -138,7 +140,7 @@ export default async function Home(){
 									</a>
 								</div>
 								
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
@@ -148,7 +150,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-block">
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="mossel bay business chamber member" href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={mosselBay}
@@ -300,7 +302,7 @@ export default async function Home(){
 				</section>
 
 
-
+{/* 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
 						STEM Education Programs
@@ -354,7 +356,7 @@ export default async function Home(){
 							</div>
 						</div>
 					</div>
-				</section>
+				</section> */}
 
 
 
@@ -368,62 +370,101 @@ export default async function Home(){
 						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
 					</p>
 
-
-					{/* <div className="col-12 d-flex justify-content-between flex-wrap mb-5">
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="shadow-lg position-relative align-items-center">
-								<Link href="/programs/register/masterclass" title="register for masterclass">
-									<Image 
-										src={masterclassImg.src} 
-										width={400} 
-										height={400} 
-										alt="masterclass" 
-										className={Style.adImg}
-										placeholder='blur'
-										blurDataURL={masterclassImg.blurDataURL}
-									/>
-								</Link>
+					<div className="container-xxl col-12 d-flex justify-content-between flex-wrap">
+							<div className="col-xl-4 col-md-6 col-12 p-3">
+								<div className="card shadow-sm position-relative h-100 align-items-center">
+									<div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+									<Image src="/assets/web-design.svg" width={400} height={200} className={Style.cardTopOverflow} alt="html" />
+									<div className="card-body d-flex flex-column justify-content-between">
+										<h3 className="card-title fs-4 fw-bold">Web Designer</h3>
+										<p className="card-text">
+											<strong>QCTO Accredited Course:</strong> By the end of this course, you will be able to design and build a multi-page website using HTML, CSS and JavaScript. You will have a basic understanding of how the internet works, how to select a hosting service, and publish your hand-made website for the world to see.
+										</p>
+										
+										<p className="d-grid">
+											<Link 
+												href="/programs/web-designer" 
+												title="learn more about Web Designer"
+												className="btn rounded-pill btn-danger btn-lg"
+											>
+												Read more &nbsp;&rsaquo;
+											</Link>
+										</p>
+									</div>
+								</div>
 							</div>
-						</div>
+
+							{/* <div className="col-xl-4 col-md-6 col-12 p-3">
+								<div className="card shadow-sm position-relative h-100 align-items-center">
+								<div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+									<Image src="/assets/programmer.svg" width={150} height={150} className={Style.cardTopOverflow} alt="Hackathons"/>
+									<div className="card-body d-flex flex-column justify-content-between">
+										<h3 className="card-title fs-4 fw-bold">Technopreneur</h3>
+
+										<p className="card-text">
+											<strong>QCTO Accredited Course:</strong> This is a class that will take you from a beginner to a professional technopreneur.  You will learn how to ideate, validate, build and launch a technology startup.  This class is for those who want to learn to build and launch a technology startup.
+										</p>
+									</div>
+								</div>
+							</div> */}
 
 
-						
 
 
+							<div className="col-xl-4 col-md-6 col-12 p-3">
+								<div className="card shadow-sm position-relative h-100 align-items-center">
+									<div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+									<Image src="/assets/html.png" width={150} height={150} className={Style.cardTopOverflow} alt="html" />
+									<div className="card-body d-flex flex-column justify-content-between">
+										<h3 className="card-title fs-4 fw-bold">Website (HTML) Programmer</h3>
+										<p className="card-text"><strong>QCTO Accredited Course:</strong> By the end of this course, you will be able to describe how the world wide web works and have a basic understanding of the internet. You would have designed and built your own multi-page website, select a hosting service, and publish your hand-made website for the world to see.</p>
+										
+										<p className="d-grid">
+											<Link 
+												href="/programs/websites-for-beginners" 
+												title="learn more about websites for beginners"
+												className="btn rounded-pill btn-danger btn-lg"
+											>
+												Read more &nbsp;&rsaquo;
+											</Link>
+										</p>
 
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="shadow-lg position-relative align-items-center">
-								<a href={`https://wa.me/270448743349?text=${encodeURI(`Hi, I'm looking to book for the AI Prompt Engineering Class at GRIT Hub`)}`} title="register for ai prompt class">
-									<Image 
-										src={aipromptImg.src} 
-										width={400} 
-										height={400} 
-										alt="ai prompt" 
-										className={Style.adImg}
-										placeholder='blur'
-										blurDataURL={aipromptImg.blurDataURL}
-									/>
-								</a>
+									</div>
+								</div>
 							</div>
-						</div>
+
+                    
 
 
-						<div className="col-xl-4 col-md-6 col-12 p-3">
-							<div className="shadow-lg position-relative align-items-center">
-								<a href={`https://wa.me/270448743349?text=${encodeURI(`Hi, I'm looking to book for the eCommerce Class at GRIT Hub`)}`} title="register for ecommm class">
-									<Image 
-										src={ecommImg.src} 
-										width={400} 
-										height={400} 
-										alt="ecommerce class" 
-										className={Style.adImg}
-										placeholder='blur'
-										blurDataURL={ecommImg.blurDataURL}
-									/>
-								</a>
+							<div className="col-xl-4 col-md-6 col-12 p-3">
+								<div className="card shadow-sm position-relative h-100 align-items-center">
+									<div className={ribbon.ribbon_top_right}><span>QCTO</span></div>
+									<Image src="/assets/js.png" width={150} height={150} className={Style.cardTopOverflow} alt="javascript"  />
+									<div className="card-body d-flex flex-column justify-content-between">
+										<h3 className="card-title fs-4 fw-bold">JavaScript Programmer</h3>
+										
+										<p className="card-text"><strong>QCTO Accredited Course:</strong> Learn the history of JavaScript; how to write proper functional JavaScript syntax and Object Oriented Programming concepts; You should be able to iterate data and show the results in the browser and have completed a JavaScript application.</p>
+										
+
+										<p className="d-grid">
+											<Link 
+												href="/programs/intro-into-javascript" 
+												title="learn more about Intro into JavaScript"
+												className="btn rounded-pill btn-danger btn-lg"
+											>
+												Read more &nbsp;&rsaquo;
+											</Link>
+										</p>
+
+										{/* <p className="d-grid">
+											<a href="https://grithub-za-1.hubspotpagebuilder.com/javascript" target='_blank' className="btn rounded-pill btn-success btn-lg" rel="noreferrer">
+												Register
+											</a>
+										</p> */}
+									</div>
+								</div>
 							</div>
-						</div>
-					</div> */}
+                	</div>
 				</section>
 
 

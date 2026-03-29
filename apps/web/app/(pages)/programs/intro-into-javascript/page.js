@@ -1,3 +1,17 @@
+
+export const metadata = {
+    openGraph:{
+        title: "JavaScript Programmer",
+        description: "Learn the history of JavaScript, functional syntax, Object Oriented Programming concepts, and build your first JavaScript application.",
+    },
+    title: "JavaScript Programmer",
+    description: "Learn the history of JavaScript, functional syntax, Object Oriented Programming concepts, and build your first JavaScript application.",
+    alternates: {
+        canonical: "https://grithub.co.za/programs/intro-into-javascript"
+    }
+}
+
+
 export default function IntroIntoJavaScript() {
   return (
     <section className="container-xxl d-flex flex-column mb-5">
@@ -13,6 +27,7 @@ export default function IntroIntoJavaScript() {
       <hr className="my-5" />
 
       <div className="col-12 d-flex flex-md-row flex-column mt-3">
+
         <div className="col-12 col-md-8 pe-md-5">
           <h2>Course Overview</h2>
           <p>
@@ -21,24 +36,20 @@ export default function IntroIntoJavaScript() {
 
           <h3 className="mt-4">Course Details</h3>
           <ul>
-            <li><strong>Duration:</strong> 6 weeks (12 sessions)</li>
-            <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li>
+            {/* <li><strong>Duration:</strong> 6 weeks (12 sessions)</li> */}
+            {/* <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li> */}
             <li><strong>Price:</strong> R 11,549 per course</li>
-            <li><strong>Format:</strong> In-person (George)</li>
+            <li><strong>Format:</strong> In-person (George) or online via Zoom</li>
             <li><strong>Prerequisite:</strong> Basic HTML & CSS knowledge recommended</li>
           </ul>
 
           <h2 className="mt-5">Course Syllabus</h2>
           
-          <div className="accordion mt-3" id="syllabusAccordion">
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#week1">
+            
+              <h3 className="fs-4">
                   Week 1: JavaScript Fundamentals
-                </button>
               </h3>
-              <div id="week1" className="accordion-collapse collapse show">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>History and evolution of JavaScript</li>
                     <li>Variables, data types, and operators</li>
@@ -47,18 +58,13 @@ export default function IntroIntoJavaScript() {
                     <li>Browser console and debugging</li>
                     <li><strong>Project:</strong> Create a simple greeting app</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
+        
 
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week2">
+              <h3 className="fs-4">
                   Week 2: Control Flow & Functions
-                </button>
               </h3>
-              <div id="week2" className="accordion-collapse collapse">
-                <div className="accordion-body">
+             
                   <ul>
                     <li>Conditional statements (if/else, switch)</li>
                     <li>Loops (for, while, forEach)</li>
@@ -67,18 +73,12 @@ export default function IntroIntoJavaScript() {
                     <li>Callback functions</li>
                     <li><strong>Project:</strong> Build a number guessing game</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+                
 
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week3">
+              <h3 className="fs-4">
                   Week 3: Arrays & Objects
-                </button>
               </h3>
-              <div id="week3" className="accordion-collapse collapse">
-                <div className="accordion-body">
+             
                   <ul>
                     <li>Working with arrays and array methods</li>
                     <li>Objects and properties</li>
@@ -87,18 +87,13 @@ export default function IntroIntoJavaScript() {
                     <li>Destructuring arrays and objects</li>
                     <li><strong>Project:</strong> Create a movie list app</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
 
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week4">
+
+              <h3 className="fs-4">
                   Week 4: DOM Manipulation
-                </button>
               </h3>
-              <div id="week4" className="accordion-collapse collapse">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>Selecting and modifying HTML elements</li>
                     <li>Event listeners and handling</li>
@@ -107,18 +102,13 @@ export default function IntroIntoJavaScript() {
                     <li>Working with local storage</li>
                     <li><strong>Project:</strong> Build a to-do list application</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
 
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week5">
+
+              <h3 className="fs-4">
                   Week 5: Object Oriented Programming
-                </button>
               </h3>
-              <div id="week5" className="accordion-collapse collapse">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>Constructor functions and classes</li>
                     <li>Prototypes and inheritance</li>
@@ -126,18 +116,13 @@ export default function IntroIntoJavaScript() {
                     <li>Creating reusable code</li>
                     <li><strong>Project:</strong> Build a simple banking app</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
 
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week6">
+           
+              <h3 className="fs-4">
                   Week 6: APIs & Final Project
-                </button>
               </h3>
-              <div id="week6" className="accordion-collapse collapse">
-                <div className="accordion-body">
+             
                   <ul>
                     <li>Introduction to APIs and JSON</li>
                     <li>Fetching data from external APIs</li>
@@ -145,19 +130,19 @@ export default function IntroIntoJavaScript() {
                     <li>Error handling</li>
                     <li><strong>Final Project:</strong> Build a weather app using a public API</li>
                   </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+               
+        
+         
 
           <h3 className="mt-5">What You'll Achieve</h3>
           <ul>
-            <li>✅ Write clean, functional JavaScript code</li>
-            <li>✅ Manipulate the DOM dynamically</li>
-            <li>✅ Work with arrays and objects</li>
-            <li>✅ Create interactive web applications</li>
-            <li>✅ Fetch and display data from APIs</li>
+            <li>Write clean, functional JavaScript code</li>
+            <li>Manipulate the DOM dynamically</li>
+            <li>Work with arrays and objects</li>
+            <li>Create interactive web applications</li>
+            <li>Fetch and display data from APIs</li>
           </ul>
+
         </div>
 
         <div className="col-12 col-md-4">
@@ -167,6 +152,19 @@ export default function IntroIntoJavaScript() {
             <a href="/contact" className="btn rounded-pill btn-danger btn-lg w-100">
               Register Now →
             </a>
+          </div>
+
+		  <div className="card shadow-sm p-4 mt-4">
+            <h4>Course Includes</h4>
+            <ul className="list-unstyled">
+              {/* <li>✓ 6 weeks of live instruction</li> */}
+              <li>✓ Course materials and resources</li>
+              <li>✓ Recorded sessions (for review)</li>
+              <li>✓ 1-on-1 mentorship</li>
+              <li>✓ Final project review</li>
+              <li>✓ Certificate of completion</li>
+              <li>✓ Lifetime access to resources</li>
+            </ul>
           </div>
         </div>
       </div>

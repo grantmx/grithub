@@ -1,3 +1,17 @@
+
+export const metadata = {
+    openGraph:{
+        title: "Website (HTML) Programmer",
+        description: "This class that will take you from a beginner to a professional web developer.",
+    },
+    title: "Website (HTML) Programmer",
+    description: "This class that will take you from a beginner to a professional web developer.",
+    alternates: {
+        canonical: "https://grithub.co.za/programs/websites-for-beginners"
+    }
+}
+
+
 export default function WebsitesForBeginners() {
   return (
     <section className="container-xxl d-flex flex-column mb-5">
@@ -21,8 +35,8 @@ export default function WebsitesForBeginners() {
 
           <h3 className="mt-4">Course Details</h3>
           <ul>
-            <li><strong>Duration:</strong> 4 weeks (8 sessions)</li>
-            <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li>
+            {/* <li><strong>Duration:</strong> 4 weeks (8 sessions)</li> */}
+            {/* <li><strong>Schedule:</strong> Saturday mornings, 9am - 12pm</li> */}
             <li><strong>Price:</strong> R 11,549 per course</li>
             <li><strong>Format:</strong> In-person (George) or online via Zoom</li>
             <li><strong>Includes:</strong> Certificate of completion, website hosting for 1 year, course materials</li>
@@ -33,18 +47,14 @@ export default function WebsitesForBeginners() {
             No coding experience required! Just bring your own laptop (Mac or PC). 
           </p>
 
-          <h2 className="mt-5">Course Syllabus</h2>
+          <h2 className="mt-5 fs-2">Course Syllabus</h2>
           
-          <div className="accordion mt-3" id="syllabusAccordion">
+         
             {/* Week 1 */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#week1">
+              <h3 className="fs-4">
                   Week 1: Understanding the Web
-                </button>
               </h3>
-              <div id="week1" className="accordion-collapse collapse show" data-bs-parent="#syllabusAccordion">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>How the internet works</li>
                     <li>Web browsers and servers explained</li>
@@ -53,19 +63,13 @@ export default function WebsitesForBeginners() {
                     <li>Creating your first webpage</li>
                     <li><strong>Project:</strong> Create a simple "About Me" page</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
 
             {/* Week 2 */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week2">
+              <h3 className="fs-4">
                   Week 2: Building Web Pages
-                </button>
               </h3>
-              <div id="week2" className="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
-                <div className="accordion-body">
+             
                   <ul>
                     <li>HTML structure and syntax</li>
                     <li>Headings, paragraphs, and lists</li>
@@ -74,19 +78,13 @@ export default function WebsitesForBeginners() {
                     <li>Multi-page websites</li>
                     <li><strong>Project:</strong> Build a 3-page personal website</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+                
 
             {/* Week 3 */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week3">
+              <h3 className="fs-4">
                   Week 3: Making It Beautiful with CSS
-                </button>
               </h3>
-              <div id="week3" className="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>Introduction to CSS</li>
                     <li>Colors, fonts, and spacing</li>
@@ -95,19 +93,13 @@ export default function WebsitesForBeginners() {
                     <li>Making websites mobile-friendly</li>
                     <li><strong>Project:</strong> Style your personal website</li>
                   </ul>
-                </div>
-              </div>
-            </div>
+               
 
             {/* Week 4 */}
-            <div className="accordion-item">
-              <h3 className="accordion-header">
-                <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#week4">
+              <h3 className="fs-4">
                   Week 4: Publishing Your Website
-                </button>
               </h3>
-              <div id="week4" className="accordion-collapse collapse" data-bs-parent="#syllabusAccordion">
-                <div className="accordion-body">
+              
                   <ul>
                     <li>Choosing a hosting provider</li>
                     <li>Purchasing a domain name</li>
@@ -116,19 +108,19 @@ export default function WebsitesForBeginners() {
                     <li>Introduction to SEO basics</li>
                     <li><strong>Final Project:</strong> Publish your live website to the internet</li>
                   </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+                
+
+
+      
 
           <h3 className="mt-5">What You'll Achieve</h3>
           <ul>
-            <li>✅ Understand how websites and the internet work</li>
-            <li>✅ Build a complete multi-page website from scratch</li>
-            <li>✅ Style websites with CSS</li>
-            <li>✅ Make websites responsive for mobile devices</li>
-            <li>✅ Publish your website live on the internet</li>
-            <li>✅ Earn a certificate of completion</li>
+            <li>Understand how websites and the internet work</li>
+            <li>Build a complete multi-page website from scratch</li>
+            <li>Style websites with CSS</li>
+            <li>Make websites responsive for mobile devices</li>
+            <li>Publish your website live on the internet</li>
+            <li>Earn a certificate of completion</li>
           </ul>
 
           <div className="alert alert-success mt-4">
@@ -148,13 +140,30 @@ export default function WebsitesForBeginners() {
             <hr />
             <p className="small text-muted mt-3">
               <strong>What's included:</strong><br />
-              • 4 weeks of instruction<br />
+              {/* • 4 weeks of instruction<br /> */}
               • 1 year free website hosting<br />
               • Course materials<br />
               • Certificate of completion
             </p>
           </div>
+
+          <div className="card shadow-sm p-4 mt-4">
+            <h4>Course Includes</h4>
+            <ul className="list-unstyled">
+              {/* <li>✓ 6 weeks of live instruction</li> */}
+              <li>✓ Course materials and resources</li>
+              <li>✓ Recorded sessions (for review)</li>
+              <li>✓ 1-on-1 mentorship</li>
+              <li>✓ Final project review</li>
+              <li>✓ Certificate of completion</li>
+              <li>✓ Lifetime access to resources</li>
+            </ul>
+          </div>
+
+
         </div>
+
+
       </div>
     </section>
   );

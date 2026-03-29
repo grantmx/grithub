@@ -1,3 +1,17 @@
+export const metadata = {
+    openGraph:{
+        title: "Next.js (Advanced)",
+        description: "This class that will take you from a beginner to a professional Next.js developer.",
+    },
+    title: "Next.js (Advanced)",
+    description: "This class that will take you from a beginner to a professional Next.js developer.",
+    alternates: {
+        canonical: "https://grithub.co.za/programs/nextjs-advanced"
+    }
+}
+
+
+
 export default function NextJsAdvanced() {
   return (
     <section className="container-xxl d-flex flex-column mb-5">
@@ -116,11 +130,11 @@ export default function NextJsAdvanced() {
 
           <h3 className="mt-5">What You'll Achieve</h3>
           <ul>
-            <li>✅ Master Next.js App Router architecture</li>
-            <li>✅ Build full-stack applications with API routes</li>
-            <li>✅ Optimize performance with appropriate rendering strategies</li>
-            <li>✅ Implement authentication and SEO</li>
-            <li>✅ Deploy production-ready Next.js applications</li>
+            <li>Master Next.js App Router architecture</li>
+            <li>Build full-stack applications with API routes</li>
+            <li>Optimize performance with appropriate rendering strategies</li>
+            <li>Implement authentication and SEO</li>
+            <li>Deploy production-ready Next.js applications</li>
           </ul>
 
           <div className="alert alert-success mt-4">
