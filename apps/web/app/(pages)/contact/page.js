@@ -79,7 +79,7 @@ async function ContactUs(){
 
 			<hr className="hr my-5"/>
 
-			<h3 className="display-3 text-center fw-bold">
+			<h3 className="display-3 text-center">
 				Want to partner with us?
 			</h3>
 			<p className="lead text-muted fs-3 text-center">
