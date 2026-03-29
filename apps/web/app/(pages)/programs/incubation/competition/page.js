@@ -33,7 +33,7 @@ function Competition(){
         <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5">
 
             <section className="d-flex flex-column mb-5">
-                <h1 className="display-2 fw-bold">
+                <h1 className="display-1">
                     Innovative Ideas Competition
                 </h1>			
 

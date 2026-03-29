@@ -29,8 +29,8 @@ async function Incubation(){
         //     image={image2}
         // >
         <>
-            <section className="container-xxl d-flex pt-4 flex-column mb-5" id="programs">
-                <h1 className="display-2 fw-bold">
+            <section className="container-xxl d-flex pt-5 flex-column mb-5" id="programs">
+                <h1 className="display-1">
                     SMME Incubation & Mentorship
                 </h1>
                 <p className="lead text-muted fs-3">

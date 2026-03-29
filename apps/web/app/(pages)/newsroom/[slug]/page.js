@@ -48,7 +48,7 @@ async function NewsArticle({ params }){
             <section className="container-xxl d-flex py-md-5 p-4 flex-column flex-md-row mb-5">
                 <article className="col-12 col-md-8 pe-md-5 mb-4">
                     <header className="mb-4">
-                        <h1 className="display-6 fw-bold mb-3">
+                        <h1 className="display-5 mb-3">
                             {post?.title}
                         </h1>
 

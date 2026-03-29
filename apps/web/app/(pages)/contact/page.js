@@ -26,7 +26,7 @@ async function ContactUs(){
 			<div className="col-12 d-flex flex-column flex-md-row">
 				<div className="col-12 col-md-8 pe-md-5 mb-4">
 
-					<h1 className="display-2 fw-bold">
+					<h1 className="display-1">
 						Contact Us
 					</h1>
 

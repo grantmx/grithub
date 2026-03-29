@@ -56,7 +56,7 @@ export default async function Home(){
 
 						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
 							<p className={Style.heroText}>Learn. Grow. Go.</p>
-							<p className={Style.heroSubText}>We drive innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
+							<p className={Style.heroSubText}>We are drivers of technology, innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
 							<p>
 								<Link href="/about" className="btn rounded-pill rounded-pill btn-danger btn-lg px-4" title='learn more about grit hub'>
 									Learn more
@@ -242,10 +242,10 @@ export default async function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-4 p-md-5 flex-column" id="about">
-					<h1 className="fw-bold display-4 mb-1 text-center">Garden Route Innovation &amp; Technology Hub</h1>
+					<h1 className="display-4 mb-3 text-center">Garden Route Innovation &amp; Technology Hub</h1>
 
 					<div className="text-center col-xl-12 col-12">
-						<p className='lead text-muted fs-3'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route area...and all it takes is GRIT and determination. </p>
+						<p className='lead text-muted fs-4'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route, South Africa, and across the continent.<br/>All it takes is GRIT and determination.</p>
 						{/* <p>Our duty is to empower community members and small businesses to actively participate in the local supply chain through collaborations with academia, business and government partners using modern technology and innovation.</p> */}
 					</div>
 				</section>
@@ -261,7 +261,7 @@ export default async function Home(){
 									<Image src="/assets/IMG_7441.jpg" width={500} height={333} className={Style.cardTopImg} alt="About our coworking spaces"/>
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h2 className="card-title fs-4 fw-bold">Coworking</h2>
+									<h3 className="card-title fs-4 fw-bold">Coworking</h3>
 									<p className="card-text">Modern, sleek and creative spaces fostering collaboration and productivity so that you can work without distraction. <Link href="/cowork" className="text-decoration-underline" title="more about coworking">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -273,7 +273,7 @@ export default async function Home(){
 									<Image src="/assets/ai-grithub-course-2025.jpg" width={500} height={333} className={Style.cardTopImg} alt="Workshops and Programs" />
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h2 className="card-title fs-4 fw-bold">Real Workforce Training</h2>
+									<h3 className="card-title fs-4 fw-bold">Real Workforce Training</h3>
 									<p className="card-text">Programing and Industry workshops using the latest real-world knowledge from industry experts. <Link href="/programs" className="text-decoration-underline" title="more about programs">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -285,7 +285,7 @@ export default async function Home(){
 									<Image src="/assets/incubator-thumb.jpg" width={500} height={333} className={Style.cardTopImg} alt="Entrepreneurship Incubation" />
 								</Link>
 								<div className="card-body d-flex flex-column">
-									<h2 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h2>
+									<h3 className="card-title fs-4 fw-bold">Entrepreneurship Incubation</h3>
 									<p className="card-text">Tailored workshops, networking, online learning and hands-on mentorship for accelerating business growth. <Link href="/incubation" className="text-decoration-underline" title="more about incubation">More &rsaquo;</Link></p>
 								</div>
 							</div>
@@ -294,7 +294,7 @@ export default async function Home(){
 						
 
 						<div className="d-md-flex d-xs-none d-xl-none col-xl-4 col-md-6 col-12 p-md-5 p-4 justify-content-center flex-column align-item-center">
-							<h2 className="display-6 fw-bold">We strive for wholistic change at every level of the economy.</h2>
+							<h3 className="display-6 fw-bold">We strive for wholistic change at every level of the economy.</h3>
 							<p className="lead">Our core values of: Collaboration, Equality, Responsibility, Entrepreneurial Ethic, Innovation and a Giving Spirit not only bind us, but guide us.</p>
 						</div>
 
@@ -361,7 +361,7 @@ export default async function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
-					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
+					<h2 className="display-5 mt-5 mb-0 text-center">
 						Up Coming Trainings, Courses & Programs
 					</h2>
 
@@ -481,11 +481,11 @@ export default async function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
-					<h2 className="fw-bold display-5 mt-5 mb-0 text-center">
+					<h2 className="display-3 mt-5 mb-0 text-center">
 						Our Newsroom
 					</h2>
 
-					<p className="lead text-muted fs-3 text-center mb-5">
+					<p className="lead text-muted fs-4 text-center mb-5">
 						Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
 					

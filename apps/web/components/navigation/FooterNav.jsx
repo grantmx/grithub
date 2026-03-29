@@ -17,7 +17,7 @@ function FooterNav(){
                     className='w-md-100'
                 />
                 
-                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (CIPC: 2021/502703/08) catalyzing innovation and technology in the digital economy.</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (CIPC: 2021/502703/08) and an QCTO accredited Skills Development Provider (SDP180326090759) catalyzing innovation and technology in the digital economy.</small>
                 
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
@@ -77,7 +77,7 @@ function FooterNav(){
             </div>
              
             <small className="col-12 px-0 py-5 py-md-4 mb-5 mb-md-0 border-top mt-2 text-center text-muted">
-                <Suspense><CopyrightDate /></Suspense> Garden Route Innovation & Technology Hub, NPC. All rights reserved.  &nbsp;&nbsp; <Link href="/about" title="terms of use">About Us</Link> &nbsp;|&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
+                <Suspense><CopyrightDate /></Suspense> Garden Route Innovation & Technology Hub, NPC (GRIT Hub). All rights reserved.  &nbsp;&nbsp; <Link href="/about" title="terms of use">About Us</Link> &nbsp;|&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
             </small>
         </footer>
     )

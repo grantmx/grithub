@@ -25,7 +25,7 @@ async function CoWork(){
 		<section className="container-xxl d-flex pt-5 flex-column mb-5" id="coworking">
 			<div className="col-12 d-flex flex-column flex-md-row">
 				<div className="col-12 col-md-8 pe-md-5 mb-4">
-					<h1 className="display-2 fw-bold">
+					<h1 className="display-1">
 						Coworking in George
 					</h1>
 
@@ -90,7 +90,7 @@ async function CoWork(){
 				
 
 			<div className="col-12 d-flex align-items-center flex-column mt-5">
-				<h2 className="fw-bold display-4">Facility Highlights</h2>
+				<h2 className="display-4">Facility Highlights</h2>
 
 				<div className="col-12 d-flex flex-wrap">
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
@@ -130,7 +130,7 @@ async function CoWork(){
 
 			<hr className="hr my-5"/>
 
-			<h3 className="display-3 text-center fw-bold">Ready to join us?</h3>
+			<h2 className="display-3 text-center">Ready to join us?</h2>
 			<p className="lead text-muted fs-3 text-center">
 				Join our fully furnished and modern coworking and meeting spaces to inspire creativity and promote cluster collaboration in George, Western Cape, South Africa.
 			</p>

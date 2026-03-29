@@ -20,9 +20,9 @@ function NewsroomPod({ slug, mainImage, title, publishedAt }){
                 />
                 
                 <div className="card-body d-flex flex-column justify-content-between">
-                    <h2 className="card-title fs-5 fw-bold">
+                    <h3 className="card-title fs-5 fw-bold">
                         {title}
-                    </h2>
+                    </h3>
                     <small className="text-muted fs-7 mb-3">
                         {new Date(publishedAt).toLocaleDateString('en-GB', {
                             year: 'numeric',

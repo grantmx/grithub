@@ -25,7 +25,7 @@ export default function Programs(){
     return(
         <>
             <section className="container-xxl d-flex pt-5 flex-column mb-5" id="programs">
-                <h1 className="display-2 fw-bold">
+                <h1 className="display-1">
                     Trainings, Programs &amp; Courses
                 </h1>
                 <p className="lead text-muted fs-3">
@@ -49,7 +49,7 @@ export default function Programs(){
 
                 <div className="col-md-5 col-12 py-md-5 py-3 pe-3 pe-md-5 d-flex justify-content-center flex-column">
                     <span className="lead text-muted">GRIT Hub Internships</span>
-                    <h2 className="fw-bold display-4 mb-3">
+                    <h2 className="display-4 mb-3">
                         Get hands on industry experience.
                     </h2>
                     <p className='lead'>Push yourself and get involved in meaningful real enterprise projects at GRIT Hub.  Apply for the GRIT Internship today.</p>
@@ -70,7 +70,7 @@ export default function Programs(){
 
 
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
-                <h2 className="fw-bold display-4 mt-5 mb-0 text-center">
+                <h2 className="display-2 mt-5 mb-0 text-center">
                     Real Life Workforce Training.<br/>Start Your Journey Now!
                 </h2>
 
@@ -298,7 +298,7 @@ export default function Programs(){
 
 
 
-                <h2 className="fw-bold display-5 mt-5 pt-5 mb-0 text-center">
+                <h2 className="display-2 my-5 pt-5 text-center">
                     STEM Education Programs
                 </h2>
 

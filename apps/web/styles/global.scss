@@ -97,11 +97,12 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 
 	// Typography
 	--font-stack: "Inter", Helvetica, Arial, sans-serif;
-	--font-family-sans-serif: --font-stack;
+	--font-family-sans-serif: var(--font-stack);
+	--font-family-serif: "Playfair Display", Georgia, serif;
 
 	--letter-spacing: 0.05rem;
 	--font-size-base: 1.6rem;
-	--font-size-mobile: --font-size-base - 0.4; // ~1.6rem
+	--font-size-mobile: calc(var(--font-size-base) - 0.4rem); // ~1.6rem
 
 	--font-size-h1: --font-size-base + 3; 
 	--font-size-h2: --font-size-base + 2.2; 
@@ -140,4 +141,10 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 	--star-orangebackground: #E5A778;
 	--star-bluebackground: #4c7b9a;
 	--toastify-toast-background: #222 !important;
+}
+
+
+h1, h2{
+	font-family: var(--font-family-serif);
+	font-weight: 600;
 }

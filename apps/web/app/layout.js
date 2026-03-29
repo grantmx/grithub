@@ -4,7 +4,8 @@ import { Analytics } from "@vercel/analytics/react"
 import GoogleEventTracker from '../thirdparty/google/GoogleEventTracker'
 import OrganizationSchema from '@/components/schema/Organization';
 import { Suspense } from 'react';
-import { Inter } from "next/font/google"
+import { Inter, Playfair_Display } from "next/font/google"
+import clsx from "clsx";
 
 
 const rubik = Inter({
@@ -12,6 +13,10 @@ const rubik = Inter({
     display: 'swap',
 })
 
+const playfairDisplay = Playfair_Display({
+    subsets: ['latin'],
+    display: 'swap',
+})
 
 export const metadata = {
     metadataBase: "https://grithub.org.za",
@@ -41,7 +46,7 @@ export const viewport = {
 
 function RootLayout({ children }){
     return(
-        <html lang="en" className={rubik.className}>     
+        <html lang="en" className={clsx(rubik.className, playfairDisplay.className)}>     
             <body>
                 {children}
 

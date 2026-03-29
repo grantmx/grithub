@@ -2,7 +2,7 @@ export default function MobileWebBeginner() {
   return (
     <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5">
       <article className="container-xxl d-flex pt-5 px-0 flex-column">
-        <h1 className="display-2 fw-bold">
+        <h1 className="display-1">
           Mobile Web (Beginner)
         </h1>
         <p className="lead text-muted fs-3">
