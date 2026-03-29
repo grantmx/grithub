@@ -31,7 +31,7 @@ async function Incubation(){
         <>
             <section className="container-xxl d-flex pt-5 flex-column mb-5" id="programs">
                 <h1 className="display-1">
-                    SMME Incubation & Mentorship
+                    Incubation & Mentorship
                 </h1>
                 <p className="lead text-muted fs-3">
                     Our Incubator is custom designed for Small to Medium Enterprises to help grow digital skills, refine or create an online business model through masterclasses, workshops, events and direct mentorship.

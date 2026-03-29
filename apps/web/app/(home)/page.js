@@ -245,7 +245,7 @@ export default async function Home(){
 					<h1 className="display-4 mb-3 text-center">Garden Route Innovation &amp; Technology Hub</h1>
 
 					<div className="text-center col-xl-12 col-12">
-						<p className='lead text-muted fs-4'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route, South Africa, and across the continent.<br/>All it takes is GRIT and determination.</p>
+						<p className='lead text-muted fs-4'>We provide workforce training, apprenticeships, tools, and mentorship opportunities to individuals, small businesses and startups in the Garden Route, South Africa, and across the continent.<br/>All it takes is <u>GRIT</u> and determination.</p>
 						{/* <p>Our duty is to empower community members and small businesses to actively participate in the local supply chain through collaborations with academia, business and government partners using modern technology and innovation.</p> */}
 					</div>
 				</section>
@@ -361,13 +361,12 @@ export default async function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
-					<h2 className="display-5 mt-5 mb-0 text-center">
+					<h2 className="display-5 mt-5 mb-3 text-center">
 						Up Coming Trainings, Courses & Programs
 					</h2>
 
-					<p className="lead text-muted fs-3 text-center mb-5">
-						Identifying untapped inclusive human potential and refocusing it using the power of digital technology. &nbsp; 
-						<a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
+					<p className="lead text-muted fs-5 text-center mb-5">
+						Identifying untapped inclusive human potential and refocusing it using the power of digital technology.<br/><a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
 					</p>
 
 					<div className="container-xxl col-12 d-flex justify-content-between flex-wrap">
@@ -481,11 +480,11 @@ export default async function Home(){
 
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
-					<h2 className="display-3 mt-5 mb-0 text-center">
+					<h2 className="display-3 mt-5 mb-3 text-center">
 						Our Newsroom
 					</h2>
 
-					<p className="lead text-muted fs-4 text-center mb-5">
+					<p className="lead text-muted fs-5 text-center mb-5">
 						Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
 					
