@@ -29,11 +29,11 @@ async function CoWork(){
 						Coworking in George
 					</h1>
 
-					<h2 className="text-muted fw-light mb-4">Our office space in George provides a productive and secure work environment giving you the opportunity to network with like minded people.</h2>
+					<p className="lead text-muted fs-3">Our office space in George provides a productive and secure work environment giving you the opportunity to network with like minded people.</p>
 					
 					<p>At our core is an inspiring environment for collaboration, experimentation, and exploration. Here, individuals can exchange ideas, share experiences, and learn from one another to unlock new possibilities. We provide a secure and productive work setting for those who wish to take advantage of it. From audio-visual equipment to modern conference rooms and Hot Desks.</p>
 					
-					<h3 className="mb-2 mt-5">Find us at:</h3>
+					<h2 className="mb-2 mt-5 display-5">Find us at:</h2>
 
 					<address className="vcard">
 						<span className="fn">GRIT Hub CoWorking George</span><br />

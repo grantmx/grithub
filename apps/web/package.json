@@ -15,6 +15,8 @@
   "dependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-react": "^7.25.9",
+    "@c15t/nextjs": "^1.8.5",
+    "@c15t/scripts": "^1.0.1",
     "@hookform/error-message": "^2.0.1",
     "@portabletext/react": "^3.2.0",
     "@portabletext/to-html": "^2.0.13",

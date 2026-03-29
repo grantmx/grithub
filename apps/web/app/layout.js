@@ -6,7 +6,7 @@ import OrganizationSchema from '@/components/schema/Organization';
 import { Suspense } from 'react';
 import { Inter, Playfair_Display } from "next/font/google"
 import clsx from "clsx";
-
+import ConsentManager from "@/thirdparty/ConsentManager";
 
 const rubik = Inter({
     subsets: ['latin'],
@@ -48,7 +48,9 @@ function RootLayout({ children }){
     return(
         <html lang="en" className={clsx(rubik.className, playfairDisplay.className)}>     
             <body>
-                {children}
+                <ConsentManager>
+                    {children}
+                </ConsentManager>
 
                 <OrganizationSchema />
                

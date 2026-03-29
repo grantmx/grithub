@@ -36,7 +36,7 @@ async function MediaKit(){
                 </p>
 
                 
-                <h2 className="mt-5 fs-1">Logo Guidelines</h2>
+                <h2 className="mt-5 display-5">Logo Guidelines</h2>
                 <p className="col-8">Our logo must never be used in a way that implies an endorsement or affiliation with GRIT Hub where such a relationship does not exist, such as being featured on the cover of a book or in a TV commercial.</p>
 
                 <div className="my-5 pt-3 d-flex justify-content-evenly align-items-center">

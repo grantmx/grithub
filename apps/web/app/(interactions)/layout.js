@@ -2,7 +2,8 @@ import FooterNav from '../../components/navigation/FooterNav';
 import MainNav from '../../components/navigation/MainNav';
 import Style from '../(pages)/page.module.scss';
 
-function GeneralPageLayout({ children }){
+async function GeneralPageLayout({ children, params }){
+
     return(
         <>
             <main className="container-fluid d-flex p-0 flex-column">

@@ -3,7 +3,8 @@ import MainNav from '../../components/navigation/MainNav';
 import Style from './page.module.scss'
 
 
-function GeneralPageLayout({ children }){
+async function GeneralPageLayout({ children, params }){
+
     return(
         <>
             <main className="container-fluid d-flex p-0 flex-column">

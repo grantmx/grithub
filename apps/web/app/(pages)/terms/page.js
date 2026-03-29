@@ -6,7 +6,7 @@ function Terms(){
     
             <section className="container-fluid d-flex justify-content-center align-items-center py-5 flex-column" id="programs-workshops">
                 <article className="col-12 col-md-8">
-                    <h1 className="display-1 fw-bold">
+                    <h1 className="display-1">
                         Terms of Use
                     </h1>
 
@@ -14,7 +14,7 @@ function Terms(){
 
                     <p>Please note the Terms are written in English and to the extent any translated version of the Terms conflicts with the English version, the English version controls.</p>
 
-                    <h3><strong>Use of Services</strong></h3>
+                    <h2 className="display-5">Use of Services</h2>
 
                     <p>The Company offers a collection of online resources including news, downloads, videos, information and various e-mail services. &nbsp;Use of the Service is permitted solely to Users who are eighteen (18) years or older.&nbsp; Users under 18 may only use the Service with the involvement of a parent or guardian.</p>
 
@@ -30,7 +30,7 @@ function Terms(){
 
                     <p>You are solely responsible for your interactions with all other Users who access the Service. &nbsp;We reserve the right, but have no obligation, to monitor disputes between you and other Users. The Company shall have no liability for your interactions with other Users, or for any User's action or inaction.</p>
 
-                    <h3><strong>User Content and Conduct</strong></h3>
+                    <h2 className="display-5">User Content and Conduct</h2>
 
                     <p>By submitting any User Content to the Company you represent and warrant that:</p>
 
@@ -70,21 +70,21 @@ function Terms(){
                         <li>Bypassing the measures we may use to prevent or restrict access to the Service.</li>
                     </ul>
 
-                    <h3><strong>Company</strong><strong> Content</strong></h3>
+                    <h2 className="display-5">Company Content</h2>
 
                     <p>Except for your User Content, the Service and all materials therein or transferred thereby, including, without limitation, software, images, text, graphics, illustrations, logos, patents, trademarks, service marks, copyrights, photographs, audio, videos and music (the "Company Content"), and all intellectual property rights related thereto, are the exclusive property of the Company and its licensors. &nbsp;Except as explicitly provided herein, nothing in the Terms shall be deemed to create a license in or under any such intellectual property rights, and you agree not to sell, license, rent, modify, distribute, copy, reproduce, transmit, publicly display, publicly perform, publish, adapt, edit or create derivative works from any materials or content accessible on the Service, except those materials expressly made available to you on the Company’s website for your unlicensed use. &nbsp;Use of the Company Content or materials on the Service for any purpose not expressly permitted is strictly prohibited.</p>
 
                     <p>You may choose to or we may invite you to submit comments or ideas about the Service, including without limitation about how to improve the Service or our products ("Ideas"). &nbsp;By submitting any Idea, you agree that your disclosure is gratuitous, unsolicited and without restriction and will not place the Company under any fiduciary or other obligation, and that we are free to use the Idea without any additional compensation or attribution to you, and/or to disclose the Idea on a non-confidential basis or otherwise to anyone. &nbsp;You agree not to submit an Idea that infringes any patent, trademark, trade secret, copyright or other proprietary rights of any party, or contains any information or content that you do not have a right to make available under any law or under contractual or fiduciary relationships. You further acknowledge that, by acceptance of your submission, the Company does not waive any rights to use similar or related ideas previously known to the Company, or developed by its employees, or obtained from sources other than you.</p>
 
-                    <h3><strong>Products from the </strong><strong>Company</strong></h3>
+                    <h2 className="display-5">Products from the Company</h2>
 
                     <p>Company attempts to be as accurate as possible in product descriptions.&nbsp; However, Company does not warrant that product descriptions or other content of the Service is accurate, complete, reliable, current or error-free.&nbsp;</p>
 
-                    <h3><strong>Privacy and Security</strong></h3>
+                    <h2 className="display-5">Privacy and Security</h2>
 
                     <p>Please review our <Link href="/privacy">Privacy Policy</Link>, which also governs your use of our Service.&nbsp;Your use of the Service constitutes acceptance of the Privacy Policy and you further acknowledge and agree that the Company may in its sole discretion preserve or disclose your User Content as well as your personal information if required to do so by law or in the good faith belief that such action is reasonably necessary to: enforce the Terms, comply with the legal process, respond to claims, and/or protect the rights, property, or personal safety of the Company, its Users, or the general public.</p>
 
-                    <h3><strong>General Information</strong></h3>
+                    <h2 className="display-5">General Information</h2>
 
                     <ul>
                         <li>Registration Number is: 2021/502703/08</li>
@@ -93,23 +93,23 @@ function Terms(){
                         <li>Email is: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></li>
                     </ul>
 
-                    <h3><strong>Third-Party Websites and Services</strong></h3>
+                    <h2 className="display-5">Third-Party Websites and Services</h2>
 
                     <p>The Service may contain links to co-branded and/or third-party websites and services that are independent from the Company and the Service. The Company has no control over and assumes no responsibility for the content, privacy policies, or practices of any third-party/co-branded websites or services nor makes any representation or warranty as to the accuracy, completeness or authenticity of the information contained in any such site. &nbsp;If you access a third-party/co-branded website from the Service, you do so at your own risk, and you understand that the Terms and the Privacy Policy do not apply to your use of such sites. &nbsp;You expressly relieve the Company from any and all liability arising from your use of any third-party/co-branded website or services or third-party/co-branded owned content. The Company encourages you to be aware of when you leave the Service, and to read the terms and conditions and privacy policy of any third-party website or service that you visit.</p>
 
                     <p>Additionally, your dealings with or participation with organizations and/or individuals found on or through the Service, including payment and delivery of goods or services, and any other terms, conditions, warranties or representations associated with such dealings are solely between you and such organizations and/or individuals. &nbsp;You agree that the Company shall not be responsible for any loss or damage of any sort relating to any such dealings.&nbsp; If there is a dispute between Users, or between Users and any third-party, you understand and agree that the Company is under no obligation to become involved. &nbsp;In the event that you have a dispute with one or more other Users, you hereby release the Company, its officers, employees, agents and successors in rights from claims, demands and damages (actual and consequential) of every kind or nature, known or unknown, suspected and unsuspected, disclosed and undisclosed, arising out of or in any way related to such disputes and/or the Service.</p>
 
-                    <h3><strong>Indemnity</strong></h3>
+                    <h2 className="display-5">Indemnity</h2>
 
                     <p>You agree to defend, indemnify and hold harmless the Company, its affiliates, agents, managers, and their employees, contractors, agents, officers and directors, third-party service providers from and against any and all claims, damages (actual or consequential), obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) of every kind and nature, known or unknown arising from: (i) your use of and access to the Service, including any data or content transmitted or received by you; (ii) your violation of the Terms, including without limitation your breach of any of the representations and warranties above; (iii) your violation of any third-party right, including without limitation any right of privacy, publicity rights or intellectual property rights; (iv) your violation of any law, rule or regulation of the South Africa or any other country; (v) any claims or damages that arise as a result of any of your User Content or any that is submitted via your account; or (vi) any other party's access and use of the Service with your unique username, password or other appropriate security code.</p>
 
-                    <h3><strong>No Warranty</strong></h3>
+                    <h2 className="display-5">No Warranty</h2>
 
                     <p>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. &nbsp;USE OF THE SERVICE IS AT YOUR OWN RISK. &nbsp;THE SERVICE IS PROVIDED WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. &nbsp;WITHOUT LIMITING THE FOREGOING, THE COMPANY, ITS SUBSIDIARIES, AND ITS LICENSORS DISCLAIM ANY WARRANTIES FOR THE SECURITY, TIMELINESS, ACCURACY, RELIABILITY, AND PERFORMANCE OF THE SERVICE AND CONTENT; THAT THE SERVICE WILL MEET YOUR REQUIREMENTS; THAT THE SERVICE WILL BE AVAILABLE AT ANY PARTICULAR TIME OR LOCATION, UNINTERRUPTED OR SECURE; THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED; OR THAT THE SERVICE OR ANY CONTENT ACCESSIBLE FROM THE SERVICE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. &nbsp;ANY CONTENT DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICE IS DOWNLOADED AT YOUR OWN RISK AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT RESULTS FROM SUCH DOWNLOAD.</p>
 
                     <p>THE COMPANY DOES NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICE OR ANY HYPERLINKED WEBSITE OR SERVICE, OR FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND THE COMPANY WILL NOT BE A PARTY TO OR IN ANY WAY MONITOR ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES.</p>
 
-                    <h3><strong>Limitation of Liability</strong></h3>
+                    <h2 className="display-5">Limitation of Liability</h2>
 
                     <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL THE COMPANY, ITS AFFILIATES, DIRECTORS, EMPLOYEES OR ITS LICENSORS BE LIABLE FOR ANY DIRECT, INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THIS SERVICE. SUCH LIMITATION SHALL ALSO APPLY WITH RESPECT TO DAMAGES INCURRED BY REASON OF OTHER SERVICES OR PRODUCTS RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE SERVICE OR ANY LINKS ON THE SERVICE AS WELL AS BY REASON OF ANY INFORMATION OR ADVICE RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE SERVICE OR THROUGH ANY LINKS.&nbsp; UNDER NO CIRCUMSTANCES WILL THE COMPANY BE RESPONSIBLE FOR ANY DAMAGE, LOSS OR INJURY RESULTING FROM HACKING, TAMPERING OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICE OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.</p>
 
@@ -117,7 +117,7 @@ function Terms(){
 
                     <p>THIS LIMITATION OF LIABILITY SECTION APPLIES WHETHER THE ALLEGED LIABILITY IS BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR ANY OTHER BASIS, EVEN IF THE COMPANY HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.</p>
 
-                    <h3><strong>General</strong></h3>
+                    <h2 className="display-5">General</h2>
 
                     <p><strong>Governing Law.</strong> &nbsp;You agree that: (i) the Service shall be deemed solely based in Western Cape, South Africa; and (ii) the Service shall be deemed a passive one that does not give rise to personal jurisdiction over the Company, either specific or general, in jurisdictions other than Western Cape, South Africa. &nbsp;The Terms shall be governed by the internal substantive laws of the Western Cape Provence, South Africa, without respect to its conflict of laws principles. &nbsp;Any claim or dispute between you and the Company that arises in whole or in part from the Service shall be decided exclusively by a court of competent jurisdiction located in George, Western Cape South Africa.</p>
 
