@@ -372,7 +372,7 @@ export default async function Home(){
 						<div className="row gap-3 p-2">
 							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
 								<h3 className="card-title display-6 fw-bold">R2.45M+</h3>
-								<small className="card-body p-0 text-body-tertiary flex-grow-0">Capital mobilised into the ZA economy last year</small>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">International capital mobilised into the ZA economy last year</small>
 							</div>
 	
 							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
