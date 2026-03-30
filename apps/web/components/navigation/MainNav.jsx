@@ -6,7 +6,7 @@ import clsx from 'clsx'
 import Style from './MainNav.module.scss';
 import { usePathname } from 'next/navigation';
 
-function MainNav({ page, clear = false }) {
+function MainNav({ page = false, clear = false }) {
     const path = usePathname();
 
     return (

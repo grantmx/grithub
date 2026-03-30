@@ -9,6 +9,7 @@ import { PortableText } from '@portabletext/react'
 import ShareButtons from "components/newsroom/ShareButtons";
 import { blurImage, voidPortableText } from "lib/constants";
 import BodyImage from "components/newsroom/BodyImage";
+import { Suspense } from "react";
 
 
 async function NewsArticle({ params }){
@@ -44,7 +45,7 @@ async function NewsArticle({ params }){
     
    
     return(
-        <>
+        <Suspense>
             <section className="container-xxl d-flex py-md-5 p-4 flex-column flex-md-row mb-5">
                 <article className="col-12 col-md-8 pe-md-5 mb-4">
                     <header className="mb-4">
@@ -141,7 +142,7 @@ async function NewsArticle({ params }){
                 postDate={post?.publishedAt}
                 dateUpdated={post?._updatedAt}
             />
-        </>
+        </Suspense>
     )
 }
 
