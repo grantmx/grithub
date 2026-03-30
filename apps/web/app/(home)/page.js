@@ -372,12 +372,12 @@ export default async function Home(){
 						<div className="row gap-3 p-2">
 							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
 								<h3 className="card-title display-6 fw-bold">R2.45M+</h3>
-								<small className="card-body p-0 text-body-tertiary flex-grow-0">Capital mobilised into the ZA economy in 2025</small>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">Capital mobilised into the ZA economy last year</small>
 							</div>
 	
 							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
 								<h3 className="card-title display-5 fw-bold">120+</h3>
-								<small className="card-body p-0 text-body-tertiary flex-grow-0">SMMEs and entrepreneurs supported</small>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">SMMEs and entrepreneurs supported & trained</small>
 							</div>
 
 							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
