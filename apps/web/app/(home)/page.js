@@ -359,13 +359,61 @@ export default async function Home(){
 				</section> */}
 
 
+				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 pb-5 flex-column">
+					<h2 className="display-5 mt-5 mb-3 text-center">
+						Our Impact
+					</h2>
+					<p className="lead text-muted fs-5 text-center px-5">
+						We build skills, enable entrepreneurs, and attract capital to turn opportunity into real economic participation.
+					</p>
+
+
+					<div className="container text-center">
+						<div className="row gap-3 p-2">
+							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+								<h3 className="card-title display-6 fw-bold">R2.45M+</h3>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">Capital mobilised into the ZA economy in 2025</small>
+							</div>
+	
+							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+								<h3 className="card-title display-5 fw-bold">120+</h3>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">SMMEs and entrepreneurs supported</small>
+							</div>
+
+							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+								<h3 className="card-title display-5 fw-bold">80+</h3>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">Ecosystem stakeholders engaged yearly</small>
+							</div>
+
+							{/* <div className="col card">
+								<h3 className="card-title">10+</h3>
+								<div className="card-body">Enterprise Support Organizations strengthened across the SADC region</div>
+							</div> */}
+
+							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+								<h3 className="card-title display-5 fw-bold">5,200+</h3>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">Youth code learning engagements delivered</small>
+							</div>
+
+							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+								<h3 className="card-title display-5 fw-bold">440+ </h3>
+								<small className="card-body p-0 text-body-tertiary flex-grow-0">Individuals engaged in digital skills development pathways</small>
+							</div>
+
+						</div>
+					</div>
+				</section>
+
+
+
+
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="display-5 mt-5 mb-3 text-center">
 						Up Coming Trainings, Courses & Programs
 					</h2>
 
-					<p className="lead text-muted fs-5 text-center mb-5">
+					<p className="lead text-muted fs-5 text-center mb-5 px-5">
 						Identifying untapped inclusive human potential and refocusing it using the power of digital technology.<br/><a href="/programs" title="learn more about our programs">View All Workforce Trainings and Programs &rsaquo;</a>
 					</p>
 
@@ -481,10 +529,10 @@ export default async function Home(){
 
 				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 mb-5 flex-column">
 					<h2 className="display-3 mt-5 mb-3 text-center">
-						Our Newsroom
+						Newsroom
 					</h2>
 
-					<p className="lead text-muted fs-5 text-center mb-5">
+					<p className="lead text-muted fs-5 text-center mb-5 ">
 						Stories, Insights, and Opportunities from GRIT Hub's Tech Ecosystem.<br/><a href="/newsroom" title="read all">View all newsroom articles &rsaquo;</a>
 					</p>
 					
