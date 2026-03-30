@@ -370,17 +370,17 @@ export default async function Home(){
 
 					<div className="container text-center">
 						<div className="row gap-3 p-2">
-							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
 								<h3 className="card-title display-6 fw-bold">R2.45M+</h3>
 								<small className="card-body p-0 text-body-tertiary flex-grow-0">Capital mobilised into the ZA economy last year</small>
 							</div>
 	
-							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
 								<h3 className="card-title display-5 fw-bold">120+</h3>
 								<small className="card-body p-0 text-body-tertiary flex-grow-0">SMMEs and entrepreneurs supported & trained</small>
 							</div>
 
-							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
 								<h3 className="card-title display-5 fw-bold">80+</h3>
 								<small className="card-body p-0 text-body-tertiary flex-grow-0">Ecosystem stakeholders engaged yearly</small>
 							</div>
@@ -390,12 +390,12 @@ export default async function Home(){
 								<div className="card-body">Enterprise Support Organizations strengthened across the SADC region</div>
 							</div> */}
 
-							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
-								<h3 className="card-title display-5 fw-bold">5,200+</h3>
+							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
+								<h3 className="card-title display-5 fw-bold">5,400+</h3>
 								<small className="card-body p-0 text-body-tertiary flex-grow-0">Youth code learning engagements delivered</small>
 							</div>
 
-							<div className="col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column">
+							<div className={clsx(Style.impactHighlight, "col-md card p-4 shadow-sm d-flex align-items-center justify-content-center flex-column")}>
 								<h3 className="card-title display-5 fw-bold">440+ </h3>
 								<small className="card-body p-0 text-body-tertiary flex-grow-0">Individuals engaged in digital skills development pathways</small>
 							</div>

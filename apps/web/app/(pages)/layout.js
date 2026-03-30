@@ -11,7 +11,9 @@ async function GeneralPageLayout({ children, params }){
             <main className="container-fluid d-flex p-0 flex-column">
                 <section className={Style.heroWrapper}>
                     <div className={Style.hero}>
-                        <MainNav page />
+                        <Suspense>
+                            <MainNav page />
+                        </Suspense>
 
                         {/* <div className={clsx(Style.headingWrapper)}>
                             <h1 className={Style.heading}>

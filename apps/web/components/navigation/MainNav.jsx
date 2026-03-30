@@ -21,13 +21,14 @@ function MainNav({ page = false, clear = false }) {
                         alt="GRITHub Logo" 
                     />
                 </a>
+
                 <menu className={Style.navbarNav}>
                     <Link className={clsx(Style.link, "nav-link", path === "/cowork" && Style.active)} href="/cowork" title='CoWorking'>
                         <Image src="/assets/activity.svg" width={20} height={20} className="d-lg-none" alt="GRITHub Coworking" />
                         CoWorking
                     </Link>
 
-                    <Link href="/programs" className={clsx(Style.link, "nav-link", path === "/programs" && Style.active)} title='Programs'>
+                    <Link href="/programs" className={clsx(Style.link, "nav-link", (path.includes("/programs") && path !== "/programs/incubation") && Style.active)} title='Programs'>
                         <Image src="/assets/people.svg" width={20} height={20} className="d-lg-none" alt="Program Events at GRITHub" />
                         Programs
                     </Link>
@@ -37,12 +38,12 @@ function MainNav({ page = false, clear = false }) {
                         Consulting
                     </Link>
 
-                    <Link className={clsx(Style.link, "nav-link", path === "/programs/incubation" && Style.active)} href="/programs/incubation" title="Incubation">
+                    <Link className={clsx(Style.link, "nav-link", path.includes("/programs/incubation") && Style.active)} href="/programs/incubation" title="Incubation">
                         <Image src="/assets/sun.svg" width={20} height={20} className="d-lg-none" alt="Business Incubation" />
                         Incubation
                     </Link>
 
-                    <Link className={clsx(Style.link, "nav-link", path === "/newsroom" && Style.active)} href="/newsroom" title="Newsroom">
+                    <Link className={clsx(Style.link, "nav-link", path.includes("/newsroom") && Style.active)} href="/newsroom" title="Newsroom">
                         <Image src="/assets/newspaper.svg" width={20} height={20} className="d-lg-none" alt="News" />
                         Newsroom
                     </Link>

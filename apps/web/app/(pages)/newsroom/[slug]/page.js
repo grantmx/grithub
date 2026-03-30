@@ -13,9 +13,12 @@ import { Suspense } from "react";
 
 
 async function NewsArticle({ params }){
-    const latest = await getLatestPosts({ end: 9 })
     const { slug } = await params;
-    const post = await getPostBySlug(slug)
+
+    const [ latest, post ] = await Promise.all([
+        getLatestPosts({ end: 9 }),
+        getPostBySlug(slug)
+    ]);
 
     // make this date human readable by day, full month, year: '2024-12-15T20:15:00.000Z'
     const date = new Date(post?.publishedAt).toLocaleDateString('en-GB', {
@@ -45,7 +48,7 @@ async function NewsArticle({ params }){
     
    
     return(
-        <Suspense>
+        <>
             <section className="container-xxl d-flex py-md-5 p-4 flex-column flex-md-row mb-5">
                 <article className="col-12 col-md-8 pe-md-5 mb-4">
                     <header className="mb-4">
@@ -142,7 +145,7 @@ async function NewsArticle({ params }){
                 postDate={post?.publishedAt}
                 dateUpdated={post?._updatedAt}
             />
-        </Suspense>
+        </>
     )
 }
 
