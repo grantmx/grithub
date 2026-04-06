@@ -48,6 +48,7 @@ export default async function Home(){
 							alt="See your future ahead of you" 
 							priority={true}
 							placeholder='blur'
+							fetchPriority='high'
 						/>
 					</picture>
 
@@ -72,7 +73,7 @@ export default async function Home(){
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap" style={{ gap: "1rem" }}>
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
-									<a title="AfriLabs Hub Member" href="https://afrilabs.com" target="_blank" className="d-block" rel="noreferrer">
+									<a title="AfriLabs Hub Member" href="https://www.afrilabs.com/hub/garden-route-innovation-and-technology-hub/" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={afriLabs}
 											alt="AfriLabs" 
@@ -141,7 +142,7 @@ export default async function Home(){
 								</div>
 								
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
-									<a title="george business chamber member" href="https://georgechamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
+									<a title="george business chamber member" href="https://georgechamber.co.za/business-listings/view/380" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={georgeBusiness}
 											alt="George Business Chamber." 

@@ -165,5 +165,9 @@
 
 .impactHighlight{
     border-bottom: 3px solid var(--bs-danger);
+
+    &:hover{
+        box-shadow: var(--bs-box-shadow) !important;
+    }
 }
 
