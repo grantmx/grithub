@@ -25,7 +25,7 @@ async function About(){
                         <h1 className="display-1">
                             About Us
                         </h1>
-                        <p className="lead text-muted fs-3">The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company with a simple mission: To identify untapped potential and refocus it using the power of digital technology.</p>
+                        <p className="lead text-muted fs-3">The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company (NPC) and a Section 18A Public Benefit Organisation (PBO) with a simple mission: To identify untapped potential and refocus it using the power of digital technology.</p>
                         
                         <hr className="my-5"/>
 
@@ -52,7 +52,8 @@ async function About(){
 
                         <h2>Strategy</h2>
 
-                        <p>In alignment with the National Integrated Small Enterprise Development (NISED) Masterplan 2022, our strategy focuses on creating empowerment opportunities through real workforce training, programming, and small business incubation.  In addition, assistance in overcoming SMME barriers to capital, technology, unlimited internet, and software access, as well as creating affordable shared co-working, co-creating, and workshop spaces.</p>
+                        <p>In alignment with the National Integrated Small Enterprise Development (NISED) Masterplan 2022, our strategy focuses on creating empowerment opportunities through real workforce training, targeted programming, and small business incubation. This includes actively supporting SMMEs in overcoming key barriers to capital, technology, reliable high-speed internet, and software access, while also establishing affordable shared co-working, co-creating, and workshop spaces.</p>
+                        <p>This approach is further aligned with the Western Cape Government's economic growth strategy, Growth for Jobs (G4J), adopted by the provincial cabinet in April 2023, which identifies technology, innovation, and entrepreneurship as critical drivers of inclusive economic growth in the Western Cape.</p>
                     </div>
 
                     <div className="col-12 col-md-5">

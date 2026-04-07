@@ -80,6 +80,8 @@ export default async function Home(){
 											width={250}
 											className={clsx(Style.whiteLogo)}
 											style={{ width: "100%", height: "auto" }}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -90,6 +92,8 @@ export default async function Home(){
 											src={qcto}
 											alt="QCTO" 
 											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -100,6 +104,8 @@ export default async function Home(){
 											src={mictseta}
 											alt="MICT SETA" 
 											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -125,6 +131,8 @@ export default async function Home(){
 											src={rasberypifoundation}
 											alt="Raspberry Pi Foundation" 
 											className={clsx(Style.partnerLogo)}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -137,6 +145,8 @@ export default async function Home(){
 											height={75} 
 											alt="Sevengage, Inc." 
 											className={Style.partnerLogo}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -147,6 +157,8 @@ export default async function Home(){
 											src={georgeBusiness}
 											alt="George Business Chamber." 
 											className={Style.partnerLogo}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -157,6 +169,8 @@ export default async function Home(){
 											src={mosselBay}
 											alt="Mossel Bay Business Chamber" 
 											className={Style.partnerLogo}
+											priority={true}
+											fetchPriority='high'
 										/>
 									</a>
 								</div>

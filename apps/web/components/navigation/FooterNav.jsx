@@ -17,7 +17,7 @@ function FooterNav(){
                     className='w-md-100'
                 />
                 
-                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit company (CIPC: 2021/502703/08) and an QCTO accredited Skills Development Provider (SDP180326090759) catalyzing innovation and technology in the digital economy.</small>
+                <small className="mt-2">Garden Route Innovation &amp; Technology Hub (GRIT Hub) is a registered Non-Profit Company (CIPC: 2021/502703/08), Public Benefit Organisation (PBO) and an QCTO accredited Skills Development Provider (SDP180326090759) catalyzing innovation and technology in the digital economy.</small>
                 
                 <address className="mt-3 pt-3 border-top lh-sm">
                     <small>
