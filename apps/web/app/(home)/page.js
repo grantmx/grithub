@@ -86,7 +86,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
+								{/* <div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="QCTO" href="https://www.qcto.org.za" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={qcto}
@@ -96,7 +96,7 @@ export default async function Home(){
 											fetchPriority='high'
 										/>
 									</a>
-								</div>
+								</div> */}
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="MICT SETA" href="https://www.mict.org.za" target="_blank" className="d-block" rel="noreferrer">
