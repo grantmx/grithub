@@ -31,7 +31,7 @@ export const bookingSettings = {
     },
     rates: {
         hourly: [
-            { id: "hot_desk", value: 49 },
+            { id: "hot_desk", value: 99 },
             { id: "event_conference_room", value: 499 },
         ],
         daily: [
