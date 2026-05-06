@@ -2,6 +2,21 @@ import Link from "next/link";
 import Style from "./Terms.module.scss";
 
 
+export const metadata = {
+    title: "Terms of Use",
+    description: "Read the Terms of Use for the Garden Route Innovation & Technology Hub (GRIT Hub) website and services. Understand your rights and responsibilities when accessing our resources, participating in our programmes, and engaging with our community. Stay informed about our policies on donations, facility use, events, payments, training, and more.",
+    opensGraph: {
+        title: "Terms of Use",
+        description: "Read the Terms of Use for the Garden Route Innovation & Technology Hub (GRIT Hub) website and services. Understand your rights and responsibilities when accessing our resources, participating in our programmes, and engaging with our community. Stay informed about our policies on donations, facility use, events, payments, training, and more.",
+        url: "https://grithub.co.za/terms",
+        siteName: "GRIT Hub",
+    },
+    alternates: {
+        canonical: "https://grithub.co.za/terms"
+    }
+}
+
+
 function Terms(){
     return(
     
@@ -22,7 +37,7 @@ function Terms(){
                     <p>GRIT Hub is a South African non-profit organisation focused on digital skills development, workforce training, entrepreneurship support, and innovation ecosystem development. We provide both accredited and non-accredited programmes, along with access to facilities, mentorship, and real-world project opportunities designed to support individuals in moving from learning into earning. As a registered Public Benefit Organisation, GRIT Hub operates to deliver measurable social and economic impact.</p>
                     
                     <h2 className="display-5 mt-5" id="pbo-status-and-donations">
-                        <a href="#pbo-status-and-donations" className={Style.headerAnchor}>Public Benefit Organisation (PBO) Status and Donations</a>
+                        <a href="#pbo-status-and-donations" className={Style.headerAnchor}>Public Benefit Organisation (PBO) Status & Donations</a>
                     </h2>
 
                     <p>The Garden Route Innovation & Technology Hub NPC (“GRIT Hub”) is a registered Public Benefit Organisation (PBO) in South Africa and operates in accordance with applicable laws and regulations governing non-profit and public benefit activities.</p>
@@ -38,7 +53,7 @@ function Terms(){
                     <p>Donors acknowledge that GRIT Hub operates within a broader ecosystem of partners and funders, and that reporting on the use of funds may be shared in aggregated or anonymised formats for accountability, impact measurement, and compliance purposes.</p>
 
                     <h2 className="display-5 mt-5" id="coworking-and-facility-use">
-                        <a href="#coworking-and-facility-use" className={Style.headerAnchor}>Coworking and Facility Use</a>
+                        <a href="#coworking-and-facility-use" className={Style.headerAnchor}>Coworking & Facility Use</a>
                     </h2>
 
                     <p>GRIT Hub provides access to coworking spaces, training rooms, and related facilities to support collaboration, learning, and business activities. Use of these facilities is at the participant’s own risk. GRIT Hub is not responsible for any loss, theft, or damage to personal belongings. Users are expected to act responsibly, respect shared spaces, follow operational and safety guidelines, and avoid any disruptive or unlawful behaviour. GRIT Hub reserves the right to revoke access to facilities at any time where necessary.</p>
@@ -58,7 +73,7 @@ function Terms(){
                     <p>Cancellations made outside of these timeframes may not be eligible for a refund. GRIT Hub reserves the right to assess cancellations on a case-by-case basis where exceptional circumstances apply.</p>
 
                     <h2 className="display-5  mt-5" id="events-workshops-and-media">
-                        <a href="#events-workshops-and-media" className={Style.headerAnchor}>Events, Workshops, and Media</a>
+                        <a href="#events-workshops-and-media" className={Style.headerAnchor}>Events, Workshops, & Media</a>
                     </h2>
 
                     <p>Participation in GRIT Hub events, workshops, and community activities is voluntary. While reasonable care is taken to ensure a safe environment, GRIT Hub is not liable for any injury, loss, or damage that may occur during participation.</p>
@@ -74,7 +89,7 @@ function Terms(){
                     <p>For sponsored or funded programmes, continued participation is expected. Failure to attend or comply with programme requirements may result in removal from the programme.</p>
 
                     <h2 className="display-5  mt-5" id="training-programmes-and-certification">
-                        <a href="#training-programmes-and-certification" className={Style.headerAnchor}>Training Programmes and Certification</a>
+                        <a href="#training-programmes-and-certification" className={Style.headerAnchor}>Training Programmes & Certification</a>
                     </h2>
 
                     <p>Participation in GRIT Hub training programmes requires active engagement, including attendance at scheduled sessions, completion of coursework, and participation in practical assignments or projects. For programmes aligned with the Quality Council for Trades and Occupations (QCTO), certification is subject to successful completion of all assessments, submission of a Portfolio of Evidence, and external moderation and verification processes. While GRIT Hub provides the training, support, and guidance necessary for completion, certification is not guaranteed unless all requirements are met.</p>
@@ -82,7 +97,7 @@ function Terms(){
                     <p>It is important to note that participation in any GRIT Hub programme does not guarantee employment, freelance income, business success, or placement opportunities. Outcomes depend on individual effort, performance, and broader market conditions.</p>
 
                     <h2 className="display-5  mt-5" id="work-experience-internships-and-projects">
-                        <a href="#work-experience-internships-and-projects" className={Style.headerAnchor}>Work Experience, Internships, and Projects</a>
+                        <a href="#work-experience-internships-and-projects" className={Style.headerAnchor}>Work Experience, Internships, & Projects</a>
                     </h2>
 
                     <p>As part of its programme approach, GRIT Hub may incorporate simulated or real-world project work, internships, or exposure to client-based assignments. These activities are designed to provide practical, hands-on experience and support portfolio development. Participation in such activities does not constitute employment and does not entitle participants to wages or compensation unless explicitly stated in writing.</p>
@@ -109,7 +124,7 @@ function Terms(){
                     <p>You are solely responsible for your interactions with all other Users who access the Service. &nbsp;We reserve the right, but have no obligation, to monitor disputes between you and other Users. GRIT Hub shall have no liability for your interactions with other Users, or for any User's action or inaction.</p>
 
                     <h2 className="display-5 mt-5" id="user-content-and-conduct">
-                        <a href="#user-content-and-conduct" className={Style.headerAnchor}>User Content and Conduct</a>
+                        <a href="#user-content-and-conduct" className={Style.headerAnchor}>User Content & Conduct</a>
                     </h2>
 
                     <p>By submitting any User Content to GRIT Hub you represent and warrant that:</p>
@@ -165,7 +180,7 @@ function Terms(){
                     <p>GRIT Hub attempts to be as accurate as possible in product descriptions.&nbsp; However, GRIT Hub does not warrant that product descriptions or other content of the Service is accurate, complete, reliable, current or error-free.&nbsp;</p>
 
                     <h2 className="display-5 mt-5" id="privacy-and-security">
-                        <a href="#privacy-and-security" className={Style.headerAnchor}>Privacy and Security</a>
+                        <a href="#privacy-and-security" className={Style.headerAnchor}>Privacy & Security</a>
                     </h2>
 
                     <p>Please review our <Link href="/privacy">Privacy Policy</Link>, which also governs your use of our Service.&nbsp;Your use of the Service constitutes acceptance of the Privacy Policy and you further acknowledge and agree that GRIT Hub may in its sole discretion preserve or disclose your User Content as well as your personal information if required to do so by law or in the good faith belief that such action is reasonably necessary to: enforce the Terms, comply with the legal process, respond to claims, and/or protect the rights, property, or personal safety of GRIT Hub, its Users, or the general public.</p>
