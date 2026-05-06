@@ -90,14 +90,14 @@ async function PrivacyPolicy(){
                     <h2 className="display-5 mt-5" id="contact-information">
                         <a href="#contact-information" className={Style.headerAnchor}>13. Contact Information</a>
                     </h2>
-                    <p>Garden Route Innovation & Technology Hub NPC<br />
-                    CIPC Registration Number: 2021/502703/08<br />
-                    Address: Office Suite #2, York Street Boulevard Shopping Center, George, South Africa<br />
-                    Website: <a href="https://grithub.org.za">https://grithub.org.za</a><br />
-                    Email: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></p>
-
-
-                    <p><em>This version reflects how GRIT Hub actually operates—across training, workforce development, partnerships, and community engagement—while aligning with South African data protection requirements and maintaining a clear, professional tone suitable for participants, partners, and funders.</em></p> 
+                    <ul>
+                        <li>CIPC Registration Number is: 2021/502703/08</li>
+                        <li>Tax Exempt Reference Number is: 930089024</li>
+                        <li>Skills Development Provider Number is: SDP180326090759</li>
+                        <li>Registered Address is: Office Suite #2 & #4, York Street Boulevard Shopping Center, George 6529</li>
+                        <li>Website is: <a href="https://grithub.org.za">https://grithub.org.za</a></li>
+                        <li>Email is: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></li>
+                    </ul>
 
                 </article>             
             </section>
