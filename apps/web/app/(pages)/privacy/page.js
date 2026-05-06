@@ -99,6 +99,8 @@ async function PrivacyPolicy(){
                         <li>Email is: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></li>
                     </ul>
 
+                    <p className="mt-5"><em>These Privacy Policy terms are effective as of January 1, 2026.</em></p>
+
                 </article>             
             </section>
     )

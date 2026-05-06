@@ -81,7 +81,7 @@ function Terms(){
                     <p>By attending events or participating in programmes, you acknowledge that photographs, video recordings, or other media may be captured. You grant GRIT Hub permission to use such media for marketing, reporting, documentation, and partner or funder communication purposes.</p>
 
                     <h2 className="display-5  mt-5" id="payments-and-refunds">
-                        <a href="#payments-and-refunds" className={Style.headerAnchor}>Payments and Refunds</a>
+                        <a href="#payments-and-refunds" className={Style.headerAnchor}>Payments & Refunds</a>
                     </h2>
 
                     <p>Certain programmes or services may require payment. Fees must be paid in accordance with the agreed terms prior to programme commencement unless otherwise specified. Refunds may be considered before the start of a programme at the discretion of GRIT Hub, but generally will not be issued once a programme has begun, except where required by law.</p>
@@ -199,7 +199,7 @@ function Terms(){
                     </ul>
 
                     <h2 className="display-5 mt-5" id="third-party-websites-and-services">
-                        <a href="#third-party-websites-and-services" className={Style.headerAnchor}>Third-Party Websites and Services</a>
+                        <a href="#third-party-websites-and-services" className={Style.headerAnchor}>Third-Party Websites & Services</a>
                     </h2>
 
                     <p>The Service may contain links to co-branded and/or third-party websites and services that are independent from GRIT Hub and the Service. GRIT Hub has no control over and assumes no responsibility for the content, privacy policies, or practices of any third-party/co-branded websites or services nor makes any representation or warranty as to the accuracy, completeness or authenticity of the information contained in any such site. &nbsp;If you access a third-party/co-branded website from the Service, you do so at your own risk, and you understand that the Terms and the Privacy Policy do not apply to your use of such sites. &nbsp;You expressly relieve GRIT Hub from any and all liability arising from your use of any third-party/co-branded website or services or third-party/co-branded owned content. GRIT Hub encourages you to be aware of when you leave the Service, and to read the terms and conditions and privacy policy of any third-party website or service that you visit.</p>
@@ -244,7 +244,7 @@ function Terms(){
 
                     
                   
-                    <p><em>These Terms of Use are effective as of January 1, 2026.</em></p>
+                    <p className="mt-5"><em>These Terms of Use are effective as of January 1, 2026.</em></p>
 			
                 </article>
             </section>
