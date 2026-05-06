@@ -14,11 +14,11 @@ function Terms(){
 
                     <p>Please note the Terms are written in English and to the extent any translated version of the Terms conflicts with the English version, the English version controls.</p>
 
-                    <h2 className="display-5">About GRIT Hub</h2>
+                    <h2 className="display-5 mt-5">About GRIT Hub</h2>
 
                     <p>GRIT Hub is a South African non-profit organisation focused on digital skills development, workforce training, entrepreneurship support, and innovation ecosystem development. We provide both accredited and non-accredited programmes, along with access to facilities, mentorship, and real-world project opportunities designed to support individuals in moving from learning into earning. As a registered Public Benefit Organisation, GRIT Hub operates to deliver measurable social and economic impact.</p>
                     
-                    <h2 className="display-5">Public Benefit Organisation (PBO) Status and Donations</h2>
+                    <h2 className="display-5 mt-5">Public Benefit Organisation (PBO) Status and Donations</h2>
 
                     <p>The Garden Route Innovation & Technology Hub NPC (“GRIT Hub”) is a registered Public Benefit Organisation (PBO) in South Africa and operates in accordance with applicable laws and regulations governing non-profit and public benefit activities.</p>
 
@@ -32,36 +32,50 @@ function Terms(){
 
                     <p>Donors acknowledge that GRIT Hub operates within a broader ecosystem of partners and funders, and that reporting on the use of funds may be shared in aggregated or anonymised formats for accountability, impact measurement, and compliance purposes.</p>
 
-                    <h2 className="display-5">Coworking and Facility Use</h2>
+                    <h2 className="display-5 mt-5">Coworking and Facility Use</h2>
 
-                    <p>GRIT Hub provides access to coworking spaces, training rooms, and related facilities to support collaboration and learning. Use of these facilities is at the participant's own risk. GRIT Hub is not responsible for any loss, theft, or damage to personal belongings. Users are expected to act responsibly, respect shared spaces, follow operational and safety guidelines, and avoid any disruptive or unlawful behaviour. GRIT Hub reserves the right to revoke access to facilities at any time where necessary.</p>
-                    
-                    <h2 className="display-5">Events, Workshops, and Media</h2>
+                    <p>GRIT Hub provides access to coworking spaces, training rooms, and related facilities to support collaboration, learning, and business activities. Use of these facilities is at the participant’s own risk. GRIT Hub is not responsible for any loss, theft, or damage to personal belongings. Users are expected to act responsibly, respect shared spaces, follow operational and safety guidelines, and avoid any disruptive or unlawful behaviour. GRIT Hub reserves the right to revoke access to facilities at any time where necessary.</p>
+
+                    <h3 className="display-6">Booking Guarantee and Cancellations</h3>
+
+                    <p>In the unlikely event that GRIT Hub is required to cancel a confirmed booking, a full refund will be issued to the user.</p>
+
+                    <p>Users may cancel bookings in accordance with the following policy:</p>
+
+                    <ul>
+                    <li>All bookings: cancellations must be made within 2 hours of venue confirmation to qualify for a full refund.</li>
+                    <li>Desk bookings: cancellations must be made at least 24 hours prior to the scheduled arrival time.</li>
+                    <li>Group space bookings: cancellations must be made at least 24 hours prior to the scheduled arrival time.</li>
+                    </ul>
+
+                    <p>Cancellations made outside of these timeframes may not be eligible for a refund. GRIT Hub reserves the right to assess cancellations on a case-by-case basis where exceptional circumstances apply.</p>
+
+                    <h2 className="display-5  mt-5">Events, Workshops, and Media</h2>
 
                     <p>Participation in GRIT Hub events, workshops, and community activities is voluntary. While reasonable care is taken to ensure a safe environment, GRIT Hub is not liable for any injury, loss, or damage that may occur during participation.</p>
 
                     <p>By attending events or participating in programmes, you acknowledge that photographs, video recordings, or other media may be captured. You grant GRIT Hub permission to use such media for marketing, reporting, documentation, and partner or funder communication purposes.</p>
 
-                    <h2 className="display-5">Payments and Refunds</h2>
+                    <h2 className="display-5  mt-5">Payments and Refunds</h2>
 
                     <p>Certain programmes or services may require payment. Fees must be paid in accordance with the agreed terms prior to programme commencement unless otherwise specified. Refunds may be considered before the start of a programme at the discretion of GRIT Hub, but generally will not be issued once a programme has begun, except where required by law.</p>
 
                     <p>For sponsored or funded programmes, continued participation is expected. Failure to attend or comply with programme requirements may result in removal from the programme.</p>
 
-                    <h2 className="display-5">Training Programmes and Certification</h2>
+                    <h2 className="display-5  mt-5">Training Programmes and Certification</h2>
 
                     <p>Participation in GRIT Hub training programmes requires active engagement, including attendance at scheduled sessions, completion of coursework, and participation in practical assignments or projects. For programmes aligned with the Quality Council for Trades and Occupations (QCTO), certification is subject to successful completion of all assessments, submission of a Portfolio of Evidence, and external moderation and verification processes. While GRIT Hub provides the training, support, and guidance necessary for completion, certification is not guaranteed unless all requirements are met.</p>
 
                     <p>It is important to note that participation in any GRIT Hub programme does not guarantee employment, freelance income, business success, or placement opportunities. Outcomes depend on individual effort, performance, and broader market conditions.</p>
 
-                    <h2 className="display-5">Work Experience, Internships, and Projects</h2>
+                    <h2 className="display-5  mt-5">Work Experience, Internships, and Projects</h2>
 
                     <p>As part of its programme approach, GRIT Hub may incorporate simulated or real-world project work, internships, or exposure to client-based assignments. These activities are designed to provide practical, hands-on experience and support portfolio development. Participation in such activities does not constitute employment and does not entitle participants to wages or compensation unless explicitly stated in writing.</p>
 
                     <p>Work produced during programmes may be used for learning, demonstration, or delivery purposes and may be owned by GRIT Hub or its partners or clients, depending on the nature of the project. Participants may generally include such work in their portfolios unless specific restrictions apply.</p>
 
 
-                    <h2 className="display-5">Use of Services</h2>
+                    <h2 className="display-5  mt-5">Use of Services</h2>
 
                     <p>GRIT Hub offers a collection of online resources including news, downloads, videos, information and various e-mail services. &nbsp;Use of the Service is permitted solely to Users who are eighteen (18) years or older.&nbsp; Users under 18 may only use the Service with the involvement of a parent or guardian.</p>
 
@@ -77,7 +91,7 @@ function Terms(){
 
                     <p>You are solely responsible for your interactions with all other Users who access the Service. &nbsp;We reserve the right, but have no obligation, to monitor disputes between you and other Users. GRIT Hub shall have no liability for your interactions with other Users, or for any User's action or inaction.</p>
 
-                    <h2 className="display-5">User Content and Conduct</h2>
+                    <h2 className="display-5 mt-5">User Content and Conduct</h2>
 
                     <p>By submitting any User Content to GRIT Hub you represent and warrant that:</p>
 
@@ -117,46 +131,48 @@ function Terms(){
                         <li>Bypassing the measures we may use to prevent or restrict access to the Service.</li>
                     </ul>
 
-                    <h2 className="display-5">GRIT Hub's Content</h2>
+                    <h2 className="display-5 mt-5">GRIT Hub's Content</h2>
 
                     <p>Except for your User Content, the Service and all materials therein or transferred thereby, including, without limitation, software, images, text, graphics, illustrations, logos, patents, trademarks, service marks, copyrights, photographs, audio, videos and music (the "Company Content"), and all intellectual property rights related thereto, are the exclusive property of GRIT Hub and its licensors. &nbsp;Except as explicitly provided herein, nothing in the Terms shall be deemed to create a license in or under any such intellectual property rights, and you agree not to sell, license, rent, modify, distribute, copy, reproduce, transmit, publicly display, publicly perform, publish, adapt, edit or create derivative works from any materials or content accessible on the Service, except those materials expressly made available to you on GRIT Hub’s website for your unlicensed use. &nbsp;Use of GRIT Hub Content or materials on the Service for any purpose not expressly permitted is strictly prohibited.</p>
 
                     <p>You may choose to or we may invite you to submit comments or ideas about the Service, including without limitation about how to improve the Service or our products ("Ideas"). &nbsp;By submitting any Idea, you agree that your disclosure is gratuitous, unsolicited and without restriction and will not place GRIT Hub under any fiduciary or other obligation, and that we are free to use the Idea without any additional compensation or attribution to you, and/or to disclose the Idea on a non-confidential basis or otherwise to anyone. &nbsp;You agree not to submit an Idea that infringes any patent, trademark, trade secret, copyright or other proprietary rights of any party, or contains any information or content that you do not have a right to make available under any law or under contractual or fiduciary relationships. You further acknowledge that, by acceptance of your submission, GRIT Hub does not waive any rights to use similar or related ideas previously known to GRIT Hub, or developed by its employees, or obtained from sources other than you.</p>
 
-                    <h2 className="display-5">Products from GRIT Hub</h2>
+                    <h2 className="display-5 mt-5">Products from GRIT Hub</h2>
 
                     <p>GRIT Hub attempts to be as accurate as possible in product descriptions.&nbsp; However, GRIT Hub does not warrant that product descriptions or other content of the Service is accurate, complete, reliable, current or error-free.&nbsp;</p>
 
-                    <h2 className="display-5">Privacy and Security</h2>
+                    <h2 className="display-5 mt-5">Privacy and Security</h2>
 
                     <p>Please review our <Link href="/privacy">Privacy Policy</Link>, which also governs your use of our Service.&nbsp;Your use of the Service constitutes acceptance of the Privacy Policy and you further acknowledge and agree that GRIT Hub may in its sole discretion preserve or disclose your User Content as well as your personal information if required to do so by law or in the good faith belief that such action is reasonably necessary to: enforce the Terms, comply with the legal process, respond to claims, and/or protect the rights, property, or personal safety of GRIT Hub, its Users, or the general public.</p>
 
-                    <h2 className="display-5">General Information</h2>
+                    <h2 className="display-5 mt-5">General Information</h2>
 
                     <ul>
-                        <li>Registration Number is: 2021/502703/08</li>
-                        <li>Registered Address is: Office Suite #2, York Street Boulevard Shopping Center, George 6529</li>
+                        <li>CIPC Registration Number is: 2021/502703/08</li>
+                        <li>Tax Exempt Reference Number is: 930089024</li>
+                        <li>Skills Development Provider Number is: SDP180326090759</li>
+                        <li>Registered Address is: Office Suite #2 & #4, York Street Boulevard Shopping Center, George 6529</li>
                         <li>Website is: <a href="https://grithub.org.za">https://grithub.org.za</a></li>
                         <li>Email is: <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a></li>
                     </ul>
 
-                    <h2 className="display-5">Third-Party Websites and Services</h2>
+                    <h2 className="display-5 mt-5">Third-Party Websites and Services</h2>
 
                     <p>The Service may contain links to co-branded and/or third-party websites and services that are independent from GRIT Hub and the Service. GRIT Hub has no control over and assumes no responsibility for the content, privacy policies, or practices of any third-party/co-branded websites or services nor makes any representation or warranty as to the accuracy, completeness or authenticity of the information contained in any such site. &nbsp;If you access a third-party/co-branded website from the Service, you do so at your own risk, and you understand that the Terms and the Privacy Policy do not apply to your use of such sites. &nbsp;You expressly relieve GRIT Hub from any and all liability arising from your use of any third-party/co-branded website or services or third-party/co-branded owned content. GRIT Hub encourages you to be aware of when you leave the Service, and to read the terms and conditions and privacy policy of any third-party website or service that you visit.</p>
 
                     <p>Additionally, your dealings with or participation with organizations and/or individuals found on or through the Service, including payment and delivery of goods or services, and any other terms, conditions, warranties or representations associated with such dealings are solely between you and such organizations and/or individuals. &nbsp;You agree that GRIT Hub shall not be responsible for any loss or damage of any sort relating to any such dealings.&nbsp; If there is a dispute between Users, or between Users and any third-party, you understand and agree that GRIT Hub is under no obligation to become involved. &nbsp;In the event that you have a dispute with one or more other Users, you hereby release GRIT Hub, its officers, employees, agents and successors in rights from claims, demands and damages (actual and consequential) of every kind or nature, known or unknown, suspected and unsuspected, disclosed and undisclosed, arising out of or in any way related to such disputes and/or the Service.</p>
 
-                    <h2 className="display-5">Indemnity</h2>
+                    <h2 className="display-5 mt-5">Indemnity</h2>
 
                     <p>You agree to defend, indemnify and hold harmless GRIT Hub, its affiliates, agents, managers, and their employees, contractors, agents, officers and directors, third-party service providers from and against any and all claims, damages (actual or consequential), obligations, losses, liabilities, costs or debt, and expenses (including but not limited to attorney's fees) of every kind and nature, known or unknown arising from: (i) your use of and access to the Service, including any data or content transmitted or received by you; (ii) your violation of the Terms, including without limitation your breach of any of the representations and warranties above; (iii) your violation of any third-party right, including without limitation any right of privacy, publicity rights or intellectual property rights; (iv) your violation of any law, rule or regulation of the South Africa or any other country; (v) any claims or damages that arise as a result of any of your User Content or any that is submitted via your account; or (vi) any other party's access and use of the Service with your unique username, password or other appropriate security code.</p>
 
-                    <h2 className="display-5">No Warranty</h2>
+                    <h2 className="display-5 mt-5">No Warranty</h2>
 
                     <p>THE SERVICE IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. &nbsp;USE OF THE SERVICE IS AT YOUR OWN RISK. &nbsp;THE SERVICE IS PROVIDED WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, IMPLIED WARRANTIES OF MERCHANTABILITY AND SATISFACTORY QUALITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. &nbsp;WITHOUT LIMITING THE FOREGOING, GRIT HUB, ITS SUBSIDIARIES, AND ITS LICENSORS DISCLAIM ANY WARRANTIES FOR THE SECURITY, TIMELINESS, ACCURACY, RELIABILITY, AND PERFORMANCE OF THE SERVICE AND CONTENT; THAT THE SERVICE WILL MEET YOUR REQUIREMENTS; THAT THE SERVICE WILL BE AVAILABLE AT ANY PARTICULAR TIME OR LOCATION, UNINTERRUPTED OR SECURE; THAT ANY DEFECTS OR ERRORS WILL BE CORRECTED; OR THAT THE SERVICE OR ANY CONTENT ACCESSIBLE FROM THE SERVICE IS FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS. &nbsp;ANY CONTENT DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SERVICE IS DOWNLOADED AT YOUR OWN RISK AND YOU WILL BE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR LOSS OF DATA THAT RESULTS FROM SUCH DOWNLOAD.</p>
 
                     <p>THE GRIT HUB DOES NOT WARRANT, ENDORSE, GUARANTEE, OR ASSUME RESPONSIBILITY FOR ANY PRODUCT OR SERVICE ADVERTISED OR OFFERED BY A THIRD PARTY THROUGH THE SERVICE OR ANY HYPERLINKED WEBSITE OR SERVICE, OR FEATURED IN ANY BANNER OR OTHER ADVERTISING, AND GRIT HUB WILL NOT BE A PARTY TO OR IN ANY WAY MONITOR ANY TRANSACTION BETWEEN YOU AND THIRD-PARTY PROVIDERS OF PRODUCTS OR SERVICES.</p>
 
-                    <h2 className="display-5">Limitation of Liability</h2>
+                    <h2 className="display-5 mt-5">Limitation of Liability</h2>
 
                     <p>TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL GRIT HUB, ITS AFFILIATES, DIRECTORS, EMPLOYEES OR ITS LICENSORS BE LIABLE FOR ANY DIRECT, INDIRECT, PUNITIVE, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES, INCLUDING WITHOUT LIMITATION DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE LOSSES, THAT RESULT FROM THE USE OF, OR INABILITY TO USE, THIS SERVICE. SUCH LIMITATION SHALL ALSO APPLY WITH RESPECT TO DAMAGES INCURRED BY REASON OF OTHER SERVICES OR PRODUCTS RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE SERVICE OR ANY LINKS ON THE SERVICE AS WELL AS BY REASON OF ANY INFORMATION OR ADVICE RECEIVED THROUGH OR ADVERTISED IN CONNECTION WITH THE SERVICE OR THROUGH ANY LINKS.&nbsp; UNDER NO CIRCUMSTANCES WILL GRIT HUB BE RESPONSIBLE FOR ANY DAMAGE, LOSS OR INJURY RESULTING FROM HACKING, TAMPERING OR OTHER UNAUTHORIZED ACCESS OR USE OF THE SERVICE OR YOUR ACCOUNT OR THE INFORMATION CONTAINED THEREIN.</p>
 
@@ -164,7 +180,7 @@ function Terms(){
 
                     <p>THIS LIMITATION OF LIABILITY SECTION APPLIES WHETHER THE ALLEGED LIABILITY IS BASED ON CONTRACT, TORT, NEGLIGENCE, STRICT LIABILITY, OR ANY OTHER BASIS, EVEN IF GRIT HUB HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION.</p>
 
-                    <h2 className="display-5">General</h2>
+                    <h2 className="display-5 mt-5">General</h2>
 
                     <p><strong>Governing Law.</strong> &nbsp;You agree that: (i) the Service shall be deemed solely based in Western Cape, South Africa; and (ii) the Service shall be deemed a passive one that does not give rise to personal jurisdiction over GRIT Hub, either specific or general, in jurisdictions other than Western Cape, South Africa. &nbsp;The Terms shall be governed by the internal substantive laws of the Western Cape Provence, South Africa, without respect to its conflict of laws principles. &nbsp;Any claim or dispute between you and GRIT Hub that arises in whole or in part from the Service shall be decided exclusively by a court of competent jurisdiction located in George, Western Cape South Africa.</p>
 
