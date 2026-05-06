@@ -101,7 +101,7 @@ export default async function Home(){
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
-									<a title="QCTO" href="https://tedxgeorge.com" target="_blank" className="d-block" rel="noreferrer">
+									<a title="tedxgeorge" href="https://tedxgeorge.com" target="_blank" className="d-block" rel="noreferrer">
 										<Image 
 											src={tedx}
 											alt="TEDxGeorge" 
