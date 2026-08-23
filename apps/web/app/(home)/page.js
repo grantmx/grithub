@@ -21,6 +21,7 @@ import { getLatestPosts } from "@/services/sanity/sanity.service";
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
 import rasberypifoundation from "@/public/assets/partners/rpf-logo-white.svg"
 import tedx from "@/public/assets/partners/TEDx_Logo_George-white-horz-2.png"
+import grbiz from "@/public/assets/partners/garden-route-business-logo-trans.png"
 
 export const metadata = {
 	alternates: {
@@ -87,6 +88,30 @@ export default async function Home(){
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
+									<a title="tedxgeorge" href="https://tedxgeorge.com" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={tedx}
+											alt="TEDxGeorge" 
+											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											priority={true}
+											fetchPriority='high'
+										/>
+									</a>
+								</div>
+
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
+									<a title="garden route business" href="https://gardenroutebusiness.co.za" target="_blank" className="d-block" rel="noreferrer">
+										<Image 
+											src={grbiz}
+											alt="Garden Route Business Magazine" 
+											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											priority={true}
+											fetchPriority='high'
+										/>
+									</a>
+								</div>
+
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
 										<svg className={Style.partnerLogo} width="100%" height="100%" viewBox="0 0 315742 89184" style={{fillRule:"evenodd", clipRule:"evenodd", strokeLinejoin:"round", strokeMiterlimit: 1.41421 }}>
 											<g id="Layer_x0020_1">
@@ -100,17 +125,7 @@ export default async function Home(){
 									</a>
 								</div>
 
-								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
-									<a title="tedxgeorge" href="https://tedxgeorge.com" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
-											src={tedx}
-											alt="TEDxGeorge" 
-											className={clsx(Style.partnerLogo, Style.whiteLogo)}
-											priority={true}
-											fetchPriority='high'
-										/>
-									</a>
-								</div>
+								
 
 								{/* <div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="QCTO" href="https://www.qcto.org.za" target="_blank" className="d-block" rel="noreferrer">
