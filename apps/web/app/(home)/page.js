@@ -119,7 +119,7 @@ export default async function Home(){
 										<Image 
 											src={rotary}
 											alt="Rotary Club of George" 
-											className={clsx(Style.whiteLogo)}
+											className={clsx(Style.partnerLogo)}
 											priority={true}
 											fetchPriority='high'
 										/>
