@@ -22,6 +22,7 @@ import NewsroomPod from '@/components/newsroom/NewsroomPod';
 import rasberypifoundation from "@/public/assets/partners/rpf-logo-white.svg"
 import tedx from "@/public/assets/partners/TEDx_Logo_George-white-horz-2.png"
 import grbiz from "@/public/assets/partners/garden-route-business-logo-trans.png"
+import rotary from "@/public/assets/partners/rotary-of-george-logo-white.webp"
 
 export const metadata = {
 	alternates: {
@@ -110,6 +111,21 @@ export default async function Home(){
 										/>
 									</a>
 								</div>
+
+								
+
+								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
+									<a title="rotary clubs of south africa" href="https://www.georgerotaryclub.co.za/" target="_blank" className="d-block" rel="noreferrer" >
+										<Image 
+											src={rotary}
+											alt="Rotary Club of George" 
+											className={clsx(Style.partnerLogo, Style.whiteLogo)}
+											priority={true}
+											fetchPriority='high'
+										/>
+									</a>
+								</div>
+
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="coder dojo" href="https://zen.coderdojo.com/dojos/za/george-municipality/george-western-cape-garden-route-innovation-and-technology-hub" target="_blank" className="d-block" rel="noreferrer" >
