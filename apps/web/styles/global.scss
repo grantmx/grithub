@@ -12,6 +12,30 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 
 @import "bootstrap/scss/utilities";
 
+// Drop utility categories with no matching class usage anywhere in apps/web or
+// packages/ui (verified by cross-referencing the compiled utilities output against
+// every className/clsx literal in both trees) — each one otherwise expands into a
+// full property x value x breakpoint matrix of CSS that never gets rendered.
+$utilities: map-remove(
+	$utilities,
+	"align", "float", "object-fit", "opacity",
+	"overflow", "overflow-x", "overflow-y", "focus-ring",
+	"top", "bottom", "start", "end", "translate-middle",
+	"border-end", "border-bottom", "border-start", "border-color", "subtle-border-color", "border-width", "border-opacity",
+	"max-width", "viewport-width", "min-viewport-width",
+	"max-height", "viewport-height", "min-viewport-height",
+	"flex", "flex-shrink", "align-self", "order",
+	"margin-x", "negative-margin", "negative-margin-x", "negative-margin-y", "negative-margin-top", "negative-margin-end", "negative-margin-bottom", "negative-margin-start",
+	"row-gap", "column-gap",
+	"font-family", "font-style", "text-transform", "white-space", "word-wrap",
+	"text-opacity", "text-color",
+	"link-opacity", "link-offset", "link-underline", "link-underline-opacity",
+	"bg-opacity", "subtle-background-color", "gradient",
+	"user-select", "pointer-events",
+	"rounded-top", "rounded-end", "rounded-bottom", "rounded-start",
+	"visibility", "z-index"
+);
+
 // Layout & components
 @import "./globals/root.scss";
 @import "bootstrap/scss/reboot";
@@ -31,7 +55,10 @@ $theme-colors: map-remove($theme-colors, "orange", "yellow", "teal", "cyan", "pi
 
 
 // Helpers
-@import "bootstrap/scss/helpers";
+// Only `.text-bg-*` (helpers/color-bg) is used anywhere in the codebase — clearfix,
+// colored-links, focus-ring, icon-link, ratio, position, stacks, visually-hidden,
+// stretched-link, text-truncation and vr have no matching usage.
+@import "bootstrap/scss/helpers/color-bg";
 
 // Utilities
 @import "bootstrap/scss/utilities/api";

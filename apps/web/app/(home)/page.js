@@ -62,7 +62,7 @@ export default async function Home(){
 					<div className={Style.hero}>
 						<MainNav clear />
 
-						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto;"}}>
+						<div className="col-11 col-md-7 ps-md-5 ps-3 ms-md-2 ms-xl-0 mt-md-5"  style={{ flex: ".50 0 auto"}}>
 							<p className={Style.heroText}>Learn. Grow. Go.</p>
 							<p className={Style.heroSubText}>We are drivers of technology, innovation and entrepreneurship to create an inclusive and competitive digital workforce.</p>
 							<p>
@@ -75,7 +75,7 @@ export default async function Home(){
 
 						<div className={clsx(Style.heroPartners, ["ps-md-5", "ps-3, d-none d-lg-block"])}>
 							<p className="text-white w-100 mb-2">
-								Our strategic partners and stakeholders
+								Our strategic partners:
 							</p>
 
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap" style={{ gap: "1rem" }}>

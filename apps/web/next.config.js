@@ -15,6 +15,14 @@ const NextConfig = {
     },
     serverExternalPackages: ['sharp'],
     pageExtensions: ['mdx', 'jsx', 'js'],
+    // Bootstrap 5's own SCSS source still uses @import, bare global color/math
+    // functions (red()/green()/blue(), unit()), and declarations after nested
+    // rules — none of which it has migrated off yet. These are warnings about
+    // Bootstrap's code, not ours, and can't be fixed from here; silence them
+    // until Bootstrap ships that migration.
+    sassOptions: {
+        silenceDeprecations: ['import', 'mixed-decls', 'global-builtin', 'color-functions'],
+    },
     env: {
         NEXT_PUBLIC_url: "https://grithub.org.za",
         NEXT_PUBLIC_GA_ID: 'G-NH2S1GEN8H'
