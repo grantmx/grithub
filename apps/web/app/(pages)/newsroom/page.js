@@ -1,5 +1,5 @@
 import PageHeader from "components/layout/PageHeader";
-import { getLatestPosts, getPosts } from "services/sanity/sanity.service";
+import { getLatestPosts, getPostsCount } from "services/sanity/sanity.service";
 import NewsroomPod from "components/newsroom/NewsroomPod";
 import Paginate from "components/navigation/Paginate";
 import Style from "./newsroom.module.scss";
@@ -9,20 +9,20 @@ async function NewsHomePage({ searchParams}){
     const pageRange = 9;
 
     const { previous, next } = await searchParams ?? null;
-    const latest = await getLatestPosts({ start: previous ?? 0, end: next ?? pageRange })
+    const latest = await getLatestPosts({ start: Number(previous) || 0, end: Number(next) || pageRange })
 
-    const totalPosts = await getPosts()
-    let totalPages = Math.ceil(totalPosts.length / pageRange)
+    const totalPosts = await getPostsCount()
+    let totalPages = Math.ceil(totalPosts / pageRange)
     totalPages = totalPages === 1 ? 0 : totalPages
 
     return(
         <section className="container-xxl d-flex py-md-5 p-4 flex-column mb-5">
             <PageHeader title="Newsroom" />
-            
+
             <div className="col-12 d-flex flex-wrap">
-                {latest.map((post) => {
+                {latest.map((post, index) => {
                     return(
-                        <NewsroomPod key={post.slug?.current} {...post} />
+                        <NewsroomPod key={post.slug?.current} {...post} priority={index < 3} />
                     )
                 })}
             </div>

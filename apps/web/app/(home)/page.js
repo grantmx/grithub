@@ -1,11 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 import Style from './home.module.scss';
-import Image from 'next/image';
+import Image, { getImageProps } from 'next/image';
 import { StructuredJSON } from '@/components/schema/StructuredJSON';
 import MainNav from '../../components/navigation/MainNav';
 import FooterNav from '../../components/navigation/FooterNav';
 import clsx from 'clsx';
-import Script from 'next/script'
 import ribbon from '@/styles/ribbon.module.scss'
 
 import afriLabs from "@/public/assets/partners/afrilabs-member-logo-white.png" 
@@ -31,27 +30,33 @@ export const metadata = {
 }
 
 export default async function Home(){
-	const { src, blurDataURL, height, width  } = hero;	
     const latest = await getLatestPosts({ start: 0, end: 3 })
+
+	const heroCommon = {
+		alt: "See your future ahead of you",
+		sizes: "100vw",
+		placeholder: "blur",
+		priority: true,
+		fetchPriority: "high",
+	}
+
+	const { props: desktopHeroProps } = getImageProps({ ...heroCommon, src: hero })
+	const { props: mobileHeroProps } = getImageProps({ ...heroCommon, src: heroMobile })
 
 	return(
 		<>
+			{/* React 19 hoists these into <head> and dedupes them; they replace the
+			    automatic preload that next/image's <Image priority> would normally emit,
+			    which getImageProps (needed for art direction) doesn't provide on its own. */}
+			<link rel="preload" as="image" href={mobileHeroProps.src} imageSrcSet={mobileHeroProps.srcSet} imageSizes={mobileHeroProps.sizes} media="(max-width: 600px)" fetchPriority="high" />
+			<link rel="preload" as="image" href={desktopHeroProps.src} imageSrcSet={desktopHeroProps.srcSet} imageSizes={desktopHeroProps.sizes} media="(min-width: 600px)" fetchPriority="high" />
+
 			<main className="container-fluid d-flex p-0 flex-column">
 				<section className={Style.heroWrapper}>
 					<picture>
-						<source srcSet={src ?? blurDataURL} media="(min-width: 600px)" />
-						<source srcSet={heroMobile.src ?? heroMobile.blurDataURL} media="(max-width: 600px)" />
-
-						<Image 
-							srcSet={`${heroMobile.src ?? heroMobile.blurDataURL} ${heroMobile.width}w, ${src ?? blurDataURL} ${width}w`}
-							className={Style.heroImg} 
-							sizes={`(max-width: 600px) ${heroMobile.width}px, ${width}px`}
-							{...{ src, blurDataURL, height, width }}
-							alt="See your future ahead of you" 
-							priority={true}
-							placeholder='blur'
-							fetchPriority='high'
-						/>
+						<source srcSet={mobileHeroProps.srcSet} media="(max-width: 600px)" />
+						{/* eslint-disable-next-line @next/next/no-img-element -- art-directed fallback via getImageProps, see https://nextjs.org/docs/app/api-reference/components/image#art-direction */}
+						<img {...desktopHeroProps} className={Style.heroImg} />
 					</picture>
 
 					<div className={Style.hero}>
@@ -76,38 +81,32 @@ export default async function Home(){
 							<div className="col-12 d-flex justify-content-start align-items-center flex-wrap" style={{ gap: "1rem" }}>
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="AfriLabs Hub Member" href="https://www.afrilabs.com/hub/garden-route-innovation-and-technology-hub/" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={afriLabs}
-											alt="AfriLabs" 
+											alt="AfriLabs"
 											width={250}
 											className={clsx(Style.whiteLogo)}
 											style={{ width: "100%", height: "auto" }}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="tedxgeorge" href="https://tedxgeorge.com" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={tedx}
-											alt="TEDxGeorge" 
+											alt="TEDxGeorge"
 											className={clsx(Style.partnerLogo, Style.whiteLogo)}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="garden route business" href="https://gardenroutebusiness.co.za" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={grbiz}
-											alt="Garden Route Business Magazine" 
+											alt="Garden Route Business Magazine"
 											className={clsx(Style.partnerLogo, Style.whiteLogo)}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -116,12 +115,10 @@ export default async function Home(){
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="rotary clubs of south africa" href="https://www.georgerotaryclub.co.za/" target="_blank" className="d-block" rel="noreferrer" >
-										<Image 
+										<Image
 											src={rotary}
-											alt="Rotary Club of George" 
+											alt="Rotary Club of George"
 											className={clsx(Style.partnerLogo)}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -172,50 +169,42 @@ export default async function Home(){
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="rasberry pi foundation proud supporter" href="https://www.raspberrypi.org/" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={rasberypifoundation}
-											alt="Raspberry Pi Foundation" 
+											alt="Raspberry Pi Foundation"
 											className={clsx(Style.partnerLogo)}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="sevengage proud supporter" href="https://sevengage.com" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
-											src="/assets/partners/sevengage-logo.svg" 
-											width={250} 
-											height={75} 
-											alt="Sevengage, Inc." 
+										<Image
+											src="/assets/partners/sevengage-logo.svg"
+											width={250}
+											height={75}
+											alt="Sevengage, Inc."
 											className={Style.partnerLogo}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
 								
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="george business chamber member" href="https://georgechamber.co.za/business-listings/view/380" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={georgeBusiness}
-											alt="George Business Chamber." 
+											alt="George Business Chamber."
 											className={Style.partnerLogo}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
 
 								<div className="col-2 d-none d-md-flex align-items-center justify-content-center">
 									<a title="mossel bay business chamber member" href="https://mosselbaychamber.co.za/" target="_blank" className="d-block" rel="noreferrer">
-										<Image 
+										<Image
 											src={mosselBay}
-											alt="Mossel Bay Business Chamber" 
+											alt="Mossel Bay Business Chamber"
 											className={Style.partnerLogo}
-											priority={true}
-											fetchPriority='high'
 										/>
 									</a>
 								</div>
@@ -609,10 +598,10 @@ export default async function Home(){
 
 			<FooterNav />
 
-			
-			<Script type="application/ld+json">
-				{StructuredJSON()}
-			</Script>
+			<script
+				type="application/ld+json"
+				dangerouslySetInnerHTML={{ __html: StructuredJSON() }}
+			/>
 		</>
 	)
 }

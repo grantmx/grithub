@@ -33,6 +33,22 @@ export async function getPosts() {
 
 
 /**
+ * Get the total number of posts, without transferring every post's fields
+ * @returns total post count
+ */
+
+export async function getPostsCount() {
+    "use cache"
+
+    cacheTag(`get-posts`)
+    cacheLife('hours')
+
+    return await sanityClient.fetch(`count(*[_type == "post"])`)
+}
+
+
+
+/**
  * write a GROQ query to get the latest 3 posts
  * @returns latest 3 posts
  */
@@ -44,11 +60,11 @@ export async function getLatestPosts({ start = 0, end = 3 }) {
     cacheLife('hours')
 
     return await sanityClient.fetch(`
-        *[_type == "post"] | order(publishedAt desc){ 
+        *[_type == "post"] | order(publishedAt desc){
             title,
             slug,
             publishedAt,
-            "mainImage": mainImage.asset->url,
+            "mainImage": mainImage.asset->url + "?w=1000&h=667&fit=crop&auto=format",
             "author": author->name
 
         }[${start}...${end}]

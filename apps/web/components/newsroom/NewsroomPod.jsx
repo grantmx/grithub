@@ -5,18 +5,20 @@ import Link from "next/link";
 
 
 
-function NewsroomPod({ slug, mainImage, title, publishedAt }){
+function NewsroomPod({ slug, mainImage, title, publishedAt, priority = false }){
     return(
         <div className="col-xl-4 col-md-6 col-12 p-2 mb-4">
             <Link className="card shadow-sm h-100 text-decoration-none card-link" href={`/newsroom/${slug.current}`} title='Read More'>
-                <Image 
-                    src={mainImage} 
-                    width={500} 
-                    height={333} 
+                <Image
+                    src={mainImage}
+                    width={500}
+                    height={333}
                     placeholder="blur"
                     blurDataURL={blurImage}
-                    className={Style.cardTopImg} 
-                    alt={title + " image"} 
+                    className={Style.cardTopImg}
+                    alt={title + " image"}
+                    priority={priority}
+                    fetchPriority={priority ? "high" : "auto"}
                 />
                 
                 <div className="card-body d-flex flex-column justify-content-between">

@@ -20,6 +20,7 @@ apps/captivate/.next
 # misc
 .DS_Store
 *.pem
+**/service_account.json
 
 # debug
 npm-debug.log*
