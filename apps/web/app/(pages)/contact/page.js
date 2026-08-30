@@ -1,7 +1,9 @@
 import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
-import Image from "next/image";
-import image3 from '@/public/assets/IMG_7442.jpg'
-import clsx from "clsx";
+import { MapEmbed } from "@/components/contact/MapEmbed";
+import { getStaticMapUrl } from "@/services/google/staticMap.service";
+
+const OFFICE_LAT = -33.9717388;
+const OFFICE_LNG = 22.4444244;
 
 
 export const metadata = {
@@ -20,6 +22,8 @@ export const metadata = {
 
 
 async function ContactUs(){
+    const mapPreviewSrc = getStaticMapUrl({ lat: OFFICE_LAT, lng: OFFICE_LNG });
+
     return(
         <>
             <section className="container-xxl d-flex pt-5 flex-column mb-5" id="coworking">
@@ -54,25 +58,8 @@ async function ContactUs(){
 				</div>
 
 				<div className="col-12 col-md-4">
-					<iframe 
-						src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13235.23749715816!2d22.4444244!3d-33.9717388!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dd61bad26029aad%3A0xe15b07dedb1520bf!2sGarden%20Route%20Innovation%20and%20Technology%20Hub!5e0!3m2!1sen!2sus!4v1731931229527!5m2!1sen!2sus" 
-						width="600" 
-						height="450" 
-						style={{ border: 0, objectFit: "contain", width: "100%", height: "100%" }} 
-						allowFullScreen="" loading="lazy" 
-						referrerPolicy="no-referrer-when-downgrade" 
-					/>
-					
-					{/* <Image 
-						width={300}
-						height={400}
-						src={image3.src} 
-						className="mb-4 w-100 h-auto" 
-						alt="hot desks" 
-					/> */}
-
-                    
-				</div>                
+					<MapEmbed previewSrc={mapPreviewSrc} />
+				</div>
 			</div>
 
 				

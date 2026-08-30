@@ -13,12 +13,14 @@ function MainNav({ page = false, clear = false }) {
         <nav className={clsx(page && `${Style.navbar} shadow-sm`, !clear && "bg-white",  `w-100 container-fluid px-5 py-3 mb-2`)}>
             <div className="col-12 d-flex justify-content-md-between justify-content-center flex-nowrap">
                 <a className="navbar-brand" href="/" title="home">
-                    <Image 
+                    <Image
                         className={Style.logo}
-                        src="/assets/grithub-logo-horz.svg" 
-                        width={400} 
-                        height={page ? 80 : 125} 
-                        alt="GRITHub Logo" 
+                        src="/assets/grithub-logo-horz.svg"
+                        width={400}
+                        height={page ? 80 : 125}
+                        alt="GRITHub Logo"
+                        priority
+                        fetchPriority="high"
                     />
                 </a>
 

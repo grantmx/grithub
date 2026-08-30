@@ -80,12 +80,14 @@ async function CoderDojo(){
                 </div>
 
                 <div className="col-md-4 col-12">
-                    <Image 
-                        alt="CoderDojo event" 
-                        src={image2.src} 
-                        style={{width: "100%", height: "auto", objectFit: "contain"}} 
-                        width={400} 
-                        height={300}
+                    <Image
+                        alt="CoderDojo event"
+                        src={image2}
+                        sizes="(max-width: 767px) 100vw, 400px"
+                        priority
+                        fetchPriority="high"
+                        placeholder="blur"
+                        style={{width: "100%", height: "auto", objectFit: "contain"}}
                     />
                 </div>
             </article>

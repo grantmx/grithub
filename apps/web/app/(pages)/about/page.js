@@ -57,10 +57,12 @@ async function About(){
                     </div>
 
                     <div className="col-12 col-md-5">
-                        <Image 
-                            width={200}
-                            height={1000}
-                            src={aboutImg.src}
+                        <Image
+                            src={aboutImg}
+                            sizes="(max-width: 767px) 100vw, 550px"
+                            priority
+                            fetchPriority="high"
+                            placeholder="blur"
                             style={{ objectFit: "contain", width: "100%", height: "auto" }}
                             alt="GRIT Hub York St. Office"
                         />

@@ -28,6 +28,8 @@
         "google_service_client_email",
         "google_service_private_key",
         "google_sheet_id",
+        "google_static_maps_api_key",
+        "google_static_maps_signing_secret",
         "NEXT_PUBLIC_SANITY_PROJECT_ID",
         "NEXT_PUBLIC_SANITY_DATASET",
         "NEXT_PUBLIC_SANITY_API_VERSION",

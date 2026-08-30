@@ -1,8 +1,12 @@
-import * as confetti from "canvas-confetti";
+import confetti from "canvas-confetti";
 
 
 export function celebrationTime(){
-    let duration = 10 * 1000;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return () => {};
+    }
+
+    let duration = 3 * 1000;
     let animationEnd = Date.now() + duration;
     let defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -24,4 +28,6 @@ export function celebrationTime(){
         confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
 
     }, 250);
+
+    return () => clearInterval(interval);
 }
