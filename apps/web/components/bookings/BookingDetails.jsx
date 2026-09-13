@@ -2,11 +2,10 @@ import clsx from "clsx";
 import Style from "./Bookings.module.scss"
 import formatPrice from "../../lib/utils/formatPrice";
 import { useContext, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { bookingSettings } from "../../lib/constants";
-// import range from "../../lib/utils/range";
+import range from "../../lib/utils/range";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
-
 
 
 function BookingDetails(){
@@ -18,11 +17,11 @@ function BookingDetails(){
 
 
     useEffect(() => {
-        // const maxPeople = range(1, bookingSettings.people)
-        // setPeople(maxPeople)
+        const maxPeople = range(1, bookingSettings.people)
+        setPeople(maxPeople)
 
-        // const maxHours = range(1, bookingSettings.hours)
-        // setHours(maxHours)
+        const maxHours = range(1, bookingSettings.hours)
+        setHours(maxHours)
 
     }, [])
 
@@ -118,8 +117,7 @@ function BookingDetails(){
                 let hours = parseInt(globalBook?.data?.hours);
 
                 switch(durationRate.id){
-                    case "event_conference_room":
-                    case "dedicated_office":
+                    case "board_room":
                         cost = durationRate.value * hours;
                         setTotal(cost)
                         break;
@@ -137,8 +135,7 @@ function BookingDetails(){
 
             if( durationRate && duration === "daily"){
                 switch(durationRate.id){
-                    case "event_conference_room":
-                    case "dedicated_office":
+                    case "board_room":
                         cost = durationRate.value;
                         setTotal(cost)
                         break;
@@ -166,12 +163,7 @@ function BookingDetails(){
             data: 2
         })
 
-        router.push({
-            href: router.asPath,
-            query: {
-                step: 2
-            }
-        })
+        router.push(`/cowork/book?step=2`)
     }
 
 

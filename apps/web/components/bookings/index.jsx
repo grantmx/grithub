@@ -16,23 +16,36 @@ const steps = [
 ]
 
 function Bookings(){
-    const query = useSearchParams()
+    const searchParams = useSearchParams()
+    const queryStep = searchParams.get("step")
     const [ globalBook, dispatch ] = useContext(StepperContext)
 
     return(
         <Suspense>
-        <div className={Style.block}>
-            <Stepper {...{ steps, current: globalBook.current }} />
+            <section className="container-xxl d-flex flex-column mb-5" id="booking">
+                <div className="col-12 d-flex flex-column flex-md-row">
+                    <div className="col-12 col-md-8 pe-md-5">
+                        <h1 className="display-1">
+                            Manage Booking
+                        </h1>
+                    </div>
+                </div>
 
-            {query.step === "1" && (
-                <BookingDetails />
-            )}
+                <hr/>
+            </section>
+
+            <div className={Style.block}>
+                <Stepper {...{ steps, current: globalBook?.current, path: "/cowork/book" }} />
+
+                {queryStep === "1" && (
+                    <BookingDetails />
+                )}
 
 
-            {query.step === "2" && (
-                <CustomerDetails />
-            )}
-        </div>
+                {queryStep === "2" && (
+                    <CustomerDetails />
+                )}
+            </div>
         </Suspense>
     )
 }

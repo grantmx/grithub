@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import Style from "./Bookings.module.scss"
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useContext, useEffect } from "react";
 import { StepperContext } from "../navigation/Stepper/context/StepperContext";
 import formatPrice from "../../lib/utils/formatPrice";
@@ -11,21 +11,15 @@ function CustomerDetails(){
     const router = useRouter()
     const [ globalBook, dispatch ] = useContext(StepperContext)
 
-    useEffect(() => {
-        if( globalBook.current !== 2 ){
-            router.push({ href: "/cowork/book", query: { step: 1 } })
-        }
-
-    }, [ globalBook ])
-
 
     function submitForm(e){
-        e.preventDefault()
-
+debugger;
         dispatch({
             type: "nextStep",
             data: 3
         })
+
+        router.push(`/cowork/book?step=3`)
     }
 
 
@@ -57,7 +51,7 @@ function CustomerDetails(){
     return(
         <div className={clsx(Style.form, "col-8")}>
         <div className={"d-flex col-12 flex-row"}>
-            <form className="form-floating col-8" onSubmit={submitForm}>
+            <form className="form-floating col-8">
                 <fieldset className="row g-4">
                     <div className="col-md-6">
                         <div className="form-floating">
@@ -163,9 +157,6 @@ function CustomerDetails(){
                 </button>
             </div>
 
-            <span className="fs-5 me-4">
-                Booking total: 
-            </span>
 
             <button 
                 disabled={
@@ -174,8 +165,9 @@ function CustomerDetails(){
                     !globalBook?.data?.email &&
                     !globalBook?.data?.phone
                 }
-                type="submit" 
+                type="button" 
                 className="btn rounded-pill btn-lg btn-primary"
+                onClick={submitForm}
             >
                 Book & Confirm Payment Details
             </button>
