@@ -6,6 +6,12 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @media (max-width: 500px){
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 3rem;
+    }
 }
 
 .item{
@@ -17,6 +23,13 @@
     align-items: center;
     position: relative;
     opacity: .25;
+
+    @media (max-width: 500px){
+        margin-bottom: 0;
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
 
     &.active{
         opacity: 1;
@@ -46,6 +59,11 @@
         border-left: 1px dotted #999;
         top: 50px;
         left: 20px;
+        
+         @media (max-width: 500px){
+             width: 100%;
+             height: 1px;
+         }
     }
 
     &:last-of-type{
@@ -68,5 +86,17 @@ a.label{
     margin-bottom: 0;
     font-size: 1.8rem;
     line-height: 1;
+
+    @media (max-width: 500px){
+        font-size: .9rem;
+    }
 }
+
+.description{
+
+    @media (max-width: 500px){
+        display: none;
+    }
+}
+
 

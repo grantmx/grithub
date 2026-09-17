@@ -12,6 +12,16 @@
     border-left: 1px solid #ced4da;
 }
 
+.aboutNav{
+    padding-left: 0;
+    margin-bottom: 3rem;
+    columns: 2;
+
+    & li{
+        margin-bottom: 0.5rem;
+    }
+}
+
 .formFieldB{
     position: absolute;
     right: 99999px;

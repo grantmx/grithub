@@ -4,6 +4,7 @@ import Style from "./cowork.module.scss"
 import BookingWidget from "@/components/bookings/BookingWidget";
 import clsx from "clsx";
 import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
+import Link from "next/link";
 
 export const metadata = {
 	title: "Coworking Space in George",
@@ -136,10 +137,17 @@ async function CoWork(){
 			</p>
 
 			<p className="text-center">
-				<a className="btn rounded-pill btn-success btn-lg align-items-center py-3 px-4" href="https://wa.me/270630705752">
+				{/* <a className="btn rounded-pill btn-success btn-lg align-items-center py-3 px-4" href="https://wa.me/270630705752">
 					<IconWhatsapp width={25} height={25} style={{ fill: "#ffffff", marginRight: ".5rem" }} />
 					WhatsApp us now to book
-				</a>
+				</a> */}
+
+				<Link
+					href={'/cowork/book?step=1&type=hot_desk&duration=daily'}
+					className="btn rounded-pill btn-success btn-lg py-3 px-4 "
+				>
+					Book Now
+				</Link>
 			</p>
 		</section>
 

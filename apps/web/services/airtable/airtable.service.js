@@ -5,16 +5,53 @@
  */
 
 export default class Airtable {
-    constructor({ baseTable }) {
-        this.settings = {
-            method: "POST",
-            headers: {
-                "Authorization": `Bearer ${process.env.airTable_access_token}`,
-                "Content-Type": "application/json"
-            },
+    constructor({ baseId, baseTable }) {
+        this.headers = {
+            "Authorization": `Bearer ${process.env.airTable_access_token}`,
+            "Content-Type": "application/json"
         };
 
-        this.baseUrl = `https://api.airtable.com/v0/${process.env.airTable_base_id}/${baseTable}`;
+        this.settings = {
+            method: "POST",
+            headers: this.headers,
+        };
+
+        this.baseUrl = `https://api.airtable.com/v0/${baseId ?? process.env.airTable_base_id}/${baseTable}`;
+    }
+
+
+    async create(fields, { typecast = false } = {}){
+        return await this.post({
+            fields,
+            ...(typecast ? { typecast: true } : {})
+        })
+    }
+
+
+    async update(recordId, fields){
+        return await fetch(`${this.baseUrl}/${recordId}`, {
+            method: "PATCH",
+            headers: this.headers,
+            body: JSON.stringify({ fields })
+        })
+        .then(res => res.json())
+        .catch(err => {
+            console.error(err);
+            return { error: { message: "Error", type: "error" } }
+        })
+    }
+
+
+    async find(filterByFormula){
+        return await fetch(`${this.baseUrl}?filterByFormula=${encodeURIComponent(filterByFormula)}&maxRecords=1`, {
+            headers: this.headers
+        })
+        .then(res => res.json())
+        .then(data => data?.records?.[0] ?? null)
+        .catch(err => {
+            console.error(err);
+            return null;
+        })
     }
 
 

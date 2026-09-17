@@ -13,7 +13,6 @@ function CustomerDetails(){
 
 
     function submitForm(e){
-debugger;
         dispatch({
             type: "nextStep",
             data: 3
@@ -29,7 +28,7 @@ debugger;
             data: 1
         })
 
-        router.back()
+        router.push("/cowork/book?step=1")
     }
 
 
@@ -49,9 +48,9 @@ debugger;
 
 
     return(
-        <div className={clsx(Style.form, "col-8")}>
-        <div className={"d-flex col-12 flex-row"}>
-            <form className="form-floating col-8">
+        <div className={clsx(Style.form, "col-md-8 col-12")}>
+        <div className={"d-flex col-12 flex-md-row flex-column"}>
+            <form className="form-floating col-md-8 col-12">
                 <fieldset className="row g-4">
                     <div className="col-md-6">
                         <div className="form-floating">
@@ -112,10 +111,10 @@ debugger;
 
                     <div className="col-md-12">
                         <div className="form-floating">
-                            <input 
-                                required 
-                                className="form-control" 
-                                id="phone" 
+                            <input
+                                required
+                                className="form-control"
+                                id="phone"
                                 type="input"
                                 name="phone"
                                 onChange={handelControl}
@@ -127,14 +126,28 @@ debugger;
                             </label>
                         </div>
                     </div>
+
+
+                    <div className="col-md-12">
+                        <div className="form-floating">
+                            <textarea
+                                className="form-control"
+                                id="notes"
+                                name="notes"
+                                style={{ height: "100px" }}
+                                onChange={handelControl}
+                                value={globalBook?.data?.notes ?? ""}
+                            />
+
+                            <label htmlFor="notes">
+                                Special Notes (optional)
+                            </label>
+                        </div>
+                    </div>
                 </fieldset>
             </form>
 
-            <div className="col-4 ps-4">
-                <h2 className="fs-4">
-                    Your Booking: {formatPrice(globalBook?.data?.cost)}
-                </h2>
-
+            <div className="col-md-4 col-12 ps-md-4 pt-4">
                 <p>We need your details for the booking confirmation and reminder. If arranging on behalf of somebody else please enter their details so they receive the relevant communications. </p>
 
 
@@ -169,7 +182,7 @@ debugger;
                 className="btn rounded-pill btn-lg btn-primary"
                 onClick={submitForm}
             >
-                Book & Confirm Payment Details
+                Book & Confirm
             </button>
         </div>
 

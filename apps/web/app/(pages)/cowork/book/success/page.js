@@ -1,6 +1,11 @@
 import CelebrationSuccess from "@/components/feedback/CelebrationSuccess";
+import { MapEmbed } from "@/components/contact/MapEmbed";
+import { getStaticMapUrl } from "@/services/google/staticMap.service";
+import { officeLocation } from "@/lib/constants";
 
 function Book(){
+    const mapPreviewSrc = getStaticMapUrl({ lat: officeLocation.lat, lng: officeLocation.lng });
+
     return(
             <section className="container-xxl d-flex p-md-5 p-4 flex-column mb-5" id="coworking">
                 <CelebrationSuccess />
@@ -14,6 +19,27 @@ function Book(){
                    <p className="fs-4 text-center">
                         If you have any questions regarding your booking<br/> send us an email at <a href="mailto:workforce@grithub.org.za">workforce@grithub.org.za</a> or <a href="https://wa.me/270630705752">WhatsApp Us</a>
                    </p>
+
+                    <hr />
+
+                    <div className="d-flex flex-column flex-md-row">
+                        <div className="col-12 col-md-8 pe-md-5">
+                            <h4>Getting Here</h4>
+                            <p>{officeLocation.directions}</p>
+
+                            <address className="vcard fs-5">
+                                <span className="fn">Garden Route Innovation and Technology Hub</span><br />
+                                <span className="adr text-muted">
+                                    <span className="street-address">{officeLocation.address.line1}</span><br />
+                                    {officeLocation.address.line2}
+                                </span>
+                            </address>
+                        </div>
+
+                        <div className="col-12 col-md-4">
+                            <MapEmbed previewSrc={mapPreviewSrc} />
+                        </div>
+                    </div>
 
                     <hr />
 

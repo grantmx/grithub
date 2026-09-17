@@ -68,6 +68,7 @@ const NextConfig = {
     },
     async redirects() {
         return [
+           
             {
                 source: '/dojo',
                 destination: '/programs/dojo',

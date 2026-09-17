@@ -3,6 +3,8 @@ import Link from 'next/link';
 import FooterEmailForm from "../emails/FooterEmailForm";
 import CopyrightDate from "./CopyrightDate";
 import { Suspense } from 'react';
+import clsx from 'clsx';
+import Style from './footer.module.scss';
 
 
 function FooterNav(){
@@ -31,7 +33,30 @@ function FooterNav(){
             </div>
 
             <div className="col-md-3 col-12 p-md-4 pb-4 d-flex justify-content-top flex-column">
-                <p className="fw-bold fs-4">Find Us.</p>
+                <p className="fw-bold fs-4">About Us.</p>
+
+                <ul className={clsx(Style.aboutNav, "list-unstyled")}>
+                    <li>
+                        <Link href="/about" title="About GRIT Hub">About</Link>
+                    </li>
+                    <li>
+                        <Link href="/programs" title="Our Programs">Programs</Link>
+                    </li>
+                    <li>
+                        <Link href="/volunteer" title="Volunteer Opportunities">Volunteer</Link>
+                    </li>
+                    <li>
+                        <Link href="/consulting" title="How can we help you">Consulting</Link>
+                    </li>
+                    <li>
+                        <Link href="/newsroom" title="News and Updates">Newsroom</Link>
+                    </li>
+                    <li>
+                        <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
+                    </li>
+                </ul>
+
+                <p className="fw-bold fs-4">Contact Us.</p>
                 
                 <a className="px-1 d-flex py-1 align-items-center" href="https://wa.me/270630705752">
                     <Image src="/assets/whatsapp.svg" width={25} height={25} alt="whatsapp us"/>
@@ -43,7 +68,19 @@ function FooterNav(){
                     <small className="ms-2">workforce@grithub.org.za</small>
                 </a>
 
-                <div className="d-flex flex-row flex-wrap mt-4">
+               
+                
+            </div>
+            
+            <div className="col-md-4 col-12 p-md-4 d-flex justify-content-top flex-column align-item-center">
+                <p className="fw-bold fs-4">
+                    Join Us.
+                </p>
+
+                <small className="mb-3 text-muted">Be the first to know when we publish new articles and specialized updates on programming.</small>
+                <FooterEmailForm />
+
+                 <div className="d-flex flex-row flex-wrap mt-4">
                     <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://www.facebook.com/grithub.za">
                         <Image src="/assets/facebook-official.svg" width={25} height={25} alt="GRIT Hub on facebook"/>
                         <small className="ms-2">Facebook</small>
@@ -64,20 +101,10 @@ function FooterNav(){
                         <small className="ms-2">Patreon</small>
                     </a>
                 </div>
-                
-            </div>
-            
-            <div className="col-md-4 col-12 p-md-4 d-flex justify-content-top flex-column align-item-center">
-                <p className="fw-bold fs-4">
-                    Join Us.
-                </p>
-
-                <small className="mb-3 text-muted">Be the first to know when we publish new articles and specialized updates on programming.</small>
-                <FooterEmailForm />
             </div>
              
             <small className="col-12 px-0 py-5 py-md-4 mb-5 mb-md-0 border-top mt-2 text-center text-muted">
-                <Suspense><CopyrightDate /></Suspense> Garden Route Innovation & Technology Hub, NPC (GRIT Hub). All rights reserved.  &nbsp;&nbsp; <Link href="/about" title="terms of use">About Us</Link> &nbsp;|&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link>  &nbsp;|&nbsp;  <Link href="/media-kit" title="brand guidelines">Media Kit</Link>
+                <Suspense><CopyrightDate /></Suspense> Garden Route Innovation & Technology Hub, NPC (GRIT Hub). All rights reserved.  &nbsp;&nbsp; <Link href="/terms" title="terms of use">Terms</Link> &nbsp;|&nbsp;  <Link href="/privacy" title="privacy policy">Privacy</Link> 
             </small>
         </footer>
     )

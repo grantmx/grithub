@@ -7,6 +7,8 @@ import { Suspense } from 'react';
 import { Inter, Playfair_Display } from "next/font/google"
 import clsx from "clsx";
 import ConsentManager from "@/thirdparty/ConsentManager";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import MuiThemeProvider from "@/thirdparty/MuiThemeProvider";
 
 const rubik = Inter({
     subsets: ['latin'],
@@ -48,9 +50,13 @@ function RootLayout({ children }){
     return(
         <html lang="en" className={clsx(rubik.className, playfairDisplay.className)}>     
             <body>
-                <ConsentManager>
-                    {children}
-                </ConsentManager>
+                <AppRouterCacheProvider options={{ key: "mui" }}>
+                    <MuiThemeProvider>
+                        <ConsentManager>
+                            {children}
+                        </ConsentManager>
+                    </MuiThemeProvider>
+                </AppRouterCacheProvider>
 
                 <OrganizationSchema />
                

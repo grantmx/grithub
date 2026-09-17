@@ -2,6 +2,10 @@ import { Suspense } from "react";
 import Bookings from "@/components/bookings";
 import { StepperContextProvider } from "@/components/navigation/Stepper/context/StepperContext";
 
+export const metadata = {
+    title: "Make a booking",
+    description: "Reserve your spot at our co-working space easily and quickly."
+};
 
 async function Book(){
     return(

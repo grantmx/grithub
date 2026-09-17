@@ -1,66 +1,116 @@
-import { useRouter } from "next/router"
-import { useContext, useEffect } from "react"
+"use client"
+
+import axios from "axios";
+import clsx from "clsx";
+import Style from "./Bookings.module.scss"
+import formatPrice from "../../lib/utils/formatPrice";
+import { useContext, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { StepperContext } from "../navigation/Stepper/context/StepperContext";
+import { bookingSettings } from "../../lib/constants";
 
 
 function PayDetails(){
     const router = useRouter()
     const [ globalBook, dispatch ] = useContext(StepperContext)
+    const [ submitting, setSubmitting ] = useState(false)
+    const [ error, setError ] = useState("")
 
     useEffect(() => {
         if( globalBook.current !== 3 ){
-            router.push({ href: "/cowork/book", query: { step: 2 } })
+            router.push("/cowork/book?step=2")
         }
 
     }, [ globalBook ])
 
 
+    function goBack(){
+        dispatch({
+            type: "nextStep",
+            data: 2
+        })
 
-    // useEffect(() => {
-    //     axios.post("/api/payfast/generatePayId").then(response => {
-    //         console.log(response)
+        router.push("/cowork/book?step=2")
+    }
 
-    //     }).catch(err => {
-    //         console.log(err.response)
-    //     })
 
-    // }, [])
+    function submitForm(e){
+        e.preventDefault()
+        setSubmitting(true)
+        setError("")
+
+        axios.post("/api/paystack/createBookingLink", globalBook.data)
+            .then(res => {
+                window.location.href = res.data.redirectUrl
+            })
+            .catch(() => {
+                setSubmitting(false)
+                setError("We couldn't start your payment. Please try again.")
+            })
+    }
 
 
     return(
-        <div className={clsx(Style.form, "col-8")}>
-            <form className="form-floating" action="https://sandbox.payfast.co.za​/eng/process" method="post">
-                <input type="hidden" name="merchant_id" value="10000100" />
-                <input type="hidden" name="merchant_key" value="46f0cd694581a" />
-                <input type="hidden" name="amount" value="100.00" />
-                <input type="hidden" name="item_name" value="Test Product" />
-                <input type="hidden" name="item_description" value="A test product" />
+        <div className={clsx(Style.form, "col-md-8 col-12")}>
+            <form className="form-floating" onSubmit={submitForm}>
+                <h3 className="fs-2 lh-1 mb-4 fw-bold">
+                    Review Booking
+                </h3>
 
-                <input type="hidden" name="name_first" value="John" />
-                <input type="hidden" name="name_last" value="Doe" />
-                <input type="hidden" name="email_address" value="john@doe.com"/>
-                <input type="hidden" name="cell_number" value="0823456789" /> 
-                <input type="hidden" name="email_confirmation" value="1" />
-                <input type="hidden" name="confirmation_address" value="john@doe.com" /> 
-
-                <input type="hidden" name="return_url" value="https://grithub.org.za/cowork/book/success" />
-                <input type="hidden" name="cancel_url" value="https://grithub.org.za/cowork/book/cancel" />
-
-                <h2>Review Booking</h2>
-
-                <fieldset className="d-flex flex-row">
-                    <ul className="list-unstyled">
-                        <li><strong>Name</strong>: {globalBook.data.workspace}</li>
-                        <li><strong>Email</strong>: {globalBook.data.guests}</li>
-                        <li><strong>Phone</strong>: {globalBook.data.date} @ {globalBook.data.arrival}</li>
+                <div className="d-flex flex-column flex-md-row">
+                    <ul className="list-unstyled col-md-6 col-12">
+                        <li><strong>Name</strong>: {globalBook?.data?.first_name} {globalBook?.data?.last_name}</li>
+                        <li><strong>Email</strong>: {globalBook?.data?.email}</li>
+                        <li><strong>Phone</strong>: {globalBook?.data?.phone}</li>
                     </ul>
 
-                    <ul className="list-unstyled">
-                        <li><strong>Workspace</strong>: {globalBook.data.workspace}</li>
-                        <li><strong>Guests</strong>: {globalBook.data.guests}</li>
-                        <li><strong>Arrival</strong>: {globalBook.data.date} @ {globalBook.data.arrival}</li>
-                        <li><strong>Booking duration</strong>: {globalBook.data.duration}</li>
+                    <ul className="list-unstyled col-md-6 col-12">
+                        <li><strong>Workspace</strong>: {globalBook?.data?.workspace}{globalBook?.data?.stoep_addon && " + Stoep (Outdoors)"}</li>
+                        <li><strong>Guests</strong>: {globalBook?.data?.guests}</li>
+                        <li><strong>Arrival</strong>: {globalBook?.data?.date} @ {globalBook?.data?.arrival}</li>
+                        {(globalBook?.data?.additional_days ?? []).map((day, index) => (
+                            <li key={index}><strong>Additional Day</strong>: {day.date} @ {day.arrival}</li>
+                        ))}
+                        <li><strong>Duration</strong>: {globalBook?.data?.duration}{globalBook?.data?.duration === "hourly" && ` (${globalBook?.data?.hours} hour${globalBook?.data?.hours > 1 ? "s" : ""})`}</li>
+                        {globalBook?.data?.catering_requested && (
+                            <li><strong>Catering</strong>: Requested{globalBook?.data?.catering_budget && ` (budget: ${formatPrice(globalBook?.data?.catering_budget)})`}</li>
+                        )}
+                        {Object.entries(globalBook?.data?.amenities ?? {})
+                            .filter(([ , checked ]) => checked)
+                            .map(([ key ]) => (
+                                <li key={key}><strong>Add-on</strong>: {bookingSettings.amenities?.[key]?.label} (+{formatPrice(bookingSettings.amenities?.[key]?.upcharge)})</li>
+                            ))}
+                        {globalBook?.data?.notes && (
+                            <li><strong>Special Notes</strong>: {globalBook?.data?.notes}</li>
+                        )}
                     </ul>
+                </div>
+
+                <hr className="mt-3 mb-3" />
+
+
+                <fieldset className="row">
+                    <div className="col-md-6">
+                        <span className="fs-4">
+                            <strong>Total:</strong> {formatPrice(globalBook?.data?.cost)}
+                        </span>
+                    </div>
+
+                    <div className="col-md-6 col-12 mt-3 mt-md-0 d-flex justify-content-between justify-content-md-end gap-2">
+                        <button type="button" className="btn rounded-pill btn-lg btn-outline-secondary" onClick={goBack} disabled={submitting}>
+                            Back
+                        </button>
+
+                        <button type="submit" className="btn rounded-pill btn-lg btn-primary" disabled={submitting}>
+                            {submitting ? "Redirecting to payment…" : "Confirm & Pay"}
+                        </button>
+                    </div>
                 </fieldset>
+
+
+                {error && (
+                    <p className="text-danger">{error}</p>
+                )}
             </form>
         </div>
     )

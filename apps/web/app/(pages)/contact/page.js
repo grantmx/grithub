@@ -1,9 +1,7 @@
 import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
 import { MapEmbed } from "@/components/contact/MapEmbed";
 import { getStaticMapUrl } from "@/services/google/staticMap.service";
-
-const OFFICE_LAT = -33.9717388;
-const OFFICE_LNG = 22.4444244;
+import { officeLocation } from "@/lib/constants";
 
 
 export const metadata = {
@@ -22,7 +20,7 @@ export const metadata = {
 
 
 async function ContactUs(){
-    const mapPreviewSrc = getStaticMapUrl({ lat: OFFICE_LAT, lng: OFFICE_LNG });
+    const mapPreviewSrc = getStaticMapUrl({ lat: officeLocation.lat, lng: officeLocation.lng });
 
     return(
         <>

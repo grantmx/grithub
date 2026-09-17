@@ -37,7 +37,10 @@
         "airTable_token_id",
         "airTable_access_token",
         "airTable_base_id",
-        "airTable_table_id" 
+        "airTable_table_id",
+        "airTable_coworking_base_id",
+        "paystack_secret_key",
+        "resend_api_key"
       ],
       "inputs": [
         "$TURBO_DEFAULT$",
