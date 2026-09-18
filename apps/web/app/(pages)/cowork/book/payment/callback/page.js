@@ -1,7 +1,20 @@
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import PaystackService from "@/services/paystack/paystack.service";
 import { claimPendingCoworkingBooking, recordCoworkingBooking } from "@/services/airtable/coworkingBookings";
-import { sendBookingConfirmationEmail } from "@/services/emails/sendBookingConfirmationEmail";
+
+
+// This route has no UI of its own — it always ends in a redirect — but the
+// verify/record/email work it does first is uncached, blocking data access.
+// With cacheComponents enabled, that has to happen inside a Suspense boundary
+// so it doesn't block the (otherwise static) page shell from prerendering.
+function PaymentCallbackPage(props){
+    return (
+        <Suspense>
+            <PaymentCallback {...props} />
+        </Suspense>
+    );
+}
 
 
 async function PaymentCallback({ searchParams }){
@@ -45,6 +58,8 @@ async function PaymentCallback({ searchParams }){
             });
 
             if( created ){
+                const { sendBookingConfirmationEmail } = await import("@/services/emails/sendBookingConfirmationEmail");
+
                 await sendBookingConfirmationEmail({
                     metadata,
                     amountRands: transaction.amount / 100
@@ -59,4 +74,4 @@ async function PaymentCallback({ searchParams }){
 }
 
 
-export default PaymentCallback;
+export default PaymentCallbackPage;

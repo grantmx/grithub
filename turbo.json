@@ -23,6 +23,7 @@
         "twilio_token",
         "sendgrid_api_key_id",
         "sendgrid_api_key",
+        "brevo_api_key",
         "yoco_secret_key",
         "yoco_public_key",
         "google_service_client_email",
@@ -40,6 +41,7 @@
         "airTable_table_id",
         "airTable_coworking_base_id",
         "paystack_secret_key",
+        "paystack_public_key",
         "resend_api_key"
       ],
       "inputs": [
