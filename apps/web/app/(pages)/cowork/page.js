@@ -3,7 +3,7 @@ import image3 from '@/public/assets/IMG_7442.jpg'
 import Style from "./cowork.module.scss"
 import BookingWidget from "@/components/bookings/BookingWidget";
 import clsx from "clsx";
-import { IconWhatsapp } from "@/components/icons/IconWhatsapp";
+import MuxPlayer from "@mux/mux-player-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -80,6 +80,24 @@ async function CoWork(){
 			<hr className="hr my-5"/>
 
 
+			<article>
+				<MuxPlayer 
+					loop
+					muted
+					autoplay
+					streamType="on-demand"
+					controls={false}
+					playbackRate={0.75}
+					playbackId="1VOgav1F4KviJnVSdsC9tgSPhZ6azy7oPgIRgJ1eY78"
+					style={{ 
+						width: "100%", 
+						height: "auto",
+						aspectRatio: "16/9"
+					}}
+				/>
+			</article>
+
+
 			<div className={clsx(Style.gallery, "col-12")}>
 				<Image src="/assets/IMG_7441.jpg" className={Style.img} width={400} height={300} alt="coworking space img 1" />
 				<Image src="/assets/IMG_7435.webp" className={clsx(Style.img)} width={400} height={300} alt="coworking space img 2" />
@@ -96,11 +114,11 @@ async function CoWork(){
 				<div className="col-12 d-flex flex-wrap">
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/wifi_tethering.svg" width={50} height={50} alt="wifi" />
-						<p className="lead pt-3 text-center">+500 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations. Mac Friendly Ecosystem</p>
+						<p className="lead pt-3 text-center">+1,000 Mbs Fast Fiber. Audio, Video and Podcasting Equipment. Charging Stations. Mac Friendly Ecosystem</p>
 					</div>
 					<div className="col-xl-4 col-md-6 col-12 p-4 d-flex flex-column align-items-center">
 						<Image src="/assets/presentation.svg" width={50} height={50} alt="conference rooms"/>
-						<p className="lead pt-3 text-center">Modern Conference Room, Meeting &amp; Board Room. Event catering options available.</p>
+						<p className="lead pt-3 text-center">Modern Training, Lounge, Meeting &amp; Board Rooms. Event catering options available.</p>
 					</div>
 					{/* <div className="col-xl-3 col-md-6 col-12 p-4 d-flex flex-column">
 						<Image src="/assets/build.svg" width={50} height={50} alt="fablabs"/>
