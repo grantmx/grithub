@@ -458,32 +458,7 @@ export default async function Home(){
 
 
 
-				<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 flex-column">
-					<h2 className="display-5 mt-5 mb-3 text-center">
-						<strong>Sandbox:</strong> Built for Learning, Working and Connecting
-					</h2>
-
-					<p className="lead text-muted fs-5 text-center mb-5 px-5">
-						A flexible training, coworking and event space at the Garden Route Innovation & Technology Hub, we custom designed to move easily from the classroom to collaboration. Designed for up to 60 people the Sandbox can adapt for accredited training, workshops, presentations, team sessions, community gatherings and small events.
-					</p>
-				</section>
-
-				<MuxPlayer 
-					loop
-					muted
-					autoplay
-					streamType="on-demand"
-					controls={false}
-					playbackRate={0.75}
-					playbackId="1VOgav1F4KviJnVSdsC9tgSPhZ6azy7oPgIRgJ1eY78"
-					style={{ 
-						width: "100%", 
-						height: "auto",
-						aspectRatio: "16/9",
-						objectFit: "contain",
-						marginBottom: "5rem"
-					}}
-				/>
+				
 
 				
 
@@ -599,6 +574,44 @@ export default async function Home(){
 
 
 
+
+
+
+<section className="container-xxl col-12 d-flex justify-content-center align-items-center p-0 flex-column  mb-5">
+					<h2 className="display-5 mt-5 mb-3 text-center">
+						<strong>Sandbox:</strong> Built for Learning, Working and Connecting
+					</h2>
+
+					<p className="lead text-muted fs-5 text-center mb-4 px-5">
+						A flexible training, coworking and event space at the Garden Route Innovation & Technology Hub, we custom designed to move easily from the classroom to collaboration. Designed for +60 people, the Sandbox can adapt for accredited training, workshops, presentations, team sessions, community gatherings and small events.
+					</p>
+
+					<Link
+						href="/cowork/book?step=1&type=sandbox&duration=daily"
+						title="learn more about the Sandbox"
+						className="btn rounded-pill btn-danger btn-lg px-5"
+					>
+						Reserve Now
+					</Link>
+					
+				</section>
+
+				<MuxPlayer 
+					loop
+					muted
+					autoplay
+					streamType="on-demand"
+					controls={false}
+					playbackRate={0.75}
+					playbackId="1VOgav1F4KviJnVSdsC9tgSPhZ6azy7oPgIRgJ1eY78"
+					style={{ 
+						width: "100%", 
+						height: "auto",
+						aspectRatio: "16/9",
+						objectFit: "contain",
+						marginBottom: "5rem"
+					}}
+				/>
 
 
 
