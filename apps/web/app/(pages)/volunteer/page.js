@@ -1,6 +1,13 @@
 
+export const metadata = {
+    title: "Volunteer",
+    description: "Get real referenceable experience and make a tangible impact by volunteering your time and skills to support our initiatives and community projects.",
+    alternates: {
+		canonical: "https://grithub.co.za/cowork"
+	}
+}
 
-function VolunteerPage(){
+async function VolunteerPage(){
     return(
         <section className="container-fluid d-flex justify-content-center align-items-center flex-column" id="programs-workshops">
             <article className="container-xxl d-flex pt-5 flex-column" id="programs">
