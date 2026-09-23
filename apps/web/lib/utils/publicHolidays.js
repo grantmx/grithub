@@ -25,13 +25,13 @@ function getEasterSunday(year){
 
 const FIXED_HOLIDAYS = [
     "01-01", // New Year's Day
-    "03-21", // Human Rights Day
-    "04-27", // Freedom Day
-    "05-01", // Workers' Day
-    "06-16", // Youth Day
-    "08-09", // National Women's Day
-    "09-24", // Heritage Day
-    "12-16", // Day of Reconciliation
+    //"03-21", // Human Rights Day
+    //"04-27", // Freedom Day
+    //"05-01", // Workers' Day
+    //"06-16", // Youth Day
+    //"08-09", // National Women's Day
+    //"09-24", // Heritage Day
+    //"12-16", // Day of Reconciliation
     "12-25", // Christmas Day
     "12-26", // Day of Goodwill
 ];
