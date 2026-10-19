@@ -2,6 +2,7 @@ import { Footer, Layout, Navbar } from "nextra-theme-docs";
 import { Head } from "nextra/components";
 import { getPageMap } from "nextra/page-map";
 import "nextra-theme-docs/style.css";
+import "./logo.css";
 
 export const metadata = {
   title: {
@@ -11,7 +12,20 @@ export const metadata = {
   description: "Internal standard operating procedures for GRIT Hub.",
 };
 
-const navbar = <Navbar logo={<b>GRIT Hub SOPs</b>} />;
+const navbar = (
+  <Navbar
+    logo={
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        className="grit-logo"
+        src="/grithub-logo-horz-all-white.svg"
+        alt="GRIT Hub SOPs"
+        height={28}
+        style={{ height: 28, width: "auto" }}
+      />
+    }
+  />
+);
 const footer = (
   <Footer>
     GRIT Hub (Garden Route Innovation and Technology Hub) internal SOPs ·{" "}

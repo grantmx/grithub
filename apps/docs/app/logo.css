@@ -1,0 +1,4 @@
+/* The logo SVG is all white (#fff); brightness(0.2) turns it #333 in light mode. */
+html:not(.dark) .grit-logo {
+  filter: brightness(0.2);
+}
