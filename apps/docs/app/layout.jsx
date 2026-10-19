@@ -28,7 +28,7 @@ export default async function RootLayout({ children }) {
           navbar={navbar}
           footer={footer}
           pageMap={await getPageMap()}
-          docsRepositoryBase="https://github.com/grantmx/grithub/tree/main/apps/docs"
+          docsRepositoryBase="https://github.com/grantmx/grithub/edit/main/apps/docs"
           editLink="Edit this page on GitHub"
           darkMode
           sidebar={{ defaultOpen: true }}

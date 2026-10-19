@@ -1,0 +1,8 @@
+# Friendly rules for SOP authors. These catch common Markdown slips.
+default: true
+MD013: false   # allow long lines
+MD033: false   # allow occasional inline HTML
+MD041: false   # first line does not have to be a top-level heading
+MD024:
+  siblings_only: true   # repeated headings are fine in different sections
+MD060: false   # do not police table column alignment

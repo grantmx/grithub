@@ -1,4 +1,4 @@
 export default {
-  index: "SOP Library",
-  general: "General",
-};
+  index: 'SOP Library',
+  general: 'General'
+}
