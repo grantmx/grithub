@@ -1,0 +1,39 @@
+name: Docs checks
+
+# Runs only when the SOP site (or the lockfile it depends on) changes.
+# Vercel separately builds the preview and production site.
+on:
+  pull_request:
+    paths:
+      - "apps/docs/**"
+      - "yarn.lock"
+      - "package.json"
+      - ".github/workflows/docs-checks.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint-and-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Lint SOP Markdown
+        run: npx --yes markdownlint-cli2@0.23.3 --config apps/docs/.markdownlint.yaml "apps/docs/content/**/*.md"
+
+      - name: Build the SOP site
+        run: yarn workspace docs build

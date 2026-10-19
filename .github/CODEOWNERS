@@ -1,0 +1,12 @@
+# Code owners are asked to review, and (with branch protection) must approve,
+# changes to the files below. Owners must be GitHub users with write access.
+# Add more usernames on the same line, separated by spaces.
+
+# SOP site and content
+/apps/docs/                              @grantmx
+
+# The automatic check for the SOP site
+/.github/workflows/docs-checks.yml       @grantmx
+
+# Example: give an SOP folder its own owners
+# /apps/docs/content/sops/programs/      @grantmx @another-username
