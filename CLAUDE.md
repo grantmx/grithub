@@ -8,8 +8,8 @@ The marketing/community website for GRIT Hub (Garden Route Innovation and Techno
 
 - `apps/web` — the public Next.js site (App Router). This is where almost all work happens.
 - `apps/cms` — a Sanity Studio (v3) content studio for blog/newsroom posts, deployed separately.
-- `apps/docs` — a mostly-unmaintained Turborepo boilerplate docs app (Next 13, old React 18); not part of the live product.
-- `packages/ui` — shared React component library (`ui`) consumed by `apps/web`/`apps/docs` via the `ui` workspace alias. Has its own copies of several services (Firebase, PayFast, SendGrid, nodemailer) that overlap with `apps/web/services` — check both before assuming a service lives in only one place.
+- `apps/docs` — the GRIT Hub SOP internal wiki (Nextra docs theme, Markdown in `apps/docs/content`), deployed as its own Vercel project. Edit only content there unless asked. Use the blank `>` line after `[!NOTE]`-style alerts and keep `zod` resolutions in the root `package.json` (newer zod breaks Nextra 4.6.1).
+- `packages/ui` — shared React component library (`ui`) consumed by `apps/web` via the `ui` workspace alias. Has its own copies of several services (Firebase, PayFast, SendGrid, nodemailer) that overlap with `apps/web/services` — check both before assuming a service lives in only one place.
 - `packages/eslint-config-custom`, `packages/tsconfig` — shared lint/tsconfig presets.
 
 ## Commands
@@ -27,7 +27,7 @@ Per-app (from `apps/web`, `apps/cms`, or `apps/docs`), or via `yarn workspace <n
 
 ```bash
 yarn workspace web dev      # apps/web on :3000
-yarn workspace docs dev     # apps/docs on :3001
+yarn workspace docs dev     # apps/docs (SOP site) on :3001; build also generates the pagefind search index
 yarn workspace grithub-cms dev   # sanity dev — Sanity Studio local editor
 ```
 

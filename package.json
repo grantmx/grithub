@@ -23,5 +23,9 @@
   "dependencies": {
     "sharp": "^0.34.3"
   },
-  "packageManager": "yarn@1.22.19"
+  "packageManager": "yarn@1.22.19",
+  "resolutions": {
+    "**/nextra/zod": "4.1.12",
+    "**/nextra-theme-docs/zod": "4.1.12"
+  }
 }
