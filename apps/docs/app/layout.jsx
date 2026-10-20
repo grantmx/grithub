@@ -10,6 +10,7 @@ export const metadata = {
     template: "%s | GRIT Hub SOPs",
   },
   description: "Internal standard operating procedures for GRIT Hub.",
+  robots: { index: false, follow: false },
 };
 
 const navbar = (
