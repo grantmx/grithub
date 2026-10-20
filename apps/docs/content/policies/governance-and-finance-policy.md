@@ -7,9 +7,7 @@
 | **Review cycle** | Annually, by the Board |
 | **Related SOP** | [SOP-GOV-001 Document Control](/sops/governance/sop-gov-001-document-control); planned: SOP-FIN-002 Procurement |
 
-> [!NOTE]
->
-> A policy sets out what GRIT Hub requires and why. The step-by-step procedure, where one exists, is in the related SOP.
+
 
 ## 1. Purpose and Scope
 

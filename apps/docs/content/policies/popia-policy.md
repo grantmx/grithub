@@ -7,9 +7,7 @@
 | **Review cycle** | Annually, or on regulatory change |
 | **Related SOP** | [SOP-DAT-001 Personal Information Incidents and Data Subject Requests](/sops/data-protection/sop-dat-001-personal-information-incidents-and-requests) |
 
-> [!NOTE]
->
-> A policy sets out what GRIT Hub requires and why. The step-by-step procedure, where one exists, is in the related SOP.
+
 
 ## 1. Purpose and Scope
 

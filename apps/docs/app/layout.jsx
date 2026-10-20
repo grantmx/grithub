@@ -21,8 +21,8 @@ const navbar = (
         className="grit-logo"
         src="/grithub-logo-horz-all-white.svg"
         alt="GRIT Hub SOPs"
-        height={28}
-        style={{ height: 28, width: "auto" }}
+        height={50}
+        style={{ height: 50, width: "auto" }}
       />
     }
   />

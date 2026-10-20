@@ -7,9 +7,6 @@
 | **Review cycle** | Annually |
 | **Related SOP** | [SOP-TRN-003 Assessment and Moderation](/sops/training/sop-trn-003-assessment-and-moderation) |
 
-> [!NOTE]
->
-> A policy sets out what GRIT Hub requires and why. The step-by-step procedure, where one exists, is in the related SOP.
 
 ## 1. Purpose and Scope
 

@@ -7,9 +7,7 @@
 | **Review cycle** | Annually |
 | **Related SOP** | Planned: SOP-TRN-002 Training Delivery and Learner Support |
 
-> [!NOTE]
->
-> A policy sets out what GRIT Hub requires and why. The step-by-step procedure, where one exists, is in the related SOP.
+
 
 ## 1. Purpose and Scope
 

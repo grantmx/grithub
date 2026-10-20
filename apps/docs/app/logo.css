@@ -2,3 +2,15 @@
 html:not(.dark) .grit-logo {
   filter: brightness(0.2);
 }
+
+/* Keep codes like SOP-GOV-001 on one line instead of wrapping at the hyphens. */
+article table td:first-child,
+article table th:first-child {
+  white-space: nowrap;
+}
+
+/* Tables span the full content width. */
+article table {
+  display: table;
+  width: 100%;
+}

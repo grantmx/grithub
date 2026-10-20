@@ -7,9 +7,7 @@
 | **Review cycle** | Annually, or on regulatory change |
 | **Related SOP** | [SOP-FAC-001 Incident and Near-Miss Reporting](/sops/facilities/sop-fac-001-incident-and-near-miss-reporting) |
 
-> [!NOTE]
->
-> A policy sets out what GRIT Hub requires and why. The step-by-step procedure, where one exists, is in the related SOP.
+
 
 ## 1. Purpose and Scope
 
