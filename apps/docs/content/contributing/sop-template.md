@@ -1,43 +1,37 @@
 # SOP template
 
-Copy everything in the box below (use the copy button) into a new file, then replace the placeholders.
+Copy everything in the box below (use the copy button) into a new file, then replace the placeholders. Delete this guidance as you go. Replace `AAA` with the category code from the [SOP Library](/sops).
 
 ```markdown
-# SOP-###: Title of the Procedure
+# SOP-AAA-###: Title of the Procedure
 
 | Field | Detail |
 | --- | --- |
-| **SOP code** | SOP-### |
-| **Version** | 1.0 |
-| **Status** | Draft / Approved / Retired |
-| **Owner** | Role |
-| **Approver** | Role |
-| **Effective date** | YYYY-MM-DD |
-| **Next review date** | YYYY-MM-DD |
+| **SOP code** | SOP-AAA-### |
+| **Department** | Name of the department |
+| **Process owner** | Role |
+| **Approved by** | Role or authority, from the Delegation of Authority |
+| **Version** | 0.1 (Draft) |
+| **Review cycle** | Annually, or when the related policy or regulations change |
+| **Related policy** | [Name of the policy](/policies/name-of-policy) |
 
-## 1. Purpose
+> [!IMPORTANT]
+>
+> This SOP is a draft. Every item marked [TBC] must be completed before the SOP is approved. Delete this note when the SOP is approved.
 
-Why this procedure exists, in one or two sentences.
+## 1. Purpose and scope
 
-## 2. Scope
+Why this procedure exists, who it applies to, and what it covers.
 
-Who and what this applies to. State anything that is out of scope.
-
-## 3. Definitions
-
-| Term | Meaning |
-| --- | --- |
-| Term | Plain-language definition |
-
-## 4. Roles and responsibilities
+## 2. Roles and responsibilities
 
 | Role | Responsibility |
 | --- | --- |
 | Role | What they are responsible for |
 
-## 5. Procedure
+## 3. Step-by-step operating procedure
 
-1. First action. State who does it.
+1. First action. State who does it and by when.
 2. Second action.
 3. Third action.
 
@@ -45,19 +39,31 @@ Who and what this applies to. State anything that is out of scope.
 >
 > Call out anything that must not be missed.
 
-## 6. Records and forms
+## 4. Required forms, records and evidence
 
-List the forms, templates, or records used or produced, and where they are kept.
+| Record | Kept by | Retention |
+| --- | --- | --- |
+| Name of the record | Role | How long |
 
-## 7. Related documents
+## 5. Quality checks and approval points
 
-- [Name of a related SOP](/sops/general/sop-001-document-control)
+- What is checked, by whom, and when.
 
-## 8. Revision history
+## 6. Exceptions and escalation
+
+| Situation | What to do |
+| --- | --- |
+| What could go wrong | Who decides, and what happens next |
+
+## 7. Related policies and regulatory requirements
+
+- [Name of the policy](/policies/name-of-policy)
+
+## 8. Document control and revision history
 
 | Version | Date | Author | Summary of change |
 | --- | --- | --- | --- |
-| 1.0 | YYYY-MM-DD | Name | Initial release |
+| 0.1 | YYYY-MM-DD | Name | Initial draft |
 ```
 
-After you create the file, add it to the [SOP Library](/sops) table and to the `_meta.js` file in its folder.
+After you create the file, add it to the `_meta.js` file in its folder and to the [SOP Library](/sops).

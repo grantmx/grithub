@@ -1,7 +1,8 @@
 export default {
   index: 'Home',
-  sops: 'SOP Library',
+  policies: 'Policies',
+  sops: 'SOPs',
   'getting-started': 'Getting Started',
   contributing: 'Contributing',
-  reuse: 'Use these SOPs'
+  reuse: 'Use these documents'
 }

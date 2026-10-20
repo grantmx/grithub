@@ -36,7 +36,7 @@ Link to other pages on this site by their address, starting with a slash and wit
 
 ```markdown
 [Link text](https://example.com)
-[Another SOP](/sops/general/sop-001-document-control)
+[Another SOP](/sops/governance/sop-gov-001-document-control)
 ![Describe the image](/images/my-image.png)
 ```
 

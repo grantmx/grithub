@@ -1,4 +1,8 @@
 export default {
   index: 'SOP Library',
-  general: 'General'
+  governance: 'Governance',
+  finance: 'Finance and Procurement',
+  training: 'Training and Quality Assurance',
+  facilities: 'Facilities and Events',
+  'data-protection': 'Data Protection'
 }
