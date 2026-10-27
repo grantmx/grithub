@@ -13,8 +13,8 @@ import afriLabs from "@/public/assets/partners/afrilabs-member-logo-white.png"
 import georgeBusiness from '@/public/assets/partners/georgebusinesschamberlogo.png'
 import mosselBay from "@/public/assets/partners/mosselbay-chamber.png"
 // import internship from "@/public/assets/winter-internship-blank.jpg" 
-import hero from "@/public/assets/hero.jpg" 
-import heroMobile from "@/public/assets/hero-mobile.jpg"
+import hero from "@/public/assets/hero.webp" 
+import heroMobile from "@/public/assets/hero-mobile.webp"
 import Link from 'next/link';
 import { getLatestPosts } from "@/services/sanity/sanity.service";
 import NewsroomPod from '@/components/newsroom/NewsroomPod';
