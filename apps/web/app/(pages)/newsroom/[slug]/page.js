@@ -10,6 +10,7 @@ import ShareButtons from "components/newsroom/ShareButtons";
 import { blurImage, voidPortableText } from "lib/constants";
 import BodyImage from "components/newsroom/BodyImage";
 import { Suspense } from "react";
+import { notFound } from "next/navigation";
 
 
 async function NewsArticle({ params }){
@@ -19,6 +20,9 @@ async function NewsArticle({ params }){
         getLatestPosts({ end: 9 }),
         getPostBySlug(slug)
     ]);
+
+    // unpublished (future-dated) or missing posts should 404
+    if (!post) notFound()
 
     // make this date human readable by day, full month, year: '2024-12-15T20:15:00.000Z'
     const date = new Date(post?.publishedAt).toLocaleDateString('en-GB', {
@@ -158,6 +162,8 @@ async function NewsArticle({ params }){
 export async function generateMetadata(props, parent) {
     const { slug } = await props.params;
     const post = await getPostBySlug(slug)
+
+    if (!post) notFound()
 
     const htmlBody = toHTML(post?.body, voidPortableText)
     const newMetaDescription = htmlBody.slice(0, 160).replace(/(<([^>]+)>)/gi, "")

@@ -23,7 +23,7 @@ export async function getPosts() {
     cacheTag(`get-posts`)
     cacheLife('hours')
 
-    return await sanityClient.fetch(`*[_type == "post"]{
+    return await sanityClient.fetch(`*[_type == "post" && publishedAt <= now()]{
         title,
         slug,
         _updatedAt
@@ -43,7 +43,7 @@ export async function getPostsCount() {
     cacheTag(`get-posts`)
     cacheLife('hours')
 
-    return await sanityClient.fetch(`count(*[_type == "post"])`)
+    return await sanityClient.fetch(`count(*[_type == "post" && publishedAt <= now()])`)
 }
 
 
@@ -60,7 +60,7 @@ export async function getLatestPosts({ start = 0, end = 3 }) {
     cacheLife('hours')
 
     return await sanityClient.fetch(`
-        *[_type == "post"] | order(publishedAt desc){
+        *[_type == "post" && publishedAt <= now()] | order(publishedAt desc){
             title,
             slug,
             publishedAt,
@@ -86,7 +86,7 @@ export async function getPostBySlug(slug) {
     cacheLife('hours')
 
     return await sanityClient.fetch(`
-        *[_type == "post" && slug.current == $slug][0]{
+        *[_type == "post" && slug.current == $slug && publishedAt <= now()][0]{
             title,
             categories,
             _updatedAt,
