@@ -86,6 +86,11 @@ function FooterNav(){
                         <small className="ms-2">Facebook</small>
                     </a>
 
+                    <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://chat.whatsapp.com/HaNovfJNsWsHm4LhlnoeHS?mode=gi_t">
+                        <Image src="/assets/whatsapp.svg" width={25} height={25} alt="GRIT Hub on whatsapp"/>
+                        <small className="ms-2">WhatsApp</small>
+                    </a>
+
                     <a className="px-1 d-flex w-50 py-1 align-items-center" href="https://www.linkedin.com/company/garden-route-innovation-and-technology-hub/">
                         <Image src="/assets/linkedin.svg" width={25} height={25} alt="GRIT Hub on linkedin"/>
                         <small className="ms-2">Linkedin</small>
