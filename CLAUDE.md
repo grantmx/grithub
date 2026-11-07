@@ -58,3 +58,16 @@ yarn workspace <workspace> upgrade <package>
 ## Environment configuration
 
 Env vars are declared centrally in the root `turbo.json` under `tasks.build.env` (not per-app `.env.example` files) — that list is the source of truth for what secrets/config the build expects (Sanity, PayFast/Yoco keys, Twilio, SendGrid, Google service account, Airtable, EskomSePush, email server credentials, Vercel Blob token, etc.). When adding a new environment variable, register it there so Turborepo's caching picks up on changes to it.
+
+## LMS (apps/lms — planned, not yet scaffolded)
+
+Planning docs live in `docs/lms/` (start at `docs/lms/README.md`). Conventions for all LMS work (`apps/lms`, `packages/db`):
+
+- **Strict TypeScript.** `strict: true`, no `any` without a justifying comment, no `.js` source files.
+- **No secrets in the repo.** This repo is public. No keys, tokens, credentials, real learner data or personal data in code, fixtures, seeds, docs or commit messages. Register every new env var by name in `turbo.json` `tasks.build.env`; values live only in Vercel and untracked `.env.local`.
+- **Every schema change needs a migration.** Commit the generated SQL migration with the schema change; never rely on `push` against shared databases.
+- **Every feature needs tests.** This overrides the repo-wide "no test runner" note for `apps/lms` and `packages/db` only (planned: Vitest + Playwright, see `docs/lms/decisions.md` ADR-009).
+- **Every feature updates `docs/lms/compliance/form5-mapping.md`.** Move the affected rows' status forward and link the evidence.
+- Programmes have only Knowledge and Practical modules: no Workplace module, logbook or mentor role.
+
+**DESIGN GATE:** Before making any design, layout, typography, colour, navigation or interaction decision for apps/lms, STOP and ask me clarifying questions (use your question tool, in batches). Do not proceed until I answer. Record the answers in docs/lms/design.md.
