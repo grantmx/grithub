@@ -53,15 +53,22 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ## ADR-009: Tests required for `apps/lms`
 
-- **Status:** Proposed
+- **Status:** Accepted (2026-11-07): Vitest 3 set up in the scaffold; Playwright to be added with the first e2e flow
 - **Context:** the rest of the repo has no test runner.
 - **Decision:** Vitest (unit/integration, including DB against disposable Postgres) and Playwright (e2e with WebAuthn virtual authenticator), scoped to `apps/lms` and `packages/db`.
 
 ## ADR-010: Lint/TS config for the new workspaces
 
-- **Status:** Proposed
+- **Status:** Superseded by ADR-011
 - **Context:** `packages/eslint-config-custom` pins ESLint 7 / `eslint-config-next` 13, which is too old for current Next.js, and `packages/*` must not change in this phase.
 - **Decision:** `apps/lms` carries its own ESLint config initially and extends `packages/tsconfig/base.json` (already `strict: true`). Upgrading the shared config is a separate, later change.
+
+## ADR-011: Upgrade the shared ESLint config; fix packages/ui React; reuse shared packages
+
+- **Status:** Accepted (2026-11-07)
+- **Context:** the scaffold must reuse `packages/ui`, the ESLint config and the tsconfig base. `eslint-config-custom` (ESLint 7, next 13) cannot lint Next 16. `packages/ui` bundled its own React 18.3.1, which would load a second React copy.
+- **Decision:** `eslint-config-custom` becomes an ESLint 9 flat config (`eslint-config-next` 16.1.4, `eslint-config-turbo/flat`, `eslint-config-prettier/flat`) and the root `.eslintrc.js` is removed. `packages/ui` declares React as a peer dependency (`^18.3.1 || ^19.0.0`), uses @types/react 19 and lints with ESLint 9. `apps/lms` extends `tsconfig/base.json`, depends on `ui` with `transpilePackages`, but renders no ui components until they are restyled with LMS tokens (design gate).
+- **Consequences:** apps/web and apps/lms resolve one React (19.2.3). apps/web keeps its own legacy `.eslintrc` + ESLint 7 (its `next lint` script was already broken under Next 16); migrating it is a follow-up. LMS env vars live in the package-level `apps/lms/turbo.json`.
 
 ---
 

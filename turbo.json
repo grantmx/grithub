@@ -60,6 +60,17 @@
         ".env.development",
         ".env"
       ]
+    },
+    "test": {
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "coverage/**"
+      ]
+    },
+    "typecheck": {
+      "outputs": []
     }
   },
   "globalDependencies": [

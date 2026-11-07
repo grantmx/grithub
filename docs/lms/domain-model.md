@@ -87,6 +87,8 @@ erDiagram
     Submission ||--o{ AssessmentDecision : "judged by"
     AssessmentAttempt ||--o{ AssessmentDecision : "judged by"
     AssessmentDecision ||--o{ ModerationRecord : "moderated by"
+    ModerationBatch ||--o{ AssessmentDecision : groups
+    ModerationBatch }o--|| Cohort : "for"
 
     QuestionBank {
         uuid id PK
@@ -176,7 +178,17 @@ erDiagram
         text feedback
         uuid supersedesId FK "nullable"
         timestamp decidedAt
-        timestamp releasedAt
+        uuid batchId FK
+        timestamp releasedAt "set when batch closes"
+    }
+    ModerationBatch {
+        uuid id PK
+        uuid cohortId FK
+        uuid blueprintId FK "nullable"
+        uuid briefId FK "nullable"
+        string status "open | closed"
+        uuid closedBy FK
+        timestamp closedAt
     }
     ModerationRecord {
         uuid id PK
@@ -313,6 +325,7 @@ erDiagram
 - **QuestionVersion is immutable once used.** When `firstServedAt` is set, edits are rejected (DB trigger + application check). Editing a question creates a new version and moves `Question.currentVersionId`. Old attempts keep pointing at the version they served.
 - **AttemptItem is a snapshot.** It stores the exact `questionVersionId`, the served option order and the seed, so a moderator or appeal panel can see exactly what the learner saw.
 - **Module.type** is limited to `knowledge | practical`. A workplace value is deliberately not allowed.
+- **Results are released per batch.** Closing a `ModerationBatch` sets `releasedAt` on all its decisions in one transaction. Learners can read a decision only when `releasedAt` is set.
 - **Decisions are append-only.** A change creates a new `AssessmentDecision` with `supersedesId`. Decisions with a `ModerationRecord` are locked.
 - **AuditLog is append-only** (no UPDATE/DELETE grants for the app role).
 - **SyncOutbox** rows are written in the same transaction as the domain change they describe.

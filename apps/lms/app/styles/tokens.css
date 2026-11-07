@@ -1,0 +1,105 @@
+/*
+ * Design tokens — source of truth: docs/lms/design.md §9.
+ * Components use these custom properties only; never raw hex values.
+ * Theme: System by default (prefers-color-scheme). A future Display menu can
+ * force a theme with <html data-theme="light|dark">.
+ */
+
+:root {
+  /* Typography */
+  --font-sans: var(--font-inter), "Inter", system-ui, -apple-system, "Segoe UI",
+    Roboto, Arial, sans-serif;
+  --weight-regular: 400;
+  --weight-semibold: 600;
+  --measure-reading: 68ch;
+
+  --text-xs: 0.8125rem; /* 13 */
+  --leading-xs: 1.125rem; /* 18 */
+  --text-sm: 0.9375rem; /* 15 */
+  --leading-sm: 1.375rem; /* 22 */
+  --text-ui: 1rem; /* 16 */
+  --leading-ui: 1.5rem; /* 24 */
+  --text-base: 1.125rem; /* 18: learner reading text (Display menu M) */
+  --leading-base: 1.6;
+  --text-lg: 1.25rem; /* 20 */
+  --leading-lg: 1.875rem; /* 30 */
+  --text-xl: 1.5rem; /* 24 */
+  --leading-xl: 2rem; /* 32 */
+  --text-2xl: 1.875rem; /* 30 */
+  --leading-2xl: 2.375rem; /* 38 */
+  --text-3xl: 2.25rem; /* 36 */
+  --leading-3xl: 2.75rem; /* 44 */
+
+  /* Spacing (4-pt scale) */
+  --space-1: 0.25rem; /* 4 */
+  --space-2: 0.5rem; /* 8 */
+  --space-3: 0.75rem; /* 12 */
+  --space-4: 1rem; /* 16 */
+  --space-6: 1.5rem; /* 24 */
+  --space-8: 2rem; /* 32 */
+  --space-12: 3rem; /* 48 */
+  --space-16: 4rem; /* 64 */
+
+  /* Radius */
+  --radius-input: 6px;
+  --radius-card: 10px;
+  --radius-pill: 999px;
+
+  /* Elevation: borders first; one shadow level for overlays only */
+  --shadow-overlay: 0 8px 24px rgb(0 0 0 / 0.12);
+
+  /* Focus */
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* Colour — light (contrast vs bg noted in design.md) */
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f0f4f7;
+  --color-text: #2e303b;
+  --color-text-muted: #5a5d6b;
+  --color-border: #8a8e9c;
+  --color-accent: #3b6680;
+  --color-on-accent: #ffffff;
+  --color-brand: #e92938; /* logo/accents and large text only */
+  --color-success: #3f7a1f;
+  --color-danger: #b42318;
+  --color-warning: #8a5a00;
+
+  color-scheme: light;
+}
+
+/* Dark — follows the system unless a theme is forced */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #15161b;
+    --color-surface: #1e2028;
+    --color-surface-sunken: #121318;
+    --color-text: #e8e9ee;
+    --color-text-muted: #a6a9b6;
+    --color-border: #6b6f7d;
+    --color-accent: #8cb8d4;
+    --color-on-accent: #15161b;
+    --color-brand: #f0505d;
+    --color-success: #8dc26a;
+    --color-danger: #f08a80;
+    --color-warning: #e0b04a;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #15161b;
+  --color-surface: #1e2028;
+  --color-surface-sunken: #121318;
+  --color-text: #e8e9ee;
+  --color-text-muted: #a6a9b6;
+  --color-border: #6b6f7d;
+  --color-accent: #8cb8d4;
+  --color-on-accent: #15161b;
+  --color-brand: #f0505d;
+  --color-success: #8dc26a;
+  --color-danger: #f08a80;
+  --color-warning: #e0b04a;
+  color-scheme: dark;
+}

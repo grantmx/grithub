@@ -51,6 +51,7 @@ Key: **C** create · **R** read · **U** update · **D** delete/archive · **own
 Notes:
 
 - **Answer keys** (`AnswerOption.isCorrect`, marking memos) are visible to SDP admin, assessors and moderators in staff views only. They are never sent to a learner session. Facilitators see questions but not keys, which reduces leakage to learners. This is an open question; some SDPs let facilitators see memos.
+- **Result release (design.md, approved):** learners never see a decision straight after the assessor records it. Decisions are grouped in a `ModerationBatch` (one assessment or brief × one cohort). When the moderator closes the batch's sample, **every decision in the batch is released together** and learners are notified. Unsampled decisions are released with it.
 - **Decision lock:** once a moderation record exists for a decision, the assessor cannot change it. Changes go through a referral back, which creates a new decision row that references the old one.
 - **External evaluator** accounts expire automatically. Every page view is audited.
 

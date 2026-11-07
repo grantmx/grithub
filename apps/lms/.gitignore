@@ -1,0 +1,17 @@
+# Next.js
+/.next/
+/out/
+*.tsbuildinfo
+
+# Turbo / Vercel
+.turbo
+.vercel
+
+# Env files: only .env.example is committed
+.env
+.env*.local
+.env.development
+.env.production
+
+# Testing
+/coverage

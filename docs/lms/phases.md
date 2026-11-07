@@ -37,6 +37,7 @@ Each phase lists its scope and acceptance criteria. A phase is done only when it
 - Editing a served question creates a new version; the old attempt still replays with the old version.
 - A 200 MB practical file uploads without passing through a function, and the Submission row records checksum and size.
 - A moderator cannot moderate their own decision; a moderated decision cannot be edited by the assessor.
+- A learner cannot see any decision until the moderator closes the batch; closing it releases all decisions in that batch (sampled or not) and notifies the learners.
 - Coverage report lists every curriculum component of a module with the content and assessments mapped to it.
 - Airtable receives enrolment/attendance/result rows within the cron interval; a forced Airtable failure is retried and nothing is lost.
 - Every decision, moderation, role change and file download appears in the audit log.
