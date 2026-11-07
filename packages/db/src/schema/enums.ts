@@ -1,0 +1,90 @@
+import { pgEnum } from "drizzle-orm/pg-core";
+
+// Programmes have ONLY Knowledge and Practical modules. There is deliberately
+// no "workplace" value (docs/lms/README.md, domain-model.md).
+export const moduleType = pgEnum("module_type", ["knowledge", "practical"]);
+
+// Staff and evaluator roles. Learners get access through an enrolment, not a role grant.
+export const staffRole = pgEnum("staff_role", [
+  "facilitator",
+  "assessor",
+  "moderator",
+  "sdp_admin",
+  "external_evaluator",
+]);
+
+export const userStatus = pgEnum("user_status", [
+  "invited",
+  "active",
+  "suspended",
+]);
+
+// Text is the core of every section; audio and video are optional extras.
+export const contentKind = pgEnum("content_kind", [
+  "text",
+  "audio",
+  "video",
+  "document",
+  "external_link",
+]);
+
+export const publishStatus = pgEnum("publish_status", ["draft", "published"]);
+export const lifecycleStatus = pgEnum("lifecycle_status", [
+  "draft",
+  "active",
+  "retired",
+]);
+export const qualificationStatus = pgEnum("qualification_status", [
+  "draft",
+  "active",
+  "archived",
+]);
+
+export const questionType = pgEnum("question_type", ["single", "multi"]);
+export const blueprintKind = pgEnum("blueprint_kind", [
+  "section_check",
+  "formative",
+  "summative",
+]);
+export const attemptStatus = pgEnum("attempt_status", [
+  "in_progress",
+  "submitted",
+  "graded",
+  "void",
+]);
+
+export const decisionOutcome = pgEnum("decision_outcome", [
+  "competent",
+  "not_yet_competent",
+]);
+export const moderationOutcome = pgEnum("moderation_outcome", [
+  "upheld",
+  "referred_back",
+]);
+export const batchStatus = pgEnum("batch_status", ["open", "closed"]);
+
+export const enrolmentStatus = pgEnum("enrolment_status", [
+  "active",
+  "completed",
+  "withdrawn",
+]);
+export const attendanceStatus = pgEnum("attendance_status", [
+  "present",
+  "absent",
+  "late",
+  "excused",
+]);
+
+export const ticketCategory = pgEnum("ticket_category", [
+  "academic",
+  "technical",
+  "admin",
+]);
+export const ticketStatus = pgEnum("ticket_status", [
+  "open",
+  "in_progress",
+  "resolved",
+  "closed",
+]);
+
+export const syncStatus = pgEnum("sync_status", ["pending", "sent", "failed"]);

@@ -31,6 +31,7 @@ Per-app (from `apps/web`, `apps/cms`, or `apps/docs`), or via `yarn workspace <n
 yarn workspace web dev      # apps/web on :3000
 yarn workspace docs dev     # apps/docs (SOP site) on :3001; build also generates the pagefind search index
 yarn workspace lms dev      # apps/lms on :3002 (also: lint, typecheck, test, build)
+yarn workspace db db:migrate  # packages/db (Drizzle): also db:up, db:seed, db:generate, test — see packages/db/README.md
 yarn workspace grithub-cms dev   # sanity dev — Sanity Studio local editor
 ```
 

@@ -11,7 +11,7 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ## ADR-002: Postgres + Drizzle in `packages/db`
 
-- **Status:** Proposed
+- **Status:** Accepted (2026-11-07): Drizzle 0.44 + drizzle-kit 0.31, postgres.js driver; schema, migrations, triggers and tests in `packages/db`
 - **Decision:** Drizzle ORM with committed SQL migrations; every schema change needs a migration.
 - **Alternatives:** Prisma; Supabase.
 - **Consequences:** typed schema shared by the app and scripts; migrations reviewed as SQL.

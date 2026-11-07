@@ -41,10 +41,13 @@ erDiagram
     ContentItem {
         uuid id PK
         uuid sectionId FK
-        text bodyRichText "core content"
-        string audioAssetId "optional, hosted"
-        string videoAssetId "optional, hosted"
-        text transcript
+        string kind "text | audio | video | document | external_link"
+        text body "required for text (the core)"
+        string mediaAssetId "audio/video, hosted"
+        text transcript "required once audio/video is published"
+        string storageKey "document"
+        string externalUrl "https only"
+        string status "draft | published"
         int version
     }
     QuestionPool {
