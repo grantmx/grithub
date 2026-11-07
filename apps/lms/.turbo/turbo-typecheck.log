@@ -1,0 +1,5 @@
+yarn run v1.22.19
+$ next typegen && tsc --noEmit
+Generating route types...
+✓ Types generated successfully
+Done in 3.13s.

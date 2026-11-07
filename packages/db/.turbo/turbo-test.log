@@ -1,0 +1,17 @@
+yarn run v1.22.19
+$ vitest run
+
+ RUN  v3.2.4 /Users/grantmx/Desktop/git/grithub/packages/db
+
+ ✓ test/decisions-moderation.test.ts (13 tests) 632ms
+ ✓ test/question-versions.test.ts (11 tests) 527ms
+ ✓ test/constraints.test.ts (12 tests) 452ms
+ ✓ test/seed.test.ts (11 tests) 471ms
+ ✓ test/env.test.ts (6 tests) 3ms
+
+ Test Files  5 passed (5)
+      Tests  53 passed (53)
+   Start at  11:37:53
+   Duration  4.02s (transform 119ms, setup 0ms, collect 1.28s, tests 2.08s, environment 0ms, prepare 188ms)
+
+Done in 4.79s.

@@ -1,0 +1,6 @@
+1:"$Sreact.fragment"
+2:I[13308,["/_next/static/chunks/f0a1958e6bbbc782.js"],"ViewportBoundary"]
+3:I[13308,["/_next/static/chunks/f0a1958e6bbbc782.js"],"MetadataBoundary"]
+4:"$Sreact.suspense"
+5:I[49971,["/_next/static/chunks/f0a1958e6bbbc782.js"],"IconMark"]
+0:{"buildId":"MqmL11rGL0dSeAMhSBdD1","rsc":["$","$1","h",{"children":[null,["$","$L2",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","2",{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"#ffffff"}],["$","meta","3",{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"#15161b"}]]}],["$","div",null,{"hidden":true,"children":["$","$L3",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"Admin · GRIT Hub Learning"}],["$","meta","1",{"name":"description","content":"GRIT Hub learning platform."}],["$","meta","2",{"name":"robots","content":"noindex, nofollow"}],["$","link","3",{"rel":"icon","href":"/icon.svg?icon.1985ca23.svg","sizes":"any","type":"image/svg+xml"}],["$","$L5","4",{}]]}]}]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"loading":null,"isPartial":false}

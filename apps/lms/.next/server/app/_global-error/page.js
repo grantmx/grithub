@@ -1,0 +1,10 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/[root-of-the-server]__5abb6d1d._.js")
+R.c("server/chunks/ssr/c29e9_next_dist_b71bb1f1._.js")
+R.c("server/chunks/ssr/c29e9_next_dist_0b07faf1._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1cf1483a._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__e33e09df._.js")
+R.c("server/chunks/ssr/c29e9_0ff5aa7f._.js")
+R.c("server/chunks/ssr/d834a_grithub_apps_lms__next-internal_server_app__global-error_page_actions_8489db1f.js")
+R.m(72568)
+module.exports=R.m(72568).exports

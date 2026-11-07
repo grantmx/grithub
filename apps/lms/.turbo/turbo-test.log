@@ -1,0 +1,13 @@
+yarn run v1.22.19
+$ vitest run
+
+ RUN  v3.2.4 /Users/grantmx/Desktop/git/grithub/apps/lms
+
+ ✓ app/api/health/route.test.ts (3 tests) 14ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  11:37:22
+   Duration  438ms (transform 83ms, setup 0ms, collect 27ms, tests 14ms, environment 0ms, prepare 138ms)
+
+Done in 1.87s.
