@@ -10,7 +10,9 @@ The marketing/community website for GRIT Hub (Garden Route Innovation and Techno
 - `apps/cms` — a Sanity Studio (v3) content studio for blog/newsroom posts, deployed separately.
 - `apps/docs` — the GRIT Hub SOP internal wiki (Nextra docs theme, Markdown in `apps/docs/content`), deployed as its own Vercel project. Edit only content there unless asked. Use the blank `>` line after `[!NOTE]`-style alerts and keep `zod` resolutions in the root `package.json` (newer zod breaks Nextra 4.6.1).
 - `packages/ui` — shared React component library (`ui`) consumed by `apps/web` via the `ui` workspace alias. Has its own copies of several services (Firebase, PayFast, SendGrid, nodemailer) that overlap with `apps/web/services` — check both before assuming a service lives in only one place.
-- `packages/eslint-config-custom`, `packages/tsconfig` — shared lint/tsconfig presets.
+- `apps/lms` — the GRIT Hub learning platform (Next.js App Router + strict TypeScript), deployed as its own Vercel project. Scaffold only so far; see the LMS section below.
+- `packages/eslint-config-custom` — shared **ESLint 9 flat config** (`eslint-config-next` 16 + turbo + prettier). Workspaces use it from their own `eslint.config.mjs` (`import custom from "eslint-config-custom"`). There is no root `.eslintrc.js` any more. `apps/web` still has a legacy `.eslintrc` and its `next lint` script is broken under Next 16 (`next lint` was removed); it needs migrating separately.
+- `packages/tsconfig` — shared tsconfig presets (`base.json` is `strict: true`).
 
 ## Commands
 
@@ -28,12 +30,14 @@ Per-app (from `apps/web`, `apps/cms`, or `apps/docs`), or via `yarn workspace <n
 ```bash
 yarn workspace web dev      # apps/web on :3000
 yarn workspace docs dev     # apps/docs (SOP site) on :3001; build also generates the pagefind search index
+yarn workspace lms dev      # apps/lms on :3002 (also: lint, typecheck, test, build)
+yarn workspace db db:migrate  # packages/db (Drizzle): also db:up, db:seed, db:generate, test — see packages/db/README.md
 yarn workspace grithub-cms dev   # sanity dev — Sanity Studio local editor
 ```
 
 `apps/cms` additionally has `deploy` (deploy the Studio) and `deploy-graphql` (deploy the GraphQL API) — these publish to Sanity's hosted infra, so don't run them without being asked.
 
-There is no test suite/runner configured anywhere in this repo (no jest/vitest/playwright). Don't assume one exists or try to invent test commands.
+The only test runner is **Vitest in `apps/lms`** (`yarn workspace lms test`, or `yarn test` → `turbo run test`). No other workspace has tests configured; don't invent test commands for them.
 
 Installing/removing/upgrading a dependency in one workspace:
 
@@ -45,7 +49,7 @@ yarn workspace <workspace> upgrade <package>
 
 ## Architecture notes (apps/web)
 
-- **Routing is split between `app/` and `pages/`.** All real pages/layouts live under `app/` (App Router, route groups `(home)`, `(pages)`, `(interactions)`). `pages/` is kept alive *only* for `pages/api/*` — API routes for email, PayFast, Yoco, EskomSePush, file uploads, and form submissions. When adding a new backend endpoint, it goes in `pages/api`, not `app/api`.
+- **Routing is split between `app/` and `pages/`.** All real pages/layouts live under `app/` (App Router, route groups `(home)`, `(pages)`, `(interactions)`). `pages/` is kept alive _only_ for `pages/api/*` — API routes for email, PayFast, Yoco, EskomSePush, file uploads, and form submissions. When adding a new backend endpoint, it goes in `pages/api`, not `app/api`.
 - **Two payment gateways are integrated**: PayFast (`services/payfast`, `pages/api/payfast/generatePayId.js`) and Yoco (`services/yoco`, `pages/api/yoco/getCheckoutUrl.js`), used for course/program registrations and co-working bookings (`components/bookings/*`).
 - **Content comes from Sanity**, fetched via `services/sanity/sanity.service.js` using GROQ queries against the project defined in `apps/cms/sanity.config.js` (projectId `67zfq8ba`, dataset `production`). Sanity fetch helpers use Next's `"use cache"` / `cacheTag` / `cacheLife` directives — when editing them, keep cache tags consistent with what's invalidated elsewhere (e.g. `latest-posts`, `post-${slug}`).
 - **Firebase** (`services/firebase`) is used for auxiliary data/auth; there's a separate, older Firebase service under `packages/ui/services/firebase`.
@@ -58,3 +62,16 @@ yarn workspace <workspace> upgrade <package>
 ## Environment configuration
 
 Env vars are declared centrally in the root `turbo.json` under `tasks.build.env` (not per-app `.env.example` files) — that list is the source of truth for what secrets/config the build expects (Sanity, PayFast/Yoco keys, Twilio, SendGrid, Google service account, Airtable, EskomSePush, email server credentials, Vercel Blob token, etc.). When adding a new environment variable, register it there so Turborepo's caching picks up on changes to it.
+
+## LMS (apps/lms)
+
+Planning docs live in `docs/lms/` (start at `docs/lms/README.md`). Conventions for all LMS work (`apps/lms`, `packages/db`):
+
+- **Strict TypeScript.** `strict: true`, no `any` without a justifying comment, no `.js` source files.
+- **No secrets in the repo.** This repo is public. No keys, tokens, credentials, real learner data or personal data in code, fixtures, seeds, docs or commit messages. Register every new LMS env var by name in `apps/lms/turbo.json` (`tasks.build.env`) and `apps/lms/.env.example`; values live only in Vercel and untracked `.env.local`.
+- **Every schema change needs a migration.** Commit the generated SQL migration with the schema change; never rely on `push` against shared databases.
+- **Every feature needs tests.** This overrides the repo-wide "no test runner" note for `apps/lms` and `packages/db` only (Vitest is set up; Playwright comes with the first end-to-end flow, see `docs/lms/decisions.md` ADR-009).
+- **Every feature updates `docs/lms/compliance/form5-mapping.md`.** Move the affected rows' status forward and link the evidence.
+- Programmes have only Knowledge and Practical modules: no Workplace module, logbook or mentor role.
+
+**DESIGN GATE:** Before making any design, layout, typography, colour, navigation or interaction decision for apps/lms, STOP and ask me clarifying questions (use your question tool, in batches). Do not proceed until I answer. Record the answers in docs/lms/design.md.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "extends": ["//"],
+  "tasks": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"],
+      "env": [
+        "NEXT_PUBLIC_APP_URL",
+        "DATABASE_URL",
+        "SESSION_SECRET",
+        "WEBAUTHN_RP_ID",
+        "WEBAUTHN_RP_NAME",
+        "WEBAUTHN_ORIGIN",
+        "INVITE_TOKEN_SECRET",
+        "STORAGE_BUCKET",
+        "STORAGE_REGION",
+        "STORAGE_ENDPOINT",
+        "STORAGE_ACCESS_KEY_ID",
+        "STORAGE_SECRET_ACCESS_KEY",
+        "MUX_TOKEN_ID",
+        "MUX_TOKEN_SECRET",
+        "MUX_SIGNING_KEY_ID",
+        "MUX_SIGNING_PRIVATE_KEY",
+        "EMAIL_PROVIDER_API_KEY",
+        "EMAIL_FROM_ADDRESS",
+        "AIRTABLE_ACCESS_TOKEN",
+        "AIRTABLE_BASE_ID",
+        "CRON_SECRET"
+      ]
+    }
+  }
+}

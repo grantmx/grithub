@@ -1,0 +1,21 @@
+yarn run v1.22.19
+$ TIMING=1 eslint "**/*.ts*"
+
+/Users/grantmx/Desktop/git/grithub/packages/ui/index.tsx
+  1:13  warning  'React' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 1 problem (0 errors, 1 warning)
+
+Rule                                      | Time (ms) | Relative
+:-----------------------------------------|----------:|--------:
+react-hooks/static-components             |    58.143 |    80.5%
+@typescript-eslint/no-unused-vars         |     4.414 |     6.1%
+react/display-name                        |     3.355 |     4.6%
+@next/next/no-page-custom-font            |     2.433 |     3.4%
+react-hooks/rules-of-hooks                |     0.689 |     1.0%
+turbo/no-undeclared-env-vars              |     0.470 |     0.7%
+react/no-direct-mutation-state            |     0.364 |     0.5%
+react-hooks/use-memo                      |     0.246 |     0.3%
+react/require-render-return               |     0.216 |     0.3%
+@typescript-eslint/triple-slash-reference |     0.190 |     0.3%
+Done in 2.40s.
