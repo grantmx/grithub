@@ -1,5 +1,444 @@
 {
-  "node": {},
+  "node": {
+    "60102dae52274775b96858d327d9d6dd487e38e2a5": {
+      "workers": {
+        "app/account/passkeys/page": {
+          "moduleId": 74287,
+          "async": false,
+          "exportedName": "completePasskeyRegistration",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
+        "app/setup/page": {
+          "moduleId": 49913,
+          "async": false,
+          "exportedName": "completePasskeyRegistration",
+          "filename": "apps/lms/app/account/actions.ts"
+        }
+      },
+      "layer": {
+        "app/account/passkeys/page": "rsc",
+        "app/setup/page": "action-browser"
+      },
+      "filename": "apps/lms/app/account/actions.ts",
+      "exportedName": "completePasskeyRegistration"
+    },
+    "0099dd8c1b5f3a6fc657d357790e29029defb1bbe4": {
+      "workers": {
+        "app/account/passkeys/page": {
+          "moduleId": 74287,
+          "async": false,
+          "exportedName": "getPasskeyRegistrationOptions",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
+        "app/setup/page": {
+          "moduleId": 49913,
+          "async": false,
+          "exportedName": "getPasskeyRegistrationOptions",
+          "filename": "apps/lms/app/account/actions.ts"
+        }
+      },
+      "layer": {
+        "app/account/passkeys/page": "rsc",
+        "app/setup/page": "action-browser"
+      },
+      "filename": "apps/lms/app/account/actions.ts",
+      "exportedName": "getPasskeyRegistrationOptions"
+    },
+    "00c33f566a35bbf8d53bc02c8d9b8f58f98c237d7e": {
+      "workers": {
+        "app/account/passkeys/page": {
+          "moduleId": 74287,
+          "async": false,
+          "exportedName": "signOut",
+          "filename": "apps/lms/app/account/actions.ts"
+        }
+      },
+      "layer": {
+        "app/account/passkeys/page": "rsc"
+      },
+      "filename": "apps/lms/app/account/actions.ts",
+      "exportedName": "signOut"
+    },
+    "40b30d40943c66d13fc459b9288023616f99377bbb": {
+      "workers": {
+        "app/account/passkeys/page": {
+          "moduleId": 74287,
+          "async": false,
+          "exportedName": "revokePasskey",
+          "filename": "apps/lms/app/account/actions.ts"
+        }
+      },
+      "layer": {
+        "app/account/passkeys/page": "rsc"
+      },
+      "filename": "apps/lms/app/account/actions.ts",
+      "exportedName": "revokePasskey"
+    },
+    "6015a6532591a7810cc96b2a64b9f8dda113c58a0b": {
+      "workers": {
+        "app/admin/cohorts/page": {
+          "moduleId": 85275,
+          "async": false,
+          "exportedName": "confirmImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/[userId]/recovery/page": {
+          "moduleId": 78695,
+          "async": false,
+          "exportedName": "confirmImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/import/page": {
+          "moduleId": 55061,
+          "async": false,
+          "exportedName": "confirmImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/invite/page": {
+          "moduleId": 65065,
+          "async": false,
+          "exportedName": "confirmImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "confirmImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/cohorts/page": "action-browser",
+        "app/admin/people/[userId]/recovery/page": "action-browser",
+        "app/admin/people/import/page": "action-browser",
+        "app/admin/people/invite/page": "action-browser",
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "confirmImportAction"
+    },
+    "603131d66ecc63521bb72845d1202d50ba81daf0e6": {
+      "workers": {
+        "app/admin/cohorts/page": {
+          "moduleId": 85275,
+          "async": false,
+          "exportedName": "createCohortAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/[userId]/recovery/page": {
+          "moduleId": 78695,
+          "async": false,
+          "exportedName": "createCohortAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/import/page": {
+          "moduleId": 55061,
+          "async": false,
+          "exportedName": "createCohortAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/invite/page": {
+          "moduleId": 65065,
+          "async": false,
+          "exportedName": "createCohortAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "createCohortAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/cohorts/page": "action-browser",
+        "app/admin/people/[userId]/recovery/page": "action-browser",
+        "app/admin/people/import/page": "action-browser",
+        "app/admin/people/invite/page": "action-browser",
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "createCohortAction"
+    },
+    "60a91aa99c4ce79778e40b50174071098bb69041aa": {
+      "workers": {
+        "app/admin/cohorts/page": {
+          "moduleId": 85275,
+          "async": false,
+          "exportedName": "inviteLearnerAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/[userId]/recovery/page": {
+          "moduleId": 78695,
+          "async": false,
+          "exportedName": "inviteLearnerAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/import/page": {
+          "moduleId": 55061,
+          "async": false,
+          "exportedName": "inviteLearnerAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/invite/page": {
+          "moduleId": 65065,
+          "async": false,
+          "exportedName": "inviteLearnerAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "inviteLearnerAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/cohorts/page": "action-browser",
+        "app/admin/people/[userId]/recovery/page": "action-browser",
+        "app/admin/people/import/page": "action-browser",
+        "app/admin/people/invite/page": "action-browser",
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "inviteLearnerAction"
+    },
+    "6015c220ffc17f3c13ba80aa49234ac86c1c6e2a30": {
+      "workers": {
+        "app/admin/cohorts/page": {
+          "moduleId": 85275,
+          "async": false,
+          "exportedName": "previewImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/[userId]/recovery/page": {
+          "moduleId": 78695,
+          "async": false,
+          "exportedName": "previewImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/import/page": {
+          "moduleId": 55061,
+          "async": false,
+          "exportedName": "previewImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/invite/page": {
+          "moduleId": 65065,
+          "async": false,
+          "exportedName": "previewImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "previewImportAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/cohorts/page": "action-browser",
+        "app/admin/people/[userId]/recovery/page": "action-browser",
+        "app/admin/people/import/page": "action-browser",
+        "app/admin/people/invite/page": "action-browser",
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "previewImportAction"
+    },
+    "606fbf706cc37af2a3170cf19a2a64c57da40688f0": {
+      "workers": {
+        "app/admin/cohorts/page": {
+          "moduleId": 85275,
+          "async": false,
+          "exportedName": "startRecoveryAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/[userId]/recovery/page": {
+          "moduleId": 78695,
+          "async": false,
+          "exportedName": "startRecoveryAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/import/page": {
+          "moduleId": 55061,
+          "async": false,
+          "exportedName": "startRecoveryAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/invite/page": {
+          "moduleId": 65065,
+          "async": false,
+          "exportedName": "startRecoveryAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        },
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "startRecoveryAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/cohorts/page": "action-browser",
+        "app/admin/people/[userId]/recovery/page": "action-browser",
+        "app/admin/people/import/page": "action-browser",
+        "app/admin/people/invite/page": "action-browser",
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "startRecoveryAction"
+    },
+    "402b3584b7cb248f850a2eedb718f5338814e030f7": {
+      "workers": {
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "deactivateAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "deactivateAction"
+    },
+    "406ed3325a822dd924412e82f211a2cd5b7c7ef338": {
+      "workers": {
+        "app/admin/people/page": {
+          "moduleId": 24492,
+          "async": false,
+          "exportedName": "resendInviteAction",
+          "filename": "apps/lms/app/admin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/people/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/actions.ts",
+      "exportedName": "resendInviteAction"
+    },
+    "409ed9631a5dd10d958215c4af52c376f2ecbd14aa": {
+      "workers": {
+        "app/auth/link/[token]/page": {
+          "moduleId": 62445,
+          "async": false,
+          "exportedName": "consumeSignInLink",
+          "filename": "apps/lms/app/auth/actions.ts"
+        },
+        "app/setup/[token]/page": {
+          "moduleId": 28449,
+          "async": false,
+          "exportedName": "consumeSignInLink",
+          "filename": "apps/lms/app/auth/actions.ts"
+        }
+      },
+      "layer": {
+        "app/auth/link/[token]/page": "rsc",
+        "app/setup/[token]/page": "rsc"
+      },
+      "filename": "apps/lms/app/auth/actions.ts",
+      "exportedName": "consumeSignInLink"
+    },
+    "40d3b2d4e9ae2370785ccd5361017ffb5045215025": {
+      "workers": {
+        "app/auth/link/[token]/page": {
+          "moduleId": 62445,
+          "async": false,
+          "exportedName": "acceptInvitation",
+          "filename": "apps/lms/app/auth/actions.ts"
+        },
+        "app/setup/[token]/page": {
+          "moduleId": 28449,
+          "async": false,
+          "exportedName": "acceptInvitation",
+          "filename": "apps/lms/app/auth/actions.ts"
+        }
+      },
+      "layer": {
+        "app/auth/link/[token]/page": "rsc",
+        "app/setup/[token]/page": "rsc"
+      },
+      "filename": "apps/lms/app/auth/actions.ts",
+      "exportedName": "acceptInvitation"
+    },
+    "605afc379d86020add819d58249e8d5a2592ddf519": {
+      "workers": {
+        "app/setup/page": {
+          "moduleId": 49913,
+          "async": false,
+          "exportedName": "saveConsent",
+          "filename": "apps/lms/app/setup/actions.ts"
+        }
+      },
+      "layer": {
+        "app/setup/page": "action-browser"
+      },
+      "filename": "apps/lms/app/setup/actions.ts",
+      "exportedName": "saveConsent"
+    },
+    "60ed0aea86370076ba2ceb591e9cd09c2d00543ef0": {
+      "workers": {
+        "app/setup/page": {
+          "moduleId": 49913,
+          "async": false,
+          "exportedName": "saveDetails",
+          "filename": "apps/lms/app/setup/actions.ts"
+        }
+      },
+      "layer": {
+        "app/setup/page": "action-browser"
+      },
+      "filename": "apps/lms/app/setup/actions.ts",
+      "exportedName": "saveDetails"
+    },
+    "6063d2b780e00a75321387bc325bce56c20c702a20": {
+      "workers": {
+        "app/signin/page": {
+          "moduleId": 81451,
+          "async": false,
+          "exportedName": "completePasskeySignIn",
+          "filename": "apps/lms/app/signin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/signin/page": "action-browser"
+      },
+      "filename": "apps/lms/app/signin/actions.ts",
+      "exportedName": "completePasskeySignIn"
+    },
+    "004548746438ae3227d99723131207e60a7fdc09cc": {
+      "workers": {
+        "app/signin/page": {
+          "moduleId": 81451,
+          "async": false,
+          "exportedName": "getPasskeySignInOptions",
+          "filename": "apps/lms/app/signin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/signin/page": "action-browser"
+      },
+      "filename": "apps/lms/app/signin/actions.ts",
+      "exportedName": "getPasskeySignInOptions"
+    },
+    "605899b50cc2c51d5b804fd57f03b961537cd0ead5": {
+      "workers": {
+        "app/signin/page": {
+          "moduleId": 81451,
+          "async": false,
+          "exportedName": "sendMagicLink",
+          "filename": "apps/lms/app/signin/actions.ts"
+        }
+      },
+      "layer": {
+        "app/signin/page": "action-browser"
+      },
+      "filename": "apps/lms/app/signin/actions.ts",
+      "exportedName": "sendMagicLink"
+    }
+  },
   "edge": {},
   "encryptionKey": "QQ7GJDIbWKk7sOQ1geBNSRsdYSEIF5D2PFIjG2Zu45g="
 }

@@ -1,6 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
   bigint,
+  boolean,
   check,
   index,
   pgTable,
@@ -42,21 +43,30 @@ export const passkeyCredentials = pgTable(
     userId: uuid()
       .notNull()
       .references(() => users.id, { onDelete: "cascade" }),
-    credentialId: bytea().notNull(),
+    // base64url credential id, exactly as WebAuthn responses carry it.
+    credentialId: text().notNull(),
     publicKey: bytea().notNull(),
     signCount: bigint({ mode: "number" }).notNull().default(0),
     transports: text()
       .array()
       .notNull()
       .default(sql`'{}'::text[]`),
-    nickname: text(),
+    deviceLabel: text().notNull().default("Passkey"),
+    deviceType: text(),
+    backedUp: boolean().notNull().default(false),
     createdAt: createdAt(),
     lastUsedAt: timestamp({ withTimezone: true }),
+    // Revoked passkeys are kept for the audit trail but can never sign in.
+    revokedAt: timestamp({ withTimezone: true }),
   },
   (t) => [
     unique("passkey_credentials_credential_id_uq").on(t.credentialId),
     index("passkey_credentials_user_idx").on(t.userId),
     check("passkey_credentials_sign_count_nonneg", sql`${t.signCount} >= 0`),
+    check(
+      "passkey_credentials_label_length",
+      sql`char_length(${t.deviceLabel}) BETWEEN 1 AND 60`,
+    ),
   ],
 );
 

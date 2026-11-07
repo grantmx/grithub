@@ -99,7 +99,7 @@ self.__SERVER_FILES_MANIFEST={
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "/Users/grantmx",
+    "outputFileTracingRoot": "/Users/grantmx/Desktop/git/grithub",
     "cacheComponents": false,
     "cacheLife": {
       "default": {
@@ -292,15 +292,16 @@ self.__SERVER_FILES_MANIFEST={
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
     "transpilePackages": [
-      "ui"
+      "ui",
+      "db"
     ],
     "turbopack": {
-      "root": "/Users/grantmx"
+      "root": "/Users/grantmx/Desktop/git/grithub"
     },
     "distDirRoot": ".next"
   },
   "appDir": "/Users/grantmx/Desktop/git/grithub/apps/lms",
-  "relativeAppDir": "Desktop/git/grithub/apps/lms",
+  "relativeAppDir": "apps/lms",
   "files": [
     ".next/routes-manifest.json",
     ".next/server/pages-manifest.json",

@@ -2,7 +2,7 @@
 
 The GRIT Hub learning management system: a Next.js App Router + strict TypeScript app in the Yarn 1 + Turborepo monorepo.
 
-> Status: **scaffold only.** No auth, database or real features yet. Planning and design live in [`docs/lms/`](../../docs/lms/README.md). Read [`design.md`](../../docs/lms/design.md) and the DESIGN GATE in the root `CLAUDE.md` before building any UI.
+> Status: **auth and onboarding in place**; learning features not built yet. Planning and design live in [`docs/lms/`](../../docs/lms/README.md). Read [`design.md`](../../docs/lms/design.md) and the DESIGN GATE in the root `CLAUDE.md` before building any UI.
 
 ## Commands
 
@@ -44,6 +44,66 @@ turbo.json              Package-level Turbo config: LMS env var names
 - Names only in [`.env.example`](.env.example). Values never go in the repo.
 - Every name is registered in [`turbo.json`](turbo.json) (`tasks.build.env`), so Turbo caching notices changes. This package-level file keeps LMS variables out of apps/web's cache key.
 - Locally: copy `.env.example` to `.env.local` (git-ignored) when a feature needs a value. Nothing is required yet.
+
+## Authentication
+
+Passkeys (WebAuthn) are the primary sign-in method, via **SimpleWebAuthn** (`@simplewebauthn/server` 14.0.3 / `browser` 14.0.0). It's actively maintained, supports conditional UI (autofill), and has no opinions about our user or session schema. Email magic links are the fallback.
+
+| Piece                                                             | Where                                                                      |
+| ----------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Route rules (one source of truth)                                 | `lib/access.ts`                                                            |
+| Proxy (Next 16 "middleware")                                      | `proxy.ts`: checks every page request                                      |
+| Server-action guard                                               | `authorize()` in `lib/server/auth.ts`, called inside every admin operation |
+| Page guard (defence in depth)                                     | `requirePage()` in `lib/server/page.ts`                                    |
+| Passkeys, magic links, sessions                                   | `lib/server/auth.ts`, `tokens.ts`, `session.ts`                            |
+| Onboarding (cohorts, invites, CSV, deactivate, recovery, consent) | `lib/server/onboarding.ts`                                                 |
+| POPIA notice (versioned)                                          | `lib/popia.ts`; see `docs/lms/compliance/popia.md`                         |
+
+**Rules**
+
+- No public sign-up. Accounts exist only through an admin invitation (one-by-one or CSV import).
+- **Step-up:** assessors, moderators and SDP admins need **at least one active passkey** before `/staff/marking`, `/staff/moderation` or `/admin`. This is enforced in the proxy and again in every admin server action. Such staff can't remove their last passkey.
+- Sessions: random token in an httpOnly cookie (`__Host-lms_session` on https), SHA-256 hash in the database, 14-day maximum.
+- Emailed links (invitation 72 h, sign-in 15 min, recovery 30 min) are single-use and stored only as hashes. Opening a link does nothing until the person presses a button, so email link scanners can't use it up.
+- **Rate limits** on every auth entry point (Postgres-backed so they hold across serverless instances): see `RATE_LIMITS` in `lib/server/ratelimit.ts`.
+- **Audit log:** sign-in (passkey, magic link, invitation, recovery, failures), passkey added/revoked, recovery started, consent accepted, permission denials (proxy, page and action), rate-limit hits, admin actions. No emails, names or CSV contents go in audit payloads.
+- We never receive or store biometric data (`docs/lms/compliance/popia.md`).
+
+### ⚠️ The domain is part of every passkey
+
+`WEBAUTHN_RP_ID` (the domain) and `WEBAUTHN_ORIGIN` come from environment variables. **Every passkey is permanently bound to the RP ID.** If the LMS moves to a different domain, or `WEBAUTHN_RP_ID` changes, **all existing passkeys stop working** and every user must sign in with an email link and register a new passkey. Choose the production domain before inviting real users. A subdomain such as `learn.<domain>` can share an RP ID set to the parent domain, but only if that's decided up front.
+
+### Admin-verified account recovery
+
+For a user who lost their device and can't use an email link, or whose account may be compromised:
+
+1. The person contacts GRIT Hub. **Never** use SMS codes, and never read a link out over the phone.
+2. An SDP admin verifies identity: in person with ID, on a video call with ID shown, or by calling a phone number already on record.
+3. Admin → People → ⋯ → **Start account recovery**. Record the verification method and a short reason.
+4. The system revokes **all** the user's passkeys and sessions and any outstanding links, then emails a single-use recovery link (30 minutes).
+5. The user opens the link, signs in, and is asked to add a new passkey.
+6. Every step is in `audit_log`: `auth.recovery.started` (admin id, method, reason) and `auth.signin.recovery`.
+
+An admin can't recover their own account; another SDP admin must do it.
+
+### Local development
+
+Create `apps/lms/.env.local` (git-ignored). Use values that only exist on your machine:
+
+```bash
+DATABASE_URL=<same as packages/db/.env>
+DATABASE_SSL=disable
+WEBAUTHN_RP_ID=localhost
+WEBAUTHN_ORIGIN=http://localhost:3002
+SESSION_SECRET=<at least 32 random characters>
+EMAIL_TRANSPORT=console   # prints only the subject and link, never the address
+```
+
+Then `yarn workspace db db:migrate && yarn workspace db db:seed`, start `yarn workspace lms dev`, and sign in as `demo.admin@example.invalid` with **Email me a sign-in link** (the link appears in the terminal). Go through setup and register a passkey to reach `/admin`.
+
+Tests need `TEST_DATABASE_URL` (see `packages/db/README.md`). They drive real registration and sign-in through a software authenticator (`test/authenticator.ts`).
+
+**Not built yet:** bootstrapping the first real SDP admin in production (needs a one-off, audited CLI script).
 
 ## Vercel setup
 

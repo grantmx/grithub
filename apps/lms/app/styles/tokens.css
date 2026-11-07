@@ -103,3 +103,22 @@
   --color-warning: #e0b04a;
   color-scheme: dark;
 }
+
+/* Element-level light override (staff screens are light-only in the MVP). */
+[data-theme="light"]:not(:root) {
+  --color-bg: #ffffff;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #f0f4f7;
+  --color-text: #2e303b;
+  --color-text-muted: #5a5d6b;
+  --color-border: #8a8e9c;
+  --color-accent: #3b6680;
+  --color-on-accent: #ffffff;
+  --color-brand: #e92938;
+  --color-success: #3f7a1f;
+  --color-danger: #b42318;
+  --color-warning: #8a5a00;
+  color-scheme: light;
+  background: var(--color-bg);
+  color: var(--color-text);
+}

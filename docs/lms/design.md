@@ -408,47 +408,52 @@ Nothing is undecided in the design itself. One input is still pending:
 
 ## 14. Design-gate record
 
-| Date       | Area          | Question                       | Answer                                                                                                               |
-| ---------- | ------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------- |
-| 2026-11-07 | Brand         | How closely to match apps/web? | Same family, calmer: keep logo, Inter, charcoal/ocean/ice; red as a small accent; no Playfair                        |
-| 2026-11-07 | Tone          | Voice for learner-facing text  | Warm and plain                                                                                                       |
-| 2026-11-07 | Learners      | Main devices                   | Mix of phone and laptop                                                                                              |
-| 2026-11-07 | Learners      | Data/connectivity              | Mixed: some Wi-Fi, some mobile data                                                                                  |
-| 2026-11-07 | Learners      | Reading level                  | Plain language, ~Grade 8                                                                                             |
-| 2026-11-07 | Learners      | Languages                      | English now; i18n layer so more can be added later                                                                   |
-| 2026-11-07 | Learning page | Layout                         | Single column + collapsible outline                                                                                  |
-| 2026-11-07 | Learning page | Progress                       | Checkmarks + thin bar, "x of y sections"                                                                             |
-| 2026-11-07 | Learning page | Media placement                | Featured player at top                                                                                               |
-| 2026-11-07 | Learning page | Before play                    | Tiny poster + duration + data size; no player script until tap                                                       |
-| 2026-11-07 | Learning page | Transcripts                    | Always, collapsed by default (+ captions)                                                                            |
-| 2026-11-07 | Learning page | Text size                      | A−/A+ control, remembered per user                                                                                   |
-| 2026-11-07 | Section check | Presentation                   | Inline card at the end of the section                                                                                |
-| 2026-11-07 | Section check | Feedback                       | Reveal correct answer (+ explanation)                                                                                |
-| 2026-11-07 | Section check | Retries                        | First attempt + 2 retries (3 max), fresh question each time                                                          |
-| 2026-11-07 | Section check | Gating                         | Must answer, need not pass                                                                                           |
-| 2026-11-07 | Navigation    | After login                    | "Continue" card + Coming up                                                                                          |
-| 2026-11-07 | Navigation    | Section done                   | Learner marks complete (after answering the check)                                                                   |
-| 2026-11-07 | Navigation    | Module/programme done          | Two separate states: learning complete vs competent                                                                  |
-| 2026-11-07 | Theme         | Dark mode                      | Follow system + manual toggle                                                                                        |
-| 2026-11-07 | Accessibility | Target                         | WCAG 2.2 AA                                                                                                          |
-| 2026-11-07 | Offline       | Offline content                | Save section for offline reading; assessments online only                                                            |
-| 2026-11-07 | Staff UI      | Density                        | Dense, laptop-first, same tokens                                                                                     |
-| 2026-11-07 | References    | Learning page reference        | Coursera-style item page (grouped outline, Mark as completed, Go to next item)                                       |
-| 2026-11-07 | References    | Home reference                 | Single "Continue" focus                                                                                              |
-| 2026-11-07 | References    | Dislikes                       | Pop-ups and nags; cluttered Moodle-style blocks; gamification                                                        |
-| 2026-11-07 | Icons         | Delivery and style             | Material Symbols, Outlined, as inline SVG                                                                            |
-| 2026-11-07 | Results       | When learners see "Competent"  | Only after moderation: results released per batch when the moderator closes the sample                               |
-| 2026-11-07 | Imagery       | Illustrations/photos           | No imagery at all on the learner side                                                                                |
-| 2026-11-07 | Completion    | Programme complete             | Quiet confirmation page; not a certificate                                                                           |
-| 2026-11-07 | Assessment    | Attempt layout                 | One question per screen + navigator, all sizes                                                                       |
-| 2026-11-07 | Notifications | Beyond email                   | In-app notification list only                                                                                        |
-| 2026-11-07 | Extras        | Chosen                         | Module text as PDF download; greeting with first name                                                                |
-| 2026-11-07 | Extras        | Not chosen                     | Staff dark mode in MVP; Data saver switch                                                                            |
-| 2026-11-07 | Low data      | Video quality                  | Adaptive only, no manual quality menu; page budgets as in §11                                                        |
-| 2026-11-07 | Notifications | Email preferences              | Essential always on; announcements, discussions and tickets optional (instant, weekly digest or off)                 |
-| 2026-11-07 | Copy          | Empty-state and error wording  | Written by someone at GRIT Hub; LMS uses their text                                                                  |
-| 2026-11-07 | Staff UI      | Tablet marking                 | Yes, tablet landscape supported; smaller screens read-only                                                           |
-| 2026-11-07 | Approval      | Design brief status            | v3 approved                                                                                                          |
-| 2026-11-07 | Navigation    | URL structure                  | Learner at `/` (route group `(learn)`: `/`, `/learn`, `/schedule` …); staff under `/staff/…`; admin under `/admin/…` |
-| 2026-11-07 | Placeholder   | Home before auth/data          | Minimal holding page: logo, "GRIT Hub Learning", one line; tokens only; copy is `TODO(copy)`                         |
-| 2026-11-07 | Components    | packages/ui reuse              | Wire up only; render no packages/ui components until they are restyled with the LMS tokens                           |
+| Date       | Area          | Question                       | Answer                                                                                                                                                |
+| ---------- | ------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-11-07 | Brand         | How closely to match apps/web? | Same family, calmer: keep logo, Inter, charcoal/ocean/ice; red as a small accent; no Playfair                                                         |
+| 2026-11-07 | Tone          | Voice for learner-facing text  | Warm and plain                                                                                                                                        |
+| 2026-11-07 | Learners      | Main devices                   | Mix of phone and laptop                                                                                                                               |
+| 2026-11-07 | Learners      | Data/connectivity              | Mixed: some Wi-Fi, some mobile data                                                                                                                   |
+| 2026-11-07 | Learners      | Reading level                  | Plain language, ~Grade 8                                                                                                                              |
+| 2026-11-07 | Learners      | Languages                      | English now; i18n layer so more can be added later                                                                                                    |
+| 2026-11-07 | Learning page | Layout                         | Single column + collapsible outline                                                                                                                   |
+| 2026-11-07 | Learning page | Progress                       | Checkmarks + thin bar, "x of y sections"                                                                                                              |
+| 2026-11-07 | Learning page | Media placement                | Featured player at top                                                                                                                                |
+| 2026-11-07 | Learning page | Before play                    | Tiny poster + duration + data size; no player script until tap                                                                                        |
+| 2026-11-07 | Learning page | Transcripts                    | Always, collapsed by default (+ captions)                                                                                                             |
+| 2026-11-07 | Learning page | Text size                      | A−/A+ control, remembered per user                                                                                                                    |
+| 2026-11-07 | Section check | Presentation                   | Inline card at the end of the section                                                                                                                 |
+| 2026-11-07 | Section check | Feedback                       | Reveal correct answer (+ explanation)                                                                                                                 |
+| 2026-11-07 | Section check | Retries                        | First attempt + 2 retries (3 max), fresh question each time                                                                                           |
+| 2026-11-07 | Section check | Gating                         | Must answer, need not pass                                                                                                                            |
+| 2026-11-07 | Navigation    | After login                    | "Continue" card + Coming up                                                                                                                           |
+| 2026-11-07 | Navigation    | Section done                   | Learner marks complete (after answering the check)                                                                                                    |
+| 2026-11-07 | Navigation    | Module/programme done          | Two separate states: learning complete vs competent                                                                                                   |
+| 2026-11-07 | Theme         | Dark mode                      | Follow system + manual toggle                                                                                                                         |
+| 2026-11-07 | Accessibility | Target                         | WCAG 2.2 AA                                                                                                                                           |
+| 2026-11-07 | Offline       | Offline content                | Save section for offline reading; assessments online only                                                                                             |
+| 2026-11-07 | Staff UI      | Density                        | Dense, laptop-first, same tokens                                                                                                                      |
+| 2026-11-07 | References    | Learning page reference        | Coursera-style item page (grouped outline, Mark as completed, Go to next item)                                                                        |
+| 2026-11-07 | References    | Home reference                 | Single "Continue" focus                                                                                                                               |
+| 2026-11-07 | References    | Dislikes                       | Pop-ups and nags; cluttered Moodle-style blocks; gamification                                                                                         |
+| 2026-11-07 | Icons         | Delivery and style             | Material Symbols, Outlined, as inline SVG                                                                                                             |
+| 2026-11-07 | Results       | When learners see "Competent"  | Only after moderation: results released per batch when the moderator closes the sample                                                                |
+| 2026-11-07 | Imagery       | Illustrations/photos           | No imagery at all on the learner side                                                                                                                 |
+| 2026-11-07 | Completion    | Programme complete             | Quiet confirmation page; not a certificate                                                                                                            |
+| 2026-11-07 | Assessment    | Attempt layout                 | One question per screen + navigator, all sizes                                                                                                        |
+| 2026-11-07 | Notifications | Beyond email                   | In-app notification list only                                                                                                                         |
+| 2026-11-07 | Extras        | Chosen                         | Module text as PDF download; greeting with first name                                                                                                 |
+| 2026-11-07 | Extras        | Not chosen                     | Staff dark mode in MVP; Data saver switch                                                                                                             |
+| 2026-11-07 | Low data      | Video quality                  | Adaptive only, no manual quality menu; page budgets as in §11                                                                                         |
+| 2026-11-07 | Notifications | Email preferences              | Essential always on; announcements, discussions and tickets optional (instant, weekly digest or off)                                                  |
+| 2026-11-07 | Copy          | Empty-state and error wording  | Written by someone at GRIT Hub; LMS uses their text                                                                                                   |
+| 2026-11-07 | Staff UI      | Tablet marking                 | Yes, tablet landscape supported; smaller screens read-only                                                                                            |
+| 2026-11-07 | Approval      | Design brief status            | v3 approved                                                                                                                                           |
+| 2026-11-07 | Navigation    | URL structure                  | Learner at `/` (route group `(learn)`: `/`, `/learn`, `/schedule` …); staff under `/staff/…`; admin under `/admin/…`                                  |
+| 2026-11-07 | Placeholder   | Home before auth/data          | Minimal holding page: logo, "GRIT Hub Learning", one line; tokens only; copy is `TODO(copy)`                                                          |
+| 2026-11-07 | Components    | packages/ui reuse              | Wire up only; render no packages/ui components until they are restyled with the LMS tokens                                                            |
+| 2026-11-07 | Sign-in       | Layout                         | Email field (passkey autofill) + primary "Sign in with passkey"; quieter "Email me a sign-in link"; "Lost access? Get help"                           |
+| 2026-11-07 | Setup         | First-time setup layout        | One step per screen with "Step x of 3": details → POPIA notice and consent → passkey                                                                  |
+| 2026-11-07 | Setup         | Learner may skip passkey       | Yes, "Skip for now"; gentle reminder on Home. Staff who need step-up can't skip                                                                       |
+| 2026-11-07 | Admin         | CSV import                     | Validate → preview table with per-row status → confirm; only valid rows imported                                                                      |
+| 2026-11-07 | Admin         | People screen                  | One table + status filter chips (All · Invited · Active · Expired invite · Deactivated); row actions in a "⋯" menu; Invite / Import buttons top right |

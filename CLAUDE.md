@@ -73,5 +73,6 @@ Planning docs live in `docs/lms/` (start at `docs/lms/README.md`). Conventions f
 - **Every feature needs tests.** This overrides the repo-wide "no test runner" note for `apps/lms` and `packages/db` only (Vitest is set up; Playwright comes with the first end-to-end flow, see `docs/lms/decisions.md` ADR-009).
 - **Every feature updates `docs/lms/compliance/form5-mapping.md`.** Move the affected rows' status forward and link the evidence.
 - Programmes have only Knowledge and Practical modules: no Workplace module, logbook or mentor role.
+- **Access control:** every new route needs a rule in `apps/lms/lib/access.ts` (used by `proxy.ts`) and a row in `apps/lms/test/access.test.ts`. Every server action that writes must call `authorize()` from `lib/server/auth.ts`. Never log personal data; audit payloads hold ids and counts only.
 
 **DESIGN GATE:** Before making any design, layout, typography, colour, navigation or interaction decision for apps/lms, STOP and ask me clarifying questions (use your question tool, in batches). Do not proceed until I answer. Record the answers in docs/lms/design.md.

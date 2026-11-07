@@ -43,7 +43,32 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/admin/people/[userId]/recovery",
+      "regex": "^/admin/people/([^/]+?)/recovery(?:/)?$",
+      "routeKeys": {
+        "nxtPuserId": "nxtPuserId"
+      },
+      "namedRegex": "^/admin/people/(?<nxtPuserId>[^/]+?)/recovery(?:/)?$"
+    },
+    {
+      "page": "/auth/link/[token]",
+      "regex": "^/auth/link/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/auth/link/(?<nxtPtoken>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/setup/[token]",
+      "regex": "^/setup/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPtoken": "nxtPtoken"
+      },
+      "namedRegex": "^/setup/(?<nxtPtoken>[^/]+?)(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
@@ -64,10 +89,40 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/account/passkeys",
+      "regex": "^/account/passkeys(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/account/passkeys(?:/)?$"
+    },
+    {
       "page": "/admin",
       "regex": "^/admin(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/cohorts",
+      "regex": "^/admin/cohorts(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/cohorts(?:/)?$"
+    },
+    {
+      "page": "/admin/people",
+      "regex": "^/admin/people(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/people(?:/)?$"
+    },
+    {
+      "page": "/admin/people/import",
+      "regex": "^/admin/people/import(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/people/import(?:/)?$"
+    },
+    {
+      "page": "/admin/people/invite",
+      "regex": "^/admin/people/invite(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/people/invite(?:/)?$"
     },
     {
       "page": "/api/health",
@@ -76,16 +131,64 @@
       "namedRegex": "^/api/health(?:/)?$"
     },
     {
+      "page": "/forbidden",
+      "regex": "^/forbidden(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/forbidden(?:/)?$"
+    },
+    {
       "page": "/icon.svg",
       "regex": "^/icon\\.svg(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/icon\\.svg(?:/)?$"
     },
     {
+      "page": "/setup",
+      "regex": "^/setup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/setup(?:/)?$"
+    },
+    {
+      "page": "/signin",
+      "regex": "^/signin(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/signin(?:/)?$"
+    },
+    {
+      "page": "/signin/check-email",
+      "regex": "^/signin/check\\-email(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/signin/check\\-email(?:/)?$"
+    },
+    {
+      "page": "/signin/help",
+      "regex": "^/signin/help(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/signin/help(?:/)?$"
+    },
+    {
       "page": "/staff",
       "regex": "^/staff(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence",
+      "regex": "^/staff/evidence(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence(?:/)?$"
+    },
+    {
+      "page": "/staff/marking",
+      "regex": "^/staff/marking(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/marking(?:/)?$"
+    },
+    {
+      "page": "/staff/moderation",
+      "regex": "^/staff/moderation(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/moderation(?:/)?$"
     }
   ],
   "dataRoutes": [],

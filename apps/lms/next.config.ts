@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { NextConfig } from "next";
 
 const securityHeaders = [
@@ -13,8 +14,11 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
-  // packages/ui ships untranspiled JSX/SCSS; let Next compile it if imported.
-  transpilePackages: ["ui"],
+  // Workspace packages ship TypeScript/JSX source; let Next compile them.
+  transpilePackages: ["ui", "db"],
+  // Monorepo root (two levels up), so stray lockfiles elsewhere on a machine
+  // can't change how workspace packages resolve.
+  turbopack: { root: path.join(__dirname, "..", "..") },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

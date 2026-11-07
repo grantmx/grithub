@@ -29,10 +29,10 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 - **Decision:** text is the core content; optional audio/video is hosted on Mux with signed playback.
 - **Alternatives:** Cloudflare Stream; unlisted YouTube.
 
-## ADR-005: Passkey-only authentication, invite-only accounts
+## ADR-005: Passkey-first authentication, invite-only accounts
 
-- **Status:** Proposed
-- **Decision:** WebAuthn via SimpleWebAuthn with DB sessions; admin invite links; admin re-invite for recovery; no passwords; no public sign-up.
+- **Status:** Accepted (2026-11-07), revised
+- **Decision:** WebAuthn via SimpleWebAuthn 14 (conditional UI) with DB sessions; **email magic links as fallback** and for first-time setup; admin invitations (single use, 72 h); admin-verified recovery that revokes all passkeys and sessions; no passwords, no SMS, no public sign-up. Assessors, moderators and SDP admins must have at least one active passkey to reach marking, moderation and admin screens (proxy + server actions). Rate limits are Postgres-backed; email goes through Resend.
 - **Alternatives:** Better Auth; Clerk.
 - **Consequences:** strong phishing resistance; needs a clear shared-device and lost-device procedure.
 
@@ -105,4 +105,6 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 19. Managed Postgres provider and connection pooling approach.
 20. Upgrade path for the shared ESLint config (separate change, outside this phase).
-21. Which email provider becomes the single LMS sender?
+21. ~~Which email provider becomes the single LMS sender?~~ Resend (decided 2026-11-07).
+22. Bootstrap of the first production SDP admin (one-off audited CLI script).
+23. Should step-up also require a _recent_ passkey sign-in (not just having a passkey)? Deferred by product owner on 2026-11-07.

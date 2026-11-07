@@ -6,3 +6,4 @@ export * from "./cohorts";
 export * from "./assessment";
 export * from "./comms";
 export * from "./ops";
+export * from "./auth";

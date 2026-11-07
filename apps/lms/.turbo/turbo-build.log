@@ -1,35 +1,46 @@
 yarn run v1.22.19
 $ next build
-⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
- We detected multiple lockfiles and selected the directory of /Users/grantmx/package-lock.json as the root directory.
- To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
-   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
- Detected additional lockfiles: 
-   * /Users/grantmx/Desktop/git/grithub/yarn.lock
-
 ▲ Next.js 16.1.4 (Turbopack)
 
   Creating an optimized production build ...
-✓ Compiled successfully in 2.3s
+✓ Compiled successfully in 3.9s
   Running TypeScript ...
   Collecting page data using 9 workers ...
-  Generating static pages using 9 workers (0/6) ...
-  Generating static pages using 9 workers (1/6) 
-  Generating static pages using 9 workers (2/6) 
-  Generating static pages using 9 workers (4/6) 
-✓ Generating static pages using 9 workers (6/6) in 221.1ms
+  Generating static pages using 9 workers (0/19) ...
+  Generating static pages using 9 workers (4/19) 
+  Generating static pages using 9 workers (9/19) 
+  Generating static pages using 9 workers (14/19) 
+✓ Generating static pages using 9 workers (19/19) in 193.4ms
   Finalizing page optimization ...
 
 Route (app)
-┌ ○ /
+┌ ƒ /
 ├ ○ /_not-found
-├ ○ /admin
+├ ƒ /account/passkeys
+├ ƒ /admin
+├ ƒ /admin/cohorts
+├ ƒ /admin/people
+├ ƒ /admin/people/[userId]/recovery
+├ ƒ /admin/people/import
+├ ƒ /admin/people/invite
 ├ ƒ /api/health
+├ ƒ /auth/link/[token]
+├ ○ /forbidden
 ├ ○ /icon.svg
-└ ○ /staff
+├ ƒ /setup
+├ ƒ /setup/[token]
+├ ƒ /signin
+├ ○ /signin/check-email
+├ ○ /signin/help
+├ ○ /staff
+├ ƒ /staff/evidence
+├ ƒ /staff/marking
+└ ƒ /staff/moderation
 
+
+ƒ Proxy (Middleware)
 
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
 
-Done in 5.80s.
+Done in 11.09s.
