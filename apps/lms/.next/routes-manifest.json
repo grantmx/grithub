@@ -61,12 +61,44 @@
       "namedRegex": "^/auth/link/(?<nxtPtoken>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/learn/section/[sectionId]",
+      "regex": "^/learn/section/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsectionId": "nxtPsectionId"
+      },
+      "namedRegex": "^/learn/section/(?<nxtPsectionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/learn/[qualificationId]",
+      "regex": "^/learn/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPqualificationId": "nxtPqualificationId"
+      },
+      "namedRegex": "^/learn/(?<nxtPqualificationId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/setup/[token]",
       "regex": "^/setup/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPtoken": "nxtPtoken"
       },
       "namedRegex": "^/setup/(?<nxtPtoken>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/progress/[enrolmentId]",
+      "regex": "^/staff/progress/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPenrolmentId": "nxtPenrolmentId"
+      },
+      "namedRegex": "^/staff/progress/(?<nxtPenrolmentId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/progress/[enrolmentId]/csv",
+      "regex": "^/staff/progress/([^/]+?)/csv(?:/)?$",
+      "routeKeys": {
+        "nxtPenrolmentId": "nxtPenrolmentId"
+      },
+      "namedRegex": "^/staff/progress/(?<nxtPenrolmentId>[^/]+?)/csv(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -131,6 +163,12 @@
       "namedRegex": "^/api/health(?:/)?$"
     },
     {
+      "page": "/api/progress/scroll",
+      "regex": "^/api/progress/scroll(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/progress/scroll(?:/)?$"
+    },
+    {
       "page": "/forbidden",
       "regex": "^/forbidden(?:/)?$",
       "routeKeys": {},
@@ -141,6 +179,24 @@
       "regex": "^/icon\\.svg(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/icon\\.svg(?:/)?$"
+    },
+    {
+      "page": "/learn",
+      "regex": "^/learn(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/learn(?:/)?$"
+    },
+    {
+      "page": "/library",
+      "regex": "^/library(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/library(?:/)?$"
+    },
+    {
+      "page": "/more",
+      "regex": "^/more(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/more(?:/)?$"
     },
     {
       "page": "/setup",
@@ -189,6 +245,12 @@
       "regex": "^/staff/moderation(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff/moderation(?:/)?$"
+    },
+    {
+      "page": "/staff/progress",
+      "regex": "^/staff/progress(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/progress(?:/)?$"
     }
   ],
   "dataRoutes": [],

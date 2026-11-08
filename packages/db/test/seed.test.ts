@@ -74,7 +74,11 @@ describe("demo seed", () => {
     expect(
       media.every((m) => m.mediaAssetId?.startsWith("DEMO-PLACEHOLDER")),
     ).toBe(true);
-    expect(media.every((m) => m.transcript)).toBe(true);
+    expect(media.every((m) => m.transcript || m.transcriptIsSectionText)).toBe(
+      true,
+    );
+    expect(media.find((m) => m.kind === "video")?.captionsLanguage).toBe("en");
+    expect(media.every((m) => (m.mediaSizeBytes ?? 0) > 0)).toBe(true);
   });
 
   it("creates demo users for every role, all obviously fake", async () => {
@@ -107,6 +111,23 @@ describe("demo seed", () => {
     expect(variants.length).toBeGreaterThanOrEqual(2);
     const rules = await t.db.select().from(s.blueprintRules);
     expect(rules).toHaveLength(3);
+  });
+
+  it("writes section text as Markdown and publishes library resources", async () => {
+    const texts = await t.db
+      .select()
+      .from(s.contentItems)
+      .where(eq(s.contentItems.kind, "text"));
+    expect(
+      texts.some((x) => x.body?.includes("## ") && x.body.includes("> [!TIP]")),
+    ).toBe(true);
+    const lib = await t.db.select().from(s.libraryResources);
+    expect(lib.length).toBeGreaterThanOrEqual(2);
+    expect(
+      lib.every(
+        (r) => r.published && r.url?.startsWith("https://example.invalid/"),
+      ),
+    ).toBe(true);
   });
 
   it("is idempotent", async () => {

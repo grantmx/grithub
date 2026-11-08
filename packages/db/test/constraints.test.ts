@@ -143,6 +143,70 @@ describe("content items", () => {
   });
 });
 
+describe("learning content (captions, transcripts, library, progress)", () => {
+  it("published video needs captions", async () => {
+    const f = await makeFixture(t.db);
+    await expectPgError(
+      t.db.insert(s.contentItems).values({
+        sectionId: f.section.id,
+        kind: "video",
+        title: "No captions",
+        mediaAssetId: "A",
+        transcript: "T",
+        status: "published",
+      }),
+      PG.checkViolation,
+    );
+  });
+
+  it("the section text may serve as the transcript", async () => {
+    const f = await makeFixture(t.db);
+    await t.db.insert(s.contentItems).values({
+      sectionId: f.section.id,
+      kind: "audio",
+      title: "Audio narrating the text",
+      mediaAssetId: "A",
+      transcriptIsSectionText: true,
+      status: "published",
+    });
+  });
+
+  it("library links must be https", async () => {
+    const f = await makeFixture(t.db);
+    await expectPgError(
+      t.db.insert(s.libraryResources).values({
+        qualificationId: f.qualification.id,
+        title: "Insecure",
+        kind: "link",
+        url: "http://example.invalid",
+      }),
+      PG.checkViolation,
+    );
+  });
+
+  it("section progress is unique per enrolment and section, scroll 0-100", async () => {
+    const f = await makeFixture(t.db);
+    await t.db
+      .insert(s.sectionProgress)
+      .values({ enrolmentId: f.enrolment.id, sectionId: f.section.id });
+    await expectPgError(
+      t.db
+        .insert(s.sectionProgress)
+        .values({ enrolmentId: f.enrolment.id, sectionId: f.section.id }),
+      PG.uniqueViolation,
+    );
+    const g = await makeFixture(t.db);
+    await expectPgError(
+      t.db.insert(s.sectionProgress).values({
+        enrolmentId: g.enrolment.id,
+        sectionId: g.section.id,
+        scrollPercent: 101,
+      }),
+      PG.checkViolation,
+    );
+  });
+});
+
 describe("attempts and submissions", () => {
   it("an attempt targets exactly one of blueprint or section", async () => {
     const f = await makeFixture(t.db);

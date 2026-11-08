@@ -9,6 +9,7 @@ import {
   demoBrief,
   demoKnowledgeSections,
   demoPracticalSection,
+  demoLibrary,
   demoUsers,
 } from "./seed-data";
 
@@ -104,8 +105,12 @@ export async function seedDemo(
           kind: sec.media.kind,
           title: `DEMO ${sec.media.kind} placeholder`,
           mediaAssetId: sec.media.assetId,
+          mediaPlaybackId: `${sec.media.assetId}-PLAYBACK`,
+          mediaSizeBytes: sec.media.sizeBytes,
           durationSeconds: sec.media.durationSeconds,
-          transcript: "[DEMO TRANSCRIPT — placeholder text for testing only]",
+          transcript: sec.media.transcript,
+          transcriptIsSectionText: sec.media.transcript === null,
+          captionsLanguage: sec.media.kind === "video" ? "en" : null,
           sortOrder: 0,
           status: "published",
         });
@@ -204,6 +209,18 @@ export async function seedDemo(
         ...v,
         briefId: must(brief).id,
         status: "active" as const,
+      })),
+    );
+
+    await tx.insert(s.libraryResources).values(
+      demoLibrary.map((r, i) => ({
+        qualificationId,
+        title: r.title,
+        description: r.description,
+        kind: "link" as const,
+        url: r.url,
+        sortOrder: i,
+        published: true,
       })),
     );
 

@@ -29,12 +29,20 @@ const ROUTES = [
   "/staff/evidence",
   "/admin",
   "/admin/people",
+  "/library",
+  "/more",
+  "/learn/section/abc",
+  "/staff/progress",
 ] as const;
 type Route = (typeof ROUTES)[number];
 
 // Expected result per role (all with a passkey and setup complete).
 const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
   learner: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "forbidden",
     "/": "allow",
     "/learn": "allow",
     "/staff": "forbidden",
@@ -45,6 +53,10 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   facilitator: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "allow",
     "/": "allow",
     "/learn": "allow",
     "/staff": "allow",
@@ -55,6 +67,10 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   assessor: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "forbidden",
     "/": "allow",
     "/learn": "allow",
     "/staff": "allow",
@@ -65,6 +81,10 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   moderator: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "forbidden",
     "/": "allow",
     "/learn": "allow",
     "/staff": "allow",
@@ -75,6 +95,10 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   sdp_admin: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "allow",
     "/": "allow",
     "/learn": "allow",
     "/staff": "allow",
@@ -85,6 +109,10 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "allow",
   },
   external_evaluator: {
+    "/library": "allow",
+    "/more": "allow",
+    "/learn/section/abc": "allow",
+    "/staff/progress": "forbidden",
     "/": "allow",
     "/learn": "allow",
     "/staff": "forbidden",

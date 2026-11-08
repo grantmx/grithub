@@ -65,7 +65,14 @@ export type DemoSection = {
   title: string;
   component: string;
   body: string;
-  media?: { kind: "audio" | "video"; assetId: string; durationSeconds: number };
+  media?: {
+    kind: "audio" | "video";
+    assetId: string;
+    durationSeconds: number;
+    sizeBytes: number;
+    /** Own transcript, or null when the section text is the transcript. */
+    transcript: string | null;
+  };
   questions: DemoQuestion[];
 };
 
@@ -79,11 +86,31 @@ export const demoKnowledgeSections: DemoSection[] = [
   {
     title: "DEMO Section 1: What a computer is",
     component: "DEMO-KM-01-KT01",
-    body: "[DEMO CONTENT — NOT REAL COURSE MATERIAL]\n\nA computer takes input, processes it, stores it and produces output. This placeholder text exists only to test the LMS.",
+    body: [
+      "> [!NOTE]",
+      "> DEMO CONTENT. This is placeholder text for testing the LMS, not real course material.",
+      "",
+      "## The four jobs of a computer",
+      "",
+      "Every computer does four things: it takes **input**, **processes** it, **stores** it and produces **output**.",
+      "",
+      "- Input: keyboard, mouse, microphone",
+      "- Processing: the CPU",
+      "- Storage: SSD, hard drive, USB drive",
+      "- Output: monitor, speakers, printer",
+      "",
+      "![Diagram: input flows into the processor, which stores data and sends output to a screen](/content/demo/computer-flow.svg)",
+      "",
+      "> [!TIP]",
+      "> If you can touch it, it's hardware. If you can only see it on the screen, it's software.",
+    ].join("\n"),
     media: {
       kind: "video",
       assetId: "DEMO-PLACEHOLDER-VIDEO-001",
       durationSeconds: 360,
+      sizeBytes: 25_000_000,
+      transcript:
+        "[DEMO TRANSCRIPT] Placeholder transcript for the demo video. In real content this is the full spoken text.",
     },
     questions: [
       {
@@ -131,11 +158,31 @@ export const demoKnowledgeSections: DemoSection[] = [
   {
     title: "DEMO Section 2: Networks",
     component: "DEMO-KM-01-KT02",
-    body: "[DEMO CONTENT — NOT REAL COURSE MATERIAL]\n\nA network connects devices so they can share information. This placeholder text exists only to test the LMS.",
+    body: [
+      "> [!NOTE]",
+      "> DEMO CONTENT. This is placeholder text for testing the LMS, not real course material.",
+      "",
+      "## What a network does",
+      "",
+      "A network connects devices so they can share information. A **router** forwards traffic between networks, for example between your home network and the internet.",
+      "",
+      "## Checking a connection",
+      "",
+      "You can test whether a device answers with the `ping` command:",
+      "",
+      "```",
+      "ping 192.0.2.1",
+      "```",
+      "",
+      "> [!WARNING]",
+      "> Only test devices you are allowed to test.",
+    ].join("\n"),
     media: {
       kind: "audio",
       assetId: "DEMO-PLACEHOLDER-AUDIO-001",
       durationSeconds: 240,
+      sizeBytes: 4_000_000,
+      transcript: null, // the section text is the transcript
     },
     questions: [
       {
@@ -183,7 +230,20 @@ export const demoKnowledgeSections: DemoSection[] = [
   {
     title: "DEMO Section 3: Staying safe online",
     component: "DEMO-KM-01-KT03",
-    body: "[DEMO CONTENT — NOT REAL COURSE MATERIAL]\n\nStrong, unique passwords and care with links keep accounts safe. This placeholder text exists only to test the LMS.",
+    body: [
+      "> [!NOTE]",
+      "> DEMO CONTENT. This is placeholder text for testing the LMS, not real course material.",
+      "",
+      "## Strong passwords",
+      "",
+      "Use a long passphrase that is different for every account. A password manager helps you remember them.",
+      "",
+      "## Spotting phishing",
+      "",
+      "1. Check who really sent the message.",
+      "2. Don't click links that ask for your PIN or password.",
+      "3. When in doubt, contact the organisation directly.",
+    ].join("\n"),
     questions: [
       {
         stem: "[DEMO] Which password is strongest?",
@@ -254,3 +314,16 @@ export const demoBrief = {
     },
   ],
 };
+
+export const demoLibrary = [
+  {
+    title: "DEMO: Glossary of computer terms (fake link)",
+    description: "Placeholder resource for testing the digital library.",
+    url: "https://example.invalid/demo/glossary",
+  },
+  {
+    title: "DEMO: Further reading on networks (fake link)",
+    description: "Placeholder resource for testing the digital library.",
+    url: "https://example.invalid/demo/networks",
+  },
+];

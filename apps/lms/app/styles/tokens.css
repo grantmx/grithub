@@ -122,3 +122,36 @@
   background: var(--color-bg);
   color: var(--color-text);
 }
+
+/* Element-level dark override (learner Display menu: Dark). */
+[data-theme="dark"]:not(:root) {
+  --color-bg: #15161b;
+  --color-surface: #1e2028;
+  --color-surface-sunken: #121318;
+  --color-text: #e8e9ee;
+  --color-text-muted: #a6a9b6;
+  --color-border: #6b6f7d;
+  --color-accent: #8cb8d4;
+  --color-on-accent: #15161b;
+  --color-brand: #f0505d;
+  --color-success: #8dc26a;
+  --color-danger: #f08a80;
+  --color-warning: #e0b04a;
+  color-scheme: dark;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Reading text size (Display menu S / M / L / XL = 16 / 18 / 20 / 22 px). */
+[data-text-size="s"] {
+  --text-base: 1rem;
+}
+[data-text-size="m"] {
+  --text-base: 1.125rem;
+}
+[data-text-size="l"] {
+  --text-base: 1.25rem;
+}
+[data-text-size="xl"] {
+  --text-base: 1.375rem;
+}

@@ -3,14 +3,14 @@ $ next build
 ▲ Next.js 16.1.4 (Turbopack)
 
   Creating an optimized production build ...
-✓ Compiled successfully in 3.9s
+✓ Compiled successfully in 6.6s
   Running TypeScript ...
   Collecting page data using 9 workers ...
-  Generating static pages using 9 workers (0/19) ...
-  Generating static pages using 9 workers (4/19) 
-  Generating static pages using 9 workers (9/19) 
-  Generating static pages using 9 workers (14/19) 
-✓ Generating static pages using 9 workers (19/19) in 193.4ms
+  Generating static pages using 9 workers (0/24) ...
+  Generating static pages using 9 workers (6/24) 
+  Generating static pages using 9 workers (12/24) 
+  Generating static pages using 9 workers (18/24) 
+✓ Generating static pages using 9 workers (24/24) in 297.1ms
   Finalizing page optimization ...
 
 Route (app)
@@ -24,18 +24,27 @@ Route (app)
 ├ ƒ /admin/people/import
 ├ ƒ /admin/people/invite
 ├ ƒ /api/health
+├ ƒ /api/progress/scroll
 ├ ƒ /auth/link/[token]
 ├ ○ /forbidden
 ├ ○ /icon.svg
+├ ƒ /learn
+├ ƒ /learn/[qualificationId]
+├ ƒ /learn/section/[sectionId]
+├ ƒ /library
+├ ƒ /more
 ├ ƒ /setup
 ├ ƒ /setup/[token]
 ├ ƒ /signin
 ├ ○ /signin/check-email
 ├ ○ /signin/help
-├ ○ /staff
+├ ƒ /staff
 ├ ƒ /staff/evidence
 ├ ƒ /staff/marking
-└ ƒ /staff/moderation
+├ ƒ /staff/moderation
+├ ƒ /staff/progress
+├ ƒ /staff/progress/[enrolmentId]
+└ ƒ /staff/progress/[enrolmentId]/csv
 
 
 ƒ Proxy (Middleware)
@@ -43,4 +52,4 @@ Route (app)
 ○  (Static)   prerendered as static content
 ƒ  (Dynamic)  server-rendered on demand
 
-Done in 11.09s.
+Done in 17.47s.

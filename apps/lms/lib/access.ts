@@ -65,6 +65,17 @@ export function requirementFor(pathname: string): Requirement {
     return { kind: "roles", anyOf: ["moderator"], stepUp: true };
   }
   if (
+    pathname === "/staff/progress" ||
+    pathname.startsWith("/staff/progress/")
+  ) {
+    // Learner progress reports: facilitators (own cohorts) and SDP admins.
+    return {
+      kind: "roles",
+      anyOf: ["facilitator", "sdp_admin"],
+      stepUp: false,
+    };
+  }
+  if (
     pathname === "/staff/evidence" ||
     pathname.startsWith("/staff/evidence/")
   ) {

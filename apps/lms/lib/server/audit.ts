@@ -23,7 +23,9 @@ export type AuditAction =
   | "admin.cohort.created"
   | "admin.invite.sent"
   | "admin.import.completed"
-  | "admin.user.deactivated";
+  | "admin.user.deactivated"
+  | "report.progress.viewed"
+  | "report.progress.exported";
 
 export async function writeAudit(
   ctx: Pick<ServerCtx, "db" | "ipHash">,

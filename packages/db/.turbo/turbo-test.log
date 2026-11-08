@@ -3,16 +3,17 @@ $ vitest run
 
  RUN  v3.2.4 /Users/grantmx/Desktop/git/grithub/packages/db
 
- ✓ test/question-versions.test.ts (11 tests) 727ms
- ✓ test/decisions-moderation.test.ts (13 tests) 765ms
- ✓ test/auth.test.ts (8 tests) 562ms
- ✓ test/constraints.test.ts (12 tests) 669ms
- ✓ test/seed.test.ts (11 tests) 471ms
- ✓ test/env.test.ts (6 tests) 3ms
+ ✓ test/decisions-moderation.test.ts (13 tests) 3781ms
+   ✓ assessment decisions > can be changed by the assessor before moderation  395ms
+ ✓ test/constraints.test.ts (16 tests) 2859ms
+ ✓ test/question-versions.test.ts (11 tests) 1215ms
+ ✓ test/seed.test.ts (12 tests) 1051ms
+ ✓ test/auth.test.ts (8 tests) 1215ms
+ ✓ test/env.test.ts (6 tests) 4ms
 
  Test Files  6 passed (6)
-      Tests  61 passed (61)
-   Start at  14:08:40
-   Duration  5.49s (transform 110ms, setup 0ms, collect 1.51s, tests 3.20s, environment 1ms, prepare 230ms)
+      Tests  66 passed (66)
+   Start at  03:59:16
+   Duration  14.41s (transform 290ms, setup 0ms, collect 2.87s, tests 10.13s, environment 1ms, prepare 412ms)
 
-Done in 6.16s.
+Done in 17.27s.

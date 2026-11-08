@@ -22,6 +22,8 @@ export const RATE_LIMITS = {
   },
   tokenConsume: { scope: "token-consume", limit: 20, windowSeconds: 900 },
   setup: { scope: "setup", limit: 30, windowSeconds: 900 },
+  mediaPlayback: { scope: "media-playback", limit: 120, windowSeconds: 3600 },
+  scrollSave: { scope: "scroll-save", limit: 600, windowSeconds: 3600 },
 } satisfies Record<string, RateLimitRule>;
 
 export class RateLimitError extends Error {

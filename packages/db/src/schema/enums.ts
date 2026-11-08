@@ -88,3 +88,16 @@ export const ticketStatus = pgEnum("ticket_status", [
 ]);
 
 export const syncStatus = pgEnum("sync_status", ["pending", "sent", "failed"]);
+
+// Learner display preferences (design.md: A-/A+ text size, Light/Dark/System).
+export const textSize = pgEnum("text_size", ["s", "m", "l", "xl"]);
+export const themePreference = pgEnum("theme_preference", [
+  "system",
+  "light",
+  "dark",
+]);
+
+export const libraryResourceKind = pgEnum("library_resource_kind", [
+  "link",
+  "document",
+]);

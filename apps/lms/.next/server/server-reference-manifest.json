@@ -1,29 +1,263 @@
 {
   "node": {
-    "60102dae52274775b96858d327d9d6dd487e38e2a5": {
+    "40666d54ff378d3337091f9730f81d44f065942aec": {
       "workers": {
-        "app/account/passkeys/page": {
-          "moduleId": 74287,
+        "app/(learn)/learn/[qualificationId]/page": {
+          "moduleId": 70742,
           "async": false,
-          "exportedName": "completePasskeyRegistration",
-          "filename": "apps/lms/app/account/actions.ts"
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
         },
-        "app/setup/page": {
-          "moduleId": 49913,
+        "app/(learn)/learn/page": {
+          "moduleId": 68058,
           "async": false,
-          "exportedName": "completePasskeyRegistration",
-          "filename": "apps/lms/app/account/actions.ts"
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/section/[sectionId]/page": {
+          "moduleId": 58163,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/library/page": {
+          "moduleId": 17586,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
         }
       },
       "layer": {
-        "app/account/passkeys/page": "rsc",
-        "app/setup/page": "action-browser"
+        "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/page": "rsc",
+        "app/(learn)/learn/section/[sectionId]/page": "rsc",
+        "app/(learn)/library/page": "rsc",
+        "app/(learn)/more/page": "rsc",
+        "app/(learn)/page": "rsc"
       },
-      "filename": "apps/lms/app/account/actions.ts",
-      "exportedName": "completePasskeyRegistration"
+      "filename": "apps/lms/app/(learn)/actions.ts",
+      "exportedName": "completeSectionAction"
+    },
+    "407339dec03a61c4607ffdcfb7bd6a9caee26676fe": {
+      "workers": {
+        "app/(learn)/learn/[qualificationId]/page": {
+          "moduleId": 70742,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/page": {
+          "moduleId": 68058,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/section/[sectionId]/page": {
+          "moduleId": 58163,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/library/page": {
+          "moduleId": 17586,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/page": "rsc",
+        "app/(learn)/learn/section/[sectionId]/page": "rsc",
+        "app/(learn)/library/page": "rsc",
+        "app/(learn)/more/page": "rsc",
+        "app/(learn)/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/actions.ts",
+      "exportedName": "retryCheckAction"
+    },
+    "40978c2846cf8135f00f76eb3e2f21ca84f795216a": {
+      "workers": {
+        "app/(learn)/learn/[qualificationId]/page": {
+          "moduleId": 70742,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/page": {
+          "moduleId": 68058,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/section/[sectionId]/page": {
+          "moduleId": 58163,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/library/page": {
+          "moduleId": 17586,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/page": "rsc",
+        "app/(learn)/learn/section/[sectionId]/page": "action-browser",
+        "app/(learn)/library/page": "rsc",
+        "app/(learn)/more/page": "rsc",
+        "app/(learn)/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/actions.ts",
+      "exportedName": "getPlaybackAction"
+    },
+    "4099c8382dabf0158c569521898c0b53f9546f08fa": {
+      "workers": {
+        "app/(learn)/learn/[qualificationId]/page": {
+          "moduleId": 70742,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/page": {
+          "moduleId": 68058,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/section/[sectionId]/page": {
+          "moduleId": 58163,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/library/page": {
+          "moduleId": 17586,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/page": "rsc",
+        "app/(learn)/learn/section/[sectionId]/page": "rsc",
+        "app/(learn)/library/page": "rsc",
+        "app/(learn)/more/page": "rsc",
+        "app/(learn)/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/actions.ts",
+      "exportedName": "savePreferencesAction"
+    },
+    "40a25efe4067b90986805f22005a32c1830e5d855f": {
+      "workers": {
+        "app/(learn)/learn/[qualificationId]/page": {
+          "moduleId": 70742,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/page": {
+          "moduleId": 68058,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/section/[sectionId]/page": {
+          "moduleId": 58163,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/library/page": {
+          "moduleId": 17586,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/page": "rsc",
+        "app/(learn)/learn/section/[sectionId]/page": "rsc",
+        "app/(learn)/library/page": "rsc",
+        "app/(learn)/more/page": "rsc",
+        "app/(learn)/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/actions.ts",
+      "exportedName": "submitCheckAction"
     },
     "0099dd8c1b5f3a6fc657d357790e29029defb1bbe4": {
       "workers": {
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "getPasskeyRegistrationOptions",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
         "app/account/passkeys/page": {
           "moduleId": 74287,
           "async": false,
@@ -38,6 +272,7 @@
         }
       },
       "layer": {
+        "app/(learn)/more/page": "rsc",
         "app/account/passkeys/page": "rsc",
         "app/setup/page": "action-browser"
       },
@@ -46,6 +281,12 @@
     },
     "00c33f566a35bbf8d53bc02c8d9b8f58f98c237d7e": {
       "workers": {
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "signOut",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
         "app/account/passkeys/page": {
           "moduleId": 74287,
           "async": false,
@@ -54,6 +295,7 @@
         }
       },
       "layer": {
+        "app/(learn)/more/page": "rsc",
         "app/account/passkeys/page": "rsc"
       },
       "filename": "apps/lms/app/account/actions.ts",
@@ -61,6 +303,12 @@
     },
     "40b30d40943c66d13fc459b9288023616f99377bbb": {
       "workers": {
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "revokePasskey",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
         "app/account/passkeys/page": {
           "moduleId": 74287,
           "async": false,
@@ -69,10 +317,40 @@
         }
       },
       "layer": {
+        "app/(learn)/more/page": "rsc",
         "app/account/passkeys/page": "rsc"
       },
       "filename": "apps/lms/app/account/actions.ts",
       "exportedName": "revokePasskey"
+    },
+    "60102dae52274775b96858d327d9d6dd487e38e2a5": {
+      "workers": {
+        "app/(learn)/more/page": {
+          "moduleId": 79077,
+          "async": false,
+          "exportedName": "completePasskeyRegistration",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
+        "app/account/passkeys/page": {
+          "moduleId": 74287,
+          "async": false,
+          "exportedName": "completePasskeyRegistration",
+          "filename": "apps/lms/app/account/actions.ts"
+        },
+        "app/setup/page": {
+          "moduleId": 49913,
+          "async": false,
+          "exportedName": "completePasskeyRegistration",
+          "filename": "apps/lms/app/account/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/more/page": "rsc",
+        "app/account/passkeys/page": "rsc",
+        "app/setup/page": "action-browser"
+      },
+      "filename": "apps/lms/app/account/actions.ts",
+      "exportedName": "completePasskeyRegistration"
     },
     "6015a6532591a7810cc96b2a64b9f8dda113c58a0b": {
       "workers": {

@@ -1,5 +1,7 @@
 import { sql } from "drizzle-orm";
 import {
+  bigint,
+  boolean,
   check,
   index,
   integer,
@@ -13,6 +15,7 @@ import {
 import { createdAt, id, updatedAt } from "./columns";
 import {
   contentKind,
+  libraryResourceKind,
   lifecycleStatus,
   moduleType,
   publishStatus,
@@ -94,8 +97,16 @@ export const contentItems = pgTable(
     title: text().notNull(),
     body: text(),
     mediaAssetId: text(),
+    // Mux playback id (signed playback policy) and estimated size for the
+    // "6 min · ~25 MB" label shown before the learner chooses to load it.
+    mediaPlaybackId: text(),
+    mediaSizeBytes: bigint({ mode: "number" }),
     durationSeconds: integer(),
     transcript: text(),
+    // True when the section text itself is the transcript of this media.
+    transcriptIsSectionText: boolean().notNull().default(false),
+    // BCP 47 language of the video's captions track (required to publish video).
+    captionsLanguage: text(),
     storageKey: text(),
     externalUrl: text(),
     sortOrder: integer().notNull().default(0),
@@ -116,7 +127,15 @@ export const contentItems = pgTable(
     ),
     check(
       "content_items_published_media_has_transcript",
-      sql`${t.kind} NOT IN ('audio', 'video') OR ${t.status} = 'draft' OR ${t.transcript} IS NOT NULL`,
+      sql`${t.kind} NOT IN ('audio', 'video') OR ${t.status} = 'draft' OR ${t.transcript} IS NOT NULL OR ${t.transcriptIsSectionText}`,
+    ),
+    check(
+      "content_items_published_video_has_captions",
+      sql`${t.kind} <> 'video' OR ${t.status} = 'draft' OR ${t.captionsLanguage} IS NOT NULL`,
+    ),
+    check(
+      "content_items_media_size_positive",
+      sql`${t.mediaSizeBytes} IS NULL OR ${t.mediaSizeBytes} > 0`,
     ),
     check(
       "content_items_document_has_storage_key",
@@ -161,4 +180,35 @@ export const briefVariants = pgTable(
     updatedAt: updatedAt(),
   },
   (t) => [unique("brief_variants_brief_label_uq").on(t.briefId, t.label)],
+);
+
+/** Supplementary resources per programme (digital library, Form 5 4.2.7). */
+export const libraryResources = pgTable(
+  "library_resources",
+  {
+    id: id(),
+    qualificationId: uuid()
+      .notNull()
+      .references(() => qualifications.id),
+    title: text().notNull(),
+    description: text(),
+    kind: libraryResourceKind().notNull(),
+    url: text(),
+    storageKey: text(),
+    sortOrder: integer().notNull().default(0),
+    published: boolean().notNull().default(false),
+    createdAt: createdAt(),
+    updatedAt: updatedAt(),
+  },
+  (t) => [
+    index("library_resources_qualification_idx").on(t.qualificationId),
+    check(
+      "library_resources_link_is_https",
+      sql`${t.kind} <> 'link' OR ${t.url} ~ '^https://'`,
+    ),
+    check(
+      "library_resources_document_has_storage_key",
+      sql`${t.kind} <> 'document' OR ${t.storageKey} IS NOT NULL`,
+    ),
+  ],
 );

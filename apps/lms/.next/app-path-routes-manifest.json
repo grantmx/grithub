@@ -1,4 +1,9 @@
 {
+  "/(learn)/learn/[qualificationId]/page": "/learn/[qualificationId]",
+  "/(learn)/learn/page": "/learn",
+  "/(learn)/learn/section/[sectionId]/page": "/learn/section/[sectionId]",
+  "/(learn)/library/page": "/library",
+  "/(learn)/more/page": "/more",
   "/(learn)/page": "/",
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
@@ -10,6 +15,7 @@
   "/admin/people/invite/page": "/admin/people/invite",
   "/admin/people/page": "/admin/people",
   "/api/health/route": "/api/health",
+  "/api/progress/scroll/route": "/api/progress/scroll",
   "/auth/link/[token]/page": "/auth/link/[token]",
   "/forbidden/page": "/forbidden",
   "/icon.svg/route": "/icon.svg",
@@ -21,5 +27,8 @@
   "/staff/evidence/page": "/staff/evidence",
   "/staff/marking/page": "/staff/marking",
   "/staff/moderation/page": "/staff/moderation",
-  "/staff/page": "/staff"
+  "/staff/page": "/staff",
+  "/staff/progress/[enrolmentId]/csv/route": "/staff/progress/[enrolmentId]/csv",
+  "/staff/progress/[enrolmentId]/page": "/staff/progress/[enrolmentId]",
+  "/staff/progress/page": "/staff/progress"
 }

@@ -12,7 +12,13 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { bytea, createdAt, id, updatedAt } from "./columns";
-import { enrolmentStatus, staffRole, userStatus } from "./enums";
+import {
+  enrolmentStatus,
+  staffRole,
+  textSize,
+  themePreference,
+  userStatus,
+} from "./enums";
 import { cohorts } from "./cohorts";
 
 export const users = pgTable(
@@ -24,6 +30,8 @@ export const users = pgTable(
     status: userStatus().notNull().default("invited"),
     popiaNoticeAcceptedAt: timestamp({ withTimezone: true }),
     popiaNoticeVersion: text(),
+    textSize: textSize().notNull().default("m"),
+    theme: themePreference().notNull().default("system"),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },

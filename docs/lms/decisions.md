@@ -92,14 +92,15 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ### Product
 
-11. Does a section check gate progress, or is it advisory?
+11. ~~Does a section check gate progress, or is it advisory?~~ Learner must answer (right or wrong) before "Mark as completed"; up to 3 attempts (design.md, implemented 2026-11-08).
 12. Max attempts, pass marks and feedback visibility per assessment kind.
 13. Should facilitators see answer keys/memos?
 14. Shared lab computers: own-phone passkeys (hybrid QR flow), per-learner enrolment of hub machines, or staff-issued supervised sessions?
 15. Offline/load-shedding tolerance needed on assessment days?
 16. Conferencing platform and licence (Form 5 4.2.8–4.2.9).
 17. Languages: English only, or additional languages for content/UI?
-18. Content authoring and import: who writes content, and in what format (Word/Markdown import)?
+18. Content authoring and import: who writes content? Format decided 2026-11-08: Markdown subset (see apps/lms/lib/markdown.tsx); authoring/import UI still open.
+19. Learner page weight: Next.js App Router + React 19 ship ~134 KB gzip of runtime, so the section page is ~197 KB on first load vs the 150 KB budget in design.md §11 (later navigations ~16 KB, within budget). Revise the budget or change approach?
 
 ### Engineering
 

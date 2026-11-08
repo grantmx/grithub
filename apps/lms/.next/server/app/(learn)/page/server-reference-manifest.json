@@ -1,4 +1,80 @@
 {
-  "node": {},
+  "node": {
+    "40666d54ff378d3337091f9730f81d44f065942aec": {
+      "workers": {
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/page": "rsc"
+      },
+      "exportedName": "completeSectionAction",
+      "filename": "apps/lms/app/(learn)/actions.ts"
+    },
+    "407339dec03a61c4607ffdcfb7bd6a9caee26676fe": {
+      "workers": {
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/page": "rsc"
+      },
+      "exportedName": "retryCheckAction",
+      "filename": "apps/lms/app/(learn)/actions.ts"
+    },
+    "40978c2846cf8135f00f76eb3e2f21ca84f795216a": {
+      "workers": {
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/page": "rsc"
+      },
+      "exportedName": "getPlaybackAction",
+      "filename": "apps/lms/app/(learn)/actions.ts"
+    },
+    "4099c8382dabf0158c569521898c0b53f9546f08fa": {
+      "workers": {
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/page": "rsc"
+      },
+      "exportedName": "savePreferencesAction",
+      "filename": "apps/lms/app/(learn)/actions.ts"
+    },
+    "40a25efe4067b90986805f22005a32c1830e5d855f": {
+      "workers": {
+        "app/(learn)/page": {
+          "moduleId": 31623,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/page": "rsc"
+      },
+      "exportedName": "submitCheckAction",
+      "filename": "apps/lms/app/(learn)/actions.ts"
+    }
+  },
   "edge": {}
 }

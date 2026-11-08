@@ -22,6 +22,8 @@ Goals: every learner gets **equal curriculum coverage**, learners cannot easily 
 
 ## 3. Seeded, stable shuffling
 
+> Implemented in `apps/lms/lib/randomization.ts` (xoshiro128\*\* PRNG) and `apps/lms/lib/server/sectionCheck.ts`; golden-output tests in `apps/lms/test/randomization.test.ts`.
+
 ```
 seed      = SHA-256( learnerId + ":" + itemId + ":" + attemptNo )
 prng      = deterministic PRNG initialised from the seed (e.g. xoshiro128** / mulberry32)

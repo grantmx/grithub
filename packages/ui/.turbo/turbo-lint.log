@@ -6,20 +6,20 @@ $ TIMING=1 eslint "**/*.ts*"
 
 ✖ 1 problem (0 errors, 1 warning)
 
-Rule                                      | Time (ms) | Relative
-:-----------------------------------------|----------:|--------:
-react-hooks/static-components             |   136.091 |    89.9%
-@typescript-eslint/no-unused-vars         |     6.973 |     4.6%
-react/display-name                        |     3.381 |     2.2%
-turbo/no-undeclared-env-vars              |     0.756 |     0.5%
-react-hooks/rules-of-hooks                |     0.751 |     0.5%
-react/no-direct-mutation-state            |     0.352 |     0.2%
-react-hooks/use-memo                      |     0.277 |     0.2%
-@typescript-eslint/no-unused-expressions  |     0.276 |     0.2%
-react/require-render-return               |     0.244 |     0.2%
-@typescript-eslint/triple-slash-reference |     0.222 |     0.1%
+Rule                                              | Time (ms) | Relative
+:-------------------------------------------------|----------:|--------:
+react-hooks/static-components                     |   106.815 |    69.3%
+react/display-name                                |    26.562 |    17.2%
+@typescript-eslint/no-unused-vars                 |     7.678 |     5.0%
+react/no-direct-mutation-state                    |     3.630 |     2.4%
+react-hooks/rules-of-hooks                        |     2.924 |     1.9%
+@typescript-eslint/prefer-namespace-keyword       |     1.016 |     0.7%
+turbo/no-undeclared-env-vars                      |     0.705 |     0.5%
+@typescript-eslint/no-unnecessary-type-constraint |     0.594 |     0.4%
+react/no-children-prop                            |     0.437 |     0.3%
+react/require-render-return                       |     0.317 |     0.2%
 Rule | Time (ms) | Relative
 :----|----------:|--------:
 Rule | Time (ms) | Relative
 :----|----------:|--------:
-Done in 4.69s.
+Done in 5.81s.

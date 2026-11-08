@@ -105,6 +105,26 @@ Tests need `TEST_DATABASE_URL` (see `packages/db/README.md`). They drive real re
 
 **Not built yet:** bootstrapping the first real SDP admin in production (needs a one-off, audited CLI script).
 
+## Learner experience
+
+Follows the approved `docs/lms/design.md` (L4 Home, L5/L6 programme, L7 learning page; wireframe approved 2026-11-08).
+
+| Route                               | What                                                                                            |
+| ----------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `/`                                 | Home: one card per programme (status, progress, Continue), Coming up                            |
+| `/learn`, `/learn/:qualificationId` | Programmes; modules with section checkmarks                                                     |
+| `/learn/section/:sectionId`         | Learning page: outline, optional media, text, section check, Mark as completed, Go to next item |
+| `/library`                          | Digital library (published resources per programme)                                             |
+| `/more`                             | Account & passkeys, Help, Sign out                                                              |
+| `/staff/progress`                   | Facilitators (own cohorts) and SDP admins: per-learner printable report + CSV                   |
+
+- **Text is the lesson.** Section text is a Markdown subset rendered by `lib/markdown.tsx`: headings, lists, links, images (alt text required; images without it are never shown), code blocks, and callouts `> [!NOTE]`/`[!TIP]`/`[!WARNING]`. No raw HTML.
+- **Media** (Mux): never autoplays. The learner sees "Watch · 6 min · ~25 MB" and presses it; only then are the Mux Player script and short-lived **signed** playback tokens fetched (`getPlaybackAction`). Every audio/video needs a transcript, or is flagged as narrating the section text. Published video needs captions (database checks). Without `MUX_SIGNING_KEY_ID` / `MUX_SIGNING_PRIVATE_KEY`, media shows "not available" and the text still works.
+- **Section check:** one question per section, seeded draw and option order (`lib/randomization.ts`, `docs/lms/randomization.md`), stored per attempt, graded on the server. The page only ever receives option tokens and labels until the answer is submitted. Up to 3 attempts, each preferring an unseen question. "Mark as completed" unlocks once the check is answered.
+- **Progress and resume:** each view is recorded; the reading position is saved with `sendBeacon` to `/api/progress/scroll`; Continue opens the last viewed section at that position (or the next incomplete one).
+- **Works without JavaScript:** checks, completion and the Display menu are plain forms. JS only adds scroll memory, auto-opening the outline on wide screens, and the media player.
+- **Display menu:** text size S/M/L/XL and theme System/Light/Dark, saved per user.
+
 ## Vercel setup
 
 Create a **separate Vercel project** for the LMS (like `apps/docs`), connected to this repository.

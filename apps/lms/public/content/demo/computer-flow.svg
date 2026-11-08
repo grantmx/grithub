@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-labelledby="t">
+  <title id="t">Input flows into the processor, which stores data and sends output to a screen (demo diagram)</title>
+  <style>rect{fill:#f0f4f7;stroke:#3b6680;stroke-width:2}text{font:600 16px Inter,Arial,sans-serif;fill:#2e303b;text-anchor:middle}path{stroke:#3b6680;stroke-width:2;fill:none;marker-end:url(#a)}</style>
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0 10 5 0 10z" fill="#3b6680" stroke="none"/></marker></defs>
+  <rect x="20" y="70" width="130" height="60" rx="10"/><text x="85" y="105">Input</text>
+  <rect x="255" y="70" width="130" height="60" rx="10"/><text x="320" y="105">Processing</text>
+  <rect x="490" y="70" width="130" height="60" rx="10"/><text x="555" y="105">Output</text>
+  <rect x="255" y="150" width="130" height="40" rx="10"/><text x="320" y="176">Storage</text>
+  <path d="M150 100h100"/><path d="M385 100h100"/><path d="M320 130v15"/>
+</svg>

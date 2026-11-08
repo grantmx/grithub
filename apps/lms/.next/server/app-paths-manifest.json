@@ -1,4 +1,9 @@
 {
+  "/(learn)/learn/[qualificationId]/page": "app/(learn)/learn/[qualificationId]/page.js",
+  "/(learn)/learn/page": "app/(learn)/learn/page.js",
+  "/(learn)/learn/section/[sectionId]/page": "app/(learn)/learn/section/[sectionId]/page.js",
+  "/(learn)/library/page": "app/(learn)/library/page.js",
+  "/(learn)/more/page": "app/(learn)/more/page.js",
   "/(learn)/page": "app/(learn)/page.js",
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
@@ -10,6 +15,7 @@
   "/admin/people/invite/page": "app/admin/people/invite/page.js",
   "/admin/people/page": "app/admin/people/page.js",
   "/api/health/route": "app/api/health/route.js",
+  "/api/progress/scroll/route": "app/api/progress/scroll/route.js",
   "/auth/link/[token]/page": "app/auth/link/[token]/page.js",
   "/forbidden/page": "app/forbidden/page.js",
   "/icon.svg/route": "app/icon.svg/route.js",
@@ -21,5 +27,8 @@
   "/staff/evidence/page": "app/staff/evidence/page.js",
   "/staff/marking/page": "app/staff/marking/page.js",
   "/staff/moderation/page": "app/staff/moderation/page.js",
-  "/staff/page": "app/staff/page.js"
+  "/staff/page": "app/staff/page.js",
+  "/staff/progress/[enrolmentId]/csv/route": "app/staff/progress/[enrolmentId]/csv/route.js",
+  "/staff/progress/[enrolmentId]/page": "app/staff/progress/[enrolmentId]/page.js",
+  "/staff/progress/page": "app/staff/progress/page.js"
 }
