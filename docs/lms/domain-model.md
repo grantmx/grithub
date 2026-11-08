@@ -222,6 +222,18 @@ erDiagram
 - **AssessmentSchedule** now targets a blueprint or a brief.
 - New tables carry a nullable `tenant_id` (tenancy readiness).
 
+### Added for QCTO data (2026-11-08)
+
+See [compliance/qcto-leisa-mapping.md](compliance/qcto-leisa-mapping.md) and ADR-014.
+
+- **LearnerQctoProfile** (one per learner per tenant): name as on ID, title, codes (gender, nationality, home language, citizen, socioeconomic and immigrant status, province, Stats SA area), `shareEmailWithQcto`; **encrypted**: national / alternate ID (with blind-index hashes), birth date, equity, disability status and rating, home and postal address, phone, cell, fax.
+- **EnrolmentQctoRecord** (one per enrolment): readiness type, SOR status and issue date, FLC code and statement number, expected completion date, SDP code override (AP-led RPL).
+- **ProviderAccreditation** and **QualificationAccreditation**: SDP code, accreditation number, legal name, start and end dates.
+- **AssessmentCentre**; **Cohort** gains `eisaOn` and `assessmentCentreId`.
+- **QctoSubmissionBatch** (a LEISA file: purpose, status, file name, storage key, SHA-256, row count, who and when) and **QctoSubmissionItem** (enrolment, row number, row hash, QCTO outcome).
+- **ConsentRecord** gains `kind` (`popia_notice` / `qcto_sharing`) and `granted`.
+- GLOBAL reference tables (no tenant): the QCTO code lists and `statssa_area_codes` (`packages/db/src/tenancy.ts`).
+
 ## People, cohorts and operations
 
 ```mermaid

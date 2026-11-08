@@ -22,7 +22,10 @@ export type AccessContext = {
   userId: string;
   sessionId: string;
   status: "invited" | "active" | "suspended";
-  /** Current POPIA notice accepted (and therefore first-time setup done). */
+  /**
+   * First-time setup done: current POPIA notice accepted and, for learners,
+   * current QCTO sharing consent and a confirmed QCTO profile (setupState.ts).
+   */
   setupComplete: boolean;
   roles: ReadonlySet<StaffRole>;
   activePasskeys: number;
@@ -51,6 +54,9 @@ const PUBLIC_PATHS: RegExp[] = [
 export function requirementFor(pathname: string): Requirement {
   if (PUBLIC_PATHS.some((re) => re.test(pathname))) return { kind: "public" };
   if (pathname === "/setup") return { kind: "user", allowDuringSetup: true };
+  // Stats SA area type-ahead: used by the profile step during setup.
+  if (pathname === "/api/qcto/areas")
+    return { kind: "user", allowDuringSetup: true };
 
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return { kind: "roles", anyOf: ["sdp_admin"], stepUp: true };

@@ -53,6 +53,9 @@ const ROUTES = [
   "/staff/submissions/x1",
   "/admin/practical",
   "/admin/practical/b1",
+  "/account/profile",
+  "/admin/people/u1/profile",
+  "/api/qcto/areas",
 ] as const;
 type Route = (typeof ROUTES)[number];
 
@@ -66,6 +69,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "forbidden",
     "/admin/practical": "forbidden",
     "/admin/practical/b1": "forbidden",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "forbidden",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "forbidden",
@@ -100,6 +106,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "forbidden",
     "/admin/practical": "forbidden",
     "/admin/practical/b1": "forbidden",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "forbidden",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "forbidden",
@@ -134,6 +143,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "allow",
     "/admin/practical": "forbidden",
     "/admin/practical/b1": "forbidden",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "forbidden",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "allow",
@@ -168,6 +180,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "allow",
     "/admin/practical": "forbidden",
     "/admin/practical/b1": "forbidden",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "forbidden",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "forbidden",
@@ -202,6 +217,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "forbidden",
     "/admin/practical": "allow",
     "/admin/practical/b1": "allow",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "allow",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "forbidden",
@@ -236,6 +254,9 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/submissions/x1": "allow",
     "/admin/practical": "forbidden",
     "/admin/practical/b1": "forbidden",
+    "/account/profile": "allow",
+    "/admin/people/u1/profile": "forbidden",
+    "/api/qcto/areas": "allow",
     "/learn/assessment/s1": "allow",
     "/learn/attempt/a1": "allow",
     "/staff/marking/a1": "forbidden",
@@ -309,6 +330,13 @@ describe("route access per role", () => {
     expect(decide(requirementFor("/admin"), pending).result).toBe("setup");
     expect(decide(requirementFor("/"), pending).result).toBe("setup");
     expect(decide(requirementFor("/setup"), pending).result).toBe("allow");
+    // The profile step's Stats SA area search runs during setup.
+    expect(decide(requirementFor("/api/qcto/areas"), pending).result).toBe(
+      "allow",
+    );
+    expect(decide(requirementFor("/account/profile"), pending).result).toBe(
+      "setup",
+    );
   });
 });
 

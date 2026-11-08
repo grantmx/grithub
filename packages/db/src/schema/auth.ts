@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  boolean,
   check,
   index,
   integer,
@@ -11,6 +12,7 @@ import {
 } from "drizzle-orm/pg-core";
 import { createdAt, id } from "./columns";
 import { cohorts } from "./cohorts";
+import { consentKind } from "./enums";
 import { users } from "./people";
 
 /** How a session was established. */
@@ -134,6 +136,11 @@ export const consentRecords = pgTable(
     userId: uuid()
       .notNull()
       .references(() => users.id),
+    // Which notice: the POPIA notice at setup, or the separate consent to
+    // share QCTO data (LEISA columns AH/AI).
+    kind: consentKind().notNull().default("popia_notice"),
+    // False records a refusal (AH = "No"). The latest record of a kind wins.
+    granted: boolean().notNull().default(true),
     noticeVersion: text().notNull(),
     noticeSha256: text().notNull(),
     acceptedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
@@ -141,6 +148,11 @@ export const consentRecords = pgTable(
   },
   (t) => [
     index("consent_records_user_idx").on(t.userId),
+    // A POPIA notice can only be accepted; refusing it means not using the LMS.
+    check(
+      "consent_records_popia_notice_granted",
+      sql`${t.kind} <> 'popia_notice' OR ${t.granted}`,
+    ),
     check(
       "consent_records_sha256_format",
       sql`${t.noticeSha256} ~ '^[0-9a-f]{64}$'`,

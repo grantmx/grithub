@@ -27,6 +27,8 @@
         "AIRTABLE_ACCESS_TOKEN",
         "AIRTABLE_BASE_ID",
         "CRON_SECRET",
+        "PII_ENCRYPTION_KEYS",
+        "PII_BLIND_INDEX_KEY",
         "EMAIL_TRANSPORT",
         "DATABASE_SSL",
         "DATABASE_POOL_MAX"

@@ -6,7 +6,7 @@ import {
 } from "node:crypto";
 
 // Application-level encryption for sensitive personal information
-// (learner_qcto_profiles.*_enc). See docs/lms/decisions.md ADR-013.
+// (learner_qcto_profiles.*_enc). See docs/lms/decisions.md ADR-014.
 //
 // - AES-256-GCM. The key never reaches Postgres, logs or backups.
 // - Every value is bound to its table, column and row id through GCM's
@@ -38,7 +38,9 @@ export class PiiDecryptError extends Error {}
 function decodeKey(value: string, what: string): Buffer {
   const key = Buffer.from(value.trim(), "base64");
   if (key.length !== KEY_BYTES) {
-    throw new PiiConfigError(`${what} must be ${KEY_BYTES} bytes, base64-encoded`);
+    throw new PiiConfigError(
+      `${what} must be ${KEY_BYTES} bytes, base64-encoded`,
+    );
   }
   return key;
 }
@@ -68,9 +70,14 @@ export function readPiiKeyring(
       );
     }
     if (keys.has(version)) {
-      throw new PiiConfigError(`PII_ENCRYPTION_KEYS repeats version ${version}`);
+      throw new PiiConfigError(
+        `PII_ENCRYPTION_KEYS repeats version ${version}`,
+      );
     }
-    keys.set(version, decodeKey(part.slice(sep + 1), `PII key version ${version}`));
+    keys.set(
+      version,
+      decodeKey(part.slice(sep + 1), `PII key version ${version}`),
+    );
   }
   return {
     currentVersion: Math.max(...keys.keys()),
@@ -82,7 +89,8 @@ export function readPiiKeyring(
 /** Where a value lives. Bound into the ciphertext as AAD. */
 export type PiiContext = { table: string; column: string; rowId: string };
 
-const aad = (c: PiiContext) => Buffer.from(`${c.table}.${c.column}:${c.rowId}`, "utf8");
+const aad = (c: PiiContext) =>
+  Buffer.from(`${c.table}.${c.column}:${c.rowId}`, "utf8");
 
 export function encryptPii(
   keyring: PiiKeyring,
@@ -94,7 +102,10 @@ export function encryptPii(
   const iv = randomBytes(IV_BYTES);
   const cipher = createCipheriv("aes-256-gcm", key, iv);
   cipher.setAAD(aad(context));
-  const body = Buffer.concat([cipher.update(plaintext, "utf8"), cipher.final()]);
+  const body = Buffer.concat([
+    cipher.update(plaintext, "utf8"),
+    cipher.final(),
+  ]);
   return Buffer.concat([
     Buffer.from([FORMAT, keyring.currentVersion]),
     iv,
@@ -114,7 +125,8 @@ export function decryptPii(
   }
   const version = buf[1] as number;
   const key = keyring.keys.get(version);
-  if (!key) throw new PiiDecryptError(`PII key version ${version} is not configured`);
+  if (!key)
+    throw new PiiDecryptError(`PII key version ${version} is not configured`);
   const iv = buf.subarray(2, 2 + IV_BYTES);
   const tag = buf.subarray(2 + IV_BYTES, HEADER_BYTES);
   try {
@@ -156,7 +168,9 @@ export function piiBlindIndex(
   scope = "",
 ): string {
   return createHmac("sha256", keyring.blindIndexKey)
-    .update(`${kind}\u0000${normaliseIdNumber(value)}\u0000${scope.trim().toUpperCase()}`)
+    .update(
+      `${kind}\u0000${normaliseIdNumber(value)}\u0000${scope.trim().toUpperCase()}`,
+    )
     .digest("hex");
 }
 

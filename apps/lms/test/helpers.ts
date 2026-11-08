@@ -4,14 +4,20 @@ import {
   type Database,
   auditLog,
   cohorts,
+  consentRecords,
   enrolments,
+  learnerQctoProfiles,
   passkeyCredentials,
   qualifications,
   roleGrants,
   users,
 } from "db";
 import type { StaffRole } from "@/lib/access";
-import { CURRENT_NOTICE } from "@/lib/popia";
+import {
+  CURRENT_NOTICE,
+  QCTO_SHARING_CONSENT,
+  sharingConsentSha256,
+} from "@/lib/popia";
 import type { ServerCtx } from "@/lib/server/context";
 import { readAuthConfig } from "@/lib/server/env";
 import { createSession, loadAccessContext } from "@/lib/server/session";
@@ -66,6 +72,8 @@ export async function makeUser(
     passkeys?: number;
     cohortId?: string;
     roleExpiresAt?: Date;
+    /** Enrolled learner who accepted the notice but hasn't done the QCTO step. */
+    skipQctoProfile?: boolean;
   } = {},
 ) {
   const setupComplete = opts.setupComplete ?? true;
@@ -104,6 +112,19 @@ export async function makeUser(
       .insert(enrolments)
       .values({ userId: user!.id, cohortId: opts.cohortId })
       .onConflictDoNothing();
+    // Learners also finish the QCTO consent and profile during setup.
+    if (setupComplete && !opts.skipQctoProfile) {
+      await db.insert(consentRecords).values({
+        userId: user!.id,
+        kind: "qcto_sharing",
+        noticeVersion: QCTO_SHARING_CONSENT.version,
+        noticeSha256: sharingConsentSha256(),
+      });
+      await db
+        .insert(learnerQctoProfiles)
+        .values({ userId: user!.id, confirmedAt: new Date() })
+        .onConflictDoNothing();
+    }
   }
   return user!;
 }

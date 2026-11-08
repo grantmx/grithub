@@ -22,6 +22,7 @@ export const RATE_LIMITS = {
   },
   tokenConsume: { scope: "token-consume", limit: 20, windowSeconds: 900 },
   setup: { scope: "setup", limit: 30, windowSeconds: 900 },
+  areaSearch: { scope: "area-search", limit: 300, windowSeconds: 3600 },
   mediaPlayback: { scope: "media-playback", limit: 120, windowSeconds: 3600 },
   scrollSave: { scope: "scroll-save", limit: 600, windowSeconds: 3600 },
   // Assessments (per user). Autosave fires on every change, so it is generous.

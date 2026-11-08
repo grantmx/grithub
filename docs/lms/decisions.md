@@ -97,6 +97,19 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
   - There is no workplace module, logbook or mentor sign-off.
 - **Consequences:** uploads need JavaScript (links work without). Video is link-only, so a learner could change a linked video after submission; the URL and time are recorded. The link allow-list is in code until an admin editor exists. A real virus scanner is still to be connected.
 
+## ADR-014: QCTO learner data model and application-level encryption
+
+- **Status:** Accepted (2026-11-08)
+- **Context:** The QCTO LEISA file (`compliance/qcto-leisa-mapping.md`) needs identity numbers, birth dates, addresses, phone numbers, race (equity) and disability. POPIA s26 treats race and health as special personal information. The repo is public and the hosting region is still open.
+- **Decision:**
+  - A learner QCTO profile per learner per tenant (`learner_qcto_profiles`), a QCTO record per enrolment (`enrolment_qcto_records`: readiness type, SOR status and date, FLC, AP-led SDP code override), provider and qualification accreditation periods, assessment centres, and EISA date and assessment centre per cohort. LEISA files are tracked in `qcto_submission_batches` and `qcto_submission_items` (row hash only, no PII copy).
+  - QCTO code lists are GLOBAL reference tables loaded by migration from the spec; codes are kept exactly as QCTO writes them. The Stats SA area list is loaded separately from the official file.
+  - Sensitive values are encrypted **in the application** (AES-256-GCM, `packages/db/src/pii.ts`), not with pgcrypto, so keys never reach the database, query logs or backups. Each value is bound to its table, column and row (AAD). Keys are versioned (`PII_ENCRYPTION_KEYS`) for rotation. ID-number uniqueness uses a keyed HMAC blind index (`PII_BLIND_INDEX_KEY`).
+  - Equity and disability codes are encrypted, so they can't have foreign keys; the application validates them against the code tables before encrypting.
+  - QCTO sharing consent (LEISA AH/AI) is a separate, versioned `consent_records` kind that can record a refusal.
+  - Rules the database can check are enforced there (CHECKs and triggers; see `packages/db/README.md`). Rules that need decrypted values or decisions (ID check digit, gender and birth date vs ID, character sets, postal codes, "all modules competent" for SOR 01, accreditation periods, deadlines) belong to the LEISA exporter.
+- **Consequences:** encrypted columns can't be searched, sorted or aggregated in SQL; equity and disability reports decrypt in the application. Losing `PII_ENCRYPTION_KEYS` loses the data, so the keys need a documented backup separate from the database backups. Changing `PII_BLIND_INDEX_KEY` means recomputing every blind index.
+
 ---
 
 ## Open questions

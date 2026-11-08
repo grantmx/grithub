@@ -112,6 +112,12 @@ export const themePreference = pgEnum("theme_preference", [
 // QCTO Learner Enrolment and Readiness for EISA (LEISA) submissions
 // (docs/lms/compliance/qcto-leisa-mapping.md). The spec asks for an enrolment
 // file within 21 days of enrolment and a readiness file 3 months before the EISA.
+// Consents recorded in consent_records (append-only).
+export const consentKind = pgEnum("consent_kind", [
+  "popia_notice",
+  "qcto_sharing",
+]);
+
 export const qctoSubmissionPurpose = pgEnum("qcto_submission_purpose", [
   "enrolment",
   "eisa_readiness",

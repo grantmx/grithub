@@ -3,12 +3,14 @@ import { signOut } from "@/app/account/actions";
 import { Icon } from "@/components/Icon";
 import styles from "@/components/learn/learn.module.css";
 import { requirePage } from "@/lib/server/page";
+import { getSetupState } from "@/lib/server/setupState";
 
 export const metadata: Metadata = { title: "More" };
 
-/** More (design-gate decision 2026-11-08): Account & passkeys, Help, Sign out. */
+/** More (design-gate decision 2026-11-08): Account & passkeys, QCTO details (learners), Help, Sign out. */
 export default async function MorePage() {
-  await requirePage("/more");
+  const { ctx, actor } = await requirePage("/more");
+  const isLearner = (await getSetupState(ctx, actor.userId))?.isLearner;
   return (
     <div className={styles.stack}>
       <h1 className={styles.pageTitle}>More</h1>
@@ -19,6 +21,14 @@ export default async function MorePage() {
             Account &amp; passkeys
           </a>
         </li>
+        {isLearner ? (
+          <li className={styles.listItem}>
+            <Icon name="account" />
+            <a href="/account/profile" className={styles.textLink}>
+              Your QCTO details
+            </a>
+          </li>
+        ) : null}
         <li className={styles.listItem}>
           <Icon name="help" />
           <a href="/signin/help" className={styles.textLink}>

@@ -18,7 +18,12 @@ import {
   type ImportRow,
   validateLearnerCsv,
 } from "@/lib/csv";
-import { CURRENT_NOTICE, noticeSha256 } from "@/lib/popia";
+import {
+  CURRENT_NOTICE,
+  QCTO_SHARING_CONSENT,
+  noticeSha256,
+  sharingConsentSha256,
+} from "@/lib/popia";
 import type { ServerCtx } from "./context";
 import { writeAudit } from "./audit";
 import { authorize } from "./auth";
@@ -515,11 +520,20 @@ export async function confirmDetails(
     .where(eq(users.id, actor.userId));
 }
 
-/** Record acceptance of the CURRENT notice (version + text hash + time). */
+/**
+ * Record acceptance of the CURRENT notice (version + text hash + time) and,
+ * for learners, the separate QCTO sharing consent (LEISA "POPI Act Agree" and
+ * "POPI Act Date"). Learners can't finish setup without both.
+ */
 export async function acceptNotice(
   ctx: ServerCtx,
   actor: AccessContext | null,
-  input: { version: string; accepted: boolean },
+  input: {
+    version: string;
+    accepted: boolean;
+    qctoVersion?: string;
+    qctoSharing?: boolean;
+  },
 ): Promise<void> {
   if (!actor) throw new OnboardingError("Please sign in first.");
   await enforceRateLimit(ctx, RATE_LIMITS.setup, actor.userId);
@@ -530,6 +544,23 @@ export async function acceptNotice(
       "The notice has changed. Please read the updated version.",
     );
   }
+  const [enrolled] = await ctx.db
+    .select({ id: enrolments.id })
+    .from(enrolments)
+    .where(eq(enrolments.userId, actor.userId))
+    .limit(1);
+  if (enrolled) {
+    if (!input.qctoSharing) {
+      throw new OnboardingError(
+        "Please tick the box to agree to sharing your details with the QCTO. We can't enrol you without it.",
+      );
+    }
+    if (input.qctoVersion !== QCTO_SHARING_CONSENT.version) {
+      throw new OnboardingError(
+        "The QCTO agreement has changed. Please read the updated version.",
+      );
+    }
+  }
   const now = ctx.now();
   await ctx.db.insert(consentRecords).values({
     userId: actor.userId,
@@ -538,6 +569,17 @@ export async function acceptNotice(
     acceptedAt: now,
     ipHash: ctx.ipHash,
   });
+  if (enrolled) {
+    await ctx.db.insert(consentRecords).values({
+      userId: actor.userId,
+      kind: "qcto_sharing",
+      granted: true,
+      noticeVersion: QCTO_SHARING_CONSENT.version,
+      noticeSha256: sharingConsentSha256(),
+      acceptedAt: now,
+      ipHash: ctx.ipHash,
+    });
+  }
   await ctx.db
     .update(users)
     .set({
@@ -553,4 +595,13 @@ export async function acceptNotice(
     entityId: actor.userId,
     after: { noticeVersion: CURRENT_NOTICE.version },
   });
+  if (enrolled) {
+    await writeAudit(ctx, {
+      action: "consent.qcto_sharing.accepted",
+      actorId: actor.userId,
+      entityType: "user",
+      entityId: actor.userId,
+      after: { noticeVersion: QCTO_SHARING_CONSENT.version },
+    });
+  }
 }

@@ -1,6 +1,6 @@
 # POPIA: what the LMS collects and how
 
-Status: **draft**. It must be reviewed by GRIT Hub's Information Officer before real learners are invited. The learner-facing notice text lives in `apps/lms/lib/popia.ts` (versioned; currently `2026-11-draft-1`).
+Status: **draft**. It must be reviewed by GRIT Hub's Information Officer before real learners are invited. The learner-facing notice text and the separate QCTO sharing consent live in `apps/lms/lib/popia.ts` (versioned; notice currently `2026-11-draft-2`, QCTO consent `2026-11-draft-1`).
 
 ## Biometric data: we never receive or store it
 
@@ -32,13 +32,46 @@ The WebAuthn "user handle" sent to devices is the user's internal UUID. It conta
 | Audit log                              | `audit_log`                | Accountability (sign-ins, passkey changes, recovery, permission denials, admin actions) | Payloads hold ids, counts and reasons, **not** emails, names or CSV contents. IP stored only as an HMAC |
 | CSV imports                            | not stored                 | Bulk invitations                                                                        | Parsed in memory; only valid rows become users; file contents are never logged or audited               |
 
+## QCTO learner data (LEISA)
+
+The QCTO requires providers to submit learner data (see [qcto-leisa-mapping.md](qcto-leisa-mapping.md)). The LMS stores it in `learner_qcto_profiles` and `enrolment_qcto_records` (packages/db, ADR-014).
+
+| Data                                                                                                                                | Where                                                                            | Protection                                                                                                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| National ID or alternate ID (passport, refugee, permit, birth certificate)                                                          | `learner_qcto_profiles.national_id_enc`, `alternate_id_enc`                      | Encrypted in the application (AES-256-GCM). Duplicate checks use a keyed HMAC blind index; the raw number is never stored or logged     |
+| Birth date, home and postal addresses, phone, cell and fax numbers                                                                  | `learner_qcto_profiles.*_enc`                                                    | Encrypted                                                                                                                               |
+| **Race (equity code) and disability status and rating: special personal information (s26)**                                         | `equity_code_enc`, `disability_status_enc`, `disability_rating_enc`              | Encrypted. Processed only because QCTO requires it for submission (s27 authorisation to be confirmed by the Information Officer)        |
+| Names as on the ID, title, gender, nationality, home language, citizen, socioeconomic and immigrant status, province, Stats SA area | `learner_qcto_profiles`                                                          | Plain codes (needed for validation against the QCTO code lists); access limited to SDP admins                                           |
+| Whether the sign-in email may go to the QCTO                                                                                        | `learner_qcto_profiles.share_email_with_qcto`                                    | Learner's choice                                                                                                                        |
+| Consent to share with the QCTO (yes or no, version, time)                                                                           | `consent_records` (kind `qcto_sharing`)                                          | Append-only; separate from the POPIA notice. Its latest record gives LEISA AH (POPI Act Agree) and AI (POPI Act Date, SA calendar date) |
+| Readiness type, SOR status and date, FLC code and certificate number                                                                | `enrolment_qcto_records`                                                         | Plain                                                                                                                                   |
+| Submitted LEISA files                                                                                                               | Private object storage; `qcto_submission_batches` holds only the key and SHA-256 | Per-row hashes only in `qcto_submission_items`; QCTO response notes must not contain personal data                                      |
+
+Keys (`PII_ENCRYPTION_KEYS`, `PII_BLIND_INDEX_KEY`) live only in the hosting provider's secret store and a separate offline backup.
+
+### How learners give it (first-time setup)
+
+- **Step 2** shows the POPIA notice (which now lists the QCTO profile fields, names the QCTO as a recipient and says Airtable receives the profile) and, for learners only, a **separate required tick** to share their details with the QCTO and keep a copy in Airtable. A learner who doesn't tick it can't finish setup; the screen explains why and gives the Information Officer contact. Staff without an enrolment don't see it.
+- **Step 3** collects the profile in three parts and a review. Values are validated against the QCTO code lists and character sets and encrypted before they're stored. The learner ticks "These details are correct" (`learner_qcto_profiles.confirmed_at`).
+- After confirming, the learner can only **view** the details (ID/passport masked to the last 4 characters). An SDP admin can fill in or correct them; the audit entry lists the changed field names, never values.
+- Neither the profile nor the consent is pre-filled from a CSV (owner decision, 2026-11-08).
+
+### Owner decisions with privacy risk (for the Information Officer)
+
+Recorded in [../design.md](../design.md) §14 on 2026-11-08, against the recommended option:
+
+1. **Unencrypted LEISA attachment.** The enrolment file will be emailed to the QCTO as a plain .xlsx attachment (not an encrypted zip or link). It contains ID numbers, race and disability data, and passes through Resend (outside South Africa) and the QCTO's mailbox. A mis-addressed or forwarded email exposes every learner in the batch.
+2. **Full profile copied to Airtable.** Airtable (outside South Africa) receives the full QCTO profile, including ID numbers, race and disability data, not only enrolment, attendance and results. This widens the cross-border exposure under section 72 and makes the Airtable operator agreement more important.
+
+The learner notice and the QCTO consent name both, so learners are told. Neither the email send nor the Airtable copy is built yet.
+
 ## Operators (processors)
 
 | Operator                                    | Purpose                                                                                                                                         | Location                                                                       | Status                                                               |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------- |
 | Hosting + database provider                 | Runs the app and stores all LMS data                                                                                                            | **Open question** (South Africa vs EU; see `architecture.md`)                  | to decide                                                            |
 | Resend                                      | Sends invitation, sign-in and recovery emails                                                                                                   | Outside South Africa                                                           | operator agreement needed                                            |
-| **Airtable**                                | **Management reporting** (one-way copy of enrolment, attendance and result data)                                                                | **Outside South Africa**                                                       | named in the learner notice; operator agreement needed               |
+| **Airtable**                                | **Management reporting** (one-way copy of enrolment, QCTO profile, attendance and result data)                                                  | **Outside South Africa**                                                       | named in the learner notice; operator agreement needed               |
 | Vercel Blob (private store)                 | Stores practical evidence files (learner work; may include faces or names). Private; opened only via 5-minute signed links; staff views audited | Region set per store; **check it is acceptable** (likely outside South Africa) | operator agreement needed; Information Officer to confirm the region |
 | Linked services (YouTube, Drive, GitHub, …) | Learners may share evidence as links on services they choose                                                                                    | Outside South Africa                                                           | the learner controls the content; the LMS stores only the URL        |
 | Mux (later)                                 | Hosted audio/video                                                                                                                              | Outside South Africa                                                           | when media is used                                                   |
@@ -47,7 +80,8 @@ Cross-border transfers rely on the operator's contractual safeguards (POPIA sect
 
 ## Consent and notice changes
 
-- Learners accept the notice during first-time setup (step 2 of 3). Without acceptance they can't use the LMS.
+- Learners accept the notice during first-time setup (step 2 of 4; staff: 2 of 3), together with the separate QCTO sharing consent. Without both they can't use the LMS.
+- Changing the QCTO consent wording requires a new `QCTO_SHARING_CONSENT.version`; learners whose latest QCTO consent is to another version are sent back to step 2.
 - Any wording change requires a **new version string**. Users whose accepted version differs are sent back through setup to accept the new notice.
 - `consent_records` is append-only (database trigger), so acceptances can't be edited or deleted.
 
@@ -63,5 +97,8 @@ There are no SMS codes. Recovery is either:
 1. Information Officer name and contact for the notice (placeholder in `lib/popia.ts`).
 2. Retention periods for accounts, audit logs, consent records and assessment evidence.
 3. Operator agreements with the hosting provider, Resend and Airtable.
-4. Which minimal fields go to Airtable.
+4. ~~Which minimal fields go to Airtable.~~ Decided by the owner on 2026-11-08: the full QCTO profile (see "Owner decisions with privacy risk"). Still to confirm: whether the Information Officer accepts this.
 5. Whether a separate learner agreement (beyond the POPIA notice) is needed at setup.
+6. Lawful basis for processing race and disability for QCTO submissions (POPIA s27), and the wording of the QCTO sharing consent.
+7. ~~Whether a learner who refuses QCTO sharing (LEISA AH = No) can be submitted at all (mapping I-16).~~ Decided 2026-11-08: a learner can't finish setup without agreeing, so every learner row has AH = Yes. Still to confirm: what to offer someone who refuses (they can't be enrolled with the QCTO).
+8. Retention period for QCTO profiles and submitted LEISA files, and where the encryption key backup is held.

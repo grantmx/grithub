@@ -2,6 +2,7 @@ import { and, eq, gt, isNull, or, sql } from "drizzle-orm";
 import { passkeyCredentials, roleGrants, sessions, users } from "db";
 import type { AccessContext, StaffRole } from "@/lib/access";
 import { CURRENT_NOTICE } from "@/lib/popia";
+import { setupColumns, setupComplete } from "./setupState";
 import type { ServerCtx } from "./context";
 import { randomToken, sha256Hex } from "./crypto";
 
@@ -54,6 +55,7 @@ export async function loadAccessContext(
       userId: users.id,
       status: users.status,
       noticeVersion: users.popiaNoticeVersion,
+      ...setupColumns,
     })
     .from(sessions)
     .innerJoin(users, eq(users.id, sessions.userId))
@@ -90,8 +92,13 @@ export async function loadAccessContext(
     userId: row.userId,
     sessionId: row.sessionId,
     status: row.status,
-    setupComplete:
-      row.status === "active" && row.noticeVersion === CURRENT_NOTICE.version,
+    setupComplete: setupComplete({
+      status: row.status,
+      noticeCurrent: row.noticeVersion === CURRENT_NOTICE.version,
+      isLearner: row.isLearner,
+      qctoConsentCurrent: row.qctoConsentCurrent,
+      profileConfirmed: row.profileConfirmed,
+    }),
     roles: new Set(grants.map((g) => g.role as StaffRole)),
     activePasskeys: pk?.n ?? 0,
   };

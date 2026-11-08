@@ -8,6 +8,7 @@ import {
   listPeople,
 } from "@/lib/server/onboarding";
 import { requirePage } from "@/lib/server/page";
+import { type ProfileStatus, profileStatuses } from "@/lib/server/qctoProfile";
 import { deactivateAction, resendInviteAction } from "../actions";
 
 export const metadata: Metadata = { title: "People" };
@@ -28,6 +29,15 @@ const STATUS: Record<
   invited: { label: "✉ Invited", className: "" },
   expired: { label: "! Invite expired", className: ui.statusWarn },
   deactivated: { label: "✗ Deactivated", className: ui.statusBad },
+};
+
+const PROFILE: Record<
+  ProfileStatus,
+  { label: string; className: string | undefined }
+> = {
+  not_started: { label: "– Not started", className: "" },
+  in_progress: { label: "… In progress", className: ui.statusWarn },
+  confirmed: { label: "✓ Confirmed", className: ui.statusOk },
 };
 
 /**
@@ -64,6 +74,10 @@ export default async function PeoplePage({
   }
 
   const people = await listPeople(ctx, actor, cohort.id, filter);
+  const profiles = await profileStatuses(
+    ctx,
+    people.map((p) => p.userId),
+  );
   const href = (f: PersonFilter) =>
     `/admin/people?cohort=${cohort.id}&filter=${f}`;
 
@@ -147,6 +161,7 @@ export default async function PeoplePage({
               <th scope="col">Email</th>
               <th scope="col">Status</th>
               <th scope="col">Passkeys</th>
+              <th scope="col">QCTO profile</th>
               <th scope="col">
                 <span className={ui.srOnly}>Actions</span>
               </th>
@@ -155,7 +170,7 @@ export default async function PeoplePage({
           <tbody>
             {people.length === 0 ? (
               <tr>
-                <td colSpan={5} className={ui.muted}>
+                <td colSpan={6} className={ui.muted}>
                   No learners match this filter.
                 </td>
               </tr>
@@ -168,6 +183,13 @@ export default async function PeoplePage({
                     {STATUS[p.status].label}
                   </td>
                   <td>{p.passkeys}</td>
+                  <td
+                    className={
+                      PROFILE[profiles.get(p.userId) ?? "not_started"].className
+                    }
+                  >
+                    {PROFILE[profiles.get(p.userId) ?? "not_started"].label}
+                  </td>
                   <td>
                     {p.status === "deactivated" ? null : (
                       <details className={ui.menu}>
@@ -192,6 +214,12 @@ export default async function PeoplePage({
                               </button>
                             </form>
                           ) : null}
+                          <a
+                            className={ui.textButton}
+                            href={`/admin/people/${p.userId}/profile?cohort=${cohort.id}`}
+                          >
+                            QCTO profile
+                          </a>
                           <a
                             className={ui.textButton}
                             href={`/admin/people/${p.userId}/recovery?cohort=${cohort.id}`}

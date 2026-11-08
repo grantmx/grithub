@@ -33,6 +33,13 @@ import { enrolments, users } from "./people";
 // columns end in `_enc`; `_hash` columns are keyed HMAC blind indexes used
 // only for "is this ID already registered?" lookups.
 
+/**
+ * Tenant key for uniqueness: a NULL tenant_id counts as the default tenant, so
+ * the tenancy migration can backfill NULLs without creating duplicates.
+ */
+const tenantKey = (col: unknown) =>
+  sql`coalesce(${col}, ${sql.raw(`'${DEFAULT_TENANT_ID}'::uuid`)})`;
+
 /** The spec's universal rule: the first character is a valid, non-space character. */
 const startsNonSpace = (col: unknown) => sql`${col} ~ '^[^[:space:]]'`;
 
@@ -80,14 +87,19 @@ export const qctoFlcCodes = codeList("qcto_flc_codes");
 
 /**
  * Stats SA area codes (LEISA column AG). The list comes from Stats SA, not the
- * QCTO spec, so it is loaded separately (empty until then). Each area belongs
- * to a province, and a learner's area must match their province.
+ * QCTO spec. Loaded by migration 0015 from data/statssa_area_codes.csv (see
+ * data/README.md for the source file and corrections). Each area belongs to a
+ * province, and a learner's area must match their province.
  */
 export const statssaAreaCodes = pgTable(
   "statssa_area_codes",
   {
     code: text().primaryKey(),
+    // Main place / sub-place name (Stats SA "Area").
     label: text().notNull(),
+    // Shown next to the area so learners can tell same-named places apart.
+    town: text().notNull(),
+    localMunicipality: text().notNull(),
     provinceCode: text()
       .notNull()
       .references(() => qctoProvinceCodes.code),
@@ -95,6 +107,8 @@ export const statssaAreaCodes = pgTable(
   },
   (t) => [
     check("statssa_area_codes_code_format", startsNonSpace(t.code)),
+    // Type-ahead search runs within one province.
+    index("statssa_area_codes_province_idx").on(t.provinceCode),
     // Target of the composite FK that keeps a profile's area in its province.
     unique("statssa_area_codes_code_province_uq").on(t.code, t.provinceCode),
   ],
@@ -125,11 +139,18 @@ export const providerAccreditations = pgTable(
     updatedAt: updatedAt(),
   },
   (t) => [
-    unique("provider_accreditations_tenant_number_uq")
-      .on(t.tenantId, t.accreditationNumber)
-      .nullsNotDistinct(),
-    check("provider_accreditations_dates_ordered", sql`${t.endsOn} >= ${t.startsOn}`),
-    check("provider_accreditations_legal_name_format", startsNonSpace(t.legalName)),
+    uniqueIndex("provider_accreditations_tenant_number_uq").on(
+      tenantKey(t.tenantId),
+      t.accreditationNumber,
+    ),
+    check(
+      "provider_accreditations_dates_ordered",
+      sql`${t.endsOn} >= ${t.startsOn}`,
+    ),
+    check(
+      "provider_accreditations_legal_name_format",
+      startsNonSpace(t.legalName),
+    ),
     check(
       "provider_accreditations_number_format",
       startsNonSpace(t.accreditationNumber),
@@ -167,7 +188,9 @@ export const qualificationAccreditations = pgTable(
       t.qualificationId,
       t.startsOn,
     ),
-    index("qualification_accreditations_qualification_idx").on(t.qualificationId),
+    index("qualification_accreditations_qualification_idx").on(
+      t.qualificationId,
+    ),
     check(
       "qualification_accreditations_dates_ordered",
       sql`${t.endsOn} >= ${t.startsOn}`,
@@ -190,9 +213,10 @@ export const assessmentCentres = pgTable(
     updatedAt: updatedAt(),
   },
   (t) => [
-    unique("assessment_centres_tenant_code_uq")
-      .on(t.tenantId, t.code)
-      .nullsNotDistinct(),
+    uniqueIndex("assessment_centres_tenant_code_uq").on(
+      tenantKey(t.tenantId),
+      t.code,
+    ),
     check("assessment_centres_code_format", startsNonSpace(t.code)),
   ],
 );
@@ -204,8 +228,12 @@ export const assessmentCentres = pgTable(
 /**
  * Everything QCTO needs about the learner as a person (LEISA columns C–AF).
  * Profiles are completed over time, so most columns are nullable here; the
- * LEISA export checks completeness. POPI Act agree/date (AH/AI) come from
- * users.popia_notice_accepted_at; email (AE) from users.email.
+ * LEISA export checks completeness. POPI Act agree/date (AH/AI) come from the
+ * latest consent_records row of kind 'qcto_sharing'; email (AE) from
+ * users.email when share_email_with_qcto is true.
+ *
+ * confirmed_at: when the learner ticked "These details are correct" during
+ * setup. Admin corrections afterwards don't clear it (they are audited).
  *
  * Encrypted (`_enc`, see src/pii.ts; each value is bound to this row and
  * column, so ciphertext can't be moved between rows):
@@ -268,25 +296,21 @@ export const learnerQctoProfiles = pgTable(
     // QCTO (mapping I-15). Default: share it.
     shareEmailWithQcto: boolean().notNull().default(true),
 
+    confirmedAt: timestamp({ withTimezone: true }),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
   (t) => [
-    unique("learner_qcto_profiles_tenant_user_uq")
-      .on(t.tenantId, t.userId)
-      .nullsNotDistinct(),
-    // One profile per identity number per tenant. NULL tenant = default tenant.
+    uniqueIndex("learner_qcto_profiles_tenant_user_uq").on(
+      tenantKey(t.tenantId),
+      t.userId,
+    ),
+    // One profile per identity number per tenant.
     uniqueIndex("learner_qcto_profiles_national_id_uq")
-      .on(
-        sql`coalesce(${t.tenantId}, ${sql.raw(`'${DEFAULT_TENANT_ID}'::uuid`)})`,
-        t.nationalIdHash,
-      )
+      .on(tenantKey(t.tenantId), t.nationalIdHash)
       .where(sql`${t.nationalIdHash} IS NOT NULL`),
     uniqueIndex("learner_qcto_profiles_alternate_id_uq")
-      .on(
-        sql`coalesce(${t.tenantId}, ${sql.raw(`'${DEFAULT_TENANT_ID}'::uuid`)})`,
-        t.alternateIdHash,
-      )
+      .on(tenantKey(t.tenantId), t.alternateIdHash)
       .where(sql`${t.alternateIdHash} IS NOT NULL`),
     // The area must lie in the learner's province (spec, column AG).
     foreignKey({
@@ -336,9 +360,10 @@ export const learnerQctoProfiles = pgTable(
  * from the cohort.
  *
  * Enforced here: SOR date exactly when SOR status is 01; readiness type 1
- * ("Enrolled") exactly when SOR is 02; FLC statement number rules. Enforced by
- * trigger (migration 0009): SOR date not after the cohort's EISA date; FLC 06
- * only for NQF 5+. Enforced by the LEISA export (application): SOR 01 only
+ * ("Enrolled") exactly when SOR is 02; FLC statement number rules; SDP code
+ * override only for readiness type 6. Enforced by trigger (migrations 0009,
+ * 0013): SOR date not after the cohort's EISA date; FLC 06 exactly when the
+ * qualification is NQF 5+. Enforced by the LEISA export (application): SOR 01 only
  * when every module has a released "competent" decision; dates inside the
  * accreditation period; the 21-day and 3-month submission windows.
  */
