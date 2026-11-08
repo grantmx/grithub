@@ -14,7 +14,12 @@ import {
   uuid,
 } from "drizzle-orm/pg-core";
 import { createdAt, id, updatedAt } from "./columns";
-import { blueprintKind, lifecycleStatus, questionType } from "./enums";
+import {
+  blueprintKind,
+  lifecycleStatus,
+  publishStatus,
+  questionType,
+} from "./enums";
 import { modules, sections } from "./curriculum";
 
 export const questionBanks = pgTable(
@@ -64,6 +69,8 @@ export const questionVersions = pgTable(
     stem: text().notNull(),
     type: questionType().notNull().default("single"),
     feedback: text(),
+    // Marks for the item: 1 for single/multi; the rubric total for short answers.
+    maxMarks: integer().notNull().default(1),
     firstServedAt: timestamp({ withTimezone: true }),
     createdAt: createdAt(),
   },
@@ -73,6 +80,32 @@ export const questionVersions = pgTable(
       t.versionNo,
     ),
     check("question_versions_version_positive", sql`${t.versionNo} >= 1`),
+    check("question_versions_max_marks", sql`${t.maxMarks} >= 1`),
+  ],
+);
+
+/**
+ * Marking rubric for a short-answer version: criteria with a mark range
+ * (0..max_marks). Frozen with the version once it has been served.
+ */
+export const rubricCriteria = pgTable(
+  "rubric_criteria",
+  {
+    id: id(),
+    questionVersionId: uuid()
+      .notNull()
+      .references(() => questionVersions.id),
+    label: text().notNull(),
+    guidance: text(),
+    maxMarks: integer().notNull(),
+    sortOrder: smallint().notNull(),
+  },
+  (t) => [
+    unique("rubric_criteria_version_order_uq").on(
+      t.questionVersionId,
+      t.sortOrder,
+    ),
+    check("rubric_criteria_max_marks", sql`${t.maxMarks} BETWEEN 1 AND 100`),
   ],
 );
 
@@ -147,6 +180,11 @@ export const assessmentBlueprints = pgTable(
     timeLimitMinutes: integer(),
     passMarkPercent: integer().notNull(),
     inPersonOnly: boolean().notNull().default(false),
+    // Show correct answers and explanations after submission (formative default).
+    showAnswers: boolean().notNull().default(false),
+    // Rules are locked once published, so every paper follows the same blueprint.
+    status: publishStatus().notNull().default("draft"),
+    publishedAt: timestamp({ withTimezone: true }),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
@@ -159,6 +197,15 @@ export const assessmentBlueprints = pgTable(
     check(
       "assessment_blueprints_pass_mark",
       sql`${t.passMarkPercent} BETWEEN 0 AND 100`,
+    ),
+    // Summative papers are written only at supervised assessment days.
+    check(
+      "assessment_blueprints_summative_in_person",
+      sql`${t.kind} <> 'summative' OR ${t.inPersonOnly}`,
+    ),
+    check(
+      "assessment_blueprints_published_at",
+      sql`(${t.status} = 'published') = (${t.publishedAt} IS NOT NULL)`,
     ),
   ],
 );

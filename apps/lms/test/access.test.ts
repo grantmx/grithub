@@ -33,12 +33,38 @@ const ROUTES = [
   "/more",
   "/learn/section/abc",
   "/staff/progress",
+  "/learn/assessment/s1",
+  "/learn/attempt/a1",
+  "/staff/marking/a1",
+  "/staff/attempts/a1",
+  "/staff/attempts/a1/pdf",
+  "/staff/analytics",
+  "/staff/questions/q1",
+  "/staff/appeals",
+  "/staff/assessment-days",
+  "/staff/assessment-days/d1",
+  "/staff/moderation/b1",
+  "/admin/assessments",
+  "/admin/assessments/coverage",
 ] as const;
 type Route = (typeof ROUTES)[number];
 
 // Expected result per role (all with a passkey and setup complete).
 const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
   learner: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "forbidden",
+    "/staff/attempts/a1": "forbidden",
+    "/staff/attempts/a1/pdf": "forbidden",
+    "/staff/analytics": "forbidden",
+    "/staff/questions/q1": "forbidden",
+    "/staff/appeals": "forbidden",
+    "/staff/assessment-days": "forbidden",
+    "/staff/assessment-days/d1": "forbidden",
+    "/staff/moderation/b1": "forbidden",
+    "/admin/assessments": "forbidden",
+    "/admin/assessments/coverage": "forbidden",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -53,6 +79,19 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   facilitator: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "forbidden",
+    "/staff/attempts/a1": "forbidden",
+    "/staff/attempts/a1/pdf": "forbidden",
+    "/staff/analytics": "forbidden",
+    "/staff/questions/q1": "forbidden",
+    "/staff/appeals": "forbidden",
+    "/staff/assessment-days": "allow",
+    "/staff/assessment-days/d1": "allow",
+    "/staff/moderation/b1": "forbidden",
+    "/admin/assessments": "forbidden",
+    "/admin/assessments/coverage": "forbidden",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -67,6 +106,19 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   assessor: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "allow",
+    "/staff/attempts/a1": "allow",
+    "/staff/attempts/a1/pdf": "allow",
+    "/staff/analytics": "allow",
+    "/staff/questions/q1": "allow",
+    "/staff/appeals": "forbidden",
+    "/staff/assessment-days": "allow",
+    "/staff/assessment-days/d1": "allow",
+    "/staff/moderation/b1": "forbidden",
+    "/admin/assessments": "forbidden",
+    "/admin/assessments/coverage": "forbidden",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -81,6 +133,19 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   moderator: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "forbidden",
+    "/staff/attempts/a1": "allow",
+    "/staff/attempts/a1/pdf": "allow",
+    "/staff/analytics": "allow",
+    "/staff/questions/q1": "allow",
+    "/staff/appeals": "allow",
+    "/staff/assessment-days": "forbidden",
+    "/staff/assessment-days/d1": "forbidden",
+    "/staff/moderation/b1": "allow",
+    "/admin/assessments": "forbidden",
+    "/admin/assessments/coverage": "forbidden",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -95,6 +160,19 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   sdp_admin: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "forbidden",
+    "/staff/attempts/a1": "forbidden",
+    "/staff/attempts/a1/pdf": "forbidden",
+    "/staff/analytics": "forbidden",
+    "/staff/questions/q1": "forbidden",
+    "/staff/appeals": "forbidden",
+    "/staff/assessment-days": "allow",
+    "/staff/assessment-days/d1": "allow",
+    "/staff/moderation/b1": "forbidden",
+    "/admin/assessments": "allow",
+    "/admin/assessments/coverage": "allow",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -109,6 +187,19 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "allow",
   },
   external_evaluator: {
+    "/learn/assessment/s1": "allow",
+    "/learn/attempt/a1": "allow",
+    "/staff/marking/a1": "forbidden",
+    "/staff/attempts/a1": "allow",
+    "/staff/attempts/a1/pdf": "allow",
+    "/staff/analytics": "forbidden",
+    "/staff/questions/q1": "forbidden",
+    "/staff/appeals": "forbidden",
+    "/staff/assessment-days": "forbidden",
+    "/staff/assessment-days/d1": "forbidden",
+    "/staff/moderation/b1": "forbidden",
+    "/admin/assessments": "forbidden",
+    "/admin/assessments/coverage": "forbidden",
     "/library": "allow",
     "/more": "allow",
     "/learn/section/abc": "allow",
@@ -178,6 +269,10 @@ describe("step-up: marking, moderation and admin need a passkey", () => {
     ["moderator", "/staff/moderation"],
     ["sdp_admin", "/admin"],
     ["sdp_admin", "/admin/people"],
+    ["assessor", "/staff/attempts/a1"],
+    ["moderator", "/staff/appeals"],
+    ["assessor", "/staff/analytics"],
+    ["sdp_admin", "/admin/assessments"],
   ] as const)("%s without a passkey → stepup on %s", (role, route) => {
     expect(
       decide(requirementFor(route), ctx([role], { activePasskeys: 0 })),
@@ -198,6 +293,24 @@ describe("step-up: marking, moderation and admin need a passkey", () => {
       decide(
         requirementFor("/staff/evidence"),
         ctx(["external_evaluator"], { activePasskeys: 0 }),
+      ).result,
+    ).toBe("allow");
+  });
+
+  it("lets an external evaluator open a paper replay without a passkey", () => {
+    expect(
+      decide(
+        requirementFor("/staff/attempts/a1"),
+        ctx(["external_evaluator"], { activePasskeys: 0 }),
+      ).result,
+    ).toBe("allow");
+  });
+
+  it("does not ask facilitators for a passkey on the assessment-day register", () => {
+    expect(
+      decide(
+        requirementFor("/staff/assessment-days/d1"),
+        ctx(["facilitator"], { activePasskeys: 0 }),
       ).result,
     ).toBe("allow");
   });

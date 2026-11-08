@@ -20,7 +20,15 @@ const nextConfig: NextConfig = {
   // can't change how workspace packages resolve.
   turbopack: { root: path.join(__dirname, "..", "..") },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    // Assessment papers, results and replays are never stored by browsers or
+    // shared caches (no answer keys in cached pages).
+    const noStore = [{ key: "Cache-Control", value: "private, no-store" }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/learn/attempt/:path*", headers: noStore },
+      { source: "/learn/assessment/:path*", headers: noStore },
+      { source: "/staff/:path*", headers: noStore },
+    ];
   },
 };
 

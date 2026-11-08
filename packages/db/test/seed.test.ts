@@ -40,15 +40,29 @@ describe("demo seed", () => {
     expect(pools.every((p) => p.n >= 3)).toBe(true);
   });
 
-  it("gives every question a current version with exactly one correct option", async () => {
+  it("gives every question a current version: one correct option, or a rubric for short answers", async () => {
     const qs = await t.db.select().from(s.questions);
     for (const q of qs) {
       expect(q.currentVersionId).not.toBeNull();
+      const [v] = await t.db
+        .select()
+        .from(s.questionVersions)
+        .where(eq(s.questionVersions.id, q.currentVersionId!));
       const opts = await t.db
         .select()
         .from(s.answerOptions)
         .where(eq(s.answerOptions.questionVersionId, q.currentVersionId!));
-      expect(opts.filter((o) => o.isCorrect)).toHaveLength(1);
+      if (v!.type === "short_answer") {
+        const criteria = await t.db
+          .select()
+          .from(s.rubricCriteria)
+          .where(eq(s.rubricCriteria.questionVersionId, v!.id));
+        expect(opts).toHaveLength(0);
+        expect(criteria.length).toBeGreaterThan(0);
+        expect(criteria.reduce((sum, c) => sum + c.maxMarks, 0)).toBe(v!.maxMarks);
+      } else {
+        expect(opts.filter((o) => o.isCorrect)).toHaveLength(1);
+      }
     }
   });
 
@@ -106,11 +120,22 @@ describe("demo seed", () => {
     expect(enrolled!.n).toBeGreaterThanOrEqual(1);
   });
 
-  it("creates a practical brief with variants and a blueprint covering all 3 banks", async () => {
+  it("creates a practical brief with variants and published formative + summative blueprints", async () => {
     const variants = await t.db.select().from(s.briefVariants);
     expect(variants.length).toBeGreaterThanOrEqual(2);
-    const rules = await t.db.select().from(s.blueprintRules);
-    expect(rules).toHaveLength(3);
+    const bps = await t.db.select().from(s.assessmentBlueprints);
+    expect(bps.map((b) => b.kind).sort()).toEqual(["formative", "summative"]);
+    expect(bps.every((b) => b.status === "published")).toBe(true);
+    for (const bp of bps) {
+      const rules = await t.db
+        .select()
+        .from(s.blueprintRules)
+        .where(eq(s.blueprintRules.blueprintId, bp.id));
+      expect(rules.length).toBe(bp.kind === "formative" ? 3 : 4);
+    }
+    const schedules = await t.db.select().from(s.assessmentSchedules);
+    expect(schedules).toHaveLength(2);
+    expect(schedules.filter((x) => x.assessmentDayId !== null)).toHaveLength(1);
   });
 
   it("writes section text as Markdown and publishes library resources", async () => {

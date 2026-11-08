@@ -10,6 +10,7 @@ import {
   demoKnowledgeSections,
   demoPracticalSection,
   demoLibrary,
+  demoShortAnswers,
   demoUsers,
 } from "./seed-data";
 
@@ -224,7 +225,48 @@ export async function seedDemo(
       })),
     );
 
-    // Formative blueprint: 2 questions from each of the 3 banks.
+    // Short-answer bank (summative only): assessor-marked with a rubric.
+    const firstComponent = must(demoKnowledgeSections[0]).component;
+    const [saBank] = await tx
+      .insert(s.questionBanks)
+      .values({
+        moduleId: kmId,
+        curriculumComponentRef: firstComponent,
+        title: `DEMO short answers: ${firstComponent}`,
+      })
+      .returning({ id: s.questionBanks.id });
+    for (const qa of demoShortAnswers) {
+      const [question] = await tx
+        .insert(s.questions)
+        .values({ bankId: must(saBank).id, status: "active" })
+        .returning({ id: s.questions.id });
+      const [version] = await tx
+        .insert(s.questionVersions)
+        .values({
+          questionId: must(question).id,
+          versionNo: 1,
+          stem: qa.stem,
+          type: "short_answer",
+          maxMarks: qa.criteria.reduce((sum, c) => sum + c.maxMarks, 0),
+        })
+        .returning({ id: s.questionVersions.id });
+      await tx.insert(s.rubricCriteria).values(
+        qa.criteria.map((c, i) => ({
+          questionVersionId: must(version).id,
+          label: c.label,
+          guidance: c.guidance,
+          maxMarks: c.maxMarks,
+          sortOrder: i + 1,
+        })),
+      );
+      await tx
+        .update(s.questions)
+        .set({ currentVersionId: must(version).id })
+        .where(eq(s.questions.id, must(question).id));
+    }
+
+    // Formative blueprint: 2 questions from each of the 3 banks. Rules are
+    // added while it is a draft, then it is published (rules lock).
     const [blueprint] = await tx
       .insert(s.assessmentBlueprints)
       .values({
@@ -234,6 +276,7 @@ export async function seedDemo(
         maxAttempts: 2,
         timeLimitMinutes: 30,
         passMarkPercent: 60,
+        showAnswers: true,
       })
       .returning({ id: s.assessmentBlueprints.id });
     await tx.insert(s.blueprintRules).values(
@@ -244,6 +287,38 @@ export async function seedDemo(
         questionCount: 2,
       })),
     );
+    // Summative blueprint: 1 question per bank + 1 short answer, at an assessment day.
+    const [summative] = await tx
+      .insert(s.assessmentBlueprints)
+      .values({
+        moduleId: kmId,
+        title: "DEMO Summative assessment",
+        kind: "summative",
+        maxAttempts: 2,
+        timeLimitMinutes: 45,
+        passMarkPercent: 60,
+        inPersonOnly: true,
+        showAnswers: false,
+      })
+      .returning({ id: s.assessmentBlueprints.id });
+    await tx.insert(s.blueprintRules).values([
+      ...bankIds.map((bankId, i) => ({
+        blueprintId: must(summative).id,
+        bankId,
+        curriculumComponentRef: must(demoKnowledgeSections[i]).component,
+        questionCount: 1,
+      })),
+      {
+        blueprintId: must(summative).id,
+        bankId: must(saBank).id,
+        curriculumComponentRef: firstComponent,
+        questionCount: 1,
+      },
+    ]);
+    await tx
+      .update(s.assessmentBlueprints)
+      .set({ status: "published", publishedAt: now })
+      .where(eq(s.assessmentBlueprints.moduleId, kmId));
 
     // Cohort, roles, enrolments.
     const [cohort] = await tx
@@ -291,14 +366,28 @@ export async function seedDemo(
       })),
     );
 
-    await tx.insert(s.assessmentDays).values({
-      cohortId,
-      heldOn: isoDate(new Date(now.getTime() + 14 * DAY_MS)),
-      venue: "DEMO Venue (fake)",
-    });
-    await tx
-      .insert(s.moderationBatches)
-      .values({ cohortId, blueprintId: must(blueprint).id });
+    // Assessment day today (so the demo register works) and the schedules.
+    const [day] = await tx
+      .insert(s.assessmentDays)
+      .values({ cohortId, heldOn: isoDate(now), venue: "DEMO Venue (fake)" })
+      .returning({ id: s.assessmentDays.id });
+    await tx.insert(s.assessmentSchedules).values([
+      {
+        cohortId,
+        blueprintId: must(blueprint).id,
+        opensAt: new Date(now.getTime() - DAY_MS),
+        closesAt: new Date(now.getTime() + 60 * DAY_MS),
+        createdBy: userIds.admin,
+      },
+      {
+        cohortId,
+        blueprintId: must(summative).id,
+        assessmentDayId: must(day).id,
+        opensAt: new Date(now.getTime() - 6 * 60 * 60 * 1000),
+        closesAt: new Date(now.getTime() + 18 * 60 * 60 * 1000),
+        createdBy: userIds.admin,
+      },
+    ]);
     await tx.insert(s.announcements).values({
       cohortId,
       authorId: userIds.facilitator,

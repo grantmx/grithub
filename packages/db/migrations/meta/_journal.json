@@ -43,6 +43,20 @@
       "when": 1794127279993,
       "tag": "0005_learning",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1794131418463,
+      "tag": "0006_assessments",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1794131425594,
+      "tag": "0007_assessment_triggers",
+      "breakpoints": true
     }
   ]
 }

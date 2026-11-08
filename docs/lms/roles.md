@@ -55,6 +55,14 @@ Notes:
 - **Decision lock:** once a moderation record exists for a decision, the assessor cannot change it. Changes go through a referral back, which creates a new decision row that references the old one.
 - **External evaluator** accounts expire automatically. Every page view is audited.
 
+### Assessment engine (2026-11-08)
+
+- **Answer keys, paper replays, PDFs and question analytics:** assessors, moderators and external evaluators (read-only) only; never facilitators or SDP admins.
+- **Assessment-day register:** facilitators, assessors and SDP admins record attendance and ID checks; only an assessor (with a passkey) opens papers, pauses, adds extra time and signs off.
+- **Decisions:** assessors (own cohorts); a reassessment ordered on appeal is decided by a different assessor.
+- **Moderation, release and appeals:** moderators (own cohorts), never on their own decisions.
+- **Blueprints, schedules, coverage report:** SDP admins. Retire / new question version: assessors and moderators.
+
 ## Onboarding flow (learners and staff)
 
 1. SDP admin creates a cohort and invites learners one by one or by CSV import (validated, previewed, then confirmed). Each learner is enrolled in the cohort.

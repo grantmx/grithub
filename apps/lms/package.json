@@ -16,6 +16,7 @@
     "@simplewebauthn/server": "14.0.3",
     "db": "*",
     "next": "16.1.4",
+    "pdf-lib": "1.17.1",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "ui": "*"

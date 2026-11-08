@@ -55,8 +55,33 @@ export function requirementFor(pathname: string): Requirement {
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return { kind: "roles", anyOf: ["sdp_admin"], stepUp: true };
   }
-  if (pathname === "/staff/marking" || pathname.startsWith("/staff/marking/")) {
+  const under = (base: string) =>
+    pathname === base || pathname.startsWith(`${base}/`);
+  if (under("/staff/marking")) {
     return { kind: "roles", anyOf: ["assessor"], stepUp: true };
+  }
+  // Paper replay and PDF (answer keys): never facilitators or admins.
+  if (under("/staff/attempts")) {
+    return {
+      kind: "roles",
+      anyOf: ["assessor", "moderator", "external_evaluator"],
+      stepUp: true,
+    };
+  }
+  // Question analytics and new question versions (answer keys).
+  if (under("/staff/analytics") || under("/staff/questions")) {
+    return { kind: "roles", anyOf: ["assessor", "moderator"], stepUp: true };
+  }
+  if (under("/staff/appeals")) {
+    return { kind: "roles", anyOf: ["moderator"], stepUp: true };
+  }
+  // Assessment-day register: attendance and ID checks (opening papers needs an assessor).
+  if (under("/staff/assessment-days")) {
+    return {
+      kind: "roles",
+      anyOf: ["facilitator", "assessor", "sdp_admin"],
+      stepUp: false,
+    };
   }
   if (
     pathname === "/staff/moderation" ||
@@ -110,7 +135,14 @@ export function decide(
     if (!requirement.anyOf.some((r) => ctx.roles.has(r))) {
       return { result: "forbidden", reason: "missing_role" };
     }
-    if (requirement.stepUp && ctx.activePasskeys < 1) {
+    // Step-up applies to the step-up roles that grant this route (an external
+    // evaluator sharing a route with assessors is not asked for a passkey).
+    const granting = requirement.anyOf.filter((r) => ctx.roles.has(r));
+    if (
+      requirement.stepUp &&
+      ctx.activePasskeys < 1 &&
+      granting.every((r) => STEP_UP_ROLES.includes(r))
+    ) {
       return { result: "stepup", reason: "passkey_required" };
     }
   }

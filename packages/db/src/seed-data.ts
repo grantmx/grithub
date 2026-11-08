@@ -327,3 +327,27 @@ export const demoLibrary = [
     url: "https://example.invalid/demo/networks",
   },
 ];
+
+/**
+ * DEMO short-answer questions (summative only), marked by an assessor against
+ * a rubric. Fake teaching content.
+ */
+export const demoShortAnswers: {
+  stem: string;
+  criteria: { label: string; guidance: string; maxMarks: number }[];
+}[] = [
+  {
+    stem: "[DEMO] Name the three main parts of a computer and say what each one does.",
+    criteria: [
+      { label: "Names processor, memory and storage", guidance: "1 mark per correct part.", maxMarks: 3 },
+      { label: "Explains what each part does", guidance: "Award 2 for all three explained, 1 for some.", maxMarks: 2 },
+    ],
+  },
+  {
+    stem: "[DEMO] Describe two ways to spot a phishing email.",
+    criteria: [
+      { label: "Gives two valid signs", guidance: "e.g. unexpected request for a PIN, a mismatched sender address.", maxMarks: 2 },
+      { label: "Says what to do instead", guidance: "e.g. report it, don't click the link.", maxMarks: 1 },
+    ],
+  },
+];

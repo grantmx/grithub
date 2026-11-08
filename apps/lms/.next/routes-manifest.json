@@ -36,6 +36,36 @@
         }
       ],
       "regex": "^(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/learn/attempt/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ],
+      "regex": "^/learn/attempt(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/learn/assessment/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ],
+      "regex": "^/learn/assessment(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
+    },
+    {
+      "source": "/staff/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        }
+      ],
+      "regex": "^/staff(?:/((?:[^/]+?)(?:/(?:[^/]+?))*))?(?:/)?$"
     }
   ],
   "rewrites": {
@@ -44,6 +74,14 @@
     "fallback": []
   },
   "dynamicRoutes": [
+    {
+      "page": "/admin/assessments/[blueprintId]",
+      "regex": "^/admin/assessments/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPblueprintId": "nxtPblueprintId"
+      },
+      "namedRegex": "^/admin/assessments/(?<nxtPblueprintId>[^/]+?)(?:/)?$"
+    },
     {
       "page": "/admin/people/[userId]/recovery",
       "regex": "^/admin/people/([^/]+?)/recovery(?:/)?$",
@@ -59,6 +97,38 @@
         "nxtPtoken": "nxtPtoken"
       },
       "namedRegex": "^/auth/link/(?<nxtPtoken>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/learn/assessment/[scheduleId]",
+      "regex": "^/learn/assessment/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPscheduleId": "nxtPscheduleId"
+      },
+      "namedRegex": "^/learn/assessment/(?<nxtPscheduleId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/learn/attempt/[attemptId]",
+      "regex": "^/learn/attempt/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/learn/attempt/(?<nxtPattemptId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/learn/attempt/[attemptId]/result",
+      "regex": "^/learn/attempt/([^/]+?)/result(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/learn/attempt/(?<nxtPattemptId>[^/]+?)/result(?:/)?$"
+    },
+    {
+      "page": "/learn/attempt/[attemptId]/review",
+      "regex": "^/learn/attempt/([^/]+?)/review(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/learn/attempt/(?<nxtPattemptId>[^/]+?)/review(?:/)?$"
     },
     {
       "page": "/learn/section/[sectionId]",
@@ -85,6 +155,62 @@
       "namedRegex": "^/setup/(?<nxtPtoken>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/staff/analytics/[blueprintId]",
+      "regex": "^/staff/analytics/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPblueprintId": "nxtPblueprintId"
+      },
+      "namedRegex": "^/staff/analytics/(?<nxtPblueprintId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/appeals/[appealId]",
+      "regex": "^/staff/appeals/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPappealId": "nxtPappealId"
+      },
+      "namedRegex": "^/staff/appeals/(?<nxtPappealId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/assessment-days/[dayId]",
+      "regex": "^/staff/assessment\\-days/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPdayId": "nxtPdayId"
+      },
+      "namedRegex": "^/staff/assessment\\-days/(?<nxtPdayId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/attempts/[attemptId]",
+      "regex": "^/staff/attempts/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/staff/attempts/(?<nxtPattemptId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/attempts/[attemptId]/pdf",
+      "regex": "^/staff/attempts/([^/]+?)/pdf(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/staff/attempts/(?<nxtPattemptId>[^/]+?)/pdf(?:/)?$"
+    },
+    {
+      "page": "/staff/marking/[attemptId]",
+      "regex": "^/staff/marking/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPattemptId": "nxtPattemptId"
+      },
+      "namedRegex": "^/staff/marking/(?<nxtPattemptId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/moderation/[batchId]",
+      "regex": "^/staff/moderation/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbatchId": "nxtPbatchId"
+      },
+      "namedRegex": "^/staff/moderation/(?<nxtPbatchId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/progress/[enrolmentId]",
       "regex": "^/staff/progress/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -99,6 +225,14 @@
         "nxtPenrolmentId": "nxtPenrolmentId"
       },
       "namedRegex": "^/staff/progress/(?<nxtPenrolmentId>[^/]+?)/csv(?:/)?$"
+    },
+    {
+      "page": "/staff/questions/[questionId]",
+      "regex": "^/staff/questions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPquestionId": "nxtPquestionId"
+      },
+      "namedRegex": "^/staff/questions/(?<nxtPquestionId>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -131,6 +265,18 @@
       "regex": "^/admin(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin(?:/)?$"
+    },
+    {
+      "page": "/admin/assessments",
+      "regex": "^/admin/assessments(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/assessments(?:/)?$"
+    },
+    {
+      "page": "/admin/assessments/coverage",
+      "regex": "^/admin/assessments/coverage(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/assessments/coverage(?:/)?$"
     },
     {
       "page": "/admin/cohorts",
@@ -227,6 +373,24 @@
       "regex": "^/staff(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff(?:/)?$"
+    },
+    {
+      "page": "/staff/analytics",
+      "regex": "^/staff/analytics(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/analytics(?:/)?$"
+    },
+    {
+      "page": "/staff/appeals",
+      "regex": "^/staff/appeals(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/appeals(?:/)?$"
+    },
+    {
+      "page": "/staff/assessment-days",
+      "regex": "^/staff/assessment\\-days(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/assessment\\-days(?:/)?$"
     },
     {
       "page": "/staff/evidence",

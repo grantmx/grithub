@@ -203,6 +203,16 @@ erDiagram
     }
 ```
 
+### Added with the assessment engine (2026-11-08)
+
+- **AssessmentSchedule**: when a cohort may write a blueprint: a window (formative) or an assessment day (summative). Reassessment = another schedule.
+- **PaperUnlock**: an assessor opened one learner's summative paper on the day (append-only); used once by the attempt.
+- **RegisterSignoff**: the assessor's sign-off of an assessment day's register; attendance (with `idVerifiedAt/By`) is final after it.
+- **RubricCriterion**: mark range per criterion for a short-answer QuestionVersion (frozen with the version). **ItemMark**: marks per criterion for one AttemptItem.
+- **DecisionDraft**: an assessor's unsaved decision; recording creates an immutable AssessmentDecision.
+- **Appeal**: a learner's appeal against a released decision; a moderator upholds it or orders a reassessment (one extra attempt).
+- AssessmentBlueprint gains `status` (draft/published), `showAnswers`; AssessmentAttempt gains `scheduleId`, `unlockId`, `deadlineAt`, `extraMinutes`, `pausedAt`, `autoSubmitted`, `usedFallback`; AttemptItem gains `responseText`, `flagged`, `marksAwarded`, `markerNote`; QuestionVersion gains `maxMarks` and type `short_answer`.
+
 ## People, cohorts and operations
 
 ```mermaid

@@ -24,6 +24,12 @@ export const RATE_LIMITS = {
   setup: { scope: "setup", limit: 30, windowSeconds: 900 },
   mediaPlayback: { scope: "media-playback", limit: 120, windowSeconds: 3600 },
   scrollSave: { scope: "scroll-save", limit: 600, windowSeconds: 3600 },
+  // Assessments (per user). Autosave fires on every change, so it is generous.
+  attemptBegin: { scope: "attempt-begin", limit: 20, windowSeconds: 900 },
+  answerSave: { scope: "answer-save", limit: 900, windowSeconds: 3600 },
+  attemptSubmit: { scope: "attempt-submit", limit: 10, windowSeconds: 900 },
+  appealSubmit: { scope: "appeal-submit", limit: 5, windowSeconds: 86400 },
+  paperExport: { scope: "paper-export", limit: 120, windowSeconds: 3600 },
 } satisfies Record<string, RateLimitRule>;
 
 export class RateLimitError extends Error {

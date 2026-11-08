@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { AssessmentsBlock } from "@/components/assess/AssessmentsBlock";
 import { Icon } from "@/components/Icon";
 import styles from "@/components/learn/learn.module.css";
+import { listAssessments } from "@/lib/server/assessments";
 import { LearningError, getProgramme } from "@/lib/server/learning";
 import { requirePage } from "@/lib/server/page";
 
@@ -29,6 +31,7 @@ export default async function ProgrammePage({
     throw e;
   }
   const { qualification, outline, continueTo } = data;
+  const assessments = await listAssessments(ctx, actor, qualificationId);
 
   return (
     <div className={styles.stack}>
@@ -47,6 +50,8 @@ export default async function ProgrammePage({
           Continue <Icon name="next" />
         </a>
       ) : null}
+
+      <AssessmentsBlock items={assessments} />
 
       {outline.map((m) => {
         const pct = m.sections.length

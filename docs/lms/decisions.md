@@ -43,13 +43,13 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ## ADR-007: Seeded randomization, persisted attempt snapshots, server-only grading
 
-- **Status:** Proposed
+- **Status:** Accepted (2026-11-08), implemented for section checks and blueprint assessments (`apps/lms/lib/randomization.ts`, `lib/paper.ts`).
 - **Decision:** as specified in [randomization.md](randomization.md).
 
 ## ADR-008: Immutable question versions and append-only decisions/audit
 
-- **Status:** Proposed
-- **Decision:** QuestionVersion becomes immutable when first served; AssessmentDecision changes create superseding rows; AuditLog is append-only.
+- **Status:** Accepted (2026-11-08), enforced by database triggers (`packages/db/migrations/0001`, `0007`).
+- **Decision:** QuestionVersion (with its options and rubric) becomes immutable when first served. An AssessmentDecision is final as soon as it is recorded; a change is a new row that supersedes it (a single chain, only while its moderation batch is open). Rubric marks lock once a decision exists; appeals are final once decided; a signed-off register is final; AuditLog is append-only. (The earlier rule "editable until moderated" was replaced on 2026-11-08.)
 
 ## ADR-009: Tests required for `apps/lms`
 
@@ -69,6 +69,19 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 - **Context:** the scaffold must reuse `packages/ui`, the ESLint config and the tsconfig base. `eslint-config-custom` (ESLint 7, next 13) cannot lint Next 16. `packages/ui` bundled its own React 18.3.1, which would load a second React copy.
 - **Decision:** `eslint-config-custom` becomes an ESLint 9 flat config (`eslint-config-next` 16.1.4, `eslint-config-turbo/flat`, `eslint-config-prettier/flat`) and the root `.eslintrc.js` is removed. `packages/ui` declares React as a peer dependency (`^18.3.1 || ^19.0.0`), uses @types/react 19 and lints with ESLint 9. `apps/lms` extends `tsconfig/base.json`, depends on `ui` with `transpilePackages`, but renders no ui components until they are restyled with LMS tokens (design gate).
 - **Consequences:** apps/web and apps/lms resolve one React (19.2.3). apps/web keeps its own legacy `.eslintrc` + ESLint 7 (its `next lint` script was already broken under Next 16); migrating it is a follow-up. LMS env vars live in the package-level `apps/lms/turbo.json`.
+
+## ADR-012: Knowledge assessment engine
+
+- **Status:** Accepted (2026-11-08)
+- **Context:** QCTO knowledge assessments need equal curriculum coverage, papers that differ per learner, server-only grading, supervised summatives, assessor decisions, moderation, appeals and evidence for the POE.
+- **Decision:**
+  - Blueprints (draft, then published and fixed) hold rules "N questions from bank X / component Y", type, attempts, time limit, pass mark and answer visibility. Cohort schedules give a window (formative) or an assessment day (summative).
+  - Papers are drawn by `lib/paper.ts` (seed = learner : blueprint : attempt), stored as attempt items with opaque option tokens, and never re-drawn.
+  - Formatives are auto-graded with answers shown (default). For summatives the assessor opens each learner's paper after attendance and ID check; short answers are marked per rubric criterion; the assessor records Competent / Not yet competent (the pass mark is a suggestion); results are released when the moderator closes the batch.
+  - Appeals within 7 days, decided by a moderator who did not make the decision: uphold, or reassess (one extra attempt, decided by a different assessor).
+  - Paper PDFs are generated on demand with pdf-lib (deterministic; checksum audited); no file storage.
+  - Question analytics (standard thresholds, `lib/questionStats.ts`) let assessors and moderators retire a question or create a new version.
+- **Consequences:** answer keys are visible only to assessors, moderators and external evaluators. Assessments need a connection. The moderation sampling rate is not enforced yet (Q5). Learners are not yet notified by email when results are released.
 
 ---
 
@@ -93,10 +106,10 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 ### Product
 
 11. ~~Does a section check gate progress, or is it advisory?~~ Learner must answer (right or wrong) before "Mark as completed"; up to 3 attempts (design.md, implemented 2026-11-08).
-12. Max attempts, pass marks and feedback visibility per assessment kind.
-13. Should facilitators see answer keys/memos?
+12. ~~Max attempts, pass marks and feedback visibility per assessment kind.~~ Summative: 1 + 1 reassessment by default (configurable), answers hidden, assessor decides with the pass mark as a suggestion. Formative: answers and explanations shown after submitting, 3 attempts by default. Pass mark per blueprint. Appeals within 7 days (decided 2026-11-08).
+13. ~~Should facilitators see answer keys/memos?~~ No. Only assessors, moderators and external evaluators see keys, replays and analytics (decided 2026-11-08).
 14. Shared lab computers: own-phone passkeys (hybrid QR flow), per-learner enrolment of hub machines, or staff-issued supervised sessions?
-15. Offline/load-shedding tolerance needed on assessment days?
+15. ~~Offline/load-shedding tolerance needed on assessment days?~~ Online only: every answer saves to the server; a dropped connection keeps the unsent answer on screen and retries; learners resume on any device; the assessor can pause (the clock stops) and add extra time, all audited (decided 2026-11-08).
 16. Conferencing platform and licence (Form 5 4.2.8–4.2.9).
 17. Languages: English only, or additional languages for content/UI?
 18. Content authoring and import: who writes content? Format decided 2026-11-08: Markdown subset (see apps/lms/lib/markdown.tsx); authoring/import UI still open.

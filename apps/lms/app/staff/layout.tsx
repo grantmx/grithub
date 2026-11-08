@@ -18,18 +18,29 @@ export default async function StaffLayout({
   if (actor.roles.has("facilitator") || actor.roles.has("sdp_admin")) {
     groups.push({
       label: "Facilitator",
-      items: [{ href: "/staff/progress", label: "Learner progress" }],
+      items: [
+        { href: "/staff/progress", label: "Learner progress" },
+        { href: "/staff/assessment-days", label: "Assessment days" },
+      ],
     });
   }
   if (actor.roles.has("assessor"))
     groups.push({
       label: "Assessor",
-      items: [{ href: "/staff/marking", label: "Marking queue" }],
+      items: [
+        { href: "/staff/marking", label: "Marking queue" },
+        { href: "/staff/assessment-days", label: "Assessment days" },
+        { href: "/staff/analytics", label: "Question analytics" },
+      ],
     });
   if (actor.roles.has("moderator"))
     groups.push({
       label: "Moderator",
-      items: [{ href: "/staff/moderation", label: "Moderation sample" }],
+      items: [
+        { href: "/staff/moderation", label: "Moderation sample" },
+        { href: "/staff/appeals", label: "Appeals" },
+        { href: "/staff/analytics", label: "Question analytics" },
+      ],
     });
   if (actor.roles.has("external_evaluator") || actor.roles.has("sdp_admin")) {
     groups.push({

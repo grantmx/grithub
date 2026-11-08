@@ -40,7 +40,12 @@ export const qualificationStatus = pgEnum("qualification_status", [
   "archived",
 ]);
 
-export const questionType = pgEnum("question_type", ["single", "multi"]);
+// short_answer items are marked by an assessor against a rubric (summative only).
+export const questionType = pgEnum("question_type", [
+  "single",
+  "multi",
+  "short_answer",
+]);
 export const blueprintKind = pgEnum("blueprint_kind", [
   "section_check",
   "formative",
@@ -62,6 +67,13 @@ export const moderationOutcome = pgEnum("moderation_outcome", [
   "referred_back",
 ]);
 export const batchStatus = pgEnum("batch_status", ["open", "closed"]);
+
+// A learner appeal against a released decision, decided by a moderator.
+export const appealStatus = pgEnum("appeal_status", [
+  "open",
+  "upheld",
+  "reassess",
+]);
 
 export const enrolmentStatus = pgEnum("enrolment_status", [
   "active",

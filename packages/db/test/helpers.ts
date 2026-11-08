@@ -192,13 +192,26 @@ export async function makeFixture(db: Database) {
     );
   };
 
-  const batch = async () =>
-    one(
+  /** An open batch. Only one open batch may exist per cohort and blueprint, so each gets its own blueprint. */
+  const batch = async () => {
+    const bp = one(
       await db
-        .insert(s.moderationBatches)
-        .values({ cohortId: cohort.id, blueprintId: blueprint.id })
+        .insert(s.assessmentBlueprints)
+        .values({
+          moduleId: mod.id,
+          title: "Test batch blueprint",
+          kind: "formative",
+          passMarkPercent: 50,
+        })
         .returning(),
     );
+    return one(
+      await db
+        .insert(s.moderationBatches)
+        .values({ cohortId: cohort.id, blueprintId: bp.id })
+        .returning(),
+    );
+  };
 
   const decision = async (batchId: string, assessorId = assessor.id) => {
     const a = await attempt();

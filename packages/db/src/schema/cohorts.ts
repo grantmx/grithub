@@ -58,6 +58,9 @@ export const attendanceRecords = pgTable(
       .notNull()
       .references(() => assessmentDays.id),
     status: attendanceStatus().notNull(),
+    // Staff checked the learner's identity document on the day (no ID number is stored).
+    idVerifiedAt: timestamp({ withTimezone: true }),
+    idVerifiedBy: uuid().references(() => users.id),
     recordedBy: uuid()
       .notNull()
       .references(() => users.id),
@@ -70,5 +73,9 @@ export const attendanceRecords = pgTable(
       t.assessmentDayId,
     ),
     index("attendance_records_day_idx").on(t.assessmentDayId),
+    check(
+      "attendance_records_id_verified_fields",
+      sql`(${t.idVerifiedAt} IS NULL) = (${t.idVerifiedBy} IS NULL)`,
+    ),
   ],
 );

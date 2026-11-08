@@ -2,7 +2,7 @@ import { auditLog } from "db";
 import type { ServerCtx } from "./context";
 
 /**
- * Audit actions written by auth and onboarding. Payloads carry ids, counts
+ * Audit actions written by auth, onboarding, reports and assessments. Payloads carry ids, counts
  * and reasons only, never emails, names or CSV contents.
  */
 export type AuditAction =
@@ -25,7 +25,33 @@ export type AuditAction =
   | "admin.import.completed"
   | "admin.user.deactivated"
   | "report.progress.viewed"
-  | "report.progress.exported";
+  | "report.progress.exported"
+  | "assessment.attempt.started"
+  | "assessment.attempt.submitted"
+  | "assessment.attempt.auto_submitted"
+  | "assessment.attempt.paused"
+  | "assessment.attempt.resumed"
+  | "assessment.attempt.extra_time"
+  | "assessment.paper.unlocked"
+  | "assessment.paper.exported"
+  | "assessment.attendance.recorded"
+  | "assessment.id.verified"
+  | "assessment.register.signed_off"
+  | "assessment.marks.saved"
+  | "assessment.decision.recorded"
+  | "assessment.moderation.recorded"
+  | "assessment.batch.closed"
+  | "assessment.appeal.submitted"
+  | "assessment.appeal.decided"
+  | "assessment.analytics.viewed"
+  | "assessment.coverage.viewed"
+  | "admin.blueprint.created"
+  | "admin.blueprint.rule_added"
+  | "admin.blueprint.rule_removed"
+  | "admin.blueprint.published"
+  | "admin.schedule.created"
+  | "question.retired"
+  | "question.versioned";
 
 export async function writeAudit(
   ctx: Pick<ServerCtx, "db" | "ipHash">,

@@ -80,17 +80,52 @@ describe("moderation", () => {
 });
 
 describe("assessment decisions", () => {
-  it("can be changed by the assessor before moderation", async () => {
+  it("is final as soon as it is recorded (finalised)", async () => {
     const f = await makeFixture(t.db);
     const batch = await f.batch();
     const d = await f.decision(batch.id);
-    await t.db
-      .update(s.assessmentDecisions)
-      .set({ outcome: "not_yet_competent", feedback: "Revised" })
-      .where(eq(s.assessmentDecisions.id, d.id));
+    await expectPgError(
+      t.db
+        .update(s.assessmentDecisions)
+        .set({ outcome: "not_yet_competent", feedback: "Revised" })
+        .where(eq(s.assessmentDecisions.id, d.id)),
+      PG.restrictViolation,
+      /is final/,
+    );
   });
 
-  it("is locked once moderated", async () => {
+  it("changes only through a new version that supersedes it (same target, once)", async () => {
+    const f = await makeFixture(t.db);
+    const batch = await f.batch();
+    const d = await f.decision(batch.id);
+    const [v2] = await t.db
+      .insert(s.assessmentDecisions)
+      .values({
+        assessorId: d.assessorId,
+        attemptId: d.attemptId,
+        submissionId: d.submissionId,
+        batchId: batch.id,
+        outcome: "not_yet_competent",
+        feedback: "Revised (new version)",
+        supersedesId: d.id,
+      })
+      .returning();
+    expect(v2!.supersedesId).toBe(d.id);
+    await expectPgError(
+      t.db.insert(s.assessmentDecisions).values({
+        assessorId: d.assessorId,
+        attemptId: d.attemptId,
+        submissionId: d.submissionId,
+        batchId: batch.id,
+        outcome: "competent",
+        feedback: "A second branch",
+        supersedesId: d.id,
+      }),
+      PG.uniqueViolation,
+    );
+  });
+
+  it("is still locked once moderated", async () => {
     const f = await makeFixture(t.db);
     const batch = await f.batch();
     const d = await f.decision(batch.id);
@@ -106,7 +141,6 @@ describe("assessment decisions", () => {
         .set({ outcome: "not_yet_competent" })
         .where(eq(s.assessmentDecisions.id, d.id)),
       PG.restrictViolation,
-      /locked: it has been moderated/,
     );
   });
 

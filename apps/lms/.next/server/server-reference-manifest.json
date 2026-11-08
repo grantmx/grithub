@@ -8,6 +8,30 @@
           "exportedName": "completeSectionAction",
           "filename": "apps/lms/app/(learn)/actions.ts"
         },
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "completeSectionAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
         "app/(learn)/learn/page": {
           "moduleId": 68058,
           "async": false,
@@ -41,6 +65,10 @@
       },
       "layer": {
         "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc",
         "app/(learn)/learn/page": "rsc",
         "app/(learn)/learn/section/[sectionId]/page": "rsc",
         "app/(learn)/library/page": "rsc",
@@ -58,6 +86,30 @@
           "exportedName": "retryCheckAction",
           "filename": "apps/lms/app/(learn)/actions.ts"
         },
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "retryCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
         "app/(learn)/learn/page": {
           "moduleId": 68058,
           "async": false,
@@ -91,6 +143,10 @@
       },
       "layer": {
         "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc",
         "app/(learn)/learn/page": "rsc",
         "app/(learn)/learn/section/[sectionId]/page": "rsc",
         "app/(learn)/library/page": "rsc",
@@ -108,6 +164,30 @@
           "exportedName": "getPlaybackAction",
           "filename": "apps/lms/app/(learn)/actions.ts"
         },
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "getPlaybackAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
         "app/(learn)/learn/page": {
           "moduleId": 68058,
           "async": false,
@@ -141,6 +221,10 @@
       },
       "layer": {
         "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc",
         "app/(learn)/learn/page": "rsc",
         "app/(learn)/learn/section/[sectionId]/page": "action-browser",
         "app/(learn)/library/page": "rsc",
@@ -158,6 +242,30 @@
           "exportedName": "savePreferencesAction",
           "filename": "apps/lms/app/(learn)/actions.ts"
         },
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "savePreferencesAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
         "app/(learn)/learn/page": {
           "moduleId": 68058,
           "async": false,
@@ -191,6 +299,10 @@
       },
       "layer": {
         "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc",
         "app/(learn)/learn/page": "rsc",
         "app/(learn)/learn/section/[sectionId]/page": "rsc",
         "app/(learn)/library/page": "rsc",
@@ -208,6 +320,30 @@
           "exportedName": "submitCheckAction",
           "filename": "apps/lms/app/(learn)/actions.ts"
         },
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "submitCheckAction",
+          "filename": "apps/lms/app/(learn)/actions.ts"
+        },
         "app/(learn)/learn/page": {
           "moduleId": 68058,
           "async": false,
@@ -241,6 +377,10 @@
       },
       "layer": {
         "app/(learn)/learn/[qualificationId]/page": "rsc",
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc",
         "app/(learn)/learn/page": "rsc",
         "app/(learn)/learn/section/[sectionId]/page": "rsc",
         "app/(learn)/library/page": "rsc",
@@ -249,6 +389,165 @@
       },
       "filename": "apps/lms/app/(learn)/actions.ts",
       "exportedName": "submitCheckAction"
+    },
+    "406b1a56d039c2e1b3090557a9c56a53b2403a7fbf": {
+      "workers": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "appealAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "appealAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "appealAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/assess-actions.ts",
+      "exportedName": "appealAction"
+    },
+    "40beb2df5e657d4bad9ed7e0ae0e2b0754b9a61ef3": {
+      "workers": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "saveAndGoAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "saveAndGoAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "saveAndGoAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "saveAndGoAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "action-browser",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/assess-actions.ts",
+      "exportedName": "saveAndGoAction"
+    },
+    "40eb56525bc53d76adee480eb4700ac474b18027e4": {
+      "workers": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "beginAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "beginAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "beginAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/assess-actions.ts",
+      "exportedName": "beginAttemptAction"
+    },
+    "40fc447c19e236096e72b5460b4cc21e3687502572": {
+      "workers": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "submitAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "submitAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "submitAttemptAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/assess-actions.ts",
+      "exportedName": "submitAttemptAction"
+    },
+    "7095ee88eac81248ab6beba9c3461f5374a90408b1": {
+      "workers": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": {
+          "moduleId": 74679,
+          "async": false,
+          "exportedName": "autosaveAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/page": {
+          "moduleId": 42010,
+          "async": false,
+          "exportedName": "autosaveAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/result/page": {
+          "moduleId": 63551,
+          "async": false,
+          "exportedName": "autosaveAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        },
+        "app/(learn)/learn/attempt/[attemptId]/review/page": {
+          "moduleId": 89296,
+          "async": false,
+          "exportedName": "autosaveAction",
+          "filename": "apps/lms/app/(learn)/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/(learn)/learn/assessment/[scheduleId]/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/page": "action-browser",
+        "app/(learn)/learn/attempt/[attemptId]/result/page": "rsc",
+        "app/(learn)/learn/attempt/[attemptId]/review/page": "rsc"
+      },
+      "filename": "apps/lms/app/(learn)/assess-actions.ts",
+      "exportedName": "autosaveAction"
     },
     "0099dd8c1b5f3a6fc657d357790e29029defb1bbe4": {
       "workers": {
@@ -351,6 +650,116 @@
       },
       "filename": "apps/lms/app/account/actions.ts",
       "exportedName": "completePasskeyRegistration"
+    },
+    "40040121351fdb388c9e88ad987a2454c51e7548bb": {
+      "workers": {
+        "app/admin/assessments/[blueprintId]/page": {
+          "moduleId": 94225,
+          "async": false,
+          "exportedName": "publishAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        },
+        "app/admin/assessments/page": {
+          "moduleId": 31201,
+          "async": false,
+          "exportedName": "publishAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/assessments/[blueprintId]/page": "rsc",
+        "app/admin/assessments/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/assess-actions.ts",
+      "exportedName": "publishAction"
+    },
+    "4012081d33440b13fd67ea727f950404a022507b09": {
+      "workers": {
+        "app/admin/assessments/[blueprintId]/page": {
+          "moduleId": 94225,
+          "async": false,
+          "exportedName": "removeRuleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        },
+        "app/admin/assessments/page": {
+          "moduleId": 31201,
+          "async": false,
+          "exportedName": "removeRuleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/assessments/[blueprintId]/page": "rsc",
+        "app/admin/assessments/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/assess-actions.ts",
+      "exportedName": "removeRuleAction"
+    },
+    "40432c0a40b24822d425b2034ca81f06c0f42798e1": {
+      "workers": {
+        "app/admin/assessments/[blueprintId]/page": {
+          "moduleId": 94225,
+          "async": false,
+          "exportedName": "addRuleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        },
+        "app/admin/assessments/page": {
+          "moduleId": 31201,
+          "async": false,
+          "exportedName": "addRuleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/assessments/[blueprintId]/page": "rsc",
+        "app/admin/assessments/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/assess-actions.ts",
+      "exportedName": "addRuleAction"
+    },
+    "40b1e864f901c216ee0d33a00964dc344c763b6889": {
+      "workers": {
+        "app/admin/assessments/[blueprintId]/page": {
+          "moduleId": 94225,
+          "async": false,
+          "exportedName": "scheduleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        },
+        "app/admin/assessments/page": {
+          "moduleId": 31201,
+          "async": false,
+          "exportedName": "scheduleAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/assessments/[blueprintId]/page": "rsc",
+        "app/admin/assessments/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/assess-actions.ts",
+      "exportedName": "scheduleAction"
+    },
+    "40b2c60eaaa0c41ee6a064e51fe40a62e0a3d1f573": {
+      "workers": {
+        "app/admin/assessments/[blueprintId]/page": {
+          "moduleId": 94225,
+          "async": false,
+          "exportedName": "createBlueprintAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        },
+        "app/admin/assessments/page": {
+          "moduleId": 31201,
+          "async": false,
+          "exportedName": "createBlueprintAction",
+          "filename": "apps/lms/app/admin/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/assessments/[blueprintId]/page": "rsc",
+        "app/admin/assessments/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/assess-actions.ts",
+      "exportedName": "createBlueprintAction"
     },
     "6015a6532591a7810cc96b2a64b9f8dda113c58a0b": {
       "workers": {
@@ -715,6 +1124,656 @@
       },
       "filename": "apps/lms/app/signin/actions.ts",
       "exportedName": "sendMagicLink"
+    },
+    "4015c8000c17852272a9e4563a7af7aa3f333cb2e4": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "newVersionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "newVersionAction"
+    },
+    "4054d4e017fc02670234ae7257000f6e6ab01fcee7": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "extraTimeAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "extraTimeAction"
+    },
+    "4057d65ff8e2ac72bd82403fb786fc8aed067fc497": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "retireQuestionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "retireQuestionAction"
+    },
+    "406467681353bde8df6be2b27d7a1e9ac998e9b695": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "signOffAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "signOffAction"
+    },
+    "408600305bf39d06b5b54244ede34664bba98add78": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "decisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "decisionAction"
+    },
+    "40acee3c8e79ecdd64e8d7ec35a2d11af6b413962d": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "unlockAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "unlockAction"
+    },
+    "40c47e5d191afcd40326d8c3f815750eb392d65e18": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "attendanceAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "attendanceAction"
+    },
+    "40d9b4985d9a40bafdda75b1e1d91f5acc452ffb5a": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "pauseAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "pauseAction"
+    },
+    "40e783cc339faedb872efdb9904018c666cba70027": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "marksAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "marksAction"
+    },
+    "40ee527311763dc699ab7bfb631664bb6bc510dc35": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "idCheckAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "idCheckAction"
+    },
+    "40f7e3d165f7ef9fe47050e991894b965a6bb818e0": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "closeBatchAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "closeBatchAction"
+    },
+    "40fe8b25ba0723ba13993ece121713f7815f3df7e6": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "moderateAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "moderateAction"
+    },
+    "40ff298c11b012220ca1f228520a450eaf0d3c3569": {
+      "workers": {
+        "app/staff/analytics/[blueprintId]/page": {
+          "moduleId": 26067,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/appeals/[appealId]/page": {
+          "moduleId": 74257,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/assessment-days/[dayId]/page": {
+          "moduleId": 19126,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/marking/[attemptId]/page": {
+          "moduleId": 13299,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/moderation/[batchId]/page": {
+          "moduleId": 80935,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        },
+        "app/staff/questions/[questionId]/page": {
+          "moduleId": 52275,
+          "async": false,
+          "exportedName": "appealDecisionAction",
+          "filename": "apps/lms/app/staff/assess-actions.ts"
+        }
+      },
+      "layer": {
+        "app/staff/analytics/[blueprintId]/page": "rsc",
+        "app/staff/appeals/[appealId]/page": "rsc",
+        "app/staff/assessment-days/[dayId]/page": "rsc",
+        "app/staff/marking/[attemptId]/page": "rsc",
+        "app/staff/moderation/[batchId]/page": "rsc",
+        "app/staff/questions/[questionId]/page": "rsc"
+      },
+      "filename": "apps/lms/app/staff/assess-actions.ts",
+      "exportedName": "appealDecisionAction"
     }
   },
   "edge": {},

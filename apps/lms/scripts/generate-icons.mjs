@@ -33,6 +33,14 @@ const ICONS = {
   account: "account_circle",
   help: "help",
   logout: "logout",
+  flag: "flag",
+  timer: "timer",
+  saved: "cloud_done",
+  offline: "cloud_off",
+  pause: "pause_circle",
+  lock: "lock",
+  assessment: "assignment",
+  hide: "visibility_off",
 };
 
 const require = createRequire(import.meta.url);

@@ -12,12 +12,15 @@ Goals: every learner gets **equal curriculum coverage**, learners cannot easily 
 
 ## 2. Assessments use blueprints
 
+> Implemented in `apps/lms/lib/paper.ts` (pure draw, tests in `test/paper.test.ts`), `lib/server/assessments.ts` (attempts, grading) and `lib/server/authoring.ts` (publish validation). Coverage report: `/admin/assessments/coverage`.
+
 - An `AssessmentBlueprint` has `BlueprintRule`s: _"from bank X / curriculum component Y, draw N questions"_.
 - Every learner gets the **same number of questions per curriculum component**, so coverage is equal even though the questions differ.
 - Validation when a blueprint is published:
   - every rule's bank has at least `N × (maxAttempts)` active questions (warning), and at least `N` (hard error);
   - the sum of rules matches the intended total and the mark allocation;
   - every curriculum component of the module listed in the curriculum document is covered by at least one rule (coverage report). This feeds Form 5 evidence.
+- A question appears at most once per paper, even if banks overlap. Formative papers draw single/multi questions only; summative papers may include short answers (marked by an assessor against a rubric).
 - Optional later: difficulty bands per rule (for example 2 easy, 2 medium, 1 hard), so that random draws are of comparable difficulty.
 
 ## 3. Seeded, stable shuffling

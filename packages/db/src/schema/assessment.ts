@@ -9,21 +9,99 @@ import {
   jsonb,
   pgTable,
   text,
+  primaryKey,
   timestamp,
   unique,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
 import { createdAt, id } from "./columns";
 import {
+  appealStatus,
   attemptStatus,
   batchStatus,
   decisionOutcome,
   moderationOutcome,
 } from "./enums";
 import { briefVariants, practicalBriefs, sections } from "./curriculum";
-import { assessmentBlueprints, questionVersions } from "./questions";
-import { cohorts } from "./cohorts";
+import {
+  assessmentBlueprints,
+  questionVersions,
+  rubricCriteria,
+} from "./questions";
+import { assessmentDays, cohorts } from "./cohorts";
 import { enrolments, users } from "./people";
+
+/**
+ * When a cohort may write a blueprint: a window (formative) or a supervised
+ * assessment day (summative, required by the app). A reassessment is another
+ * schedule for the same blueprint on a later day.
+ */
+export const assessmentSchedules = pgTable(
+  "assessment_schedules",
+  {
+    id: id(),
+    cohortId: uuid()
+      .notNull()
+      .references(() => cohorts.id),
+    blueprintId: uuid()
+      .notNull()
+      .references(() => assessmentBlueprints.id),
+    assessmentDayId: uuid().references(() => assessmentDays.id),
+    opensAt: timestamp({ withTimezone: true }).notNull(),
+    closesAt: timestamp({ withTimezone: true }).notNull(),
+    createdBy: uuid().references(() => users.id),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    check(
+      "assessment_schedules_window",
+      sql`${t.closesAt} > ${t.opensAt}`,
+    ),
+    index("assessment_schedules_cohort_idx").on(t.cohortId),
+  ],
+);
+
+/**
+ * An assessor opened a summative paper for one learner on the day (after
+ * marking them present and checking ID). The learner's attempt uses it once.
+ */
+export const paperUnlocks = pgTable(
+  "paper_unlocks",
+  {
+    id: id(),
+    scheduleId: uuid()
+      .notNull()
+      .references(() => assessmentSchedules.id),
+    enrolmentId: uuid()
+      .notNull()
+      .references(() => enrolments.id),
+    attemptNo: integer().notNull(),
+    unlockedBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    unlockedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("paper_unlocks_schedule_enrolment_attempt_uq").on(
+      t.scheduleId,
+      t.enrolmentId,
+      t.attemptNo,
+    ),
+    check("paper_unlocks_attempt_no", sql`${t.attemptNo} >= 1`),
+  ],
+);
+
+/** The assessor's sign-off of an assessment day's register. Locks attendance. */
+export const registerSignoffs = pgTable("register_signoffs", {
+  assessmentDayId: uuid()
+    .primaryKey()
+    .references(() => assessmentDays.id),
+  signedBy: uuid()
+    .notNull()
+    .references(() => users.id),
+  signedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+});
 
 /**
  * One attempt by a learner at either a blueprint assessment or a section
@@ -39,9 +117,19 @@ export const assessmentAttempts = pgTable(
     blueprintId: uuid().references(() => assessmentBlueprints.id),
     sectionId: uuid().references(() => sections.id),
     attemptNo: integer().notNull(),
+    // Blueprint attempts: the sitting (window or day) it was written in.
+    scheduleId: uuid().references(() => assessmentSchedules.id),
+    unlockId: uuid().references(() => paperUnlocks.id),
     status: attemptStatus().notNull().default("in_progress"),
     startedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    // Server-enforced end time (time limit + extra time + pauses); null = untimed.
+    deadlineAt: timestamp({ withTimezone: true }),
+    extraMinutes: integer().notNull().default(0),
+    pausedAt: timestamp({ withTimezone: true }),
     submittedAt: timestamp({ withTimezone: true }),
+    autoSubmitted: boolean().notNull().default(false),
+    // The bank ran short of unseen questions (randomization.md §4.5).
+    usedFallback: boolean().notNull().default(false),
     scoreRaw: integer(),
     scoreMax: integer(),
   },
@@ -65,6 +153,12 @@ export const assessmentAttempts = pgTable(
       t.sectionId,
       t.attemptNo,
     ),
+    unique("assessment_attempts_unlock_uq").on(t.unlockId),
+    check(
+      "assessment_attempts_extra_minutes",
+      sql`${t.extraMinutes} BETWEEN 0 AND 600`,
+    ),
+    index("assessment_attempts_schedule_idx").on(t.scheduleId),
   ],
 );
 
@@ -88,8 +182,13 @@ export const attemptItems = pgTable(
     optionTokens: jsonb().$type<Record<string, string>>().notNull(),
     seed: text().notNull(),
     responseOptionIds: uuid().array(),
+    responseText: text(),
+    flagged: boolean().notNull().default(false),
     isCorrect: boolean(),
     answeredAt: timestamp({ withTimezone: true }),
+    // Marks for the item: auto-graded items get 0/max; short answers sum their rubric marks.
+    marksAwarded: integer(),
+    markerNote: text(),
     createdAt: createdAt(),
   },
   (t) => [
@@ -158,6 +257,12 @@ export const moderationBatches = pgTable(
       "moderation_batches_closed_fields",
       sql`(${t.status} = 'closed') = (${t.closedAt} IS NOT NULL AND ${t.closedBy} IS NOT NULL)`,
     ),
+    uniqueIndex("moderation_batches_one_open_blueprint_uq")
+      .on(t.cohortId, t.blueprintId)
+      .where(sql`${t.status} = 'open' AND ${t.blueprintId} IS NOT NULL`),
+    uniqueIndex("moderation_batches_one_open_brief_uq")
+      .on(t.cohortId, t.briefId)
+      .where(sql`${t.status} = 'open' AND ${t.briefId} IS NOT NULL`),
   ],
 );
 
@@ -190,6 +295,8 @@ export const assessmentDecisions = pgTable(
       sql`${t.supersedesId} IS NULL OR ${t.supersedesId} <> ${t.id}`,
     ),
     index("assessment_decisions_batch_idx").on(t.batchId),
+    // Versions form a single chain: a decision is superseded at most once.
+    unique("assessment_decisions_supersedes_uq").on(t.supersedesId),
   ],
 );
 
@@ -208,4 +315,84 @@ export const moderationRecords = pgTable(
     moderatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [index("moderation_records_decision_idx").on(t.decisionId)],
+);
+
+/** Rubric marks for a short-answer item, per criterion. Locked once a decision is recorded. */
+export const itemMarks = pgTable(
+  "item_marks",
+  {
+    id: id(),
+    attemptItemId: uuid()
+      .notNull()
+      .references(() => attemptItems.id),
+    criterionId: uuid()
+      .notNull()
+      .references(() => rubricCriteria.id),
+    marks: integer().notNull(),
+    markedBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    markedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("item_marks_item_criterion_uq").on(t.attemptItemId, t.criterionId),
+    check("item_marks_marks_nonnegative", sql`${t.marks} >= 0`),
+  ],
+);
+
+/** The assessor's unsaved decision ("Save draft"). Recording it creates an immutable decision. */
+export const decisionDrafts = pgTable(
+  "decision_drafts",
+  {
+    attemptId: uuid()
+      .notNull()
+      .references(() => assessmentAttempts.id),
+    assessorId: uuid()
+      .notNull()
+      .references(() => users.id),
+    outcome: decisionOutcome(),
+    feedback: text().notNull().default(""),
+    updatedAt: timestamp({ withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [
+    primaryKey({
+      name: "decision_drafts_pk",
+      columns: [t.attemptId, t.assessorId],
+    }),
+  ],
+);
+
+/**
+ * A learner appeal against a released decision. A moderator who did not make
+ * the decision either upholds it or orders a reassessment (an extra attempt,
+ * decided by a different assessor). Final once decided.
+ */
+export const appeals = pgTable(
+  "appeals",
+  {
+    id: id(),
+    decisionId: uuid()
+      .notNull()
+      .references(() => assessmentDecisions.id),
+    enrolmentId: uuid()
+      .notNull()
+      .references(() => enrolments.id),
+    reason: text().notNull(),
+    status: appealStatus().notNull().default("open"),
+    submittedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    decidedBy: uuid().references(() => users.id),
+    decidedAt: timestamp({ withTimezone: true }),
+    outcomeNotes: text(),
+  },
+  (t) => [
+    unique("appeals_decision_uq").on(t.decisionId),
+    check(
+      "appeals_decided_fields",
+      sql`(${t.status} = 'open') = (${t.decidedAt} IS NULL AND ${t.decidedBy} IS NULL)`,
+    ),
+    check("appeals_reason_length", sql`length(${t.reason}) BETWEEN 1 AND 4000`),
+  ],
 );
