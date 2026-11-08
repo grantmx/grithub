@@ -30,6 +30,10 @@ export const RATE_LIMITS = {
   attemptSubmit: { scope: "attempt-submit", limit: 10, windowSeconds: 900 },
   appealSubmit: { scope: "appeal-submit", limit: 5, windowSeconds: 86400 },
   paperExport: { scope: "paper-export", limit: 120, windowSeconds: 3600 },
+  // Practical evidence (per user).
+  evidenceUpload: { scope: "evidence-upload", limit: 60, windowSeconds: 3600 },
+  evidenceView: { scope: "evidence-view", limit: 300, windowSeconds: 3600 },
+  practicalSubmit: { scope: "practical-submit", limit: 10, windowSeconds: 900 },
 } satisfies Record<string, RateLimitRule>;
 
 export class RateLimitError extends Error {

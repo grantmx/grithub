@@ -63,6 +63,13 @@ Notes:
 - **Moderation, release and appeals:** moderators (own cohorts), never on their own decisions.
 - **Blueprints, schedules, coverage report:** SDP admins. Retire / new question version: assessors and moderators.
 
+### Practical assessments (2026-11-08)
+
+- **Learner:** sees their own variant, adds and removes evidence while draft, submits, appeals; opens only their own evidence.
+- **Practical evidence:** assessors, moderators and external evaluators (read-only) in scope, via signed links; staff views audited. Not facilitators or SDP admins.
+- **Observed tasks:** facilitators/assessors take attendance and ID; only an assessor starts the observation and marks it.
+- **Briefs:** SDP admins author, publish and schedule.
+
 ## Onboarding flow (learners and staff)
 
 1. SDP admin creates a cohort and invites learners one by one or by CSV import (validated, previewed, then confirmed). Each learner is enrolled in the cohort.

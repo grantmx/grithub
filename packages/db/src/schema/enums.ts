@@ -109,7 +109,43 @@ export const themePreference = pgEnum("theme_preference", [
   "dark",
 ]);
 
+// QCTO Learner Enrolment and Readiness for EISA (LEISA) submissions
+// (docs/lms/compliance/qcto-leisa-mapping.md). The spec asks for an enrolment
+// file within 21 days of enrolment and a readiness file 3 months before the EISA.
+export const qctoSubmissionPurpose = pgEnum("qcto_submission_purpose", [
+  "enrolment",
+  "eisa_readiness",
+]);
+export const qctoSubmissionStatus = pgEnum("qcto_submission_status", [
+  "draft",
+  "generated",
+  "submitted",
+  "accepted",
+  "rejected",
+]);
+export const qctoRowOutcome = pgEnum("qcto_row_outcome", [
+  "pending",
+  "accepted",
+  "rejected",
+]);
+
 export const libraryResourceKind = pgEnum("library_resource_kind", [
   "link",
   "document",
+]);
+
+// Practical briefs: learners submit evidence, or an assessor observes on an assessment day.
+export const briefMode = pgEnum("brief_mode", ["submission", "observed"]);
+export const submissionStatus = pgEnum("submission_status", [
+  "draft",
+  "submitted",
+]);
+export const evidenceKind = pgEnum("evidence_kind", ["file", "link"]);
+export const evidenceSource = pgEnum("evidence_source", ["learner", "assessor"]);
+// Virus-scan hook. "not_scanned" = no scanner configured (placeholder).
+export const scanStatus = pgEnum("scan_status", [
+  "not_scanned",
+  "pending",
+  "clean",
+  "infected",
 ]);

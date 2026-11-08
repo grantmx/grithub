@@ -12,8 +12,9 @@ import {
   unique,
   uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, id, updatedAt } from "./columns";
+import { createdAt, id, tenantId, updatedAt } from "./columns";
 import {
+  briefMode,
   contentKind,
   libraryResourceKind,
   lifecycleStatus,
@@ -159,11 +160,47 @@ export const practicalBriefs = pgTable(
     curriculumComponentRef: text().notNull(),
     title: text().notNull(),
     instructions: text().notNull(),
+    // Plain-text summary; the structured rubric is brief_criteria.
     assessmentCriteria: text().notNull(),
+    mode: briefMode().notNull().default("submission"),
+    maxAttempts: integer().notNull().default(2),
+    // Criteria and variants are locked once published (every variant shares them).
+    status: publishStatus().notNull().default("draft"),
+    publishedAt: timestamp({ withTimezone: true }),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
-  (t) => [index("practical_briefs_module_idx").on(t.moduleId)],
+  (t) => [
+    index("practical_briefs_module_idx").on(t.moduleId),
+    check("practical_briefs_max_attempts", sql`${t.maxAttempts} BETWEEN 1 AND 10`),
+    check(
+      "practical_briefs_published_at",
+      sql`(${t.status} = 'published') = (${t.publishedAt} IS NOT NULL)`,
+    ),
+  ],
+);
+
+/**
+ * Practical rubric: assessment criteria judged Met / Not yet met. Shared by
+ * every variant of the brief (equivalent tasks, same criteria).
+ */
+export const briefCriteria = pgTable(
+  "brief_criteria",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    briefId: uuid()
+      .notNull()
+      .references(() => practicalBriefs.id),
+    code: text().notNull(),
+    label: text().notNull(),
+    guidance: text(),
+    sortOrder: smallint().notNull(),
+  },
+  (t) => [
+    unique("brief_criteria_brief_code_uq").on(t.tenantId, t.briefId, t.code),
+    unique("brief_criteria_brief_order_uq").on(t.tenantId, t.briefId, t.sortOrder),
+  ],
 );
 
 export const briefVariants = pgTable(

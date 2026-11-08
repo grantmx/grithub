@@ -41,6 +41,9 @@ const ICONS = {
   lock: "lock",
   assessment: "assignment",
   hide: "visibility_off",
+  upload: "upload",
+  observe: "visibility",
+  practical: "construction",
 };
 
 const require = createRequire(import.meta.url);

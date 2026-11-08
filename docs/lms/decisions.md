@@ -18,6 +18,8 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ## ADR-003: Object storage with signed direct uploads
 
+> **Updated 2026-11-08:** practical evidence uses **Vercel Blob with private access** (owner's decision), not S3. Same principles: direct browser uploads, private by default, confirm step with size/type/checksum, short-lived signed links. Region control is limited; the POPIA position is noted in compliance/popia.md.
+
 - **Status:** Proposed
 - **Decision:** S3-compatible storage behind an interface; presigned direct uploads; private by default; candidate region `af-south-1`.
 - **Alternatives:** Vercel Blob; Cloudflare R2.
@@ -82,6 +84,18 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
   - Paper PDFs are generated on demand with pdf-lib (deterministic; checksum audited); no file storage.
   - Question analytics (standard thresholds, `lib/questionStats.ts`) let assessors and moderators retire a question or create a new version.
 - **Consequences:** answer keys are visible only to assessors, moderators and external evaluators. Assessments need a connection. The moderation sampling rate is not enforced yet (Q5). Learners are not yet notified by email when results are released.
+
+## ADR-013: Practical assessments
+
+- **Status:** Accepted (2026-11-08)
+- **Decision:**
+  - A brief has Met / Not yet met criteria and equivalent variants sharing them; publishing locks both. Mode: evidence submission or observed on an assessment day.
+  - Each attempt is a submission with a seeded, stored variant (seed = learner : brief : attempt; prefers variants not done before).
+  - Evidence: Vercel Blob private client uploads confirmed on the server (prefix, type, 20 MB, SHA-256, scan hook), or allow-listed https links. Viewing via `/evidence/:id` → 5-minute signed link; staff views audited.
+  - Draft until "Submit for assessment"; observed submissions are started by the assessor from the register after attendance and ID check.
+  - Decisions, moderation batches (per brief and cohort), release, appeals and reassessment follow the knowledge rules (ADR-012). Judgements and evidence lock once a decision exists (database triggers).
+  - There is no workplace module, logbook or mentor sign-off.
+- **Consequences:** uploads need JavaScript (links work without). Video is link-only, so a learner could change a linked video after submission; the URL and time are recorded. The link allow-list is in code until an admin editor exists. A real virus scanner is still to be connected.
 
 ---
 

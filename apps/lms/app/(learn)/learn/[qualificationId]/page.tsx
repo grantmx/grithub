@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AssessmentsBlock } from "@/components/assess/AssessmentsBlock";
+import { PracticalBlock } from "@/components/practical/PracticalBlock";
 import { Icon } from "@/components/Icon";
 import styles from "@/components/learn/learn.module.css";
 import { listAssessments } from "@/lib/server/assessments";
 import { LearningError, getProgramme } from "@/lib/server/learning";
+import { listPracticalTasks } from "@/lib/server/practical";
 import { requirePage } from "@/lib/server/page";
 
 export const metadata: Metadata = { title: "Programme" };
@@ -32,6 +34,7 @@ export default async function ProgrammePage({
   }
   const { qualification, outline, continueTo } = data;
   const assessments = await listAssessments(ctx, actor, qualificationId);
+  const practicalTasks = await listPracticalTasks(ctx, actor, qualificationId);
 
   return (
     <div className={styles.stack}>
@@ -52,6 +55,7 @@ export default async function ProgrammePage({
       ) : null}
 
       <AssessmentsBlock items={assessments} />
+      <PracticalBlock items={practicalTasks} />
 
       {outline.map((m) => {
         const pct = m.sections.length

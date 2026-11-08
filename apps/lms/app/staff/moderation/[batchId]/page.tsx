@@ -74,7 +74,7 @@ export default async function BatchPage({
             {b.decisions.map((d) => (
               <tr key={d.id}>
                 <td>
-                  <a href={`/staff/attempts/${d.attemptId}`}>{d.learnerName}</a>
+                  <a href={d.submissionId ? `/staff/submissions/${d.submissionId}` : `/staff/attempts/${d.attemptId}`}>{d.learnerName}</a>
                 </td>
                 <td>
                   {d.outcome === "competent" ? "Competent" : "Not yet competent"}

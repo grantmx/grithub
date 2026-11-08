@@ -1,6 +1,10 @@
 import { customType, timestamp, uuid } from "drizzle-orm/pg-core";
+import { DEFAULT_TENANT_ID } from "../tenancy";
 
 export const id = () => uuid().primaryKey().defaultRandom();
+
+/** Nullable until the tenancy migration; defaults to the first tenant (src/tenancy.ts). */
+export const tenantId = () => uuid().default(DEFAULT_TENANT_ID);
 
 export const createdAt = () =>
   timestamp({ withTimezone: true }).notNull().defaultNow();

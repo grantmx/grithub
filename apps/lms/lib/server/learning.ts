@@ -220,13 +220,14 @@ async function countCompetentModules(
         join assessment_attempts a on a.id = d.attempt_id
         join assessment_blueprints b on b.id = a.blueprint_id
        where a.enrolment_id = ${enrolmentId} and d.released_at is not null and d.outcome = 'competent'
+         and not exists (select 1 from assessment_decisions n where n.supersedes_id = d.id)
       union
       select pb.module_id
         from assessment_decisions d
         join submissions s on s.id = d.submission_id
-        join brief_variants v on v.id = s.brief_variant_id
-        join practical_briefs pb on pb.id = v.brief_id
+        join practical_briefs pb on pb.id = s.brief_id
        where s.enrolment_id = ${enrolmentId} and d.released_at is not null and d.outcome = 'competent'
+         and not exists (select 1 from assessment_decisions n where n.supersedes_id = d.id)
     ) m
   `);
   return Number(rows[0]?.n ?? 0);

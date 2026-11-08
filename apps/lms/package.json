@@ -14,6 +14,7 @@
     "@mux/mux-player-react": "^3.13.4",
     "@simplewebauthn/browser": "14.0.0",
     "@simplewebauthn/server": "14.0.3",
+    "@vercel/blob": "2.8.2",
     "db": "*",
     "next": "16.1.4",
     "pdf-lib": "1.17.1",

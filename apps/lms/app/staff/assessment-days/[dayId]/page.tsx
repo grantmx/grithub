@@ -4,6 +4,7 @@ import {
   attendanceAction,
   extraTimeAction,
   idCheckAction,
+  observeAction,
   pauseAction,
   signOffAction,
   unlockAction,
@@ -72,8 +73,8 @@ export default async function RegisterPage({
         {dayFmt.format(new Date(`${reg.day.heldOn}T12:00:00Z`))} · {reg.day.venue}
       </h1>
       <p className={ui.muted}>
-        {reg.schedules.map((s) => `${s.title} (${timeFmt.format(s.opensAt)}–${timeFmt.format(s.closesAt)})`).join(" · ") ||
-          "No papers scheduled"}{" "}
+        {[...reg.schedules, ...reg.observedTasks].map((s) => `${s.title} (${timeFmt.format(s.opensAt)}–${timeFmt.format(s.closesAt)})`).join(" · ") ||
+          "Nothing scheduled"}{" "}
         · {reg.rows.length} learners · {present} present
       </p>
       {sp.done && DONE[sp.done] ? (
@@ -189,6 +190,30 @@ export default async function RegisterPage({
                   {p.attemptId && p.state === "submitted" && actor.roles.has("assessor") ? (
                     <a href={`/staff/attempts/${p.attemptId}/pdf`}>Print paper (PDF)</a>
                   ) : null}
+                </div>
+              );
+            })}
+            {row.observations.map((o, i) => {
+              const task = reg.observedTasks[i]!;
+              return (
+                <div key={o.scheduleId} className={styles.paperLine}>
+                  <span>
+                    {task.title}:{" "}
+                    {o.state === "not_started" ? "Not observed yet" : o.state === "observed" ? "● Being observed / marked" : "✓ Decided"}
+                  </span>
+                  {reg.canAssess && o.canStart ? (
+                    <form action={observeAction}>
+                      <input type="hidden" name="scheduleId" value={o.scheduleId} />
+                      <input type="hidden" name="enrolmentId" value={row.enrolmentId} />
+                      <input type="hidden" name="back" value={path} />
+                      <button type="submit" className={ui.button}>
+                        Mark observation
+                      </button>
+                    </form>
+                  ) : o.state === "not_started" && !signed ? (
+                    <span className={ui.hint}>Mark present and check ID to start.</span>
+                  ) : null}
+                  {reg.canAssess && o.submissionId ? <a href={`/staff/marking/practical/${o.submissionId}`}>Open marking</a> : null}
                 </div>
               );
             })}

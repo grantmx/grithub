@@ -8,10 +8,17 @@ import {
   cohorts,
   enrolments,
   paperUnlocks,
+  practicalBriefs,
   registerSignoffs,
+  submissions,
   users,
 } from "db";
 import type { AccessContext, Requirement } from "@/lib/access";
+import {
+  currentSubmissionDecision,
+  practicalAllowance,
+  startObservedSubmission,
+} from "./practical";
 import {
   AssessmentError,
   finaliseExpired,
@@ -88,6 +95,13 @@ export type RegisterRow = {
     extraMinutes: number;
     canUnlock: boolean;
   }[];
+  /** Observed practical tasks on this day. */
+  observations: {
+    scheduleId: string;
+    state: "not_started" | "observed" | "decided";
+    submissionId: string | null;
+    canStart: boolean;
+  }[];
 };
 
 export async function getRegister(ctx: Ctx, actor: AccessContext | null, dayId: string) {
@@ -119,6 +133,18 @@ export async function getRegister(ctx: Ctx, actor: AccessContext | null, dayId: 
     .from(registerSignoffs)
     .innerJoin(users, eq(users.id, registerSignoffs.signedBy))
     .where(eq(registerSignoffs.assessmentDayId, dayId));
+
+  // Observed practical briefs scheduled on this day.
+  const observedTasks = await ctx.db
+    .select({ schedule: assessmentSchedules, brief: practicalBriefs })
+    .from(assessmentSchedules)
+    .innerJoin(practicalBriefs, eq(practicalBriefs.id, assessmentSchedules.briefId))
+    .where(and(eq(assessmentSchedules.assessmentDayId, dayId), eq(practicalBriefs.mode, "observed")))
+    .orderBy(asc(assessmentSchedules.opensAt));
+  const observedIds = observedTasks.map((o) => o.schedule.id);
+  const observedSubs = observedIds.length
+    ? await ctx.db.select().from(submissions).where(inArray(submissions.scheduleId, observedIds)).orderBy(asc(submissions.attemptNo))
+    : [];
 
   const scheduleIds = schedules.map((s) => s.schedule.id);
   const attempts = scheduleIds.length
@@ -164,12 +190,26 @@ export async function getRegister(ctx: Ctx, actor: AccessContext | null, dayId: 
         canUnlock,
       });
     }
+    const observations: RegisterRow["observations"] = [];
+    for (const { schedule, brief } of observedTasks) {
+      const sub = observedSubs.filter((x) => x.scheduleId === schedule.id && x.enrolmentId === l.enrolmentId).at(-1);
+      const decided = sub ? (await currentSubmissionDecision(ctx, sub.id)) !== null : false;
+      let canStart = false;
+      if (ready && !signoff && !sub) canStart = (await practicalAllowance(ctx, l.enrolmentId, brief)).ok;
+      observations.push({
+        scheduleId: schedule.id,
+        state: sub ? (decided ? "decided" : "observed") : "not_started",
+        submissionId: sub?.id ?? null,
+        canStart,
+      });
+    }
     rows.push({
       enrolmentId: l.enrolmentId,
       name: l.name,
       status: (rec?.status as AttendanceStatus | undefined) ?? null,
       idVerified: rec?.idVerifiedAt != null,
       papers,
+      observations,
     });
   }
   return {
@@ -180,6 +220,12 @@ export async function getRegister(ctx: Ctx, actor: AccessContext | null, dayId: 
       opensAt: s.schedule.opensAt,
       closesAt: s.schedule.closesAt,
       timeLimitMinutes: s.blueprint.timeLimitMinutes,
+    })),
+    observedTasks: observedTasks.map((o) => ({
+      id: o.schedule.id,
+      title: o.brief.title,
+      opensAt: o.schedule.opensAt,
+      closesAt: o.schedule.closesAt,
     })),
     rows,
     signoff: signoff ?? null,
@@ -424,4 +470,34 @@ export async function signOffRegister(ctx: Ctx, actor: AccessContext | null, day
     entityId: dayId,
     after: { present: Number(present[0]?.n ?? 0) },
   });
+}
+
+/**
+ * Assessor starts the observation of an observed practical task for a learner
+ * (present + ID checked, on the day, register not signed off). Returns the
+ * submission to mark.
+ */
+export async function startObservation(
+  ctx: Ctx,
+  actor: AccessContext | null,
+  scheduleId: string,
+  enrolmentId: string,
+): Promise<string> {
+  const a = await authorize(ctx, actor, ASSESSOR, "register.observe");
+  const [row] = await ctx.db.select().from(assessmentSchedules).where(eq(assessmentSchedules.id, scheduleId));
+  if (!row?.assessmentDayId || !row.briefId) throw new AssessmentError("not_found", "Task not found.");
+  const day = await requireEnrolledInDay(ctx, row.assessmentDayId, enrolmentId);
+  await assertCohortScope(ctx, a, ["assessor"], day.cohortId, "register.observe");
+  const [signed] = await ctx.db.select().from(registerSignoffs).where(eq(registerSignoffs.assessmentDayId, row.assessmentDayId));
+  if (signed) throw new AssessmentError("not_open", "The register is signed off.");
+  const now = ctx.now();
+  if (now < row.opensAt || now > row.closesAt) throw new AssessmentError("not_open", "This task is outside its time on the day.");
+  const [rec] = await ctx.db
+    .select()
+    .from(attendanceRecords)
+    .where(and(eq(attendanceRecords.enrolmentId, enrolmentId), eq(attendanceRecords.assessmentDayId, row.assessmentDayId)));
+  if (!rec || (rec.status !== "present" && rec.status !== "late") || !rec.idVerifiedAt) {
+    throw new AssessmentError("needs_unlock", "Mark the learner present and check their ID first.");
+  }
+  return startObservedSubmission(ctx, a.userId, scheduleId, enrolmentId);
 }

@@ -302,6 +302,11 @@ export const demoBrief = {
     "[DEMO] Connect a computer, monitor, keyboard and mouse, then confirm it starts.",
   assessmentCriteria:
     "[DEMO] AC1 Devices connected correctly. AC2 Computer starts. AC3 Workspace left tidy.",
+  criteria: [
+    { code: "AC1", label: "[DEMO] Devices connected correctly", guidance: "Monitor, keyboard and mouse on the right ports." },
+    { code: "AC2", label: "[DEMO] Computer starts and shows the desktop", guidance: "Photo or video of the start-up screen." },
+    { code: "AC3", label: "[DEMO] Workspace left tidy and safe", guidance: "Cables routed, no trip hazards." },
+  ],
   variants: [
     {
       label: "A",
@@ -351,3 +356,17 @@ export const demoShortAnswers: {
     ],
   },
 ];
+
+/** DEMO observed brief: an assessor watches the task on the assessment day. */
+export const demoObservedBrief = {
+  title: "DEMO Observed task: Safe shutdown and restart",
+  component: "DEMO-PM-01-PS01",
+  instructions: "[DEMO] Save your work, shut the computer down safely, then restart it, while the assessor watches.",
+  assessmentCriteria: "[DEMO] AC1 Work saved first. AC2 Safe shutdown. AC3 Restart confirmed.",
+  criteria: [
+    { code: "AC1", label: "[DEMO] Saves open work before shutting down", guidance: "" },
+    { code: "AC2", label: "[DEMO] Uses the operating system's shut-down option", guidance: "" },
+    { code: "AC3", label: "[DEMO] Restarts and confirms the computer works", guidance: "" },
+  ],
+  variants: [{ label: "A", variantInstructions: "[DEMO] Use the hub desktop computer." }],
+};

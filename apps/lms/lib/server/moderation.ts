@@ -8,6 +8,8 @@ import {
   enrolments,
   moderationBatches,
   moderationRecords,
+  practicalBriefs,
+  submissions,
   users,
 } from "db";
 import type { AccessContext, Requirement } from "@/lib/access";
@@ -38,13 +40,15 @@ export async function listBatches(ctx: Ctx, actor: AccessContext | null) {
       closedAt: moderationBatches.closedAt,
       cohortId: cohorts.id,
       cohortName: cohorts.name,
-      title: assessmentBlueprints.title,
+      title: sql<string>`coalesce(${assessmentBlueprints.title}, ${practicalBriefs.title})`,
+      kind: sql<"knowledge" | "practical">`CASE WHEN ${moderationBatches.briefId} IS NULL THEN 'knowledge' ELSE 'practical' END`,
       decisions: sql<number>`(SELECT count(*)::int FROM "assessment_decisions" d WHERE d.batch_id = "moderation_batches"."id" AND NOT EXISTS (SELECT 1 FROM "assessment_decisions" n WHERE n.supersedes_id = d.id))`,
       moderated: sql<number>`(SELECT count(DISTINCT m.decision_id)::int FROM "moderation_records" m JOIN "assessment_decisions" d ON d.id = m.decision_id WHERE d.batch_id = "moderation_batches"."id")`,
     })
     .from(moderationBatches)
     .innerJoin(cohorts, eq(cohorts.id, moderationBatches.cohortId))
-    .innerJoin(assessmentBlueprints, eq(assessmentBlueprints.id, moderationBatches.blueprintId))
+    .leftJoin(assessmentBlueprints, eq(assessmentBlueprints.id, moderationBatches.blueprintId))
+    .leftJoin(practicalBriefs, eq(practicalBriefs.id, moderationBatches.briefId))
     .orderBy(asc(moderationBatches.status), desc(moderationBatches.createdAt));
   return rows.filter((r) => inScope(scope, r.cohortId));
 }
@@ -54,11 +58,12 @@ async function loadBatch(ctx: Ctx, batchId: string) {
     .select({
       batch: moderationBatches,
       cohortName: cohorts.name,
-      title: assessmentBlueprints.title,
+      title: sql<string>`coalesce(${assessmentBlueprints.title}, ${practicalBriefs.title})`,
     })
     .from(moderationBatches)
     .innerJoin(cohorts, eq(cohorts.id, moderationBatches.cohortId))
-    .innerJoin(assessmentBlueprints, eq(assessmentBlueprints.id, moderationBatches.blueprintId))
+    .leftJoin(assessmentBlueprints, eq(assessmentBlueprints.id, moderationBatches.blueprintId))
+    .leftJoin(practicalBriefs, eq(practicalBriefs.id, moderationBatches.briefId))
     .where(eq(moderationBatches.id, batchId));
   if (!b) throw new AssessmentError("not_found", "Batch not found.");
   return b;
@@ -72,11 +77,15 @@ export async function getBatch(ctx: Ctx, actor: AccessContext | null, batchId: s
     .select({
       id: assessmentDecisions.id,
       attemptId: assessmentDecisions.attemptId,
+      submissionId: assessmentDecisions.submissionId,
       outcome: assessmentDecisions.outcome,
       decidedAt: assessmentDecisions.decidedAt,
       assessorId: assessmentDecisions.assessorId,
       assessorName: users.displayName,
-      learnerName: sql<string>`(SELECT u.display_name FROM "users" u JOIN "enrolments" e ON e.user_id = u.id JOIN "assessment_attempts" t ON t.enrolment_id = e.id WHERE t.id = "assessment_decisions"."attempt_id")`,
+      learnerName: sql<string>`(SELECT u.display_name FROM "users" u JOIN "enrolments" e ON e.user_id = u.id
+        WHERE e.id = coalesce(
+          (SELECT t.enrolment_id FROM "assessment_attempts" t WHERE t.id = "assessment_decisions"."attempt_id"),
+          (SELECT s.enrolment_id FROM "submissions" s WHERE s.id = "assessment_decisions"."submission_id")))`,
     })
     .from(assessmentDecisions)
     .innerJoin(users, eq(users.id, assessmentDecisions.assessorId))
@@ -90,7 +99,7 @@ export async function getBatch(ctx: Ctx, actor: AccessContext | null, batchId: s
         .where(inArray(moderationRecords.decisionId, ids))
         .orderBy(desc(moderationRecords.moderatedAt))
     : [];
-  const learners = new Set(decisions.map((d) => d.attemptId)).size;
+  const learners = new Set(decisions.map((d) => d.attemptId ?? d.submissionId)).size;
   return {
     ...b,
     decisions: decisions.map((d) => ({
@@ -180,20 +189,23 @@ export async function listAppeals(ctx: Ctx, actor: AccessContext | null) {
       submittedAt: appeals.submittedAt,
       decidedAt: appeals.decidedAt,
       attemptId: assessmentDecisions.attemptId,
+      submissionId: assessmentDecisions.submissionId,
       outcome: assessmentDecisions.outcome,
       assessorId: assessmentDecisions.assessorId,
       cohortId: enrolments.cohortId,
       cohortName: cohorts.name,
       learnerName: users.displayName,
-      title: assessmentBlueprints.title,
+      title: sql<string>`coalesce(${assessmentBlueprints.title}, ${practicalBriefs.title})`,
     })
     .from(appeals)
     .innerJoin(assessmentDecisions, eq(assessmentDecisions.id, appeals.decisionId))
     .innerJoin(enrolments, eq(enrolments.id, appeals.enrolmentId))
     .innerJoin(cohorts, eq(cohorts.id, enrolments.cohortId))
     .innerJoin(users, eq(users.id, enrolments.userId))
-    .innerJoin(assessmentAttempts, eq(assessmentAttempts.id, assessmentDecisions.attemptId))
-    .innerJoin(assessmentBlueprints, eq(assessmentBlueprints.id, assessmentAttempts.blueprintId))
+    .leftJoin(assessmentAttempts, eq(assessmentAttempts.id, assessmentDecisions.attemptId))
+    .leftJoin(assessmentBlueprints, eq(assessmentBlueprints.id, assessmentAttempts.blueprintId))
+    .leftJoin(submissions, eq(submissions.id, assessmentDecisions.submissionId))
+    .leftJoin(practicalBriefs, eq(practicalBriefs.id, submissions.briefId))
     .orderBy(asc(appeals.status), asc(appeals.submittedAt));
   return rows
     .filter((r) => inScope(scope, r.cohortId))

@@ -15,15 +15,24 @@ import {
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, id } from "./columns";
+import { createdAt, id, tenantId } from "./columns";
 import {
   appealStatus,
   attemptStatus,
   batchStatus,
+  evidenceKind,
+  evidenceSource,
+  scanStatus,
+  submissionStatus,
   decisionOutcome,
   moderationOutcome,
 } from "./enums";
-import { briefVariants, practicalBriefs, sections } from "./curriculum";
+import {
+  briefCriteria,
+  briefVariants,
+  practicalBriefs,
+  sections,
+} from "./curriculum";
 import {
   assessmentBlueprints,
   questionVersions,
@@ -44,9 +53,9 @@ export const assessmentSchedules = pgTable(
     cohortId: uuid()
       .notNull()
       .references(() => cohorts.id),
-    blueprintId: uuid()
-      .notNull()
-      .references(() => assessmentBlueprints.id),
+    // Exactly one of blueprint (knowledge) or brief (practical).
+    blueprintId: uuid().references(() => assessmentBlueprints.id),
+    briefId: uuid().references(() => practicalBriefs.id),
     assessmentDayId: uuid().references(() => assessmentDays.id),
     opensAt: timestamp({ withTimezone: true }).notNull(),
     closesAt: timestamp({ withTimezone: true }).notNull(),
@@ -57,6 +66,10 @@ export const assessmentSchedules = pgTable(
     check(
       "assessment_schedules_window",
       sql`${t.closesAt} > ${t.opensAt}`,
+    ),
+    check(
+      "assessment_schedules_one_target",
+      sql`(${t.blueprintId} IS NULL) <> (${t.briefId} IS NULL)`,
     ),
     index("assessment_schedules_cohort_idx").on(t.cohortId),
   ],
@@ -201,6 +214,12 @@ export const attemptItems = pgTable(
   ],
 );
 
+/**
+ * One practical attempt by a learner at a brief: the seeded variant they were
+ * assigned (seed = learner : brief : attempt, stored, never re-drawn), their
+ * evidence, and its status. Draft until "Submit for assessment"; observed
+ * briefs are created by the assessor on the assessment day.
+ */
 export const submissions = pgTable(
   "submissions",
   {
@@ -208,25 +227,131 @@ export const submissions = pgTable(
     enrolmentId: uuid()
       .notNull()
       .references(() => enrolments.id),
+    briefId: uuid()
+      .notNull()
+      .references(() => practicalBriefs.id),
     briefVariantId: uuid()
       .notNull()
       .references(() => briefVariants.id),
     attemptNo: integer().notNull().default(1),
-    storageKey: text().notNull(),
-    checksumSha256: text().notNull(),
-    sizeBytes: bigint({ mode: "number" }).notNull(),
-    mimeType: text().notNull(),
-    submittedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+    seed: text().notNull(),
+    scheduleId: uuid().references(() => assessmentSchedules.id),
+    status: submissionStatus().notNull().default("draft"),
+    observed: boolean().notNull().default(false),
+    observationNotes: text(),
+    // The learner confirmed assessors and moderators can open their links.
+    linksConfirmed: boolean().notNull().default(false),
+    createdAt: createdAt(),
+    submittedAt: timestamp({ withTimezone: true }),
   },
   (t) => [
-    unique("submissions_storage_key_uq").on(t.storageKey),
-    index("submissions_enrolment_idx").on(t.enrolmentId),
-    check("submissions_size_positive", sql`${t.sizeBytes} > 0`),
-    check(
-      "submissions_checksum_format",
-      sql`${t.checksumSha256} ~ '^[0-9a-f]{64}$'`,
+    unique("submissions_enrolment_brief_attempt_uq").on(
+      t.enrolmentId,
+      t.briefId,
+      t.attemptNo,
     ),
+    index("submissions_enrolment_idx").on(t.enrolmentId),
     check("submissions_attempt_no", sql`${t.attemptNo} >= 1`),
+    check(
+      "submissions_submitted_at",
+      sql`(${t.status} = 'submitted') = (${t.submittedAt} IS NOT NULL)`,
+    ),
+  ],
+);
+
+/**
+ * Evidence in a submission: a privately stored file (Vercel Blob pathname,
+ * verified size/type/checksum, scan status) or an allow-listed https link.
+ */
+export const evidenceItems = pgTable(
+  "evidence_items",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    submissionId: uuid()
+      .notNull()
+      .references(() => submissions.id),
+    kind: evidenceKind().notNull(),
+    source: evidenceSource().notNull().default("learner"),
+    addedBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    storagePathname: text(),
+    fileName: text(),
+    mimeType: text(),
+    sizeBytes: bigint({ mode: "number" }),
+    checksumSha256: text(),
+    linkUrl: text(),
+    linkHost: text(),
+    scanStatus: scanStatus().notNull().default("not_scanned"),
+    scannedAt: timestamp({ withTimezone: true }),
+    createdAt: createdAt(),
+  },
+  (t) => [
+    index("evidence_items_submission_idx").on(t.submissionId),
+    unique("evidence_items_pathname_uq").on(t.tenantId, t.storagePathname),
+    check(
+      "evidence_items_file_fields",
+      sql`${t.kind} <> 'file' OR (${t.storagePathname} IS NOT NULL AND ${t.fileName} IS NOT NULL AND ${t.mimeType} IS NOT NULL AND ${t.sizeBytes} > 0 AND ${t.checksumSha256} ~ '^[0-9a-f]{64}$')`,
+    ),
+    check(
+      "evidence_items_link_fields",
+      sql`${t.kind} <> 'link' OR (${t.linkUrl} ~ '^https://' AND ${t.linkHost} IS NOT NULL)`,
+    ),
+  ],
+);
+
+/** Met / Not yet met per brief criterion, with an optional comment. Locked at decision. */
+export const criterionJudgements = pgTable(
+  "criterion_judgements",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    submissionId: uuid()
+      .notNull()
+      .references(() => submissions.id),
+    criterionId: uuid()
+      .notNull()
+      .references(() => briefCriteria.id),
+    met: boolean().notNull(),
+    comment: text(),
+    judgedBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    judgedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("criterion_judgements_submission_criterion_uq").on(
+      t.tenantId,
+      t.submissionId,
+      t.criterionId,
+    ),
+  ],
+);
+
+/** An assessor's unsaved practical decision. Recording creates an immutable decision. */
+export const practicalDecisionDrafts = pgTable(
+  "practical_decision_drafts",
+  {
+    tenantId: tenantId(),
+    submissionId: uuid()
+      .notNull()
+      .references(() => submissions.id),
+    assessorId: uuid()
+      .notNull()
+      .references(() => users.id),
+    outcome: decisionOutcome(),
+    feedback: text().notNull().default(""),
+    updatedAt: timestamp({ withTimezone: true })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (t) => [
+    primaryKey({
+      name: "practical_decision_drafts_pk",
+      columns: [t.submissionId, t.assessorId],
+    }),
   ],
 );
 

@@ -15,6 +15,9 @@ import {
   signOffRegister,
   unlockPaper,
 } from "@/lib/server/register";
+import { addLink, PracticalError } from "@/lib/server/practical";
+import { recordPracticalDecision, savePracticalDraft, saveJudgements } from "@/lib/server/practicalMarking";
+import { startObservation } from "@/lib/server/register";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
 /**
@@ -48,7 +51,7 @@ async function run(back: string, fn: (ctx: Awaited<ReturnType<typeof getServerCt
             : "/forbidden",
       );
     }
-    if (e instanceof AssessmentError) redirect(withParam(to, "error", e.message));
+    if (e instanceof AssessmentError || e instanceof PracticalError) redirect(withParam(to, "error", e.message));
     throw e;
   }
   redirect(typeof done === "string" ? withParam(to, "done", done) : to);
@@ -183,5 +186,66 @@ export async function newVersionAction(form: FormData) {
       criteria,
     });
     return warnings.length ? `versioned:${warnings.join(" ")}` : "versioned";
+  });
+}
+
+// --- Practical --------------------------------------------------------------
+
+/** Register: start an observed task for a learner, then go to its marking view. */
+export async function observeAction(form: FormData) {
+  const ctx = await getServerCtx();
+  const actor = await getActor(ctx);
+  const back = safeNext(str(form, "back"), "/staff/assessment-days");
+  let id: string;
+  try {
+    id = await startObservation(ctx, actor, str(form, "scheduleId"), str(form, "enrolmentId"));
+  } catch (e) {
+    if (e instanceof AccessDeniedError) redirect(e.decision.result === "stepup" ? `/account/passkeys?required=1&next=${encodeURIComponent(back)}` : "/forbidden");
+    if (e instanceof AssessmentError || e instanceof PracticalError) redirect(withParam(back, "error", e.message));
+    throw e;
+  }
+  redirect(`/staff/marking/practical/${id}`);
+}
+
+export async function judgementsAction(form: FormData) {
+  const input: Record<string, { met: boolean; comment: string }> = {};
+  for (const [k, v] of form.entries()) {
+    if (k.startsWith("met:") && (v === "met" || v === "not_met")) {
+      const id = k.slice(4);
+      input[id] = { met: v === "met", comment: str(form, `comment:${id}`) };
+    }
+  }
+  const notes = form.has("observationNotes") ? str(form, "observationNotes") : undefined;
+  await run(str(form, "back"), async (ctx, actor) => {
+    await saveJudgements(ctx, actor, str(form, "submissionId"), input, notes);
+    return "judged";
+  });
+}
+
+export async function practicalDecisionAction(form: FormData) {
+  const intent = str(form, "intent");
+  await run(str(form, "back"), async (ctx, actor) => {
+    const submissionId = str(form, "submissionId");
+    const outcome = str(form, "outcome");
+    const feedback = str(form, "feedback");
+    if (intent === "draft") {
+      await savePracticalDraft(ctx, actor, submissionId, outcome || null, feedback);
+      return "draft";
+    }
+    if (form.get("confirm") !== "1") {
+      await savePracticalDraft(ctx, actor, submissionId, outcome || null, feedback);
+      throw new AssessmentError("invalid_answer", "Tick the box to confirm the decision is final. Your draft was saved.");
+    }
+    await recordPracticalDecision(ctx, actor, submissionId, outcome, feedback);
+    return "decided";
+  });
+}
+
+/** Assessor adds a link (e.g. their own video) to an observed submission. */
+export async function assessorLinkAction(form: FormData) {
+  await run(str(form, "back"), async (ctx, actor) => {
+    if (!actor) throw new AccessDeniedError({ result: "signin" });
+    await addLink(ctx, actor, str(form, "submissionId"), str(form, "url"));
+    return "evidence_added";
   });
 }

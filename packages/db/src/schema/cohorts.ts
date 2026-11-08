@@ -13,6 +13,7 @@ import { createdAt, id, updatedAt } from "./columns";
 import { attendanceStatus } from "./enums";
 import { qualifications } from "./curriculum";
 import { enrolments, users } from "./people";
+import { assessmentCentres } from "./qcto";
 
 export const cohorts = pgTable(
   "cohorts",
@@ -24,12 +25,20 @@ export const cohorts = pgTable(
     name: text().notNull(),
     startsOn: date().notNull(),
     endsOn: date().notNull(),
+    // QCTO: the scheduled EISA date and the centre where it is written
+    // (LEISA column AM). The readiness file is due 3 months before eisa_on.
+    eisaOn: date(),
+    assessmentCentreId: uuid().references(() => assessmentCentres.id),
     createdAt: createdAt(),
     updatedAt: updatedAt(),
   },
   (t) => [
     unique("cohorts_qualification_name_uq").on(t.qualificationId, t.name),
     check("cohorts_dates_ordered", sql`${t.endsOn} >= ${t.startsOn}`),
+    check(
+      "cohorts_eisa_after_start",
+      sql`${t.eisaOn} IS NULL OR ${t.eisaOn} >= ${t.startsOn}`,
+    ),
   ],
 );
 

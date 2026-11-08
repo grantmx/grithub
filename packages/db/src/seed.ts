@@ -10,6 +10,7 @@ import {
   demoKnowledgeSections,
   demoPracticalSection,
   demoLibrary,
+  demoObservedBrief,
   demoShortAnswers,
   demoUsers,
 } from "./seed-data";
@@ -195,23 +196,43 @@ export async function seedDemo(
       body: demoPracticalSection.body,
       status: "published",
     });
-    const [brief] = await tx
-      .insert(s.practicalBriefs)
-      .values({
-        moduleId: pmId,
-        curriculumComponentRef: demoBrief.component,
-        title: demoBrief.title,
-        instructions: demoBrief.instructions,
-        assessmentCriteria: demoBrief.assessmentCriteria,
-      })
-      .returning({ id: s.practicalBriefs.id });
-    await tx.insert(s.briefVariants).values(
-      demoBrief.variants.map((v) => ({
-        ...v,
-        briefId: must(brief).id,
-        status: "active" as const,
-      })),
-    );
+    // Practical briefs: criteria and variants are added while draft, then the
+    // brief is published (they lock). One evidence brief, one observed brief.
+    const briefIds: Record<"evidence" | "observed", string> = { evidence: "", observed: "" };
+    for (const [key, b, mode] of [
+      ["evidence", demoBrief, "submission"],
+      ["observed", demoObservedBrief, "observed"],
+    ] as const) {
+      const [brief] = await tx
+        .insert(s.practicalBriefs)
+        .values({
+          moduleId: pmId,
+          curriculumComponentRef: b.component,
+          title: b.title,
+          instructions: b.instructions,
+          assessmentCriteria: b.assessmentCriteria,
+          mode,
+        })
+        .returning({ id: s.practicalBriefs.id });
+      const briefId = must(brief).id;
+      briefIds[key] = briefId;
+      await tx.insert(s.briefCriteria).values(
+        b.criteria.map((c, i) => ({
+          briefId,
+          code: c.code,
+          label: c.label,
+          guidance: c.guidance || null,
+          sortOrder: i + 1,
+        })),
+      );
+      await tx.insert(s.briefVariants).values(
+        b.variants.map((v) => ({ ...v, briefId, status: "active" as const })),
+      );
+      await tx
+        .update(s.practicalBriefs)
+        .set({ status: "published", publishedAt: now })
+        .where(eq(s.practicalBriefs.id, briefId));
+    }
 
     await tx.insert(s.libraryResources).values(
       demoLibrary.map((r, i) => ({
@@ -382,6 +403,21 @@ export async function seedDemo(
       {
         cohortId,
         blueprintId: must(summative).id,
+        assessmentDayId: must(day).id,
+        opensAt: new Date(now.getTime() - 6 * 60 * 60 * 1000),
+        closesAt: new Date(now.getTime() + 18 * 60 * 60 * 1000),
+        createdBy: userIds.admin,
+      },
+      {
+        cohortId,
+        briefId: briefIds.evidence,
+        opensAt: new Date(now.getTime() - DAY_MS),
+        closesAt: new Date(now.getTime() + 60 * DAY_MS),
+        createdBy: userIds.admin,
+      },
+      {
+        cohortId,
+        briefId: briefIds.observed,
         assessmentDayId: must(day).id,
         opensAt: new Date(now.getTime() - 6 * 60 * 60 * 1000),
         closesAt: new Date(now.getTime() + 18 * 60 * 60 * 1000),

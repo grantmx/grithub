@@ -60,8 +60,8 @@ export function requirementFor(pathname: string): Requirement {
   if (under("/staff/marking")) {
     return { kind: "roles", anyOf: ["assessor"], stepUp: true };
   }
-  // Paper replay and PDF (answer keys): never facilitators or admins.
-  if (under("/staff/attempts")) {
+  // Paper replay and PDF (answer keys), and practical evidence: never facilitators or admins.
+  if (under("/staff/attempts") || under("/staff/submissions")) {
     return {
       kind: "roles",
       anyOf: ["assessor", "moderator", "external_evaluator"],

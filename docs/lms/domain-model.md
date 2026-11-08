@@ -213,6 +213,15 @@ erDiagram
 - **Appeal**: a learner's appeal against a released decision; a moderator upholds it or orders a reassessment (one extra attempt).
 - AssessmentBlueprint gains `status` (draft/published), `showAnswers`; AssessmentAttempt gains `scheduleId`, `unlockId`, `deadlineAt`, `extraMinutes`, `pausedAt`, `autoSubmitted`, `usedFallback`; AttemptItem gains `responseText`, `flagged`, `marksAwarded`, `markerNote`; QuestionVersion gains `maxMarks` and type `short_answer`.
 
+### Added with practical assessments (2026-11-08)
+
+- **PracticalBrief** gains `mode` (submission / observed), `maxAttempts`, `status` (draft / published). **BriefCriterion**: Met / Not yet met criteria shared by every variant.
+- **Submission** is now one practical attempt: seeded, stored `briefVariantId` + `seed`, `attemptNo`, `status` (draft / submitted), `observed`, `observationNotes`, `linksConfirmed`, `scheduleId`.
+- **EvidenceItem**: a private file (Blob pathname, size, type, SHA-256, scan status) or an allow-listed https link; source learner or assessor.
+- **CriterionJudgement**: Met / Not yet met + comment per criterion. **PracticalDecisionDraft**: unsaved decision.
+- **AssessmentSchedule** now targets a blueprint or a brief.
+- New tables carry a nullable `tenant_id` (tenancy readiness).
+
 ## People, cohorts and operations
 
 ```mermaid

@@ -21,6 +21,7 @@ export default async function AdminLayout({
             { href: "/admin/people", label: "People" },
             { href: "/admin/cohorts", label: "Cohorts" },
             { href: "/admin/assessments", label: "Assessments" },
+            { href: "/admin/practical", label: "Practical tasks" },
           ],
         },
       ]}

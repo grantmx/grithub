@@ -337,7 +337,7 @@ export async function createSchedule(ctx: Ctx, actor: AccessContext | null, inpu
 /** Cohorts and published blueprints, for the coverage report picker. */
 export async function coverageOptions(ctx: Ctx, actor: AccessContext | null) {
   await authorize(ctx, actor, ADMIN, "authoring.coverageOptions");
-  return ctx.db
+  const rows = await ctx.db
     .selectDistinct({
       blueprintId: assessmentSchedules.blueprintId,
       cohortId: assessmentSchedules.cohortId,
@@ -348,6 +348,8 @@ export async function coverageOptions(ctx: Ctx, actor: AccessContext | null) {
     .innerJoin(assessmentBlueprints, eq(assessmentBlueprints.id, assessmentSchedules.blueprintId))
     .innerJoin(cohorts, eq(cohorts.id, assessmentSchedules.cohortId))
     .orderBy(asc(cohorts.name), asc(assessmentBlueprints.title));
+  // Inner join on blueprints: practical schedules (no blueprint) are excluded.
+  return rows.map((r) => ({ ...r, blueprintId: r.blueprintId! }));
 }
 
 // ---------------------------------------------------------------------------

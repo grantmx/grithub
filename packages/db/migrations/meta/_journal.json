@@ -57,6 +57,34 @@
       "when": 1794131425594,
       "tag": "0007_assessment_triggers",
       "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1794134128230,
+      "tag": "0008_qcto",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1794134147978,
+      "tag": "0009_qcto_reference_and_triggers",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1794134394687,
+      "tag": "0010_practical",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1794134401885,
+      "tag": "0011_practical_triggers",
+      "breakpoints": true
     }
   ]
 }

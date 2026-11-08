@@ -134,8 +134,13 @@ describe("demo seed", () => {
       expect(rules.length).toBe(bp.kind === "formative" ? 3 : 4);
     }
     const schedules = await t.db.select().from(s.assessmentSchedules);
-    expect(schedules).toHaveLength(2);
-    expect(schedules.filter((x) => x.assessmentDayId !== null)).toHaveLength(1);
+    expect(schedules).toHaveLength(4);
+    expect(schedules.filter((x) => x.assessmentDayId !== null)).toHaveLength(2);
+    const briefs = await t.db.select().from(s.practicalBriefs);
+    expect(briefs.map((b) => b.mode).sort()).toEqual(["observed", "submission"]);
+    expect(briefs.every((b) => b.status === "published")).toBe(true);
+    const criteria = await t.db.select().from(s.briefCriteria);
+    expect(criteria).toHaveLength(6);
   });
 
   it("writes section text as Markdown and publishes library resources", async () => {

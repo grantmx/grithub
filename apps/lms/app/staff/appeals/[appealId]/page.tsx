@@ -6,6 +6,9 @@ import styles from "@/components/assess/staff.module.css";
 import ui from "@/components/ui.module.css";
 import { AssessmentError } from "@/lib/server/assessments";
 import { getReplay } from "@/lib/server/marking";
+import { EvidenceViewer } from "@/components/practical/EvidenceViewer";
+import { PracticalError } from "@/lib/server/practical";
+import { getSubmissionView } from "@/lib/server/practicalMarking";
 import { getAppeal } from "@/lib/server/moderation";
 import { requirePage } from "@/lib/server/page";
 
@@ -25,12 +28,18 @@ export default async function AppealPage({
   const sp = await searchParams;
   const path = `/staff/appeals/${appealId}`;
   const { ctx, actor } = await requirePage(path);
-  let a, replay;
+  let a, view;
   try {
     a = await getAppeal(ctx, actor, appealId);
-    replay = await getReplay(ctx, actor, a.decision.attemptId!);
+    if (a.decision.submissionId) {
+      const p = await getSubmissionView(ctx, actor, a.decision.submissionId);
+      view = { kind: "practical" as const, learnerName: p.learner.name, title: p.brief.title, decisions: p.decisions, practical: p };
+    } else {
+      const r = await getReplay(ctx, actor, a.decision.attemptId!);
+      view = { kind: "knowledge" as const, learnerName: r.learner.name, title: r.blueprint.title, decisions: r.decisions, knowledge: r };
+    }
   } catch (e) {
-    if (e instanceof AssessmentError) notFound();
+    if (e instanceof AssessmentError || e instanceof PracticalError) notFound();
     throw e;
   }
   const open = a.appeal.status === "open";
@@ -38,10 +47,10 @@ export default async function AppealPage({
   return (
     <div className={ui.stack}>
       <p className={ui.hint}>
-        <a href="/staff/appeals">Appeals</a> › {replay.learner.name}
+        <a href="/staff/appeals">Appeals</a> › {view.learnerName}
       </p>
       <h1 className={ui.h1} style={{ margin: 0 }}>
-        Appeal: {replay.learner.name} · {replay.blueprint.title}
+        Appeal: {view.learnerName} · {view.title}
       </h1>
       {sp.done === "appeal_decided" ? (
         <p role="status" className={ui.bannerSuccess}>
@@ -55,10 +64,29 @@ export default async function AppealPage({
       ) : null}
       <div className={styles.split}>
         <section className={styles.panel} aria-labelledby="paper-title">
-          <h2 id="paper-title" className={styles.panelTitle}>
-            Paper (served order) · <a href={`/staff/attempts/${replay.attempt.id}/pdf`}>PDF</a>
-          </h2>
-          <PaperView items={replay.items} />
+          {view.kind === "knowledge" ? (
+            <>
+              <h2 id="paper-title" className={styles.panelTitle}>
+                Paper (served order) · <a href={`/staff/attempts/${view.knowledge.attempt.id}/pdf`}>PDF</a>
+              </h2>
+              <PaperView items={view.knowledge.items} />
+            </>
+          ) : (
+            <>
+              <h2 id="paper-title" className={styles.panelTitle}>
+                Evidence · Variant {view.practical.variant.label}
+              </h2>
+              <EvidenceViewer evidence={view.practical.evidence} />
+              <ul className={styles.history}>
+                {view.practical.criteria.map((c) => (
+                  <li key={c.id}>
+                    <strong>{c.code}</strong> {c.label}: {c.met === null ? "not judged" : c.met ? "Met" : "Not yet met"}
+                    {c.comment ? ` · ${c.comment}` : ""}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
         </section>
         <div className={`${styles.side} ${ui.stack}`}>
           <section className={styles.panel} aria-labelledby="reason-title">
@@ -73,7 +101,7 @@ export default async function AppealPage({
               Decision history
             </h2>
             <ol className={styles.history}>
-              {replay.decisions.map((d) => (
+              {view.decisions.map((d) => (
                 <li key={d.id}>
                   <span className={d.superseded ? styles.superseded : undefined}>
                     {d.outcome === "competent" ? "Competent" : "Not yet competent"} · {d.assessorName} · {dateFmt.format(d.decidedAt)}

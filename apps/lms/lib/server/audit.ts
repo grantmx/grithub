@@ -51,7 +51,19 @@ export type AuditAction =
   | "admin.blueprint.published"
   | "admin.schedule.created"
   | "question.retired"
-  | "question.versioned";
+  | "question.versioned"
+  | "practical.submission.started"
+  | "practical.evidence.added"
+  | "practical.evidence.removed"
+  | "practical.evidence.rejected"
+  | "practical.evidence.viewed"
+  | "practical.submission.submitted"
+  | "practical.observation.started"
+  | "practical.judgements.saved"
+  | "practical.decision.recorded"
+  | "practical.appeal.submitted"
+  | "admin.brief.created"
+  | "admin.brief.published";
 
 export async function writeAudit(
   ctx: Pick<ServerCtx, "db" | "ipHash">,

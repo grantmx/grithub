@@ -91,12 +91,28 @@
       "namedRegex": "^/admin/people/(?<nxtPuserId>[^/]+?)/recovery(?:/)?$"
     },
     {
+      "page": "/admin/practical/[briefId]",
+      "regex": "^/admin/practical/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbriefId": "nxtPbriefId"
+      },
+      "namedRegex": "^/admin/practical/(?<nxtPbriefId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/auth/link/[token]",
       "regex": "^/auth/link/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPtoken": "nxtPtoken"
       },
       "namedRegex": "^/auth/link/(?<nxtPtoken>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/evidence/[evidenceId]",
+      "regex": "^/evidence/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPevidenceId": "nxtPevidenceId"
+      },
+      "namedRegex": "^/evidence/(?<nxtPevidenceId>[^/]+?)(?:/)?$"
     },
     {
       "page": "/learn/assessment/[scheduleId]",
@@ -129,6 +145,14 @@
         "nxtPattemptId": "nxtPattemptId"
       },
       "namedRegex": "^/learn/attempt/(?<nxtPattemptId>[^/]+?)/review(?:/)?$"
+    },
+    {
+      "page": "/learn/practical/[scheduleId]",
+      "regex": "^/learn/practical/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPscheduleId": "nxtPscheduleId"
+      },
+      "namedRegex": "^/learn/practical/(?<nxtPscheduleId>[^/]+?)(?:/)?$"
     },
     {
       "page": "/learn/section/[sectionId]",
@@ -195,6 +219,14 @@
       "namedRegex": "^/staff/attempts/(?<nxtPattemptId>[^/]+?)/pdf(?:/)?$"
     },
     {
+      "page": "/staff/marking/practical/[submissionId]",
+      "regex": "^/staff/marking/practical/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsubmissionId": "nxtPsubmissionId"
+      },
+      "namedRegex": "^/staff/marking/practical/(?<nxtPsubmissionId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/marking/[attemptId]",
       "regex": "^/staff/marking/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -233,6 +265,14 @@
         "nxtPquestionId": "nxtPquestionId"
       },
       "namedRegex": "^/staff/questions/(?<nxtPquestionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/submissions/[submissionId]",
+      "regex": "^/staff/submissions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsubmissionId": "nxtPsubmissionId"
+      },
+      "namedRegex": "^/staff/submissions/(?<nxtPsubmissionId>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -301,6 +341,18 @@
       "regex": "^/admin/people/invite(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin/people/invite(?:/)?$"
+    },
+    {
+      "page": "/admin/practical",
+      "regex": "^/admin/practical(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/practical(?:/)?$"
+    },
+    {
+      "page": "/api/evidence/upload",
+      "regex": "^/api/evidence/upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/evidence/upload(?:/)?$"
     },
     {
       "page": "/api/health",
