@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray } from "drizzle-orm";
 import {
   answerOptions,
   appeals,
@@ -13,6 +13,7 @@ import {
   decisionDrafts,
   enrolments,
   itemMarks,
+  moderationActionCompletions,
   moderationBatches,
   moderationRecords,
   modules,
@@ -24,6 +25,7 @@ import {
 import type { AccessContext, Requirement, StaffRole } from "@/lib/access";
 import { AssessmentError, currentDecision, finaliseExpired } from "./assessments";
 import { writeAudit } from "./audit";
+import { sampleReassessment } from "./moderation";
 import { authorize } from "./auth";
 import type { ServerCtx } from "./context";
 import { assertCohortScope, cohortScope, inScope } from "./staffScope";
@@ -43,7 +45,25 @@ const REPLAY: Requirement = { kind: "roles", anyOf: KEY_ROLES, stepUp: true };
 
 type Ctx = ServerCtx;
 
-export type QueueStatus = "needs_marking" | "ready" | "draft" | "referred_back" | "decided";
+export type QueueStatus = "needs_marking" | "ready" | "draft" | "referred_back" | "actions_due" | "agreed" | "decided";
+
+/** Queue status for a recorded decision, from its moderation verdict (design.md §14, 2026-11-08). */
+export async function moderatedStatus(
+  ctx: Pick<Ctx, "db">,
+  d: { id: string; releasedAt: Date | null },
+): Promise<QueueStatus> {
+  if (d.releasedAt) return "decided";
+  const [m] = await ctx.db
+    .select({ m: moderationRecords, done: moderationActionCompletions.id })
+    .from(moderationRecords)
+    .leftJoin(moderationActionCompletions, eq(moderationActionCompletions.moderationRecordId, moderationRecords.id))
+    .where(eq(moderationRecords.decisionId, d.id))
+    .limit(1);
+  if (!m) return "decided";
+  if (m.m.outcome === "referred_back") return "referred_back";
+  if (m.m.requiredActions && !m.done) return "actions_due";
+  return "agreed";
+}
 
 export type QueueRow = {
   attemptId: string;
@@ -116,15 +136,8 @@ export async function markingQueue(
   for (const r of rows) {
     const d = await currentDecision(ctx, r.attempt.id);
     let status: QueueStatus;
-    if (d) {
-      const [m] = await ctx.db
-        .select({ outcome: moderationRecords.outcome })
-        .from(moderationRecords)
-        .where(eq(moderationRecords.decisionId, d.id))
-        .orderBy(desc(moderationRecords.moderatedAt))
-        .limit(1);
-      status = m?.outcome === "referred_back" && !d.releasedAt ? "referred_back" : "decided";
-    } else if ((toMark.get(r.attempt.id) ?? 0) > 0) status = "needs_marking";
+    if (d) status = await moderatedStatus(ctx, d);
+    else if ((toMark.get(r.attempt.id) ?? 0) > 0) status = "needs_marking";
     else if (drafts.some((x) => x.attemptId === r.attempt.id)) status = "draft";
     else status = "ready";
     out.push({
@@ -301,9 +314,10 @@ async function loadReplay(ctx: Ctx, attemptId: string) {
   const decisionIds = decisions.map((x) => x.d.id);
   const moderation = decisionIds.length
     ? await ctx.db
-        .select({ m: moderationRecords, moderatorName: users.displayName })
+        .select({ m: moderationRecords, moderatorName: users.displayName, completion: moderationActionCompletions })
         .from(moderationRecords)
         .innerJoin(users, eq(users.id, moderationRecords.moderatorId))
+        .leftJoin(moderationActionCompletions, eq(moderationActionCompletions.moderationRecordId, moderationRecords.id))
         .where(inArray(moderationRecords.decisionId, decisionIds))
         .orderBy(asc(moderationRecords.moderatedAt))
     : [];
@@ -327,7 +341,9 @@ async function loadReplay(ctx: Ctx, attemptId: string) {
       ...x.d,
       assessorName: x.assessorName,
       superseded: decisions.some((y) => y.d.supersedesId === x.d.id),
-      moderation: moderation.filter((m) => m.m.decisionId === x.d.id).map((m) => ({ ...m.m, moderatorName: m.moderatorName })),
+      moderation: moderation
+        .filter((m) => m.m.decisionId === x.d.id)
+        .map((m) => ({ ...m.m, moderatorName: m.moderatorName, completion: m.completion })),
       appeal: appealRows.find((p) => p.decisionId === x.d.id) ?? null,
     })),
     score: {
@@ -374,19 +390,12 @@ export async function getMarkingView(ctx: Ctx, actor: AccessContext | null, atte
   const batchOpen = current
     ? (await ctx.db.select({ s: moderationBatches.status }).from(moderationBatches).where(eq(moderationBatches.id, current.batchId)))[0]?.s === "open"
     : true;
-  const reassessOf = await reassessmentSource(ctx, replay.attempt);
   return {
     ...replay,
     draft: draft ?? null,
     current,
-    canDecide: replay.score.allMarked && batchOpen && reassessOf?.assessorId !== a.userId,
-    blockedReason: !replay.score.allMarked
-      ? ("marking" as const)
-      : !batchOpen
-        ? ("released" as const)
-        : reassessOf?.assessorId === a.userId
-          ? ("reassess_other_assessor" as const)
-          : null,
+    canDecide: replay.score.allMarked && batchOpen,
+    blockedReason: !replay.score.allMarked ? ("marking" as const) : !batchOpen ? ("released" as const) : null,
     prevId: idx > 0 ? queue[idx - 1]!.attemptId : null,
     nextId: idx >= 0 && idx < queue.length - 1 ? queue[idx + 1]!.attemptId : null,
   };
@@ -568,10 +577,6 @@ export async function recordDecision(
   if (attempt.status !== "graded") {
     throw new AssessmentError("invalid_answer", "Mark every short answer before recording a decision.");
   }
-  const reassessOf = await reassessmentSource(ctx, attempt);
-  if (reassessOf?.assessorId === a.userId) {
-    throw new AssessmentError("invalid_answer", "A different assessor must decide this reassessment.");
-  }
   const previous = await currentDecision(ctx, attemptId);
   if (previous?.releasedAt) {
     throw new AssessmentError("submitted", "This result has been released. Changes go through an appeal.");
@@ -592,6 +597,9 @@ export async function recordDecision(
   await ctx.db
     .delete(decisionDrafts)
     .where(and(eq(decisionDrafts.attemptId, attemptId), eq(decisionDrafts.assessorId, a.userId)));
+  // A reassessment ordered on appeal is marked by the cohort's (only) assessor
+  // and is always in the moderation sample (design.md §14, 2026-11-08).
+  if (await reassessmentSource(ctx, attempt)) await sampleReassessment(ctx, batchId, { attemptId }, a.userId);
   await writeAudit(ctx, {
     action: "assessment.decision.recorded",
     actorId: a.userId,

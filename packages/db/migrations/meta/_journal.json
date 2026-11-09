@@ -113,6 +113,41 @@
       "when": 1794147844803,
       "tag": "0015_statssa_area_codes",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1794153130747,
+      "tag": "0016_moderation_sampling",
+      "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1794153138182,
+      "tag": "0017_moderation_rules",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1794165063505,
+      "tag": "0018_comms",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1794165130391,
+      "tag": "0019_comms_threads_by_module",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1794165190058,
+      "tag": "0020_comms_rules",
+      "breakpoints": true
     }
   ]
 }

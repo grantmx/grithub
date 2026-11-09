@@ -44,6 +44,15 @@ const ICONS = {
   upload: "upload",
   observe: "visibility",
   practical: "construction",
+  messages: "chat",
+  notifications: "notifications",
+  session: "videocam",
+  pin: "keep",
+  report: "report",
+  reply: "reply",
+  calendar: "event",
+  send: "send",
+  edit: "edit",
 };
 
 const require = createRequire(import.meta.url);

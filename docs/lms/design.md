@@ -1,6 +1,6 @@
 # Design brief: apps/lms
 
-> Status: **Approved v3 (2026-11-07).** Decisions come from the design-gate Q&A recorded in the last section. Anything this brief does not cover must go back through the design gate in `CLAUDE.md` before it is built.
+> Status: **Approved v3 (2026-11-07), communication and support added 2026-11-08.** Decisions come from the design-gate Q&A recorded in the last section. Anything this brief does not cover must go back through the design gate in `CLAUDE.md` before it is built.
 
 ## 1. Principles
 
@@ -50,7 +50,7 @@ flowchart TD
 
 **Learner primary navigation:**
 
-- Phones: bottom bar with 4 items: **Home · Learn · Schedule · More**.
+- Phones: bottom bar with 5 items: **Home · Learn · Library · Messages · More** (§14, 2026-11-08; Schedule stays out, live sessions sit on Home and the programme page).
 - Laptops: top bar with the same items, plus the Display menu and the account menu.
 - Both: a notifications icon (in-app list of announcements, released results and deadlines). Email remains the only off-platform channel.
 - **Email preferences** (Account → Notifications):
@@ -59,9 +59,9 @@ flowchart TD
 
 **Staff navigation:** a left sidebar (laptop-first), grouped by role.
 
-- Facilitator: Cohorts, Content, Announcements, Discussions, Tickets, Attendance.
-- Assessor: Marking queue, Assessment days.
-- Moderator: Moderation sample.
+- Facilitator: Learner progress (at-risk badge), Announcements, Discussions, Messages, Support tickets, Reports, Live sessions, Section notes, Assessment days (§14, 2026-11-08).
+- Assessor: Marking queue, Moderation feedback (with a count badge for new outcomes), Assessment days.
+- Moderator: Moderation sample, Assessment materials (read-only banks, formatives, section checks), Appeals.
 - Admin: People, Qualifications, Question banks, Blueprints, Exports, Sync status, Audit log.
 - External evaluator: a read-only "Evidence" area only.
 
@@ -69,49 +69,59 @@ flowchart TD
 
 ### Learner
 
-| #   | Screen                                | Notes                                                                                                                                |
-| --- | ------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
-| L1  | Invite landing / register passkey     | Explains passkeys in one sentence and offers "Add another device"                                                                    |
-| L2  | Sign in                               | One button: "Sign in with passkey". Help link for lost devices                                                                       |
-| L3  | First-run: agreement and POPIA notice | Accept once; the accepted version is stored                                                                                          |
-| L3b | First-run: QCTO learner profile       | Grouped sub-pages (About you → Contact & address → Background → Review & confirm); learner ticks "These details are correct"         |
-| L4  | Home                                  | Greeting with first name, Continue card, Coming up, latest announcement                                                              |
-| L5  | My programme                          | Module cards with **Learning** state + **Competence** state                                                                          |
-| L6  | Module overview                       | Section list with checkmarks, thin bar, "x of y sections", "Download module text (PDF)"                                              |
-| L7  | Section page                          | Coursera-style item page: grouped outline + featured media → text → check card → Mark as completed → Go to next item                 |
-| L8  | Practical brief                       | Instructions, criteria, assigned variant, upload, submission history                                                                 |
-| L9  | Assessments list                      | Open / upcoming / done; window dates; "needs connection" note                                                                        |
-| L10 | Assessment attempt                    | One question per screen on all sizes; question navigator; review before submit; autosave; server timer                               |
-| L11 | Results and feedback                  | Decisions appear only when released (after the batch's moderation closes); assessor feedback                                         |
-| L12 | Schedule                              | Assessment days, venue, what to bring, attendance record                                                                             |
-| L13 | Announcements                         | List + detail                                                                                                                        |
-| L14 | Discussions                           | Thread list per cohort/section; thread view                                                                                          |
-| L15 | Help                                  | FAQ + raise/view support tickets                                                                                                     |
-| L16 | Saved for offline                     | Saved sections, size used, remove                                                                                                    |
-| L17 | Account                               | Passkeys (add/rename/remove), display settings, email preferences, privacy, sign out                                                 |
-| L18 | Offline / error / empty states        | Shared patterns, see §8; text + icon only, no illustrations                                                                          |
-| L19 | Notifications                         | In-app list; unread marker; links to the item                                                                                        |
-| L20 | Programme complete                    | Quiet confirmation, next steps (external assessment), results summary download; states clearly it is not a qualification certificate |
+| #   | Screen                                | Notes                                                                                                                                                           |
+| --- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| L1  | Invite landing / register passkey     | Explains passkeys in one sentence and offers "Add another device"                                                                                               |
+| L2  | Sign in                               | One button: "Sign in with passkey". Help link for lost devices                                                                                                  |
+| L3  | First-run: agreement and POPIA notice | Accept once; the accepted version is stored                                                                                                                     |
+| L3b | First-run: QCTO learner profile       | Grouped sub-pages (About you → Contact & address → Background → Review & confirm); learner ticks "These details are correct"                                    |
+| L4  | Home                                  | Greeting with first name, Continue card, Coming up, latest announcement                                                                                         |
+| L5  | My programme                          | Module cards with **Learning** state + **Competence** state                                                                                                     |
+| L6  | Module overview                       | Section list with checkmarks, thin bar, "x of y sections", "Download module text (PDF)"                                                                         |
+| L7  | Section page                          | Coursera-style item page: grouped outline + featured media → text → check card → Mark as completed → Go to next item                                            |
+| L8  | Practical brief                       | Instructions, criteria, assigned variant, upload, submission history                                                                                            |
+| L9  | Assessments list                      | Open / upcoming / done; window dates; "needs connection" note                                                                                                   |
+| L10 | Assessment attempt                    | One question per screen on all sizes; question navigator; review before submit; autosave; server timer                                                          |
+| L11 | Results and feedback                  | Decisions appear only when released (after the batch's moderation closes); assessor feedback                                                                    |
+| L12 | Schedule                              | Assessment days, venue, what to bring, attendance record                                                                                                        |
+| L13 | Announcements                         | List + detail                                                                                                                                                   |
+| L14 | Discussions                           | Thread list per cohort/section; thread view                                                                                                                     |
+| L15 | Help                                  | FAQ + raise/view support tickets                                                                                                                                |
+| L16 | Saved for offline                     | Saved sections, size used, remove                                                                                                                               |
+| L17 | Account                               | Passkeys (add/rename/remove), display settings, email preferences, privacy, sign out                                                                            |
+| L18 | Offline / error / empty states        | Shared patterns, see §8; text + icon only, no illustrations                                                                                                     |
+| L19 | Notifications                         | In-app list; unread marker; links to the item                                                                                                                   |
+| L20 | Programme complete                    | Quiet confirmation, next steps (external assessment), results summary download; states clearly it is not a qualification certificate                            |
+| L21 | Live session                          | Title, time (SAST), Join on Zoom (always visible), Add to calendar (.ics), recording link, own attendance (§14, 2026-11-08)                                     |
+| L22 | Messages                              | One page: Announcements · Conversations · Help, stacked; new message (pick a facilitator or the assessor); conversation; ticket form and view (§14, 2026-11-08) |
 
 ### Staff
 
-| #   | Screen                                                                       | Roles                          |
-| --- | ---------------------------------------------------------------------------- | ------------------------------ |
-| S1  | Cohort dashboard: progress table, at-risk flags, check-question struggles    | Facilitator, Admin             |
-| S2  | Content editor: sections, content items, media upload, transcript (required) | Facilitator, Admin             |
-| S3  | Announcement composer                                                        | Facilitator, Admin             |
-| S4  | Attendance marking (works on phone)                                          | Facilitator, Admin             |
-| S5  | Marking queue → split view: evidence left, criteria and decision right       | Assessor                       |
-| S6  | Attempt replay: exact questions and option order with keys overlaid          | Assessor, Moderator, Evaluator |
-| S7  | Moderation sample → split view with decision history                         | Moderator                      |
-| S8  | People and invites, role grants                                              | Admin                          |
-| S9  | Qualification / module / section structure + coverage report                 | Admin                          |
-| S10 | Question banks, question versions, pool health                               | Admin                          |
-| S11 | Blueprints with validation and coverage                                      | Admin                          |
-| S12 | Exports (POE, results, attendance), job progress                             | Admin                          |
-| S13 | Airtable sync status                                                         | Admin                          |
-| S14 | Audit log                                                                    | Admin, Evaluator               |
-| S15 | Evaluator evidence home (read-only)                                          | Evaluator                      |
+| #   | Screen                                                                                                       | Roles                                |
+| --- | ------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| S1  | Cohort dashboard: progress table, at-risk flags, check-question struggles                                    | Facilitator, Admin                   |
+| S2  | Content editor: sections, content items, media upload, transcript (required)                                 | Facilitator, Admin                   |
+| S3  | Announcement composer                                                                                        | Facilitator, Admin                   |
+| S4  | Attendance marking (works on phone)                                                                          | Facilitator, Admin                   |
+| S5  | Marking queue → split view: evidence left, criteria and decision right                                       | Assessor                             |
+| S6  | Attempt replay: exact questions and option order with keys overlaid                                          | Assessor, Moderator, Evaluator       |
+| S7  | Moderation sample → batch table (pick sample) → item view: work full width, sticky decision + moderation bar | Moderator                            |
+| S8  | People and invites, role grants                                                                              | Admin                                |
+| S9  | Qualification / module / section structure + coverage report                                                 | Admin                                |
+| S10 | Question banks, question versions, pool health                                                               | Admin                                |
+| S11 | Blueprints with validation and coverage                                                                      | Admin                                |
+| S12 | Exports (POE, results, attendance), job progress                                                             | Admin                                |
+| S13 | Airtable sync status                                                                                         | Admin                                |
+| S14 | Audit log                                                                                                    | Admin, Evaluator                     |
+| S15 | Evaluator evidence home (read-only)                                                                          | Evaluator                            |
+| S16 | Announcements: composer (title, body, Pin to top) + list with pin/unpin                                      | Facilitator, Admin                   |
+| S17 | Discussions: boards per module → threads → thread with one-level replies, pin                                | Facilitator, Admin                   |
+| S18 | Messages: my conversations with learners; start one from an at-risk flag                                     | Facilitator, Assessor                |
+| S19 | Support tickets: filter chips, due/overdue, 90-day on-time summary; ticket with reply, status, reassign      | Facilitator, Admin                   |
+| S20 | Reports: hide or dismiss reported replies and messages                                                       | Facilitator, Admin (messages: Admin) |
+| S21 | Live sessions: schedule (Zoom), edit, cancel, recording link, phone-friendly attendance                      | Facilitator, Admin                   |
+| S22 | Section notes: programme outline per cohort with notes and recording links                                   | Facilitator, Admin                   |
+| S23 | Communication log export (cohort + dates → CSV/PDF)                                                          | Admin, Evaluator                     |
 
 ## 5. Wireframes
 
@@ -397,7 +407,7 @@ Themes: Light / Dark / **System (default)** in the Display menu, stored per user
 - Same tokens, compact spacing scale, `text-ui`/`text-xs`. Light theme only in the MVP.
 - Tables: sortable, filterable, bulk actions, sticky header, filters saved in the URL.
 - Split views for marking and moderation, with keyboard shortcuts for next/previous.
-- Moderators have a **Close sample and release results** action per assessment and cohort; it shows how many learners will be notified before confirming.
+- Moderators have a **Close sample and release results** action per assessment and cohort; it shows how many learners will be notified before confirming, and stays disabled (with the reasons listed) until the sample meets the cohort's rate and every sampled decision is agreed with actions done (§14, 2026-11-08).
 - Destructive or irreversible actions (record decision, moderate, revoke passkey) need a confirmation that states what changes.
 - The evaluator sees the same screens, read-only, with a persistent "Read-only evaluator access, expires dd MMM" banner.
 
@@ -516,3 +526,41 @@ Nothing is undecided in the design itself. One input is still pending:
 | 2026-11-08 | Practical     | Virus scan                     | Placeholder passes and records 'not scanned'; with a real scanner, staff see only clean files and infected files are removed                                                                                                                                                                                                                         |
 | 2026-11-08 | Practical     | Brief page (L8)                | Approved as drawn: status, assigned variant, full instructions, criteria, evidence list with per-file progress, link field, confirm + Submit, history with appeal                                                                                                                                                                                    |
 | 2026-11-08 | Practical     | Marking (S5)                   | Approved as drawn: evidence left (inline images, open files, links), Met/Not yet met + comments, feedback, decision right; one queue with a Practical filter; read-only for moderators and evaluators                                                                                                                                                |
+| 2026-11-08 | Moderation    | Assessors per cohort           | One assessor per cohort (QCTO expects one per programme); the LMS refuses a second assessor grant on a cohort                                                                                                                                                                                                                                        |
+| 2026-11-08 | Moderation    | Sampling rate                  | Set by the SDP admin per cohort (default 25%); the moderator sees it and can't lower it. Minimum sample = rate × decisions in the batch, rounded up                                                                                                                                                                                                  |
+| 2026-11-08 | Moderation    | Who picks the sample           | The moderator picks which decisions go in the sample; the LMS enforces the minimum. A sampled decision can't be removed once moderated                                                                                                                                                                                                               |
+| 2026-11-08 | Moderation    | Close and release              | Blocked until the minimum sample is met and every sampled decision's latest version is Agree, or Agree with actions with the assessor's 'Actions done' ticked                                                                                                                                                                                        |
+| 2026-11-08 | Moderation    | Verdict                        | Agree / Agree with actions / Disagree, with comments and required actions (free text). Disagree: the assessor records a new decision (history kept, learner work never changed) and it returns to the sample for another check                                                                                                                       |
+| 2026-11-08 | Moderation    | Required actions               | Free text; the assessor ticks 'Actions done' with a short note, which the moderator sees                                                                                                                                                                                                                                                             |
+| 2026-11-08 | Moderation    | Assessor sees the outcome      | On the marking page and queue status, a 'Moderation feedback' list, a sidebar count badge for unseen outcomes (no notification system yet), and an email on Disagree or actions (link only, no learner names)                                                                                                                                        |
+| 2026-11-08 | Moderation    | Appeal reassessment            | Same (only) assessor marks the new attempt; that decision is always in the sample                                                                                                                                                                                                                                                                    |
+| 2026-11-08 | Moderation    | S7 moderation view             | Option B: learner's work full width (exact paper and option order, or practical evidence); a sticky bottom bar with the assessor's decision summary, history toggle and the moderation form; previous/next in sample (J/K). Below ~900 px read-only per §12                                                                                          |
+| 2026-11-08 | Moderation    | Batch page                     | One table of all decisions with an 'In sample' checkbox per row (locked once moderated), rate and progress plus the release panel at the top, filters All / In sample / NYC / Not checked                                                                                                                                                            |
+| 2026-11-08 | Moderation    | Report export                  | Per batch, PDF and CSV: rate, sample, each sampled decision with verdict, comments, actions and status, moderator, release date                                                                                                                                                                                                                      |
+| 2026-11-08 | Moderation    | Formatives and banks           | 'Assessment materials' in the moderator sidebar, read-only: banks → questions → every version with keys and rubric; formative blueprints and section checks; formative attempts per cohort opening the exact replay. No formative verdicts                                                                                                           |
+| 2026-11-08 | Moderation    | Question versions              | Moderators can't retire questions or create versions (assessors only); they flag issues in their comments                                                                                                                                                                                                                                            |
+| 2026-11-08 | Comms         | Learner navigation             | New **Messages** tab: Home · Learn · Library · Messages · More. Messages holds Announcements, Conversations (direct messages) and Help (tickets) as three stacked sections on one page, newest first, unread dots. Live sessions on Home "Coming up" and a programme-page block; discussions on module pages                                         |
+| 2026-11-08 | Comms         | Notification bell              | Built now: bell in the learner top bar (phones and laptops), unread dot, list linking to each item; no pop-ups                                                                                                                                                                                                                                       |
+| 2026-11-08 | Comms         | Email preferences              | Full: announcements, discussion replies, message replies and ticket updates each instant / weekly digest / off (default instant); digest Monday 07:00 SAST via Vercel cron. Essential emails (results, assessment-day and session changes, deadlines) always sent                                                                                    |
+| 2026-11-08 | Comms         | Announcement composer          | Title + body (plain text with the section Markdown subset rendered), one cohort, publish now; **Pin to top** (one pinned per cohort, shown first in Messages and on Home). No scheduling, no multi-cohort send                                                                                                                                       |
+| 2026-11-08 | Discussions   | Boards                         | One board per module per cohort, no section tags, no general board. Shown as a Discussion block on the module page                                                                                                                                                                                                                                   |
+| 2026-11-08 | Discussions   | Threads                        | Only facilitators start threads; learners reply. Replies nest one level (reply to a reply, indented once). Facilitators can pin a thread                                                                                                                                                                                                             |
+| 2026-11-08 | Messages      | Who                            | Learner ↔ a named facilitator or the cohort's assessor (learner picks the person; only that person sees it). No learner-to-learner messages                                                                                                                                                                                                         |
+| 2026-11-08 | Messages      | Attachments                    | Text and links only in messages and posts; no uploads                                                                                                                                                                                                                                                                                                |
+| 2026-11-08 | Comms         | Export log                     | Per cohort + date range: announcements, discussions, direct messages, tickets, live sessions and attendance, as CSV and PDF. SDP admin and external evaluator; each export audited (count, SHA-256)                                                                                                                                                  |
+| 2026-11-08 | Tickets       | Targets                        | First reply within 1 working day, resolved within 5 working days, all categories. Working hours Mon–Fri 08:00–17:00 SAST, skipping SA public holidays                                                                                                                                                                                                |
+| 2026-11-08 | Tickets       | Routing                        | Academic → the cohort's facilitators; Technical and Admin → SDP admins; staff can reassign                                                                                                                                                                                                                                                           |
+| 2026-11-08 | Tickets       | Closing                        | Staff close manually; the learner can reopen a Resolved ticket until it is Closed                                                                                                                                                                                                                                                                    |
+| 2026-11-08 | Tickets       | Overdue                        | Staff list shows "Due in 3 h" / "Overdue 1 day" (icon + word), sidebar count badge, one 07:00 email to each handler listing overdue tickets (no learner names)                                                                                                                                                                                       |
+| 2026-11-08 | At-risk       | Rules                          | Flag when no learning activity (section opened, check answered, work submitted) for 7 days, or 2 sections with all 3 check tries wrong within 14 days                                                                                                                                                                                                |
+| 2026-11-08 | At-risk       | Visibility and action          | Staff only (facilitators, SDP admins) on the Learner progress table with the reason; action: "Message learner". The learner never sees a risk label. No snooze, notes or digest                                                                                                                                                                      |
+| 2026-11-08 | Section notes | Scope and placement            | Per cohort. Card "From your facilitator" after the lesson text, before the check. Recordings are links only (practical evidence allow-list), opened in a new tab; no transcript or summary required                                                                                                                                                  |
+| 2026-11-08 | Live sessions | Platform and links             | Zoom (Form 5 4.2.8). Join links must be zoom.us and are always visible; recordings are a Zoom cloud link or the evidence allow-list                                                                                                                                                                                                                  |
+| 2026-11-08 | Live sessions | Attendance                     | Facilitator marks the phone-friendly register (Present / Late / Absent / Excused), same as assessment days                                                                                                                                                                                                                                           |
+| 2026-11-08 | Live sessions | Emails                         | Email (with .ics) when scheduled, and always on change or cancellation. No reminder before the session                                                                                                                                                                                                                                               |
+| 2026-11-08 | Live sessions | Learner view                   | Next session on Home "Coming up"; programme page "Live sessions" block with Upcoming (Join on Zoom, Add to calendar) and Past (attended or not, recording link)                                                                                                                                                                                      |
+| 2026-11-08 | Abuse         | Rate limits                    | Learners: 10 posts/messages per 10 minutes, 60 per day; 3 new tickets per day. Staff limits higher. Message: "You're sending messages quickly. Try again in a few minutes."                                                                                                                                                                          |
+| 2026-11-08 | Abuse         | Reports                        | Learners can report a post or message with a reason; facilitator report queue: hide (others see "Removed by a facilitator", original kept for the log) or dismiss; both audited. No muting                                                                                                                                                           |
+| 2026-11-08 | Abuse         | Edit / delete                  | Learners edit their own reply or message within 15 minutes ("edited"; earlier text kept for the log); no self-delete                                                                                                                                                                                                                                 |
+| 2026-11-08 | Staff UI      | Facilitator sidebar            | One link per area with action badges: Learner progress (at-risk count), Announcements, Discussions, Messages, Support tickets (overdue), Reports, Live sessions, Section notes, Assessment days. Assessors also get Messages                                                                                                                         |
+| 2026-11-08 | POPIA         | Comms retention                | Kept with the learner's other records for the assessment-evidence period (still open in popia.md); nothing auto-deletes yet                                                                                                                                                                                                                          |

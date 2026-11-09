@@ -10,6 +10,7 @@ import {
   createCohortAction,
   inviteLearnerAction,
   previewImportAction,
+  setModerationRateAction,
   startRecoveryAction,
 } from "./actions";
 
@@ -100,6 +101,52 @@ export function CreateCohortForm({
           Create cohort
         </button>
       </div>
+    </form>
+  );
+}
+
+/** Per-cohort moderation sampling rate (design.md §14, 2026-11-08). */
+export function ModerationRateForm({
+  cohortId,
+  cohortName,
+  percent,
+}: {
+  cohortId: string;
+  cohortName: string;
+  percent: number;
+}) {
+  const [state, action, pending] = useActionState(setModerationRateAction, {});
+  return (
+    <form action={action} className={ui.row}>
+      <input type="hidden" name="cohortId" value={cohortId} />
+      <label className={ui.srOnly} htmlFor={`rate-${cohortId}`}>
+        Moderation sampling rate for {cohortName} (percent)
+      </label>
+      <input
+        id={`rate-${cohortId}`}
+        name="percent"
+        type="number"
+        min={1}
+        max={100}
+        step={1}
+        defaultValue={percent}
+        className={ui.input}
+        style={{ width: "5rem" }}
+        required
+      />
+      <span aria-hidden="true">%</span>
+      <button type="submit" className={ui.secondary} disabled={pending}>
+        Save
+      </button>
+      {state.error ? (
+        <span role="alert" className={ui.statusBad}>
+          {state.error}
+        </span>
+      ) : state.success ? (
+        <span role="status" className={ui.statusOk}>
+          ✓ {state.success}
+        </span>
+      ) : null}
     </form>
   );
 }

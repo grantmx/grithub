@@ -7,6 +7,7 @@ import styles from "@/components/assess/staff.module.css";
 import ui from "@/components/ui.module.css";
 import { AssessmentError } from "@/lib/server/assessments";
 import { getMarkingView } from "@/lib/server/marking";
+import { ModerationNote } from "@/components/assess/ModerationNote";
 import { requirePage } from "@/lib/server/page";
 
 export const metadata: Metadata = { title: "Marking" };
@@ -157,6 +158,11 @@ export default async function MarkingPage({
                 </>
               )}
             </p>
+            {v.current && !v.current.releasedAt && v.current.moderation.some((m) => m.outcome === "referred_back") ? (
+              <p role="status" className={ui.bannerError}>
+                The moderator disagreed with this decision. Read their comments below, then record a new decision.
+              </p>
+            ) : null}
             {v.current ? (
               <p className={ui.hint}>
                 Current decision: <strong>{v.current.outcome === "competent" ? "Competent" : "Not yet competent"}</strong> by{" "}
@@ -209,9 +215,7 @@ export default async function MarkingPage({
               <p className={ui.hint}>
                 {v.blockedReason === "released"
                   ? "Results are released. Changes go through an appeal."
-                  : v.blockedReason === "reassess_other_assessor"
-                    ? "This is a reassessment ordered on appeal: a different assessor must decide it."
-                    : "Mark every short answer before recording a decision."}
+                  : "Mark every short answer before recording a decision."}
               </p>
             )}
           </form>
@@ -229,9 +233,12 @@ export default async function MarkingPage({
                       {dateFmt.format(d.decidedAt)}
                     </span>
                     {d.moderation.map((m) => (
-                      <div key={m.id} className={ui.hint}>
-                        Moderation: {m.outcome === "upheld" ? "upheld" : "referred back"} by {m.moderatorName}: {m.findings}
-                      </div>
+                      <ModerationNote
+                        key={m.id}
+                        m={m}
+                        back={path}
+                        actionsForm={!d.superseded && !d.releasedAt && d.assessorId === actor.userId}
+                      />
                     ))}
                   </li>
                 ))}

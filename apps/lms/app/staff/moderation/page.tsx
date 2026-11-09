@@ -15,7 +15,10 @@ export default async function ModerationPage() {
         <h1 className={ui.h1} style={{ margin: 0 }}>
           Moderation sample
         </h1>
-        <a href="/staff/appeals">Appeals</a>
+        <span className={ui.row}>
+          <a href="/staff/materials">Assessment materials</a>
+          <a href="/staff/appeals">Appeals</a>
+        </span>
       </div>
       <div className={ui.tableWrap}>
         <table className={ui.table}>
@@ -24,6 +27,7 @@ export default async function ModerationPage() {
               <th scope="col">Assessment</th>
               <th scope="col">Cohort</th>
               <th scope="col">Decisions</th>
+              <th scope="col">Sample</th>
               <th scope="col">Moderated</th>
               <th scope="col">Status</th>
             </tr>
@@ -31,7 +35,7 @@ export default async function ModerationPage() {
           <tbody>
             {batches.length === 0 ? (
               <tr>
-                <td colSpan={5} className={ui.muted}>
+                <td colSpan={6} className={ui.muted}>
                   No decisions to moderate yet.
                 </td>
               </tr>
@@ -43,6 +47,9 @@ export default async function ModerationPage() {
                   </td>
                   <td>{b.cohortName}</td>
                   <td>{b.decisions}</td>
+                  <td className={b.status === "open" && b.sampled < b.minimum ? ui.statusWarn : undefined}>
+                    {b.sampled} of min {b.minimum} <span className={ui.hint}>({b.rate}%)</span>
+                  </td>
                   <td>{b.moderated}</td>
                   <td className={b.status === "closed" ? ui.statusOk : undefined}>
                     {b.status === "closed" ? "✓ Closed · results released" : "Open"}

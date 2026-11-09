@@ -11,6 +11,7 @@ import {
   inviteLearner,
   previewLearnerImport,
   resendInvitation,
+  setModerationRate,
   startRecovery,
 } from "@/lib/server/onboarding";
 import { getActor, getServerCtx } from "@/lib/server/request";
@@ -63,6 +64,26 @@ export async function createCohortAction(
     return fail(e);
   }
   return { success: "Cohort created." };
+}
+
+export async function setModerationRateAction(
+  _prev: FormState,
+  form: FormData,
+): Promise<FormState> {
+  const raw = String(form.get("percent") ?? "").trim();
+  try {
+    await run(async (ctx) =>
+      setModerationRate(
+        ctx,
+        await getActor(ctx),
+        String(form.get("cohortId") ?? ""),
+        /^\d+$/.test(raw) ? Number(raw) : NaN,
+      ),
+    );
+  } catch (e) {
+    return fail(e);
+  }
+  return { success: "Saved." };
 }
 
 export async function inviteLearnerAction(

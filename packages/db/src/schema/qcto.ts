@@ -14,8 +14,7 @@ import {
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
-import { DEFAULT_TENANT_ID } from "../tenancy";
-import { bytea, createdAt, id, tenantId, updatedAt } from "./columns";
+import { bytea, createdAt, id, tenantId, tenantKey, updatedAt } from "./columns";
 import {
   qctoRowOutcome,
   qctoSubmissionPurpose,
@@ -33,12 +32,6 @@ import { enrolments, users } from "./people";
 // columns end in `_enc`; `_hash` columns are keyed HMAC blind indexes used
 // only for "is this ID already registered?" lookups.
 
-/**
- * Tenant key for uniqueness: a NULL tenant_id counts as the default tenant, so
- * the tenancy migration can backfill NULLs without creating duplicates.
- */
-const tenantKey = (col: unknown) =>
-  sql`coalesce(${col}, ${sql.raw(`'${DEFAULT_TENANT_ID}'::uuid`)})`;
 
 /** The spec's universal rule: the first character is a valid, non-space character. */
 const startsNonSpace = (col: unknown) => sql`${col} ~ '^[^[:space:]]'`;

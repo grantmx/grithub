@@ -7,7 +7,12 @@ export type EmailMessage = {
   html: string;
   /** The single link in the email (lets dev/test transports show it). */
   link: string;
+  /** Optional files, e.g. a calendar invite (.ics). */
+  attachments?: { filename: string; contentType: string; content: string }[];
 };
+
+/** Product name used in notification emails (one place; tenancy readiness). */
+export const APP_NAME = "GRIT Hub Learning";
 
 /** Messages captured by the "memory" transport (tests only). */
 export const memoryOutbox: EmailMessage[] = [];
@@ -40,6 +45,15 @@ export async function sendEmail(
           subject: message.subject,
           text: message.text,
           html: message.html,
+          ...(message.attachments?.length
+            ? {
+                attachments: message.attachments.map((a) => ({
+                  filename: a.filename,
+                  content: Buffer.from(a.content, "utf8").toString("base64"),
+                  content_type: a.contentType,
+                })),
+              }
+            : {}),
         }),
       });
       if (!res.ok) {
@@ -118,4 +132,35 @@ export function recoveryEmail(to: string, link: string): EmailMessage {
     link,
     ...body,
   };
+}
+
+/**
+ * Communication notification (announcements, replies, messages, tickets,
+ * sessions). Lines never carry message text or other learners' names; the
+ * reader follows the link to see the item.
+ */
+export function notificationEmail(
+  to: string,
+  subject: string,
+  lines: string[],
+  link: string,
+  cta = "Open",
+  attachments?: EmailMessage["attachments"],
+): EmailMessage {
+  const body = layout(lines, link, cta);
+  return { to, subject: `${subject} · ${APP_NAME}`, link, ...body, ...(attachments ? { attachments } : {}) };
+}
+
+/** Weekly digest: one line per notification title, newest first. */
+export function digestEmail(to: string, titles: string[], link: string): EmailMessage {
+  const body = layout(
+    [
+      `Here is what happened on ${APP_NAME} this week:`,
+      ...titles.slice(0, 30).map((t) => `• ${t}`),
+      ...(titles.length > 30 ? [`…and ${titles.length - 30} more.`] : []),
+    ],
+    link,
+    "See your notifications",
+  );
+  return { to, subject: `Your weekly summary · ${APP_NAME}`, link, ...body };
 }

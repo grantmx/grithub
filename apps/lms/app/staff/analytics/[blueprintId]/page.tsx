@@ -24,6 +24,8 @@ export default async function AnalyticsPage({
   const { ctx, actor } = await requirePage(path);
   const all = await questionAnalytics(ctx, actor, blueprintId);
   const rows = sp.flagged ? all.filter((r) => r.flags.length) : all;
+  // Only assessors retire or version questions; moderators read (design.md §14, 2026-11-08).
+  const canEdit = actor.roles.has("assessor");
 
   return (
     <div className={ui.stack}>
@@ -107,7 +109,7 @@ export default async function AnalyticsPage({
                       ))}
                     </ul>
                   ) : null}
-                  {r.isCurrent ? (
+                  {r.isCurrent && canEdit ? (
                     <div className={ui.row}>
                       <a className={ui.secondary} href={`/staff/questions/${r.questionId}?back=${encodeURIComponent(path)}`}>
                         Create new version

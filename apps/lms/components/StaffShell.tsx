@@ -4,7 +4,8 @@ import styles from "./StaffShell.module.css";
 
 export type NavGroup = {
   label: string;
-  items: { href: string; label: string }[];
+  /** `badge`: a count of new items (e.g. unseen moderation feedback). */
+  items: { href: string; label: string; badge?: number }[];
 };
 
 /**
@@ -35,6 +36,12 @@ export function StaffShell({
             {g.items.map((item) => (
               <NavLink key={item.href} href={item.href} className={styles.link}>
                 {item.label}
+                {item.badge ? (
+                  <span className={styles.badge}>
+                    {item.badge}
+                    <span className={styles.srOnly}> new</span>
+                  </span>
+                ) : null}
               </NavLink>
             ))}
           </div>

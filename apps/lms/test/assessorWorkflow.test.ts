@@ -21,7 +21,7 @@ import {
   validateBlueprint,
 } from "@/lib/server/authoring";
 import { getMarkingView, getReplay, markingQueue, recordDecision, saveDecisionDraft, saveItemMarks } from "@/lib/server/marking";
-import { closeBatch, decideAppeal, getBatch, listAppeals, moderateDecision } from "@/lib/server/moderation";
+import { closeBatch, decideAppeal, getBatch, listAppeals, moderateDecision, setSample } from "@/lib/server/moderation";
 import { exportPaperPdf } from "@/lib/server/paperExport";
 import {
   addExtraTime,
@@ -33,6 +33,7 @@ import {
   unlockPaper,
 } from "@/lib/server/register";
 import { makeAssessmentWorld } from "./assessmentWorld";
+import type { AccessContext } from "@/lib/access";
 import { actorFor, auditActions, createTestDb, makeCtx, makeUser, type TestDb } from "./helpers";
 
 let t: TestDb;
@@ -85,6 +86,14 @@ async function markAll(ctx: ReturnType<typeof makeCtx>, assessor: Awaited<Return
   for (const it of view.items.filter((i) => i.type === "short_answer")) {
     await saveItemMarks(ctx, assessor, attemptId, it.position, Object.fromEntries(it.criteria.map((c) => [c.id, c.maxMarks])), "Good (fake)");
   }
+}
+
+/** Sample the decision's work, agree with it and close its batch (releases results). */
+async function agreeAndRelease(ctx: ReturnType<typeof makeCtx>, moderator: AccessContext, decisionId: string) {
+  const [d] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.id, decisionId));
+  await setSample(ctx, moderator, d!.batchId, [(d!.attemptId ?? d!.submissionId)!]);
+  await moderateDecision(ctx, moderator, decisionId, "agree", "Agree (fake)");
+  return closeBatch(ctx, moderator, d!.batchId);
 }
 
 describe("assessment-day register", () => {
@@ -210,8 +219,7 @@ describe("marking and decisions", () => {
     const [d] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.id, decisionId));
     const batch = await getBatch(ctx, moderator, d!.batchId);
     expect(batch.learnersToNotify).toBe(1);
-    await moderateDecision(ctx, moderator, decisionId, "upheld", "Agree (fake)");
-    expect(await closeBatch(ctx, moderator, d!.batchId)).toBe(1);
+    expect(await agreeAndRelease(ctx, moderator, decisionId)).toBe(1);
 
     const result = await getAttemptResult(ctx, learner, attemptId);
     expect(result).toMatchObject({ kind: "summative", released: { outcome: "not_yet_competent", feedback: "Revise section 2 (fake)" } });
@@ -221,16 +229,12 @@ describe("marking and decisions", () => {
 
   it("lets a learner reassess after a released Not yet competent (one extra attempt)", async () => {
     const { ctx, assessor, moderator, learner, attemptId, sit, w } = await writtenPaper({ shortAnswers: 0 });
-    await recordDecision(ctx, assessor, attemptId, "not_yet_competent", "Try again (fake)");
-    const [d] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.attemptId, attemptId));
-    await closeBatch(ctx, moderator, d!.batchId);
+    await agreeAndRelease(ctx, moderator, await recordDecision(ctx, assessor, attemptId, "not_yet_competent", "Try again (fake)"));
     const second = await sit();
     const [a2] = await t.db.select().from(assessmentAttempts).where(eq(assessmentAttempts.id, second));
     expect(a2!.attemptNo).toBe(2);
     // Default 1 + 1 reassessment: no third attempt.
-    await recordDecision(ctx, assessor, second, "not_yet_competent", "Again (fake)");
-    const [d2] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.attemptId, second));
-    await closeBatch(ctx, moderator, d2!.batchId);
+    await agreeAndRelease(ctx, moderator, await recordDecision(ctx, assessor, second, "not_yet_competent", "Again (fake)"));
     const enrolmentId = await enrolmentOf((await getReplay(ctx, assessor, second)).learner.id);
     await expect(unlockPaper(ctx, assessor, w.schedule.id, enrolmentId)).rejects.toMatchObject({ code: "no_attempts_left" });
     void learner;
@@ -238,12 +242,10 @@ describe("marking and decisions", () => {
 });
 
 describe("appeals", () => {
-  it("are decided by a moderator; reassessment adds an attempt marked by a different assessor", async () => {
+  it("are decided by a moderator; reassessment adds an attempt marked by the same assessor and always sampled", async () => {
     const env = await writtenPaper({ shortAnswers: 0 });
-    const { ctx, assessor, moderator, learner, attemptId, w } = env;
-    await recordDecision(ctx, assessor, attemptId, "not_yet_competent", "Not yet (fake)");
-    const [d] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.attemptId, attemptId));
-    await closeBatch(ctx, moderator, d!.batchId);
+    const { ctx, assessor, moderator, learner, attemptId } = env;
+    await agreeAndRelease(ctx, moderator, await recordDecision(ctx, assessor, attemptId, "not_yet_competent", "Not yet (fake)"));
 
     await submitAppeal(ctx, learner, attemptId, "I believe question 3 was marked wrongly (fake).");
     const result = await getAttemptResult(ctx, learner, attemptId);
@@ -251,22 +253,21 @@ describe("appeals", () => {
     await expect(submitAppeal(ctx, learner, attemptId, "Again")).rejects.toMatchObject({ code: "appeal_closed" });
 
     const [appeal] = await listAppeals(ctx, moderator);
-    await decideAppeal(ctx, moderator, appeal!.id, "reassess", "Reassess with another assessor (fake).");
+    await decideAppeal(ctx, moderator, appeal!.id, "reassess", "Reassess (fake).");
     await expect(decideAppeal(ctx, moderator, appeal!.id, "upheld", "x")).rejects.toMatchObject({ code: "submitted" });
 
     // The learner sits again (1 + 1 + 1 granted by appeal is not needed here: attempt 2 is the reassessment).
     const second = await env.sit();
-    await expect(recordDecision(ctx, assessor, second, "competent", "x")).rejects.toMatchObject({ code: "invalid_answer" });
-    const { actor: other } = await actorFor(ctx, (await w.staff("assessor")).id);
-    await recordDecision(ctx, other, second, "competent", "Competent on reassessment (fake)");
+    const reDecision = await recordDecision(ctx, assessor, second, "competent", "Competent on reassessment (fake)");
+    const [rd] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.id, reDecision));
+    const batch = await getBatch(ctx, moderator, rd!.batchId);
+    expect(batch.rows.find((r) => r.targetId === second)!.sample).toMatchObject({ reason: "reassessment" });
   });
 
   it("close after the appeal window", async () => {
     const env = await writtenPaper({ shortAnswers: 0 });
     const { assessor, moderator, attemptId, learnerUser } = env;
-    await recordDecision(env.ctx, assessor, attemptId, "competent", "Fine (fake)");
-    const [d] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.attemptId, attemptId));
-    await closeBatch(env.ctx, moderator, d!.batchId);
+    await agreeAndRelease(env.ctx, moderator, await recordDecision(env.ctx, assessor, attemptId, "competent", "Fine (fake)"));
     const later = makeCtx(t.db, { now: () => new Date(Date.now() + 8 * 86_400_000) });
     const { actor } = await actorFor(later, learnerUser.id);
     await expect(submitAppeal(later, actor, attemptId, "Too late (fake)")).rejects.toMatchObject({ code: "appeal_closed" });

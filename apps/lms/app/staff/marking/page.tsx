@@ -13,7 +13,9 @@ const FILTERS: { key: QueueStatus | "all"; label: string }[] = [
   { key: "needs_marking", label: "Needs marking" },
   { key: "ready", label: "Ready to decide" },
   { key: "draft", label: "Draft" },
-  { key: "referred_back", label: "Referred back" },
+  { key: "referred_back", label: "Disagreed" },
+  { key: "actions_due", label: "Actions due" },
+  { key: "agreed", label: "Agreed" },
   { key: "decided", label: "Decided" },
 ];
 const KINDS = [
@@ -27,7 +29,9 @@ const STATUS: Record<QueueStatus, { label: string; className?: string }> = {
   needs_marking: { label: "● Needs marking", className: ui.statusWarn },
   ready: { label: "Ready to decide" },
   draft: { label: "Draft saved" },
-  referred_back: { label: "! Referred back", className: ui.statusBad },
+  referred_back: { label: "! Disagreed · re-decide", className: ui.statusBad },
+  actions_due: { label: "• Agree with actions · to do", className: ui.statusWarn },
+  agreed: { label: "✓ Agreed", className: ui.statusOk },
   decided: { label: "✓ Decided", className: ui.statusOk },
 };
 

@@ -1,4 +1,5 @@
 import { PDFDocument, type PDFFont, type PDFPage, rgb, StandardFonts } from "pdf-lib";
+import { VERDICT_LABEL, verdictOf } from "@/lib/moderation";
 import type { Replay } from "./marking";
 
 /**
@@ -11,8 +12,8 @@ import type { Replay } from "./marking";
  * always produce byte-identical files (the checksum is meaningful).
  */
 
-const A4: [number, number] = [595.28, 841.89];
-const MARGIN = 50;
+export const A4: [number, number] = [595.28, 841.89];
+export const MARGIN = 50;
 const SIZE = 10;
 const LEADING = 14;
 
@@ -32,7 +33,7 @@ export function winAnsi(text: string): string {
 const fmt = (d: Date | null | undefined) =>
   d ? d.toISOString().replace("T", " ").slice(0, 16) + " UTC" : "-";
 
-class Writer {
+export class Writer {
   page!: PDFPage;
   y = 0;
   pages: PDFPage[] = [];
@@ -176,7 +177,8 @@ export async function buildPaperPdf(r: Replay): Promise<Uint8Array> {
     );
     w.text(`Feedback: ${d.feedback}`, { indent: 12, size: 9 });
     for (const m of d.moderation) {
-      w.text(`Moderation ${fmt(m.moderatedAt)} by ${m.moderatorName}: ${m.outcome.replace("_", " ")} - ${m.findings}`, { indent: 12, size: 9 });
+      w.text(`Moderation ${fmt(m.moderatedAt)} by ${m.moderatorName}: ${VERDICT_LABEL[verdictOf(m)]} - ${m.findings}`, { indent: 12, size: 9 });
+      if (m.requiredActions) w.text(`Required actions: ${m.requiredActions}`, { indent: 12, size: 9 });
     }
     if (d.appeal) {
       w.text(`Appeal ${fmt(d.appeal.submittedAt)}: ${d.appeal.status}${d.appeal.outcomeNotes ? ` - ${d.appeal.outcomeNotes}` : ""}`, { indent: 12, size: 9 });

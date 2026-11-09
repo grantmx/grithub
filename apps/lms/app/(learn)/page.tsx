@@ -1,13 +1,24 @@
+import { Icon } from "@/components/Icon";
 import { ProgrammeCard } from "@/components/learn/ProgrammeCard";
 import styles from "@/components/learn/learn.module.css";
 import ui from "@/components/ui.module.css";
 import { comingUp, firstName, listProgrammes } from "@/lib/server/learning";
+import { nextSessions } from "@/lib/server/liveSessions";
 import { requirePage } from "@/lib/server/page";
 
 const dateFmt = new Intl.DateTimeFormat("en-ZA", {
   weekday: "short",
   day: "numeric",
   month: "short",
+});
+
+const sessionFmt = new Intl.DateTimeFormat("en-ZA", {
+  weekday: "short",
+  day: "numeric",
+  month: "short",
+  hour: "2-digit",
+  minute: "2-digit",
+  timeZone: "Africa/Johannesburg",
 });
 
 function greeting(now: Date): string {
@@ -24,10 +35,11 @@ function greeting(now: Date): string {
 /** Home (L4): greeting, one card per programme with status + Continue, coming up. */
 export default async function HomePage() {
   const { ctx, actor } = await requirePage("/");
-  const [name, programmes, upcoming] = await Promise.all([
+  const [name, programmes, upcoming, sessions] = await Promise.all([
     firstName(ctx, actor.userId),
     listProgrammes(ctx, actor),
     comingUp(ctx, actor),
+    nextSessions(ctx, actor),
   ]);
 
   // TODO(copy): wording to be supplied by GRIT Hub (design.md §13).
@@ -57,7 +69,9 @@ export default async function HomePage() {
         </section>
       )}
 
-      {upcoming.assessmentDays.length > 0 || upcoming.latestAnnouncement ? (
+      {upcoming.assessmentDays.length > 0 ||
+      upcoming.latestAnnouncement ||
+      sessions.length > 0 ? (
         <section
           aria-labelledby="coming-up"
           className={styles.stack}
@@ -67,6 +81,17 @@ export default async function HomePage() {
             Coming up
           </h2>
           <ul className={styles.list}>
+            {sessions.map((s) => (
+              <li key={s.id} className={styles.listItem}>
+                <Icon name="session" />
+                <span>
+                  <a href={`/sessions/${s.id}`} className={styles.textLink}>
+                    <strong>Live session:</strong> {s.title}
+                  </a>{" "}
+                  · {sessionFmt.format(s.startsAt)} · Zoom
+                </span>
+              </li>
+            ))}
             {upcoming.assessmentDays.map((d) => (
               <li key={d.id} className={styles.listItem}>
                 <span>
@@ -79,7 +104,12 @@ export default async function HomePage() {
               <li className={styles.listItem}>
                 <span>
                   <strong>Latest announcement:</strong>{" "}
-                  {upcoming.latestAnnouncement.title}
+                  <a
+                    href={`/messages/announcements/${upcoming.latestAnnouncement.id}`}
+                    className={styles.textLink}
+                  >
+                    {upcoming.latestAnnouncement.title}
+                  </a>
                 </span>
               </li>
             ) : null}

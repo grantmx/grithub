@@ -10,6 +10,7 @@ const NAV: { href: string; label: string; icon: IconName }[] = [
   { href: "/", label: "Home", icon: "home" },
   { href: "/learn", label: "Learn", icon: "learn" },
   { href: "/library", label: "Library", icon: "library" },
+  { href: "/messages", label: "Messages", icon: "messages" },
   { href: "/more", label: "More", icon: "more" },
 ];
 
@@ -28,15 +29,19 @@ const THEMES: { value: Preferences["theme"]; label: string }[] = [
 ];
 
 /**
- * Learner shell (design.md §3): top bar on laptops (Home · Learn · Library ·
- * More + Display menu), bottom bar on phones. Display menu = text size and
+ * Learner shell (design.md §3, §14 2026-11-08): top bar on laptops (Home ·
+ * Learn · Library · Messages · More + bell + Display menu), bottom bar on
+ * phones; the bell (in-app notifications) shows on every size. Display menu = text size and
  * theme, saved per user; plain forms, so it works without JavaScript.
  */
 export function AppShell({
   prefs,
+  unread = 0,
   children,
 }: {
   prefs: Preferences;
+  /** Unread in-app notifications (the bell's dot). */
+  unread?: number;
   children: ReactNode;
 }) {
   return (
@@ -75,6 +80,13 @@ export function AppShell({
           ))}
         </nav>
         <span className={styles.spacer} />
+        <a href="/notifications" className={styles.bell}>
+          <Icon name="notifications" size={24} />
+          <span className={styles.srOnly}>
+            Notifications{unread > 0 ? `, ${unread} unread` : ""}
+          </span>
+          {unread > 0 ? <span className={styles.dot} aria-hidden="true" /> : null}
+        </a>
         <details className={styles.display}>
           <summary aria-label="Display settings">
             <Icon name="textSize" size={24} />

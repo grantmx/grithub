@@ -92,6 +92,8 @@ erDiagram
     AssessmentDecision ||--o{ ModerationRecord : "moderated by"
     ModerationBatch ||--o{ AssessmentDecision : groups
     ModerationBatch }o--|| Cohort : "for"
+    ModerationBatch ||--o{ ModerationSampleItem : "sample"
+    ModerationRecord ||--o| ModerationActionCompletion : "actions done"
 
     QuestionBank {
         uuid id PK
@@ -199,9 +201,33 @@ erDiagram
         uuid moderatorId FK
         string outcome "upheld | referred_back"
         text findings
+        text requiredActions "nullable"
         timestamp moderatedAt
     }
+    ModerationSampleItem {
+        uuid id PK
+        uuid batchId FK
+        uuid attemptId FK "nullable"
+        uuid submissionId FK "nullable"
+        string reason "moderator | reassessment"
+        uuid addedBy FK
+    }
+    ModerationActionCompletion {
+        uuid id PK
+        uuid moderationRecordId FK
+        uuid doneBy FK
+        text note
+        timestamp doneAt
+    }
 ```
+
+### Added with moderation (2026-11-08, ADR-015)
+
+- **Cohort** gains `moderationRatePercent` (1–100, default 25): the minimum share of each batch to sample.
+- **ModerationSampleItem**: one learner's work (attempt or submission) in a batch's sample, keyed by the work so a re-decided decision stays sampled. Reason `reassessment` for appeal reassessments (added automatically, never removed).
+- **ModerationRecord** gains `requiredActions`. Verdicts: Agree = upheld; Agree with actions = upheld + actions; Disagree = referred_back. One per decision version.
+- **ModerationActionCompletion**: the assessor's "Actions done" note (append-only). **ModerationFeedbackRead**: when an assessor last opened Moderation feedback (sidebar badge).
+- **RoleGrant**: assessor grants always name a cohort, one per cohort.
 
 ### Added with the assessment engine (2026-11-08)
 
@@ -233,6 +259,18 @@ See [compliance/qcto-leisa-mapping.md](compliance/qcto-leisa-mapping.md) and ADR
 - **QctoSubmissionBatch** (a LEISA file: purpose, status, file name, storage key, SHA-256, row count, who and when) and **QctoSubmissionItem** (enrolment, row number, row hash, QCTO outcome).
 - **ConsentRecord** gains `kind` (`popia_notice` / `qcto_sharing`) and `granted`.
 - GLOBAL reference tables (no tenant): the QCTO code lists and `statssa_area_codes` (`packages/db/src/tenancy.ts`).
+
+### Added with communication and support (2026-11-08, ADR-016)
+
+- **Announcement** gains `pinnedAt` (at most one per cohort). **DiscussionThread** is now per module and cohort (`moduleId`, opening `body`, `pinnedAt`; `sectionId` and `locked` dropped). **DiscussionPost** gains `parentId` (one level, trigger-enforced), `editedAt`, `hiddenAt`/`hiddenBy`; posts are never deleted.
+- **Conversation** (cohort, learner, one facilitator or the assessor; read markers per side) and **DirectMessage** (`editedAt`, `hiddenAt`). **MessageRevision**: append-only earlier text of an edited post or message.
+- **ContentReport**: a learner's report of a post or message (reason, note, open / hidden / dismissed, reviewer).
+- **SupportTicket** gains `cohortId`, first-reply and resolve targets (working hours), `firstRespondedAt`, `resolvedAt`, `closedAt`, `lastActivityAt`; **TicketReply**.
+- **Notification** (the bell; also drives instant and digest email) and **EmailPreference** (instant / digest / off for announcements, discussions, messages, tickets).
+- **SectionNote**: a facilitator note and optional recording link on a section, for one cohort.
+- **LiveSession** (cohort, optional module, Zoom link, start/end, recording link, `cancelledAt`, `sequence` for calendar updates) and **SessionAttendance** (present / late / absent / excused).
+- **JobRun**: claims one run of a scheduled job (weekly digest, overdue-ticket email).
+- At-risk flags are computed on read (no table). Every new table carries a nullable `tenant_id`; uniqueness rules include the tenant key.
 
 ## People, cohorts and operations
 
@@ -310,26 +348,33 @@ erDiagram
         uuid authorId FK
         text body
         timestamp publishedAt
+        timestamp pinnedAt "one per cohort"
     }
     DiscussionThread {
         uuid id PK
         uuid cohortId FK
-        uuid sectionId FK "nullable"
+        uuid moduleId FK "board = module x cohort"
         string title
-        bool locked
+        text body
+        timestamp pinnedAt
     }
     DiscussionPost {
         uuid id PK
         uuid threadId FK
+        uuid parentId FK "one level only"
         uuid authorId FK
         text body
+        timestamp hiddenAt
     }
     SupportTicket {
         uuid id PK
         uuid raisedBy FK
+        uuid cohortId FK
         string category "academic | technical | admin"
         string status
         uuid assignedTo FK
+        timestamp firstResponseDueAt
+        timestamp resolveDueAt
     }
     SyncOutbox {
         uuid id PK

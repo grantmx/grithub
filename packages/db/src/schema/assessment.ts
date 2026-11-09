@@ -435,11 +435,97 @@ export const moderationRecords = pgTable(
     moderatorId: uuid()
       .notNull()
       .references(() => users.id),
+    // Agree = upheld; Agree with actions = upheld + required_actions;
+    // Disagree = referred_back (required_actions optional). design.md §14, 2026-11-08.
     outcome: moderationOutcome().notNull(),
     findings: text().notNull(),
+    requiredActions: text(),
     moderatedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
   },
-  (t) => [index("moderation_records_decision_idx").on(t.decisionId)],
+  (t) => [
+    index("moderation_records_decision_idx").on(t.decisionId),
+    // One moderation verdict per decision version (a re-check is on the new version).
+    unique("moderation_records_decision_uq").on(t.decisionId),
+    check(
+      "moderation_records_actions_not_blank",
+      sql`${t.requiredActions} IS NULL OR length(btrim(${t.requiredActions})) > 0`,
+    ),
+  ],
+);
+
+/**
+ * The moderator's sample: which learners' work (attempt or submission) in a
+ * batch is moderated. Keyed by the work, not the decision version, so a
+ * re-decided (superseded) decision stays in the sample. Reassessments ordered
+ * on appeal are added automatically (reason 'reassessment').
+ */
+export const moderationSampleItems = pgTable(
+  "moderation_sample_items",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    batchId: uuid()
+      .notNull()
+      .references(() => moderationBatches.id),
+    attemptId: uuid().references(() => assessmentAttempts.id),
+    submissionId: uuid().references(() => submissions.id),
+    reason: text().notNull().default("moderator"),
+    addedBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    addedAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    check(
+      "moderation_sample_items_one_target",
+      sql`(${t.attemptId} IS NULL) <> (${t.submissionId} IS NULL)`,
+    ),
+    check(
+      "moderation_sample_items_reason",
+      sql`${t.reason} IN ('moderator', 'reassessment')`,
+    ),
+    unique("moderation_sample_items_attempt_uq").on(t.tenantId, t.batchId, t.attemptId),
+    unique("moderation_sample_items_submission_uq").on(t.tenantId, t.batchId, t.submissionId),
+    index("moderation_sample_items_batch_idx").on(t.batchId),
+  ],
+);
+
+/** The assessor's "Actions done" on an Agree-with-actions verdict (append-only). */
+export const moderationActionCompletions = pgTable(
+  "moderation_action_completions",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    moderationRecordId: uuid()
+      .notNull()
+      .references(() => moderationRecords.id),
+    doneBy: uuid()
+      .notNull()
+      .references(() => users.id),
+    note: text().notNull(),
+    doneAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    unique("moderation_action_completions_record_uq").on(t.tenantId, t.moderationRecordId),
+    check(
+      "moderation_action_completions_note_not_blank",
+      sql`length(btrim(${t.note})) > 0`,
+    ),
+  ],
+);
+
+/** When an assessor last opened their Moderation feedback list (sidebar badge). */
+export const moderationFeedbackReads = pgTable(
+  "moderation_feedback_reads",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    userId: uuid()
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    seenAt: timestamp({ withTimezone: true }).notNull(),
+  },
+  (t) => [unique("moderation_feedback_reads_user_uq").on(t.tenantId, t.userId)],
 );
 
 /** Rubric marks for a short-answer item, per criterion. Locked once a decision is recorded. */

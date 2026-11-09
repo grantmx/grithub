@@ -28,7 +28,8 @@ import type { ServerCtx } from "./context";
  */
 
 const ADMIN: Requirement = { kind: "roles", anyOf: ["sdp_admin"], stepUp: true };
-const QUESTION_EDITOR: Requirement = { kind: "roles", anyOf: ["assessor", "moderator"], stepUp: true };
+/** Retire / new question version: assessors only; moderators never edit question versions (design.md §14, 2026-11-08). */
+const QUESTION_EDITOR: Requirement = { kind: "roles", anyOf: ["assessor"], stepUp: true };
 type Ctx = ServerCtx;
 
 export async function listBlueprints(ctx: Ctx, actor: AccessContext | null) {

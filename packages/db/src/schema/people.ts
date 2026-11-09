@@ -107,6 +107,15 @@ export const roleGrants = pgTable(
       "role_grants_evaluator_expires",
       sql`${t.role} <> 'external_evaluator' OR ${t.expiresAt} IS NOT NULL`,
     ),
+    // One assessor per cohort (QCTO; design.md §14, 2026-11-08): assessor
+    // grants are always for a cohort, and a cohort has at most one.
+    check(
+      "role_grants_assessor_has_cohort",
+      sql`${t.role} <> 'assessor' OR ${t.cohortId} IS NOT NULL`,
+    ),
+    uniqueIndex("role_grants_one_assessor_per_cohort_uq")
+      .on(t.cohortId)
+      .where(sql`${t.role} = 'assessor'`),
   ],
 );
 

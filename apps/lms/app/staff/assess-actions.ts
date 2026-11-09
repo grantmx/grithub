@@ -6,7 +6,7 @@ import { AssessmentError } from "@/lib/server/assessments";
 import { AccessDeniedError } from "@/lib/server/auth";
 import { createQuestionVersion, retireQuestion, type VersionInput } from "@/lib/server/authoring";
 import { recordDecision, saveDecisionDraft, saveItemMarks } from "@/lib/server/marking";
-import { closeBatch, decideAppeal, moderateDecision } from "@/lib/server/moderation";
+import { closeBatch, completeActions, decideAppeal, moderateDecision, setSample } from "@/lib/server/moderation";
 import {
   addExtraTime,
   setAttendance,
@@ -133,8 +133,24 @@ export async function decisionAction(form: FormData) {
 
 export async function moderateAction(form: FormData) {
   await run(str(form, "back"), async (ctx, actor) => {
-    await moderateDecision(ctx, actor, str(form, "decisionId"), str(form, "outcome"), str(form, "findings"));
+    if (form.get("confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm your moderation.");
+    await moderateDecision(ctx, actor, str(form, "decisionId"), str(form, "verdict"), str(form, "comments"), str(form, "actions"));
     return "moderated";
+  });
+}
+
+export async function setSampleAction(form: FormData) {
+  await run(str(form, "back"), async (ctx, actor) => {
+    const selected = form.getAll("sample").map(String);
+    const { added, removed } = await setSample(ctx, actor, str(form, "batchId"), selected);
+    return `sample:${added}:${removed}`;
+  });
+}
+
+export async function completeActionsAction(form: FormData) {
+  await run(str(form, "back"), async (ctx, actor) => {
+    await completeActions(ctx, actor, str(form, "moderationRecordId"), str(form, "note"));
+    return "actions_done";
   });
 }
 

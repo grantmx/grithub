@@ -49,6 +49,8 @@ const PUBLIC_PATHS: RegExp[] = [
   /^\/setup\/[^/]+$/, // invitation landing (token in path)
   /^\/forbidden$/,
   /^\/api\/health$/,
+  // Vercel Cron: authenticated by CRON_SECRET inside each handler.
+  /^\/api\/cron\/(weekly-digest|overdue-tickets)$/,
 ];
 
 export function requirementFor(pathname: string): Requirement {
@@ -74,9 +76,22 @@ export function requirementFor(pathname: string): Requirement {
       stepUp: true,
     };
   }
-  // Question analytics and new question versions (answer keys).
-  if (under("/staff/analytics") || under("/staff/questions")) {
+  // Question analytics (answer keys): assessors and moderators (read-only).
+  if (under("/staff/analytics")) {
     return { kind: "roles", anyOf: ["assessor", "moderator"], stepUp: true };
+  }
+  // Retiring and versioning questions: assessors only. Moderators never edit
+  // question versions (design.md §14, 2026-11-08).
+  if (under("/staff/questions")) {
+    return { kind: "roles", anyOf: ["assessor"], stepUp: true };
+  }
+  // Moderation outcomes on my decisions; Actions done.
+  if (under("/staff/moderation-feedback")) {
+    return { kind: "roles", anyOf: ["assessor"], stepUp: true };
+  }
+  // Read-only question banks, formatives and section checks (Form 5 4.2.5).
+  if (under("/staff/materials")) {
+    return { kind: "roles", anyOf: ["moderator"], stepUp: true };
   }
   if (under("/staff/appeals")) {
     return { kind: "roles", anyOf: ["moderator"], stepUp: true };
@@ -94,6 +109,22 @@ export function requirementFor(pathname: string): Requirement {
     pathname.startsWith("/staff/moderation/")
   ) {
     return { kind: "roles", anyOf: ["moderator"], stepUp: true };
+  }
+  // Communication and support (design.md §14, 2026-11-08): facilitators and
+  // SDP admins. Direct messages: facilitators and assessors (their own
+  // conversations only); SDP admins never read them outside the audited log export.
+  if (
+    under("/staff/announcements") ||
+    under("/staff/discussions") ||
+    under("/staff/tickets") ||
+    under("/staff/reports") ||
+    under("/staff/sessions") ||
+    under("/staff/section-notes")
+  ) {
+    return { kind: "roles", anyOf: ["facilitator", "sdp_admin"], stepUp: false };
+  }
+  if (under("/staff/messages")) {
+    return { kind: "roles", anyOf: ["facilitator", "assessor"], stepUp: false };
   }
   if (
     pathname === "/staff/progress" ||
@@ -122,6 +153,18 @@ export function requirementFor(pathname: string): Requirement {
       anyOf: ["facilitator", "assessor", "moderator", "sdp_admin"],
       stepUp: false,
     };
+  }
+  // Learner communication: Messages (announcements, conversations, help),
+  // notifications, module discussions, live sessions and email preferences.
+  // Signed-in users; each item is checked against the viewer in lib/server/*.
+  if (
+    under("/messages") ||
+    under("/notifications") ||
+    under("/learn/discuss") ||
+    under("/sessions") ||
+    pathname === "/account/notifications"
+  ) {
+    return { kind: "user" };
   }
   return { kind: "user" };
 }

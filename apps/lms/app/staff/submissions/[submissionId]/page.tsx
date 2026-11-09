@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import styles from "@/components/assess/staff.module.css";
 import { EvidenceViewer } from "@/components/practical/EvidenceViewer";
+import { ModerationNote } from "@/components/assess/ModerationNote";
 import ui from "@/components/ui.module.css";
 import { requirePage } from "@/lib/server/page";
 import { PracticalError } from "@/lib/server/practical";
@@ -93,9 +94,7 @@ export default async function SubmissionPage({ params }: { params: Promise<{ sub
                   </span>
                   <div className={ui.hint}>Feedback: {d.feedback}</div>
                   {d.moderation.map((m) => (
-                    <div key={m.id} className={ui.hint}>
-                      Moderation by {m.moderatorName}: {m.outcome === "upheld" ? "upheld" : "referred back"}: {m.findings}
-                    </div>
+                    <ModerationNote key={m.id} m={m} />
                   ))}
                   {d.appeal ? (
                     <div className={ui.hint}>

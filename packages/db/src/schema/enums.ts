@@ -101,6 +101,38 @@ export const ticketStatus = pgEnum("ticket_status", [
 
 export const syncStatus = pgEnum("sync_status", ["pending", "sent", "failed"]);
 
+// Communication (design.md §14, 2026-11-08).
+// Email for optional notification types: instant, weekly digest, or off.
+export const emailFrequency = pgEnum("email_frequency", [
+  "instant",
+  "digest",
+  "off",
+]);
+export const notificationKind = pgEnum("notification_kind", [
+  "announcement",
+  "discussion",
+  "message",
+  "ticket",
+  "session",
+]);
+// What a learner can report, and what an edit revision belongs to.
+export const commsTarget = pgEnum("comms_target", [
+  "discussion_post",
+  "direct_message",
+]);
+export const reportReason = pgEnum("report_reason", [
+  "offensive",
+  "harassment",
+  "spam",
+  "personal_info",
+  "other",
+]);
+export const reportStatus = pgEnum("report_status", [
+  "open",
+  "hidden",
+  "dismissed",
+]);
+
 // Learner display preferences (design.md: A-/A+ text size, Light/Dark/System).
 export const textSize = pgEnum("text_size", ["s", "m", "l", "xl"]);
 export const themePreference = pgEnum("theme_preference", [

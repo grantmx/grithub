@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { AssessmentsBlock } from "@/components/assess/AssessmentsBlock";
+import { LiveSessionsBlock } from "@/components/comms/learner/LiveSessionsBlock";
 import { PracticalBlock } from "@/components/practical/PracticalBlock";
 import { Icon } from "@/components/Icon";
 import styles from "@/components/learn/learn.module.css";
 import { listAssessments } from "@/lib/server/assessments";
+import { learnerBoardSummaries } from "@/lib/server/discussions";
+import { learnerSessions } from "@/lib/server/liveSessions";
 import { LearningError, getProgramme } from "@/lib/server/learning";
 import { listPracticalTasks } from "@/lib/server/practical";
 import { requirePage } from "@/lib/server/page";
@@ -35,6 +38,10 @@ export default async function ProgrammePage({
   const { qualification, outline, continueTo } = data;
   const assessments = await listAssessments(ctx, actor, qualificationId);
   const practicalTasks = await listPracticalTasks(ctx, actor, qualificationId);
+  const [boards, sessions] = await Promise.all([
+    learnerBoardSummaries(ctx, actor, qualificationId),
+    learnerSessions(ctx, actor, qualificationId),
+  ]);
 
   return (
     <div className={styles.stack}>
@@ -56,6 +63,7 @@ export default async function ProgrammePage({
 
       <AssessmentsBlock items={assessments} />
       <PracticalBlock items={practicalTasks} />
+      <LiveSessionsBlock sessions={sessions} />
 
       {outline.map((m) => {
         const pct = m.sections.length
@@ -118,6 +126,11 @@ export default async function ProgrammePage({
                 </li>
               ))}
             </ol>
+            <a href={`/learn/discuss/${m.id}`} className={styles.textLink}>
+              <Icon name="messages" /> Discussion · {boards.get(m.id) ?? 0}{" "}
+              {(boards.get(m.id) ?? 0) === 1 ? "thread" : "threads"}{" "}
+              <span aria-hidden="true">›</span>
+            </a>
           </section>
         );
       })}

@@ -230,7 +230,39 @@ export async function makeFixture(db: Database) {
     );
   };
 
+  type Decision = typeof s.assessmentDecisions.$inferSelect;
+  /** Put the decision's work into its batch's moderation sample. */
+  const sample = async (d: Decision, addedBy = moderator.id) =>
+    one(
+      await db
+        .insert(s.moderationSampleItems)
+        .values({ batchId: d.batchId, attemptId: d.attemptId, submissionId: d.submissionId, addedBy })
+        .returning(),
+    );
+
+  /** Sample the decision and record a moderation verdict on it (default: Agree). */
+  const moderate = async (
+    d: Decision,
+    v: { outcome?: "upheld" | "referred_back"; requiredActions?: string | null } = {},
+  ) => {
+    await sample(d);
+    return one(
+      await db
+        .insert(s.moderationRecords)
+        .values({
+          decisionId: d.id,
+          moderatorId: moderator.id,
+          outcome: v.outcome ?? "upheld",
+          findings: "Test findings",
+          requiredActions: v.requiredActions ?? null,
+        })
+        .returning(),
+    );
+  };
+
   return {
+    sample,
+    moderate,
     learner,
     assessor,
     moderator,

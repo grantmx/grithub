@@ -207,6 +207,7 @@ describe("appeals", () => {
   async function released(f: Awaited<ReturnType<typeof makeFixture>>) {
     const batch = await f.batch();
     const d = await f.decision(batch.id);
+    await f.moderate(d);
     await t.db
       .update(s.moderationBatches)
       .set({ status: "closed", closedAt: new Date(), closedBy: f.moderator.id })

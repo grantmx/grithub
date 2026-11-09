@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PaperView } from "@/components/assess/PaperView";
 import styles from "@/components/assess/staff.module.css";
+import { ModerationNote } from "@/components/assess/ModerationNote";
 import ui from "@/components/ui.module.css";
 import { AssessmentError } from "@/lib/server/assessments";
 import { getReplay } from "@/lib/server/marking";
@@ -84,9 +85,7 @@ export default async function ReplayPage({ params }: { params: Promise<{ attempt
                 </span>
                 <div className={ui.hint}>Feedback: {d.feedback}</div>
                 {d.moderation.map((m) => (
-                  <div key={m.id} className={ui.hint}>
-                    Moderation by {m.moderatorName}: {m.outcome === "upheld" ? "upheld" : "referred back"}: {m.findings}
-                  </div>
+                  <ModerationNote key={m.id} m={m} />
                 ))}
                 {d.appeal ? (
                   <div className={ui.hint}>

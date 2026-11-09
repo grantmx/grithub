@@ -606,7 +606,11 @@ export async function comingUp(
         isNotNull(announcements.publishedAt),
       ),
     )
-    .orderBy(desc(announcements.publishedAt))
+    // A pinned announcement comes first (design.md §14, 2026-11-08).
+    .orderBy(
+      sql`${announcements.pinnedAt} DESC NULLS LAST`,
+      desc(announcements.publishedAt),
+    )
     .limit(1);
   return { assessmentDays: days, latestAnnouncement: latest ?? null };
 }

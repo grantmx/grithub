@@ -4,7 +4,7 @@ import { assessmentDecisions, evidenceItems, submissions } from "db";
 import { checkLink, fileProblem, MAX_FILE_BYTES } from "@/lib/evidenceRules";
 import { AccessDeniedError } from "@/lib/server/auth";
 import { putTestObject, evidenceStore } from "@/lib/server/evidenceStore";
-import { closeBatch, decideAppeal, getBatch, listAppeals } from "@/lib/server/moderation";
+import { closeBatch, decideAppeal, getBatch, listAppeals, moderateDecision, setSample } from "@/lib/server/moderation";
 import {
   addLink,
   confirmUpload,
@@ -212,7 +212,7 @@ describe("marking, moderation and appeals", () => {
     expect(await auditActions(t.db, assessorUser.id)).toEqual(expect.arrayContaining(["practical.judgements.saved", "practical.decision.recorded"]));
   });
 
-  it("releases on batch close; the learner appeals; reassess gives a new attempt (another variant, another assessor)", async () => {
+  it("releases on batch close; the learner appeals; reassess gives a new attempt (another variant, same assessor, always sampled)", async () => {
     const w = await makePracticalWorld(t.db, { variants: 2, maxAttempts: 1 });
     const d = await submitted(w);
     const { actor: assessor } = await actorFor(d.ctx, (await w.staff("assessor")).id);
@@ -223,11 +223,14 @@ describe("marking, moderation and appeals", () => {
     const [dec] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.id, decisionId));
     const batch = await getBatch(d.ctx, moderator, dec!.batchId);
     expect(batch.title).toBe(w.brief.title);
-    expect(batch.decisions[0]!.submissionId).toBe(d.submissionId);
+    expect(batch.rows[0]!.targetId).toBe(d.submissionId);
     const replay = await getSubmissionView(d.ctx, moderator, d.submissionId);
     expect(replay.evidence).toHaveLength(1);
     let page = await getBriefPage(d.ctx, d.actor, w.schedule.id);
     expect(page.history[0]!.result).toBeNull(); // not released yet
+    await expect(closeBatch(d.ctx, moderator, dec!.batchId)).rejects.toMatchObject({ code: "invalid_answer" });
+    await setSample(d.ctx, moderator, dec!.batchId, [d.submissionId]);
+    await moderateDecision(d.ctx, moderator, decisionId, "agree", "Evidence supports NYC (fake).");
     await closeBatch(d.ctx, moderator, dec!.batchId);
 
     page = await getBriefPage(d.ctx, d.actor, w.schedule.id);
@@ -246,9 +249,12 @@ describe("marking, moderation and appeals", () => {
     await (await upload(d.ctx, d.actor, s2!.id)).result;
     await submitPractical(d.ctx, d.actor, s2!.id, false);
     await saveJudgements(d.ctx, assessor, s2!.id, Object.fromEntries(w.criteria.map((c) => [c.id, { met: true, comment: "" }])));
-    await expect(recordPracticalDecision(d.ctx, assessor, s2!.id, "competent", "x")).rejects.toMatchObject({ code: "invalid" });
-    const { actor: other } = await actorFor(d.ctx, (await w.staff("assessor")).id);
-    await recordPracticalDecision(d.ctx, other, s2!.id, "competent", "Competent on reassessment (fake)");
+    // One assessor per cohort: the same assessor decides the reassessment, which is always in the sample.
+    const reDecision = await recordPracticalDecision(d.ctx, assessor, s2!.id, "competent", "Competent on reassessment (fake)");
+    const [rd] = await t.db.select().from(assessmentDecisions).where(eq(assessmentDecisions.id, reDecision));
+    const reBatch = await getBatch(d.ctx, moderator, rd!.batchId);
+    expect(reBatch.rows.find((r) => r.targetId === s2!.id)!.sample).toMatchObject({ reason: "reassessment" });
+    await expect(setSample(d.ctx, moderator, rd!.batchId, [])).rejects.toMatchObject({ code: "invalid_answer" });
   });
 
   it("keeps facilitators and other cohorts' staff out", async () => {

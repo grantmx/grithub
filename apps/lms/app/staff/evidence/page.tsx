@@ -9,7 +9,13 @@ export default async function StaffEvidencePage() {
   return (
     <>
       <h1 className={ui.h1}>Evidence</h1>
-      <p className={ui.muted}>Coming soon.</p>
+      <ul>
+        <li>
+          <a href="/staff/evidence/communication">Communication log</a>: announcements, discussions, messages, support tickets and live
+          sessions per cohort (CSV or PDF).
+        </li>
+      </ul>
+      <p className={ui.muted}>More evidence views are coming.</p>
     </>
   );
 }

@@ -68,6 +68,7 @@ export async function listCohorts(ctx: Pick<ServerCtx, "db">) {
       startsOn: cohorts.startsOn,
       endsOn: cohorts.endsOn,
       qualificationTitle: qualifications.title,
+      moderationRatePercent: cohorts.moderationRatePercent,
       learners: sql<number>`(select count(*)::int from enrolments e where e.cohort_id = "cohorts"."id")`,
     })
     .from(cohorts)
@@ -124,6 +125,35 @@ export async function createCohort(
     }
     throw e;
   }
+}
+
+/**
+ * The cohort's moderation sampling rate: the minimum share of each batch the
+ * moderator must sample (design.md §14, 2026-11-08). SDP admin only.
+ */
+export async function setModerationRate(
+  ctx: ServerCtx,
+  actor: AccessContext | null,
+  cohortId: string,
+  percent: number,
+): Promise<void> {
+  const admin = await authorize(ctx, actor, ADMIN, "admin.moderationRate");
+  if (!Number.isInteger(percent) || percent < 1 || percent > 100) {
+    throw new OnboardingError("Enter a whole number from 1 to 100.");
+  }
+  const [row] = await ctx.db
+    .update(cohorts)
+    .set({ moderationRatePercent: percent })
+    .where(eq(cohorts.id, cohortId))
+    .returning({ id: cohorts.id });
+  if (!row) throw new OnboardingError("Cohort not found.");
+  await writeAudit(ctx, {
+    action: "admin.cohort.moderation_rate",
+    actorId: admin.userId,
+    entityType: "cohort",
+    entityId: cohortId,
+    after: { percent },
+  });
 }
 
 // ---------------------------------------------------------------------------

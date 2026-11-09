@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import { Icon } from "@/components/Icon";
 import ui from "@/components/ui.module.css";
+import { riskText } from "@/lib/comms";
+import { cohortRisk } from "@/lib/server/atRisk";
 import { requirePage } from "@/lib/server/page";
 import { listCohortLearners, listReportCohorts } from "@/lib/server/reports";
 
@@ -26,7 +29,12 @@ export default async function ProgressPage({
       </>
     );
   }
-  const learners = await listCohortLearners(ctx, actor, cohort.id);
+  const [learners, risk] = await Promise.all([
+    listCohortLearners(ctx, actor, cohort.id),
+    cohortRisk(ctx, actor, cohort.id),
+  ]);
+  // At-risk flags are staff only (design.md §14, 2026-11-08); facilitators can message the learner.
+  const canMessage = actor.roles.has("facilitator");
 
   return (
     <>
@@ -63,13 +71,14 @@ export default async function ProgressPage({
               <th scope="col">Enrolment</th>
               <th scope="col">Sections complete</th>
               <th scope="col">Last active</th>
+              <th scope="col">Attention</th>
               <th scope="col">Report</th>
             </tr>
           </thead>
           <tbody>
             {learners.length === 0 ? (
               <tr>
-                <td colSpan={5} className={ui.muted}>
+                <td colSpan={6} className={ui.muted}>
                   No learners in this cohort yet.
                 </td>
               </tr>
@@ -83,6 +92,20 @@ export default async function ProgressPage({
                     {l.lastActive
                       ? dateFmt.format(new Date(l.lastActive))
                       : "Not yet"}
+                  </td>
+                  <td>
+                    {risk.get(l.enrolmentId) ? (
+                      <span style={{ display: "inline-flex", flexDirection: "column", gap: "var(--space-1)" }}>
+                        {risk.get(l.enrolmentId)!.map((r) => (
+                          <span key={r.kind} className={ui.statusWarn} style={{ display: "inline-flex", gap: "var(--space-1)", alignItems: "center" }}>
+                            <Icon name="warning" size={16} /> {riskText(r)}
+                          </span>
+                        ))}
+                        {canMessage ? <a href={`/staff/messages/new?enrolment=${l.enrolmentId}`}>Message learner</a> : null}
+                      </span>
+                    ) : (
+                      "—"
+                    )}
                   </td>
                   <td>
                     <a href={`/staff/progress/${l.enrolmentId}`}>View</a> ·{" "}

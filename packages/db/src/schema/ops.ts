@@ -8,9 +8,10 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
-import { createdAt, id } from "./columns";
+import { createdAt, id, tenantId, tenantKey } from "./columns";
 import { syncStatus } from "./enums";
 import { users } from "./people";
 
@@ -62,5 +63,27 @@ export const auditLog = pgTable(
   (t) => [
     index("audit_log_entity_idx").on(t.entityType, t.entityId),
     index("audit_log_actor_idx").on(t.actorId),
+  ],
+);
+
+/**
+ * Scheduled jobs (weekly digest, overdue-ticket email) claim a run key, e.g.
+ * the date, before sending, so a retried cron call never emails twice.
+ */
+export const jobRuns = pgTable(
+  "job_runs",
+  {
+    id: id(),
+    tenantId: tenantId(),
+    job: text().notNull(),
+    runKey: text().notNull(),
+    ranAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
+  },
+  (t) => [
+    uniqueIndex("job_runs_tenant_job_key_uq").on(
+      tenantKey(t.tenantId),
+      t.job,
+      t.runKey,
+    ),
   ],
 );

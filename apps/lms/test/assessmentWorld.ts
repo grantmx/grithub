@@ -150,8 +150,12 @@ export async function makeAssessmentWorld(
 
   const learner = (setup = true) => makeUser(db, { cohortId: cohort.id, setupComplete: setup });
   /** Staff with a passkey and a grant for this cohort (global roles get a global grant). Not enrolled. */
+  /** A cohort has one assessor (design.md §14, 2026-11-08): "assessor" always returns that person. */
+  let assessorUser: Awaited<ReturnType<typeof makeUser>> | null = null;
   const staff = async (role: "assessor" | "moderator" | "facilitator" | "sdp_admin" | "external_evaluator") => {
+    if (role === "assessor" && assessorUser) return assessorUser;
     const user = await makeUser(db, { passkeys: 1 });
+    if (role === "assessor") assessorUser = user;
     const global = role === "sdp_admin" || role === "external_evaluator";
     await db.insert(roleGrants).values({
       userId: user.id,

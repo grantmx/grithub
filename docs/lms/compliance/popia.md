@@ -92,10 +92,19 @@ There are no SMS codes. Recovery is either:
 1. **Self-service:** a magic link to the registered email address, or
 2. **Admin-verified:** an SDP admin verifies identity (in person with ID, video call with ID, or a call to a number already on record), records the method and a reason, and starts recovery. All the user's passkeys and sessions are revoked, and a 30-minute single-use link is emailed. Every step is audit-logged with the admin's id.
 
+## Communication and support (2026-11-08)
+
+- **What is stored:** announcements, discussion posts, direct messages (learner ↔ one facilitator or the cohort assessor), support tickets and replies, section notes, live sessions and attendance, notifications and email preferences. No attachments are accepted anywhere, which keeps ID documents and other files out of these channels.
+- **Who can read private messages:** only the two people in the conversation; SDP admins only when a learner reports a message; SDP admins and external evaluators through the audited communication log export (Form 5 evidence). Each export's SHA-256 is audit-logged.
+- **Emails** carry no message text and no other learners' names, only a link to sign in and read. Overdue-ticket emails to staff carry counts only.
+- **Edits and removals:** edited text and hidden posts are kept for the communication log (append-only revisions); nothing is self-deleted.
+- **At-risk flags** are computed for staff only, never shown to the learner, and not stored.
+- **Retention:** kept with the learner's other records for the assessment-evidence period (question 2 below); nothing auto-deletes yet.
+
 ## Open questions (for the Information Officer)
 
 1. Information Officer name and contact for the notice (placeholder in `lib/popia.ts`).
-2. Retention periods for accounts, audit logs, consent records and assessment evidence.
+2. Retention periods for accounts, audit logs, consent records and assessment evidence (communication records follow the assessment-evidence period; design.md §14, 2026-11-08).
 3. Operator agreements with the hosting provider, Resend and Airtable.
 4. ~~Which minimal fields go to Airtable.~~ Decided by the owner on 2026-11-08: the full QCTO profile (see "Owner decisions with privacy risk"). Still to confirm: whether the Information Officer accepts this.
 5. Whether a separate learner agreement (beyond the POPIA notice) is needed at setup.

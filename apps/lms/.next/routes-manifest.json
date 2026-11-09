@@ -83,6 +83,14 @@
       "namedRegex": "^/admin/assessments/(?<nxtPblueprintId>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/admin/people/[userId]/profile",
+      "regex": "^/admin/people/([^/]+?)/profile(?:/)?$",
+      "routeKeys": {
+        "nxtPuserId": "nxtPuserId"
+      },
+      "namedRegex": "^/admin/people/(?<nxtPuserId>[^/]+?)/profile(?:/)?$"
+    },
+    {
       "page": "/admin/people/[userId]/recovery",
       "regex": "^/admin/people/([^/]+?)/recovery(?:/)?$",
       "routeKeys": {
@@ -147,6 +155,22 @@
       "namedRegex": "^/learn/attempt/(?<nxtPattemptId>[^/]+?)/review(?:/)?$"
     },
     {
+      "page": "/learn/discuss/thread/[threadId]",
+      "regex": "^/learn/discuss/thread/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPthreadId": "nxtPthreadId"
+      },
+      "namedRegex": "^/learn/discuss/thread/(?<nxtPthreadId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/learn/discuss/[moduleId]",
+      "regex": "^/learn/discuss/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPmoduleId": "nxtPmoduleId"
+      },
+      "namedRegex": "^/learn/discuss/(?<nxtPmoduleId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/learn/practical/[scheduleId]",
       "regex": "^/learn/practical/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -169,6 +193,54 @@
         "nxtPqualificationId": "nxtPqualificationId"
       },
       "namedRegex": "^/learn/(?<nxtPqualificationId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/messages/announcements/[announcementId]",
+      "regex": "^/messages/announcements/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPannouncementId": "nxtPannouncementId"
+      },
+      "namedRegex": "^/messages/announcements/(?<nxtPannouncementId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/messages/c/[conversationId]",
+      "regex": "^/messages/c/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPconversationId": "nxtPconversationId"
+      },
+      "namedRegex": "^/messages/c/(?<nxtPconversationId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/messages/help/[ticketId]",
+      "regex": "^/messages/help/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPticketId": "nxtPticketId"
+      },
+      "namedRegex": "^/messages/help/(?<nxtPticketId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/notifications/[notificationId]",
+      "regex": "^/notifications/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPnotificationId": "nxtPnotificationId"
+      },
+      "namedRegex": "^/notifications/(?<nxtPnotificationId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/sessions/[sessionId]",
+      "regex": "^/sessions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/sessions/(?<nxtPsessionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/sessions/[sessionId]/ics",
+      "regex": "^/sessions/([^/]+?)/ics(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/sessions/(?<nxtPsessionId>[^/]+?)/ics(?:/)?$"
     },
     {
       "page": "/setup/[token]",
@@ -219,6 +291,14 @@
       "namedRegex": "^/staff/attempts/(?<nxtPattemptId>[^/]+?)/pdf(?:/)?$"
     },
     {
+      "page": "/staff/discussions/thread/[threadId]",
+      "regex": "^/staff/discussions/thread/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPthreadId": "nxtPthreadId"
+      },
+      "namedRegex": "^/staff/discussions/thread/(?<nxtPthreadId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/marking/practical/[submissionId]",
       "regex": "^/staff/marking/practical/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -235,12 +315,62 @@
       "namedRegex": "^/staff/marking/(?<nxtPattemptId>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/staff/materials/banks/[bankId]",
+      "regex": "^/staff/materials/banks/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbankId": "nxtPbankId"
+      },
+      "namedRegex": "^/staff/materials/banks/(?<nxtPbankId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/materials/checks/[sectionId]",
+      "regex": "^/staff/materials/checks/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsectionId": "nxtPsectionId"
+      },
+      "namedRegex": "^/staff/materials/checks/(?<nxtPsectionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/materials/formatives/[blueprintId]",
+      "regex": "^/staff/materials/formatives/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPblueprintId": "nxtPblueprintId"
+      },
+      "namedRegex": "^/staff/materials/formatives/(?<nxtPblueprintId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/messages/[conversationId]",
+      "regex": "^/staff/messages/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPconversationId": "nxtPconversationId"
+      },
+      "namedRegex": "^/staff/messages/(?<nxtPconversationId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/moderation/[batchId]",
       "regex": "^/staff/moderation/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPbatchId": "nxtPbatchId"
       },
       "namedRegex": "^/staff/moderation/(?<nxtPbatchId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/moderation/[batchId]/item/[targetId]",
+      "regex": "^/staff/moderation/([^/]+?)/item/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbatchId": "nxtPbatchId",
+        "nxtPtargetId": "nxtPtargetId"
+      },
+      "namedRegex": "^/staff/moderation/(?<nxtPbatchId>[^/]+?)/item/(?<nxtPtargetId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/moderation/[batchId]/report/[format]",
+      "regex": "^/staff/moderation/([^/]+?)/report/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPbatchId": "nxtPbatchId",
+        "nxtPformat": "nxtPformat"
+      },
+      "namedRegex": "^/staff/moderation/(?<nxtPbatchId>[^/]+?)/report/(?<nxtPformat>[^/]+?)(?:/)?$"
     },
     {
       "page": "/staff/progress/[enrolmentId]",
@@ -267,12 +397,28 @@
       "namedRegex": "^/staff/questions/(?<nxtPquestionId>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/staff/sessions/[sessionId]",
+      "regex": "^/staff/sessions/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPsessionId": "nxtPsessionId"
+      },
+      "namedRegex": "^/staff/sessions/(?<nxtPsessionId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/submissions/[submissionId]",
       "regex": "^/staff/submissions/([^/]+?)(?:/)?$",
       "routeKeys": {
         "nxtPsubmissionId": "nxtPsubmissionId"
       },
       "namedRegex": "^/staff/submissions/(?<nxtPsubmissionId>[^/]+?)(?:/)?$"
+    },
+    {
+      "page": "/staff/tickets/[ticketId]",
+      "regex": "^/staff/tickets/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPticketId": "nxtPticketId"
+      },
+      "namedRegex": "^/staff/tickets/(?<nxtPticketId>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [
@@ -295,10 +441,22 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/account/notifications",
+      "regex": "^/account/notifications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/account/notifications(?:/)?$"
+    },
+    {
       "page": "/account/passkeys",
       "regex": "^/account/passkeys(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/account/passkeys(?:/)?$"
+    },
+    {
+      "page": "/account/profile",
+      "regex": "^/account/profile(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/account/profile(?:/)?$"
     },
     {
       "page": "/admin",
@@ -349,6 +507,18 @@
       "namedRegex": "^/admin/practical(?:/)?$"
     },
     {
+      "page": "/api/cron/overdue-tickets",
+      "regex": "^/api/cron/overdue\\-tickets(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cron/overdue\\-tickets(?:/)?$"
+    },
+    {
+      "page": "/api/cron/weekly-digest",
+      "regex": "^/api/cron/weekly\\-digest(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cron/weekly\\-digest(?:/)?$"
+    },
+    {
       "page": "/api/evidence/upload",
       "regex": "^/api/evidence/upload(?:/)?$",
       "routeKeys": {},
@@ -365,6 +535,12 @@
       "regex": "^/api/progress/scroll(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/api/progress/scroll(?:/)?$"
+    },
+    {
+      "page": "/api/qcto/areas",
+      "regex": "^/api/qcto/areas(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/qcto/areas(?:/)?$"
     },
     {
       "page": "/forbidden",
@@ -391,10 +567,40 @@
       "namedRegex": "^/library(?:/)?$"
     },
     {
+      "page": "/messages",
+      "regex": "^/messages(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/messages(?:/)?$"
+    },
+    {
+      "page": "/messages/announcements",
+      "regex": "^/messages/announcements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/messages/announcements(?:/)?$"
+    },
+    {
+      "page": "/messages/help/new",
+      "regex": "^/messages/help/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/messages/help/new(?:/)?$"
+    },
+    {
+      "page": "/messages/new",
+      "regex": "^/messages/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/messages/new(?:/)?$"
+    },
+    {
       "page": "/more",
       "regex": "^/more(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/more(?:/)?$"
+    },
+    {
+      "page": "/notifications",
+      "regex": "^/notifications(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/notifications(?:/)?$"
     },
     {
       "page": "/setup",
@@ -433,6 +639,12 @@
       "namedRegex": "^/staff/analytics(?:/)?$"
     },
     {
+      "page": "/staff/announcements",
+      "regex": "^/staff/announcements(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/announcements(?:/)?$"
+    },
+    {
       "page": "/staff/appeals",
       "regex": "^/staff/appeals(?:/)?$",
       "routeKeys": {},
@@ -445,10 +657,40 @@
       "namedRegex": "^/staff/assessment\\-days(?:/)?$"
     },
     {
+      "page": "/staff/discussions",
+      "regex": "^/staff/discussions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/discussions(?:/)?$"
+    },
+    {
+      "page": "/staff/discussions/board",
+      "regex": "^/staff/discussions/board(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/discussions/board(?:/)?$"
+    },
+    {
       "page": "/staff/evidence",
       "regex": "^/staff/evidence(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff/evidence(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence/communication",
+      "regex": "^/staff/evidence/communication(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence/communication(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence/communication/csv",
+      "regex": "^/staff/evidence/communication/csv(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence/communication/csv(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence/communication/pdf",
+      "regex": "^/staff/evidence/communication/pdf(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence/communication/pdf(?:/)?$"
     },
     {
       "page": "/staff/marking",
@@ -457,16 +699,64 @@
       "namedRegex": "^/staff/marking(?:/)?$"
     },
     {
+      "page": "/staff/materials",
+      "regex": "^/staff/materials(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/materials(?:/)?$"
+    },
+    {
+      "page": "/staff/messages",
+      "regex": "^/staff/messages(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/messages(?:/)?$"
+    },
+    {
+      "page": "/staff/messages/new",
+      "regex": "^/staff/messages/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/messages/new(?:/)?$"
+    },
+    {
       "page": "/staff/moderation",
       "regex": "^/staff/moderation(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff/moderation(?:/)?$"
     },
     {
+      "page": "/staff/moderation-feedback",
+      "regex": "^/staff/moderation\\-feedback(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/moderation\\-feedback(?:/)?$"
+    },
+    {
       "page": "/staff/progress",
       "regex": "^/staff/progress(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff/progress(?:/)?$"
+    },
+    {
+      "page": "/staff/reports",
+      "regex": "^/staff/reports(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/reports(?:/)?$"
+    },
+    {
+      "page": "/staff/section-notes",
+      "regex": "^/staff/section\\-notes(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/section\\-notes(?:/)?$"
+    },
+    {
+      "page": "/staff/sessions",
+      "regex": "^/staff/sessions(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/sessions(?:/)?$"
+    },
+    {
+      "page": "/staff/tickets",
+      "regex": "^/staff/tickets(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/tickets(?:/)?$"
     }
   ],
   "dataRoutes": [],

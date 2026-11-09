@@ -89,10 +89,14 @@ export async function makeUser(
     .returning();
   for (const role of opts.roles ?? []) {
     const global = role === "sdp_admin" || role === "external_evaluator";
+    // Assessor grants are always for one cohort, and a cohort has one assessor
+    // (design.md §14, 2026-11-08): without a cohort given, use a fresh one.
+    const cohortId =
+      role === "assessor" ? (opts.cohortId ?? (await makeCohort(db)).id) : (opts.cohortId ?? null);
     await db.insert(roleGrants).values({
       userId: user!.id,
       role,
-      cohortId: global ? null : (opts.cohortId ?? null),
+      cohortId: global ? null : cohortId,
       expiresAt:
         role === "external_evaluator"
           ? (opts.roleExpiresAt ?? new Date(Date.now() + 86_400_000))

@@ -126,7 +126,7 @@ export default async function AppealPage({
                   <input type="radio" name="outcome" value="upheld" required /> Uphold the decision
                 </label>
                 <label>
-                  <input type="radio" name="outcome" value="reassess" /> Reassess (a different assessor decides)
+                  <input type="radio" name="outcome" value="reassess" /> Reassess (one more attempt, marked by the cohort&apos;s assessor and always moderated)
                 </label>
               </div>
               <label htmlFor="notes" className={ui.label}>

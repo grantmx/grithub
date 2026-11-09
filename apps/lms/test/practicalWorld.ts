@@ -83,8 +83,12 @@ export async function makePracticalWorld(
     const [e] = await db.select().from(enrolments).where(eq(enrolments.userId, user.id));
     return { user, enrolmentId: e!.id };
   };
+  /** A cohort has one assessor (design.md §14, 2026-11-08): "assessor" always returns that person. */
+  let assessorUser: Awaited<ReturnType<typeof makeUser>> | null = null;
   const staff = async (role: "assessor" | "moderator" | "facilitator" | "sdp_admin" | "external_evaluator") => {
+    if (role === "assessor" && assessorUser) return assessorUser;
     const user = await makeUser(db, { passkeys: 1 });
+    if (role === "assessor") assessorUser = user;
     const global = role === "sdp_admin" || role === "external_evaluator";
     await db.insert(roleGrants).values({
       userId: user.id,

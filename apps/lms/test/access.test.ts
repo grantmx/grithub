@@ -56,12 +56,22 @@ const ROUTES = [
   "/account/profile",
   "/admin/people/u1/profile",
   "/api/qcto/areas",
+  "/staff/moderation/b1/item/a1",
+  "/staff/moderation/b1/report/pdf",
+  "/staff/moderation-feedback",
+  "/staff/materials",
+  "/staff/materials/banks/k1",
 ] as const;
 type Route = (typeof ROUTES)[number];
 
 // Expected result per role (all with a passkey and setup complete).
 const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
   learner: {
+    "/staff/moderation/b1/item/a1": "forbidden",
+    "/staff/moderation/b1/report/pdf": "forbidden",
+    "/staff/moderation-feedback": "forbidden",
+    "/staff/materials": "forbidden",
+    "/staff/materials/banks/k1": "forbidden",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -99,6 +109,11 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   facilitator: {
+    "/staff/moderation/b1/item/a1": "forbidden",
+    "/staff/moderation/b1/report/pdf": "forbidden",
+    "/staff/moderation-feedback": "forbidden",
+    "/staff/materials": "forbidden",
+    "/staff/materials/banks/k1": "forbidden",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -136,6 +151,11 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   assessor: {
+    "/staff/moderation/b1/item/a1": "forbidden",
+    "/staff/moderation/b1/report/pdf": "forbidden",
+    "/staff/moderation-feedback": "allow",
+    "/staff/materials": "forbidden",
+    "/staff/materials/banks/k1": "forbidden",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -173,6 +193,11 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   moderator: {
+    "/staff/moderation/b1/item/a1": "allow",
+    "/staff/moderation/b1/report/pdf": "allow",
+    "/staff/moderation-feedback": "forbidden",
+    "/staff/materials": "allow",
+    "/staff/materials/banks/k1": "allow",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -189,7 +214,7 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/staff/attempts/a1": "allow",
     "/staff/attempts/a1/pdf": "allow",
     "/staff/analytics": "allow",
-    "/staff/questions/q1": "allow",
+    "/staff/questions/q1": "forbidden",
     "/staff/appeals": "allow",
     "/staff/assessment-days": "forbidden",
     "/staff/assessment-days/d1": "forbidden",
@@ -210,6 +235,11 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "forbidden",
   },
   sdp_admin: {
+    "/staff/moderation/b1/item/a1": "forbidden",
+    "/staff/moderation/b1/report/pdf": "forbidden",
+    "/staff/moderation-feedback": "forbidden",
+    "/staff/materials": "forbidden",
+    "/staff/materials/banks/k1": "forbidden",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -247,6 +277,11 @@ const MATRIX: Record<string, Record<Route, "allow" | "forbidden">> = {
     "/admin/people": "allow",
   },
   external_evaluator: {
+    "/staff/moderation/b1/item/a1": "forbidden",
+    "/staff/moderation/b1/report/pdf": "forbidden",
+    "/staff/moderation-feedback": "forbidden",
+    "/staff/materials": "forbidden",
+    "/staff/materials/banks/k1": "forbidden",
     "/learn/practical/s1": "allow",
     "/evidence/e1": "allow",
     "/api/evidence/upload": "allow",
@@ -352,6 +387,10 @@ describe("step-up: marking, moderation and admin need a passkey", () => {
     ["sdp_admin", "/admin/assessments"],
     ["moderator", "/staff/submissions/x1"],
     ["assessor", "/staff/marking/practical/x1"],
+    ["moderator", "/staff/moderation/b1/item/a1"],
+    ["moderator", "/staff/materials"],
+    ["assessor", "/staff/moderation-feedback"],
+    ["assessor", "/staff/questions/q1"],
   ] as const)("%s without a passkey → stepup on %s", (role, route) => {
     expect(
       decide(requirementFor(route), ctx([role], { activePasskeys: 0 })),
@@ -411,5 +450,64 @@ describe("safeNext", () => {
     expect(safeNext("//evil.example")).toBe("/");
     expect(safeNext("/\\evil.example")).toBe("/");
     expect(safeNext(undefined)).toBe("/");
+  });
+});
+
+// Communication and support routes (design.md §14, 2026-11-08). One row per
+// route: the expected result for each role, in this order.
+const COMMS_ROLES = ["learner", "facilitator", "assessor", "moderator", "sdp_admin", "external_evaluator"] as const;
+const A = "allow" as const;
+const F = "forbidden" as const;
+const COMMS_MATRIX: [route: string, expected: readonly ("allow" | "forbidden")[]][] = [
+  //                                         learner fac assr  mod  admin eval
+  ["/messages", [A, A, A, A, A, A]],
+  ["/messages/announcements", [A, A, A, A, A, A]],
+  ["/messages/announcements/a1", [A, A, A, A, A, A]],
+  ["/messages/new", [A, A, A, A, A, A]],
+  ["/messages/c/c1", [A, A, A, A, A, A]],
+  ["/messages/help/new", [A, A, A, A, A, A]],
+  ["/messages/help/t1", [A, A, A, A, A, A]],
+  ["/notifications", [A, A, A, A, A, A]],
+  ["/notifications/n1", [A, A, A, A, A, A]],
+  ["/learn/discuss/m1", [A, A, A, A, A, A]],
+  ["/learn/discuss/thread/t1", [A, A, A, A, A, A]],
+  ["/sessions/s1", [A, A, A, A, A, A]],
+  ["/sessions/s1/ics", [A, A, A, A, A, A]],
+  ["/account/notifications", [A, A, A, A, A, A]],
+  ["/staff/announcements", [F, A, F, F, A, F]],
+  ["/staff/discussions", [F, A, F, F, A, F]],
+  ["/staff/discussions/board", [F, A, F, F, A, F]],
+  ["/staff/discussions/thread/t1", [F, A, F, F, A, F]],
+  ["/staff/messages", [F, A, A, F, F, F]],
+  ["/staff/messages/new", [F, A, A, F, F, F]],
+  ["/staff/messages/c1", [F, A, A, F, F, F]],
+  ["/staff/tickets", [F, A, F, F, A, F]],
+  ["/staff/tickets/t1", [F, A, F, F, A, F]],
+  ["/staff/reports", [F, A, F, F, A, F]],
+  ["/staff/sessions", [F, A, F, F, A, F]],
+  ["/staff/sessions/s1", [F, A, F, F, A, F]],
+  ["/staff/section-notes", [F, A, F, F, A, F]],
+  ["/staff/evidence/communication", [F, F, F, F, A, A]],
+  ["/staff/evidence/communication/csv", [F, F, F, F, A, A]],
+  ["/staff/evidence/communication/pdf", [F, F, F, F, A, A]],
+];
+
+describe("communication and support routes per role", () => {
+  for (const [route, expected] of COMMS_MATRIX) {
+    COMMS_ROLES.forEach((role, i) => {
+      it(`${role} → ${route}: ${expected[i]}`, () => {
+        const roles = role === "learner" ? [] : [role as StaffRole];
+        expect(decide(requirementFor(route), ctx(roles)).result).toBe(expected[i]);
+      });
+    });
+    it(`anonymous → ${route}: signin`, () => {
+      expect(decide(requirementFor(route), null).result).toBe("signin");
+    });
+  }
+
+  it("cron endpoints are reachable without a session (the handler checks CRON_SECRET)", () => {
+    expect(decide(requirementFor("/api/cron/weekly-digest"), null).result).toBe("allow");
+    expect(decide(requirementFor("/api/cron/overdue-tickets"), null).result).toBe("allow");
+    expect(decide(requirementFor("/api/cron/anything-else"), null).result).toBe("signin");
   });
 });

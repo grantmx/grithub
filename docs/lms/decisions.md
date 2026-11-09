@@ -80,10 +80,10 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
   - Blueprints (draft, then published and fixed) hold rules "N questions from bank X / component Y", type, attempts, time limit, pass mark and answer visibility. Cohort schedules give a window (formative) or an assessment day (summative).
   - Papers are drawn by `lib/paper.ts` (seed = learner : blueprint : attempt), stored as attempt items with opaque option tokens, and never re-drawn.
   - Formatives are auto-graded with answers shown (default). For summatives the assessor opens each learner's paper after attendance and ID check; short answers are marked per rubric criterion; the assessor records Competent / Not yet competent (the pass mark is a suggestion); results are released when the moderator closes the batch.
-  - Appeals within 7 days, decided by a moderator who did not make the decision: uphold, or reassess (one extra attempt, decided by a different assessor).
+  - Appeals within 7 days, decided by a moderator who did not make the decision: uphold, or reassess (one extra attempt). _Changed 2026-11-08 (ADR-015): there is one assessor per cohort, so the same assessor decides the reassessment, which is always moderated._
   - Paper PDFs are generated on demand with pdf-lib (deterministic; checksum audited); no file storage.
-  - Question analytics (standard thresholds, `lib/questionStats.ts`) let assessors and moderators retire a question or create a new version.
-- **Consequences:** answer keys are visible only to assessors, moderators and external evaluators. Assessments need a connection. The moderation sampling rate is not enforced yet (Q5). Learners are not yet notified by email when results are released.
+  - Question analytics (standard thresholds, `lib/questionStats.ts`) let assessors retire a question or create a new version. _Changed 2026-11-08 (ADR-015): moderators see analytics read-only and never edit question versions._
+- **Consequences:** answer keys are visible only to assessors, moderators and external evaluators. Assessments need a connection. The moderation sampling rate is enforced since ADR-015. Learners are not yet notified by email when results are released.
 
 ## ADR-013: Practical assessments
 
@@ -112,6 +112,34 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 
 ---
 
+## ADR-015: Moderation sampling, verdicts and release
+
+- **Status:** Accepted (2026-11-08). Design-gate answers in design.md §14.
+- **Context:** Form 5 4.2.5 and 4.3.5 ask how moderation is conducted and how the moderator accesses formative assessments and practical evidence. ADR-012 left the sampling rate open (Q5).
+- **Decision:**
+  - One assessor per cohort (QCTO expects one per programme), enforced in the database. A reassessment ordered on appeal is decided by that assessor and is always in the sample.
+  - The SDP admin sets a sampling rate per cohort (default 25%). The moderator picks which learners' work goes in each batch's sample; the minimum is the rate × decisions in the batch, rounded up. Moderated work can't leave the sample.
+  - Verdicts: Agree, Agree with actions (the assessor ticks "Actions done" with a note) or Disagree (the assessor records a new decision; the moderator checks it again). One verdict per decision version, with comments and required actions.
+  - The batch closes (and releases every result in it) only when the minimum is sampled and every sampled current decision is agreed with any actions done. The same rules are database triggers (`0017_moderation_rules.sql`).
+  - Moderators work read-only on learner work, marks, decisions and question versions: the S7 view shows the exact paper (versions and option order from `AttemptItem`) or the evidence, the rubric/judgements and the decision history. They can't retire or version questions.
+  - The assessor sees outcomes on the marking page and queue, a Moderation feedback list with a sidebar badge, and an email (link only) on Disagree or actions.
+  - Per-batch moderation report as PDF and CSV (checksums audited). A read-only "Assessment materials" area shows banks with every version, keys and rubrics; formative blueprints with their learners' attempts (exact replays); and section checks. Formatives get no verdicts.
+- **Consequences:** a cohort can't have a second or global assessor grant; changing assessor means removing the grant first. The staff notification system is not built; the badge is a count of unseen outcomes.
+
+## ADR-016: Communication and academic support
+
+- **Status:** Accepted (2026-11-08). Design-gate answers in design.md §14.
+- **Context:** Form 5 4.2.6, 4.2.8, 4.2.10 and 4.2.11 ask how facilitators communicate with learners, which conferencing platform is used, whether facilitator notes and recordings exist, and how learners are supported.
+- **Decision:**
+  - One **Notification** row per recipient per event drives both the in-app bell and email. The recipient's preference for the optional types (announcements, discussions, messages, tickets) is instant, weekly digest or off; live-session schedule changes are essential and always emailed with an .ics invite. Emails carry no message text and no other learners' names, only a link.
+  - Discussions are one board per module per cohort; only staff start threads; replies nest one level (database trigger). Direct messages are learner ↔ one named facilitator or the cohort's assessor, private to those two people. No attachments anywhere.
+  - Abuse controls: Postgres fixed-window rate limits per user (learners 10 per 10 minutes and 60 per day; 3 tickets per day), learner reports, staff hide/dismiss. Reports on private messages go to SDP admins so a facilitator never reviews a report about themselves. Edits are allowed for 15 minutes and keep the earlier text (append-only `message_revisions`); posts, messages and ticket replies are never deleted.
+  - Support-ticket targets are stamped at creation in working hours (Mon–Fri 08:00–17:00 SAST, SA public holidays computed, including Easter and Sunday→Monday); overdue status is computed on read. Vercel Cron runs the weekly digest and the daily overdue email; each run is claimed in `job_runs` so retries never email twice, and both endpoints require `CRON_SECRET`.
+  - At-risk flags (7 days without learning activity; 2 sections with all 3 check tries wrong in 14 days) are computed on read for staff only.
+  - Live sessions use Zoom links only (Form 5 4.2.8); attendance uses the same four statuses as assessment days.
+  - A per-cohort communication log (CSV/PDF) includes hidden items and earlier versions; SDP admins and external evaluators export it, and each export's SHA-256 is audited.
+- **Consequences:** facilitator notes are not yet in the admin coverage report (4.2.10 follow-up). One-off proclaimed public holidays (e.g. election days) are not in the working-hours calendar. Staff have no bell; they get sidebar badges and email.
+
 ## Open questions
 
 ### Compliance and governance
@@ -120,7 +148,7 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 2. What does QCTO / the quality partner accept as "valid LMS licence" evidence (4.1.3) for a self-built LMS?
 3. Which quality-assurance body applies to each programme now (QCTO directly, or a delegated body)? Confirm MICT SETA's current role.
 4. Is internal summative assessment run by the SDP for these curricula, and what is the exact terminology/form expected (e.g. statement of results)?
-5. What moderation sampling rate is required (for example a percentage per assessor per cohort)?
+5. ~~What moderation sampling rate is required?~~ Set per cohort by the SDP admin (default 25%), at least that share of each batch, picked by the moderator (ADR-015, 2026-11-08). Confirm the rate each quality partner expects.
 6. What are the record retention periods for POE and assessment records?
 
 ### Data and POPIA

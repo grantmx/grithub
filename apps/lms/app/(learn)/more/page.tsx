@@ -7,7 +7,7 @@ import { getSetupState } from "@/lib/server/setupState";
 
 export const metadata: Metadata = { title: "More" };
 
-/** More (design-gate decision 2026-11-08): Account & passkeys, QCTO details (learners), Help, Sign out. */
+/** More (design-gate decision 2026-11-08): Account & passkeys, QCTO details (learners), Email notifications, Help, Sign out. */
 export default async function MorePage() {
   const { ctx, actor } = await requirePage("/more");
   const isLearner = (await getSetupState(ctx, actor.userId))?.isLearner;
@@ -29,6 +29,12 @@ export default async function MorePage() {
             </a>
           </li>
         ) : null}
+        <li className={styles.listItem}>
+          <Icon name="notifications" />
+          <a href="/account/notifications" className={styles.textLink}>
+            Email notifications
+          </a>
+        </li>
         <li className={styles.listItem}>
           <Icon name="help" />
           <a href="/signin/help" className={styles.textLink}>

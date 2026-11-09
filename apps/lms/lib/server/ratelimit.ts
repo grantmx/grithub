@@ -35,6 +35,15 @@ export const RATE_LIMITS = {
   evidenceUpload: { scope: "evidence-upload", limit: 60, windowSeconds: 3600 },
   evidenceView: { scope: "evidence-view", limit: 300, windowSeconds: 3600 },
   practicalSubmit: { scope: "practical-submit", limit: 10, windowSeconds: 900 },
+  // Messaging (per user; design.md §14, 2026-11-08). Learners: 10 posts or
+  // messages per 10 minutes and 60 per day; 3 new tickets per day. Staff higher.
+  commsLearnerBurst: { scope: "comms-learner-burst", limit: 10, windowSeconds: 600 },
+  commsLearnerDaily: { scope: "comms-learner-daily", limit: 60, windowSeconds: 86400 },
+  commsStaffBurst: { scope: "comms-staff-burst", limit: 60, windowSeconds: 600 },
+  commsStaffDaily: { scope: "comms-staff-daily", limit: 600, windowSeconds: 86400 },
+  ticketCreate: { scope: "ticket-create", limit: 3, windowSeconds: 86400 },
+  contentReport: { scope: "content-report", limit: 20, windowSeconds: 86400 },
+  commsExport: { scope: "comms-export", limit: 60, windowSeconds: 3600 },
 } satisfies Record<string, RateLimitRule>;
 
 export class RateLimitError extends Error {

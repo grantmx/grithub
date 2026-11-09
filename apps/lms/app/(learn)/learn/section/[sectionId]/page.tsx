@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { completeSectionAction } from "@/app/(learn)/actions";
 import { Icon } from "@/components/Icon";
+import { FacilitatorNotes } from "@/components/comms/learner/FacilitatorNotes";
 import { CheckCard } from "@/components/learn/CheckCard";
 import { Outline } from "@/components/learn/Outline";
 import { ScrollMemory } from "@/components/learn/ScrollMemory";
@@ -11,6 +12,7 @@ import { LearningError, getSectionPage } from "@/lib/server/learning";
 import { posterUrl, readMuxConfig } from "@/lib/server/mux";
 import { requirePage } from "@/lib/server/page";
 import { getCheckView } from "@/lib/server/sectionCheck";
+import { notesForSection } from "@/lib/server/sectionNotes";
 
 export const metadata: Metadata = { title: "Section" };
 
@@ -45,6 +47,7 @@ export default async function SectionPage({
   const check = page.hasCheck
     ? await getCheckView(ctx, actor, sectionId)
     : ({ state: "none" } as const);
+  const notes = await notesForSection(ctx, actor, sectionId);
   const answered = check.state === "result";
   const canComplete = !page.hasCheck || check.state === "none" || answered;
 
@@ -74,7 +77,10 @@ export default async function SectionPage({
           >
             {page.module.title}
           </a>{" "}
-          › Section {page.position.index} of {page.position.total}
+          › Section {page.position.index} of {page.position.total} ·{" "}
+          <a href={`/learn/discuss/${page.module.id}`} className={styles.textLink}>
+            Discuss this module <span aria-hidden="true">›</span>
+          </a>
         </p>
         <h1 id="section-title" className={styles.sectionTitle}>
           {page.section.title}
@@ -85,6 +91,8 @@ export default async function SectionPage({
           texts={page.texts}
           posterUrls={posters}
         />
+
+        <FacilitatorNotes notes={notes} />
 
         <CheckCard sectionId={sectionId} view={check} notice={sp.check} />
 

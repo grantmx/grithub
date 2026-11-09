@@ -1,4 +1,4 @@
-import { and, asc, desc, eq, inArray } from "drizzle-orm";
+import { and, asc, eq, inArray } from "drizzle-orm";
 import {
   appeals,
   assessmentDays,
@@ -10,6 +10,7 @@ import {
   criterionJudgements,
   enrolments,
   evidenceItems,
+  moderationActionCompletions,
   moderationBatches,
   moderationRecords,
   modules,
@@ -23,7 +24,8 @@ import type { AccessContext, Requirement } from "@/lib/access";
 import { writeAudit } from "./audit";
 import { authorize } from "./auth";
 import type { ServerCtx } from "./context";
-import type { QueueStatus } from "./marking";
+import { moderatedStatus, type QueueStatus } from "./marking";
+import { sampleReassessment } from "./moderation";
 import { criteriaOf, currentSubmissionDecision, EVIDENCE_ROLES, PracticalError } from "./practical";
 import { assertCohortScope, cohortScope, inScope } from "./staffScope";
 import { staffMayOpen } from "./virusScan";
@@ -95,15 +97,8 @@ export async function practicalQueue(ctx: Ctx, actor: AccessContext | null): Pro
     const done = judged.filter((j) => j.submissionId === r.s.id).length;
     const d = await currentSubmissionDecision(ctx, r.s.id);
     let status: QueueStatus;
-    if (d) {
-      const [m] = await ctx.db
-        .select({ outcome: moderationRecords.outcome })
-        .from(moderationRecords)
-        .where(eq(moderationRecords.decisionId, d.id))
-        .orderBy(desc(moderationRecords.moderatedAt))
-        .limit(1);
-      status = m?.outcome === "referred_back" && !d.releasedAt ? "referred_back" : "decided";
-    } else if (done < total) status = "needs_marking";
+    if (d) status = await moderatedStatus(ctx, d);
+    else if (done < total) status = "needs_marking";
     else if (drafts.some((x) => x.submissionId === r.s.id)) status = "draft";
     else status = "ready";
     out.push({
@@ -171,9 +166,10 @@ async function loadSubmission(ctx: Ctx, submissionId: string) {
   const decisionIds = decisions.map((x) => x.d.id);
   const moderation = decisionIds.length
     ? await ctx.db
-        .select({ m: moderationRecords, moderatorName: users.displayName })
+        .select({ m: moderationRecords, moderatorName: users.displayName, completion: moderationActionCompletions })
         .from(moderationRecords)
         .innerJoin(users, eq(users.id, moderationRecords.moderatorId))
+        .leftJoin(moderationActionCompletions, eq(moderationActionCompletions.moderationRecordId, moderationRecords.id))
         .where(inArray(moderationRecords.decisionId, decisionIds))
     : [];
   const appealRows = decisionIds.length ? await ctx.db.select().from(appeals).where(inArray(appeals.decisionId, decisionIds)) : [];
@@ -220,7 +216,9 @@ async function loadSubmission(ctx: Ctx, submissionId: string) {
       ...x.d,
       assessorName: x.assessorName,
       superseded: decisions.some((y) => y.d.supersedesId === x.d.id),
-      moderation: moderation.filter((m) => m.m.decisionId === x.d.id).map((m) => ({ ...m.m, moderatorName: m.moderatorName })),
+      moderation: moderation
+        .filter((m) => m.m.decisionId === x.d.id)
+        .map((m) => ({ ...m.m, moderatorName: m.moderatorName, completion: m.completion })),
       appeal: appealRows.find((p) => p.decisionId === x.d.id) ?? null,
     })),
   };
@@ -236,7 +234,7 @@ export async function getSubmissionView(ctx: Ctx, actor: AccessContext | null, s
   return v;
 }
 
-/** If this attempt is a reassessment ordered on appeal, the appealed decision's assessor. */
+/** If this submission is a reassessment ordered on appeal, the appealed decision's assessor. */
 async function reassessmentAssessor(ctx: Ctx, s: typeof submissions.$inferSelect): Promise<string | null> {
   if (s.attemptNo < 2) return null;
   const [prev] = await ctx.db
@@ -264,21 +262,14 @@ export async function getPracticalMarkingView(ctx: Ctx, actor: AccessContext | n
   const batchOpen = current
     ? (await ctx.db.select({ s: moderationBatches.status }).from(moderationBatches).where(eq(moderationBatches.id, current.batchId)))[0]?.s === "open"
     : true;
-  const reassessBy = await reassessmentAssessor(ctx, v.submission);
   const queue = await practicalQueue(ctx, a);
   const idx = queue.findIndex((q) => q.submissionId === submissionId);
   return {
     ...v,
     draft: draft ?? null,
     current,
-    canDecide: v.judgedAll && batchOpen && reassessBy !== a.userId,
-    blockedReason: !v.judgedAll
-      ? ("judging" as const)
-      : !batchOpen
-        ? ("released" as const)
-        : reassessBy === a.userId
-          ? ("reassess_other_assessor" as const)
-          : null,
+    canDecide: v.judgedAll && batchOpen,
+    blockedReason: !v.judgedAll ? ("judging" as const) : !batchOpen ? ("released" as const) : null,
     prevId: idx > 0 ? queue[idx - 1]!.submissionId : null,
     nextId: idx >= 0 && idx < queue.length - 1 ? queue[idx + 1]!.submissionId : null,
   };
@@ -390,9 +381,6 @@ export async function recordPracticalDecision(
   if (!criteria.every((c) => judged.some((j) => j.c === c.id))) {
     throw new PracticalError("invalid", "Judge every criterion before recording a decision.");
   }
-  if ((await reassessmentAssessor(ctx, s)) === a.userId) {
-    throw new PracticalError("invalid", "A different assessor must decide this reassessment.");
-  }
   const previous = await currentSubmissionDecision(ctx, submissionId);
   if (previous?.releasedAt) throw new PracticalError("submitted", "This result has been released. Changes go through an appeal.");
   const batchId = previous?.batchId ?? (await openBriefBatch(ctx, cohortId, s.briefId));
@@ -411,6 +399,9 @@ export async function recordPracticalDecision(
   await ctx.db
     .delete(practicalDecisionDrafts)
     .where(and(eq(practicalDecisionDrafts.submissionId, submissionId), eq(practicalDecisionDrafts.assessorId, a.userId)));
+  // A reassessment ordered on appeal is marked by the cohort's (only) assessor
+  // and is always in the moderation sample (design.md §14, 2026-11-08).
+  if (await reassessmentAssessor(ctx, s)) await sampleReassessment(ctx, batchId, { submissionId }, a.userId);
   await writeAudit(ctx, {
     action: "practical.decision.recorded",
     actorId: a.userId,
