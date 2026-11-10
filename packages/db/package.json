@@ -19,6 +19,7 @@
     "db:generate": "drizzle-kit generate",
     "db:generate:custom": "drizzle-kit generate --custom",
     "db:migrate": "tsx src/migrate.ts",
+    "db:grants": "tsx src/grants.ts",
     "db:seed": "tsx src/seed.ts",
     "db:studio": "drizzle-kit studio",
     "lint": "eslint .",
@@ -26,7 +27,7 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "drizzle-orm": "0.44.7",
+    "drizzle-orm": "0.45.4",
     "postgres": "3.4.7"
   },
   "devDependencies": {

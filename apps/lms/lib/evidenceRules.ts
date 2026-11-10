@@ -43,6 +43,63 @@ export function fileProblem(name: string, mimeType: string, size: number): strin
   return null;
 }
 
+const startsWith = (b: Uint8Array, sig: readonly number[], offset = 0) =>
+  b.length >= offset + sig.length && sig.every((v, i) => b[offset + i] === v);
+const ascii = (b: Uint8Array, from: number, to: number) =>
+  String.fromCharCode(...b.subarray(from, Math.min(to, b.length)));
+
+const ZIP = [0x50, 0x4b, 0x03, 0x04] as const;
+const ZIP_EMPTY = [0x50, 0x4b, 0x05, 0x06] as const;
+/** Legacy Office (Word/Excel/PowerPoint 97–2003): OLE compound file. */
+const OLE = [0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1] as const;
+const HEIF_BRANDS = new Set(["heic", "heix", "heim", "heis", "hevc", "hevx", "mif1", "msf1", "heif"]);
+
+/**
+ * Does the file's content match its declared type? The browser declares the
+ * type, so the server checks the first bytes ("magic numbers") after upload.
+ * Office Open XML files are ZIP containers; plain text must be valid UTF-8
+ * with no NUL bytes (which rules out renamed binaries).
+ */
+export function contentMatchesType(bytes: Uint8Array, mimeType: string): boolean {
+  switch (mimeType) {
+    case "application/pdf":
+      // The header may follow a little junk; the spec allows it within the first 1 KB.
+      return ascii(bytes, 0, 1024).includes("%PDF-");
+    case "image/jpeg":
+      return startsWith(bytes, [0xff, 0xd8, 0xff]);
+    case "image/png":
+      return startsWith(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
+    case "image/webp":
+      return ascii(bytes, 0, 4) === "RIFF" && ascii(bytes, 8, 12) === "WEBP";
+    case "image/heic":
+    case "image/heif":
+      return ascii(bytes, 4, 8) === "ftyp" && HEIF_BRANDS.has(ascii(bytes, 8, 12));
+    case "application/msword":
+    case "application/vnd.ms-excel":
+    case "application/vnd.ms-powerpoint":
+      return startsWith(bytes, OLE);
+    case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+    case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
+    case "application/vnd.openxmlformats-officedocument.presentationml.presentation":
+    case "application/zip":
+    case "application/x-zip-compressed":
+      return startsWith(bytes, ZIP) || startsWith(bytes, ZIP_EMPTY);
+    case "text/plain": {
+      const head = bytes.subarray(0, 64 * 1024);
+      if (head.includes(0)) return false;
+      try {
+        // A multi-byte character may be cut at the 64 KB boundary; `stream` tolerates that.
+        new TextDecoder("utf-8", { fatal: true }).decode(head, { stream: true });
+        return true;
+      } catch {
+        return false;
+      }
+    }
+    default:
+      return false;
+  }
+}
+
 /**
  * Link allow-list (decision 2026-11-08). An entry matches the host exactly or
  * any subdomain of it. Editable by admins later; for now, change it here.

@@ -58,4 +58,5 @@ The LMS must also produce the evidence that QCTO Form 5, section 4 (hybrid/blend
 - [compliance/form5-mapping.md](compliance/form5-mapping.md): QCTO Form 5 section 4 → LMS features → evidence
 - [phases.md](phases.md): MVP and later phases with acceptance criteria
 - [decisions.md](decisions.md): ADR log and open questions
+- [dossier/](dossier/README.md): LMS Capability and Security Dossier (system description, services, capacity, POPIA pack, security controls, backup and restore, evaluator demo guide) and its TODO register
 - [design.md](design.md): design decisions (filled only through the design gate in `CLAUDE.md`)

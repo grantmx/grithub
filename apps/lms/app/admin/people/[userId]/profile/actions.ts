@@ -10,6 +10,7 @@ import {
 } from "@/lib/qctoProfile";
 import { AccessDeniedError } from "@/lib/server/auth";
 import { ProfileError, adminSaveProfile } from "@/lib/server/qctoProfile";
+import { InputError, checkForm, id, text } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
 export type AdminProfileState = {
@@ -26,8 +27,16 @@ export async function saveLearnerProfile(
   prev: AdminProfileState,
   form: FormData,
 ): Promise<AdminProfileState> {
-  const userId = String(form.get("userId") ?? "");
   const attempt = (prev.attempt ?? 0) + 1;
+  let userId: string;
+  try {
+    // The whole form goes to the domain layer, so check every field's shape first.
+    checkForm(form);
+    userId = id(form, "userId");
+  } catch (e) {
+    if (e instanceof InputError) return { error: e.message, attempt };
+    throw e;
+  }
   const ctx = await getServerCtx();
   try {
     const values = await adminSaveProfile(
@@ -39,7 +48,7 @@ export async function saveLearnerProfile(
     return {
       success: "Saved.",
       values,
-      areaLabel: String(form.get("statssaAreaCodeLabel") ?? "").slice(0, 200),
+      areaLabel: text(form, "statssaAreaCodeLabel").slice(0, 200),
       attempt,
     };
   } catch (e) {
@@ -58,7 +67,7 @@ export async function saveLearnerProfile(
         error: e.message,
         fieldErrors: e.fieldErrors,
         values: typed,
-        areaLabel: String(form.get("statssaAreaCodeLabel") ?? "").slice(0, 200),
+        areaLabel: text(form, "statssaAreaCodeLabel").slice(0, 200),
         attempt,
       };
     }

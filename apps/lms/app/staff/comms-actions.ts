@@ -15,6 +15,7 @@ import {
   updateSession,
 } from "@/lib/server/liveSessions";
 import { editMessage, sendMessage, staffStartConversation } from "@/lib/server/messages";
+import { InputError, id, optionalId, text } from "@/lib/server/input";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import { getActor, getServerCtx } from "@/lib/server/request";
 import { addSectionNote, archiveSectionNote } from "@/lib/server/sectionNotes";
@@ -26,7 +27,6 @@ import { reassignTicket, replyToTicket, setTicketStatus } from "@/lib/server/tic
  * to the proxy. Plain form posts that redirect back with ?done= / ?error=.
  */
 
-const str = (form: FormData, key: string) => String(form.get(key) ?? "");
 
 /** Set ?done= or ?error= on a same-site path, dropping any earlier status. */
 function withParam(path: string, key: "done" | "error", value: string) {
@@ -63,7 +63,7 @@ async function run(back: string, fn: (ctx: Ctx, actor: Actor) => Promise<string 
             : "/forbidden",
       );
     }
-    if (e instanceof CommsError) redirect(withParam(to, "error", e.message));
+    if (e instanceof CommsError || e instanceof InputError) redirect(withParam(to, "error", e.message));
     if (e instanceof RateLimitError) redirect(withParam(to, "error", "Too many tries. Please wait a few minutes."));
     throw e;
   }
@@ -73,21 +73,21 @@ async function run(back: string, fn: (ctx: Ctx, actor: Actor) => Promise<string 
 // --- Announcements -------------------------------------------------------------
 
 export async function publishAnnouncementAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
+  await run(text(form, "back"), async (ctx, actor) => {
     await publishAnnouncement(ctx, actor, {
-      cohortId: str(form, "cohortId"),
-      title: str(form, "title"),
-      body: str(form, "body"),
-      pin: str(form, "pin") === "1",
+      cohortId: id(form, "cohortId"),
+      title: text(form, "title"),
+      body: text(form, "body"),
+      pin: text(form, "pin") === "1",
     });
     return "published";
   });
 }
 
 export async function pinAnnouncementAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const pinned = str(form, "pinned") === "1";
-    await setAnnouncementPinned(ctx, actor, str(form, "id"), pinned);
+  await run(text(form, "back"), async (ctx, actor) => {
+    const pinned = text(form, "pinned") === "1";
+    await setAnnouncementPinned(ctx, actor, id(form, "id"), pinned);
     return pinned ? "pinned" : "unpinned";
   });
 }
@@ -95,39 +95,39 @@ export async function pinAnnouncementAction(form: FormData) {
 // --- Discussions ----------------------------------------------------------------
 
 export async function createThreadAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const id = await createThread(ctx, actor, {
-      cohortId: str(form, "cohortId"),
-      moduleId: str(form, "moduleId"),
-      title: str(form, "title"),
-      body: str(form, "body"),
+  await run(text(form, "back"), async (ctx, actor) => {
+    const threadId = await createThread(ctx, actor, {
+      cohortId: id(form, "cohortId"),
+      moduleId: id(form, "moduleId"),
+      title: text(form, "title"),
+      body: text(form, "body"),
     });
-    return { to: `/staff/discussions/thread/${id}`, done: "thread_created" };
+    return { to: `/staff/discussions/thread/${threadId}`, done: "thread_created" };
   });
 }
 
 export async function pinThreadAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const pinned = str(form, "pinned") === "1";
-    await setThreadPinned(ctx, actor, str(form, "threadId"), pinned);
+  await run(text(form, "back"), async (ctx, actor) => {
+    const pinned = text(form, "pinned") === "1";
+    await setThreadPinned(ctx, actor, id(form, "threadId"), pinned);
     return pinned ? "pinned" : "unpinned";
   });
 }
 
 export async function staffReplyAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const id = await replyToThread(ctx, actor, {
-      threadId: str(form, "threadId"),
-      body: str(form, "body"),
-      parentId: str(form, "parentId") || null,
+  await run(text(form, "back"), async (ctx, actor) => {
+    const postId = await replyToThread(ctx, actor, {
+      threadId: id(form, "threadId"),
+      body: text(form, "body"),
+      parentId: optionalId(form, "parentId") ?? null,
     });
-    return { to: `${str(form, "back").split("#")[0]}#post-${id}`, done: "replied" };
+    return { to: `${text(form, "back").split("#")[0]}#post-${postId}`, done: "replied" };
   });
 }
 
 export async function staffEditPostAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await editPost(ctx, actor, str(form, "postId"), str(form, "body"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await editPost(ctx, actor, id(form, "postId"), text(form, "body"));
     return "edited";
   });
 }
@@ -135,49 +135,49 @@ export async function staffEditPostAction(form: FormData) {
 // --- Messages --------------------------------------------------------------------
 
 export async function staffSendMessageAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await sendMessage(ctx, actor, str(form, "conversationId"), str(form, "body"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await sendMessage(ctx, actor, id(form, "conversationId"), text(form, "body"));
     return "sent";
   });
 }
 
 export async function staffEditMessageAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await editMessage(ctx, actor, str(form, "messageId"), str(form, "body"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await editMessage(ctx, actor, id(form, "messageId"), text(form, "body"));
     return "edited";
   });
 }
 
 export async function staffStartConversationAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const id = await staffStartConversation(ctx, actor, { enrolmentId: str(form, "enrolmentId"), body: str(form, "body") });
-    return { to: `/staff/messages/${id}`, done: "sent" };
+  await run(text(form, "back"), async (ctx, actor) => {
+    const conversationId = await staffStartConversation(ctx, actor, { enrolmentId: id(form, "enrolmentId"), body: text(form, "body") });
+    return { to: `/staff/messages/${conversationId}`, done: "sent" };
   });
 }
 
 // --- Tickets ----------------------------------------------------------------------
 
 export async function ticketReplyAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await replyToTicket(ctx, actor, str(form, "ticketId"), str(form, "body"), "staff");
+  await run(text(form, "back"), async (ctx, actor) => {
+    await replyToTicket(ctx, actor, id(form, "ticketId"), text(form, "body"), "staff");
     return "replied";
   });
 }
 
 export async function ticketStatusAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const status = str(form, "status");
-    if (status === "closed" && str(form, "confirm") !== "1") {
+  await run(text(form, "back"), async (ctx, actor) => {
+    const status = text(form, "status");
+    if (status === "closed" && text(form, "confirm") !== "1") {
       throw new CommsError("invalid", "Tick the box to confirm closing the ticket.");
     }
-    await setTicketStatus(ctx, actor, str(form, "ticketId"), status);
+    await setTicketStatus(ctx, actor, id(form, "ticketId"), status);
     return `status_${status}`;
   });
 }
 
 export async function ticketReassignAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await reassignTicket(ctx, actor, str(form, "ticketId"), str(form, "assigneeId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await reassignTicket(ctx, actor, id(form, "ticketId"), optionalId(form, "assigneeId") ?? "");
     return "reassigned";
   });
 }
@@ -185,9 +185,9 @@ export async function ticketReassignAction(form: FormData) {
 // --- Reports ----------------------------------------------------------------------
 
 export async function resolveReportAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const outcome = str(form, "outcome") === "hide" ? "hide" : "dismiss";
-    await resolveReport(ctx, actor, str(form, "reportId"), outcome);
+  await run(text(form, "back"), async (ctx, actor) => {
+    const outcome = text(form, "outcome") === "hide" ? "hide" : "dismiss";
+    await resolveReport(ctx, actor, id(form, "reportId"), outcome);
     return outcome === "hide" ? "hidden" : "dismissed";
   });
 }
@@ -195,21 +195,21 @@ export async function resolveReportAction(form: FormData) {
 // --- Section notes -----------------------------------------------------------------
 
 export async function addNoteAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
+  await run(text(form, "back"), async (ctx, actor) => {
     await addSectionNote(ctx, actor, {
-      cohortId: str(form, "cohortId"),
-      sectionId: str(form, "sectionId"),
-      body: str(form, "body"),
-      recordingUrl: str(form, "recordingUrl"),
-      recordingLabel: str(form, "recordingLabel"),
+      cohortId: id(form, "cohortId"),
+      sectionId: id(form, "sectionId"),
+      body: text(form, "body"),
+      recordingUrl: text(form, "recordingUrl"),
+      recordingLabel: text(form, "recordingLabel"),
     });
     return "note_added";
   });
 }
 
 export async function archiveNoteAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await archiveSectionNote(ctx, actor, str(form, "noteId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await archiveSectionNote(ctx, actor, id(form, "noteId"));
     return "note_removed";
   });
 }
@@ -217,45 +217,45 @@ export async function archiveNoteAction(form: FormData) {
 // --- Live sessions -------------------------------------------------------------------
 
 const sessionFields = (form: FormData) => ({
-  moduleId: str(form, "moduleId") || undefined,
-  title: str(form, "title"),
-  details: str(form, "details"),
-  startsAt: str(form, "startsAt"),
-  durationMinutes: str(form, "durationMinutes"),
-  joinUrl: str(form, "joinUrl"),
+  moduleId: optionalId(form, "moduleId"),
+  title: text(form, "title"),
+  details: text(form, "details"),
+  startsAt: text(form, "startsAt"),
+  durationMinutes: text(form, "durationMinutes"),
+  joinUrl: text(form, "joinUrl"),
 });
 
 export async function scheduleSessionAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const id = await scheduleSession(ctx, actor, { cohortId: str(form, "cohortId"), ...sessionFields(form) });
-    return { to: `/staff/sessions/${id}`, done: "scheduled" };
+  await run(text(form, "back"), async (ctx, actor) => {
+    const sessionId = await scheduleSession(ctx, actor, { cohortId: id(form, "cohortId"), ...sessionFields(form) });
+    return { to: `/staff/sessions/${sessionId}`, done: "scheduled" };
   });
 }
 
 export async function updateSessionAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await updateSession(ctx, actor, str(form, "sessionId"), sessionFields(form));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await updateSession(ctx, actor, id(form, "sessionId"), sessionFields(form));
     return "updated";
   });
 }
 
 export async function cancelSessionAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    if (str(form, "confirm") !== "1") throw new CommsError("invalid", "Tick the box to confirm cancelling the session.");
-    await cancelSession(ctx, actor, str(form, "sessionId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    if (text(form, "confirm") !== "1") throw new CommsError("invalid", "Tick the box to confirm cancelling the session.");
+    await cancelSession(ctx, actor, id(form, "sessionId"));
     return "cancelled";
   });
 }
 
 export async function recordingAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await addRecording(ctx, actor, str(form, "sessionId"), str(form, "recordingUrl"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await addRecording(ctx, actor, id(form, "sessionId"), text(form, "recordingUrl"));
     return "recording_added";
   });
 }
 
 export async function sessionAttendanceAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await setSessionAttendance(ctx, actor, str(form, "sessionId"), str(form, "enrolmentId"), str(form, "status"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await setSessionAttendance(ctx, actor, id(form, "sessionId"), id(form, "enrolmentId"), text(form, "status"));
   });
 }

@@ -8,13 +8,14 @@ import { authorize } from "./auth";
 import type { ServerCtx } from "./context";
 import { sha256Hex } from "./crypto";
 import { CommsError, claimJobRun } from "./comms";
-import { evidenceStore } from "./evidenceStore";
+import { backupStore } from "./evidenceStore";
 
 /**
  * Nightly backups and the backup/restore log (design.md §14, 2026-11-09;
  * Form 5 4.1.6). Every table is exported as JSON lines, gzipped and
  * encrypted with AES-256-GCM under BACKUP_ENCRYPTION_KEY (kept apart from
- * the database), then stored privately. The last 7 copies are kept; older
+ * the database), then stored in a SEPARATE private store (backupStore():
+ * BACKUP_BLOB_READ_WRITE_TOKEN, never the evidence store). The last 7 copies are kept; older
  * files are deleted and the deletion logged. Restore tests are logged by an
  * SDP admin. The host's own backups still apply on top of this.
  */
@@ -53,6 +54,14 @@ export function decryptBackup(bytes: Uint8Array, key: Buffer): Buffer {
   return gunzipSync(Buffer.concat([decipher.update(b.subarray(34)), decipher.final()]));
 }
 
+export type BackupHeader = {
+  format: "lms-backup/1";
+  createdAt: string;
+  tables: string[];
+  /** Rows per table (added 2026-11-10; older files have no counts). */
+  counts?: Record<string, number>;
+};
+
 /** Every table as JSON lines: a header line, then one {"table","row"} line per row. */
 async function dumpDatabase(ctx: Ctx): Promise<{ bytes: Uint8Array; tables: number; rows: number }> {
   const tables = await ctx.db.execute<{ name: string }>(sql`
@@ -60,15 +69,22 @@ async function dumpDatabase(ctx: Ctx): Promise<{ bytes: Uint8Array; tables: numb
     where table_schema = 'public' and table_type = 'BASE TABLE'
     order by table_name
   `);
-  const lines: string[] = [JSON.stringify({ format: "lms-backup/1", createdAt: ctx.now().toISOString(), tables: tables.map((t) => t.name) })];
+  const body: string[] = [];
+  const counts: Record<string, number> = {};
   let rows = 0;
   for (const t of tables) {
     const data = await ctx.db.execute<{ r: unknown }>(sql`select row_to_json(x) as r from ${sql.identifier(t.name)} x`);
-    for (const d of data) {
-      lines.push(JSON.stringify({ table: t.name, row: d.r }));
-      rows++;
-    }
+    for (const d of data) body.push(JSON.stringify({ table: t.name, row: d.r }));
+    counts[t.name] = data.length;
+    rows += data.length;
   }
+  const header: BackupHeader = {
+    format: "lms-backup/1",
+    createdAt: ctx.now().toISOString(),
+    tables: tables.map((t) => t.name),
+    counts,
+  };
+  const lines = [JSON.stringify(header), ...body];
   return { bytes: new TextEncoder().encode(lines.join("\n") + "\n"), tables: tables.length, rows };
 }
 
@@ -78,13 +94,13 @@ export async function runNightlyBackup(ctx: Ctx): Promise<{ ran: boolean; status
   const day = new Date(now.getTime() + 2 * 3_600_000).toISOString().slice(0, 10);
   if (!(await claimJobRun(ctx, "nightly-backup", day))) return { ran: false };
   const key = readBackupKey();
-  const store = evidenceStore();
+  const { store, problem } = backupStore();
   const fail = async (notes: string) => {
     await ctx.db.insert(backupRuns).values({ kind: "backup", status: "failed", startedAt: now, finishedAt: ctx.now(), notes });
     return { ran: true, status: "failed" as const };
   };
   if (!key) return fail("BACKUP_ENCRYPTION_KEY is not set (or is not 32 bytes).");
-  if (store.kind === "none") return fail("Private storage is not configured.");
+  if (store.kind === "none") return fail(problem ?? "Backup storage is not configured.");
   try {
     const dump = await dumpDatabase(ctx);
     const encrypted = encryptBackup(dump.bytes, key);
@@ -117,7 +133,8 @@ export async function pruneBackups(ctx: Ctx): Promise<number> {
     .orderBy(desc(backupRuns.startedAt));
   const old = live.slice(KEEP_BACKUPS);
   if (old.length === 0) return 0;
-  const store = evidenceStore();
+  const { store } = backupStore();
+  if (store.kind === "none") return 0; // never mark files pruned that we couldn't delete
   const started = ctx.now();
   for (const b of old) {
     if (b.pathname) await store.remove(b.pathname);

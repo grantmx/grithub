@@ -8,9 +8,9 @@ import type { AccessContext, StaffRole } from "@/lib/access";
 import { backupItemStatus, documentStatus } from "@/lib/form5";
 import { addWorkingDays, monthsBefore } from "@/lib/workingTime";
 import { AccessDeniedError } from "@/lib/server/auth";
-import { KEEP_BACKUPS, backupLog, decryptBackup, encryptBackup, logRestoreTest, readBackupKey, runNightlyBackup } from "@/lib/server/backup";
+import { KEEP_BACKUPS, type BackupHeader, backupLog, decryptBackup, encryptBackup, logRestoreTest, readBackupKey, runNightlyBackup } from "@/lib/server/backup";
 import { confirmGuideUpload, guidePrefix, guideUploadPolicy, guideUrl, recordDocument } from "@/lib/server/complianceDocs";
-import { evidenceStore, putTestObject } from "@/lib/server/evidenceStore";
+import { backupStore, blobStoreId, evidenceStore, putTestObject } from "@/lib/server/evidenceStore";
 import { exportEvidencePack, packSamples, pseudonymiser } from "@/lib/server/evidencePack";
 import { qctoPanel } from "@/lib/server/qctoPanel";
 import { readiness } from "@/lib/server/readiness";
@@ -31,6 +31,7 @@ const facilitator = () => actor("facilitator", ["facilitator"]);
 
 beforeAll(async () => {
   process.env.EVIDENCE_STORE = "memory";
+  process.env.BACKUP_STORE = "memory";
   process.env.BACKUP_ENCRYPTION_KEY = randomBytes(32).toString("base64");
   t = await createTestDb();
   ({ qualificationId } = await seedDemo(t.db));
@@ -43,6 +44,7 @@ beforeAll(async () => {
 });
 afterAll(async () => {
   delete process.env.EVIDENCE_STORE;
+  delete process.env.BACKUP_STORE;
   delete process.env.BACKUP_ENCRYPTION_KEY;
   await t?.teardown();
 });
@@ -129,12 +131,16 @@ describe("backups", () => {
   it("the DEMO walkthrough ran a real backup: every table, decryptable, logged once per day", async () => {
     const [run] = await t.db.select().from(backupRuns).where(eq(backupRuns.kind, "backup"));
     expect(run!.status).toBe("ok");
-    const bytes = await evidenceStore().read(run!.storagePathname!);
+    const bytes = await backupStore().store.read(run!.storagePathname!);
+    // Backups never land in the evidence store (separate storage location).
+    expect(await evidenceStore().head(run!.storagePathname!)).toBeNull();
     const lines = decryptBackup(bytes!, readBackupKey()!).toString().trim().split("\n");
-    const header = JSON.parse(lines[0]!) as { format: string; tables: string[] };
+    const header = JSON.parse(lines[0]!) as BackupHeader;
     expect(header.format).toBe("lms-backup/1");
     expect(header.tables).toContain("users");
     expect(lines.length - 1).toBe(run!.rowCount);
+    const usersInFile = lines.slice(1).filter((l) => (JSON.parse(l) as { table: string }).table === "users").length;
+    expect(header.counts?.users).toBe(usersInFile);
     expect((await runNightlyBackup(makeCtx(t.db))).ran).toBe(false);
   });
 
@@ -145,10 +151,21 @@ describe("backups", () => {
     const runs = await t.db.select().from(backupRuns).where(eq(backupRuns.kind, "backup"));
     const live = runs.filter((r) => !r.prunedAt);
     expect(live).toHaveLength(KEEP_BACKUPS);
-    for (const r of runs.filter((r) => r.prunedAt)) expect(await evidenceStore().head(r.storagePathname!)).toBeNull();
+    for (const r of runs.filter((r) => r.prunedAt)) expect(await backupStore().store.head(r.storagePathname!)).toBeNull();
     const log = await backupLog(makeCtx(t.db), evaluator());
     expect(log.some((l) => l.kind === "prune")).toBe(true);
     expect(JSON.stringify(log)).not.toContain("backups/");
+  });
+
+  it("backups need their own store: never the evidence store, no fallback", () => {
+    const evidence = "vercel_blob_rw_STOREAAA_secret1";
+    expect(blobStoreId(evidence)).toBe("STOREAAA");
+    expect(backupStore({ BLOB_READ_WRITE_TOKEN: evidence }).problem).toMatch(/not set/);
+    expect(backupStore({ BLOB_READ_WRITE_TOKEN: evidence, BACKUP_BLOB_READ_WRITE_TOKEN: evidence }).problem).toMatch(/evidence store/);
+    expect(backupStore({ BLOB_READ_WRITE_TOKEN: evidence, BACKUP_BLOB_READ_WRITE_TOKEN: "vercel_blob_rw_STOREAAA_other" }).problem).toMatch(/evidence store/);
+    const ok = backupStore({ BLOB_READ_WRITE_TOKEN: evidence, BACKUP_BLOB_READ_WRITE_TOKEN: "vercel_blob_rw_STOREBBB_secret2" });
+    expect(ok.problem).toBeNull();
+    expect(ok.store.kind).toBe("blob");
   });
 
   it("logs a failed run when the key is missing, and restore tests need an admin", async () => {

@@ -32,7 +32,10 @@
         "BACKUP_ENCRYPTION_KEY",
         "EMAIL_TRANSPORT",
         "DATABASE_SSL",
-        "DATABASE_POOL_MAX"
+        "DATABASE_POOL_MAX",
+        "BACKUP_BLOB_READ_WRITE_TOKEN",
+        "BACKUP_STORE",
+        "RESTORE_DATABASE_URL"
       ]
     },
     "test": {

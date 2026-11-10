@@ -1,0 +1,4 @@
+{
+  "$comment": "High/critical advisories in apps/lms or packages/db production dependencies that are knowingly accepted. Each needs a reason and an expiry (YYYY-MM-DD, at most 90 days out); CI fails once it expires. Read by scripts/audit-deps.mjs.",
+  "advisories": []
+}

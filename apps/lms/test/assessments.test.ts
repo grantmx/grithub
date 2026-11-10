@@ -124,6 +124,9 @@ describe("formative attempts", () => {
     expect(v.nav.every((n) => n.answered)).toBe(true);
     // A forged token is rejected.
     await expect(saveAnswer(ctx, actor, id, 1, { tokens: ["not-a-token"] })).rejects.toBeInstanceOf(AssessmentError);
+    for (const inherited of ["__proto__", "constructor", "toString"]) {
+      await expect(saveAnswer(ctx, actor, id, 1, { tokens: [inherited] })).rejects.toBeInstanceOf(AssessmentError);
+    }
     // Single-answer questions take one answer only.
     await expect(
       saveAnswer(ctx, actor, id, 1, { tokens: v.question.options.slice(0, 2).map((o) => o.token) }),

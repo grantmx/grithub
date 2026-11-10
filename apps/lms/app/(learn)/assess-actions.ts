@@ -10,6 +10,7 @@ import {
   submitAttempt,
 } from "@/lib/server/assessments";
 import { RateLimitError } from "@/lib/server/ratelimit";
+import { InputError, checkId, checkNumber, checkText, checkTexts, id, text, texts } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
 /**
@@ -37,46 +38,47 @@ function attemptUrl(
   return `/learn/attempt/${encodeURIComponent(id)}${page}${qs ? `?${qs}` : ""}`;
 }
 
-const str = (form: FormData, key: string) => String(form.get(key) ?? "");
 const int = (form: FormData, key: string) => {
-  const n = Number.parseInt(str(form, key), 10);
+  const n = Number.parseInt(text(form, key), 10);
   return Number.isFinite(n) ? n : 0;
 };
 
 function errorCode(e: unknown): string | null {
   if (e instanceof AssessmentError) return e.code;
   if (e instanceof RateLimitError) return "rate_limited";
+  // Only a tampered request gets here; the pages show this code as "couldn't be saved".
+  if (e instanceof InputError) return "invalid_answer";
   return null;
 }
 
 export async function beginAttemptAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const scheduleId = str(form, "scheduleId");
-  let id: string;
+  const scheduleId = id(form, "scheduleId");
+  let attemptId: string;
   try {
-    id = await beginAttempt(ctx, actor, scheduleId);
+    attemptId = await beginAttempt(ctx, actor, scheduleId);
   } catch (e) {
     const code = errorCode(e);
     if (code) redirect(`/learn/assessment/${encodeURIComponent(scheduleId)}?error=${code}`);
     throw e;
   }
-  redirect(attemptUrl(id, "", { q: 1 }));
+  redirect(attemptUrl(attemptId, "", { q: 1 }));
 }
 
 /** Read the answer fields for the current question from a form. */
 function answerFrom(form: FormData) {
-  const type = str(form, "type");
+  const type = text(form, "type");
   return type === "short_answer"
-    ? { text: str(form, "text") }
-    : { tokens: form.getAll("token").map(String) };
+    ? { text: text(form, "text") }
+    : { tokens: texts(form, "token", 100, 200) };
 }
 
 /** Save the current answer, then go to another question, the review page, or toggle the flag. */
 export async function saveAndGoAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const attemptId = str(form, "attemptId");
+  const attemptId = id(form, "attemptId");
   const position = int(form, "position");
-  const go = str(form, "go");
+  const go = text(form, "go");
   try {
     await saveAnswer(ctx, actor, attemptId, position, answerFrom(form));
     if (go === "flag" || go === "unflag") {
@@ -103,9 +105,10 @@ export async function autosaveAction(
 ): Promise<AutosaveResult> {
   const { ctx, actor } = await requireActor();
   try {
-    const { savedAt } = await saveAnswer(ctx, actor, attemptId, position, {
-      tokens: Array.isArray(answer.tokens) ? answer.tokens.map(String) : undefined,
-      text: typeof answer.text === "string" ? answer.text : undefined,
+    if (typeof answer !== "object" || answer === null) throw new InputError();
+    const { savedAt } = await saveAnswer(ctx, actor, checkId(attemptId), checkNumber(position), {
+      tokens: Array.isArray(answer.tokens) ? checkTexts(answer.tokens, 100, 200) : undefined,
+      text: typeof answer.text === "string" ? checkText(answer.text) : undefined,
     });
     return { ok: true, savedAt };
   } catch (e) {
@@ -117,7 +120,7 @@ export async function autosaveAction(
 
 export async function submitAttemptAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const attemptId = str(form, "attemptId");
+  const attemptId = id(form, "attemptId");
   try {
     await submitAttempt(ctx, actor, attemptId);
   } catch (e) {
@@ -130,9 +133,9 @@ export async function submitAttemptAction(form: FormData): Promise<void> {
 
 export async function appealAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const attemptId = str(form, "attemptId");
+  const attemptId = id(form, "attemptId");
   try {
-    await submitAppeal(ctx, actor, attemptId, str(form, "reason"));
+    await submitAppeal(ctx, actor, attemptId, text(form, "reason"));
   } catch (e) {
     const code = errorCode(e);
     if (code) redirect(`${attemptUrl(attemptId, "/result", { error: code })}#appeal`);

@@ -22,7 +22,7 @@ import { recordCurriculumReference } from "@/lib/server/complianceDocs";
 import type { ServerCtx } from "@/lib/server/context";
 import { createThread, replyToThread } from "@/lib/server/discussions";
 import { readAuthConfig } from "@/lib/server/env";
-import { evidenceStore } from "@/lib/server/evidenceStore";
+import { backupStore } from "@/lib/server/evidenceStore";
 import { scheduleSession, addRecording, setSessionAttendance, toSastLocal } from "@/lib/server/liveSessions";
 import { getMarkingView, recordDecision, saveItemMarks } from "@/lib/server/marking";
 import { sendMessage, startConversation } from "@/lib/server/messages";
@@ -209,9 +209,10 @@ export async function seedEvidenceDemo(db: Database, now: () => Date = () => new
     location: "Section 3: modules (fake)",
     note: "[DEMO] Lists Knowledge and Practical modules only (fake).",
   });
-  if (readBackupKey() && evidenceStore().kind !== "none") await runNightlyBackup(ctx);
+  if (readBackupKey() && backupStore().store.kind !== "none") await runNightlyBackup(ctx);
   await logRestoreTest(ctx, admin, {
-    testedOn: new Date(t + 2 * 3_600_000).toISOString().slice(0, 10),
+    // Yesterday in SAST: the test is logged at 12:00 SAST, so "today" is in the future before noon.
+    testedOn: new Date(t + 2 * 3_600_000 - 86_400_000).toISOString().slice(0, 10),
     result: "ok",
     notes: "[DEMO] Restored a backup to a scratch database and checked row counts (fake).",
   });

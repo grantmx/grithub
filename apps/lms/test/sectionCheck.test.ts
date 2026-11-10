@@ -130,6 +130,11 @@ describe("section check: what the browser receives", () => {
     await expect(
       submitCheckAnswer(ctx, actor, view.attemptId, "made-up-token"),
     ).rejects.toBeInstanceOf(LearningError);
+    for (const inherited of ["__proto__", "constructor", "hasOwnProperty"]) {
+      await expect(
+        submitCheckAnswer(ctx, actor, view.attemptId, inherited),
+      ).rejects.toBeInstanceOf(LearningError);
+    }
     const other = await learner(3);
     await expect(
       submitCheckAnswer(

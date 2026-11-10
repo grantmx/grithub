@@ -28,6 +28,7 @@
   "packageManager": "yarn@1.22.19",
   "resolutions": {
     "**/nextra/zod": "4.1.12",
-    "**/nextra-theme-docs/zod": "4.1.12"
+    "**/nextra-theme-docs/zod": "4.1.12",
+    "**/@vercel/cli-config/zod": "4.6.7"
   }
 }

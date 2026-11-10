@@ -18,6 +18,7 @@ import {
 import { addLink, PracticalError } from "@/lib/server/practical";
 import { recordPracticalDecision, savePracticalDraft, saveJudgements } from "@/lib/server/practicalMarking";
 import { startObservation } from "@/lib/server/register";
+import { InputError, has, id, ids, prefixed, text, texts } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
 /**
@@ -26,7 +27,6 @@ import { getActor, getServerCtx } from "@/lib/server/request";
  * addition to the proxy. Plain form posts that redirect back with a status.
  */
 
-const str = (form: FormData, key: string) => String(form.get(key) ?? "");
 
 function withParam(path: string, key: string, value: string) {
   const [base, hash] = path.split("#");
@@ -51,7 +51,7 @@ async function run(back: string, fn: (ctx: Awaited<ReturnType<typeof getServerCt
             : "/forbidden",
       );
     }
-    if (e instanceof AssessmentError || e instanceof PracticalError) redirect(withParam(to, "error", e.message));
+    if (e instanceof AssessmentError || e instanceof PracticalError || e instanceof InputError) redirect(withParam(to, "error", e.message));
     throw e;
   }
   redirect(typeof done === "string" ? withParam(to, "done", done) : to);
@@ -60,39 +60,39 @@ async function run(back: string, fn: (ctx: Awaited<ReturnType<typeof getServerCt
 // --- Register ---------------------------------------------------------------
 
 export async function attendanceAction(form: FormData) {
-  await run(str(form, "back"), (ctx, actor) =>
-    setAttendance(ctx, actor, str(form, "dayId"), str(form, "enrolmentId"), str(form, "status")),
+  await run(text(form, "back"), (ctx, actor) =>
+    setAttendance(ctx, actor, id(form, "dayId"), id(form, "enrolmentId"), text(form, "status")),
   );
 }
 
 export async function idCheckAction(form: FormData) {
-  await run(str(form, "back"), (ctx, actor) =>
-    setIdVerified(ctx, actor, str(form, "dayId"), str(form, "enrolmentId"), str(form, "verified") === "1"),
+  await run(text(form, "back"), (ctx, actor) =>
+    setIdVerified(ctx, actor, id(form, "dayId"), id(form, "enrolmentId"), text(form, "verified") === "1"),
   );
 }
 
 export async function unlockAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await unlockPaper(ctx, actor, str(form, "scheduleId"), str(form, "enrolmentId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await unlockPaper(ctx, actor, id(form, "scheduleId"), id(form, "enrolmentId"));
     return "unlocked";
   });
 }
 
 export async function pauseAction(form: FormData) {
-  await run(str(form, "back"), (ctx, actor) => setPaused(ctx, actor, str(form, "attemptId"), str(form, "paused") === "1"));
+  await run(text(form, "back"), (ctx, actor) => setPaused(ctx, actor, id(form, "attemptId"), text(form, "paused") === "1"));
 }
 
 export async function extraTimeAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await addExtraTime(ctx, actor, str(form, "attemptId"), Number.parseInt(str(form, "minutes"), 10));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await addExtraTime(ctx, actor, id(form, "attemptId"), Number.parseInt(text(form, "minutes"), 10));
     return "extra_time";
   });
 }
 
 export async function signOffAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    if (form.get("confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the sign-off.");
-    await signOffRegister(ctx, actor, str(form, "dayId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    if (text(form, "confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the sign-off.");
+    await signOffRegister(ctx, actor, id(form, "dayId"));
     return "signed_off";
   });
 }
@@ -101,26 +101,26 @@ export async function signOffAction(form: FormData) {
 
 export async function marksAction(form: FormData) {
   const marks: Record<string, number> = {};
-  for (const [k, v] of form.entries()) {
-    if (k.startsWith("c:") && String(v) !== "") marks[k.slice(2)] = Number.parseInt(String(v), 10);
+  for (const [criterionId, v] of prefixed(form, "c:")) {
+    if (v !== "") marks[criterionId] = Number.parseInt(v, 10);
   }
-  await run(str(form, "back"), async (ctx, actor) => {
-    await saveItemMarks(ctx, actor, str(form, "attemptId"), Number.parseInt(str(form, "position"), 10), marks, str(form, "note"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await saveItemMarks(ctx, actor, id(form, "attemptId"), Number.parseInt(text(form, "position"), 10), marks, text(form, "note"));
     return "marked";
   });
 }
 
 export async function decisionAction(form: FormData) {
-  const intent = str(form, "intent");
-  await run(str(form, "back"), async (ctx, actor) => {
-    const attemptId = str(form, "attemptId");
-    const outcome = str(form, "outcome");
-    const feedback = str(form, "feedback");
+  const intent = text(form, "intent");
+  await run(text(form, "back"), async (ctx, actor) => {
+    const attemptId = id(form, "attemptId");
+    const outcome = text(form, "outcome");
+    const feedback = text(form, "feedback");
     if (intent === "draft") {
       await saveDecisionDraft(ctx, actor, attemptId, outcome || null, feedback);
       return "draft";
     }
-    if (form.get("confirm") !== "1") {
+    if (text(form, "confirm") !== "1") {
       await saveDecisionDraft(ctx, actor, attemptId, outcome || null, feedback);
       throw new AssessmentError("invalid_answer", "Tick the box to confirm the decision is final. Your draft was saved.");
     }
@@ -132,40 +132,40 @@ export async function decisionAction(form: FormData) {
 // --- Moderation and appeals -------------------------------------------------
 
 export async function moderateAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    if (form.get("confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm your moderation.");
-    await moderateDecision(ctx, actor, str(form, "decisionId"), str(form, "verdict"), str(form, "comments"), str(form, "actions"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    if (text(form, "confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm your moderation.");
+    await moderateDecision(ctx, actor, id(form, "decisionId"), text(form, "verdict"), text(form, "comments"), text(form, "actions"));
     return "moderated";
   });
 }
 
 export async function setSampleAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    const selected = form.getAll("sample").map(String);
-    const { added, removed } = await setSample(ctx, actor, str(form, "batchId"), selected);
+  await run(text(form, "back"), async (ctx, actor) => {
+    const selected = ids(form, "sample");
+    const { added, removed } = await setSample(ctx, actor, id(form, "batchId"), selected);
     return `sample:${added}:${removed}`;
   });
 }
 
 export async function completeActionsAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await completeActions(ctx, actor, str(form, "moderationRecordId"), str(form, "note"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await completeActions(ctx, actor, id(form, "moderationRecordId"), text(form, "note"));
     return "actions_done";
   });
 }
 
 export async function closeBatchAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    if (form.get("confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the release.");
-    const n = await closeBatch(ctx, actor, str(form, "batchId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    if (text(form, "confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the release.");
+    const n = await closeBatch(ctx, actor, id(form, "batchId"));
     return `released:${n}`;
   });
 }
 
 export async function appealDecisionAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    if (form.get("confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the outcome is final.");
-    await decideAppeal(ctx, actor, str(form, "appealId"), str(form, "outcome"), str(form, "notes"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    if (text(form, "confirm") !== "1") throw new AssessmentError("invalid_answer", "Tick the box to confirm the outcome is final.");
+    await decideAppeal(ctx, actor, id(form, "appealId"), text(form, "outcome"), text(form, "notes"));
     return "appeal_decided";
   });
 }
@@ -173,31 +173,32 @@ export async function appealDecisionAction(form: FormData) {
 // --- Questions --------------------------------------------------------------
 
 export async function retireQuestionAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
-    await retireQuestion(ctx, actor, str(form, "questionId"));
+  await run(text(form, "back"), async (ctx, actor) => {
+    await retireQuestion(ctx, actor, id(form, "questionId"));
     return "retired";
   });
 }
 
 export async function newVersionAction(form: FormData) {
-  const questionId = str(form, "questionId");
+  const questionId = id(form, "questionId");
   const options: VersionInput["options"] = [];
   const criteria: VersionInput["criteria"] = [];
+  const correct = texts(form, "correct", 8, 10);
   for (let i = 0; i < 8; i++) {
-    const label = str(form, `opt${i}`);
+    const label = text(form, `opt${i}`);
     if (label.trim()) {
-      const pin = str(form, `pin${i}`);
-      options.push({ label, correct: form.getAll("correct").map(String).includes(String(i)), pinned: pin === "" ? null : Number.parseInt(pin, 10) });
+      const pin = text(form, `pin${i}`);
+      options.push({ label, correct: correct.includes(String(i)), pinned: pin === "" ? null : Number.parseInt(pin, 10) });
     }
-    const crit = str(form, `crit${i}`);
+    const crit = text(form, `crit${i}`);
     if (crit.trim()) {
-      criteria.push({ label: crit, guidance: str(form, `guide${i}`), maxMarks: Number.parseInt(str(form, `max${i}`), 10) });
+      criteria.push({ label: crit, guidance: text(form, `guide${i}`), maxMarks: Number.parseInt(text(form, `max${i}`), 10) });
     }
   }
-  await run(str(form, "back"), async (ctx, actor) => {
+  await run(text(form, "back"), async (ctx, actor) => {
     const { warnings } = await createQuestionVersion(ctx, actor, questionId, {
-      stem: str(form, "stem"),
-      feedback: str(form, "feedback"),
+      stem: text(form, "stem"),
+      feedback: text(form, "feedback"),
       options,
       criteria,
     });
@@ -211,44 +212,43 @@ export async function newVersionAction(form: FormData) {
 export async function observeAction(form: FormData) {
   const ctx = await getServerCtx();
   const actor = await getActor(ctx);
-  const back = safeNext(str(form, "back"), "/staff/assessment-days");
-  let id: string;
+  const back = safeNext(text(form, "back"), "/staff/assessment-days");
+  let submissionId: string;
   try {
-    id = await startObservation(ctx, actor, str(form, "scheduleId"), str(form, "enrolmentId"));
+    submissionId = await startObservation(ctx, actor, id(form, "scheduleId"), id(form, "enrolmentId"));
   } catch (e) {
     if (e instanceof AccessDeniedError) redirect(e.decision.result === "stepup" ? `/account/passkeys?required=1&next=${encodeURIComponent(back)}` : "/forbidden");
-    if (e instanceof AssessmentError || e instanceof PracticalError) redirect(withParam(back, "error", e.message));
+    if (e instanceof AssessmentError || e instanceof PracticalError || e instanceof InputError) redirect(withParam(back, "error", e.message));
     throw e;
   }
-  redirect(`/staff/marking/practical/${id}`);
+  redirect(`/staff/marking/practical/${submissionId}`);
 }
 
 export async function judgementsAction(form: FormData) {
   const input: Record<string, { met: boolean; comment: string }> = {};
-  for (const [k, v] of form.entries()) {
-    if (k.startsWith("met:") && (v === "met" || v === "not_met")) {
-      const id = k.slice(4);
-      input[id] = { met: v === "met", comment: str(form, `comment:${id}`) };
+  for (const [criterionId, v] of prefixed(form, "met:")) {
+    if (v === "met" || v === "not_met") {
+      input[criterionId] = { met: v === "met", comment: text(form, `comment:${criterionId}`) };
     }
   }
-  const notes = form.has("observationNotes") ? str(form, "observationNotes") : undefined;
-  await run(str(form, "back"), async (ctx, actor) => {
-    await saveJudgements(ctx, actor, str(form, "submissionId"), input, notes);
+  const notes = has(form, "observationNotes") ? text(form, "observationNotes") : undefined;
+  await run(text(form, "back"), async (ctx, actor) => {
+    await saveJudgements(ctx, actor, id(form, "submissionId"), input, notes);
     return "judged";
   });
 }
 
 export async function practicalDecisionAction(form: FormData) {
-  const intent = str(form, "intent");
-  await run(str(form, "back"), async (ctx, actor) => {
-    const submissionId = str(form, "submissionId");
-    const outcome = str(form, "outcome");
-    const feedback = str(form, "feedback");
+  const intent = text(form, "intent");
+  await run(text(form, "back"), async (ctx, actor) => {
+    const submissionId = id(form, "submissionId");
+    const outcome = text(form, "outcome");
+    const feedback = text(form, "feedback");
     if (intent === "draft") {
       await savePracticalDraft(ctx, actor, submissionId, outcome || null, feedback);
       return "draft";
     }
-    if (form.get("confirm") !== "1") {
+    if (text(form, "confirm") !== "1") {
       await savePracticalDraft(ctx, actor, submissionId, outcome || null, feedback);
       throw new AssessmentError("invalid_answer", "Tick the box to confirm the decision is final. Your draft was saved.");
     }
@@ -259,9 +259,9 @@ export async function practicalDecisionAction(form: FormData) {
 
 /** Assessor adds a link (e.g. their own video) to an observed submission. */
 export async function assessorLinkAction(form: FormData) {
-  await run(str(form, "back"), async (ctx, actor) => {
+  await run(text(form, "back"), async (ctx, actor) => {
     if (!actor) throw new AccessDeniedError({ result: "signin" });
-    await addLink(ctx, actor, str(form, "submissionId"), str(form, "url"));
+    await addLink(ctx, actor, id(form, "submissionId"), text(form, "url"));
     return "evidence_added";
   });
 }

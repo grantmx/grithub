@@ -10,7 +10,9 @@
     "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "demo:evidence": "tsx scripts/demo-evidence.ts",
-    "backup:decrypt": "tsx scripts/decrypt-backup.ts"
+    "backup:decrypt": "tsx scripts/decrypt-backup.ts",
+    "backup:restore": "tsx scripts/restore-backup.ts",
+    "load:sessions": "tsx scripts/load-test-sessions.ts"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.13.4",
@@ -18,11 +20,11 @@
     "@simplewebauthn/server": "14.0.3",
     "@vercel/blob": "2.8.2",
     "db": "*",
+    "drizzle-orm": "0.45.4",
     "next": "16.1.4",
     "pdf-lib": "1.17.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "ui": "*"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@material-symbols/svg-400": "0.48.1",

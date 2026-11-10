@@ -143,15 +143,26 @@ Enforced in the application (apps/lms/lib/server, with tests): max attempts per 
 
 ## Backups and restore tests (Form 5 4.1.6)
 
-`apps/lms` runs a nightly encrypted backup (Vercel Cron, `/api/cron/nightly-backup`, 02:00 SAST; ADR-017). Each file holds every table as JSON lines (a header line, then one `{"table","row"}` line per row), gzipped and encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`. The last 7 files are kept; the log is on the Form 5 readiness dashboard.
+`apps/lms` runs a nightly encrypted backup (Vercel Cron, `/api/cron/nightly-backup`, 02:00 SAST; ADR-017, ADR-018). Each file holds every table as JSON lines (a header line with per-table row counts, then one `{"table","row"}` line per row), gzipped and encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`. Files go to a **separate** private Blob store (`BACKUP_BLOB_READ_WRITE_TOKEN`), never the evidence store. The last 7 files are kept; the log is on the Form 5 readiness dashboard.
 
-A restore test, at least every 90 days:
+A restore test, at least every 90 days (full procedure and log template: [`docs/lms/dossier/06-backup-and-restore.md`](../../docs/lms/dossier/06-backup-and-restore.md)):
 
-1. Download last night's file from the private Blob store (`backups/…lmsbak`) with the Vercel dashboard or CLI.
-2. `BACKUP_ENCRYPTION_KEY=… yarn workspace lms backup:decrypt <file> > backup.jsonl` (never commit the output).
-3. Create a scratch database, run `yarn db:migrate` against it, and load the rows (e.g. a short script that inserts each line's `row` into its `table`, with triggers disabled for the session).
-4. Check row counts against the backup log entry, then drop the scratch database.
-5. Log the test on the dashboard (Admin → Form 5 readiness → Backups → Log a restore test).
+1. Download last night's file from the backup Blob store (`backups/…lmsbak`) with the Vercel dashboard or CLI.
+2. Create an empty scratch database and run `yarn db:migrate` against it.
+3. `RESTORE_DATABASE_URL=<scratch admin URL> BACKUP_ENCRYPTION_KEY=… yarn workspace lms backup:restore <file>`: loads every table (triggers paused for the load only), resets sequences and prints expected vs restored row counts. It refuses `DATABASE_URL`, production and any database that already has users.
+4. Drop the scratch database; log the test on the dashboard (Admin → Form 5 readiness → Backups → Log a restore test).
+
+`apps/lms/test/restore.test.ts` runs the same restore on every CI run.
+
+## Least-privilege runtime role
+
+The app should connect as `lms_app`, not as the table owner. After migrating, as the owner role:
+
+```bash
+DATABASE_URL=<owner / migration URL> yarn workspace db db:grants   # runs sql/least-privilege.sql (re-runnable)
+```
+
+Then set the password interactively (`\password lms_app` in psql, or the host's dashboard) and use the `lms_app` connection string as `DATABASE_URL` in Vercel. `lms_app` can read and write rows only: no DDL, TRUNCATE or triggers, and no UPDATE or DELETE on append-only evidence tables (audit log, consent records, moderation records and completions, message revisions, register sign-offs, paper unlocks). Re-run `db:grants` after a migration that adds an append-only table (and add it to the script). Tested in `test/privileges.test.ts`.
 
 ## Demo seed
 

@@ -2,12 +2,23 @@
 
 import { redirect } from "next/navigation";
 import { signInWithLink } from "@/lib/server/auth";
+import { InputError, text } from "@/lib/server/input";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import { getActor, getServerCtx, setSessionCookie } from "@/lib/server/request";
 
+/** The token from a link form; a malformed one is treated as an invalid link. */
+function linkToken(form: FormData): string {
+  try {
+    return text(form, "token", 1000);
+  } catch (e) {
+    if (e instanceof InputError) redirect("/signin?error=link_invalid");
+    throw e;
+  }
+}
+
 /** POST-only exchange of an emailed sign-in or recovery link. */
 export async function consumeSignInLink(form: FormData): Promise<void> {
-  const token = String(form.get("token") ?? "");
+  const token = linkToken(form);
   const ctx = await getServerCtx();
   let target: string;
   try {
@@ -34,7 +45,7 @@ export async function consumeSignInLink(form: FormData): Promise<void> {
 
 /** POST-only exchange of an invitation link; continues to first-time setup. */
 export async function acceptInvitation(form: FormData): Promise<void> {
-  const token = String(form.get("token") ?? "");
+  const token = linkToken(form);
   const ctx = await getServerCtx();
   const result = await signInWithLink(ctx, token, "invitation").catch(
     (e: unknown) => {

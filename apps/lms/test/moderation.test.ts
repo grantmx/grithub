@@ -368,7 +368,7 @@ describe("a moderator can never edit learner work, decisions or question version
     const page = await getBriefPage(ctx, la, w.schedule.id);
     const submissionId = page.draft!.submissionId;
     const pathname = `${uploadPrefix(submissionId)}x-photo.png`;
-    putTestObject(pathname, new Uint8Array([0x89, 0x50, 0x4e, 0x47, 1, 2, 3, 4]), "image/png");
+    putTestObject(pathname, new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 1, 2, 3, 4]), "image/png");
     await confirmUpload(ctx, la, submissionId, pathname, "photo.png");
     await submitPractical(ctx, la, submissionId, false);
     const { actor: assessor } = await actorFor(ctx, (await w.staff("assessor")).id);

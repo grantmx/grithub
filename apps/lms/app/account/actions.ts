@@ -12,6 +12,7 @@ import {
   revokeOwnPasskey,
   verifyPasskeyRegistration,
 } from "@/lib/server/auth";
+import { InputError, checkJsonObject, checkText, id } from "@/lib/server/input";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import {
   clearSessionCookie,
@@ -27,7 +28,7 @@ type Result<T = undefined> =
   | { ok: false; error: string };
 
 const message = (e: unknown) =>
-  e instanceof AuthError || e instanceof RateLimitError
+  e instanceof AuthError || e instanceof RateLimitError || e instanceof InputError
     ? e.message
     : "Something went wrong. Please try again.";
 
@@ -52,13 +53,14 @@ export async function completePasskeyRegistration(
   label: string,
 ): Promise<Result> {
   try {
+    checkJsonObject(response);
     const ctx = await getServerCtx();
     await verifyPasskeyRegistration(
       ctx,
       await getActor(ctx),
       await takeChallengeCookie(),
       response,
-      label,
+      checkText(label, 1000),
     );
     return { ok: true, data: undefined };
   } catch (e) {
@@ -72,10 +74,11 @@ export async function revokePasskey(form: FormData): Promise<void> {
     await revokeOwnPasskey(
       ctx,
       await getActor(ctx),
-      String(form.get("passkeyId") ?? ""),
+      id(form, "passkeyId"),
     );
   } catch (e) {
     if (e instanceof AuthError) redirect(`/account/passkeys?error=${e.code}`);
+    if (e instanceof InputError) redirect("/account/passkeys?error=not_found");
     throw e;
   }
   redirect("/account/passkeys?revoked=1");

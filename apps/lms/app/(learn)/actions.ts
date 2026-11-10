@@ -15,6 +15,7 @@ import {
 } from "@/lib/server/mux";
 import { savePreferences } from "@/lib/server/preferences";
 import { RATE_LIMITS, enforceRateLimit } from "@/lib/server/ratelimit";
+import { InputError, checkId, id, optionalText } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 import { retryCheck, submitCheckAnswer } from "@/lib/server/sectionCheck";
 
@@ -44,8 +45,8 @@ async function backTo(fallback: string) {
 export async function savePreferencesAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
   await savePreferences(ctx, actor.userId, {
-    textSize: form.get("textSize")?.toString(),
-    theme: form.get("theme")?.toString(),
+    textSize: optionalText(form, "textSize", 100),
+    theme: optionalText(form, "theme", 100),
   });
   redirect(await backTo("/"));
 }
@@ -55,18 +56,18 @@ const sectionUrl = (sectionId: string, hash = "") =>
 
 export async function submitCheckAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const sectionId = String(form.get("sectionId") ?? "");
-  const token = form.get("token")?.toString();
+  const sectionId = id(form, "sectionId");
+  const token = optionalText(form, "token", 200);
   if (!token) redirect(sectionUrl(sectionId, "?check=choose#check"));
   try {
     await submitCheckAnswer(
       ctx,
       actor,
-      String(form.get("attemptId") ?? ""),
+      id(form, "attemptId"),
       token,
     );
   } catch (e) {
-    if (e instanceof LearningError)
+    if (e instanceof LearningError || e instanceof InputError)
       redirect(sectionUrl(sectionId, "?check=error#check"));
     throw e;
   }
@@ -75,14 +76,14 @@ export async function submitCheckAction(form: FormData): Promise<void> {
 
 export async function retryCheckAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const sectionId = String(form.get("sectionId") ?? "");
+  const sectionId = id(form, "sectionId");
   await retryCheck(ctx, actor, sectionId);
   redirect(sectionUrl(sectionId, "#check"));
 }
 
 export async function completeSectionAction(form: FormData): Promise<void> {
   const { ctx, actor } = await requireActor();
-  const sectionId = String(form.get("sectionId") ?? "");
+  const sectionId = id(form, "sectionId");
   try {
     await completeSection(ctx, actor, sectionId);
   } catch (e) {
@@ -103,10 +104,10 @@ export async function getPlaybackAction(
   const { ctx, actor } = await requireActor();
   await enforceRateLimit(ctx, RATE_LIMITS.mediaPlayback, actor.userId);
   try {
-    const item = await getMediaForLearner(ctx, actor, contentItemId);
+    const item = await getMediaForLearner(ctx, actor, checkId(contentItemId));
     return playbackGrant(readMuxConfig(), item.playbackId);
   } catch (e) {
-    if (e instanceof LearningError) return { available: false };
+    if (e instanceof LearningError || e instanceof InputError) return { available: false };
     throw e;
   }
 }

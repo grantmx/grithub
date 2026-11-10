@@ -19,6 +19,7 @@ export type AuditAction =
   | "auth.recovery.started"
   | "auth.permission_denied"
   | "auth.rate_limited"
+  | "evaluator.page.viewed"
   | "consent.accepted"
   | "consent.qcto_sharing.accepted"
   | "qcto_profile.part_saved"

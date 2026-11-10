@@ -1,7 +1,7 @@
 import { eq } from "drizzle-orm";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { assessmentDecisions, evidenceItems, submissions } from "db";
-import { checkLink, fileProblem, MAX_FILE_BYTES } from "@/lib/evidenceRules";
+import { checkLink, contentMatchesType, fileProblem, MAX_FILE_BYTES } from "@/lib/evidenceRules";
 import { AccessDeniedError } from "@/lib/server/auth";
 import { putTestObject, evidenceStore } from "@/lib/server/evidenceStore";
 import { closeBatch, decideAppeal, getBatch, listAppeals, moderateDecision, setSample } from "@/lib/server/moderation";
@@ -40,7 +40,7 @@ afterAll(async () => {
 });
 afterEach(() => setVirusScanner(null));
 
-const PNG = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 1, 2, 3, 4]);
+const PNG = new Uint8Array([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a, 1, 2, 3, 4]);
 
 /** Simulate a finished direct upload, then confirm it. */
 async function upload(
@@ -85,6 +85,25 @@ describe("evidence rules", () => {
     expect(checkLink("https://user:pw@github.com/x")).toMatchObject({ ok: false });
     expect(checkLink("not a link")).toMatchObject({ ok: false });
   });
+
+  it("check file contents against the declared type (magic bytes)", () => {
+    const enc = (s: string) => new TextEncoder().encode(s);
+    const MZ = new Uint8Array([0x4d, 0x5a, 0x90, 0x00, 0x03, 0x00]); // a Windows executable
+    expect(contentMatchesType(enc("%PDF-1.7\n..."), "application/pdf")).toBe(true);
+    expect(contentMatchesType(MZ, "application/pdf")).toBe(false);
+    expect(contentMatchesType(PNG, "image/png")).toBe(true);
+    expect(contentMatchesType(new Uint8Array([0xff, 0xd8, 0xff, 0xe0]), "image/jpeg")).toBe(true);
+    expect(contentMatchesType(PNG, "image/jpeg")).toBe(false);
+    expect(contentMatchesType(enc("RIFF\0\0\0\0WEBPVP8 "), "image/webp")).toBe(true);
+    expect(contentMatchesType(enc("\0\0\0\x18ftypheic"), "image/heic")).toBe(true);
+    expect(contentMatchesType(new Uint8Array([0x50, 0x4b, 0x03, 0x04, 0x14]), "application/vnd.openxmlformats-officedocument.wordprocessingml.document")).toBe(true);
+    expect(contentMatchesType(MZ, "application/zip")).toBe(false);
+    expect(contentMatchesType(new Uint8Array([0xd0, 0xcf, 0x11, 0xe0, 0xa1, 0xb1, 0x1a, 0xe1]), "application/msword")).toBe(true);
+    expect(contentMatchesType(enc("Plain notes, café ✓"), "text/plain")).toBe(true);
+    expect(contentMatchesType(MZ, "text/plain")).toBe(false); // NUL byte
+    expect(contentMatchesType(new Uint8Array([0xc3, 0x28]), "text/plain")).toBe(false); // invalid UTF-8
+    expect(contentMatchesType(enc("%PDF-"), "video/mp4")).toBe(false);
+  });
 });
 
 describe("variant assignment", () => {
@@ -124,6 +143,10 @@ describe("evidence and submission", () => {
     const bad = await upload(d.ctx, d.actor, d.submissionId, "clip.mp4", "video/mp4");
     await expect(bad.result).rejects.toMatchObject({ code: "invalid" });
     expect(await evidenceStore().head(bad.pathname)).toBeNull(); // rejected files are removed
+    // A renamed executable declared as a PDF is rejected on its content and removed.
+    const fake = await upload(d.ctx, d.actor, d.submissionId, "cv.pdf", "application/pdf", new Uint8Array([0x4d, 0x5a, 0x90, 0x00]));
+    await expect(fake.result).rejects.toMatchObject({ code: "invalid" });
+    expect(await evidenceStore().head(fake.pathname)).toBeNull();
     await expect(uploadPolicy(d.ctx, d.actor, d.submissionId, "elsewhere/x.png")).rejects.toMatchObject({ code: "invalid" });
     const policy = await uploadPolicy(d.ctx, d.actor, d.submissionId, `${uploadPrefix(d.submissionId)}a.png`);
     expect(policy.maximumSizeInBytes).toBe(20 * 1024 * 1024);

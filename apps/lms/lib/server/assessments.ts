@@ -843,7 +843,8 @@ export async function saveAnswer(
     if (item.type === "single" && tokens.length > 1) {
       throw new AssessmentError("invalid_answer", "Choose one answer.");
     }
-    const ids = tokens.map((t) => item.optionTokens[t]);
+    // Own keys only: a token like "__proto__" or "constructor" must not resolve to an inherited value.
+    const ids = tokens.map((t) => (Object.hasOwn(item.optionTokens, t) ? item.optionTokens[t] : undefined));
     if (ids.some((id) => !id)) throw new AssessmentError("invalid_answer", "Choose one of the answers.");
     await ctx.db
       .update(attemptItems)

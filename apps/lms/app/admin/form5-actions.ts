@@ -6,6 +6,7 @@ import { AccessDeniedError } from "@/lib/server/auth";
 import { logRestoreTest } from "@/lib/server/backup";
 import { CommsError } from "@/lib/server/comms";
 import { confirmGuideUpload, recordCurriculumReference, recordDocument } from "@/lib/server/complianceDocs";
+import { InputError, checkId, checkText, id, text } from "@/lib/server/input";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
@@ -15,7 +16,6 @@ import { getActor, getServerCtx } from "@/lib/server/request";
  * with ?done= / ?error=; the guide confirmation returns a result for the uploader.
  */
 
-const str = (form: FormData, key: string) => String(form.get(key) ?? "");
 
 function withParam(path: string, key: "done" | "error", value: string) {
   const u = new URL(path, "http://x.invalid");
@@ -44,7 +44,7 @@ async function run(back: string, done: string, fn: (ctx: Ctx, actor: Actor) => P
             : "/forbidden",
       );
     }
-    if (e instanceof CommsError) redirect(withParam(to, "error", e.message));
+    if (e instanceof CommsError || e instanceof InputError) redirect(withParam(to, "error", e.message));
     if (e instanceof RateLimitError) redirect(withParam(to, "error", "Too many tries. Please wait a few minutes."));
     throw e;
   }
@@ -52,34 +52,34 @@ async function run(back: string, done: string, fn: (ctx: Ctx, actor: Actor) => P
 }
 
 export async function recordDocumentAction(form: FormData) {
-  await run(str(form, "back"), "document", (ctx, actor) =>
+  await run(text(form, "back"), "document", (ctx, actor) =>
     recordDocument(ctx, actor, {
-      itemCode: str(form, "itemCode"),
-      title: str(form, "title"),
-      issuer: str(form, "issuer"),
-      location: str(form, "location"),
-      validUntil: str(form, "validUntil"),
-      notes: str(form, "notes"),
+      itemCode: text(form, "itemCode"),
+      title: text(form, "title"),
+      issuer: text(form, "issuer"),
+      location: text(form, "location"),
+      validUntil: text(form, "validUntil"),
+      notes: text(form, "notes"),
     }),
   );
 }
 
 export async function curriculumReferenceAction(form: FormData) {
-  await run(str(form, "back"), "curriculum", (ctx, actor) =>
+  await run(text(form, "back"), "curriculum", (ctx, actor) =>
     recordCurriculumReference(ctx, actor, {
-      qualificationId: str(form, "qualificationId"),
-      documentTitle: str(form, "documentTitle"),
-      curriculumCode: str(form, "curriculumCode"),
-      version: str(form, "version"),
-      location: str(form, "location"),
-      note: str(form, "note"),
+      qualificationId: id(form, "qualificationId"),
+      documentTitle: text(form, "documentTitle"),
+      curriculumCode: text(form, "curriculumCode"),
+      version: text(form, "version"),
+      location: text(form, "location"),
+      note: text(form, "note"),
     }),
   );
 }
 
 export async function restoreTestAction(form: FormData) {
-  await run(str(form, "back"), "restore", (ctx, actor) =>
-    logRestoreTest(ctx, actor, { testedOn: str(form, "testedOn"), result: str(form, "result"), notes: str(form, "notes") }),
+  await run(text(form, "back"), "restore", (ctx, actor) =>
+    logRestoreTest(ctx, actor, { testedOn: text(form, "testedOn"), result: text(form, "result"), notes: text(form, "notes") }),
   );
 }
 
@@ -97,15 +97,15 @@ export async function confirmGuideAction(
   const actor = await getActor(ctx);
   try {
     await confirmGuideUpload(ctx, actor, {
-      qualificationId: String(qualificationId),
-      pathname: String(pathname),
-      title: String(title),
-      version: String(version),
-      issuedOn: String(issuedOn),
+      qualificationId: checkId(qualificationId),
+      pathname: checkText(pathname, 1000),
+      title: checkText(title),
+      version: checkText(version),
+      issuedOn: checkText(issuedOn),
     });
     return { ok: true };
   } catch (e) {
-    if (e instanceof CommsError) return { ok: false, message: e.message };
+    if (e instanceof CommsError || e instanceof InputError) return { ok: false, message: e.message };
     if (e instanceof AccessDeniedError) return { ok: false, message: "You don't have access to do that." };
     if (e instanceof RateLimitError) return { ok: false, message: "Too many tries. Please wait a few minutes." };
     throw e;

@@ -30,6 +30,20 @@ export async function proxy(request: NextRequest) {
 
   switch (decision.result) {
     case "allow":
+      // External evaluators: every page they open is audited (roles.md). The
+      // path holds ids only; query strings are left out.
+      if (actor?.roles.has("external_evaluator")) {
+        const ip = clientIp(request.headers);
+        await writeAudit(
+          { db, ipHash: ip ? hmacHex(config.sessionSecret, ip) : null },
+          {
+            action: "evaluator.page.viewed",
+            actorId: actor.userId,
+            entityType: "route",
+            after: { path: pathname },
+          },
+        );
+      }
       return NextResponse.next();
     case "signin":
       return to(`/signin?next=${next}`);

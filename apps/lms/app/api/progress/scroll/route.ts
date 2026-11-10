@@ -1,4 +1,5 @@
 import { readAuthConfig } from "@/lib/server/env";
+import { isUuid } from "@/lib/server/input";
 import { LearningError, saveScrollPosition } from "@/lib/server/learning";
 import { RATE_LIMITS, hitRateLimit } from "@/lib/server/ratelimit";
 import { getActor, getServerCtx } from "@/lib/server/request";
@@ -28,6 +29,7 @@ export async function POST(request: Request): Promise<Response> {
   }
   if (
     typeof body.sectionId !== "string" ||
+    !isUuid(body.sectionId) ||
     typeof body.percent !== "number" ||
     !Number.isFinite(body.percent)
   ) {

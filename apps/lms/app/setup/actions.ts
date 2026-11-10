@@ -19,6 +19,7 @@ import {
   confirmOwnProfile,
   saveOwnProfilePart,
 } from "@/lib/server/qctoProfile";
+import { InputError, checkForm, text } from "@/lib/server/input";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
@@ -27,7 +28,8 @@ export type FormState = { error?: string };
 const message = (e: unknown) =>
   e instanceof OnboardingError ||
   e instanceof RateLimitError ||
-  e instanceof ProfileError
+  e instanceof ProfileError ||
+  e instanceof InputError
     ? e.message
     : "Something went wrong. Please try again.";
 
@@ -40,7 +42,7 @@ export async function saveDetails(
     await confirmDetails(
       ctx,
       await getActor(ctx),
-      String(form.get("displayName") ?? ""),
+      text(form, "displayName"),
     );
   } catch (e) {
     return { error: message(e) };
@@ -55,10 +57,10 @@ export async function saveConsent(
   try {
     const ctx = await getServerCtx();
     await acceptNotice(ctx, await getActor(ctx), {
-      version: String(form.get("noticeVersion") ?? ""),
-      accepted: form.get("accept") === "yes",
-      qctoVersion: String(form.get("qctoVersion") ?? ""),
-      qctoSharing: form.get("qctoSharing") === "yes",
+      version: text(form, "noticeVersion"),
+      accepted: text(form, "accept") === "yes",
+      qctoVersion: text(form, "qctoVersion"),
+      qctoSharing: text(form, "qctoSharing") === "yes",
     });
   } catch (e) {
     return { error: message(e) };
@@ -82,7 +84,13 @@ export async function saveProfilePart(
   prev: ProfileFormState,
   form: FormData,
 ): Promise<ProfileFormState> {
-  const part = String(form.get("part") ?? "") as ProfilePart;
+  // The whole form goes to the domain layer, so check every field's shape first.
+  try {
+    checkForm(form);
+  } catch (e) {
+    return { error: message(e) };
+  }
+  const part = text(form, "part") as ProfilePart;
   if (!PROFILE_PARTS.includes(part)) return { error: message(null) };
   let next: ProfilePart | "review";
   try {
@@ -93,7 +101,7 @@ export async function saveProfilePart(
       error: message(e),
       fieldErrors: e instanceof ProfileError ? e.fieldErrors : undefined,
       values: readPartFromForm(form, part, emptyProfile()),
-      areaLabel: String(form.get("statssaAreaCodeLabel") ?? "").slice(0, 200),
+      areaLabel: text(form, "statssaAreaCodeLabel").slice(0, 200),
       attempt: (prev.attempt ?? 0) + 1,
     };
   }
@@ -109,7 +117,7 @@ export async function confirmProfile(
     await confirmOwnProfile(
       ctx,
       await getActor(ctx),
-      form.get("confirm") === "yes",
+      text(form, "confirm") === "yes",
     );
   } catch (e) {
     return { error: message(e) };

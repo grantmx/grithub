@@ -14,6 +14,7 @@ import {
 import type { AccessContext, StaffRole } from "@/lib/access";
 import {
   checkLink,
+  contentMatchesType,
   cleanFileName,
   fileProblem,
   MAX_EVIDENCE_ITEMS,
@@ -544,6 +545,9 @@ export async function confirmUpload(
   }
   const bytes = await store.read(pathname);
   if (!bytes || bytes.byteLength !== obj.size) return reject("unreadable", "The upload didn't finish. Please try again.");
+  if (!contentMatchesType(bytes, obj.contentType)) {
+    return reject("content_mismatch", "That file's contents don't match its type. Save it again as a PDF, image or Office file and retry.");
+  }
   const scan = await virusScanner().scan(bytes, { fileName, mimeType: obj.contentType });
   if (scan === "infected") return reject("infected", "That file failed the virus check and was removed.");
   const [row] = await ctx.db

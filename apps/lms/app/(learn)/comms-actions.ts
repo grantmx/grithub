@@ -9,6 +9,7 @@ import { editPost, replyToThread } from "@/lib/server/discussions";
 import { editMessage, sendMessage, startConversation } from "@/lib/server/messages";
 import { markAllRead, saveEmailPrefs } from "@/lib/server/notify";
 import { RateLimitError } from "@/lib/server/ratelimit";
+import { InputError, checkId, id, optionalId, text } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 import { raiseTicket, reopenTicket, replyToTicket } from "@/lib/server/tickets";
 
@@ -21,7 +22,6 @@ import { raiseTicket, reopenTicket, replyToTicket } from "@/lib/server/tickets";
 type Ctx = Awaited<ReturnType<typeof getServerCtx>>;
 type Actor = NonNullable<Awaited<ReturnType<typeof getActor>>>;
 
-const str = (form: FormData, key: string) => String(form.get(key) ?? "");
 
 function withParam(path: string, key: string, value: string) {
   const [base, hash] = path.split("#");
@@ -30,7 +30,7 @@ function withParam(path: string, key: string, value: string) {
 }
 
 function message(e: unknown): string | null {
-  if (e instanceof CommsError) return e.message;
+  if (e instanceof CommsError || e instanceof InputError) return e.message;
   if (e instanceof RateLimitError) return "You're sending messages quickly. Try again in a few minutes.";
   return null;
 }
@@ -65,16 +65,16 @@ async function run(
 // --- Discussions --------------------------------------------------------------
 
 export async function replyAction(form: FormData) {
-  const threadId = str(form, "threadId");
-  await run(str(form, "back"), `/learn/discuss/thread/${threadId}`, async (ctx, actor) => {
-    const id = await replyToThread(ctx, actor, { threadId, body: str(form, "body"), parentId: str(form, "parentId") || null });
-    return { to: `${safeNext(str(form, "back"), `/learn/discuss/thread/${threadId}`).split("?")[0]}#post-${id}`, done: "posted" };
+  const threadId = id(form, "threadId");
+  await run(text(form, "back"), `/learn/discuss/thread/${threadId}`, async (ctx, actor) => {
+    const postId = await replyToThread(ctx, actor, { threadId, body: text(form, "body"), parentId: optionalId(form, "parentId") ?? null });
+    return { to: `${safeNext(text(form, "back"), `/learn/discuss/thread/${threadId}`).split("?")[0]}#post-${postId}`, done: "posted" };
   });
 }
 
 export async function editPostAction(form: FormData) {
-  await run(str(form, "back"), "/messages", async (ctx, actor) => {
-    await editPost(ctx, actor, str(form, "postId"), str(form, "body"));
+  await run(text(form, "back"), "/messages", async (ctx, actor) => {
+    await editPost(ctx, actor, id(form, "postId"), text(form, "body"));
     return { done: "edited" };
   });
 }
@@ -82,12 +82,12 @@ export async function editPostAction(form: FormData) {
 // --- Reports --------------------------------------------------------------------
 
 export async function reportAction(form: FormData) {
-  await run(str(form, "back"), "/messages", async (ctx, actor) => {
+  await run(text(form, "back"), "/messages", async (ctx, actor) => {
     await reportContent(ctx, actor, {
-      targetType: str(form, "targetType"),
-      targetId: str(form, "targetId"),
-      reason: str(form, "reason"),
-      note: str(form, "note"),
+      targetType: text(form, "targetType"),
+      targetId: id(form, "targetId"),
+      reason: text(form, "reason"),
+      note: text(form, "note"),
     });
     return { done: "reported" };
   });
@@ -96,25 +96,25 @@ export async function reportAction(form: FormData) {
 // --- Direct messages --------------------------------------------------------------
 
 export async function startConversationAction(form: FormData) {
-  await run(str(form, "back"), "/messages/new", async (ctx, actor) => {
-    const [cohortId = "", staffId = ""] = str(form, "recipient").split(":");
+  await run(text(form, "back"), "/messages/new", async (ctx, actor) => {
+    const [cohortId = "", staffId = ""] = text(form, "recipient").split(":");
     if (!cohortId || !staffId) throw new CommsError("invalid", "Choose who to send your message to.");
-    const id = await startConversation(ctx, actor, { cohortId, staffId, body: str(form, "body") });
-    return { to: `/messages/c/${id}`, done: "sent" };
+    const conversationId = await startConversation(ctx, actor, { cohortId: checkId(cohortId), staffId: checkId(staffId), body: text(form, "body") });
+    return { to: `/messages/c/${conversationId}`, done: "sent" };
   });
 }
 
 export async function sendMessageAction(form: FormData) {
-  const conversationId = str(form, "conversationId");
-  await run(str(form, "back"), `/messages/c/${conversationId}`, async (ctx, actor) => {
-    await sendMessage(ctx, actor, conversationId, str(form, "body"));
+  const conversationId = id(form, "conversationId");
+  await run(text(form, "back"), `/messages/c/${conversationId}`, async (ctx, actor) => {
+    await sendMessage(ctx, actor, conversationId, text(form, "body"));
     return { done: "sent" };
   });
 }
 
 export async function editMessageAction(form: FormData) {
-  await run(str(form, "back"), "/messages", async (ctx, actor) => {
-    await editMessage(ctx, actor, str(form, "messageId"), str(form, "body"));
+  await run(text(form, "back"), "/messages", async (ctx, actor) => {
+    await editMessage(ctx, actor, id(form, "messageId"), text(form, "body"));
     return { done: "edited" };
   });
 }
@@ -122,28 +122,28 @@ export async function editMessageAction(form: FormData) {
 // --- Support tickets ----------------------------------------------------------------
 
 export async function raiseTicketAction(form: FormData) {
-  await run(str(form, "back"), "/messages/help/new", async (ctx, actor) => {
-    const id = await raiseTicket(ctx, actor, {
-      category: str(form, "category"),
-      cohortId: str(form, "cohortId") || undefined,
-      subject: str(form, "subject"),
-      body: str(form, "body"),
+  await run(text(form, "back"), "/messages/help/new", async (ctx, actor) => {
+    const ticketId = await raiseTicket(ctx, actor, {
+      category: text(form, "category"),
+      cohortId: optionalId(form, "cohortId"),
+      subject: text(form, "subject"),
+      body: text(form, "body"),
     });
-    return { to: `/messages/help/${id}`, done: "raised" };
+    return { to: `/messages/help/${ticketId}`, done: "raised" };
   });
 }
 
 export async function ticketReplyAction(form: FormData) {
-  const ticketId = str(form, "ticketId");
-  await run(str(form, "back"), `/messages/help/${ticketId}`, async (ctx, actor) => {
-    await replyToTicket(ctx, actor, ticketId, str(form, "body"), "learner");
+  const ticketId = id(form, "ticketId");
+  await run(text(form, "back"), `/messages/help/${ticketId}`, async (ctx, actor) => {
+    await replyToTicket(ctx, actor, ticketId, text(form, "body"), "learner");
     return { done: "replied" };
   });
 }
 
 export async function reopenTicketAction(form: FormData) {
-  const ticketId = str(form, "ticketId");
-  await run(str(form, "back"), `/messages/help/${ticketId}`, async (ctx, actor) => {
+  const ticketId = id(form, "ticketId");
+  await run(text(form, "back"), `/messages/help/${ticketId}`, async (ctx, actor) => {
     await reopenTicket(ctx, actor, ticketId);
     return { done: "reopened" };
   });
@@ -161,10 +161,10 @@ export async function markAllReadAction() {
 export async function emailPrefsAction(form: FormData) {
   await run("/account/notifications", "/account/notifications", async (ctx, actor) => {
     await saveEmailPrefs(ctx, actor, {
-      announcements: str(form, "announcements"),
-      discussions: str(form, "discussions"),
-      messages: str(form, "messages"),
-      tickets: str(form, "tickets"),
+      announcements: text(form, "announcements"),
+      discussions: text(form, "discussions"),
+      messages: text(form, "messages"),
+      tickets: text(form, "tickets"),
     });
     return { done: "saved" };
   });

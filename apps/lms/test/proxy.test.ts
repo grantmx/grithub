@@ -103,6 +103,15 @@ describe("proxy (middleware) enforcement", () => {
     expect(await visit("/staff/marking", evaluator.token)).toBe("/forbidden");
   });
 
+  it("audits every page an external evaluator opens (path only)", async () => {
+    const { user, token } = await tokenFor({ roles: ["external_evaluator"] });
+    expect(await visit("/staff/evidence/form5?x=1", token)).toBe("next");
+    expect(await auditActions(t.db, user.id)).toContain("evaluator.page.viewed");
+    const learner = await tokenFor({});
+    await visit("/", learner.token);
+    expect(await auditActions(t.db, learner.user.id)).not.toContain("evaluator.page.viewed");
+  });
+
   it("ignores expired role grants (e.g. evaluator access after the visit)", async () => {
     const evaluator = await tokenFor({
       roles: ["external_evaluator"],

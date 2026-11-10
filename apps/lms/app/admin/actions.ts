@@ -14,6 +14,7 @@ import {
   setModerationRate,
   startRecovery,
 } from "@/lib/server/onboarding";
+import { InputError, MAX_CSV, checkId, checkText, id, text } from "@/lib/server/input";
 import { getActor, getServerCtx } from "@/lib/server/request";
 
 /**
@@ -43,7 +44,7 @@ async function run<T>(
 }
 
 const fail = (e: unknown): FormState => {
-  if (e instanceof OnboardingError) return { error: e.message };
+  if (e instanceof OnboardingError || e instanceof InputError) return { error: e.message };
   throw e;
 };
 
@@ -54,10 +55,10 @@ export async function createCohortAction(
   try {
     await run(async (ctx) =>
       createCohort(ctx, await getActor(ctx), {
-        qualificationId: String(form.get("qualificationId") ?? ""),
-        name: String(form.get("name") ?? ""),
-        startsOn: String(form.get("startsOn") ?? ""),
-        endsOn: String(form.get("endsOn") ?? ""),
+        qualificationId: id(form, "qualificationId"),
+        name: text(form, "name"),
+        startsOn: text(form, "startsOn"),
+        endsOn: text(form, "endsOn"),
       }),
     );
   } catch (e) {
@@ -70,13 +71,13 @@ export async function setModerationRateAction(
   _prev: FormState,
   form: FormData,
 ): Promise<FormState> {
-  const raw = String(form.get("percent") ?? "").trim();
   try {
+    const raw = text(form, "percent").trim();
     await run(async (ctx) =>
       setModerationRate(
         ctx,
         await getActor(ctx),
-        String(form.get("cohortId") ?? ""),
+        id(form, "cohortId"),
         /^\d+$/.test(raw) ? Number(raw) : NaN,
       ),
     );
@@ -90,14 +91,13 @@ export async function inviteLearnerAction(
   _prev: FormState,
   form: FormData,
 ): Promise<FormState> {
-  const cohortId = String(form.get("cohortId") ?? "");
   let invited: boolean;
   try {
     ({ invited } = await run(async (ctx) =>
       inviteLearner(ctx, await getActor(ctx), {
-        cohortId,
-        name: String(form.get("name") ?? ""),
-        email: String(form.get("email") ?? ""),
+        cohortId: id(form, "cohortId"),
+        name: text(form, "name"),
+        email: text(form, "email"),
       }),
     ));
   } catch (e) {
@@ -119,6 +119,13 @@ export async function previewImportAction(
   cohortId: string,
   csv: string,
 ): Promise<ImportState> {
+  try {
+    checkId(cohortId);
+    checkText(csv, MAX_CSV);
+  } catch (e) {
+    if (e instanceof InputError) return { stage: "upload", error: e.message };
+    throw e;
+  }
   const result = await run(async (ctx) =>
     previewLearnerImport(ctx, await getActor(ctx), cohortId, csv),
   );
@@ -131,30 +138,32 @@ export async function confirmImportAction(
   csv: string,
 ): Promise<ImportState> {
   try {
+    checkId(cohortId);
+    checkText(csv, MAX_CSV);
     const summary = await run(async (ctx) =>
       confirmLearnerImport(ctx, await getActor(ctx), cohortId, csv),
     );
     return { stage: "done", ...summary };
   } catch (e) {
-    if (e instanceof OnboardingError)
+    if (e instanceof OnboardingError || e instanceof InputError)
       return { stage: "upload", error: e.message };
     throw e;
   }
 }
 
 export async function resendInviteAction(form: FormData): Promise<void> {
-  const cohortId = String(form.get("cohortId") ?? "");
+  const cohortId = id(form, "cohortId");
   try {
     await run(async (ctx) =>
       resendInvitation(
         ctx,
         await getActor(ctx),
-        String(form.get("userId") ?? ""),
+        id(form, "userId"),
         cohortId,
       ),
     );
   } catch (e) {
-    if (e instanceof OnboardingError)
+    if (e instanceof OnboardingError || e instanceof InputError)
       redirect(`/admin/people?cohort=${cohortId}&error=resend`);
     throw e;
   }
@@ -162,17 +171,17 @@ export async function resendInviteAction(form: FormData): Promise<void> {
 }
 
 export async function deactivateAction(form: FormData): Promise<void> {
-  const cohortId = String(form.get("cohortId") ?? "");
+  const cohortId = id(form, "cohortId");
   try {
     await run(async (ctx) =>
       deactivateUser(
         ctx,
         await getActor(ctx),
-        String(form.get("userId") ?? ""),
+        id(form, "userId"),
       ),
     );
   } catch (e) {
-    if (e instanceof OnboardingError)
+    if (e instanceof OnboardingError || e instanceof InputError)
       redirect(`/admin/people?cohort=${cohortId}&error=deactivate`);
     throw e;
   }
@@ -186,9 +195,9 @@ export async function startRecoveryAction(
   try {
     await run(async (ctx) =>
       startRecovery(ctx, await getActor(ctx), {
-        userId: String(form.get("userId") ?? ""),
-        verificationMethod: String(form.get("verificationMethod") ?? ""),
-        reason: String(form.get("reason") ?? ""),
+        userId: id(form, "userId"),
+        verificationMethod: text(form, "verificationMethod"),
+        reason: text(form, "reason"),
       }),
     );
   } catch (e) {

@@ -364,7 +364,8 @@ export async function submitCheckAnswer(
   }
   if (row.status !== "in_progress") return buildView(ctx, attemptId); // already answered: idempotent
 
-  const optionId = row.optionTokens[token];
+  // Own keys only: a token like "__proto__" or "constructor" must not resolve to an inherited value.
+  const optionId = Object.hasOwn(row.optionTokens, token) ? row.optionTokens[token] : undefined;
   if (!optionId)
     throw new LearningError("not_found", "Choose one of the answers.");
   const [opt] = await ctx.db

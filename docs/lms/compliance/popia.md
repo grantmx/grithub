@@ -1,5 +1,7 @@
 # POPIA: what the LMS collects and how
 
+> The consolidated, reviewable version is the **POPIA pack** in [../dossier/04-popia-pack.md](../dossier/04-popia-pack.md) (2026-11-10). This file keeps the working notes; where they differ, the pack is newer.
+
 Status: **draft**. It must be reviewed by GRIT Hub's Information Officer before real learners are invited. The learner-facing notice text and the separate QCTO sharing consent live in `apps/lms/lib/popia.ts` (versioned; notice currently `2026-11-draft-2`, QCTO consent `2026-11-draft-1`).
 
 ## Biometric data: we never receive or store it
@@ -103,7 +105,7 @@ There are no SMS codes. Recovery is either:
 
 ## Backups and the evidence pack (2026-11-09)
 
-- **Backups** contain the whole database (names and emails in plain text; QCTO identity, equity and disability fields are already encrypted in the application). Each nightly file is encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`, stored privately and deleted after 7 days. The key must be kept outside the database host; losing it makes the backups unreadable. Backups live in the same storage region as practical evidence (region still open).
+- **Backups** contain the whole database (names and emails in plain text; QCTO identity, equity and disability fields are already encrypted in the application). Each nightly file is encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`, stored in a **separate** private Blob store used only for backups (never the evidence store; 2026-11-10) and deleted after 7 days. The key must be kept outside the database host; losing it makes the backups unreadable. Backup store region: still open (dossier TODO T-12). Evidence files are not in this backup (dossier TODO T-27).
 - **Evidence pack** exports pseudonymise learners ("Learner A", …); free text inside messages, posts or answers is not rewritten, so the pack is still personal information and every export is audited. Named versions are only available one by one through the audited evidence links.
 - **QCTO panel** shows which profile fields fail validation, never the values.
 

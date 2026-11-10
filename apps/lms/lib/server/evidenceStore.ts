@@ -22,58 +22,76 @@ export interface EvidenceStore {
   put(pathname: string, bytes: Uint8Array, contentType: string): Promise<StoredObject>;
 }
 
-const blobStore: EvidenceStore = {
-  kind: "blob",
-  async head(pathname) {
-    try {
-      const h = await head(pathname);
-      return { pathname: h.pathname, size: h.size, contentType: h.contentType };
-    } catch {
-      return null;
-    }
-  },
-  async read(pathname) {
-    const r = await get(pathname, { access: "private" });
-    if (!r || r.statusCode !== 200) return null;
-    return new Uint8Array(await new Response(r.stream).arrayBuffer());
-  },
-  async signedGetUrl(pathname, ttlMs) {
-    const validUntil = Date.now() + ttlMs;
-    const token = await issueSignedToken({ pathname, operations: ["get"], validUntil });
-    const { presignedUrl } = await presignUrl(token, { operation: "get", pathname, validUntil, access: "private" });
-    return presignedUrl;
-  },
-  async remove(pathname) {
-    await del(pathname);
-  },
-  async put(pathname, bytes, contentType) {
-    const r = await put(pathname, Buffer.from(bytes), { access: "private", contentType, addRandomSuffix: false, allowOverwrite: false });
-    return { pathname: r.pathname, size: bytes.byteLength, contentType };
-  },
-};
+/** Vercel Blob driver. `token` selects the store; omitted = BLOB_READ_WRITE_TOKEN (evidence). */
+function makeBlobStore(token?: string): EvidenceStore {
+  const auth = token ? { token } : {};
+  return {
+    kind: "blob",
+    async head(pathname) {
+      try {
+        const h = await head(pathname, auth);
+        return { pathname: h.pathname, size: h.size, contentType: h.contentType };
+      } catch {
+        return null;
+      }
+    },
+    async read(pathname) {
+      const r = await get(pathname, { access: "private", ...auth });
+      if (!r || r.statusCode !== 200) return null;
+      return new Uint8Array(await new Response(r.stream).arrayBuffer());
+    },
+    async signedGetUrl(pathname, ttlMs) {
+      if (token) throw new Error("Signed links are only issued for the evidence store.");
+      const validUntil = Date.now() + ttlMs;
+      const signed = await issueSignedToken({ pathname, operations: ["get"], validUntil });
+      const { presignedUrl } = await presignUrl(signed, { operation: "get", pathname, validUntil, access: "private" });
+      return presignedUrl;
+    },
+    async remove(pathname) {
+      await del(pathname, auth);
+    },
+    async put(pathname, bytes, contentType) {
+      const r = await put(pathname, Buffer.from(bytes), {
+        access: "private",
+        contentType,
+        addRandomSuffix: false,
+        allowOverwrite: false,
+        ...auth,
+      });
+      return { pathname: r.pathname, size: bytes.byteLength, contentType };
+    },
+  };
+}
 
-/** In-memory store for tests (and the test helper `putTestObject`). */
-const memory = new Map<string, { bytes: Uint8Array; contentType: string }>();
-const memoryStore: EvidenceStore = {
-  kind: "memory",
-  async head(pathname) {
-    const o = memory.get(pathname);
-    return o ? { pathname, size: o.bytes.byteLength, contentType: o.contentType } : null;
-  },
-  async read(pathname) {
-    return memory.get(pathname)?.bytes ?? null;
-  },
-  async signedGetUrl(pathname, ttlMs) {
-    return `https://memory.invalid/${encodeURIComponent(pathname)}?exp=${Date.now() + ttlMs}`;
-  },
-  async remove(pathname) {
-    memory.delete(pathname);
-  },
-  async put(pathname, bytes, contentType) {
-    memory.set(pathname, { bytes, contentType });
-    return { pathname, size: bytes.byteLength, contentType };
-  },
-};
+const blobStore = makeBlobStore();
+
+/** In-memory stores for tests (and the test helper `putTestObject`). */
+type MemoryMap = Map<string, { bytes: Uint8Array; contentType: string }>;
+function makeMemoryStore(memory: MemoryMap): EvidenceStore {
+  return {
+    kind: "memory",
+    async head(pathname) {
+      const o = memory.get(pathname);
+      return o ? { pathname, size: o.bytes.byteLength, contentType: o.contentType } : null;
+    },
+    async read(pathname) {
+      return memory.get(pathname)?.bytes ?? null;
+    },
+    async signedGetUrl(pathname, ttlMs) {
+      return `https://memory.invalid/${encodeURIComponent(pathname)}?exp=${Date.now() + ttlMs}`;
+    },
+    async remove(pathname) {
+      memory.delete(pathname);
+    },
+    async put(pathname, bytes, contentType) {
+      memory.set(pathname, { bytes, contentType });
+      return { pathname, size: bytes.byteLength, contentType };
+    },
+  };
+}
+const memory: MemoryMap = new Map();
+const memoryStore = makeMemoryStore(memory);
+const backupMemoryStore = makeMemoryStore(new Map());
 
 const noStore: EvidenceStore = {
   kind: "none",
@@ -97,6 +115,33 @@ export function evidenceStore(env: NodeJS.ProcessEnv = process.env): EvidenceSto
   if (choice === "memory") return memoryStore;
   if (choice === "blob" && env.BLOB_READ_WRITE_TOKEN) return blobStore;
   return noStore;
+}
+
+/** The store id inside a Vercel Blob token (`vercel_blob_rw_<storeId>_<secret>`), when it has one. */
+export function blobStoreId(token: string): string | null {
+  const m = /^vercel_blob_rw_([A-Za-z0-9]+)_/.exec(token);
+  return m ? m[1]! : null;
+}
+
+/**
+ * Backups live in their OWN private Blob store (BACKUP_BLOB_READ_WRITE_TOKEN),
+ * never in the evidence store: losing or compromising one store must not take
+ * the other with it. Create it in the Vercel dashboard as a separate private
+ * store (ideally in a different region from the database). There is no
+ * fallback to the evidence store; without it the nightly run logs a failure.
+ * BACKUP_STORE=memory is for tests.
+ */
+export function backupStore(env: Record<string, string | undefined> = process.env): { store: EvidenceStore; problem: string | null } {
+  if (env.BACKUP_STORE === "memory") return { store: backupMemoryStore, problem: null };
+  const token = env.BACKUP_BLOB_READ_WRITE_TOKEN;
+  if (!token) {
+    return { store: noStore, problem: "BACKUP_BLOB_READ_WRITE_TOKEN is not set (backups need their own private store)." };
+  }
+  const evidence = env.BLOB_READ_WRITE_TOKEN;
+  if (evidence && (token === evidence || (blobStoreId(token) !== null && blobStoreId(token) === blobStoreId(evidence)))) {
+    return { store: noStore, problem: "BACKUP_BLOB_READ_WRITE_TOKEN points at the evidence store; use a separate store." };
+  }
+  return { store: makeBlobStore(token), problem: null };
 }
 
 /** Test helper: simulate a finished direct upload. */

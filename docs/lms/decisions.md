@@ -153,6 +153,20 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
   - A DEMO walkthrough script drives the real server functions so the DEMO cohort has genuine evidence for every live item.
 - **Consequences:** a JSON-lines dump is fine at current size but needs streaming (or host-native dumps) once the database grows; Vercel functions are capped at 300 s. Restoring means decrypting with the key and loading the rows into a scratch database (README); this is logged as a restore test by hand. The QCTO panel's "last submission batch" stays empty until the LEISA exporter is built.
 
+## ADR-018: Hardening pass and the Capability and Security Dossier
+
+- **Status:** Accepted (2026-11-10).
+- **Context:** Before the first real cohort, the LMS needed a documented security baseline and an evidence dossier (`docs/lms/dossier/`) for QCTO evaluators and the Information Officer.
+- **Decision:**
+  - **Backups go to a separate private Blob store** (`BACKUP_BLOB_READ_WRITE_TOKEN`), never the evidence store; there is no fallback, so a missing store logs a failed run. Each file records row counts per table, and `backup:restore` restores into an empty scratch database and checks them (tested in CI).
+  - **Least-privilege runtime role** `lms_app` (`packages/db/sql/least-privilege.sql`): row DML only, no DDL or TRUNCATE, no UPDATE/DELETE on append-only evidence tables. Migrations keep the owner role. A script, not a migration, because roles are cluster-wide and managed hosts differ.
+  - **CSP with `'unsafe-inline'` scripts**, because Next.js streams page data inline and nonces would make every page dynamic. Compensated by "no raw HTML anywhere" (tested). Revisit if nonces become cheap (dossier E-05).
+  - **Input boundary:** every server action reads input through `lib/server/input.ts` (UUID ids, capped text, no files or NUL bytes); a guard test enforces it.
+  - **Uploads:** magic-byte checks on evidence after upload, in addition to the declared type and size.
+  - **Dependency audit gate** in CI (and nightly): unwaived high/critical advisories in `lms` or `db` production dependencies fail the build; waivers expire within 90 days. `apps/lms` no longer depends on the unused `ui` package (it pulled Firebase into the LMS tree), and declares `drizzle-orm` itself.
+  - External evaluators' page views are audit-logged in the proxy.
+- **Consequences:** deploying this before the backup store exists makes nightly backups fail visibly on the dashboard (dossier T-12). The production database must be switched to `lms_app` by a person with owner access (T-13).
+
 ## Open questions
 
 ### Compliance and governance
