@@ -9,6 +9,12 @@
           "originalSource": "/((?!_next/|brand/|icon\\.svg|favicon\\.ico).*)"
         }
       ]
+    },
+    "/api/cron/nightly-backup": {
+      "maxDuration": 300
+    },
+    "/staff/evidence/form5/pack": {
+      "maxDuration": 120
     }
   }
 }

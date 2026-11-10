@@ -95,7 +95,15 @@ export type AuditAction =
   | "session.updated"
   | "session.cancelled"
   | "session.recording_added"
-  | "session.attendance.recorded";
+  | "session.attendance.recorded"
+  | "compliance.restore_test.logged"
+  | "compliance.document.recorded"
+  | "compliance.curriculum_reference.recorded"
+  | "compliance.guide.uploaded"
+  | "compliance.guide.rejected"
+  | "compliance.guide.viewed"
+  | "compliance.pack.exported"
+  | "compliance.backup.downloaded";
 
 export async function writeAudit(
   ctx: Pick<ServerCtx, "db" | "ipHash">,

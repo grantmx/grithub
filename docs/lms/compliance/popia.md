@@ -101,6 +101,12 @@ There are no SMS codes. Recovery is either:
 - **At-risk flags** are computed for staff only, never shown to the learner, and not stored.
 - **Retention:** kept with the learner's other records for the assessment-evidence period (question 2 below); nothing auto-deletes yet.
 
+## Backups and the evidence pack (2026-11-09)
+
+- **Backups** contain the whole database (names and emails in plain text; QCTO identity, equity and disability fields are already encrypted in the application). Each nightly file is encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`, stored privately and deleted after 7 days. The key must be kept outside the database host; losing it makes the backups unreadable. Backups live in the same storage region as practical evidence (region still open).
+- **Evidence pack** exports pseudonymise learners ("Learner A", …); free text inside messages, posts or answers is not rewritten, so the pack is still personal information and every export is audited. Named versions are only available one by one through the audited evidence links.
+- **QCTO panel** shows which profile fields fail validation, never the values.
+
 ## Open questions (for the Information Officer)
 
 1. Information Officer name and contact for the notice (placeholder in `lib/popia.ts`).

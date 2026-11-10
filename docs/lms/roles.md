@@ -84,6 +84,13 @@ Notes:
 - **Communication log export:** SDP admins and external evaluators, per cohort and date range; every export's SHA-256 is audit-logged.
 - **Abuse controls:** per-user rate limits on posts, messages, tickets and reports; learner reports; facilitators hide reported discussion replies (the original is kept for the log).
 
+### Form 5 readiness and QCTO panel (2026-11-09)
+
+- **Readiness dashboard:** SDP admins (step-up) view and edit: document references, the 4.4 curriculum reference, the learner guide upload, restore-test log. External evaluators see the same dashboard read-only under Evidence, open the learner guide (audited signed link) and the backup log.
+- **Evidence pack:** SDP admins and external evaluators. Learners are pseudonymised. Answer keys appear only in evaluator exports (SDP admins never see keys). Every export's SHA-256 is audited.
+- **QCTO submission panel:** SDP admins only (it lists learners' names and which profile fields fail validation, never the values).
+- **Backups:** written by the nightly job; nobody downloads backup files through the LMS. Restore tests are logged by SDP admins.
+
 ## Onboarding flow (learners and staff)
 
 1. SDP admin creates a cohort and invites learners one by one or by CSV import (validated, previewed, then confirmed). Each learner is enrolled in the cohort.

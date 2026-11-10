@@ -22,6 +22,8 @@ export default async function AdminLayout({
             { href: "/admin/cohorts", label: "Cohorts" },
             { href: "/admin/assessments", label: "Assessments" },
             { href: "/admin/practical", label: "Practical tasks" },
+            { href: "/admin/form5", label: "Form 5 readiness" },
+            { href: "/admin/qcto", label: "QCTO submissions" },
           ],
         },
       ]}

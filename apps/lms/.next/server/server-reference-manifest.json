@@ -2326,6 +2326,66 @@
       "filename": "apps/lms/app/admin/actions.ts",
       "exportedName": "startRecoveryAction"
     },
+    "4036c94deb0f21b454fadb538c012414b2214f8881": {
+      "workers": {
+        "app/admin/form5/page": {
+          "moduleId": 67681,
+          "async": false,
+          "exportedName": "curriculumReferenceAction",
+          "filename": "apps/lms/app/admin/form5-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/form5/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/form5-actions.ts",
+      "exportedName": "curriculumReferenceAction"
+    },
+    "40533422cdae338a5e769abfb3f2c4b779614e7935": {
+      "workers": {
+        "app/admin/form5/page": {
+          "moduleId": 67681,
+          "async": false,
+          "exportedName": "restoreTestAction",
+          "filename": "apps/lms/app/admin/form5-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/form5/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/form5-actions.ts",
+      "exportedName": "restoreTestAction"
+    },
+    "40daaaf2508103918c048d527cc3773a4c96ac1f52": {
+      "workers": {
+        "app/admin/form5/page": {
+          "moduleId": 67681,
+          "async": false,
+          "exportedName": "recordDocumentAction",
+          "filename": "apps/lms/app/admin/form5-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/form5/page": "rsc"
+      },
+      "filename": "apps/lms/app/admin/form5-actions.ts",
+      "exportedName": "recordDocumentAction"
+    },
+    "7cd3ea77fa422cf36daa80f57332a252a95971ce35": {
+      "workers": {
+        "app/admin/form5/page": {
+          "moduleId": 67681,
+          "async": false,
+          "exportedName": "confirmGuideAction",
+          "filename": "apps/lms/app/admin/form5-actions.ts"
+        }
+      },
+      "layer": {
+        "app/admin/form5/page": "action-browser"
+      },
+      "filename": "apps/lms/app/admin/form5-actions.ts",
+      "exportedName": "confirmGuideAction"
+    },
     "402b3584b7cb248f850a2eedb718f5338814e030f7": {
       "workers": {
         "app/admin/people/page": {

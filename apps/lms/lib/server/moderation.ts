@@ -620,12 +620,21 @@ export async function moderationReport(ctx: Ctx, actor: AccessContext | null, ba
   const a = await authorize(ctx, actor, MODERATOR, "moderation.report");
   const b = await loadBatch(ctx, batchId);
   await assertCohortScope(ctx, a, ["moderator"], b.batch.cohortId, "moderation.report");
+  return moderationReportUnchecked(ctx, batchId, a.userId);
+}
+
+/**
+ * The report data without an access check, for callers that have already
+ * authorised the viewer (the Form 5 evidence pack for SDP admins and evaluators).
+ */
+export async function moderationReportUnchecked(ctx: Ctx, batchId: string, actorId: string) {
+  const b = await loadBatch(ctx, batchId);
   const rows = await batchRows(ctx, batchId);
   const [closer] = b.batch.closedBy
     ? await ctx.db.select({ name: users.displayName }).from(users).where(eq(users.id, b.batch.closedBy))
     : [];
   return {
-    actorId: a.userId,
+    actorId,
     batchId,
     title: b.title,
     kind: b.kind,

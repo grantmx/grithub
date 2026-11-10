@@ -29,6 +29,7 @@
         "CRON_SECRET",
         "PII_ENCRYPTION_KEYS",
         "PII_BLIND_INDEX_KEY",
+        "BACKUP_ENCRYPTION_KEY",
         "EMAIL_TRANSPORT",
         "DATABASE_SSL",
         "DATABASE_POOL_MAX"

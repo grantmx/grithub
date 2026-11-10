@@ -42,6 +42,7 @@ import {
   type CodeListName,
   type CodeLists,
   type FieldErrors,
+  PART_FIELDS,
   PART_TITLES,
   PROFILE_PARTS,
   type ProfilePart,
@@ -657,4 +658,46 @@ export async function qctoSharingConsent(
   return row.granted
     ? { agree: "Yes", date: saDate(row.at).replace(/-/g, "") }
     : { agree: "No", date: "" };
+}
+
+/**
+ * QCTO submission panel (design.md §14, 2026-11-09): for each learner, the
+ * profile status and the names of fields that fail validation (never the
+ * values). Callers must already have authorised an SDP admin.
+ */
+export async function profileProblems(
+  ctx: ServerCtx,
+  userIds: string[],
+): Promise<Map<string, { status: ProfileStatus; invalid: { part: string; field: string }[] }>> {
+  const out = new Map<string, { status: ProfileStatus; invalid: { part: string; field: string }[] }>();
+  if (userIds.length === 0) return out;
+  const statuses = await profileStatuses(ctx, userIds);
+  const lists = await loadCodeLists(ctx);
+  const partOf = (field: string) =>
+    PROFILE_PARTS.find((p) => (PART_FIELDS[p] as readonly string[]).includes(field.split(".")[0]!)) ?? "review";
+  const words = (field: string) =>
+    field
+      .split(".")
+      .map((f) => f.replace(/([A-Z])/g, " $1").toLowerCase())
+      .join(" ")
+      .replace(/\bid\b/g, "ID")
+      .trim();
+  for (const id of userIds) {
+    const status = statuses.get(id) ?? "not_started";
+    if (status === "not_started") {
+      out.set(id, { status, invalid: [] });
+      continue;
+    }
+    const p = await readProfileUnchecked(ctx, id);
+    const errors = validateProfile(p.values, lists, PROFILE_PARTS, {
+      partial: status !== "confirmed",
+      areaInProvince: await areaCheck(ctx, p.values),
+      today: ctx.now(),
+    });
+    out.set(id, {
+      status,
+      invalid: Object.keys(errors).map((f) => ({ part: PART_TITLES[partOf(f)], field: words(f) })),
+    });
+  }
+  return out;
 }

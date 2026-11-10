@@ -187,3 +187,7 @@ export const scanStatus = pgEnum("scan_status", [
   "clean",
   "infected",
 ]);
+
+// Form 5 readiness and backups (design.md §14, 2026-11-09).
+export const backupRunKind = pgEnum("backup_run_kind", ["backup", "restore_test", "prune"]);
+export const backupRunStatus = pgEnum("backup_run_status", ["ok", "failed"]);

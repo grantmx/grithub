@@ -609,3 +609,11 @@ export async function recordDecision(
   });
   return d!.id;
 }
+
+/**
+ * The replay without an access check, for callers that have already
+ * authorised the viewer (the Form 5 evidence pack, lib/server/evidencePack.ts).
+ */
+export async function replayUnchecked(ctx: Ctx, attemptId: string) {
+  return loadReplay(ctx, attemptId);
+}

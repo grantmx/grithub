@@ -93,6 +93,7 @@ Review the generated SQL, commit it with the schema change, and never edit a mig
 | `0018_comms.sql`                       | Communication and support (design.md §14, 2026-11-08): pinned announcements, module discussion boards with nested replies, conversations and direct messages, edit revisions, reports, ticket targets and replies, notifications, email preferences, section notes, live sessions and attendance, job runs |
 | `0019_comms_threads_by_module.sql`     | Drops the old `section_id` and `locked` columns from `discussion_threads` (boards are per module)                                                                                                                                                                                                          |
 | `0020_comms_rules.sql`                 | Replies nest one level in the same thread; message revisions append-only; posts, messages and ticket replies never deleted                                                                                                                                                                                 |
+| `0021_form5_readiness.sql`             | Form 5 readiness (design.md §14, 2026-11-09): compliance document references, curriculum references (4.4), learner guides, backup and restore log                                                                                                                                                          |
 
 ## Database-enforced rules
 
@@ -134,10 +135,23 @@ Errors use SQLSTATE `23001` (`restrict_violation`) for frozen evidence and `2351
 | A POPIA notice consent is always granted (a QCTO sharing consent may be refused).                                                                                                                                                                                                                                                                                                                          | CHECK on `consent_records`                                                                                                                                 |
 | **Communication (design.md §14, 2026-11-08).** Discussion replies nest one level, in the same thread. Earlier versions of edited posts and messages are append-only; discussion posts, direct messages and ticket replies are never deleted (hidden instead).                                                                                                                                              | triggers `discussion_posts_parent`, `message_revisions_append_only`, `discussion_posts_no_delete`, `direct_messages_no_delete`, `ticket_replies_no_delete` |
 | One pinned announcement per cohort; a conversation is two different people, learner and a facilitator or assessor, once per cohort; academic tickets name a cohort; session end after start; hidden items record who hid them; text length limits.                                                                                                                                                         | partial unique index, unique indexes, CHECKs                                                                                                               |
+| **Form 5 evidence (2026-11-09).** One current document reference per Form 5 item, one current curriculum reference and learner guide per qualification (older ones archived); item codes look like `4.1.5`; a successful backup records its file, size and SHA-256; restore tests record who logged them.                                                                                                  | partial unique indexes, CHECKs                                                                                                                             |
 
 QCTO data is encrypted in the application (`db/pii`, ADR-014). Rules that need decrypted values or decisions (ID check digit, gender and birth date vs ID, character sets, postal codes, "all modules competent" for SOR 01, accreditation periods, submission deadlines) belong to the LEISA exporter, which is not built yet.
 
 Enforced in the application (apps/lms/lib/server, with tests): max attempts per blueprint (plus reassessments from appeals), summative papers only after an assessor unlock, time limits, section check limit of 3 attempts. Not enforced yet: staff not enrolled as learners in their own cohort.
+
+## Backups and restore tests (Form 5 4.1.6)
+
+`apps/lms` runs a nightly encrypted backup (Vercel Cron, `/api/cron/nightly-backup`, 02:00 SAST; ADR-017). Each file holds every table as JSON lines (a header line, then one `{"table","row"}` line per row), gzipped and encrypted with AES-256-GCM under `BACKUP_ENCRYPTION_KEY`. The last 7 files are kept; the log is on the Form 5 readiness dashboard.
+
+A restore test, at least every 90 days:
+
+1. Download last night's file from the private Blob store (`backups/…lmsbak`) with the Vercel dashboard or CLI.
+2. `BACKUP_ENCRYPTION_KEY=… yarn workspace lms backup:decrypt <file> > backup.jsonl` (never commit the output).
+3. Create a scratch database, run `yarn db:migrate` against it, and load the rows (e.g. a short script that inserts each line's `row` into its `table`, with triggers disabled for the session).
+4. Check row counts against the backup log entry, then drop the scratch database.
+5. Log the test on the dashboard (Admin → Form 5 readiness → Backups → Log a restore test).
 
 ## Demo seed
 
@@ -149,6 +163,8 @@ Enforced in the application (apps/lms/lib/server, with tests): max attempts per 
 - No passkeys are seeded. Users register their own passkeys once auth exists.
 
 Never put real people, real learner data or real curriculum content in the seed. The repo is public.
+
+After `db:seed`, run `yarn workspace lms demo:evidence` to give the DEMO cohort real Form 5 evidence (assessments sat, marked, moderated and released; communication, live sessions, notes; the 4.4 curriculum reference; a restore test; a backup when `BACKUP_ENCRYPTION_KEY` and storage are configured). Same local-only guard as the seed.
 
 ## Using it from apps/lms
 

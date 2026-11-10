@@ -1,4 +1,4 @@
-import { del, get, head, issueSignedToken, presignUrl } from "@vercel/blob";
+import { del, get, head, issueSignedToken, presignUrl, put } from "@vercel/blob";
 
 /**
  * Private evidence storage (design-gate decision 2026-11-08: Vercel Blob,
@@ -18,6 +18,8 @@ export interface EvidenceStore {
   read(pathname: string): Promise<Uint8Array | null>;
   signedGetUrl(pathname: string, ttlMs: number): Promise<string>;
   remove(pathname: string): Promise<void>;
+  /** Server-side write (backups only; learner and staff files upload directly from the browser). */
+  put(pathname: string, bytes: Uint8Array, contentType: string): Promise<StoredObject>;
 }
 
 const blobStore: EvidenceStore = {
@@ -44,6 +46,10 @@ const blobStore: EvidenceStore = {
   async remove(pathname) {
     await del(pathname);
   },
+  async put(pathname, bytes, contentType) {
+    const r = await put(pathname, Buffer.from(bytes), { access: "private", contentType, addRandomSuffix: false, allowOverwrite: false });
+    return { pathname: r.pathname, size: bytes.byteLength, contentType };
+  },
 };
 
 /** In-memory store for tests (and the test helper `putTestObject`). */
@@ -63,6 +69,10 @@ const memoryStore: EvidenceStore = {
   async remove(pathname) {
     memory.delete(pathname);
   },
+  async put(pathname, bytes, contentType) {
+    memory.set(pathname, { bytes, contentType });
+    return { pathname, size: bytes.byteLength, contentType };
+  },
 };
 
 const noStore: EvidenceStore = {
@@ -77,6 +87,9 @@ const noStore: EvidenceStore = {
     throw new Error("Evidence storage is not configured");
   },
   async remove() {},
+  async put() {
+    throw new Error("Evidence storage is not configured");
+  },
 };
 
 export function evidenceStore(env: NodeJS.ProcessEnv = process.env): EvidenceStore {

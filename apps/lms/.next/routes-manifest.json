@@ -299,6 +299,14 @@
       "namedRegex": "^/staff/discussions/thread/(?<nxtPthreadId>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/staff/evidence/form5/guide/[qualificationId]",
+      "regex": "^/staff/evidence/form5/guide/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPqualificationId": "nxtPqualificationId"
+      },
+      "namedRegex": "^/staff/evidence/form5/guide/(?<nxtPqualificationId>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/staff/marking/practical/[submissionId]",
       "regex": "^/staff/marking/practical/([^/]+?)(?:/)?$",
       "routeKeys": {
@@ -483,6 +491,12 @@
       "namedRegex": "^/admin/cohorts(?:/)?$"
     },
     {
+      "page": "/admin/form5",
+      "regex": "^/admin/form5(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/form5(?:/)?$"
+    },
+    {
       "page": "/admin/people",
       "regex": "^/admin/people(?:/)?$",
       "routeKeys": {},
@@ -505,6 +519,24 @@
       "regex": "^/admin/practical(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/admin/practical(?:/)?$"
+    },
+    {
+      "page": "/admin/qcto",
+      "regex": "^/admin/qcto(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/admin/qcto(?:/)?$"
+    },
+    {
+      "page": "/api/compliance/guide-upload",
+      "regex": "^/api/compliance/guide\\-upload(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/compliance/guide\\-upload(?:/)?$"
+    },
+    {
+      "page": "/api/cron/nightly-backup",
+      "regex": "^/api/cron/nightly\\-backup(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/cron/nightly\\-backup(?:/)?$"
     },
     {
       "page": "/api/cron/overdue-tickets",
@@ -691,6 +723,18 @@
       "regex": "^/staff/evidence/communication/pdf(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/staff/evidence/communication/pdf(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence/form5",
+      "regex": "^/staff/evidence/form5(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence/form5(?:/)?$"
+    },
+    {
+      "page": "/staff/evidence/form5/pack",
+      "regex": "^/staff/evidence/form5/pack(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/staff/evidence/form5/pack(?:/)?$"
     },
     {
       "page": "/staff/marking",

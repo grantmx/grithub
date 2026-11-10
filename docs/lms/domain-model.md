@@ -272,6 +272,14 @@ See [compliance/qcto-leisa-mapping.md](compliance/qcto-leisa-mapping.md) and ADR
 - **JobRun**: claims one run of a scheduled job (weekly digest, overdue-ticket email).
 - At-risk flags are computed on read (no table). Every new table carries a nullable `tenant_id`; uniqueness rules include the tenant key.
 
+### Added with the Form 5 readiness dashboard (2026-11-09, ADR-017)
+
+- **ComplianceDocument**: a reference to a manual document for one Form 5 item (title, issuer, where it is kept, valid-until date, notes); one current per item, older ones archived.
+- **CurriculumReference**: per qualification, the curriculum document reference confirming there is no workplace module (title, curriculum code, version, page or section, note).
+- **LearnerGuide**: per qualification, the uploaded learner guide PDF (private storage path, size, SHA-256, version, issue date).
+- **BackupRun**: the backup and restore log (nightly backup, prune, restore test; status, size, SHA-256, table and row counts, notes, who logged a restore test, when a file was pruned).
+- Readiness statuses and the QCTO panel are computed on read. New tables carry a nullable `tenant_id`; "one current per item/qualification" is a partial unique index on the tenant key.
+
 ## People, cohorts and operations
 
 ```mermaid

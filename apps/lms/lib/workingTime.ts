@@ -127,3 +127,32 @@ export function dueLabel(due: Date, now: Date): { overdue: boolean; text: string
         : `${Math.floor(hours / 24)} day${Math.floor(hours / 24) === 1 ? "" : "s"}`;
   return diff >= 0 ? { overdue: false, text: `Due in ${amount}` } : { overdue: true, text: `Overdue ${amount}` };
 }
+
+/** True for a Monday–Friday that is not an SA public holiday ("YYYY-MM-DD"). */
+export function isWorkingDate(ymdDate: string): boolean {
+  return isWorkingDay(new Date(`${ymdDate}T00:00:00Z`));
+}
+
+/**
+ * The date `n` working days after `start` ("YYYY-MM-DD"), skipping weekends
+ * and SA public holidays. Used for the QCTO enrolment deadline (21 working
+ * days after training starts).
+ */
+export function addWorkingDays(start: string, n: number): string {
+  const d = new Date(`${start}T00:00:00Z`);
+  let left = n;
+  while (left > 0) {
+    d.setUTCDate(d.getUTCDate() + 1);
+    if (isWorkingDay(d)) left--;
+  }
+  return d.toISOString().slice(0, 10);
+}
+
+/** `months` calendar months before a date ("YYYY-MM-DD"), clamped to the month's last day. */
+export function monthsBefore(date: string, months: number): string {
+  const [y, m, d] = date.split("-").map(Number) as [number, number, number];
+  const target = new Date(Date.UTC(y, m - 1 - months, 1));
+  const last = new Date(Date.UTC(target.getUTCFullYear(), target.getUTCMonth() + 1, 0)).getUTCDate();
+  target.setUTCDate(Math.min(d, last));
+  return target.toISOString().slice(0, 10);
+}

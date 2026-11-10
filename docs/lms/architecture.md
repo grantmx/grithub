@@ -94,7 +94,7 @@ Verify the current values against Vercel documentation at build time. Limits cha
 
 1. **DB and storage region.** South Africa (AWS `af-south-1` / Vercel `cpt1`) vs EU. Which managed Postgres providers offer a South African region? Is cross-border transfer acceptable under POPIA section 72?
 2. **POPIA.** Who is the Information Officer? Do we have operator agreements with each processor (DB host, storage, Mux, email, Airtable)? What are the retention periods for POE and assessment records (QCTO record-keeping vs POPIA minimisation)? How are data subject access/correction requests handled? Is a Privacy notice for learners in place?
-3. **Backups.** What backup frequency, retention and restore-test schedule do we need? Form 5 4.1 asks for this evidence. Do we need point-in-time recovery?
+3. **Backups.** ~~What backup frequency, retention and restore-test schedule do we need?~~ Decided 2026-11-09 (ADR-017): nightly encrypted LMS backup, last 7 kept, restore test at least every 90 days, logged on the Form 5 dashboard. Still open: point-in-time recovery from the host.
 4. **Shared devices.** On assessment days, do learners use their own phones as roaming passkeys (hybrid/QR flow) on hub machines, or are hub machines enrolled per learner? Do we need a supervised "assessment-day session" issued by staff?
 5. **Connectivity.** Do we need offline-tolerant behaviour for load-shedding/outages during in-person assessments (for example, local autosave and resume)?
 6. **"LMS licence" evidence** for a self-built LMS. See the note in [compliance/form5-mapping.md](compliance/form5-mapping.md).

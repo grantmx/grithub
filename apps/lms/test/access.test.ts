@@ -511,3 +511,32 @@ describe("communication and support routes per role", () => {
     expect(decide(requirementFor("/api/cron/anything-else"), null).result).toBe("signin");
   });
 });
+
+// Form 5 readiness and QCTO panel (design.md §14, 2026-11-09).
+const FORM5_MATRIX: [route: string, expected: readonly ("allow" | "forbidden")[]][] = [
+  //                                          learner fac assr  mod  admin eval
+  ["/admin/form5", [F, F, F, F, A, F]],
+  ["/admin/qcto", [F, F, F, F, A, F]],
+  ["/api/compliance/guide-upload", [F, F, F, F, A, F]],
+  ["/staff/evidence/form5", [F, F, F, F, A, A]],
+  ["/staff/evidence/form5/pack", [F, F, F, F, A, A]],
+  ["/staff/evidence/form5/guide/q1", [F, F, F, F, A, A]],
+];
+
+describe("Form 5 readiness and QCTO panel routes per role", () => {
+  for (const [route, expected] of FORM5_MATRIX) {
+    COMMS_ROLES.forEach((role, i) => {
+      it(`${role} → ${route}: ${expected[i]}`, () => {
+        const roles = role === "learner" ? [] : [role as StaffRole];
+        expect(decide(requirementFor(route), ctx(roles)).result).toBe(expected[i]);
+      });
+    });
+  }
+  it("admin Form 5 screens need a passkey (step-up)", () => {
+    expect(decide(requirementFor("/admin/form5"), ctx(["sdp_admin"], { activePasskeys: 0 })).result).toBe("stepup");
+    expect(decide(requirementFor("/api/compliance/guide-upload"), ctx(["sdp_admin"], { activePasskeys: 0 })).result).toBe("stepup");
+  });
+  it("the nightly backup cron endpoint is reachable without a session (CRON_SECRET checked in the handler)", () => {
+    expect(decide(requirementFor("/api/cron/nightly-backup"), null).result).toBe("allow");
+  });
+});

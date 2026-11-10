@@ -205,27 +205,31 @@ describe("section check: seeded draw and stored evidence", () => {
 });
 
 describe("section check: retries", () => {
-  it(`allows up to ${SECTION_CHECK_MAX_ATTEMPTS} attempts, each a question not seen before`, async () => {
+  it(`allows up to ${SECTION_CHECK_MAX_ATTEMPTS} attempts of the same question, options reshuffled`, async () => {
     const { ctx, actor } = await learner(3);
-    const seenQuestions: string[] = [];
+    const seenVersions: string[] = [];
+    const orders: string[] = [];
     let view = await getCheckView(ctx, actor, sectionId);
     for (let attempt = 1; attempt <= SECTION_CHECK_MAX_ATTEMPTS; attempt++) {
       if (view.state !== "question")
         throw new Error(`attempt ${attempt}: expected a question`);
       expect(view.attemptNo).toBe(attempt);
       const { wrong, item } = await correctTokenFor(view);
-      const [v] = await t.db
-        .select()
-        .from(questionVersions)
-        .where(eq(questionVersions.id, item.questionVersionId));
-      seenQuestions.push(v!.questionId);
+      seenVersions.push(item.questionVersionId);
+      orders.push(item.servedOptionOrder.join());
       const result = await submitCheckAnswer(ctx, actor, view.attemptId, wrong);
+      // The correct answer and explanation are still shown after a wrong try.
+      expect(result).toMatchObject({ state: "result", correct: false });
+      expect(result.state === "result" && result.correctToken).toBeTruthy();
       expect(result.state === "result" && result.canRetry).toBe(
         attempt < SECTION_CHECK_MAX_ATTEMPTS,
       );
       view = await retryCheck(ctx, actor, sectionId);
     }
-    expect(new Set(seenQuestions).size).toBe(SECTION_CHECK_MAX_ATTEMPTS); // pool has 4: all different
+    // design.md §14, 2026-11-09: same question every try, new option order each time.
+    expect(new Set(seenVersions).size).toBe(1);
+    expect(orders[1]).not.toBe(orders[0]);
+    expect(orders[2]).not.toBe(orders[1]);
     // After the last attempt, retry does nothing.
     expect(view.state === "result" && view.attemptNo).toBe(
       SECTION_CHECK_MAX_ATTEMPTS,
@@ -234,7 +238,7 @@ describe("section check: retries", () => {
 
   it("offers no retry after a correct answer", async () => {
     const { ctx, actor } = await learner(1);
-    // learner 1 answered wrong earlier; retry to a new question and answer correctly.
+    // learner 1 answered wrong earlier; retry the same question and answer correctly.
     const next = await retryCheck(ctx, actor, sectionId);
     if (next.state !== "question") throw new Error("expected question");
     const { correct } = await correctTokenFor(next);

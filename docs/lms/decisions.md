@@ -140,6 +140,19 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
   - A per-cohort communication log (CSV/PDF) includes hidden items and earlier versions; SDP admins and external evaluators export it, and each export's SHA-256 is audited.
 - **Consequences:** facilitator notes are not yet in the admin coverage report (4.2.10 follow-up). One-off proclaimed public holidays (e.g. election days) are not in the working-hours calendar. Staff have no bell; they get sidebar badges and email.
 
+## ADR-017: Form 5 readiness dashboard, evidence pack and backups
+
+- **Status:** Accepted (2026-11-09). Design-gate answers in design.md §14.
+- **Context:** QCTO Form 5 section 4 needs a Yes/No and evidence for 25 items. Evidence was scattered across screens, and nothing recorded backups or restore tests (4.1.6; architecture.md open question 3).
+- **Decision:**
+  - A per-qualification dashboard computes each item's status from live data on every load (`lib/server/readiness.ts`); nothing is cached or stored. Rules live in `lib/form5.ts`: backups within 7 days, restore tests within 90, document expiry warnings 30 days ahead, at least one check question per lesson and test question sets at least as large as the draw. Topic coverage isn't computed (every topic is always loaded); the uploaded learner guide is the coverage evidence.
+  - Licences and contracts are **references only** (the repo is public and the documents stay with GRIT Hub). The learner guide is the one uploaded file: direct, private upload, verified as a PDF, checksummed, opened through audited 5-minute links.
+  - The evidence pack is **one combined PDF** built by joining existing generators (paper, moderation report, communication log) behind a contents page. Learners are pseudonymised; SDP admins' exports leave out answer keys and per-question marks (`buildPaperPdf(…, { withKeys: false })`).
+  - The LMS makes its own **nightly backup**: every table as JSON lines, gzipped, AES-256-GCM under `BACKUP_ENCRYPTION_KEY` (kept outside the database host), stored privately, last 7 kept. It complements, not replaces, the host's backups and point-in-time recovery.
+  - Section-check retries re-ask the same question with the options reshuffled (supersedes "fresh question each time").
+  - A DEMO walkthrough script drives the real server functions so the DEMO cohort has genuine evidence for every live item.
+- **Consequences:** a JSON-lines dump is fine at current size but needs streaming (or host-native dumps) once the database grows; Vercel functions are capped at 300 s. Restoring means decrypting with the key and loading the rows into a scratch database (README); this is logged as a restore test by hand. The QCTO panel's "last submission batch" stays empty until the LEISA exporter is built.
+
 ## Open questions
 
 ### Compliance and governance
@@ -156,7 +169,7 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 7. DB, storage and function region: South Africa (`af-south-1` / `cpt1`) vs EU. Which providers? Cross-border transfer basis if not SA.
 8. Information Officer, operator agreements with each processor, privacy notice for learners, and data-subject request process.
 9. Which minimal fields go to Airtable, and who has access there?
-10. Backup frequency, retention, PITR, and restore-test schedule (Form 5 4.1.6).
+10. ~~Backup frequency, retention, PITR, and restore-test schedule (Form 5 4.1.6).~~ LMS nightly encrypted backup, 7 kept, restore test at least every 90 days (ADR-017). Still open: the host's own backup/PITR settings once the host is chosen.
 
 ### Product
 

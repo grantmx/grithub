@@ -50,7 +50,7 @@ const PUBLIC_PATHS: RegExp[] = [
   /^\/forbidden$/,
   /^\/api\/health$/,
   // Vercel Cron: authenticated by CRON_SECRET inside each handler.
-  /^\/api\/cron\/(weekly-digest|overdue-tickets)$/,
+  /^\/api\/cron\/(weekly-digest|overdue-tickets|nightly-backup)$/,
 ];
 
 export function requirementFor(pathname: string): Requirement {
@@ -60,6 +60,10 @@ export function requirementFor(pathname: string): Requirement {
   if (pathname === "/api/qcto/areas")
     return { kind: "user", allowDuringSetup: true };
 
+  // Learner guide direct upload token (Form 5 dashboard, design.md §14, 2026-11-09).
+  if (pathname === "/api/compliance/guide-upload") {
+    return { kind: "roles", anyOf: ["sdp_admin"], stepUp: true };
+  }
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
     return { kind: "roles", anyOf: ["sdp_admin"], stepUp: true };
   }

@@ -6,8 +6,8 @@ Goals: every learner gets **equal curriculum coverage**, learners cannot easily 
 
 - Every `Section` ends with **one** multiple-choice check question, drawn from that section's `QuestionPool`.
 - The draw is seeded (see §3), so revisiting the section shows the same question for that attempt.
-- A check is formative. The learner sees feedback after answering. A retry creates a new attempt (`attemptNo + 1`), which draws again and prefers questions not yet seen (see §4).
-- Pool guidance: **at least 3 questions per section** (4+ recommended). Admin UI warns when a pool is below `minPoolSize`.
+- A check is formative. The learner sees feedback (the correct answer and explanation) after answering. A retry creates a new attempt (`attemptNo + 1`) that re-asks the **same question version** with the options in a new seeded order, avoiding the previous order where the options allow (design.md §14, 2026-11-09). Only the first try draws from the pool, preferring questions not yet seen (see §4).
+- Pool guidance: at least **1 question per section** (the Form 5 dashboard flags an empty pool); more questions give learners different first questions.
 - Open question: does a section check gate progress to the next section, or is it advisory only?
 
 ## 2. Assessments use blueprints

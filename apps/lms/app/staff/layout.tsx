@@ -75,6 +75,7 @@ export default async function StaffLayout({
       items: [
         { href: "/staff/evidence", label: "Evidence" },
         { href: "/staff/evidence/communication", label: "Communication log" },
+        { href: "/staff/evidence/form5", label: "Form 5 readiness" },
       ],
     });
   }

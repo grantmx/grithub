@@ -102,7 +102,7 @@ export function CheckCard({
             <form action={retryCheckAction}>
               <input type="hidden" name="sectionId" value={sectionId} />
               <button type="submit" className={styles.secondary}>
-                Try another question ({triesLeft} left)
+                Try again ({triesLeft} left)
               </button>
             </form>
           ) : null}

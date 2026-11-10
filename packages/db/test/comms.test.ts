@@ -118,3 +118,25 @@ describe("constraints", () => {
     await expectPgError(() => t.sql`UPDATE message_revisions SET body = 'x' WHERE id = ${rev.id}`, PG.restrictViolation);
   });
 });
+
+describe("Form 5 evidence tables (2026-11-09)", () => {
+  it("carry a nullable tenant_id and keep one current reference per item", async () => {
+    for (const table of [s.complianceDocuments, s.curriculumReferences, s.learnerGuides, s.backupRuns]) {
+      const c = getTableConfig(table as PgTable);
+      expect(c.columns.find((x) => x.name === "tenantId" || x.name === "tenant_id")?.notNull, c.name).toBe(false);
+    }
+    const f = await makeFixture(t.db);
+    const doc = { itemCode: "4.1.5", title: "ISP contract (fake)", location: "Drive", recordedBy: f.assessor.id };
+    await t.db.insert(s.complianceDocuments).values(doc);
+    await expectPgError(t.db.insert(s.complianceDocuments).values(doc), PG.uniqueViolation);
+    await expectPgError(t.db.insert(s.complianceDocuments).values({ ...doc, itemCode: "9.9" }), PG.checkViolation);
+    await expectPgError(
+      t.db.insert(s.backupRuns).values({ kind: "backup", status: "ok", startedAt: new Date() }),
+      PG.checkViolation,
+    );
+    await expectPgError(
+      t.db.insert(s.backupRuns).values({ kind: "restore_test", status: "ok", startedAt: new Date() }),
+      PG.checkViolation,
+    );
+  });
+});

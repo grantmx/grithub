@@ -108,7 +108,12 @@ export class Writer {
   }
 }
 
-export async function buildPaperPdf(r: Replay): Promise<Uint8Array> {
+/**
+ * `withKeys: false` (evidence pack exported by an SDP admin, who may not see
+ * answer keys): no KEY markers and no per-question or rubric marks.
+ */
+export async function buildPaperPdf(r: Replay, opts: { withKeys?: boolean } = {}): Promise<Uint8Array> {
+  const withKeys = opts.withKeys ?? true;
   const doc = await PDFDocument.create({ updateMetadata: false });
   const fixed = r.attempt.submittedAt ?? r.attempt.startedAt;
   doc.setTitle(winAnsi(`${r.blueprint.title} - attempt ${r.attempt.attemptNo}`));
@@ -138,7 +143,7 @@ export async function buildPaperPdf(r: Replay): Promise<Uint8Array> {
   w.text(
     `Score: ${r.score.raw}/${r.score.max} (${r.score.percent}%)${r.score.allMarked ? "" : " - marking incomplete"}    Pass mark: ${r.blueprint.passMarkPercent}%`,
   );
-  w.text("Served order exactly as the learner saw it. [x] = learner's answer, KEY = correct answer.", {
+  w.text(withKeys ? "Served order exactly as the learner saw it. [x] = learner's answer, KEY = correct answer." : "Served order exactly as the learner saw it. [x] = learner's answer. Answer keys and marks are left out of this copy.", {
     size: 8,
     color: [0.35, 0.35, 0.35],
   });
@@ -146,20 +151,20 @@ export async function buildPaperPdf(r: Replay): Promise<Uint8Array> {
 
   for (const it of r.items) {
     w.ensure(LEADING * 3);
-    const marks = it.marksAwarded === null ? `-/${it.maxMarks}` : `${it.marksAwarded}/${it.maxMarks}`;
+    const marks = !withKeys ? `-/${it.maxMarks}` : it.marksAwarded === null ? `-/${it.maxMarks}` : `${it.marksAwarded}/${it.maxMarks}`;
     w.text(`Question ${it.position}  (v${it.versionNo}, ${it.type.replace("_", " ")})  Marks: ${marks}${it.flagged ? "  [flagged by learner]" : ""}`, { bold: true });
     w.text(it.stem, { indent: 8 });
     if (it.type === "short_answer") {
       w.text("Learner's answer:", { indent: 8, bold: true, size: 9 });
       w.text(it.responseText?.trim() ? it.responseText : "(no answer)", { indent: 16 });
       for (const c of it.criteria) {
-        w.text(`${c.label}: ${c.marks ?? "-"}/${c.maxMarks}`, { indent: 16, size: 9 });
+        w.text(`${c.label}: ${withKeys ? (c.marks ?? "-") : "-"}/${c.maxMarks}`, { indent: 16, size: 9 });
       }
       if (it.markerNote) w.text(`Assessor note: ${it.markerNote}`, { indent: 16, size: 9 });
     } else {
       it.options.forEach((o, i) => {
         const letter = String.fromCharCode(65 + i);
-        w.text(`${o.chosen ? "[x]" : "[  ]"} ${letter}. ${o.label}${o.correct ? "   KEY" : ""}`, { indent: 16 });
+        w.text(`${o.chosen ? "[x]" : "[  ]"} ${letter}. ${o.label}${withKeys && o.correct ? "   KEY" : ""}`, { indent: 16 });
       });
       if (!it.options.some((o) => o.chosen)) w.text("(no answer)", { indent: 16, size: 9 });
     }

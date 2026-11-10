@@ -29,8 +29,9 @@ import { LearningError, requireEnrolment } from "./learning";
  * served is stored in attempt_items; a reload always shows the stored question.
  * Grading is server-side; the learner payload carries only opaque per-attempt
  * option tokens, never option ids, correctness or the explanation, until the
- * answer is submitted. Up to 3 attempts (first + 2 retries), a fresh question
- * each time, preferring questions the learner hasn't seen.
+ * answer is submitted. Up to 3 attempts (first + 2 retries). The first try
+ * draws a question, preferring ones the learner hasn't seen; retries re-ask
+ * the same question with the options shuffled (design.md §14, 2026-11-09).
  */
 export const SECTION_CHECK_MAX_ATTEMPTS = 3;
 
@@ -157,24 +158,50 @@ async function lastSeenMap(
   return map;
 }
 
-/** Create attempt N with a seeded draw and seeded option order, stored in attempt_items. */
+/** The question version and option order served on one earlier try. */
+async function servedItem(ctx: Pick<ServerCtx, "db">, enrolmentId: string, sectionId: string, attemptNo: number) {
+  const [row] = await ctx.db
+    .select({ versionId: attemptItems.questionVersionId, order: attemptItems.servedOptionOrder })
+    .from(attemptItems)
+    .innerJoin(assessmentAttempts, eq(assessmentAttempts.id, attemptItems.attemptId))
+    .where(
+      and(
+        eq(assessmentAttempts.enrolmentId, enrolmentId),
+        eq(assessmentAttempts.sectionId, sectionId),
+        eq(assessmentAttempts.attemptNo, attemptNo),
+      ),
+    );
+  return row ?? null;
+}
+
+/**
+ * Create attempt N, stored in attempt_items. Try 1 is a seeded draw from the
+ * pool; tries 2 and 3 re-serve the same question with a new seeded option order.
+ */
 async function startAttempt(
   ctx: Pick<ServerCtx, "db" | "now">,
   e: Enrolment,
   sectionId: string,
   attemptNo: number,
 ): Promise<string | null> {
-  const pool = await poolQuestions(ctx, sectionId);
-  if (pool.length === 0) return null;
-
   const seed = seedFor(e.userId, sectionId, attemptNo);
   const rng = rngFromSeed(seed);
-  const { questionId } = pickQuestion(
-    pool.map((p) => p.questionId),
-    await lastSeenMap(ctx, e.enrolmentId, sectionId),
-    rng,
-  );
-  const versionId = pool.find((p) => p.questionId === questionId)!.versionId!;
+  // Retries re-ask the SAME question (the version served on the previous
+  // try) with the options in a new order (design.md §14, 2026-11-09).
+  const previous = attemptNo > 1 ? await servedItem(ctx, e.enrolmentId, sectionId, attemptNo - 1) : null;
+  let versionId: string;
+  if (previous) {
+    versionId = previous.versionId;
+  } else {
+    const pool = await poolQuestions(ctx, sectionId);
+    if (pool.length === 0) return null;
+    const { questionId } = pickQuestion(
+      pool.map((p) => p.questionId),
+      await lastSeenMap(ctx, e.enrolmentId, sectionId),
+      rng,
+    );
+    versionId = pool.find((p) => p.questionId === questionId)!.versionId!;
+  }
   const opts = await ctx.db
     .select({
       id: answerOptions.id,
@@ -183,7 +210,11 @@ async function startAttempt(
     })
     .from(answerOptions)
     .where(eq(answerOptions.questionVersionId, versionId));
-  const ordered = orderOptions(opts, rng);
+  let ordered = orderOptions(opts, rng);
+  // Avoid repeating the previous order when the options allow another one
+  // (deterministic: the same seeded generator keeps drawing).
+  const same = (a: { id: string }[]) => previous !== null && a.map((o) => o.id).join() === previous.order.join();
+  for (let i = 0; i < 10 && same(ordered); i++) ordered = orderOptions(opts, rng);
   const tokens: Record<string, string> = {};
   for (const o of ordered) tokens[randomBytes(9).toString("base64url")] = o.id;
 
@@ -375,7 +406,7 @@ export async function submitCheckAnswer(
   return buildView(ctx, attemptId);
 }
 
-/** "Try another question": next attempt, unseen question preferred (max 3 attempts). */
+/** "Try again": next attempt, same question with the options reshuffled (max 3 attempts). */
 export async function retryCheck(
   ctx: Pick<ServerCtx, "db" | "now">,
   actor: AccessContext,
