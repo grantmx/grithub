@@ -72,6 +72,24 @@ These can't come from the LMS. Record a reference for each on the dashboard (the
 
 Also uploaded per qualification: the learner guide (4.2.2, 4.3.2). Recorded per qualification: the curriculum reference for 4.4.
 
+## Documented process: SOPs (2026-11-10)
+
+Form 5 4.1 asks for a documented process. These SOPs (published on the GRIT Hub SOP site, `apps/docs`, all **DRAFT - owner to review**) describe how each row is carried out. There is no Workplace Module SOP (4.4 not applicable).
+
+| SOP | Rows |
+| --- | --- |
+| [SOP-TRN-006 Online Delivery Implementation](../../../apps/docs/content/sops/training/sop-trn-006-online-delivery-implementation.md) | 4.1.1 to 4.1.6 |
+| [SOP-TRN-007 Learner Invitation and Administration](../../../apps/docs/content/sops/training/sop-trn-007-learner-invitation-and-administration.md) | 4.1.2, 4.1.3, 4.1.6 |
+| [SOP-TRN-008 Knowledge Module Delivery](../../../apps/docs/content/sops/training/sop-trn-008-knowledge-module-delivery.md) | 4.2.1, 4.2.2, 4.2.3, 4.2.7, 4.2.10 |
+| [SOP-TRN-009 Practical Module Delivery](../../../apps/docs/content/sops/training/sop-trn-009-practical-module-delivery.md) | 4.3.1 to 4.3.4 |
+| [SOP-TRN-010 Question Bank Development and Randomization](../../../apps/docs/content/sops/training/sop-trn-010-question-bank-development-and-randomization.md) | 4.2.3, 4.2.4, 4.3.3 |
+| [SOP-TRN-011 Assessment and Moderation in the LMS](../../../apps/docs/content/sops/training/sop-trn-011-assessment-and-moderation-in-the-lms.md) | 4.2.4, 4.2.5, 4.3.4, 4.3.5 |
+| [SOP-DAT-003 LMS Data Backup and Protection](../../../apps/docs/content/sops/data-protection/sop-dat-003-lms-data-backup-and-protection.md) | 4.1.6 |
+| [SOP-TRN-012 Learner Support](../../../apps/docs/content/sops/training/sop-trn-012-learner-support.md) | 4.2.11 (and 4.1.4, 4.2.7) |
+| [SOP-TRN-013 Facilitator Communication](../../../apps/docs/content/sops/training/sop-trn-013-facilitator-communication.md) | 4.2.6, 4.2.8, 4.2.9, 4.2.10 |
+
+QCTO learner data: [SOP-TRN-014 Learner Enrolment Data Collection](../../../apps/docs/content/sops/training/sop-trn-014-learner-enrolment-data-collection.md), [SOP-TRN-015 QCTO Enrolment and EISA Readiness Submission](../../../apps/docs/content/sops/training/sop-trn-015-qcto-enrolment-and-eisa-readiness-submission.md), [SOP-TRN-016 Correcting Learner Data After Submission](../../../apps/docs/content/sops/training/sop-trn-016-correcting-learner-data-after-submission.md).
+
 ## Notes
 
 - Contracts, licences and invoices are evidence for the submission pack. They are **never** committed to this public repo.

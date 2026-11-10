@@ -27,6 +27,17 @@ async function About(){
                         </h1>
                         <p className="lead text-muted fs-3">The Garden Route Innovation and Technology Hub (GRIT Hub) is a South African registered non-profit company (NPC) and a Section 18A Public Benefit Organisation (PBO) with a simple mission: To identify untapped potential and refocus it using the power of digital technology.</p>
                         
+                        <p>
+                            <a 
+                                className="btn rounded-pill rounded-pill btn-danger btn-lg px-4" 
+                                href="https://drive.google.com/file/d/12lpAdSXLpsQ7FWGCLnlGjMbSGhWi0doj/view?usp=sharing" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                            >
+                                Download our official Organizational profile
+                            </a>
+                        </p>
+                        
                         <hr className="my-5"/>
 
                         <p>We provide workforce training, apprenticeships, tools, and mentorship opportunities to youth, small businesses, and stakeholders to actively engage in the innovation economy.  To achieve this, we believe all it takes is GRIT and determination. </p> 

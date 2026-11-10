@@ -17,6 +17,30 @@ An **SOP** (standard operating procedure) explains how a specific activity is ca
 | [SOP-FAC-001](/sops/facilities/sop-fac-001-incident-and-near-miss-reporting) | Incident and Near-Miss Reporting | Safety Officer | Draft |
 | [SOP-DAT-001](/sops/data-protection/sop-dat-001-personal-information-incidents-and-requests) | Personal Information Incidents and Data Subject Requests | Information Officer | Draft |
 
+### Online delivery on the LMS (QCTO Form 5, section 4)
+
+These SOPs are the documented process for blended delivery on GRIT Hub's learning management system (LMS). Each one links to the rows it answers in the [Form 5 mapping](https://github.com/grantmx/grithub/blob/main/docs/lms/compliance/form5-mapping.md). There is no Workplace Module SOP: our programmes have only Knowledge and Practical modules, so Form 5 section 4.4 is not applicable.
+
+| Code | Title | Form 5 rows | Status |
+| --- | --- | --- | --- |
+| [SOP-TRN-006](/sops/training/sop-trn-006-online-delivery-implementation) | Online Delivery Implementation | 4.1.1 to 4.1.6 | DRAFT - owner to review |
+| [SOP-TRN-007](/sops/training/sop-trn-007-learner-invitation-and-administration) | Learner Invitation and Administration | 4.1.2, 4.1.3, 4.1.6 | DRAFT - owner to review |
+| [SOP-TRN-008](/sops/training/sop-trn-008-knowledge-module-delivery) | Knowledge Module Delivery | 4.2.1, 4.2.2, 4.2.3, 4.2.7, 4.2.10 | DRAFT - owner to review |
+| [SOP-TRN-009](/sops/training/sop-trn-009-practical-module-delivery) | Practical Module Delivery | 4.3.1 to 4.3.4 | DRAFT - owner to review |
+| [SOP-TRN-010](/sops/training/sop-trn-010-question-bank-development-and-randomization) | Question Bank Development and Randomization | 4.2.3, 4.2.4, 4.3.3 | DRAFT - owner to review |
+| [SOP-TRN-011](/sops/training/sop-trn-011-assessment-and-moderation-in-the-lms) | Assessment and Moderation in the LMS | 4.2.4, 4.2.5, 4.3.4, 4.3.5 | DRAFT - owner to review |
+| [SOP-DAT-003](/sops/data-protection/sop-dat-003-lms-data-backup-and-protection) | LMS Data Backup and Protection | 4.1.6 | DRAFT - owner to review |
+| [SOP-TRN-012](/sops/training/sop-trn-012-learner-support) | Learner Support | 4.2.11 (and 4.1.4, 4.2.7) | DRAFT - owner to review |
+| [SOP-TRN-013](/sops/training/sop-trn-013-facilitator-communication) | Facilitator Communication | 4.2.6, 4.2.8, 4.2.9, 4.2.10 | DRAFT - owner to review |
+
+### QCTO learner data
+
+| Code | Title | Status |
+| --- | --- | --- |
+| [SOP-TRN-014](/sops/training/sop-trn-014-learner-enrolment-data-collection) | Learner Enrolment Data Collection | DRAFT - owner to review |
+| [SOP-TRN-015](/sops/training/sop-trn-015-qcto-enrolment-and-eisa-readiness-submission) | QCTO Enrolment and EISA Readiness Submission | DRAFT - owner to review |
+| [SOP-TRN-016](/sops/training/sop-trn-016-correcting-learner-data-after-submission) | Correcting Learner Data After Submission | DRAFT - owner to review |
+
 ## The ten categories
 
 Codes follow the pattern `SOP-AAA-###`. Each category is one part of the GRIT Hub Operations Manual.
