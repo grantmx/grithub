@@ -21,7 +21,7 @@ import {
 } from "@/lib/access";
 import type { ServerCtx } from "./context";
 import { bytesToUuid, uuidToBytes } from "./crypto";
-import { writeAudit } from "./audit";
+import { type AuditAction, writeAudit } from "./audit";
 import { magicLinkEmail, sendEmail } from "./email";
 import { RATE_LIMITS, enforceRateLimit } from "./ratelimit";
 import { createSession, type SessionMethod } from "./session";
@@ -382,21 +382,147 @@ export async function verifyPasskeySignIn(
 ): Promise<{ token: string; expiresAt: Date; userId: string }> {
   await enforceRateLimit(ctx, RATE_LIMITS.passkeySignIn, ctx.ipHash);
   const { challenge } = await takeChallenge(ctx, challengeId, "authentication");
+  const cred = await verifyAssertion(
+    ctx,
+    challenge,
+    response,
+    "auth.signin.failed",
+    "That passkey didn't work. Try again or use an email link.",
+  );
+  const session = await createSession(ctx, cred.userId, "passkey");
+  await writeAudit(ctx, {
+    action: "auth.signin.passkey",
+    actorId: cred.userId,
+    entityType: "passkey_credential",
+    entityId: cred.id,
+  });
+  return { ...session, userId: cred.userId };
+}
 
+// ---------------------------------------------------------------------------
+// Passkey confirmation after a magic link (second step, design.md 2026-11-11)
+// ---------------------------------------------------------------------------
+
+/**
+ * Options for confirming a passkey while already signed in (after a magic
+ * link). Limited to the actor's own active passkeys, so the browser only
+ * offers theirs.
+ */
+export async function passkeyConfirmOptions(
+  ctx: ServerCtx,
+  actor: AccessContext | null,
+): Promise<{
+  options: PublicKeyCredentialRequestOptionsJSON;
+  challengeId: string;
+}> {
+  if (!actor || actor.status === "suspended") {
+    throw new AuthError("not_signed_in", "Please sign in first.");
+  }
+  await enforceRateLimit(ctx, RATE_LIMITS.passkeyOptions, ctx.ipHash);
+  const creds = await ctx.db
+    .select({
+      id: passkeyCredentials.credentialId,
+      transports: passkeyCredentials.transports,
+    })
+    .from(passkeyCredentials)
+    .where(
+      and(
+        eq(passkeyCredentials.userId, actor.userId),
+        isNull(passkeyCredentials.revokedAt),
+      ),
+    );
+  if (creds.length === 0) {
+    throw new AuthError("not_found", "You don't have a passkey yet.");
+  }
+  const options = await generateAuthenticationOptions({
+    rpID: ctx.config.rpId,
+    userVerification: "required",
+    allowCredentials: creds.map((c) => ({
+      id: c.id,
+      transports: c.transports,
+    })),
+  });
+  const challengeId = await storeChallenge(
+    ctx,
+    options.challenge,
+    "authentication",
+    actor.userId,
+  );
+  return { options, challengeId };
+}
+
+/**
+ * Verify the passkey confirmation. It doesn't change what the session can
+ * do (a magic link alone is a full sign-in); it proves possession of the
+ * passkey and is audited.
+ */
+export async function verifyPasskeyConfirm(
+  ctx: ServerCtx,
+  actor: AccessContext | null,
+  challengeId: string | undefined,
+  response: AuthenticationResponseJSON,
+): Promise<void> {
+  if (!actor || actor.status === "suspended") {
+    throw new AuthError("not_signed_in", "Please sign in first.");
+  }
+  await enforceRateLimit(ctx, RATE_LIMITS.passkeySignIn, ctx.ipHash);
+  const { challenge, userId } = await takeChallenge(
+    ctx,
+    challengeId,
+    "authentication",
+  );
+  if (userId !== actor.userId)
+    throw new AuthError("challenge_invalid", "Please try again.");
+  const cred = await verifyAssertion(
+    ctx,
+    challenge,
+    response,
+    "auth.passkey.confirm_failed",
+    "That passkey didn't work. Try again, or continue without it.",
+  );
+  if (cred.userId !== actor.userId) {
+    await writeAudit(ctx, {
+      action: "auth.passkey.confirm_failed",
+      actorId: actor.userId,
+      entityType: "passkey_credential",
+      after: { reason: "other_users_credential" },
+    });
+    throw new AuthError(
+      "verification_failed",
+      "That passkey belongs to a different account.",
+    );
+  }
+  await writeAudit(ctx, {
+    action: "auth.passkey.confirmed",
+    actorId: actor.userId,
+    entityType: "passkey_credential",
+    entityId: cred.id,
+  });
+}
+
+/**
+ * Check a WebAuthn assertion against a stored, non-revoked credential and
+ * bump its counter. Failures are audited under `failAction` and thrown as
+ * AuthError with `failMessage`.
+ */
+async function verifyAssertion(
+  ctx: ServerCtx,
+  challenge: string,
+  response: AuthenticationResponseJSON,
+  failAction: Extract<AuditAction, "auth.signin.failed" | "auth.passkey.confirm_failed">,
+  failMessage: string,
+): Promise<{ id: string; userId: string }> {
   const fail = async (
     reason: string,
     userId: string | null = null,
   ): Promise<never> => {
     await writeAudit(ctx, {
-      action: "auth.signin.failed",
+      action: failAction,
       actorId: userId,
       entityType: "passkey_credential",
       after: { reason },
     });
-    throw new AuthError(
-      "verification_failed",
-      "That passkey didn't work. Try again or use an email link.",
-    );
+    throw new AuthError("verification_failed", failMessage);
   };
 
   // Revoked passkeys are excluded here, so they can never sign in.
@@ -455,14 +581,7 @@ export async function verifyPasskeySignIn(
       lastUsedAt: ctx.now(),
     })
     .where(eq(passkeyCredentials.id, cred.id));
-  const session = await createSession(ctx, cred.userId, "passkey");
-  await writeAudit(ctx, {
-    action: "auth.signin.passkey",
-    actorId: cred.userId,
-    entityType: "passkey_credential",
-    entityId: cred.id,
-  });
-  return { ...session, userId: cred.userId };
+  return { id: cred.id, userId: cred.userId };
 }
 
 // ---------------------------------------------------------------------------

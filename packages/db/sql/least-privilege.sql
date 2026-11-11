@@ -23,7 +23,18 @@ BEGIN
 END $$;
 
 -- Re-assert the attributes in case the role was created elsewhere with more.
-ALTER ROLE lms_app NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+-- Only when needed: on managed Postgres (e.g. Neon) the owner is not a superuser,
+-- and PostgreSQL 16+ refuses even "NOSUPERUSER" from a non-superuser.
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM pg_roles
+    WHERE rolname = 'lms_app'
+      AND (rolsuper OR rolcreatedb OR rolcreaterole OR rolreplication OR rolbypassrls)
+  ) THEN
+    ALTER ROLE lms_app NOSUPERUSER NOCREATEDB NOCREATEROLE NOREPLICATION NOBYPASSRLS;
+  END IF;
+END $$;
 -- Long-running or idle sessions are cut off (serverless functions never need more).
 ALTER ROLE lms_app SET statement_timeout = '60s';
 ALTER ROLE lms_app SET idle_in_transaction_session_timeout = '30s';

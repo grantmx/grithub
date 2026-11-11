@@ -158,6 +158,9 @@ export function requirementFor(pathname: string): Requirement {
       stepUp: false,
     };
   }
+  // Passkey confirmation after a magic link (design.md 2026-11-11): any
+  // signed-in user; it never grants or limits access.
+  if (pathname === "/auth/confirm") return { kind: "user" };
   // Learner communication: Messages (announcements, conversations, help),
   // notifications, module discussions, live sessions and email preferences.
   // Signed-in users; each item is checked against the viewer in lib/server/*.
@@ -200,6 +203,23 @@ export function decide(
     }
   }
   return { result: "allow" };
+}
+
+/**
+ * Where an emailed sign-in link lands (design.md 2026-11-11):
+ * recovery → add a new passkey; setup not finished → /setup;
+ * no passkey → ask them to add one (learners may skip);
+ * has a passkey → confirm it (anyone may continue without it).
+ */
+export function afterLinkSignIn(
+  method: "magic_link" | "recovery" | "invitation" | "passkey",
+  actor: Pick<AccessContext, "setupComplete" | "activePasskeys"> | null,
+): string {
+  if (method === "recovery") return "/account/passkeys?prompt=recovery";
+  if (!actor?.setupComplete) return "/setup";
+  return actor.activePasskeys === 0
+    ? "/account/passkeys?prompt=1"
+    : "/auth/confirm";
 }
 
 /** True when the user holds a role whose screens require a passkey. */

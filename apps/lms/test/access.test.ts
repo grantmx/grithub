@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   type AccessContext,
   type StaffRole,
+  afterLinkSignIn,
   decide,
   requirementFor,
   safeNext,
@@ -504,6 +505,23 @@ describe("communication and support routes per role", () => {
       expect(decide(requirementFor(route), null).result).toBe("signin");
     });
   }
+
+  it("after an emailed link: recovery, setup, add a passkey, or confirm it", () => {
+    const done = { setupComplete: true, activePasskeys: 0 };
+    expect(afterLinkSignIn("recovery", null)).toBe("/account/passkeys?prompt=recovery");
+    expect(afterLinkSignIn("magic_link", null)).toBe("/setup");
+    expect(afterLinkSignIn("magic_link", { ...done, setupComplete: false })).toBe("/setup");
+    expect(afterLinkSignIn("magic_link", done)).toBe("/account/passkeys?prompt=1");
+    expect(afterLinkSignIn("magic_link", { ...done, activePasskeys: 2 })).toBe("/auth/confirm");
+  });
+
+  it("/auth/confirm (passkey after magic link): any signed-in user, anonymous → signin", () => {
+    for (const role of COMMS_ROLES) {
+      const roles = role === "learner" ? [] : [role as StaffRole];
+      expect(decide(requirementFor("/auth/confirm"), ctx(roles)).result).toBe("allow");
+    }
+    expect(decide(requirementFor("/auth/confirm"), null).result).toBe("signin");
+  });
 
   it("cron endpoints are reachable without a session (the handler checks CRON_SECRET)", () => {
     expect(decide(requirementFor("/api/cron/weekly-digest"), null).result).toBe("allow");

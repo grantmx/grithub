@@ -38,6 +38,8 @@ Format: each ADR has a status (`Proposed`, `Accepted`, `Superseded by ADR-NNN`),
 - **Alternatives:** Better Auth; Clerk.
 - **Consequences:** strong phishing resistance; needs a clear shared-device and lost-device procedure.
 
+> **Updated 2026-11-11 (owner's decision, design.md §14):** sign-in now leads with the **magic link** ("Send me a magic link"); the passkey becomes a second step after the link ("Confirm it's you", `/auth/confirm`) that anyone may skip, plus an optional "Sign in with passkey" shortcut. A magic link alone is a full sign-in (no limited mode, still no passwords). Step-up for staff screens is unchanged (an active passkey on the account). First SDP admin: one-off audited `admin:bootstrap` script.
+
 ## ADR-006: One-way Airtable sync via transactional outbox
 
 - **Status:** Proposed

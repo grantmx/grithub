@@ -99,11 +99,17 @@ SESSION_SECRET=<at least 32 random characters>
 EMAIL_TRANSPORT=console   # prints only the subject and link, never the address
 ```
 
-Then `yarn workspace db db:migrate && yarn workspace db db:seed`, start `yarn workspace lms dev`, and sign in as `demo.admin@example.invalid` with **Email me a sign-in link** (the link appears in the terminal). Go through setup and register a passkey to reach `/admin`.
+Then `yarn workspace db db:migrate && yarn workspace db db:seed`, start `yarn workspace lms dev`, and sign in as `demo.admin@example.invalid` with **Send me a magic link** (the link appears in the terminal). Go through setup and register a passkey to reach `/admin`.
 
 Tests need `TEST_DATABASE_URL` (see `packages/db/README.md`). They drive real registration and sign-in through a software authenticator (`test/authenticator.ts`).
 
-**Not built yet:** bootstrapping the first real SDP admin in production (needs a one-off, audited CLI script).
+**First SDP admin in a new deployment** (one-off, audited; refuses once an admin exists):
+
+```bash
+DATABASE_URL=<target database URL> yarn workspace lms admin:bootstrap "<Display Name>" <email>
+```
+
+The person then signs in at `/signin` with **Send me a magic link** and completes setup, including a passkey (required for `/admin`).
 
 ## Learner experience
 

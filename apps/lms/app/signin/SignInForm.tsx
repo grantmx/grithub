@@ -16,9 +16,10 @@ import {
 } from "./actions";
 
 /**
- * Sign-in (design-gate decision: email field + passkey first, magic link as a
- * quieter fallback). The email field has autocomplete="username webauthn" so
- * the browser offers passkeys as soon as it is focused (conditional UI).
+ * Sign-in (design decision 2026-11-11): email field + primary "Send me a
+ * magic link"; an "or" divider and an outlined "Sign in with passkey"
+ * shortcut. The email field has autocomplete="username webauthn" so the
+ * browser still offers passkeys as soon as it is focused (conditional UI).
  */
 export function SignInForm({
   next,
@@ -114,33 +115,28 @@ export function SignInForm({
           />
         </div>
 
-        {supported ? (
+        <button
+          type="submit"
+          className={`${ui.button} ${ui.full}`}
+          disabled={linkPending}
+        >
+          {linkPending ? "Sending…" : "Send me a magic link"}
+        </button>
+      </form>
+
+      {supported ? (
+        <>
+          <p className={ui.orDivider}>or</p>
           <button
             type="button"
-            className={`${ui.button} ${ui.full}`}
+            className={`${ui.secondary} ${ui.full}`}
             onClick={onPasskeyClick}
             disabled={busy}
           >
             {busy ? "Waiting for your passkey…" : "Sign in with passkey"}
           </button>
-        ) : (
-          <p className={ui.hint}>
-            This browser doesn&apos;t support passkeys. Use an email link
-            instead.
-          </p>
-        )}
-
-        <div>
-          <p className={ui.muted}>No passkey on this device?</p>
-          <button
-            type="submit"
-            className={ui.textButton}
-            disabled={linkPending}
-          >
-            {linkPending ? "Sending…" : "Email me a sign-in link"}
-          </button>
-        </div>
-      </form>
+        </>
+      ) : null}
     </div>
   );
 }

@@ -3,6 +3,8 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { passkeyCredentials, users } from "db";
 import {
   AuthError,
+  passkeyConfirmOptions,
+  verifyPasskeyConfirm,
   passkeyRegistrationOptions,
   passkeySignInOptions,
   revokeOwnPasskey,
@@ -243,5 +245,89 @@ describe("passkey revocation", () => {
     await expect(revokeOwnPasskey(ctx, actor, passkeyId)).rejects.toMatchObject(
       { code: "not_found" },
     );
+  });
+});
+
+describe("passkey confirmation after a magic link (design.md 2026-11-11)", () => {
+  async function confirmWith(
+    actorUserId: string,
+    authenticator: ReturnType<typeof newAuthenticator>,
+  ) {
+    const ctx = makeCtx(t.db);
+    const { actor } = await actorFor(ctx, actorUserId);
+    const { options, challengeId } = await passkeyConfirmOptions(ctx, actor);
+    return {
+      options,
+      run: () =>
+        verifyPasskeyConfirm(
+          ctx,
+          actor,
+          challengeId,
+          authenticator.authenticate(options),
+        ),
+      again: () =>
+        verifyPasskeyConfirm(
+          ctx,
+          actor,
+          challengeId,
+          authenticator.authenticate(options),
+        ),
+    };
+  }
+
+  it("offers only the user's own active passkeys", async () => {
+    const user = await makeUser(t.db);
+    const { authenticator } = await registerPasskey(user.id);
+    const { options } = await confirmWith(user.id, authenticator);
+    expect(options.allowCredentials?.map((c) => c.id)).toEqual([
+      authenticator.credentialId,
+    ]);
+  });
+
+  it("verifies the user's passkey, bumps the counter and audits", async () => {
+    const user = await makeUser(t.db);
+    const { authenticator, passkeyId } = await registerPasskey(user.id);
+    const { run } = await confirmWith(user.id, authenticator);
+    await run();
+    const [row] = await t.db
+      .select()
+      .from(passkeyCredentials)
+      .where(eq(passkeyCredentials.id, passkeyId));
+    expect(row?.signCount).toBe(1);
+    expect(await auditActions(t.db, user.id)).toContain(
+      "auth.passkey.confirmed",
+    );
+  });
+
+  it("rejects another person's passkey", async () => {
+    const me = await makeUser(t.db);
+    const other = await makeUser(t.db);
+    await registerPasskey(me.id);
+    const { authenticator: theirs } = await registerPasskey(other.id);
+    const { run } = await confirmWith(me.id, theirs);
+    await expect(run()).rejects.toMatchObject({ code: "verification_failed" });
+    expect(await auditActions(t.db, me.id)).toContain(
+      "auth.passkey.confirm_failed",
+    );
+  });
+
+  it("rejects a reused confirmation challenge", async () => {
+    const user = await makeUser(t.db);
+    const { authenticator } = await registerPasskey(user.id);
+    const { run, again } = await confirmWith(user.id, authenticator);
+    await run();
+    await expect(again()).rejects.toMatchObject({ code: "challenge_invalid" });
+  });
+
+  it("refuses when the user has no passkey, or nobody is signed in", async () => {
+    const user = await makeUser(t.db);
+    const ctx = makeCtx(t.db);
+    const { actor } = await actorFor(ctx, user.id);
+    await expect(passkeyConfirmOptions(ctx, actor)).rejects.toMatchObject({
+      code: "not_found",
+    });
+    await expect(passkeyConfirmOptions(ctx, null)).rejects.toMatchObject({
+      code: "not_signed_in",
+    });
   });
 });

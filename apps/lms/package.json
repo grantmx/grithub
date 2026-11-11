@@ -12,7 +12,8 @@
     "demo:evidence": "tsx scripts/demo-evidence.ts",
     "backup:decrypt": "tsx scripts/decrypt-backup.ts",
     "backup:restore": "tsx scripts/restore-backup.ts",
-    "load:sessions": "tsx scripts/load-test-sessions.ts"
+    "load:sessions": "tsx scripts/load-test-sessions.ts",
+    "admin:bootstrap": "tsx scripts/bootstrap-admin.ts"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.13.4",
