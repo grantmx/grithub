@@ -22,8 +22,9 @@ const SIZES: { value: Preferences["textSize"]; label: string; name: string }[] =
     { value: "xl", label: "XL", name: "Extra large" },
   ];
 
+// White by default (design.md §14, 2026-11-11): the stored "system" value
+// means light, and the phone/laptop setting is not followed.
 const THEMES: { value: Preferences["theme"]; label: string }[] = [
-  { value: "system", label: "System" },
   { value: "light", label: "Light" },
   { value: "dark", label: "Dark" },
 ];
@@ -47,24 +48,23 @@ export function AppShell({
   return (
     <div
       className={styles.shell}
-      data-theme={prefs.theme === "system" ? undefined : prefs.theme}
+      data-theme={prefs.theme === "dark" ? "dark" : "light"}
       data-text-size={prefs.textSize}
     >
       <header className={styles.top}>
         <a href="/" aria-label="GRIT Hub Learning home">
-          <picture>
-            <source
-              srcSet="/brand/grithub-logo-horz-white.svg"
-              media="(prefers-color-scheme: dark)"
-            />
-            <img
-              className={styles.logo}
-              src="/brand/grithub-logo-horz.svg"
-              alt=""
-              width={120}
-              height={34}
-            />
-          </picture>
+          {/* eslint-disable-next-line @next/next/no-img-element -- static SVG logo */}
+          <img
+            className={styles.logo}
+            src={
+              prefs.theme === "dark"
+                ? "/brand/grithub-logo-horz-white.svg"
+                : "/brand/grithub-logo-horz.svg"
+            }
+            alt=""
+            width={120}
+            height={34}
+          />
         </a>
         <nav aria-label="Main" className={styles.topNav}>
           {NAV.map((item) => (
@@ -124,7 +124,7 @@ export function AppShell({
                       name="theme"
                       value={t.value}
                       className={styles.segment}
-                      aria-pressed={prefs.theme === t.value}
+                      aria-pressed={(prefs.theme === "dark" ? "dark" : "light") === t.value}
                     >
                       {t.label}
                     </button>

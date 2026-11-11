@@ -30,7 +30,7 @@ h3 {
 }
 
 a {
-  color: var(--color-accent);
+  color: var(--color-link);
 }
 
 :focus-visible {
@@ -44,7 +44,7 @@ a {
   top: calc(-1 * var(--space-16));
   padding: var(--space-2) var(--space-4);
   background: var(--color-surface);
-  color: var(--color-accent);
+  color: var(--color-link);
   border-radius: var(--radius-input);
   z-index: 10;
 }

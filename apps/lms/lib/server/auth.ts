@@ -130,6 +130,10 @@ export type LinkSignInResult =
  * Exchange an emailed link (magic link, recovery or invitation) for a
  * session. Called only from a POST (button press), never on GET, so email
  * link scanners can't use up the link.
+ *
+ * Using the token, creating the session and the sign-in audit row happen in
+ * one transaction: if any of them fails, the link is left unused so the
+ * person can simply press the button again.
  */
 export async function signInWithLink(
   ctx: ServerCtx,
@@ -141,35 +145,41 @@ export async function signInWithLink(
     kind === "invitation"
       ? (["invitation"] as const)
       : (["magic_link", "recovery"] as const);
-  const result = await consumeToken(ctx, rawToken, purposes);
-  if (!result.ok) {
+  const outcome = await ctx.db.transaction(
+    async (tx): Promise<LinkSignInResult> => {
+      const txCtx = { ...ctx, db: tx };
+      const result = await consumeToken(txCtx, rawToken, purposes);
+      if (!result.ok) return result;
+      const method: SessionMethod =
+        result.purpose === "invitation"
+          ? "invitation"
+          : result.purpose === "recovery"
+            ? "recovery"
+            : "magic_link";
+      const session = await createSession(txCtx, result.userId, method);
+      await writeAudit(txCtx, {
+        action:
+          method === "invitation"
+            ? "auth.signin.invitation"
+            : method === "recovery"
+              ? "auth.signin.recovery"
+              : "auth.signin.magic_link",
+        actorId: result.userId,
+        entityType: "user",
+        entityId: result.userId,
+        after: { tokenId: result.tokenId },
+      });
+      return { ok: true, ...session, userId: result.userId, method };
+    },
+  );
+  if (!outcome.ok) {
     await writeAudit(ctx, {
       action: "auth.link.rejected",
       entityType: "auth_token",
-      after: { kind, reason: result.reason },
+      after: { kind, reason: outcome.reason },
     });
-    return result;
   }
-  const method: SessionMethod =
-    result.purpose === "invitation"
-      ? "invitation"
-      : result.purpose === "recovery"
-        ? "recovery"
-        : "magic_link";
-  const session = await createSession(ctx, result.userId, method);
-  await writeAudit(ctx, {
-    action:
-      method === "invitation"
-        ? "auth.signin.invitation"
-        : method === "recovery"
-          ? "auth.signin.recovery"
-          : "auth.signin.magic_link",
-    actorId: result.userId,
-    entityType: "user",
-    entityId: result.userId,
-    after: { tokenId: result.tokenId },
-  });
-  return { ok: true, ...session, userId: result.userId, method };
+  return outcome;
 }
 
 // ---------------------------------------------------------------------------

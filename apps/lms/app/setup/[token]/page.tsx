@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AuthPage } from "@/components/AuthPage";
+import { LinkActionForm } from "@/components/LinkActionForm";
 import ui from "@/components/ui.module.css";
 import { acceptInvitation } from "../../auth/actions";
 
@@ -47,12 +48,14 @@ export default async function InvitationPage({
         read how we use your information, and add a passkey so you can sign in
         quickly and safely.
       </p>
-      <form action={acceptInvitation}>
-        <input type="hidden" name="token" value={token} />
-        <button type="submit" className={`${ui.button} ${ui.full}`}>
-          Get started
-        </button>
-      </form>
+      {/* TODO(copy): pending label to be supplied by GRIT Hub. */}
+      <LinkActionForm
+        action={acceptInvitation}
+        token={token}
+        label="Get started"
+        pendingLabel="Opening your invitation…"
+        className={ui.stack}
+      />
     </AuthPage>
   );
 }

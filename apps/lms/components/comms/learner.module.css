@@ -86,7 +86,7 @@
   height: 10px;
   margin-top: 8px;
   border-radius: var(--radius-pill);
-  background: var(--color-accent);
+  background: var(--color-brand);
 }
 
 .dotSpace {
@@ -117,7 +117,7 @@
   align-items: center;
   gap: var(--space-2);
   min-height: 44px;
-  color: var(--color-accent);
+  color: var(--color-link);
   font-weight: var(--weight-semibold);
 }
 

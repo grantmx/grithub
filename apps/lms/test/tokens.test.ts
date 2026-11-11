@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 import { afterAll, beforeAll, beforeEach, describe, expect, it } from "vitest";
-import { authTokens, users } from "db";
+import { authTokens, sessions, users } from "db";
 import { requestMagicLink, signInWithLink } from "@/lib/server/auth";
 import { memoryOutbox } from "@/lib/server/email";
 import { RateLimitError } from "@/lib/server/ratelimit";
@@ -202,5 +202,42 @@ describe("magic links", () => {
     await expect(
       signInWithLink(ctx, "one-more", "link"),
     ).rejects.toBeInstanceOf(RateLimitError);
+  });
+});
+
+describe("a failed sign-in", () => {
+  it("leaves the link unused so the person can try again", async () => {
+    const user = await makeUser(t.db);
+    const token = await issueToken(makeCtx(t.db), {
+      userId: user.id,
+      purpose: "magic_link",
+    });
+    // The first clock read is when the token is used; the second (creating
+    // the session) fails, standing in for any database error mid-sign-in.
+    let reads = 0;
+    const failing = makeCtx(t.db, {
+      now: () => {
+        reads += 1;
+        if (reads > 1) throw new Error("simulated failure");
+        return new Date();
+      },
+    });
+    await expect(signInWithLink(failing, token, "link")).rejects.toThrow(
+      "simulated failure",
+    );
+
+    const [row] = await t.db
+      .select({ usedAt: authTokens.usedAt })
+      .from(authTokens)
+      .where(eq(authTokens.userId, user.id));
+    expect(row?.usedAt).toBeNull();
+    const userSessions = await t.db
+      .select({ id: sessions.id })
+      .from(sessions)
+      .where(eq(sessions.userId, user.id));
+    expect(userSessions).toHaveLength(0);
+
+    const retry = await signInWithLink(makeCtx(t.db), token, "link");
+    expect(retry.ok).toBe(true);
   });
 });

@@ -132,13 +132,15 @@
 
 .button {
   font: inherit;
-  font-weight: var(--weight-semibold);
+  /* Primary: GRIT red needs 19px bold text to pass contrast (design.md §2). */
+  font-size: var(--text-button-primary);
+  font-weight: var(--weight-bold);
   min-height: 44px;
   padding: var(--space-3) var(--space-6);
   border-radius: var(--radius-input);
-  border: 1px solid var(--color-accent);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
+  border: 1px solid var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
   cursor: pointer;
   text-decoration: none;
   display: inline-flex;
@@ -153,12 +155,17 @@
 
 .secondary {
   composes: button;
+  font-size: inherit;
+  font-weight: var(--weight-semibold);
+  border-color: var(--color-accent);
   background: transparent;
   color: var(--color-accent);
 }
 
 .danger {
   composes: button;
+  font-size: inherit;
+  font-weight: var(--weight-semibold);
   background: var(--color-danger);
   border-color: var(--color-danger);
   color: var(--color-bg);
@@ -170,7 +177,7 @@
   border: none;
   padding: var(--space-2) 0;
   min-height: 44px;
-  color: var(--color-accent);
+  color: var(--color-link);
   text-decoration: underline;
   cursor: pointer;
   text-align: left;
@@ -218,7 +225,7 @@
 
 .stepFill {
   height: 100%;
-  background: var(--color-accent);
+  background: var(--color-brand);
 }
 
 .notice {

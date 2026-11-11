@@ -1,8 +1,9 @@
 /*
  * Design tokens — source of truth: docs/lms/design.md §9.
  * Components use these custom properties only; never raw hex values.
- * Theme: System by default (prefers-color-scheme). A future Display menu can
- * force a theme with <html data-theme="light|dark">.
+ * Theme: white (light) by default for everyone, matching apps/web; the
+ * learner Display menu can switch to dark (data-theme="dark"). The device
+ * setting (prefers-color-scheme) is deliberately not followed.
  */
 
 :root {
@@ -11,6 +12,7 @@
     Roboto, Arial, sans-serif;
   --weight-regular: 400;
   --weight-semibold: 600;
+  --weight-bold: 700;
   --measure-reading: 68ch;
 
   --text-xs: 0.8125rem; /* 13 */
@@ -29,6 +31,7 @@
   --leading-2xl: 2.375rem; /* 38 */
   --text-3xl: 2.25rem; /* 36 */
   --leading-3xl: 2.75rem; /* 44 */
+  --text-button-primary: 1.1875rem; /* 19px bold = WCAG large text, needed on GRIT red */
 
   /* Spacing (4-pt scale) */
   --space-1: 0.25rem; /* 4 */
@@ -55,37 +58,21 @@
   /* Colour — light (contrast vs bg noted in design.md) */
   --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-sunken: #f0f4f7;
+  --color-surface-sunken: #f0f0f0; /* apps/web --dove */
   --color-text: #2e303b;
-  --color-text-muted: #5a5d6b;
-  --color-border: #8a8e9c;
-  --color-accent: #3b6680;
+  --color-text-muted: #6c757d; /* apps/web --gray-600 */
+  --color-border: #cccccc; /* apps/web border grey */
+  --color-accent: #2e303b; /* charcoal: secondary buttons, selected, focus */
   --color-on-accent: #ffffff;
+  --color-link: #4c7b9a; /* apps/web --ocean, links only */
   --color-brand: #e92938; /* logo/accents and large text only */
-  --color-success: #3f7a1f;
-  --color-danger: #b42318;
+  --color-primary: #e92938; /* primary buttons: large bold text only (4.34:1) */
+  --color-on-primary: #ffffff;
+  --color-success: #198754; /* apps/web --green */
+  --color-danger: #dc3545; /* apps/web --red */
   --color-warning: #8a5a00;
 
   color-scheme: light;
-}
-
-/* Dark — follows the system unless a theme is forced */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --color-bg: #15161b;
-    --color-surface: #1e2028;
-    --color-surface-sunken: #121318;
-    --color-text: #e8e9ee;
-    --color-text-muted: #a6a9b6;
-    --color-border: #6b6f7d;
-    --color-accent: #8cb8d4;
-    --color-on-accent: #15161b;
-    --color-brand: #f0505d;
-    --color-success: #8dc26a;
-    --color-danger: #f08a80;
-    --color-warning: #e0b04a;
-    color-scheme: dark;
-  }
 }
 
 :root[data-theme="dark"] {
@@ -95,9 +82,12 @@
   --color-text: #e8e9ee;
   --color-text-muted: #a6a9b6;
   --color-border: #6b6f7d;
-  --color-accent: #8cb8d4;
+  --color-accent: #e8e9ee;
   --color-on-accent: #15161b;
+  --color-link: #8cb8d4;
   --color-brand: #f0505d;
+  --color-primary: #f0505d;
+  --color-on-primary: #15161b;
   --color-success: #8dc26a;
   --color-danger: #f08a80;
   --color-warning: #e0b04a;
@@ -108,15 +98,18 @@
 [data-theme="light"]:not(:root) {
   --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-sunken: #f0f4f7;
+  --color-surface-sunken: #f0f0f0; /* apps/web --dove */
   --color-text: #2e303b;
-  --color-text-muted: #5a5d6b;
-  --color-border: #8a8e9c;
-  --color-accent: #3b6680;
+  --color-text-muted: #6c757d; /* apps/web --gray-600 */
+  --color-border: #cccccc; /* apps/web border grey */
+  --color-accent: #2e303b; /* charcoal: secondary buttons, selected, focus */
   --color-on-accent: #ffffff;
+  --color-link: #4c7b9a; /* apps/web --ocean, links only */
   --color-brand: #e92938;
-  --color-success: #3f7a1f;
-  --color-danger: #b42318;
+  --color-primary: #e92938; /* primary buttons: large bold text only (4.34:1) */
+  --color-on-primary: #ffffff;
+  --color-success: #198754; /* apps/web --green */
+  --color-danger: #dc3545; /* apps/web --red */
   --color-warning: #8a5a00;
   color-scheme: light;
   background: var(--color-bg);
@@ -131,9 +124,12 @@
   --color-text: #e8e9ee;
   --color-text-muted: #a6a9b6;
   --color-border: #6b6f7d;
-  --color-accent: #8cb8d4;
+  --color-accent: #e8e9ee;
   --color-on-accent: #15161b;
+  --color-link: #8cb8d4;
   --color-brand: #f0505d;
+  --color-primary: #f0505d;
+  --color-on-primary: #15161b;
   --color-success: #8dc26a;
   --color-danger: #f08a80;
   --color-warning: #e0b04a;

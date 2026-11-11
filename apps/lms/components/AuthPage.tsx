@@ -12,19 +12,14 @@ export function AuthPage({
   return (
     <main id="main" className={ui.narrowPage}>
       <div className={ui.narrow}>
-        <picture>
-          <source
-            srcSet="/brand/grithub-logo-horz-white.svg"
-            media="(prefers-color-scheme: dark)"
-          />
-          <img
-            className={ui.logo}
-            src="/brand/grithub-logo-horz.svg"
-            alt="GRIT Hub"
-            width={160}
-            height={45}
-          />
-        </picture>
+        {/* eslint-disable-next-line @next/next/no-img-element -- static SVG logo */}
+        <img
+          className={ui.logo}
+          src="/brand/grithub-logo-horz.svg"
+          alt="GRIT Hub"
+          width={160}
+          height={45}
+        />
         <h1 className={ui.h1}>{title}</h1>
         {children}
       </div>

@@ -28,7 +28,7 @@ import { AssessmentError } from "./assessments";
 import { writeAudit } from "./audit";
 import { authorize } from "./auth";
 import type { ServerCtx } from "./context";
-import { sendEmail } from "./email";
+import { sendEmail, templatedEmail } from "./email";
 import { assertCohortScope, cohortScope, inScope } from "./staffScope";
 
 /**
@@ -436,10 +436,17 @@ async function notifyAssessor(ctx: Ctx, assessorId: string, verdict: Verdict) {
       : "A moderator agreed with one of your assessment decisions and asked you to complete some actions.",
     "Results for this assessment are released only when moderation is complete.",
   ];
-  const text = [...lines, "", `Open moderation feedback: ${link}`].join("\n");
-  const html = lines.map((l) => `<p>${l}</p>`).join("\n") + `<p><a href="${link}">Open moderation feedback</a></p>`;
   try {
-    await sendEmail({ to: u.email, subject: `Moderation feedback: ${VERDICT_LABEL[verdict]}`, text, html, link });
+    await sendEmail(
+      templatedEmail({
+        to: u.email,
+        subject: `Moderation feedback: ${VERDICT_LABEL[verdict]}`,
+        heading: "Moderation feedback",
+        lines,
+        link,
+        cta: "Open moderation feedback",
+      }),
+    );
   } catch {
     // The feedback is on the assessor's list and sidebar badge; a failed email never blocks moderation.
     console.error("[moderation] assessor notification email failed");

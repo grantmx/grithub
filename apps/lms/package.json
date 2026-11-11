@@ -13,7 +13,8 @@
     "backup:decrypt": "tsx scripts/decrypt-backup.ts",
     "backup:restore": "tsx scripts/restore-backup.ts",
     "load:sessions": "tsx scripts/load-test-sessions.ts",
-    "admin:bootstrap": "tsx scripts/bootstrap-admin.ts"
+    "admin:bootstrap": "tsx scripts/bootstrap-admin.ts",
+    "email:template": "tsx scripts/build-email-template.ts"
   },
   "dependencies": {
     "@mux/mux-player-react": "^3.13.4",
@@ -29,14 +30,16 @@
   },
   "devDependencies": {
     "@material-symbols/svg-400": "0.48.1",
+    "@types/mjml": "4.7.4",
     "@types/node": "^22.10.0",
     "@types/react": "19.2.9",
     "@types/react-dom": "19.2.3",
     "eslint": "^9.9.0",
     "eslint-config-custom": "*",
+    "mjml": "4.15.3",
     "tsconfig": "*",
+    "tsx": "4.20.3",
     "typescript": "^5.7.2",
-    "vitest": "3.2.4",
-    "tsx": "4.20.3"
+    "vitest": "3.2.4"
   }
 }

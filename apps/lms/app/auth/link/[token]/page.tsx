@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { AuthPage } from "@/components/AuthPage";
+import { LinkActionForm } from "@/components/LinkActionForm";
 import ui from "@/components/ui.module.css";
 import { consumeSignInLink } from "../../actions";
 
@@ -18,12 +19,14 @@ export default async function SignInLinkPage({
   const { token } = await params;
   return (
     <AuthPage title="Continue signing in">
-      <form action={consumeSignInLink} className={ui.stack}>
-        <input type="hidden" name="token" value={token} />
-        <button type="submit" className={`${ui.button} ${ui.full}`}>
-          Continue
-        </button>
-      </form>
+      {/* TODO(copy): pending label to be supplied by GRIT Hub. */}
+      <LinkActionForm
+        action={consumeSignInLink}
+        token={token}
+        label="Continue"
+        pendingLabel="Signing you in…"
+        className={ui.stack}
+      />
     </AuthPage>
   );
 }

@@ -67,7 +67,7 @@
 .link[aria-current="page"] {
   background: var(--color-surface);
   font-weight: var(--weight-semibold);
-  box-shadow: inset 3px 0 0 var(--color-accent);
+  box-shadow: inset 3px 0 0 var(--color-brand);
 }
 
 .main {

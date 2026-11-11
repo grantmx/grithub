@@ -49,7 +49,7 @@
 
 .navLink[aria-current="page"] {
   font-weight: var(--weight-semibold);
-  box-shadow: inset 0 -3px 0 var(--color-accent);
+  box-shadow: inset 0 -3px 0 var(--color-brand);
 }
 
 .display {

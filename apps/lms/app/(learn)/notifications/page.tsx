@@ -55,7 +55,7 @@ export default async function NotificationsPage({ searchParams }: { searchParams
                 {n.readAt ? <span className={styles.dotSpace} /> : <span className={styles.dot} aria-hidden="true" />}
                 <Icon name={KIND_ICON[n.kind] ?? "note"} />
                 <span className={styles.itemBody}>
-                  <span className={n.readAt ? undefined : styles.itemTitle} style={n.readAt ? { color: "var(--color-accent)" } : undefined}>
+                  <span className={n.readAt ? undefined : styles.itemTitle} style={n.readAt ? { color: "var(--color-link)" } : undefined}>
                     {n.readAt ? null : <span className={styles.srOnly}>Unread: </span>}
                     {n.title}
                   </span>

@@ -6,8 +6,10 @@ export default defineCliConfig({
     dataset: 'production'
   },
   /**
-   * Enable auto-updates for studios.
+   * Auto-updates disabled: the studio is self-hosted on Vercel, and with this on,
+   * `sanity build` prompts (y/N) on a local/runtime version mismatch. In CI the prompt
+   * defaults to "N", exits 0 without writing dist/, and fails the Vercel deploy.
    * Learn more at https://www.sanity.io/docs/cli#auto-updates
    */
-  autoUpdates: true,
+  autoUpdates: false,
 })

@@ -1,0 +1,79 @@
+<!--
+  LMS port of apps/web/components/emails/StandardEmail.js (the GRIT Hub
+  standard email). Compiled to lib/server/emailTemplate.generated.ts by
+  `yarn workspace lms email:template`; never edit the generated file.
+
+  {{placeholders}} are filled at send time by lib/server/email.ts:
+  content (subject, heading, body, cta, ctaHref, year) is escaped there, and
+  brand values come from EMAIL_BRAND (one place, for tenancy).
+
+  Differences from the website template (design.md §14, 2026-11-11):
+  - a GRIT red call-to-action button, 19px bold (large text for contrast);
+  - the copyright year is the current year, not a fixed 2023;
+  - social icons link to the profiles ("-noshare"), not share dialogs, and
+    Instagram links to the profile instead of an icon file.
+-->
+<mjml>
+  <mj-head>
+    <mj-title>{{subject}}</mj-title>
+    <mj-attributes>
+      <mj-text color="#555555" line-height="1.5" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" />
+      <mj-button font-family="Helvetica Neue, Helvetica, Arial, sans-serif" />
+    </mj-attributes>
+  </mj-head>
+  <mj-body>
+    <mj-section>
+      <mj-column width="100%">
+        <mj-image align="left" width="300px" src="{{logoUrl}}" href="{{siteUrl}}" alt="{{orgShortName}}" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-text font-size="21px" line-height="1.2" padding-bottom="0">
+          <h1 style="margin: 0; font-size: 21px; color: #2e303b">{{heading}}</h1>
+        </mj-text>
+        <mj-text font-size="18px" padding-top="0">
+          {{body}}
+        </mj-text>
+        <mj-button align="left" background-color="#e92938" color="#ffffff" font-size="19px" font-weight="700" border-radius="6px" inner-padding="14px 24px" href="{{ctaHref}}">
+          {{cta}}
+        </mj-button>
+        <mj-text font-size="14px" color="#777777">
+          <p style="margin: 0">If the button does not work, copy this link into your browser:<br /><a href="{{ctaHref}}" style="color: #4c7b9a; word-break: break-all">{{ctaHref}}</a></p>
+          <p>If you did not expect this email, you can ignore it.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+
+    <mj-section>
+      <mj-column>
+        <mj-divider border-width="1px" border-style="solid" border-color="lightgrey" />
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding-bottom="0">
+      <mj-column>
+        <mj-image align="left" width="200px" src="{{logoUrl}}" href="{{siteUrl}}" alt="{{orgShortName}}" />
+      </mj-column>
+      <mj-column>
+        <mj-social icon-size="32px" mode="horizontal" align="right">
+          <mj-social-element border-radius="99px" name="facebook-noshare" href="{{facebookUrl}}" padding-right="40px" alt="Facebook" />
+          <mj-social-element border-radius="99px" name="twitter-noshare" href="{{twitterUrl}}" padding-right="40px" alt="Twitter" />
+          <mj-social-element border-radius="99px" name="instagram-noshare" href="{{instagramUrl}}" alt="Instagram" />
+        </mj-social>
+      </mj-column>
+    </mj-section>
+
+    <mj-section padding-top="0">
+      <mj-column>
+        <mj-text color="#aaaaaa" padding-top="20px" font-size="11px">
+          {{footerLinks}}
+        </mj-text>
+        <mj-text line-height="1.65" color="#aaaaaa" font-size="11px">
+          <p>&copy;{{year}} {{orgName}}<br />{{address}}<br /><br />All rights reserved.</p>
+        </mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+</mjml>

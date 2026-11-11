@@ -8,6 +8,7 @@ import type {
 import {
   AccessDeniedError,
   AuthError,
+  type LinkSignInResult,
   authorize,
   passkeyConfirmOptions,
   signInWithLink,
@@ -15,6 +16,7 @@ import {
 } from "@/lib/server/auth";
 import { afterLinkSignIn } from "@/lib/access";
 import { InputError, checkJsonObject, text } from "@/lib/server/input";
+import type { ServerCtx } from "@/lib/server/context";
 import { RateLimitError } from "@/lib/server/ratelimit";
 import {
   getActor,
@@ -34,24 +36,66 @@ function linkToken(form: FormData): string {
   }
 }
 
-/** POST-only exchange of an emailed sign-in or recovery link. */
-export async function consumeSignInLink(form: FormData): Promise<void> {
-  const token = linkToken(form);
-  const ctx = await getServerCtx();
-  let target: string;
+/** State for the link forms: set only when something unexpected failed. */
+export type LinkFormState = { error?: string };
+
+// TODO(copy): wording to be supplied by GRIT Hub (design.md §13).
+const LINK_FAILED =
+  "Something went wrong on our side and you're not signed in yet. Your link still works, so please try again in a minute.";
+
+/**
+ * Log an unexpected failure without personal data. Drizzle's "Failed query"
+ * message includes the query parameters (token and session hashes), so only
+ * the database's own message is logged for those.
+ */
+function logLinkFailure(where: string, e: unknown): void {
+  const err = e instanceof Error ? e : new Error(String(e));
+  const message =
+    err.cause instanceof Error
+      ? err.cause.message
+      : err.message.startsWith("Failed query")
+        ? "query failed"
+        : err.message;
+  console.error(`[auth] ${where} failed: ${err.name}: ${message}`);
+}
+
+/**
+ * Where to go after a link sign-in. The session already exists at this
+ * point, so if looking up the account fails we still send the person on
+ * (the proxy routes them to setup if needed) rather than lose the sign-in.
+ */
+async function linkTarget(
+  ctx: ServerCtx,
+  method: Parameters<typeof afterLinkSignIn>[0],
+): Promise<string> {
+  if (method === "recovery") return afterLinkSignIn(method, null);
   try {
-    const result = await signInWithLink(ctx, token, "link");
-    if (!result.ok) redirect(`/signin?error=link_${result.reason}`);
-    await setSessionCookie(ctx, result.token, result.expiresAt);
-    target = afterLinkSignIn(
-      result.method,
-      result.method === "recovery" ? null : await getActor({ ...ctx }),
-    );
+    return afterLinkSignIn(method, await getActor({ ...ctx }));
+  } catch (e) {
+    logLinkFailure("linkTarget", e);
+    return "/";
+  }
+}
+
+/** POST-only exchange of an emailed sign-in or recovery link. */
+export async function consumeSignInLink(
+  _prev: LinkFormState,
+  form: FormData,
+): Promise<LinkFormState> {
+  const token = linkToken(form);
+  let ctx: ServerCtx;
+  let result: LinkSignInResult;
+  try {
+    ctx = await getServerCtx();
+    result = await signInWithLink(ctx, token, "link");
   } catch (e) {
     if (e instanceof RateLimitError) redirect("/signin?error=link_invalid");
-    throw e;
+    logLinkFailure("consumeSignInLink", e);
+    return { error: LINK_FAILED };
   }
-  redirect(target);
+  if (!result.ok) redirect(`/signin?error=link_${result.reason}`);
+  await setSessionCookie(ctx, result.token, result.expiresAt);
+  redirect(await linkTarget(ctx, result.method));
 }
 
 export type ConfirmResult<T = undefined> =
@@ -115,16 +159,22 @@ export async function completePasskeyConfirm(
 }
 
 /** POST-only exchange of an invitation link; continues to first-time setup. */
-export async function acceptInvitation(form: FormData): Promise<void> {
+export async function acceptInvitation(
+  _prev: LinkFormState,
+  form: FormData,
+): Promise<LinkFormState> {
   const token = linkToken(form);
-  const ctx = await getServerCtx();
-  const result = await signInWithLink(ctx, token, "invitation").catch(
-    (e: unknown) => {
-      if (e instanceof RateLimitError)
-        return { ok: false as const, reason: "invalid" as const };
-      throw e;
-    },
-  );
+  let ctx: ServerCtx;
+  let result: LinkSignInResult;
+  try {
+    ctx = await getServerCtx();
+    result = await signInWithLink(ctx, token, "invitation");
+  } catch (e) {
+    if (e instanceof RateLimitError)
+      redirect(`/setup/${encodeURIComponent(token)}?error=invalid`);
+    logLinkFailure("acceptInvitation", e);
+    return { error: LINK_FAILED };
+  }
   if (!result.ok)
     redirect(`/setup/${encodeURIComponent(token)}?error=${result.reason}`);
   await setSessionCookie(ctx, result.token, result.expiresAt);

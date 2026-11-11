@@ -59,7 +59,7 @@ export function MediaBlock(props: MediaBlockProps) {
           defaultHiddenCaptions={false}
           metadata={{ video_title: props.title }}
           title={props.title}
-          accentColor="#3b6680"
+          accentColor="#e92938"
           style={{
             width: "100%",
             aspectRatio: props.kind === "video" ? "16 / 9" : undefined,

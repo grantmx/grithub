@@ -19,10 +19,10 @@
 
 | Kept from apps/web                                                                             | Changed for the LMS                                                                                                                                                                       |
 | ---------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| GRIT Hub horizontal logo (`grithub-logo-horz*.svg`) in the header; circle logo for favicon/PWA | **GRIT red #E92938** is limited to the logo, small brand accents and large display text. It is **never** used for errors, buttons or body text (4.34:1 on white fails AA for normal text) |
+| GRIT Hub horizontal logo (`grithub-logo-horz*.svg`) in the header; circle logo for favicon/PWA | **GRIT red #E92938** is used for the logo, brand accents, large display text and **primary buttons** (19px bold, i.e. WCAG large text, because 4.34:1 on white fails AA for normal text; 2026-11-11). Never for errors or body text |
 | **Inter** as the single typeface                                                               | **No Playfair Display.** Headings use Inter as well, so reading pages stay quiet                                                                                                          |
 | Material look (apps/web already uses MUI)                                                      | **Material Symbols, Outlined**, weight 400, as inline SVG (see §9)                                                                                                                        |
-| Charcoal **#2E303B** for text; ice blues for quiet surfaces                                    | Ocean **#4C7B9A** is darkened to **#3B6680** for links and buttons (6.18:1, up from a borderline 4.56:1)                                                                                  |
+| Charcoal **#2E303B** for text; ice blues for quiet surfaces; **ocean #4C7B9A**, green #198754 and red #DC3545 exactly as apps/web (2026-11-11) | Superseded 2026-11-11: ocean is no longer darkened (was #3B6680); it is 4.56:1 on white, which passes AA |
 |                                                                                                | Bootstrap and the leftover Proxima Nova/Didot styles are not carried over; this is a fresh token set                                                                                      |
 
 ## 3. Information architecture
@@ -359,23 +359,25 @@ The learner opens Schedule → assessment day → attempt (supervised). The faci
 | ---------------------------------------- | --------------------------- | ---------------- | ---------------------------------------------------------------------- |
 | `bg`                                     | #FFFFFF                     | #15161B          |                                                                        |
 | `surface`                                | #FFFFFF                     | #1E2028          | cards                                                                  |
-| `surface-sunken`                         | #F0F4F7 (ice50)             | #121318          | outline, check card                                                    |
+| `surface-sunken`                         | #F0F0F0 (apps/web dove)     | #121318          | outline, check card                                                    |
 | `text`                                   | #2E303B (charcoal) · 13.1:1 | #E8E9EE · 14.9:1 |                                                                        |
-| `text-muted`                             | #5A5D6B · 6.5:1             | #A6A9B6 · 7.7:1  |                                                                        |
-| `border`                                 | #8A8E9C · 3.3:1 (non-text)  | #6B6F7D · 3.6:1  | input borders; hairlines may be lighter                                |
-| `accent` (links, primary buttons, focus) | #3B6680 · 6.2:1             | #8CB8D4 · 8.5:1  | darkened ocean                                                         |
-| `on-accent`                              | #FFFFFF · 6.2:1             | #15161B · 8.5:1  | button text                                                            |
-| `brand`                                  | #E92938                     | #F0505D · 5.2:1  | logo/accents only; light value 4.34:1, so large text and non-text only |
-| `success`                                | #3F7A1F · 5.2:1             | #8DC26A · 8.7:1  | always with ✓ icon + word                                              |
-| `danger`                                 | #B42318 · 6.6:1             | #F08A80 · 7.4:1  | always with ✗/! icon + word                                            |
+| `text-muted`                             | #6C757D · 4.69:1 (apps/web gray-600)             | #A6A9B6 · 7.7:1  |                                                                        |
+| `border`                                 | #CCCCCC · 1.6:1 (apps/web)  | #6B6F7D · 3.6:1  | input borders; hairlines may be lighter                                |
+| `accent` (secondary buttons, selected states, focus) | #2E303B (charcoal) · 13.1:1 | #E8E9EE · 14.9:1 | no blue outside links                                     |
+| `on-accent`                              | #FFFFFF · 13.1:1            | #15161B · 14.9:1 | text on accent fills                                                   |
+| `link`                                   | #4C7B9A · 4.56:1            | #8CB8D4 · 8.5:1  | apps/web ocean; links and link-style text buttons only                 |
+| `primary` / `on-primary`                 | #E92938 / #FFFFFF · 4.34:1  | #F0505D / #15161B · 5.2:1 | primary buttons only; text is `text-button-primary` (19px) bold, so it counts as large text |
+| `brand`                                  | #E92938                     | #F0505D · 5.2:1  | logo, progress bars, unread dots, active-nav markers, player controls; light value 4.34:1, so large text and non-text only |
+| `success`                                | #198754 · 4.53:1 (apps/web)             | #8DC26A · 8.7:1  | always with ✓ icon + word                                              |
+| `danger`                                 | #DC3545 · 4.53:1 (apps/web)             | #F08A80 · 7.4:1  | always with ✗/! icon + word                                            |
 | `warning`                                | #8A5A00 · 5.9:1             | #E0B04A · 9.0:1  |                                                                        |
 | `focus-ring`                             | 2 px `accent` + 2 px offset | same             |                                                                        |
 
-Themes: Light / Dark / **System (default)** in the Display menu, stored per user. **MVP: learner screens only.** Staff screens are light-only at first; they use the same tokens so dark mode can follow later. Tokens are CSS custom properties; components never use raw hex.
+Themes: **white (Light) by default for everyone**, Dark only when chosen in the Display menu (2026-11-11); the device setting is not followed and the stored `system` value means Light. Stored per user. **MVP: learner screens only.** Staff screens are light-only at first; they use the same tokens so dark mode can follow later. Tokens are CSS custom properties; components never use raw hex.
 
 ## 10. Accessibility rules (WCAG 2.2 AA)
 
-- Contrast: text 4.5:1 minimum (the tokens above reach 5.2:1+), UI components and boundaries 3:1.
+- Contrast: text 4.5:1 minimum (the tokens above reach 4.53:1+), large text 3:1 (primary buttons on GRIT red), UI components and boundaries 3:1, except input borders (#CCC, 1.6:1), a known exception accepted on 2026-11-11 (§14).
 - Fully keyboard operable. Visible focus everywhere, and focus is never obscured by sticky bars (2.4.11).
 - Target size at least 24×24 CSS px (2.5.8); learner controls aim for 44×44.
 - Status is never shown by colour alone (icon + text).
@@ -589,3 +591,15 @@ Nothing is undecided in the design itself. One input is still pending:
 | 2026-11-11 | Sign-in          | After the magic link           | No passkey yet → asked to add one (learners may "Skip for now"; staff who need step-up can't, unchanged). Has a passkey → "Confirm it's you" (`/auth/confirm`): the browser's passkey dialog **opens by itself**; "Use my passkey" to retry; **"Continue without passkey"** always available                                                           |
 | 2026-11-11 | Sign-in          | Magic link alone               | A magic link alone is a **full sign-in for everyone** (like Slack): no "limited" mode and **no passwords**. The passkey confirmation is audited (`auth.passkey.confirmed`) but grants nothing extra. Step-up for staff screens still means "has an active passkey" (unchanged). Forgotten passkey → sign in with the magic link                     |
 | 2026-11-11 | Accounts         | First SDP admin                | Created with the one-off, audited `yarn workspace lms admin:bootstrap "<name>" <email>` (refuses once an SDP admin exists); the person then signs in with a magic link and completes setup                                                                                                                                                          |
+| 2026-11-11 | Brand            | Colour scheme                  | Supersedes 2026-11-07 "darkened ocean": the LMS (screens and emails) uses the apps/web brand colours exactly: ocean #4C7B9A, green #198754, red #DC3545, charcoal #2E303B, GRIT red #E92938. Warning stays #8A5A00 (apps/web yellow #FFC107 is 1.6:1 as text). Dark-mode values unchanged (apps/web has no dark theme) |
+| 2026-11-11 | Brand            | Primary buttons                | GRIT red #E92938 with white **19px bold** text (WCAG large text, 4.34:1 ≥ 3:1). Secondary buttons, chips and selected states stay ocean |
+| 2026-11-11 | Email            | Template                       | Every LMS email uses the website's standard email (apps/web/components/emails/StandardEmail.js), ported to `apps/lms/emails/standard.mjml` and compiled with `yarn workspace lms email:template` |
+| 2026-11-11 | Email            | Button                         | GRIT red #E92938, 19px bold white text (same rule as the screens); the full link is also printed under it |
+| 2026-11-11 | Email            | Footer                         | Website footer kept (Training / Consulting / Incubation / CoWork links, social icons, address); the year is the current year, social icons link to the profiles (not share dialogs) and Instagram to the real profile |
+| 2026-11-11 | Email            | Font                           | The template's Helvetica Neue / Arial, text #555 |
+| 2026-11-11 | Email            | Heading                        | Every email has a short 21px heading (e.g. "Sign in to GRIT Hub Learning", "You're invited"); notifications use their subject |
+| 2026-11-11 | Brand            | White site                     | The LMS is white by default for everyone, like grithub.org.za; the phone/laptop dark setting is no longer followed. Learners can still choose Dark in the Display menu (Light / Dark; "System" removed). Logos no longer switch to white on dark devices |
+| 2026-11-11 | Brand            | Core colours                   | Whites, greys and red from apps/web: panels dove #F0F0F0, muted text #6C757D, borders #CCC, GRIT red for primary buttons, progress bars, unread dots and active-nav markers. Charcoal for secondary buttons, selected chips/tabs and focus |
+| 2026-11-11 | Brand            | Blue                           | Ocean #4C7B9A for links only (`--color-link`) |
+| 2026-11-11 | Brand            | Borders                        | Website #CCC everywhere, including input boxes. **Accepted trade-off:** input borders are 1.6:1, below WCAG 1.4.11's 3:1 for form-field boundaries |
+| 2026-11-11 | Auth             | Link buttons (sign-in, invitation) | While the link is checked the button is disabled and reads "Signing you in…" / "Opening your invitation…"; if something fails on our side, an error banner says so and that the link still works (the link is only used up once sign-in succeeds). Same pattern as the setup forms. Copy is `TODO(copy)` |
