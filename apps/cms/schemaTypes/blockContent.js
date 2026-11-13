@@ -59,11 +59,24 @@ export default defineType({
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
-          {
+          defineArrayMember({
             title: 'URL',
             name: 'link',
-            type: 'link',
-          },
+            type: 'object',
+            fields: [
+              defineField({
+                name: 'href',
+                type: 'url',
+                title: 'URL',
+                description: 'Full URL (https://…), a site path (/programs), mailto: or tel:.',
+                validation: (Rule) =>
+                  Rule.required().uri({
+                    scheme: ['http', 'https', 'mailto', 'tel'],
+                    allowRelative: true,
+                  }),
+              }),
+            ],
+          }),
         ],
       },
     }),
