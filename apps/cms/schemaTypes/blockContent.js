@@ -1,4 +1,4 @@
-import {defineType, defineArrayMember} from 'sanity'
+import {defineType, defineArrayMember, defineField} from 'sanity'
 
 /**
  * This is the schema definition for the rich text fields used for
@@ -73,18 +73,72 @@ export default defineType({
     defineArrayMember({
       type: 'image',
       options: {hotspot: true},
-      fields: [
+      fieldsets: [
         {
+          name: 'linkSettings',
+          title: 'Link',
+          description: 'Optional: make the image clickable.',
+          options: {collapsible: true, collapsed: false},
+        },
+      ],
+      fields: [
+        defineField({
           name: 'alt',
           type: 'string',
           title: 'Alternative Text',
-        },
-        {
+          description: 'Describe the image for screen readers and search engines.',
+          validation: (Rule) =>
+            Rule.warning().custom((alt) => (alt ? true : 'Alt text is recommended for accessibility')),
+        }),
+        defineField({
           name: 'caption',
           type: 'string',
           title: 'Image Caption',
-        }
+        }),
+        defineField({
+          name: 'size',
+          type: 'string',
+          title: 'Display Size',
+          initialValue: 'full',
+          options: {
+            list: [
+              {title: 'Full width', value: 'full'},
+              {title: 'Medium', value: 'medium'},
+              {title: 'Small', value: 'small'},
+            ],
+            layout: 'radio',
+            direction: 'horizontal',
+          },
+        }),
+        defineField({
+          name: 'link',
+          type: 'url',
+          title: 'Link URL',
+          description: 'Full URL (https://…), a site path (/programs), mailto: or tel:.',
+          fieldset: 'linkSettings',
+          validation: (Rule) =>
+            Rule.uri({scheme: ['http', 'https', 'mailto', 'tel'], allowRelative: true}),
+        }),
+        defineField({
+          name: 'openInNewTab',
+          type: 'boolean',
+          title: 'Open in a new tab',
+          description: 'Links to other websites open in a new tab by default.',
+          fieldset: 'linkSettings',
+          hidden: ({parent}) => !parent?.link,
+        }),
       ],
+      preview: {
+        select: {media: 'asset', alt: 'alt', caption: 'caption', link: 'link', size: 'size'},
+        prepare({media, alt, caption, link, size}) {
+          const details = [size && size !== 'full' ? size : null, link ? `→ ${link}` : null]
+          return {
+            media,
+            title: caption || alt || 'Image',
+            subtitle: details.filter(Boolean).join(' · ') || undefined,
+          }
+        },
+      },
     }),
 
   ],

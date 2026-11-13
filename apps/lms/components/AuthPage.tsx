@@ -17,8 +17,8 @@ export function AuthPage({
           className={ui.logo}
           src="/brand/grithub-logo-horz.svg"
           alt="GRIT Hub"
-          width={160}
-          height={45}
+          width={250}
+          height={70}
         />
         <h1 className={ui.h1}>{title}</h1>
         {children}
